@@ -172,7 +172,9 @@
 }
 
 
-/* desktop message icon */
+/* ============================================================
+   DESKTOP MESSAGE ICON
+============================================================ */
 
 .message-top-link{
   position:relative;
@@ -210,7 +212,9 @@
 }
 
 
-/* mobile */
+/* ============================================================
+   MOBILE
+============================================================ */
 
 @media(max-width:600px){
 
@@ -268,28 +272,30 @@
 
 <div class="top-actions">
 
-  <a
-    id="topMessageLink"
-    class="message-top-link"
-    href="messages.html">
 
-    💬
+<a
+  id="topMessageLink"
+  class="message-top-link"
+  href="messages.html">
 
-    <i
-      id="topMessageBadge"
-      class="message-badge">
-    </i>
+  💬
 
-  </a>
+  <i
+    id="topMessageBadge"
+    class="message-badge">
+  </i>
+
+</a>
 
 
-  <div id="authArea">
+<div id="authArea">
 
-    <span
-      class="auth-loading">
-    </span>
+  <span
+    class="auth-loading">
+  </span>
 
-  </div>
+</div>
+
 
 </div>
 
@@ -820,6 +826,7 @@ const SB_URL =
 
 const SB_KEY =
   window.SUPABASE_ANON_KEY ||
+  window.supabaseAnonKey ||
   "";
 
 
@@ -919,7 +926,11 @@ function money(value){
 
 function saveUser(user){
 
-  if(!user) return;
+  if(!user){
+
+    return;
+
+  }
 
 
   const metadata =
@@ -977,6 +988,9 @@ function showLoggedOut(){
     </a>
 
   `;
+
+
+  setMessageBadge(0);
 
 }
 
@@ -1127,8 +1141,8 @@ function setMessageBadge(count){
   if(topMessageLink){
 
     /*
-     * Login করা থাকলেই desktop icon
-     * দেখা যাবে।
+     * Login করা থাকলে desktop message
+     * icon দেখাবে।
      */
 
     topMessageLink.style.display =
@@ -1140,8 +1154,62 @@ function setMessageBadge(count){
 
 
 /* ============================================================
-   UPDATE MESSAGE NOTIFICATION
+   GET SESSION
 ============================================================ */
+
+async function getSession(){
+
+  try{
+
+    if(
+      typeof window.getSbSession ===
+      "function"
+    ){
+
+      const session =
+        await window.getSbSession();
+
+
+      if(
+        session &&
+        session.access_token
+      ){
+
+        return session;
+
+      }
+
+    }
+
+  }catch(error){
+
+    console.error(
+      "Session error:",
+      error
+    );
+
+  }
+
+
+  return null;
+
+}
+
+
+/* ============================================================
+   MESSAGE NOTIFICATION
+============================================================ */
+
+/*
+ * বর্তমান Chat System:
+ *
+ * conversations
+ *      ↓
+ * messages.conversation_id
+ *
+ * তাই Homepage notification-ও
+ * একই structure ব্যবহার করছে।
+ */
 
 async function updateMessageNotification(user){
 
@@ -1159,24 +1227,11 @@ async function updateMessageNotification(user){
 
   try{
 
-    let session = null;
+    const session =
+      await getSession();
 
 
-    if(
-      typeof window.getSbSession ===
-      "function"
-    ){
-
-      session =
-        await window.getSbSession();
-
-    }
-
-
-    if(
-      !session ||
-      !session.access_token
-    ){
+    if(!session){
 
       setMessageBadge(0);
 
@@ -1185,41 +1240,41 @@ async function updateMessageNotification(user){
     }
 
 
-    /*
-     * সরাসরি messages table থেকে
-     * আমার সাথে সম্পর্কিত message নেওয়া হচ্ছে।
-     */
-
     const uid =
       encodeURIComponent(
         user.id
       );
 
 
-    const url =
+    /* ========================================================
+       STEP 1
+       আমার সব conversations
+    ======================================================== */
+
+    const conversationUrl =
 
       SB_URL +
 
-      "/rest/v1/messages" +
+      "/rest/v1/conversations" +
 
       "?or=(" +
 
-        "sender_id.eq." +
+        "buyer_id.eq." +
         uid +
 
-        ",receiver_id.eq." +
+        ",seller_id.eq." +
         uid +
 
       ")" +
 
-      "&select=sender_id,receiver_id,ad_id,created_at" +
+      "&select=id,buyer_id,seller_id,ad_id,created_at" +
 
       "&order=created_at.desc";
 
 
-    const response =
+    const conversations =
       await fetch(
-        url,
+        conversationUrl,
         {
 
           method:"GET",
@@ -1242,16 +1297,134 @@ async function updateMessageNotification(user){
       );
 
 
-    if(!response.ok){
-
-      /*
-       * Notification কাজ না করলেও
-       * Homepage-এর অন্য কিছু থামবে না।
-       */
+    if(!conversations.ok){
 
       console.warn(
-        "Message notification request failed:",
-        await response.text()
+        "Conversation notification error:",
+        await conversations.text()
+      );
+
+      return;
+
+    }
+
+
+    const conversationData =
+      await conversations.json();
+
+
+    if(
+      !Array.isArray(
+        conversationData
+      ) ||
+      !conversationData.length
+    ){
+
+      setMessageBadge(0);
+
+      return;
+
+    }
+
+
+    /* ========================================================
+       STEP 2
+       Conversation IDs
+    ======================================================== */
+
+    const conversationIds =
+      conversationData
+
+        .map(
+          function(conversation){
+
+            return String(
+              conversation.id || ""
+            );
+
+          }
+        )
+
+        .filter(Boolean);
+
+
+    if(
+      !conversationIds.length
+    ){
+
+      setMessageBadge(0);
+
+      return;
+
+    }
+
+
+    const idList =
+      conversationIds
+
+        .map(
+          function(id){
+
+            return encodeURIComponent(
+              id
+            );
+
+          }
+        )
+
+        .join(",");
+
+
+    /* ========================================================
+       STEP 3
+       প্রতিটি conversation-এর messages
+    ======================================================== */
+
+    const messageUrl =
+
+      SB_URL +
+
+      "/rest/v1/messages" +
+
+      "?conversation_id=in.(" +
+      idList +
+      ")" +
+
+      "&select=id,conversation_id,sender_id,receiver_id,created_at" +
+
+      "&order=created_at.desc";
+
+
+    const messageResponse =
+      await fetch(
+        messageUrl,
+        {
+
+          method:"GET",
+
+          headers:{
+
+            "apikey":
+              SB_KEY,
+
+            "Authorization":
+              "Bearer " +
+              session.access_token,
+
+            "Content-Type":
+              "application/json"
+
+          }
+
+        }
+      );
+
+
+    if(!messageResponse.ok){
+
+      console.warn(
+        "Message notification error:",
+        await messageResponse.text()
       );
 
       return;
@@ -1260,7 +1433,7 @@ async function updateMessageNotification(user){
 
 
     const messages =
-      await response.json();
+      await messageResponse.json();
 
 
     if(
@@ -1275,44 +1448,25 @@ async function updateMessageNotification(user){
     }
 
 
-    /*
-     * এখানে unique conversation বানানো হচ্ছে।
-     *
-     * একই:
-     *   User + Ad
-     *
-     * = একটি conversation
-     *
-     * ফলে একই user ১০টি message পাঠালেও
-     * ১ হিসেবেই count হবে।
-     */
+    /* ========================================================
+       STEP 4
+       প্রতিটি conversation-এর latest message
+    ======================================================== */
 
-    const conversations =
-      new Set();
+    const latestByConversation = {};
 
 
     messages.forEach(
       function(message){
 
-        const sender =
+        const cid =
           String(
-            message.sender_id || ""
+            message.conversation_id ||
+            ""
           );
 
 
-        const receiver =
-          String(
-            message.receiver_id || ""
-          );
-
-
-        const adId =
-          String(
-            message.ad_id || ""
-          );
-
-
-        if(!adId){
+        if(!cid){
 
           return;
 
@@ -1320,74 +1474,87 @@ async function updateMessageNotification(user){
 
 
         /*
-         * অপর পক্ষের ID বের করা
-         */
-
-        let otherUser = "";
-
-
-        if(
-          sender ===
-          String(user.id)
-        ){
-
-          otherUser =
-            receiver;
-
-        }else{
-
-          otherUser =
-            sender;
-
-        }
-
-
-        if(!otherUser){
-
-          return;
-
-        }
-
-
-        /*
-         * নিজের সাথে conversation count হবে না
+         * API created_at desc দিয়ে দিয়েছে।
+         *
+         * তাই প্রথম message-টাই latest।
          */
 
         if(
-          otherUser ===
-          String(user.id)
+          !latestByConversation[cid]
         ){
 
-          return;
+          latestByConversation[cid] =
+            message;
 
         }
-
-
-        /*
-         * User + Product
-         */
-
-        const key =
-
-          adId +
-          "__" +
-          otherUser;
-
-
-        conversations.add(
-          key
-        );
 
       }
     );
 
 
-    /*
-     * মোট আলাদা conversation
-     */
+    /* ========================================================
+       STEP 5
+       আলাদা আলাদা sender count
+    ======================================================== */
+
+    const incomingUsers =
+      new Set();
+
+
+    Object.keys(
+      latestByConversation
+    ).forEach(
+      function(cid){
+
+        const message =
+          latestByConversation[cid];
+
+
+        const sender =
+          String(
+            message.sender_id ||
+            ""
+          );
+
+
+        const receiver =
+          String(
+            message.receiver_id ||
+            ""
+          );
+
+
+        /*
+         * সর্বশেষ message যদি অন্য
+         * user পাঠিয়ে থাকে
+         */
+
+        if(
+          sender &&
+          sender !==
+          String(user.id) &&
+
+          receiver ===
+          String(user.id)
+        ){
+
+          incomingUsers.add(
+            sender
+          );
+
+        }
+
+      }
+    );
+
+
+    /* ========================================================
+       STEP 6
+       Badge
+    ======================================================== */
 
     setMessageBadge(
-      conversations.size
+      incomingUsers.size
     );
 
 
@@ -1410,10 +1577,6 @@ async function updateMessageNotification(user){
 async function checkLogin(){
 
   try{
-
-    /*
-     * Supabase session
-     */
 
     if(
       typeof window.getSbSession ===
@@ -1442,13 +1605,15 @@ async function checkLogin(){
 
           showLoggedIn(user);
 
+
           /*
-           * Notification
+           * Message notification
            */
 
-          updateMessageNotification(
+          await updateMessageNotification(
             user
           );
+
 
           return;
 
@@ -1459,9 +1624,9 @@ async function checkLogin(){
     }
 
 
-    /*
-     * Local fallback
-     */
+    /* ========================================================
+       LOCAL FALLBACK
+    ======================================================== */
 
     const saved =
       localStorage.getItem(
@@ -1509,7 +1674,7 @@ async function checkLogin(){
         );
 
 
-        updateMessageNotification(
+        await updateMessageNotification(
           fallbackUser
         );
 
@@ -1530,6 +1695,7 @@ async function checkLogin(){
       "Login check error:",
       error
     );
+
 
     showLoggedOut();
 
@@ -1892,10 +2058,9 @@ checkLogin();
 loadLatestAds();
 
 
-/*
- * নতুন message check
- * প্রতি 10 সেকেন্ডে।
- */
+/* ============================================================
+   MESSAGE NOTIFICATION REFRESH
+============================================================ */
 
 setInterval(
   async function(){
@@ -1903,21 +2068,24 @@ setInterval(
     try{
 
       if(
-        typeof window.getCurrentUser ===
+        typeof window.getCurrentUser !==
         "function"
       ){
 
-        const user =
-          await window.getCurrentUser();
+        return;
+
+      }
 
 
-        if(user){
+      const user =
+        await window.getCurrentUser();
 
-          updateMessageNotification(
-            user
-          );
 
-        }
+      if(user){
+
+        await updateMessageNotification(
+          user
+        );
 
       }
 
@@ -1941,4 +2109,5 @@ setInterval(
 
 
 </body>
+
 </html>
