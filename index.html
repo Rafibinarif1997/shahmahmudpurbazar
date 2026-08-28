@@ -1,13 +1,29 @@
 <!doctype html>
 <html lang="bn">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>শাহমাহমুদপুর বাজার | Local Marketplace</title>
-<meta name="description" content="৪নং শাহমাহমুদপুর ইউনিয়নের স্থানীয় ক্রয়-বিক্রয় marketplace">
-<link rel="stylesheet" href="style.css">
+
+<meta
+  name="viewport"
+  content="width=device-width,initial-scale=1">
+
+<title>
+শাহমাহমুদপুর বাজার | Local Marketplace
+</title>
+
+<meta
+  name="description"
+  content="৪নং শাহমাহমুদপুর ইউনিয়নের স্থানীয় ক্রয়-বিক্রয় marketplace">
+
+<link
+  rel="stylesheet"
+  href="style.css">
+
 
 <style>
+
 #authArea{
   display:flex;
   align-items:center;
@@ -60,10 +76,6 @@
   font-weight:800;
 }
 
-.profile-email{
-  display:none;
-}
-
 .auth-loading{
   width:18px;
   height:18px;
@@ -74,10 +86,49 @@
 }
 
 @keyframes smbSpin{
-  to{transform:rotate(360deg)}
+  to{
+    transform:rotate(360deg)
+  }
+}
+
+.ad-image{
+  width:100%;
+  height:150px;
+  object-fit:cover;
+  display:block;
+}
+
+.ad-image-placeholder{
+  min-height:150px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#69f5a5;
+  font-size:12px;
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(105,245,165,.07),
+      transparent 60%
+    );
+}
+
+.ads-loading{
+  width:100%;
+  padding:45px 20px;
+  text-align:center;
+  color:#718078;
+}
+
+.ads-empty{
+  width:100%;
+  padding:45px 20px;
+  text-align:center;
+  color:#718078;
 }
 
 @media(max-width:600px){
+
   #authArea{
     min-width:auto;
   }
@@ -94,722 +145,1305 @@
     padding:7px 10px;
     font-size:10px;
   }
+
 }
+
 </style>
+
 </head>
+
 
 <body>
 
+
 <header class="header">
 
-  <div class="container topbar">
 
-    <a class="brand" href="index.html">
-      <b>শাহমাহমুদপুর</b>
-      <strong>বাজার</strong>
-      <small>LOCAL MARKETPLACE</small>
-    </a>
+<div class="container topbar">
 
-    <div class="top-actions">
-      <div id="authArea">
-        <span class="auth-loading"></span>
-      </div>
-    </div>
 
-  </div>
+<a
+  class="brand"
+  href="index.html">
 
-  <div class="container search-row">
+  <b>শাহমাহমুদপুর</b>
 
-    <form id="searchForm" class="search">
+  <strong>বাজার</strong>
 
-      <span>⌕</span>
+  <small>
+    LOCAL MARKETPLACE
+  </small>
 
-      <input
-        id="search"
-        type="search"
-        autocomplete="off"
-        placeholder="কি খুঁজছেন? মোবাইল, গাড়ি, জমি, গরু..."
-      >
+</a>
 
-      <button type="submit">খুঁজুন</button>
 
-    </form>
+<div class="top-actions">
+
+  <div id="authArea">
+
+    <span
+      class="auth-loading">
+    </span>
 
   </div>
+
+</div>
+
+
+</div>
+
+
+
+<div class="container search-row">
+
+
+<form
+  id="searchForm"
+  class="search">
+
+
+<span>⌕</span>
+
+
+<input
+  id="search"
+  type="search"
+  autocomplete="off"
+  placeholder="কি খুঁজছেন? মোবাইল, গাড়ি, জমি, গরু...">
+
+
+<button
+  type="submit">
+
+  খুঁজুন
+
+</button>
+
+
+</form>
+
+
+</div>
+
 
 </header>
 
 
+
 <main>
 
+
 <section class="container location">
-  ● ৪নং শাহমাহমুদপুর ইউনিয়ন, চাঁদপুর সদর, চাঁদপুর
+
+● ৪নং শাহমাহমুদপুর ইউনিয়ন, চাঁদপুর সদর, চাঁদপুর
+
 </section>
+
 
 
 <section class="container quick">
 
-  <a href="post-ad.html">
-    <span>＋</span>
-    <div>
-      <b>বিজ্ঞাপন দিন</b>
-      <small>সহজে বিক্রি করুন</small>
-    </div>
-  </a>
 
-  <a href="search.html?sort=trending">
-    <span>🔥</span>
-    <div>
-      <b>ট্রেন্ডিং বিজ্ঞাপন</b>
-      <small>জনপ্রিয় বিজ্ঞাপন দেখুন</small>
-    </div>
-  </a>
+<a href="post-ad.html">
 
-  <a href="safety.html">
-    <span>✓</span>
-    <div>
-      <b>নিরাপদ লেনদেন</b>
-      <small>নিরাপদে কেনাকাটা করুন</small>
-    </div>
-  </a>
+<span>＋</span>
+
+<div>
+
+<b>
+বিজ্ঞাপন দিন
+</b>
+
+<small>
+সহজে বিক্রি করুন
+</small>
+
+</div>
+
+</a>
+
+
+
+<a href="search.html?sort=trending">
+
+<span>🔥</span>
+
+<div>
+
+<b>
+ট্রেন্ডিং বিজ্ঞাপন
+</b>
+
+<small>
+জনপ্রিয় বিজ্ঞাপন দেখুন
+</small>
+
+</div>
+
+</a>
+
+
+
+<a href="safety.html">
+
+<span>✓</span>
+
+<div>
+
+<b>
+নিরাপদ লেনদেন
+</b>
+
+<small>
+নিরাপদে কেনাকাটা করুন
+</small>
+
+</div>
+
+</a>
+
 
 </section>
+
 
 
 <section class="container hero">
 
-  <div class="hero-copy">
 
-    <small>YOUR LOCAL MARKETPLACE</small>
+<div class="hero-copy">
 
-    <h1>
-      আপনার এলাকার<br>
-      <em>কেনাকাটা</em> এখন আরও সহজ
-    </h1>
+<small>
+YOUR LOCAL MARKETPLACE
+</small>
 
-    <p>
-      স্থানীয় মানুষের সাথে সরাসরি পণ্য কেনাবেচা করুন।<br>
-      বিজ্ঞাপন দিন, খুঁজে নিন, যোগাযোগ করুন।
-    </p>
 
-    <a class="btn green" href="post-ad.html">
-      বিজ্ঞাপন দিন →
-    </a>
+<h1>
 
-  </div>
+আপনার এলাকার<br>
 
-  <div class="hero-art">
-    <div class="phone-art">🛒</div>
-  </div>
+<em>
+কেনাকাটা
+</em>
+
+এখন আরও সহজ
+
+</h1>
+
+
+<p>
+
+স্থানীয় মানুষের সাথে সরাসরি পণ্য কেনাবেচা করুন।<br>
+
+বিজ্ঞাপন দিন, খুঁজে নিন, যোগাযোগ করুন।
+
+</p>
+
+
+<a
+  class="btn green"
+  href="post-ad.html">
+
+বিজ্ঞাপন দিন →
+
+</a>
+
+
+</div>
+
+
+
+<div class="hero-art">
+
+<div class="phone-art">
+🛒
+</div>
+
+</div>
+
 
 </section>
+
 
 
 <section class="container section">
 
-  <div class="section-title">
 
-    <div>
-      <small>BROWSE MARKETPLACE</small>
-      <h2>ক্যাটাগরি</h2>
-    </div>
-
-    <a href="search.html">সব দেখুন →</a>
-
-  </div>
+<div class="section-title">
 
 
-  <div class="cats">
+<div>
 
-    <a class="cat" href="search.html?category=Vehicles">
-      <i>▱</i>
-      <b>যানবাহন</b>
-    </a>
+<small>
+BROWSE MARKETPLACE
+</small>
 
-    <a class="cat" href="search.html?category=Phones%20%26%20Tablets">
-      <i>▯</i>
-      <b>মোবাইল ও ট্যাব</b>
-    </a>
+<h2>
+ক্যাটাগরি
+</h2>
 
-    <a class="cat" href="search.html?category=Property">
-      <i>⌂</i>
-      <b>প্রপার্টি</b>
-    </a>
+</div>
 
-    <a class="cat" href="search.html?category=Home%2C%20Furniture%20%26%20Garden">
-      <i>▱</i>
-      <b>বাসা ও আসবাব</b>
-    </a>
 
-    <a class="cat" href="search.html?category=Electronics">
-      <i>▭</i>
-      <b>ইলেকট্রনিক্স</b>
-    </a>
+<a href="search.html">
+সব দেখুন →
+</a>
 
-    <a class="cat" href="search.html?category=Fashion">
-      <i>♧</i>
-      <b>ফ্যাশন ও বিউটি</b>
-    </a>
 
-    <a class="cat" href="search.html?category=Animals%20%26%20Pets">
-      <i>♢</i>
-      <b>পশুপাখি</b>
-    </a>
+</div>
 
-    <a class="cat" href="search.html?category=Jobs">
-      <i>▣</i>
-      <b>চাকরি</b>
-    </a>
 
-    <a class="cat" href="search.html?category=Business%20%26%20Industry">
-      <i>⌁</i>
-      <b>ব্যবসা ও শিল্প</b>
-    </a>
 
-    <a class="cat" href="search.html?category=Services">
-      <i>⚒</i>
-      <b>সেবা</b>
-    </a>
+<div class="cats">
 
-    <a class="cat" href="search.html?category=Leisure%20%26%20Activities">
-      <i>▣</i>
-      <b>শিক্ষা</b>
-    </a>
 
-    <a class="cat" href="search.html?category=Leisure%20%26%20Activities">
-      <i>◉</i>
-      <b>খেলা-ধুলা</b>
-    </a>
+<a class="cat" href="search.html?category=Vehicles">
+<i>▱</i>
+<b>যানবাহন</b>
+</a>
 
-    <a class="cat" href="search.html?category=Food%2C%20Agriculture%20%26%20Supplies">
-      <i>♧</i>
-      <b>কৃষি ও বাগান</b>
-    </a>
 
-    <a class="cat" href="search.html?category=Beauty%20%26%20Personal%20Care">
-      <i>♡</i>
-      <b>স্বাস্থ্য ও ফিটনেস</b>
-    </a>
+<a class="cat" href="search.html?category=Phones%20%26%20Tablets">
+<i>▯</i>
+<b>মোবাইল ও ট্যাব</b>
+</a>
 
-    <a class="cat" href="search.html?category=Babies%20%26%20Kids">
-      <i>◌</i>
-      <b>বাচ্চা</b>
-    </a>
 
-    <a class="cat" href="search.html?category=Leisure%20%26%20Activities">
-      <i>♫</i>
-      <b>বিনোদন</b>
-    </a>
+<a class="cat" href="search.html?category=Property">
+<i>⌂</i>
+<b>প্রপার্টি</b>
+</a>
 
-    <a class="cat" href="search.html?category=Business%20%26%20Industry">
-      <i>◇</i>
-      <b>উপহার ও কালেকশন</b>
-    </a>
 
-    <a class="cat" href="search.html?category=Food%2C%20Agriculture%20%26%20Supplies">
-      <i>♜</i>
-      <b>খাবার ও রেস্টুরেন্ট</b>
-    </a>
+<a class="cat" href="search.html?category=Home%2C%20Furniture%20%26%20Garden">
+<i>▱</i>
+<b>বাসা ও আসবাব</b>
+</a>
 
-    <a class="cat" href="search.html?category=Animals%20%26%20Pets">
-      <i>♧</i>
-      <b>পোষা প্রাণী</b>
-    </a>
 
-    <a class="cat" href="search.html">
-      <i>•••</i>
-      <b>অন্যান্য</b>
-    </a>
+<a class="cat" href="search.html?category=Electronics">
+<i>▭</i>
+<b>ইলেকট্রনিক্স</b>
+</a>
 
-  </div>
+
+<a class="cat" href="search.html?category=Fashion">
+<i>♧</i>
+<b>ফ্যাশন ও বিউটি</b>
+</a>
+
+
+<a class="cat" href="search.html?category=Animals%20%26%20Pets">
+<i>♢</i>
+<b>পশুপাখি</b>
+</a>
+
+
+<a class="cat" href="search.html?category=Jobs">
+<i>▣</i>
+<b>চাকরি</b>
+</a>
+
+
+<a class="cat" href="search.html?category=Business%20%26%20Industry">
+<i>⌁</i>
+<b>ব্যবসা ও শিল্প</b>
+</a>
+
+
+<a class="cat" href="search.html?category=Services">
+<i>⚒</i>
+<b>সেবা</b>
+</a>
+
+
+<a class="cat" href="search.html?category=Leisure%20%26%20Activities">
+<i>▣</i>
+<b>শিক্ষা</b>
+</a>
+
+
+<a class="cat" href="search.html?category=Leisure%20%26%20Activities">
+<i>◉</i>
+<b>খেলা-ধুলা</b>
+</a>
+
+
+<a class="cat" href="search.html?category=Food%2C%20Agriculture%20%26%20Supplies">
+<i>♧</i>
+<b>কৃষি ও বাগান</b>
+</a>
+
+
+<a class="cat" href="search.html?category=Beauty%20%26%20Personal%20Care">
+<i>♡</i>
+<b>স্বাস্থ্য ও ফিটনেস</b>
+</a>
+
+
+<a class="cat" href="search.html?category=Babies%20%26%20Kids">
+<i>◌</i>
+<b>বাচ্চা</b>
+</a>
+
+
+<a class="cat" href="search.html?category=Leisure%20%26%20Activities">
+<i>♫</i>
+<b>বিনোদন</b>
+</a>
+
+
+<a class="cat" href="search.html?category=Business%20%26%20Industry">
+<i>◇</i>
+<b>উপহার ও কালেকশন</b>
+</a>
+
+
+<a class="cat" href="search.html?category=Food%2C%20Agriculture%20%26%20Supplies">
+<i>♜</i>
+<b>খাবার ও রেস্টুরেন্ট</b>
+</a>
+
+
+<a class="cat" href="search.html?category=Animals%20%26%20Pets">
+<i>♧</i>
+<b>পোষা প্রাণী</b>
+</a>
+
+
+<a class="cat" href="search.html">
+<i>•••</i>
+<b>অন্যান্য</b>
+</a>
+
+
+</div>
 
 </section>
+
 
 
 <section class="container section">
 
-  <div class="section-title">
 
-    <div>
-      <small>JUST ARRIVED</small>
-      <h2>সর্বশেষ বিজ্ঞাপন</h2>
-    </div>
+<div class="section-title">
 
-    <a href="search.html">সব দেখুন →</a>
 
+<div>
+
+<small>
+JUST ARRIVED
+</small>
+
+<h2>
+সর্বশেষ বিজ্ঞাপন
+</h2>
+
+</div>
+
+
+<a href="search.html">
+সব দেখুন →
+</a>
+
+
+</div>
+
+
+
+<div
+  id="latestAds"
+  class="products">
+
+  <div class="ads-loading">
+    বিজ্ঞাপন লোড হচ্ছে...
   </div>
 
-  <div id="latestAds" class="products"></div>
+</div>
+
 
 </section>
+
 
 
 <section class="container promo">
 
-  <div>
 
-    <small>SELL FASTER</small>
+<div>
 
-    <h2>
-      আপনার পণ্যটি <em>আজই বিক্রি করুন।</em>
-    </h2>
+<small>
+SELL FASTER
+</small>
 
-    <p>
-      বিজ্ঞাপন দিন এবং স্থানীয় ক্রেতার সাথে সরাসরি যোগাযোগ করুন।
-    </p>
 
-  </div>
+<h2>
 
-  <a href="post-ad.html" class="btn green">
-    বিজ্ঞাপন দিন →
-  </a>
+আপনার পণ্যটি
+<em>
+আজই বিক্রি করুন।
+</em>
+
+</h2>
+
+
+<p>
+
+বিজ্ঞাপন দিন এবং স্থানীয় ক্রেতার সাথে সরাসরি যোগাযোগ করুন।
+
+</p>
+
+</div>
+
+
+<a
+  href="post-ad.html"
+  class="btn green">
+
+বিজ্ঞাপন দিন →
+
+</a>
+
 
 </section>
+
 
 </main>
 
 
+
 <nav class="mobile-nav">
 
-  <a class="active" href="index.html">
-    <span>⌂</span>
-    হোম
-  </a>
 
-  <a href="favorites.html">
-    <span>♡</span>
-    সেভড
-  </a>
+<a
+  class="active"
+  href="index.html">
 
-  <a href="post-ad.html">
-    <span>＋</span>
-    বিজ্ঞাপন দিন
-  </a>
+<span>⌂</span>
 
-  <a href="messages.html">
-    <span>▤</span>
-    মেসেজ
-  </a>
+হোম
 
-  <a href="profile.html">
-    <span>♙</span>
-    প্রোফাইল
-  </a>
+</a>
+
+
+<a href="favorites.html">
+
+<span>♡</span>
+
+সেভড
+
+</a>
+
+
+<a href="post-ad.html">
+
+<span>＋</span>
+
+বিজ্ঞাপন দিন
+
+</a>
+
+
+<a href="messages.html">
+
+<span>▤</span>
+
+মেসেজ
+
+</a>
+
+
+<a href="profile.html">
+
+<span>♙</span>
+
+প্রোফাইল
+
+</a>
+
 
 </nav>
 
 
+
 <footer>
 
-  <div class="container foot">
 
-    <b>শাহমাহমুদপুর বাজার</b>
+<div class="container foot">
 
-    <span>
-      ৪নং শাহমাহমুদপুর ইউনিয়ন • চাঁদপুর
-    </span>
 
-    <div>
+<b>
+শাহমাহমুদপুর বাজার
+</b>
 
-      <a href="about.html">আমাদের সম্পর্কে</a>
-      <a href="contact.html">যোগাযোগ</a>
-      <a href="safety.html">নিরাপত্তা</a>
-      <a href="terms.html">শর্তাবলি</a>
 
-    </div>
+<span>
+৪নং শাহমাহমুদপুর ইউনিয়ন • চাঁদপুর
+</span>
 
-    <small>
-      © 2026 Shahmahmudpur Bazar
-    </small>
 
-  </div>
+<div>
+
+<a href="about.html">
+আমাদের সম্পর্কে
+</a>
+
+<a href="contact.html">
+যোগাযোগ
+</a>
+
+<a href="safety.html">
+নিরাপত্তা
+</a>
+
+<a href="terms.html">
+শর্তাবলি
+</a>
+
+</div>
+
+
+<small>
+© 2026 Shahmahmudpur Bazar
+</small>
+
+
+</div>
+
 
 </footer>
 
 
-<script src="supabase.js?v=9"></script>
-<script src="app.js?v=7"></script>
+
+<script src="supabase.js?v=10"></script>
 
 
 <script>
+
 (function(){
 
-  const SUPABASE_URL =
-    "https://jeupbfoceqmnpwlklche.supabase.co";
+"use strict";
 
-  const authArea =
-    document.getElementById("authArea");
 
-  function escapeHtml(value){
+/* ============================================================
+   SUPABASE CONFIG
+============================================================ */
 
-    return String(value || "")
-      .replace(/&/g,"&amp;")
-      .replace(/</g,"&lt;")
-      .replace(/>/g,"&gt;")
-      .replace(/"/g,"&quot;")
-      .replace(/'/g,"&#039;");
+const SB_URL =
+  window.SUPABASE_URL ||
+  "https://jeupbfoceqmnpwlklche.supabase.co";
+
+
+const SB_KEY =
+  window.SUPABASE_ANON_KEY ||
+  "";
+
+
+/* ============================================================
+   ELEMENTS
+============================================================ */
+
+const authArea =
+  document.getElementById(
+    "authArea"
+  );
+
+
+const latestAds =
+  document.getElementById(
+    "latestAds"
+  );
+
+
+/* ============================================================
+   ESCAPE
+============================================================ */
+
+function escapeHtml(value){
+
+  return String(
+    value ?? ""
+  )
+  .replace(
+    /&/g,
+    "&amp;"
+  )
+  .replace(
+    /</g,
+    "&lt;"
+  )
+  .replace(
+    />/g,
+    "&gt;"
+  )
+  .replace(
+    /"/g,
+    "&quot;"
+  )
+  .replace(
+    /'/g,
+    "&#039;"
+  );
+
+}
+
+
+/* ============================================================
+   MONEY
+============================================================ */
+
+function money(value){
+
+  return (
+    "৳ " +
+    Number(
+      value || 0
+    ).toLocaleString(
+      "bn-BD"
+    )
+  );
+
+}
+
+
+/* ============================================================
+   SAVE LOCAL USER
+============================================================ */
+
+function saveUser(user){
+
+  if(!user) return;
+
+
+  const metadata =
+    user.user_metadata ||
+    {};
+
+
+  localStorage.setItem(
+
+    "smb_user_v1",
+
+    JSON.stringify({
+
+      id:
+        user.id || "",
+
+      name:
+        metadata.full_name ||
+        metadata.name ||
+        "",
+
+      email:
+        user.email || "",
+
+      phone:
+        metadata.phone ||
+        "",
+
+      avatar:
+        metadata.avatar_url ||
+        metadata.picture ||
+        ""
+
+    })
+
+  );
+
+}
+
+
+/* ============================================================
+   LOGGED OUT
+============================================================ */
+
+function showLoggedOut(){
+
+  authArea.innerHTML = `
+
+    <a
+      class="login-link"
+      href="login.html">
+
+      লগইন
+
+    </a>
+
+  `;
+
+}
+
+
+/* ============================================================
+   LOGGED IN
+============================================================ */
+
+function showLoggedIn(user){
+
+  if(!user){
+
+    showLoggedOut();
+
+    return;
 
   }
 
 
-  function showLoggedOut(){
+  const metadata =
+    user.user_metadata ||
+    {};
 
-    authArea.innerHTML = `
-      <a class="login-link" href="login.html">
-        লগইন
-      </a>
-    `;
+
+  const name =
+    metadata.full_name ||
+    metadata.name ||
+    user.email ||
+    "প্রোফাইল";
+
+
+  const avatar =
+    metadata.avatar_url ||
+    metadata.picture ||
+    "";
+
+
+  authArea.innerHTML = `
+
+    <a
+      class="profile-link"
+      href="profile.html">
+
+
+      ${
+        avatar
+
+        ?
+
+        `
+        <img
+          class="profile-avatar"
+          src="${escapeHtml(avatar)}"
+          alt="Profile"
+          referrerpolicy="no-referrer"
+        >
+        `
+
+        :
+
+        `
+        <div
+          class="profile-avatar"
+          style="
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            color:#69f5a5;
+            font-size:15px;
+          ">
+
+          ♙
+
+        </div>
+        `
+
+      }
+
+
+      <span class="profile-name">
+
+        ${escapeHtml(name)}
+
+      </span>
+
+
+    </a>
+
+  `;
+
+}
+
+
+/* ============================================================
+   CHECK LOGIN
+============================================================ */
+
+async function checkLogin(){
+
+  try{
+
+    /*
+     * Supabase session
+     */
+
+    if(
+      typeof window.getSbSession ===
+      "function" &&
+
+      typeof window.getCurrentUser ===
+      "function"
+    ){
+
+      const session =
+        window.getSbSession();
+
+
+      if(
+        session &&
+        session.access_token
+      ){
+
+        const user =
+          await window.getCurrentUser();
+
+
+        if(user){
+
+          saveUser(user);
+
+          showLoggedIn(user);
+
+          return;
+
+        }
+
+      }
+
+    }
+
+
+    /*
+     * Local fallback
+     */
+
+    const saved =
+      localStorage.getItem(
+        "smb_user_v1"
+      );
+
+
+    if(saved){
+
+      const user =
+        JSON.parse(saved);
+
+
+      if(
+        user &&
+        user.email
+      ){
+
+        showLoggedIn({
+
+          id:
+            user.id || "",
+
+          email:
+            user.email,
+
+          user_metadata:{
+
+            full_name:
+              user.name || "",
+
+            name:
+              user.name || "",
+
+            avatar_url:
+              user.avatar || ""
+
+          }
+
+        });
+
+        return;
+
+      }
+
+    }
+
+
+    showLoggedOut();
+
+
+  }catch(error){
+
+    console.error(
+      "Login check error:",
+      error
+    );
+
+    showLoggedOut();
+
+  }
+
+}
+
+
+/* ============================================================
+   GET FIRST IMAGE
+============================================================ */
+
+function firstImage(ad){
+
+  if(
+    Array.isArray(
+      ad.image_urls
+    ) &&
+    ad.image_urls.length
+  ){
+
+    return ad.image_urls[0];
 
   }
 
 
-  function showLoggedIn(user){
+  /*
+   * কিছু ক্ষেত্রে Supabase
+   * array string হিসেবেও দিতে পারে।
+   */
 
-    if(!user){
+  if(
+    typeof ad.image_urls ===
+    "string" &&
+    ad.image_urls.trim()
+  ){
 
-      showLoggedOut();
+    let value =
+      ad.image_urls.trim();
+
+
+    /*
+     * {"url1","url2"} format
+     */
+
+    if(
+      value.startsWith("{") &&
+      value.endsWith("}")
+    ){
+
+      value =
+        value
+          .slice(1,-1)
+          .split(",")[0]
+          .replace(/^"/,"")
+          .replace(/"$/,"");
+
+    }
+
+
+    if(value){
+
+      return value;
+
+    }
+
+  }
+
+
+  return "";
+
+}
+
+
+/* ============================================================
+   LOAD LATEST ADS
+============================================================ */
+
+async function loadLatestAds(){
+
+  if(!latestAds){
+
+    return;
+
+  }
+
+
+  try{
+
+    const url =
+      SB_URL +
+      "/rest/v1/ads" +
+      "?select=*" +
+      "&status=eq.approved" +
+      "&order=created_at.desc" +
+      "&limit=8";
+
+
+    const response =
+      await fetch(
+        url,
+        {
+
+          method:
+            "GET",
+
+          headers:{
+
+            "apikey":
+              SB_KEY,
+
+            "Content-Type":
+              "application/json"
+
+          }
+
+        }
+      );
+
+
+    if(!response.ok){
+
+      const errorText =
+        await response.text();
+
+
+      throw new Error(
+        errorText
+      );
+
+    }
+
+
+    const ads =
+      await response.json();
+
+
+    if(
+      !Array.isArray(ads) ||
+      !ads.length
+    ){
+
+      latestAds.innerHTML = `
+
+        <div class="ads-empty">
+
+          এখনো কোনো approved
+          বিজ্ঞাপন প্রকাশিত হয়নি।
+
+        </div>
+
+      `;
+
       return;
 
     }
 
-    const metadata =
-      user.user_metadata || {};
 
-    const name =
-      metadata.full_name ||
-      metadata.name ||
-      user.email ||
-      "প্রোফাইল";
+    latestAds.innerHTML =
 
-    const avatar =
-      metadata.avatar_url ||
-      metadata.picture ||
-      "";
+      ads.map(
+        function(ad){
 
-    authArea.innerHTML = `
-      <a class="profile-link" href="profile.html">
+          const image =
+            firstImage(ad);
 
-        ${
-          avatar
-          ?
-          `<img
-             class="profile-avatar"
-             src="${escapeHtml(avatar)}"
-             alt="Profile"
-             referrerpolicy="no-referrer"
-           >`
-          :
-          `<div class="profile-avatar"
-                style="display:flex;align-items:center;justify-content:center;color:#69f5a5;font-size:15px;">
-             ♙
-           </div>`
+
+          const photo =
+
+            image
+
+            ?
+
+            `
+            <div
+              class="photo"
+              style="
+                padding:0;
+                overflow:hidden;
+              ">
+
+              <img
+                class="ad-image"
+                src="${escapeHtml(image)}"
+                alt="${escapeHtml(
+                  ad.title ||
+                  "বিজ্ঞাপন"
+                )}"
+                loading="lazy"
+              >
+
+            </div>
+            `
+
+            :
+
+            `
+            <div
+              class="
+                photo
+                ad-image-placeholder
+              ">
+
+              ${escapeHtml(
+                ad.category ||
+                "বিজ্ঞাপন"
+              )}
+
+            </div>
+            `;
+
+
+          return `
+
+            <article
+              class="product"
+              onclick="
+                window.location.href =
+                'ad.html?id=${encodeURIComponent(
+                  ad.id
+                )}'
+              ">
+
+
+              ${photo}
+
+
+              <div class="body">
+
+
+                <span class="badge">
+
+                  ${escapeHtml(
+                    ad.category ||
+                    "Marketplace"
+                  )}
+
+                </span>
+
+
+                <h3>
+
+                  ${escapeHtml(
+                    ad.title ||
+                    "Untitled"
+                  )}
+
+                </h3>
+
+
+                <div class="price">
+
+                  ${money(
+                    ad.price
+                  )}
+
+                </div>
+
+
+                <div class="meta">
+
+                  📍
+                  ${escapeHtml(
+                    ad.location ||
+                    ""
+                  )}
+
+                </div>
+
+
+              </div>
+
+
+            </article>
+
+          `;
+
         }
+      ).join("");
 
-        <span class="profile-name">
-          ${escapeHtml(name)}
-        </span>
 
-      </a>
+  }catch(error){
+
+    console.error(
+      "Latest ads error:",
+      error
+    );
+
+
+    latestAds.innerHTML = `
+
+      <div class="ads-empty">
+
+        বিজ্ঞাপন লোড করা যাচ্ছে না।
+
+        <br>
+
+        <small>
+          একটু পরে আবার চেষ্টা করুন।
+        </small>
+
+      </div>
+
     `;
 
   }
 
-
-  async function checkGoogleSession(){
-
-    try{
-
-      /*
-       * প্রথমে Supabase session সরাসরি REST endpoint
-       * থেকে নেওয়ার চেষ্টা করা হচ্ছে।
-       */
-
-      const stored =
-        localStorage.getItem("smb_user_v1");
-
-      if(stored){
-
-        try{
-
-          const localUser =
-            JSON.parse(stored);
-
-          if(localUser && localUser.email){
-
-            showLoggedIn({
-              email:localUser.email,
-              user_metadata:{
-                name:localUser.name,
-                full_name:localUser.name
-              }
-            });
-
-          }
-
-        }catch(e){}
-
-      }
+}
 
 
-      /*
-       * Supabase auth session cookie/local storage detect.
-       * supabase.js-এর existing helper থাকলে সেটাও ব্যবহার করা হবে।
-       */
+/* ============================================================
+   SEARCH
+============================================================ */
 
-      if(
-        typeof window.getSbSession === "function"
-      ){
-
-        const session =
-          await window.getSbSession();
-
-        if(session && session.user){
-
-          saveUser(session.user);
-          showLoggedIn(session.user);
-          return;
-
-        }
-
-      }
+const searchForm =
+document.getElementById(
+  "searchForm"
+);
 
 
-      /*
-       * Supabase JS client থাকলে সেটার session ব্যবহার।
-       */
+if(searchForm){
 
-      if(window.sb && window.sb.auth){
+  searchForm.addEventListener(
+    "submit",
+    function(event){
 
-        const result =
-          await window.sb.auth.getSession();
-
-        if(
-          result &&
-          result.data &&
-          result.data.session &&
-          result.data.session.user
-        ){
-
-          const user =
-            result.data.session.user;
-
-          saveUser(user);
-          showLoggedIn(user);
-          return;
-
-        }
-
-      }
+      event.preventDefault();
 
 
-      /*
-       * OAuth callback URL থেকে access_token থাকলে
-       * Supabase session তৈরি করার চেষ্টা।
-       */
+      const input =
+        document.getElementById(
+          "search"
+        );
 
-      const hash =
-        window.location.hash || "";
 
-      if(hash.includes("access_token=")){
+      const query =
+        input
+        ? input.value.trim()
+        : "";
 
-        const params =
-          new URLSearchParams(
-            hash.replace(/^#/,"")
+
+      if(query){
+
+        window.location.href =
+          "search.html?q=" +
+          encodeURIComponent(
+            query
           );
 
-        const accessToken =
-          params.get("access_token");
+      }else{
 
-        const refreshToken =
-          params.get("refresh_token");
-
-        const expiresIn =
-          params.get("expires_in");
-
-        if(accessToken){
-
-          const tokenData = {
-            access_token:accessToken,
-            refresh_token:refreshToken || "",
-            expires_in:Number(expiresIn || 3600),
-            token_type:"bearer"
-          };
-
-          if(
-            typeof window.setSbSession === "function"
-          ){
-
-            try{
-              await window.setSbSession(tokenData);
-            }catch(e){}
-          }
-
-          const response =
-            await fetch(
-              SUPABASE_URL + "/auth/v1/user",
-              {
-                headers:{
-                  "Authorization":
-                    "Bearer " + accessToken,
-                  "apikey":
-                    SUPABASE_ANON_KEY
-                }
-              }
-            );
-
-          if(response.ok){
-
-            const user =
-              await response.json();
-
-            saveUser(user);
-            showLoggedIn(user);
-
-            history.replaceState(
-              {},
-              document.title,
-              window.location.pathname
-            );
-
-            return;
-
-          }
-
-        }
+        window.location.href =
+          "search.html";
 
       }
 
-      /*
-       * কোনো session না থাকলে Login দেখাবে।
-       */
-
-      if(!stored){
-
-        showLoggedOut();
-
-      }
-
-    }catch(error){
-
-      console.error(
-        "Google session check:",
-        error
-      );
-
-      /*
-       * Error হলেও site বন্ধ হবে না।
-       * শুধু Login দেখাবে।
-       */
-
-      showLoggedOut();
-
     }
-
-  }
-
-
-  function saveUser(user){
-
-    if(!user) return;
-
-    const metadata =
-      user.user_metadata || {};
-
-    const name =
-      metadata.full_name ||
-      metadata.name ||
-      "";
-
-    const phone =
-      metadata.phone ||
-      "";
-
-    localStorage.setItem(
-      "smb_user_v1",
-      JSON.stringify({
-        id:user.id || "",
-        name:name,
-        email:user.email || "",
-        phone:phone
-      })
-    );
-
-  }
-
-
-  /*
-   * supabase.js-এ যদি SUPABASE_ANON_KEY global variable থাকে
-   * সেটি ব্যবহার করবে।
-   *
-   * না থাকলে existing Supabase config থেকে নেওয়ার চেষ্টা।
-   */
-
-  const SUPABASE_ANON_KEY =
-    window.SUPABASE_ANON_KEY ||
-    window.supabaseAnonKey ||
-    "";
-
-
-  /*
-   * Google OAuth redirect-এর পর Supabase auth state পরিবর্তন
-   * হলে header সঙ্গে সঙ্গে Profile-এ পরিবর্তন হবে।
-   */
-
-  if(window.sb && window.sb.auth){
-
-    try{
-
-      window.sb.auth.onAuthStateChange(
-        function(event,session){
-
-          if(session && session.user){
-
-            saveUser(session.user);
-            showLoggedIn(session.user);
-
-          }else{
-
-            showLoggedOut();
-
-          }
-
-        }
-      );
-
-    }catch(e){
-
-      console.error(e);
-
-    }
-
-  }
-
-
-  /*
-   * Page load
-   */
-
-  checkGoogleSession();
-
-
-  /*
-   * Google Login থেকে homepage-এ ফেরার সময়
-   * browser storage/session একটু পরে তৈরি হলে
-   * আবার check করবে।
-   */
-
-  setTimeout(
-    checkGoogleSession,
-    800
   );
 
-  setTimeout(
-    checkGoogleSession,
-    2000
-  );
+}
+
+
+/* ============================================================
+   START
+============================================================ */
+
+checkLogin();
+
+loadLatestAds();
+
 
 })();
+
 </script>
+
 
 </body>
 </html>
