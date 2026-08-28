@@ -20,8 +20,12 @@
 
 <style>
 
+/* ============================================================
+   PAGE
+============================================================ */
+
 .page{
-  padding:35px 16px 100px;
+  padding:35px 16px 110px;
 }
 
 .page-wrap{
@@ -29,23 +33,40 @@
   margin:30px auto 0;
 }
 
+
+/* ============================================================
+   LOADING
+============================================================ */
+
 .ads-loading{
-  padding:50px 20px;
+  padding:55px 20px;
   text-align:center;
   color:#718078;
 }
 
+
+/* ============================================================
+   EMPTY
+============================================================ */
+
 .empty-ads{
   padding:45px 20px;
   text-align:center;
-  border:1px solid rgba(105,245,165,.12);
+
+  border:1px solid
+    rgba(105,245,165,.12);
+
   border-radius:18px;
-  background:rgba(5,14,10,.7);
+
+  background:
+    rgba(5,14,10,.7);
 }
 
 .empty-ads strong{
   display:block;
+
   color:#eaf5ef;
+
   margin-bottom:8px;
 }
 
@@ -54,82 +75,183 @@
   font-size:10px;
 }
 
-.ad-section{
-  margin-bottom:35px;
-}
 
-.ad-section-title{
-  display:flex;
-  align-items:center;
-  gap:9px;
-  margin:0 0 14px;
-}
-
-.ad-section-title h3{
-  margin:0;
-  font-size:16px;
-  color:#eaf5ef;
-}
-
-.ad-count{
-  font-size:9px;
-  color:#718078;
-}
+/* ============================================================
+   PRODUCT
+============================================================ */
 
 .product{
+  position:relative;
+  overflow:hidden;
+
+  transition:
+    transform .2s ease,
+    border-color .2s ease,
+    box-shadow .2s ease;
+}
+
+
+/* ============================================================
+   CLICKABLE PUBLISHED ADS
+============================================================ */
+
+.published-ad{
   cursor:pointer;
 }
 
+.published-ad:hover{
+  transform:translateY(-2px);
+
+  border-color:
+    rgba(105,245,165,.28);
+
+  box-shadow:
+    0 12px 35px
+    rgba(0,0,0,.22);
+}
+
+
+/* ============================================================
+   PENDING ADS
+============================================================ */
+
+.pending-ad{
+  cursor:default !important;
+}
+
+.pending-ad *{
+  cursor:default !important;
+}
+
+
+/* ============================================================
+   PHOTO
+============================================================ */
+
 .product .photo{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  min-height:130px;
-  color:#69f5a5;
+
+  position:relative;
+
   overflow:hidden;
-  padding:0;
-}
 
-.ad-photo{
-  width:100%;
-  height:150px;
-  object-fit:cover;
-  display:block;
-}
+  display:flex;
 
-.status-pending{
-  color:#ffd36a;
-  border-color:rgba(255,211,106,.2);
-  background:rgba(255,211,106,.05);
-}
+  align-items:center;
 
-.status-approved{
+  justify-content:center;
+
+  min-height:180px;
+
+  background:#07110c;
+
   color:#69f5a5;
-  border-color:rgba(105,245,165,.2);
-  background:rgba(105,245,165,.05);
 }
 
-.status-rejected{
-  color:#ff8b8b;
-  border-color:rgba(255,100,100,.2);
-  background:rgba(255,100,100,.05);
+
+/* ============================================================
+   PHOTO IMAGE
+============================================================ */
+
+.product .photo img{
+
+  width:100%;
+
+  height:100%;
+
+  min-height:180px;
+
+  display:block;
+
+  object-fit:cover;
+
 }
 
-.status-text{
-  margin-top:8px;
+
+/* ============================================================
+   PENDING IMAGE
+============================================================ */
+
+.pending-ad .photo{
+
+  border-bottom:
+    1px solid
+    rgba(242,201,76,.10);
+
+}
+
+
+/* ============================================================
+   BADGE
+============================================================ */
+
+.pending-ad .badge{
+
+  color:#f2c94c;
+
+  border-color:
+    rgba(242,201,76,.25);
+
+  background:
+    rgba(242,201,76,.07);
+
+}
+
+
+/* ============================================================
+   PUBLISHED BADGE
+============================================================ */
+
+.published-ad .badge{
+
+  color:#69f5a5;
+
+}
+
+
+/* ============================================================
+   PENDING MESSAGE
+============================================================ */
+
+.pending-message{
+
+  margin-top:9px;
+
+  padding:7px 9px;
+
+  border-radius:8px;
+
+  background:
+    rgba(242,201,76,.055);
+
+  border:
+    1px solid
+    rgba(242,201,76,.10);
+
+  color:#bca85f;
+
   font-size:9px;
-  color:#718078;
+
+  line-height:1.5;
+
 }
+
+
+/* ============================================================
+   MOBILE
+============================================================ */
 
 @media(max-width:600px){
 
-  .page{
-    padding-left:12px;
-    padding-right:12px;
+  .product .photo{
+
+    min-height:150px;
+
   }
 
-  .ad-photo{
-    height:130px;
+  .product .photo img{
+
+    min-height:150px;
+
   }
 
 }
@@ -145,13 +267,21 @@
 <main class="container page">
 
 
+<!-- ==========================================================
+     BRAND
+=========================================================== -->
+
 <a
   href="index.html"
   class="brand">
 
-  <b>শাহমাহমুদপুর</b>
+  <b>
+    শাহমাহমুদপুর
+  </b>
 
-  <strong>বাজার</strong>
+  <strong>
+    বাজার
+  </strong>
 
   <small>
     LOCAL MARKETPLACE
@@ -164,185 +294,54 @@
 <div class="page-wrap">
 
 
+<!-- ==========================================================
+     HEADER
+=========================================================== -->
+
 <div
   class="section-title"
   style="margin-top:30px">
 
 
-<div>
+  <div>
 
-<small>
-MY MARKETPLACE
-</small>
+    <small>
+      MY MARKETPLACE
+    </small>
 
-<h2>
-আমার বিজ্ঞাপন
-</h2>
+    <h2>
+      আমার বিজ্ঞাপন
+    </h2>
+
+  </div>
+
+
+  <a
+    class="btn green"
+    href="post-ad.html">
+
+    ＋ বিজ্ঞাপন দিন
+
+  </a>
+
 
 </div>
 
 
-<a
-  class="btn green"
-  href="post-ad.html">
 
-＋ বিজ্ঞাপন দিন
-
-</a>
-
-
-</div>
-
-
+<!-- ==========================================================
+     ADS
+=========================================================== -->
 
 <div
-  id="loading"
-  class="ads-loading">
-
-বিজ্ঞাপন লোড হচ্ছে...
-
-</div>
-
-
-
-<div
-  id="content"
-  style="display:none">
-
-
-<!-- =========================================================
-     PENDING
-========================================================= -->
-
-<section
-  id="pendingSection"
-  class="ad-section"
-  style="display:none">
-
-
-<div class="ad-section-title">
-
-<h3>
-🟡 Approval Pending
-</h3>
-
-<span
-  id="pendingCount"
-  class="ad-count">
-</span>
-
-</div>
-
-
-<div
-  id="pendingList"
+  id="list"
   class="products">
-</div>
 
+  <div class="ads-loading">
 
-</section>
+    আপনার বিজ্ঞাপন লোড হচ্ছে...
 
-
-
-<!-- =========================================================
-     PUBLISHED
-========================================================= -->
-
-<section
-  id="publishedSection"
-  class="ad-section"
-  style="display:none">
-
-
-<div class="ad-section-title">
-
-<h3>
-🟢 Published
-</h3>
-
-<span
-  id="publishedCount"
-  class="ad-count">
-</span>
-
-</div>
-
-
-<div
-  id="publishedList"
-  class="products">
-</div>
-
-
-</section>
-
-
-
-<!-- =========================================================
-     REJECTED
-========================================================= -->
-
-<section
-  id="rejectedSection"
-  class="ad-section"
-  style="display:none">
-
-
-<div class="ad-section-title">
-
-<h3>
-🔴 Rejected
-</h3>
-
-<span
-  id="rejectedCount"
-  class="ad-count">
-</span>
-
-</div>
-
-
-<div
-  id="rejectedList"
-  class="products">
-</div>
-
-
-</section>
-
-
-
-<div
-  id="empty"
-  class="empty-ads"
-  style="display:none">
-
-
-<strong>
-আপনার কোনো বিজ্ঞাপন নেই।
-</strong>
-
-
-<span>
-নতুন পণ্য বিক্রি করতে একটি বিজ্ঞাপন দিন।
-</span>
-
-
-<br>
-<br>
-
-
-<a
-  class="btn green"
-  href="post-ad.html">
-
-＋ বিজ্ঞাপন দিন
-
-</a>
-
-
-</div>
-
+  </div>
 
 </div>
 
@@ -353,37 +352,53 @@ MY MARKETPLACE
 
 
 
+<!-- ==========================================================
+     MOBILE NAV
+=========================================================== -->
+
 <nav class="mobile-nav">
 
 
 <a href="index.html">
 
-<span>⌂</span>
-Home
+  <span>
+    ⌂
+  </span>
+
+  Home
 
 </a>
 
 
 <a href="favorites.html">
 
-<span>♡</span>
-Saved
+  <span>
+    ♡
+  </span>
+
+  Saved
 
 </a>
 
 
 <a href="post-ad.html">
 
-<span>⊞</span>
-Sell
+  <span>
+    ⊞
+  </span>
+
+  Sell
 
 </a>
 
 
 <a href="messages.html">
 
-<span>▤</span>
-Messages
+  <span>
+    ▤
+  </span>
+
+  Messages
 
 </a>
 
@@ -392,8 +407,11 @@ Messages
   class="active"
   href="profile.html">
 
-<span>♙</span>
-Profile
+  <span>
+    ♙
+  </span>
+
+  Profile
 
 </a>
 
@@ -402,7 +420,7 @@ Profile
 
 
 
-<script src="supabase.js?v=10"></script>
+<script src="supabase.js?v=12"></script>
 
 
 <script>
@@ -413,418 +431,129 @@ Profile
 
 
 /* ============================================================
-   ELEMENTS
+   CONFIG
 ============================================================ */
 
-const loading =
-document.getElementById("loading");
+const SUPA_URL =
+  "https://jeupbfoceqmnpwlklche.supabase.co";
 
-const content =
-document.getElementById("content");
 
-const empty =
-document.getElementById("empty");
-
-const pendingSection =
-document.getElementById("pendingSection");
-
-const publishedSection =
-document.getElementById("publishedSection");
-
-const rejectedSection =
-document.getElementById("rejectedSection");
-
-const pendingList =
-document.getElementById("pendingList");
-
-const publishedList =
-document.getElementById("publishedList");
-
-const rejectedList =
-document.getElementById("rejectedList");
-
-const pendingCount =
-document.getElementById("pendingCount");
-
-const publishedCount =
-document.getElementById("publishedCount");
-
-const rejectedCount =
-document.getElementById("rejectedCount");
+const SUPA_KEY =
+  window.SUPABASE_ANON_KEY ||
+  window.supabaseAnonKey ||
+  "";
 
 
 /* ============================================================
-   HTML ESCAPE
+   ELEMENT
 ============================================================ */
 
-function escapeHtml(value){
-
-  return String(value ?? "")
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
-
-}
+const list =
+  document.getElementById(
+    "list"
+  );
 
 
 /* ============================================================
-   MONEY
+   ESCAPE HTML
 ============================================================ */
 
-function formatMoney(value){
-
-  return "৳ " +
-    Number(value || 0)
-      .toLocaleString("bn-BD");
-
-}
-
-
-/* ============================================================
-   IMAGE
-============================================================ */
-
-function getImage(ad){
-
-  if(
-    Array.isArray(ad.image_urls) &&
-    ad.image_urls.length
-  ){
-
-    return ad.image_urls[0];
-
-  }
-
-
-  if(
-    typeof ad.image_urls === "string" &&
-    ad.image_urls.trim()
-  ){
-
-    let value =
-      ad.image_urls.trim();
-
-
-    if(
-      value.startsWith("{") &&
-      value.endsWith("}")
-    ){
-
-      value =
-        value
-          .slice(1,-1)
-          .split(",")[0]
-          .replace(/^"/,"")
-          .replace(/"$/,"");
-
-    }
-
-
-    return value;
-
-  }
-
-
-  return "";
-
-}
-
-
-/* ============================================================
-   STATUS
-============================================================ */
-
-function normalizeStatus(status){
+function escapeHTML(value){
 
   return String(
-    status || ""
+    value ?? ""
   )
-  .trim()
-  .toLowerCase();
+
+  .replace(
+    /&/g,
+    "&amp;"
+  )
+
+  .replace(
+    /</g,
+    "&lt;"
+  )
+
+  .replace(
+    />/g,
+    "&gt;"
+  )
+
+  .replace(
+    /"/g,
+    "&quot;"
+  )
+
+  .replace(
+    /'/g,
+    "&#039;"
+  );
 
 }
 
 
 /* ============================================================
-   STATUS LABEL
-============================================================ */
-
-function statusLabel(status){
-
-  const value =
-    normalizeStatus(status);
-
-
-  if(value === "approved"){
-
-    return "✓ Published";
-
-  }
-
-
-  if(value === "rejected"){
-
-    return "✕ Rejected";
-
-  }
-
-
-  return "⏳ Pending Approval";
-
-}
-
-
-/* ============================================================
-   STATUS MESSAGE
-============================================================ */
-
-function statusMessage(status){
-
-  const value =
-    normalizeStatus(status);
-
-
-  if(value === "approved"){
-
-    return "আপনার বিজ্ঞাপন Marketplace-এ প্রকাশিত হয়েছে।";
-
-  }
-
-
-  if(value === "rejected"){
-
-    return "এই বিজ্ঞাপনটি Admin approve করেনি।";
-
-  }
-
-
-  return "আপনার বিজ্ঞাপনটি Admin approval-এর অপেক্ষায় আছে।";
-
-}
-
-
-/* ============================================================
-   RENDER CARD
-============================================================ */
-
-function renderCard(ad){
-
-  const image =
-    getImage(ad);
-
-
-  const status =
-    normalizeStatus(
-      ad.status
-    );
-
-
-  let statusClass =
-    "status-pending";
-
-
-  if(status === "approved"){
-
-    statusClass =
-      "status-approved";
-
-  }
-
-
-  if(status === "rejected"){
-
-    statusClass =
-      "status-rejected";
-
-  }
-
-
-  const photo =
-
-    image
-
-    ?
-
-    `
-    <div class="photo">
-
-      <img
-        class="ad-photo"
-        src="${escapeHtml(image)}"
-        alt="${escapeHtml(
-          ad.title ||
-          "বিজ্ঞাপন"
-        )}"
-        loading="lazy">
-
-    </div>
-    `
-
-    :
-
-    `
-    <div class="photo">
-
-      ${escapeHtml(
-        ad.category ||
-        "বিজ্ঞাপন"
-      )}
-
-    </div>
-    `;
-
-
-  return `
-
-    <article
-      class="product"
-      onclick="
-        window.location.href =
-        'ad.html?id=${encodeURIComponent(
-          ad.id
-        )}'
-      ">
-
-
-      ${photo}
-
-
-      <div class="body">
-
-
-        <span
-          class="badge ${statusClass}">
-
-          ${statusLabel(
-            ad.status
-          )}
-
-        </span>
-
-
-        <h3>
-
-          ${escapeHtml(
-            ad.title ||
-            "Untitled"
-          )}
-
-        </h3>
-
-
-        <div class="price">
-
-          ${formatMoney(
-            ad.price
-          )}
-
-        </div>
-
-
-        <div class="meta">
-
-          📍
-          ${escapeHtml(
-            ad.location ||
-            ""
-          )}
-
-        </div>
-
-
-        <div class="status-text">
-
-          ${statusMessage(
-            ad.status
-          )}
-
-        </div>
-
-
-      </div>
-
-
-    </article>
-
-  `;
-
-}
-
-
-/* ============================================================
-   GET USER
+   GET CURRENT USER
 ============================================================ */
 
 async function getUser(){
 
-  /*
-   * প্রথমে Supabase session
-   */
+  /* ----------------------------------------------------------
+     Supabase user
+  ---------------------------------------------------------- */
 
   try{
 
     if(
-      typeof window.getSbSession ===
-      "function" &&
-
-      typeof window.getCurrentUser ===
+      typeof getCurrentUser ===
       "function"
     ){
 
-      const session =
-        window.getSbSession();
+      const user =
+        await getCurrentUser();
 
 
-      if(
-        session &&
-        session.access_token
-      ){
+      if(user){
 
-        const user =
-          await window.getCurrentUser();
+        const metadata =
+          user.user_metadata || {};
 
 
-        if(user){
+        const profile = {
 
-          const metadata =
-            user.user_metadata || {};
+          id:
+            user.id || "",
 
+          name:
+            metadata.full_name ||
+            metadata.name ||
+            "",
 
-          const profile = {
+          email:
+            user.email ||
+            "",
 
-            id:
-              user.id || "",
+          phone:
+            metadata.phone ||
+            "",
 
-            name:
-              metadata.full_name ||
-              metadata.name ||
-              "",
+          avatar:
+            metadata.avatar_url ||
+            metadata.picture ||
+            ""
 
-            email:
-              user.email || "",
-
-            phone:
-              metadata.phone || "",
-
-            avatar:
-              metadata.avatar_url ||
-              metadata.picture ||
-              ""
-
-          };
+        };
 
 
-          localStorage.setItem(
-            "smb_user_v1",
-            JSON.stringify(profile)
-          );
+        localStorage.setItem(
+          "smb_user_v1",
+          JSON.stringify(
+            profile
+          )
+        );
 
 
-          return profile;
-
-        }
+        return profile;
 
       }
 
@@ -833,35 +562,34 @@ async function getUser(){
   }catch(error){
 
     console.error(
-      "Supabase user error:",
+      "Current user error:",
       error
     );
 
   }
 
 
-  /*
-   * Local backup
-   */
+  /* ----------------------------------------------------------
+     Local backup
+  ---------------------------------------------------------- */
 
   try{
 
-    const saved =
+    const raw =
       localStorage.getItem(
         "smb_user_v1"
       );
 
 
-    if(saved){
+    if(raw){
 
       const user =
-        JSON.parse(saved);
+        JSON.parse(raw);
 
 
       if(
         user &&
-        user.id &&
-        user.email
+        user.id
       ){
 
         return user;
@@ -886,16 +614,58 @@ async function getUser(){
 
 
 /* ============================================================
-   LOAD ADS FROM SUPABASE
+   GET SESSION
 ============================================================ */
 
-async function loadMyAds(user){
+async function getSession(){
+
+  try{
+
+    if(
+      typeof getSbSession ===
+      "function"
+    ){
+
+      const session =
+        await getSbSession();
+
+
+      if(
+        session &&
+        session.access_token
+      ){
+
+        return session;
+
+      }
+
+    }
+
+  }catch(error){
+
+    console.error(
+      "Session error:",
+      error
+    );
+
+  }
+
+
+  return null;
+
+}
+
+
+/* ============================================================
+   LOAD USER ADS
+============================================================ */
+
+async function loadMyAds(
+  user
+){
 
   const session =
-    typeof window.getSbSession ===
-    "function"
-    ? window.getSbSession()
-    : null;
+    await getSession();
 
 
   if(
@@ -904,51 +674,49 @@ async function loadMyAds(user){
   ){
 
     throw new Error(
-      "আপনার Login session পাওয়া যায়নি।"
+      "Login session পাওয়া যায়নি। আবার Google Login করুন।"
     );
 
   }
 
+
+  /*
+   * seller_id অথবা user_id —
+   * যেকোনো একটিতে current user থাকলেই
+   * বিজ্ঞাপনটি দেখানো হবে।
+   */
 
   const userId =
-    String(
-      user.id || ""
+    encodeURIComponent(
+      user.id
     );
 
 
-  const email =
-    String(
-      user.email || ""
-    )
-    .trim()
-    .toLowerCase();
-
-
-  /*
-   * প্রথমে seller_id দিয়ে search
-   */
-
-  let ads = [];
-
-
-  const sellerUrl =
-    SB_URL +
+  const url =
+    SUPA_URL +
     "/rest/v1/ads" +
-    "?select=*" +
-    "&seller_id=eq." +
-    encodeURIComponent(userId) +
+    "?or=" +
+    encodeURIComponent(
+      "(seller_id.eq." +
+      userId +
+      ",user_id.eq." +
+      userId +
+      ")"
+    ) +
     "&order=created_at.desc";
 
 
-  const sellerResponse =
+  const response =
     await fetch(
-      sellerUrl,
+      url,
       {
+
+        method:"GET",
 
         headers:{
 
           "apikey":
-            SB_KEY,
+            SUPA_KEY,
 
           "Authorization":
             "Bearer " +
@@ -963,202 +731,88 @@ async function loadMyAds(user){
     );
 
 
+  if(!response.ok){
+
+    const text =
+      await response.text();
+
+
+    throw new Error(
+      "বিজ্ঞাপন লোড করা যায়নি: " +
+      text
+    );
+
+  }
+
+
+  return await response.json();
+
+}
+
+
+/* ============================================================
+   GET FIRST IMAGE
+============================================================ */
+
+function getFirstImage(ad){
+
+  const images =
+    ad.image_urls;
+
+
+  /*
+   * Supabase ARRAY
+   */
+
   if(
-    sellerResponse.ok
+    Array.isArray(images) &&
+    images.length > 0
   ){
 
-    const sellerAds =
-      await sellerResponse.json();
-
-
-    if(
-      Array.isArray(sellerAds)
-    ){
-
-      ads =
-        sellerAds;
-
-    }
+    return images[0];
 
   }
 
 
   /*
-   * user_id দিয়ে search
+   * যদি JSON string হয়
    */
 
-  const userUrl =
-    SB_URL +
-    "/rest/v1/ads" +
-    "?select=*" +
-    "&user_id=eq." +
-    encodeURIComponent(userId) +
-    "&order=created_at.desc";
-
-
-  const userResponse =
-    await fetch(
-      userUrl,
-      {
-
-        headers:{
-
-          "apikey":
-            SB_KEY,
-
-          "Authorization":
-            "Bearer " +
-            session.access_token,
-
-          "Content-Type":
-            "application/json"
-
-        }
-
-      }
-    );
-
-
   if(
-    userResponse.ok
+    typeof images ===
+    "string"
   ){
 
-    const userAds =
-      await userResponse.json();
+    try{
 
-
-    if(
-      Array.isArray(userAds)
-    ){
-
-      ads =
-        ads.concat(
-          userAds
+      const parsed =
+        JSON.parse(
+          images
         );
 
-    }
-
-  }
-
-
-  /*
-   * Email দিয়ে search
-   */
-
-  if(email){
-
-    const emailUrl =
-      SB_URL +
-      "/rest/v1/ads" +
-      "?select=*" +
-      "&email=eq." +
-      encodeURIComponent(email) +
-      "&order=created_at.desc";
-
-
-    const emailResponse =
-      await fetch(
-        emailUrl,
-        {
-
-          headers:{
-
-            "apikey":
-              SB_KEY,
-
-            "Authorization":
-              "Bearer " +
-              session.access_token,
-
-            "Content-Type":
-              "application/json"
-
-          }
-
-        }
-      );
-
-
-    if(
-      emailResponse.ok
-    ){
-
-      const emailAds =
-        await emailResponse.json();
-
 
       if(
-        Array.isArray(emailAds)
+        Array.isArray(parsed) &&
+        parsed.length > 0
       ){
 
-        ads =
-          ads.concat(
-            emailAds
-          );
+        return parsed[0];
 
       }
 
-    }
+    }catch(error){
 
-  }
-
-
-  /*
-   * seller_email দিয়ে search
-   */
-
-  if(email){
-
-    const sellerEmailUrl =
-      SB_URL +
-      "/rest/v1/ads" +
-      "?select=*" +
-      "&seller_email=eq." +
-      encodeURIComponent(email) +
-      "&order=created_at.desc";
-
-
-    const sellerEmailResponse =
-      await fetch(
-        sellerEmailUrl,
-        {
-
-          headers:{
-
-            "apikey":
-              SB_KEY,
-
-            "Authorization":
-              "Bearer " +
-              session.access_token,
-
-            "Content-Type":
-              "application/json"
-
-          }
-
-        }
-      );
-
-
-    if(
-      sellerEmailResponse.ok
-    ){
-
-      const sellerEmailAds =
-        await sellerEmailResponse.json();
-
+      /*
+       * সরাসরি URL হলে
+       */
 
       if(
-        Array.isArray(
-          sellerEmailAds
+        images.startsWith(
+          "http"
         )
       ){
 
-        ads =
-          ads.concat(
-            sellerEmailAds
-          );
+        return images;
 
       }
 
@@ -1167,273 +821,524 @@ async function loadMyAds(user){
   }
 
 
-  /*
-   * Duplicate remove
-   */
+  return "";
 
-  const unique =
-    new Map();
+}
 
 
-  ads.forEach(
-    function(ad){
+/* ============================================================
+   STATUS
+============================================================ */
 
-      if(
-        ad &&
-        ad.id
-      ){
+function normalizeStatus(
+  status
+){
 
-        unique.set(
-          String(ad.id),
-          ad
-        );
-
-      }
-
-    }
-  );
-
-
-  return Array.from(
-    unique.values()
+  return String(
+    status ||
+    "pending"
   )
-  .sort(
-    function(a,b){
+  .trim()
+  .toLowerCase();
 
-      return new Date(
-        b.created_at || 0
-      ) -
-      new Date(
-        a.created_at || 0
+}
+
+
+/* ============================================================
+   STATUS TEXT
+============================================================ */
+
+function statusText(
+  status
+){
+
+  if(
+    status ===
+    "pending"
+  ){
+
+    return "PENDING";
+
+  }
+
+
+  if(
+    status ===
+    "approved" ||
+
+    status ===
+    "published" ||
+
+    status ===
+    "active"
+  ){
+
+    return "PUBLISHED";
+
+  }
+
+
+  if(
+    status ===
+    "rejected"
+  ){
+
+    return "REJECTED";
+
+  }
+
+
+  return status.toUpperCase();
+
+}
+
+
+/* ============================================================
+   MONEY
+============================================================ */
+
+function money(
+  value
+){
+
+  try{
+
+    if(
+      typeof window.money ===
+      "function"
+    ){
+
+      return window.money(
+        value
       );
 
     }
+
+  }catch(error){}
+
+
+  return (
+    "৳ " +
+    Number(
+      value || 0
+    ).toLocaleString(
+      "bn-BD"
+    )
   );
 
 }
 
 
 /* ============================================================
-   SHOW ADS
+   RENDER ADS
 ============================================================ */
 
-function showAds(ads){
+function renderAds(
+  ads
+){
 
-  const pending =
-    ads.filter(
-      ad =>
-        normalizeStatus(
-          ad.status
-        ) !== "approved" &&
-        normalizeStatus(
-          ad.status
-        ) !== "rejected"
-    );
+  if(
+    !Array.isArray(ads) ||
+    ads.length === 0
+  ){
 
+    list.innerHTML = `
 
-  const published =
-    ads.filter(
-      ad =>
-        normalizeStatus(
-          ad.status
-        ) === "approved"
-    );
+      <div class="empty-ads">
 
+        <strong>
+          আপনার কোনো বিজ্ঞাপন নেই।
+        </strong>
 
-  const rejected =
-    ads.filter(
-      ad =>
-        normalizeStatus(
-          ad.status
-        ) === "rejected"
-    );
+        <span>
+          নতুন পণ্য বিক্রি করতে একটি বিজ্ঞাপন দিন।
+        </span>
 
+        <br><br>
 
-  /*
-   * Pending
-   */
+        <a
+          class="btn green"
+          href="post-ad.html">
 
-  if(pending.length){
+          ＋ বিজ্ঞাপন দিন
 
-    pendingSection.style.display =
-      "block";
+        </a>
 
+      </div>
 
-    pendingCount.textContent =
-      "(" +
-      pending.length +
-      ")";
-
-
-    pendingList.innerHTML =
-      pending
-        .map(renderCard)
-        .join("");
-
-  }
-
-
-  /*
-   * Published
-   */
-
-  if(published.length){
-
-    publishedSection.style.display =
-      "block";
-
-
-    publishedCount.textContent =
-      "(" +
-      published.length +
-      ")";
-
-
-    publishedList.innerHTML =
-      published
-        .map(renderCard)
-        .join("");
-
-  }
-
-
-  /*
-   * Rejected
-   */
-
-  if(rejected.length){
-
-    rejectedSection.style.display =
-      "block";
-
-
-    rejectedCount.textContent =
-      "(" +
-      rejected.length +
-      ")";
-
-
-    rejectedList.innerHTML =
-      rejected
-        .map(renderCard)
-        .join("");
-
-  }
-
-
-  /*
-   * Nothing
-   */
-
-  if(!ads.length){
-
-    empty.style.display =
-      "block";
-
-  }
-
-
-  content.style.display =
-    "block";
-
-
-  loading.style.display =
-    "none";
-
-}
-
-
-/* ============================================================
-   SUPABASE CONFIG
-============================================================ */
-
-const SB_URL =
-  window.SUPABASE_URL ||
-  "https://jeupbfoceqmnpwlklche.supabase.co";
-
-
-const SB_KEY =
-  window.SUPABASE_ANON_KEY ||
-  "";
-
-
-/* ============================================================
-   START
-============================================================ */
-
-try{
-
-  const user =
-    await getUser();
-
-
-  if(!user){
-
-    window.location.href =
-      "login.html?next=my-ads.html";
+    `;
 
     return;
 
   }
 
 
-  const ads =
-    await loadMyAds(
-      user
-    );
+  list.innerHTML =
+    ads.map(
+      function(ad){
+
+        const status =
+          normalizeStatus(
+            ad.status
+          );
 
 
-  showAds(ads);
+        const isPending =
+          status ===
+          "pending";
 
 
-}catch(error){
+        const isPublished =
+          status ===
+            "approved" ||
 
-  console.error(
-    "MY ADS ERROR:",
-    error
-  );
+          status ===
+            "published" ||
+
+          status ===
+            "active";
 
 
-  loading.innerHTML = `
+        const image =
+          getFirstImage(
+            ad
+          );
 
-    <div>
 
-      <strong
-        style="color:#eaf5ef">
+        const statusClass =
+          isPending
+          ? "pending-ad"
+          : isPublished
+          ? "published-ad"
+          : "";
 
-        বিজ্ঞাপন লোড করা যায়নি।
 
-      </strong>
+        /* ----------------------------------------------------
+           IMAGE
+        ---------------------------------------------------- */
 
-      <br><br>
+        let photoHTML;
 
-      <small>
 
-        ${escapeHtml(
-          error.message ||
-          "Unknown error"
-        )}
+        if(image){
 
-      </small>
+          photoHTML = `
 
-      <br><br>
+            <div class="photo">
 
-      <a
-        class="btn green"
-        href="post-ad.html">
+              <img
+                src="${escapeHTML(image)}"
+                alt="${escapeHTML(
+                  ad.title ||
+                  "বিজ্ঞাপন"
+                )}"
+                loading="lazy"
+              >
 
-        ＋ বিজ্ঞাপন দিন
+            </div>
 
-      </a>
+          `;
 
-    </div>
+        }else{
 
-  `;
+          photoHTML = `
+
+            <div class="photo">
+
+              <span>
+
+                ${escapeHTML(
+                  ad.category ||
+                  "বিজ্ঞাপন"
+                )}
+
+              </span>
+
+            </div>
+
+          `;
+
+        }
+
+
+        /* ----------------------------------------------------
+           CLICK
+        ---------------------------------------------------- */
+
+        let clickAttribute =
+          "";
+
+
+        /*
+         * Pending:
+         * কোনো onclick থাকবে না।
+         */
+
+        if(
+          isPublished
+        ){
+
+          /*
+           * Approved হলে homepage-এ যাবে।
+           * Hash হিসেবে ad.id পাঠানো হচ্ছে।
+           */
+
+          clickAttribute = `
+
+            onclick="
+              window.location.href =
+              'index.html#${encodeURIComponent(
+                ad.id
+              )}'
+            "
+
+          `;
+
+        }
+
+
+        /* ----------------------------------------------------
+           PENDING MESSAGE
+        ---------------------------------------------------- */
+
+        const pendingMessage =
+          isPending
+
+          ?
+
+          `
+
+            <div
+              class="pending-message"
+            >
+
+              ⏳ Admin approval-এর অপেক্ষায়
+
+            </div>
+
+          `
+
+          :
+
+          "";
+
+
+        /* ----------------------------------------------------
+           CARD
+        ---------------------------------------------------- */
+
+        return `
+
+          <article
+            class="product ${statusClass}"
+            ${clickAttribute}
+          >
+
+            ${photoHTML}
+
+
+            <div class="body">
+
+
+              <span
+                class="badge"
+              >
+
+                ${escapeHTML(
+                  statusText(
+                    status
+                  )
+                )}
+
+              </span>
+
+
+              <h3>
+
+                ${escapeHTML(
+                  ad.title ||
+                  "Untitled"
+                )}
+
+              </h3>
+
+
+              <div class="price">
+
+                ${money(
+                  ad.price
+                )}
+
+              </div>
+
+
+              <div class="meta">
+
+                ${escapeHTML(
+                  ad.location ||
+                  ""
+                )}
+
+              </div>
+
+
+              ${pendingMessage}
+
+
+            </div>
+
+          </article>
+
+        `;
+
+      }
+    ).join("");
 
 }
 
 
+/* ============================================================
+   INITIALIZE
+============================================================ */
+
+async function initialize(){
+
+  let user =
+    await getUser();
+
+
+  /*
+   * Session একটু দেরিতে তৈরি হলে
+   * আবার চেষ্টা করবে।
+   */
+
+  if(!user){
+
+    await new Promise(
+      function(resolve){
+
+        setTimeout(
+          resolve,
+          1000
+        );
+
+      }
+    );
+
+
+    user =
+      await getUser();
+
+  }
+
+
+  /*
+   * Login না থাকলে
+   */
+
+  if(!user){
+
+    list.innerHTML = `
+
+      <div class="empty-ads">
+
+        <strong>
+          আপনার বিজ্ঞাপন দেখতে Login করুন
+        </strong>
+
+        <span>
+          আপনার নিজের বিজ্ঞাপনগুলো এখানে দেখা যাবে।
+        </span>
+
+        <br><br>
+
+        <a
+          class="btn green"
+          href="login.html?next=my-ads.html">
+
+          Google দিয়ে Login করুন
+
+        </a>
+
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+
+  /*
+   * Ads load
+   */
+
+  try{
+
+    const ads =
+      await loadMyAds(
+        user
+      );
+
+
+    renderAds(
+      ads
+    );
+
+
+  }catch(error){
+
+    console.error(
+      "MY ADS ERROR:",
+      error
+    );
+
+
+    list.innerHTML = `
+
+      <div class="empty-ads">
+
+        <strong>
+          বিজ্ঞাপন লোড করা যায়নি
+        </strong>
+
+        <span>
+          ${escapeHTML(
+            error.message ||
+            "দয়া করে আবার চেষ্টা করুন।"
+          )}
+        </span>
+
+        <br><br>
+
+        <button
+          class="btn green"
+          type="button"
+          onclick="location.reload()"
+        >
+
+          আবার চেষ্টা করুন
+
+        </button>
+
+      </div>
+
+    `;
+
+  }
+
+}
+
+
+/* ============================================================
+   START
+============================================================ */
+
+initialize();
+
+
 })();
+
 </script>
 
 </body>
