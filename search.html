@@ -231,23 +231,23 @@ if(initialCategory && Array.from(cat.options).some(o=>o.value===initialCategory)
 q.value=initialQuery;topSearch.value=initialQuery;updateSubs();
 
 async function loadAds(){
-  if(!SUPA_KEY){
-    if(typeof window.ads==="function")return window.ads();
-    return [];
-  }
+
   try{
-    const r=await fetch(SUPA_URL+"/rest/v1/ads?select=*&status=in.(approved,published)&order=created_at.desc",{
-      headers:{apikey:SUPA_KEY,Authorization:"Bearer "+SUPA_KEY,Accept:"application/json"}
-    });
-    if(!r.ok)throw new Error(await r.text());
-    const data=await r.json();
-    if(Array.isArray(data)&&typeof window.saveAds==="function")window.saveAds(data);
-    return Array.isArray(data)?data:[];
-  }catch(e){
-    console.error("Search ads load error:",e);
-    if(typeof window.ads==="function")return window.ads();
-    return [];
+
+    if(typeof window.syncPublishedAds === "function"){
+      const data = await window.syncPublishedAds();
+      if(Array.isArray(data)) return data;
+    }
+
+    if(typeof window.ads === "function"){
+      return window.ads();
+    }
+
+  }catch(error){
+    console.error("Search ads load error:", error);
   }
+
+  return [];
 }
 
 function render(allAds){
@@ -257,7 +257,6 @@ function render(allAds){
   });
   const keyword=q.value.trim().toLowerCase();
   const cv=cat.value,sv=sub.value,av=area.value;
-  const mn=min.value===""?0:Number(min.value),mx=max.value===""?Infinity:Number(max.value);
 
   list=list.filter(ad=>{
     const searchable=[ad.title,ad.category,ad.subcategory,ad.location,ad.description,ad.area,ad.brand,ad.model,ad.phone].map(x=>String(x||"")).join(" ").toLowerCase();
@@ -267,7 +266,6 @@ function render(allAds){
     if(sv&&String(ad.subcategory||"")!==sv)return false;
     if(keyword&&!searchable.includes(keyword))return false;
     if(av&&!location.toLowerCase().includes(av.toLowerCase()))return false;
-    if(price<mn||price>mx)return false;
     return true;
   });
 
@@ -298,18 +296,22 @@ function render(allAds){
 }
 
 results.innerHTML="<div style='grid-column:1/-1;padding:45px;text-align:center;color:#81948a'>বিজ্ঞাপন লোড হচ্ছে...</div>";
-const allAds=await loadAds();
-render(allAds);
+let allAds = [];
+try{
+  allAds = await loadAds();
+  render(allAds);
+}catch(error){
+  console.error("Search render error:",error);
+  results.innerHTML = "<div style='grid-column:1/-1;padding:45px;text-align:center;color:#81948a'>বিজ্ঞাপন লোড করা যাচ্ছে না।<br><small>একটু পরে আবার চেষ্টা করুন।</small></div>";
+}
 
 cat.addEventListener("change",()=>{updateSubs();render(allAds)});
 sub.addEventListener("change",()=>render(allAds));
 area.addEventListener("change",()=>render(allAds));
 sort.addEventListener("change",()=>render(allAds));
-min.addEventListener("input",()=>render(allAds));
-max.addEventListener("input",()=>render(allAds));
 q.addEventListener("input",()=>{topSearch.value=q.value;render(allAds)});
 searchForm.addEventListener("submit",e=>{e.preventDefault();q.value=topSearch.value.trim();render(allAds)});
-clear.addEventListener("click",()=>{cat.value="";updateSubs();sub.value="";q.value="";topSearch.value="";min.value="";max.value="";area.value="";sort.value="new";render(allAds);try{history.replaceState({},document.title,"search.html")}catch(e){}});
+clear.addEventListener("click",()=>{cat.value="";updateSubs();sub.value="";q.value="";topSearch.value="";area.value="";sort.value="new";render(allAds);try{history.replaceState({},document.title,"search.html")}catch(e){}});
 });
 </script>
 </body>
