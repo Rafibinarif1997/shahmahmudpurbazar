@@ -1,1 +1,1038 @@
-<!doctype html><html lang="bn"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>বিজ্ঞাপনের বিস্তারিত</title><link rel="stylesheet" href="style.css"></head><body><main class="container" style="padding:35px 0"><a href="index.html" class="brand"><b>শাহমাহমুদপুর</b><strong>বাজার</strong></a><div id="detail" class="authbox" style="margin-top:28px"></div></main><script src="supabase.js"></script><script src="app.js"></script><script>document.addEventListener("DOMContentLoaded",()=>{let id=new URLSearchParams(location.search).get("id"),a=ads().find(x=>x.id===id);if(!a){detail.innerHTML="<h2>বিজ্ঞাপন পাওয়া যায়নি।</h2>";return}detail.innerHTML=`<span class="eyebrow">${escapeHtml(a.category)}</span><h1 style="font-size:30px">${escapeHtml(a.title)}</h1><div class="price" style="font-size:24px">${money(a.price)}</div><p class="muted" style="line-height:1.8">${escapeHtml(a.description||"বিস্তারিত তথ্য নেই।")}</p><p class="muted">⌖ ${escapeHtml(a.location)}</p><hr style="border-color:#18251e"><h3>বিক্রেতা</h3><p>${escapeHtml(a.seller||"Seller")}</p><a class="btn green" href="${a.phone?"tel:"+a.phone:"#"}">☎ যোগাযোগ করুন</a><a class="btn" href="messages.html?id=${encodeURIComponent(a.id)}">💬 Message</a>`})</script><nav class="mobile-nav"><a href="index.html"><span>⌂</span>Home</a><a href="favorites.html"><span>♡</span>Saved</a><a href="post-ad.html"><span>⊞</span>Sell</a><a href="messages.html"><span>▤</span>Messages</a><a href="profile.html"><span>♙</span>Profile</a></nav></body></html>
+<!doctype html>
+<html lang="bn">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+  name="viewport"
+  content="width=device-width,initial-scale=1">
+
+<title>বিজ্ঞাপনের বিস্তারিত | শাহমাহমুদপুর বাজার</title>
+
+<link
+  rel="stylesheet"
+  href="style.css">
+
+<style>
+
+.detail-page{
+  max-width:900px;
+  padding:35px 16px 110px;
+}
+
+.detail-box{
+  margin-top:28px;
+}
+
+.ad-gallery{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  margin:22px 0;
+}
+
+.ad-image{
+  width:100%;
+  aspect-ratio:1/1;
+  object-fit:cover;
+  display:block;
+  border-radius:15px;
+  border:1px solid rgba(105,245,165,.14);
+  background:#07110c;
+}
+
+.ad-main-image{
+  grid-column:1/-1;
+  aspect-ratio:16/10;
+}
+
+.detail-category{
+  display:inline-block;
+  padding:6px 10px;
+  border-radius:20px;
+  background:rgba(105,245,165,.07);
+  border:1px solid rgba(105,245,165,.15);
+  color:#69f5a5;
+  font-size:9px;
+  font-weight:800;
+}
+
+.detail-subcategory{
+  margin-left:6px;
+  color:#82928a;
+  font-size:9px;
+}
+
+.detail-title{
+  margin:13px 0 8px;
+  font-size:30px;
+  line-height:1.25;
+  color:#edf7f1;
+}
+
+.detail-price{
+  color:#69f5a5;
+  font-size:25px;
+  font-weight:900;
+  margin:10px 0 20px;
+}
+
+.detail-meta{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+  margin:20px 0;
+}
+
+.meta-box{
+  padding:14px;
+  border:1px solid rgba(105,245,165,.1);
+  border-radius:13px;
+  background:rgba(105,245,165,.025);
+}
+
+.meta-box small{
+  display:block;
+  color:#687870;
+  font-size:8px;
+  margin-bottom:5px;
+}
+
+.meta-box strong{
+  color:#eaf5ef;
+  font-size:11px;
+}
+
+.description-box{
+  margin-top:20px;
+  padding-top:20px;
+  border-top:1px solid rgba(255,255,255,.06);
+}
+
+.description-box h3,
+.seller-box h3{
+  color:#edf7f1;
+  margin-bottom:10px;
+}
+
+.description{
+  color:#a9b8af;
+  font-size:12px;
+  line-height:1.9;
+  white-space:pre-wrap;
+}
+
+.seller-box{
+  margin-top:25px;
+  padding:20px;
+  border:1px solid rgba(105,245,165,.13);
+  border-radius:16px;
+  background:rgba(105,245,165,.025);
+}
+
+.seller-name{
+  color:#eaf5ef;
+  font-weight:800;
+  margin-bottom:5px;
+}
+
+.seller-phone{
+  color:#69f5a5;
+  font-size:13px;
+  font-weight:900;
+  margin:10px 0 16px;
+}
+
+.action-row{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.action-row .btn{
+  flex:1;
+  min-width:150px;
+  text-align:center;
+}
+
+.loading-detail{
+  padding:60px 20px;
+  text-align:center;
+  color:#718078;
+}
+
+.not-found{
+  padding:50px 20px;
+  text-align:center;
+  color:#a9b8af;
+}
+
+@media(max-width:600px){
+
+  .detail-title{
+    font-size:24px;
+  }
+
+  .detail-meta{
+    grid-template-columns:1fr;
+  }
+
+  .ad-gallery{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .ad-main-image{
+    grid-column:1/-1;
+  }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<main class="container detail-page">
+
+
+<a
+  href="index.html"
+  class="brand">
+
+  <b>শাহমাহমুদপুর</b>
+
+  <strong>বাজার</strong>
+
+  <small>
+    LOCAL MARKETPLACE
+  </small>
+
+</a>
+
+
+
+<div
+  id="detail"
+  class="authbox detail-box">
+
+  <div class="loading-detail">
+    বিজ্ঞাপনের তথ্য লোড হচ্ছে...
+  </div>
+
+</div>
+
+
+</main>
+
+
+
+<nav class="mobile-nav">
+
+  <a href="index.html">
+    <span>⌂</span>
+    Home
+  </a>
+
+  <a href="favorites.html">
+    <span>♡</span>
+    Saved
+  </a>
+
+  <a href="post-ad.html">
+    <span>⊞</span>
+    Sell
+  </a>
+
+  <a href="messages.html">
+    <span>▤</span>
+    Messages
+  </a>
+
+  <a
+    href="profile.html">
+
+    <span>♙</span>
+    Profile
+
+  </a>
+
+</nav>
+
+
+
+<script src="supabase.js"></script>
+
+<script src="app.js"></script>
+
+
+<script>
+
+document.addEventListener(
+"DOMContentLoaded",
+async function(){
+
+"use strict";
+
+
+const detail =
+document.getElementById(
+  "detail"
+);
+
+
+/* ==========================================================
+   HELPERS
+========================================================== */
+
+function esc(value){
+
+  return String(
+    value ?? ""
+  )
+  .replace(/&/g,"&amp;")
+  .replace(/</g,"&lt;")
+  .replace(/>/g,"&gt;")
+  .replace(/"/g,"&quot;")
+  .replace(/'/g,"&#039;");
+
+}
+
+
+function money(value){
+
+  const number =
+    Number(value || 0);
+
+  return "৳ " +
+    number.toLocaleString(
+      "bn-BD"
+    );
+
+}
+
+
+
+/* ==========================================================
+   GET AD ID
+========================================================== */
+
+const params =
+  new URLSearchParams(
+    window.location.search
+  );
+
+
+const adId =
+  params.get("id");
+
+
+if(!adId){
+
+  detail.innerHTML = `
+
+    <div class="not-found">
+
+      <h2>
+        বিজ্ঞাপন পাওয়া যায়নি।
+      </h2>
+
+      <br>
+
+      <a
+        href="search.html"
+        class="btn green">
+
+        বিজ্ঞাপন খুঁজুন →
+
+      </a>
+
+    </div>
+
+  `;
+
+  return;
+
+}
+
+
+
+/* ==========================================================
+   FIND AD
+========================================================== */
+
+async function getAd(){
+
+  /*
+   * প্রথমে app.js-এর ads()
+   * থেকে নেওয়ার চেষ্টা।
+   */
+
+  try{
+
+    if(
+      typeof window.ads ===
+      "function"
+    ){
+
+      const list =
+        window.ads();
+
+
+      if(
+        Array.isArray(list)
+      ){
+
+        const found =
+          list.find(
+            function(item){
+
+              return String(
+                item.id
+              ) === String(
+                adId
+              );
+
+            }
+          );
+
+
+        if(found){
+
+          return found;
+
+        }
+
+      }
+
+    }
+
+  }catch(error){
+
+    console.error(
+      "ads() error:",
+      error
+    );
+
+  }
+
+
+
+  /*
+   * ads() থেকে না পেলে Supabase
+   * সরাসরি query করবে।
+   */
+
+  try{
+
+    const url =
+      "https://jeupbfoceqmnpwlklche.supabase.co" +
+      "/rest/v1/ads" +
+      "?id=eq." +
+      encodeURIComponent(adId) +
+      "&select=*";
+
+
+    const key =
+      window.SUPABASE_ANON_KEY ||
+      window.supabaseAnonKey ||
+      "";
+
+
+    if(!key){
+
+      return null;
+
+    }
+
+
+    const response =
+      await fetch(
+        url,
+        {
+          headers:{
+            "apikey":key,
+            "Authorization":
+              "Bearer " + key
+          }
+        }
+      );
+
+
+    if(!response.ok){
+
+      console.error(
+        "Ad fetch error:",
+        await response.text()
+      );
+
+      return null;
+
+    }
+
+
+    const data =
+      await response.json();
+
+
+    if(
+      Array.isArray(data) &&
+      data.length
+    ){
+
+      return data[0];
+
+    }
+
+  }catch(error){
+
+    console.error(
+      "Direct ad fetch error:",
+      error
+    );
+
+  }
+
+
+  return null;
+
+}
+
+
+
+/* ==========================================================
+   LOAD
+========================================================== */
+
+const ad =
+  await getAd();
+
+
+if(!ad){
+
+  detail.innerHTML = `
+
+    <div class="not-found">
+
+      <h2>
+        বিজ্ঞাপন পাওয়া যায়নি।
+      </h2>
+
+      <p class="muted">
+        বিজ্ঞাপনটি হয়তো মুছে ফেলা হয়েছে
+        অথবা আর প্রকাশিত নেই।
+      </p>
+
+      <br>
+
+      <a
+        href="search.html"
+        class="btn green">
+
+        সব বিজ্ঞাপন দেখুন →
+
+      </a>
+
+    </div>
+
+  `;
+
+  return;
+
+}
+
+
+
+/* ==========================================================
+   SECURITY
+========================================================== */
+
+const status =
+  String(
+    ad.status || ""
+  )
+  .trim()
+  .toLowerCase();
+
+
+/*
+ * Pending / rejected বিজ্ঞাপন
+ * public detail page-এ দেখানো হবে না।
+ */
+
+if(
+  status !== "approved" &&
+  status !== "published"
+){
+
+  detail.innerHTML = `
+
+    <div class="not-found">
+
+      <h2>
+        এই বিজ্ঞাপনটি এখন প্রকাশিত নয়।
+      </h2>
+
+      <p class="muted">
+        Admin approval-এর পর বিজ্ঞাপনটি
+        এখানে দেখা যাবে।
+      </p>
+
+      <br>
+
+      <a
+        href="search.html"
+        class="btn green">
+
+        Marketplace-এ ফিরে যান →
+
+      </a>
+
+    </div>
+
+  `;
+
+  return;
+
+}
+
+
+
+/* ==========================================================
+   BASIC DATA
+========================================================== */
+
+const title =
+  ad.title ||
+  "বিজ্ঞাপন";
+
+
+const category =
+  ad.category ||
+  "অন্যান্য";
+
+
+const subcategory =
+  ad.subcategory ||
+  "";
+
+
+const location =
+  ad.location ||
+  "এলাকা উল্লেখ নেই";
+
+
+const description =
+  ad.description ||
+  "বিস্তারিত তথ্য দেওয়া হয়নি।";
+
+
+const phone =
+  String(
+    ad.phone ||
+    ""
+  ).trim();
+
+
+const seller =
+  ad.seller ||
+  ad.seller_name ||
+  ad.name ||
+  "বিক্রেতা";
+
+
+/* ==========================================================
+   IMAGES
+========================================================== */
+
+let images = [];
+
+
+if(
+  Array.isArray(
+    ad.image_urls
+  )
+){
+
+  images =
+    ad.image_urls.filter(
+      function(url){
+
+        return String(
+          url || ""
+        ).trim();
+
+      }
+    );
+
+}
+
+
+else if(
+  typeof ad.image_urls ===
+  "string" &&
+  ad.image_urls.trim()
+){
+
+  try{
+
+    const parsed =
+      JSON.parse(
+        ad.image_urls
+      );
+
+
+    if(
+      Array.isArray(parsed)
+    ){
+
+      images =
+        parsed.filter(
+          function(url){
+
+            return String(
+              url || ""
+            ).trim();
+
+          }
+        );
+
+    }else{
+
+      images = [
+        ad.image_urls
+      ];
+
+    }
+
+  }catch(error){
+
+    images = [
+      ad.image_urls
+    ];
+
+  }
+
+}
+
+
+
+/* ==========================================================
+   GALLERY
+========================================================== */
+
+let gallery = "";
+
+
+if(images.length){
+
+  gallery = `
+
+    <div class="ad-gallery">
+
+      ${images.map(
+        function(url,index){
+
+          return `
+
+            <img
+              class="ad-image ${
+                index === 0
+                ? "ad-main-image"
+                : ""
+              }"
+              src="${esc(url)}"
+              alt="${esc(title)}"
+              loading="${
+                index === 0
+                ? "eager"
+                : "lazy"
+              }"
+              onerror="
+                this.style.display='none'
+              "
+            >
+
+          `;
+
+        }
+      ).join("")}
+
+    </div>
+
+  `;
+
+}
+
+
+
+/* ==========================================================
+   PHONE
+========================================================== */
+
+const safePhone =
+  phone.replace(
+    /[^0-9+]/g,
+    ""
+  );
+
+
+const phoneButton =
+  phone
+  ?
+
+  `
+
+    <a
+      class="btn green"
+      href="tel:${esc(safePhone)}">
+
+      ☎ কল করুন
+
+    </a>
+
+  `
+
+  :
+
+  `
+
+    <button
+      class="btn"
+      type="button"
+      disabled>
+
+      ফোন নম্বর দেওয়া হয়নি
+
+    </button>
+
+  `;
+
+
+
+/* ==========================================================
+   MESSAGE BUTTON
+========================================================== */
+
+const messageLink = `
+
+  <a
+    class="btn"
+    href="messages.html?id=${encodeURIComponent(
+      ad.id || ""
+    )}">
+
+    💬 মেসেজ
+
+  </a>
+
+`;
+
+
+
+/* ==========================================================
+   RENDER
+========================================================== */
+
+detail.innerHTML = `
+
+  ${gallery}
+
+
+  <div>
+
+    <span
+      class="detail-category">
+
+      ${esc(category)}
+
+    </span>
+
+    ${
+      subcategory
+      ?
+
+      `<span class="detail-subcategory">
+        • ${esc(subcategory)}
+      </span>`
+
+      :
+
+      ""
+    }
+
+
+    <h1 class="detail-title">
+
+      ${esc(title)}
+
+    </h1>
+
+
+    <div class="detail-price">
+
+      ${money(ad.price)}
+
+    </div>
+
+
+    <div class="detail-meta">
+
+
+      <div class="meta-box">
+
+        <small>
+          📍 এলাকা
+        </small>
+
+        <strong>
+          ${esc(location)}
+        </strong>
+
+      </div>
+
+
+      <div class="meta-box">
+
+        <small>
+          🏷️ ক্যাটাগরি
+        </small>
+
+        <strong>
+          ${esc(category)}
+        </strong>
+
+      </div>
+
+
+      ${
+        subcategory
+
+        ?
+
+        `
+
+        <div class="meta-box">
+
+          <small>
+            ▦ সাব-ক্যাটাগরি
+          </small>
+
+          <strong>
+            ${esc(subcategory)}
+          </strong>
+
+        </div>
+
+        `
+
+        :
+
+        ""
+      }
+
+
+      <div class="meta-box">
+
+        <small>
+          ✓ স্ট্যাটাস
+        </small>
+
+        <strong>
+          প্রকাশিত
+        </strong>
+
+      </div>
+
+
+    </div>
+
+
+
+    <div class="description-box">
+
+      <h3>
+        পণ্যের বিস্তারিত
+      </h3>
+
+      <div class="description">
+
+        ${esc(description)}
+
+      </div>
+
+    </div>
+
+
+
+    <div class="seller-box">
+
+      <h3>
+        বিক্রেতার সাথে যোগাযোগ
+      </h3>
+
+      <div class="seller-name">
+
+        ${esc(seller)}
+
+      </div>
+
+
+      ${
+        phone
+
+        ?
+
+        `
+
+        <div class="seller-phone">
+
+          📱 ${esc(phone)}
+
+        </div>
+
+        `
+
+        :
+
+        `
+
+        <div
+          class="seller-phone"
+          style="color:#8a9690">
+
+          ফোন নম্বর দেওয়া হয়নি।
+
+        </div>
+
+        `
+
+      }
+
+
+      <div class="action-row">
+
+        ${phoneButton}
+
+        ${messageLink}
+
+      </div>
+
+    </div>
+
+
+  </div>
+
+`;
+
+});
+
+</script>
+
+
+</body>
+</html>
