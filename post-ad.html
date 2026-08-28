@@ -1,34 +1,841 @@
-<!doctype html><html lang="bn"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>বিজ্ঞাপন দিন | শাহমাহমুদপুর বাজার</title><link rel="stylesheet" href="style.css"></head><body><main class="container" style="max-width:760px;padding:35px 0"><a href="index.html" class="brand"><b>শাহমাহমুদপুর</b><strong>বাজার</strong></a><section class="authbox" style="margin-top:25px"><span class="eyebrow">POST AN AD</span><h1 style="font-size:30px">আপনার বিজ্ঞাপন দিন</h1><p class="muted">পণ্য বা সেবা স্থানীয় ক্রেতাদের কাছে পৌঁছে দিন।</p><form id="adForm"><label>ক্যাটাগরি<select id="category" required><option value="">নির্বাচন করুন</option>
-<option>Vehicles</option><option>Property</option><option>Phones & Tablets</option><option>Electronics</option>
-<option>Home, Furniture & Garden</option><option>Fashion</option><option>Beauty & Personal Care</option>
-<option>Services</option><option>Repair & Construction</option><option>Commercial Equipment & Machinery</option>
-<option>Leisure & Activities</option><option>Babies & Kids</option><option>Food, Agriculture & Supplies</option>
-<option>Animals & Pets</option><option>Jobs</option><option>Seeking Work - CVs</option><option>Business & Industry</option>
-</select></label><label>সাব-ক্যাটাগরি<select id="subcategory"><option value="">নির্বাচন করুন</option></select></label><label>শিরোনাম<input id="title" maxlength="100" required placeholder="যেমন: iPhone 13 128GB"></label><label>দাম<input id="price" type="number" min="0" required placeholder="৳"></label><label>বিস্তারিত<textarea id="description" rows="6" placeholder="পণ্যের বিস্তারিত লিখুন"></textarea></label><label>এলাকা<input id="location" required placeholder="যেমন: মহামায়া"></label><label>মোবাইল নম্বর<input id="phone" required placeholder="01XXXXXXXXX"></label><label>ছবি <input id="image" type="file" accept="image/*"></label><button class="btn green" style="width:100%;margin-top:12px">Preview & Publish →</button></form><p id="msg" class="msg"></p></section></main><script src="supabase.js"></script><script src="app.js"></script><script>const user=JSON.parse(localStorage.getItem("smb_user")||"null");if(!user)location.href="login.html?next=post-ad.html";document.getElementById("adForm").onsubmit=e=>{e.preventDefault();let a=ads();let x={id:"ad_"+Date.now(),title:title.value.trim(),price:Number(price.value),category:category.value,subcategory:subcategory.value,description:description.value.trim(),location:location.value.trim(),phone:phone.value.trim(),seller:user?.name||"User",status:"pending",time:"এখন"};if(!x.title||!x.category||!x.price||!x.location||!x.phone){msg.textContent="সব প্রয়োজনীয় তথ্য পূরণ করুন।";return}a.unshift(x);save(a);msg.textContent="বিজ্ঞাপন জমা হয়েছে। Admin approval-এর পর এটি marketplace-এ দেখা যাবে।";e.target.reset()};</script><script src="app.js">
-</script>
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>বিজ্ঞাপন দিন | শাহমাহমুদপুর বাজার</title>
+<link rel="stylesheet" href="style.css">
+
+<style>
+.page{
+  max-width:760px;
+  padding:35px 16px 100px;
+}
+
+.loading{
+  text-align:center;
+  padding:50px 20px;
+  color:#718078;
+}
+
+.user-note{
+  margin:15px 0 20px;
+  padding:12px 14px;
+  border:1px solid rgba(105,245,165,.14);
+  border-radius:10px;
+  background:rgba(105,245,165,.03);
+  color:#819089;
+  font-size:11px;
+}
+
+.user-note strong{
+  color:#69f5a5;
+}
+</style>
+</head>
+
+<body>
+
+<main class="container page">
+
+<a href="index.html" class="brand">
+  <b>শাহমাহমুদপুর</b>
+  <strong>বাজার</strong>
+  <small>LOCAL MARKETPLACE</small>
+</a>
+
+<section id="loading" class="authbox loading" style="margin-top:25px">
+  আপনার account যাচাই করা হচ্ছে...
+</section>
+
+<section
+  id="formBox"
+  class="authbox"
+  style="margin-top:25px;display:none">
+
+  <span class="eyebrow">POST AN AD</span>
+
+  <h1 style="font-size:30px">
+    আপনার বিজ্ঞাপন দিন
+  </h1>
+
+  <p class="muted">
+    পণ্য বা সেবা স্থানীয় ক্রেতাদের কাছে পৌঁছে দিন।
+  </p>
+
+  <div id="userNote" class="user-note"></div>
+
+  <form id="adForm">
+
+    <label>
+      ক্যাটাগরি
+
+      <select id="category" required>
+
+        <option value="">
+          নির্বাচন করুন
+        </option>
+
+        <option>Vehicles</option>
+        <option>Property</option>
+        <option>Phones & Tablets</option>
+        <option>Electronics</option>
+        <option>Home, Furniture & Garden</option>
+        <option>Fashion</option>
+        <option>Beauty & Personal Care</option>
+        <option>Services</option>
+        <option>Repair & Construction</option>
+        <option>Commercial Equipment & Machinery</option>
+        <option>Leisure & Activities</option>
+        <option>Babies & Kids</option>
+        <option>Food, Agriculture & Supplies</option>
+        <option>Animals & Pets</option>
+        <option>Jobs</option>
+        <option>Seeking Work - CVs</option>
+        <option>Business & Industry</option>
+
+      </select>
+
+    </label>
+
+
+    <label>
+      সাব-ক্যাটাগরি
+
+      <select id="subcategory">
+
+        <option value="">
+          নির্বাচন করুন
+        </option>
+
+      </select>
+
+    </label>
+
+
+    <label>
+      শিরোনাম
+
+      <input
+        id="title"
+        maxlength="100"
+        required
+        placeholder="যেমন: iPhone 13 128GB">
+
+    </label>
+
+
+    <label>
+      দাম
+
+      <input
+        id="price"
+        type="number"
+        min="0"
+        required
+        placeholder="৳">
+
+    </label>
+
+
+    <label>
+      বিস্তারিত
+
+      <textarea
+        id="description"
+        rows="6"
+        placeholder="পণ্যের বিস্তারিত লিখুন"></textarea>
+
+    </label>
+
+
+    <label>
+      এলাকা
+
+      <input
+        id="location"
+        required
+        placeholder="যেমন: মহামায়া">
+
+    </label>
+
+
+    <label>
+      মোবাইল নম্বর
+
+      <input
+        id="phone"
+        required
+        placeholder="01XXXXXXXXX">
+
+    </label>
+
+
+    <label>
+      ছবি
+
+      <input
+        id="image"
+        type="file"
+        accept="image/*">
+
+    </label>
+
+
+    <button
+      id="submitBtn"
+      class="btn green"
+      style="width:100%;margin-top:12px">
+
+      Preview & Publish →
+
+    </button>
+
+  </form>
+
+  <p id="msg" class="msg"></p>
+
+</section>
+
+</main>
+
+
+<nav class="mobile-nav">
+
+<a href="index.html">
+  <span>⌂</span>
+  Home
+</a>
+
+<a href="favorites.html">
+  <span>♡</span>
+  Saved
+</a>
+
+<a class="active" href="post-ad.html">
+  <span>⊞</span>
+  Sell
+</a>
+
+<a href="messages.html">
+  <span>▤</span>
+  Messages
+</a>
+
+<a href="profile.html">
+  <span>♙</span>
+  Profile
+</a>
+
+</nav>
+
+
+<script src="supabase.js?v=9"></script>
+<script src="app.js?v=9"></script>
+
+
 <script>
+
+(async function(){
+
+const loading =
+document.getElementById("loading");
+
+const formBox =
+document.getElementById("formBox");
+
+const userNote =
+document.getElementById("userNote");
+
+const form =
+document.getElementById("adForm");
+
+const msg =
+document.getElementById("msg");
+
+const submitBtn =
+document.getElementById("submitBtn");
+
+
+/*
+ * User বের করার function
+ */
+
+async function getUser(){
+
+  /*
+   * প্রথমে smb_user_v1
+   */
+
+  try{
+
+    const saved =
+      localStorage.getItem(
+        "smb_user_v1"
+      );
+
+    if(saved){
+
+      const user =
+        JSON.parse(saved);
+
+      if(
+        user &&
+        user.email
+      ){
+
+        return user;
+
+      }
+
+    }
+
+  }catch(e){}
+
+
+  /*
+   * তারপর Supabase
+   */
+
+  try{
+
+    if(
+      typeof getCurrentUser ===
+      "function"
+    ){
+
+      const user =
+        await getCurrentUser();
+
+      if(user){
+
+        const metadata =
+          user.user_metadata || {};
+
+        const profile = {
+
+          id:
+            user.id || "",
+
+          name:
+            metadata.full_name ||
+            metadata.name ||
+            "",
+
+          email:
+            user.email || "",
+
+          phone:
+            metadata.phone || "",
+
+          avatar:
+            metadata.avatar_url ||
+            metadata.picture ||
+            ""
+
+        };
+
+        localStorage.setItem(
+          "smb_user_v1",
+          JSON.stringify(profile)
+        );
+
+        return profile;
+
+      }
+
+    }
+
+  }catch(e){
+
+    console.error(e);
+
+  }
+
+
+  return null;
+
+}
+
+
+let user =
+await getUser();
+
+
+/*
+ * session তৈরি হওয়ার জন্য
+ * একটু অপেক্ষা করে আবার check
+ */
+
+if(!user){
+
+  await new Promise(
+    resolve =>
+      setTimeout(resolve,1200)
+  );
+
+  user =
+    await getUser();
+
+}
+
+
+/*
+ * এখনও user না থাকলে Login
+ */
+
+if(!user){
+
+  window.location.href =
+    "login.html?next=post-ad.html";
+
+  return;
+
+}
+
+
+/*
+ * User পাওয়া গেছে
+ */
+
+loading.style.display =
+"none";
+
+formBox.style.display =
+"block";
+
+
+const userName =
+user.name ||
+"Google User";
+
+const userEmail =
+user.email ||
+"";
+
+
+userNote.innerHTML =
+`
+  Signed in as
+  <strong>
+    ${escapeHtml(userEmail)}
+  </strong>
+`;
+
+
+/*
+ * Category map
+ */
+
 const subMap={
-"Vehicles":["Cars","Motorcycles","Bicycles","Auto Rickshaw","Trucks & Buses","Vehicle Parts"],
-"Property":["Land","Apartments","Houses","Shops & Commercial Space","Office Space","Property for Rent"],
-"Phones & Tablets":["Mobile Phones","Tablets","Phone Accessories","Smart Watches"],
-"Electronics":["TV","Laptop & Computer","Camera","Audio","Gaming","Other Electronics"],
-"Home, Furniture & Garden":["Furniture","Home Decor","Kitchen","Garden","Appliances"],
-"Fashion":["Men","Women","Kids","Shoes","Bags & Accessories","Watches"],
-"Beauty & Personal Care":["Cosmetics","Skin Care","Hair Care","Perfume","Health & Personal Care"],
-"Services":["Tutoring","Cleaning","Transport","Photography","IT & Digital","Other Services"],
-"Repair & Construction":["Electrician","Plumber","AC & Fridge Repair","Construction Materials","Mechanic","Painter"],
-"Commercial Equipment & Machinery":["Factory Equipment","Restaurant Equipment","Office Equipment","Tools","Machinery"],
-"Leisure & Activities":["Sports","Gym & Fitness","Music","Books","Tickets & Events","Hobbies"],
-"Babies & Kids":["Baby Products","Toys","Kids Clothing","Strollers","School Items"],
-"Food, Agriculture & Supplies":["Vegetables","Fruits","Fish","Livestock Feed","Seeds","Farm Products"],
-"Animals & Pets":["Cattle","Goat","Poultry","Pets","Pet Supplies"],
-"Jobs":["Full Time","Part Time","Sales Jobs","Driver Jobs","Office Jobs","Other Jobs"],
-"Seeking Work - CVs":["CVs","Job Seekers","Freelancers","Skilled Workers"],
-"Business & Industry":["Business for Sale","Wholesale","Retail","Industrial Products","Agriculture Business"]
+
+"Vehicles":[
+"Cars",
+"Motorcycles",
+"Bicycles",
+"Auto Rickshaw",
+"Trucks & Buses",
+"Vehicle Parts"
+],
+
+"Property":[
+"Land",
+"Apartments",
+"Houses",
+"Shops & Commercial Space",
+"Office Space",
+"Property for Rent"
+],
+
+"Phones & Tablets":[
+"Mobile Phones",
+"Tablets",
+"Phone Accessories",
+"Smart Watches"
+],
+
+"Electronics":[
+"TV",
+"Laptop & Computer",
+"Camera",
+"Audio",
+"Gaming",
+"Other Electronics"
+],
+
+"Home, Furniture & Garden":[
+"Furniture",
+"Home Decor",
+"Kitchen",
+"Garden",
+"Appliances"
+],
+
+"Fashion":[
+"Men",
+"Women",
+"Kids",
+"Shoes",
+"Bags & Accessories",
+"Watches"
+],
+
+"Beauty & Personal Care":[
+"Cosmetics",
+"Skin Care",
+"Hair Care",
+"Perfume",
+"Health & Personal Care"
+],
+
+"Services":[
+"Tutoring",
+"Cleaning",
+"Transport",
+"Photography",
+"IT & Digital",
+"Other Services"
+],
+
+"Repair & Construction":[
+"Electrician",
+"Plumber",
+"AC & Fridge Repair",
+"Construction Materials",
+"Mechanic",
+"Painter"
+],
+
+"Commercial Equipment & Machinery":[
+"Factory Equipment",
+"Restaurant Equipment",
+"Office Equipment",
+"Tools",
+"Machinery"
+],
+
+"Leisure & Activities":[
+"Sports",
+"Gym & Fitness",
+"Music",
+"Books",
+"Tickets & Events",
+"Hobbies"
+],
+
+"Babies & Kids":[
+"Baby Products",
+"Toys",
+"Kids Clothing",
+"Strollers",
+"School Items"
+],
+
+"Food, Agriculture & Supplies":[
+"Vegetables",
+"Fruits",
+"Fish",
+"Livestock Feed",
+"Seeds",
+"Farm Products"
+],
+
+"Animals & Pets":[
+"Cattle",
+"Goat",
+"Poultry",
+"Pets",
+"Pet Supplies"
+],
+
+"Jobs":[
+"Full Time",
+"Part Time",
+"Sales Jobs",
+"Driver Jobs",
+"Office Jobs",
+"Other Jobs"
+],
+
+"Seeking Work - CVs":[
+"CVs",
+"Job Seekers",
+"Freelancers",
+"Skilled Workers"
+],
+
+"Business & Industry":[
+"Business for Sale",
+"Wholesale",
+"Retail",
+"Industrial Products",
+"Agriculture Business"
+]
+
 };
-category.onchange=()=>{
-  const a=subMap[category.value]||[];
-  subcategory.innerHTML='<option value="">নির্বাচন করুন</option>'+a.map(x=>`<option>${x}</option>`).join("");
+
+
+/*
+ * Category change
+ */
+
+category.onchange=function(){
+
+  const items =
+    subMap[
+      category.value
+    ] || [];
+
+  subcategory.innerHTML =
+    '<option value="">নির্বাচন করুন</option>' +
+
+    items.map(
+      x =>
+      `<option>${escapeHtml(x)}</option>`
+    ).join("");
+
 };
+
+
+/*
+ * Submit
+ */
+
+form.addEventListener(
+"submit",
+function(e){
+
+  e.preventDefault();
+
+  msg.textContent = "";
+
+
+  const titleValue =
+    document.getElementById(
+      "title"
+    ).value.trim();
+
+  const priceValue =
+    Number(
+      document.getElementById(
+        "price"
+      ).value
+    );
+
+  const categoryValue =
+    document.getElementById(
+      "category"
+    ).value;
+
+  const subcategoryValue =
+    document.getElementById(
+      "subcategory"
+    ).value;
+
+  const descriptionValue =
+    document.getElementById(
+      "description"
+    ).value.trim();
+
+  const locationValue =
+    document.getElementById(
+      "location"
+    ).value.trim();
+
+  const phoneValue =
+    document.getElementById(
+      "phone"
+    ).value.trim();
+
+
+  if(
+    !titleValue ||
+    !categoryValue ||
+    !priceValue ||
+    !locationValue ||
+    !phoneValue
+  ){
+
+    msg.textContent =
+      "সব প্রয়োজনীয় তথ্য পূরণ করুন।";
+
+    return;
+
+  }
+
+
+  submitBtn.disabled =
+    true;
+
+  submitBtn.textContent =
+    "জমা হচ্ছে...";
+
+
+  try{
+
+    let allAds = [];
+
+
+    if(
+      typeof window.ads ===
+      "function"
+    ){
+
+      allAds =
+        window.ads() || [];
+
+    }
+
+
+    if(!Array.isArray(allAds)){
+
+      allAds = [];
+
+    }
+
+
+    const newAd = {
+
+      id:
+        "ad_" +
+        Date.now(),
+
+      title:
+        titleValue,
+
+      price:
+        priceValue,
+
+      category:
+        categoryValue,
+
+      subcategory:
+        subcategoryValue,
+
+      description:
+        descriptionValue,
+
+      location:
+        locationValue,
+
+      phone:
+        phoneValue,
+
+      /*
+       * Google account identity
+       */
+
+      seller:
+        userName,
+
+      seller_email:
+        userEmail,
+
+      seller_id:
+        user.id || "",
+
+      user_id:
+        user.id || "",
+
+      email:
+        userEmail,
+
+      status:
+        "pending",
+
+      time:
+        "এখন"
+
+    };
+
+
+    allAds.unshift(
+      newAd
+    );
+
+
+    /*
+     * app.js-এর saveAds থাকলে সেটি,
+     * না থাকলে সরাসরি localStorage
+     */
+
+    if(
+      typeof window.saveAds ===
+      "function"
+    ){
+
+      window.saveAds(
+        allAds
+      );
+
+    }else{
+
+      localStorage.setItem(
+        "smb_ads_v1",
+        JSON.stringify(
+          allAds
+        )
+      );
+
+    }
+
+
+    msg.textContent =
+      "বিজ্ঞাপন জমা হয়েছে। Admin approval-এর পর এটি marketplace-এ দেখা যাবে।";
+
+
+    form.reset();
+
+
+    /*
+     * category reset
+     */
+
+    subcategory.innerHTML =
+      '<option value="">নির্বাচন করুন</option>';
+
+
+  }catch(error){
+
+    console.error(
+      error
+    );
+
+    msg.textContent =
+      "বিজ্ঞাপন জমা দেওয়া যায়নি। আবার চেষ্টা করুন।";
+
+  }
+
+
+  submitBtn.disabled =
+    false;
+
+  submitBtn.textContent =
+    "Preview & Publish →";
+
+});
+
+
+/*
+ * HTML escape
+ */
+
+function escapeHtml(value){
+
+  return String(
+    value ?? ""
+  )
+  .replace(/&/g,"&amp;")
+  .replace(/</g,"&lt;")
+  .replace(/>/g,"&gt;")
+  .replace(/"/g,"&quot;")
+  .replace(/'/g,"&#039;");
+
+}
+
+})();
+
 </script>
-<nav class="mobile-nav"><a href="index.html"><span>⌂</span>Home</a><a href="favorites.html"><span>♡</span>Saved</a><a class="active" href="post-ad.html"><span>⊞</span>Sell</a><a href="messages.html"><span>▤</span>Messages</a><a href="profile.html"><span>♙</span>Profile</a></nav></body></html>
+
+</body>
+</html>
