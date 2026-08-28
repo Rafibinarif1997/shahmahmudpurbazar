@@ -1,1590 +1,211 @@
 <!doctype html>
 <html lang="bn">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-
 <title>বিজ্ঞাপন খুঁজুন | শাহমাহমুদপুর বাজার</title>
-
 <link rel="stylesheet" href="style.css">
 </head>
-
-
 <body>
-
-
 <header class="header">
-
   <div class="container head">
-
-    <a
-      class="brand"
-      href="index.html">
-
-      <b>শাহমাহমুদপুর</b>
-      <strong>বাজার</strong>
-
-      <small>
-        LOCAL MARKETPLACE
-      </small>
-
-    </a>
-
-
-    <form
-      id="searchForm"
-      class="search">
-
-      <span>⌕</span>
-
-      <input
-        id="search"
-        type="search"
-        autocomplete="off"
-        placeholder="কি খুঁজছেন?">
-
-      <button type="submit">
-        খুঁজুন
-      </button>
-
-    </form>
-
-
-    <nav>
-
-      <a href="favorites.html">
-        ♡
-      </a>
-
-      <a href="login.html">
-        লগইন
-      </a>
-
-    </nav>
-
+    <a class="brand" href="index.html"><b>শাহমাহমুদপুর</b><strong>বাজার</strong><small>LOCAL MARKETPLACE</small></a>
+    <form id="searchForm" class="search"><span>⌕</span><input id="search" placeholder="কি খুঁজছেন?"><button>খুঁজুন</button></form>
+    <nav><a href="favorites.html">♡</a><a href="login.html">লগইন</a></nav>
   </div>
-
 </header>
 
-
-
 <main class="container">
-
-
   <div class="page-top">
-
-    <span class="eyebrow">
-      MARKETPLACE
-    </span>
-
-    <h1 id="heading">
-      সব বিজ্ঞাপন
-    </h1>
-
-    <p id="summary">
-      আপনার এলাকার প্রকাশিত বিজ্ঞাপনগুলো দেখুন।
-    </p>
-
+    <span class="eyebrow">MARKETPLACE</span>
+    <h1 id="heading">সব বিজ্ঞাপন</h1>
+    <p id="summary">আপনার এলাকার প্রকাশিত বিজ্ঞাপনগুলো দেখুন।</p>
   </div>
-
-
-
-  <!-- =====================================================
-       FILTERS
-  ====================================================== -->
 
   <div class="filters">
-
-
-    <!-- CATEGORY -->
-
     <select id="cat">
-
-      <option value="">
-        সব ক্যাটাগরি
-      </option>
-
-      <option value="Vehicles">
-        Vehicles
-      </option>
-
-      <option value="Property">
-        Property
-      </option>
-
-      <option value="Phones & Tablets">
-        Phones & Tablets
-      </option>
-
-      <option value="Electronics">
-        Electronics
-      </option>
-
-      <option value="Home, Furniture & Garden">
-        Home, Furniture & Garden
-      </option>
-
-      <option value="Fashion">
-        Fashion
-      </option>
-
-      <option value="Beauty & Personal Care">
-        Beauty & Personal Care
-      </option>
-
-      <option value="Services">
-        Services
-      </option>
-
-      <option value="Repair & Construction">
-        Repair & Construction
-      </option>
-
-      <option value="Commercial Equipment & Machinery">
-        Commercial Equipment & Machinery
-      </option>
-
-      <option value="Leisure & Activities">
-        Leisure & Activities
-      </option>
-
-      <option value="Babies & Kids">
-        Babies & Kids
-      </option>
-
-      <option value="Food, Agriculture & Supplies">
-        Food, Agriculture & Supplies
-      </option>
-
-      <option value="Animals & Pets">
-        Animals & Pets
-      </option>
-
-      <option value="Jobs">
-        Jobs
-      </option>
-
-      <option value="Seeking Work - CVs">
-        Seeking Work - CVs
-      </option>
-
-      <option value="Business & Industry">
-        Business & Industry
-      </option>
-
+      <option value="">সব ক্যাটাগরি</option>
+      <option>Vehicles</option><option>Property</option><option>Phones & Tablets</option>
+      <option>Electronics</option><option>Home, Furniture & Garden</option><option>Fashion</option>
+      <option>Beauty & Personal Care</option><option>Services</option><option>Repair & Construction</option>
+      <option>Commercial Equipment & Machinery</option><option>Leisure & Activities</option>
+      <option>Babies & Kids</option><option>Food, Agriculture & Supplies</option>
+      <option>Animals & Pets</option><option>Jobs</option><option>Seeking Work - CVs</option>
+      <option>Business & Industry</option>
     </select>
-
-
-
-    <!-- SUB CATEGORY -->
-
-    <select id="subcat">
-
-      <option value="">
-        সব সাব-ক্যাটাগরি
-      </option>
-
-    </select>
-
-
-
-    <!-- MIN PRICE -->
-
-    <input
-      id="minPrice"
-      type="number"
-      min="0"
-      placeholder="সর্বনিম্ন দাম">
-
-
-
-    <!-- MAX PRICE -->
-
-    <input
-      id="maxPrice"
-      type="number"
-      min="0"
-      placeholder="সর্বোচ্চ দাম">
-
-
-
-    <!-- AREA -->
-
-    <select id="area">
-
-      <option value="">
-        সব এলাকা
-      </option>
-
-      <option value="টাহরখীল">
-        টাহরখীল
-      </option>
-
-      <option value="মান্দারী">
-        মান্দারী
-      </option>
-
-      <option value="লোধেরগাঁও">
-        লোধেরগাঁও
-      </option>
-
-      <option value="বিমলেরগাঁও">
-        বিমলেরগাঁও
-      </option>
-
-      <option value="দাসেরগাঁও">
-        দাসেরগাঁও
-      </option>
-
-      <option value="দমকেরগাঁও">
-        দমকেরগাঁও
-      </option>
-
-      <option value="ভাটেরগাঁও">
-        ভাটেরগাঁও
-      </option>
-
-      <option value="পাঁচগাঁও">
-        পাঁচগাঁও
-      </option>
-
-      <option value="কুমারডুগী">
-        কুমারডুগী
-      </option>
-
-      <option value="কৃষ্ণপুর">
-        কৃষ্ণপুর
-      </option>
-
-      <option value="ভরঙ্গারচর">
-        ভরঙ্গারচর
-      </option>
-
-      <option value="কেতুয়া">
-        কেতুয়া
-      </option>
-
-      <option value="আলুমুড়া">
-        আলুমুড়া
-      </option>
-
-      <option value="ছোট শাহতলী">
-        ছোট শাহতলী
-      </option>
-
-      <option value="বড় শাহতলী">
-        বড় শাহতলী
-      </option>
-
-      <option value="পাইকদি">
-        পাইকদি
-      </option>
-
-      <option value="রনবলিয়া">
-        রনবলিয়া
-      </option>
-
-      <option value="কদ্দি">
-        কদ্দি
-      </option>
-
-    </select>
-
-
-
-    <!-- SORT -->
-
-    <select id="sort">
-
-      <option value="new">
-        নতুন আগে
-      </option>
-
-      <option value="low">
-        কম দাম
-      </option>
-
-      <option value="high">
-        বেশি দাম
-      </option>
-
-    </select>
-
-
-
-    <!-- SEARCH -->
-
-    <input
-      id="q2"
-      type="search"
-      placeholder="পণ্য/বিজ্ঞাপন খুঁজুন">
-
+    <select id="subcat"><option value="">সব সাব-ক্যাটাগরি</option></select>
+    <input id="minPrice" type="number" min="0" placeholder="সর্বনিম্ন দাম">
+    <input id="maxPrice" type="number" min="0" placeholder="সর্বোচ্চ দাম">
+    <input id="area" placeholder="এলাকা">
+    <select id="sort"><option value="new">নতুন আগে</option><option value="low">কম দাম</option><option value="high">বেশি দাম</option></select>
+    <input id="q2" placeholder="পণ্য/বিজ্ঞাপন খুঁজুন">
   </div>
 
-
-
-  <!-- =====================================================
-       RESULT HEADER
-  ====================================================== -->
-
-  <div
-    style="
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      margin:15px 0 10px
-    ">
-
-    <strong
-      id="count"
-      style="
-        font-size:10px;
-        color:#a9b8af
-      ">
-
-      0টি বিজ্ঞাপন
-
-    </strong>
-
-
-    <button
-      id="clear"
-      class="btn"
-      type="button">
-
-      Filter Reset
-
-    </button>
-
+  <div style="display:flex;justify-content:space-between;align-items:center;margin:15px 0 10px">
+    <strong id="count" style="font-size:10px;color:#a9b8af">0টি বিজ্ঞাপন</strong>
+    <button id="clear" class="btn" type="button">Filter Reset</button>
   </div>
 
-
-
-  <!-- RESULTS -->
-
-  <div
-    id="results"
-    class="products">
-
-  </div>
-
-
+  <div id="results" class="products"></div>
 </main>
 
-
-
-<footer>
-
-  <div class="container foot">
-
-    <b>
-      শাহমাহমুদপুর বাজার
-    </b>
-
-    <small>
-      © 2026
-    </small>
-
-  </div>
-
-</footer>
-
-
-
+<footer><div class="container foot"><b>শাহমাহমুদপুর বাজার</b><small>© 2026</small></div></footer>
 <nav class="mobile-nav">
-
-  <a href="index.html">
-    <span>⌂</span>
-    Home
-  </a>
-
-  <a href="favorites.html">
-    <span>♡</span>
-    Saved
-  </a>
-
-  <a href="post-ad.html">
-    <span>⊞</span>
-    Sell
-  </a>
-
-  <a
-    class="active"
-    href="search.html">
-
-    <span>⌕</span>
-    Search
-
-  </a>
-
-  <a href="profile.html">
-    <span>♙</span>
-    Profile
-  </a>
-
+<a href="index.html"><span>⌂</span>Home</a>
+<a href="favorites.html"><span>♡</span>Saved</a>
+<a href="post-ad.html"><span>⊞</span>Sell</a>
+<a class="active" href="search.html"><span>⌕</span>Search</a>
+<a href="profile.html"><span>♙</span>Profile</a>
 </nav>
 
-
-
-<script src="supabase.js"></script>
-<script src="app.js"></script>
-
-
+<script src="supabase.js"></script><script src="app.js"></script>
 <script>
-
-document.addEventListener(
-"DOMContentLoaded",
-function(){
-
+document.addEventListener("DOMContentLoaded", async function(){
 "use strict";
 
+const params=new URLSearchParams(window.location.search);
+const initialQuery=params.get("q")||"";
+const initialCategory=params.get("category")||"";
+const trending=params.get("sort")==="trending";
 
-/* ==========================================================
-   URL PARAMETERS
-========================================================== */
+const cat=document.getElementById("cat");
+const sub=document.getElementById("subcat");
+const q=document.getElementById("q2");
+const min=document.getElementById("minPrice");
+const max=document.getElementById("maxPrice");
+const area=document.getElementById("area");
+const sort=document.getElementById("sort");
+const clear=document.getElementById("clear");
+const results=document.getElementById("results");
+const count=document.getElementById("count");
+const heading=document.getElementById("heading");
+const summary=document.getElementById("summary");
+const searchForm=document.getElementById("searchForm");
+const topSearch=document.getElementById("search");
 
-const params =
-new URLSearchParams(
-window.location.search
-);
+const SUPA_URL=window.SUPABASE_URL||"https://jeupbfoceqmnpwlklche.supabase.co";
+const SUPA_KEY=window.SUPABASE_ANON_KEY||window.supabaseAnonKey||"";
 
-
-const initialQuery =
-params.get("q") || "";
-
-
-const initialCategory =
-params.get("category") || "";
-
-
-const trending =
-params.get("sort") === "trending";
-
-
-
-/* ==========================================================
-   ELEMENTS
-========================================================== */
-
-const cat =
-document.getElementById("cat");
-
-const sub =
-document.getElementById("subcat");
-
-const q =
-document.getElementById("q2");
-
-const min =
-document.getElementById("minPrice");
-
-const max =
-document.getElementById("maxPrice");
-
-const area =
-document.getElementById("area");
-
-const sort =
-document.getElementById("sort");
-
-const clear =
-document.getElementById("clear");
-
-const results =
-document.getElementById("results");
-
-const count =
-document.getElementById("count");
-
-const heading =
-document.getElementById("heading");
-
-const summary =
-document.getElementById("summary");
-
-const searchForm =
-document.getElementById("searchForm");
-
-const topSearch =
-document.getElementById("search");
-
-
-
-/* ==========================================================
-   SUBCATEGORY MAP
-========================================================== */
-
-const subs = {
-
-"Vehicles":[
-"Cars",
-"Motorcycles",
-"Bicycles",
-"Auto Rickshaw",
-"Trucks & Buses",
-"Vehicle Parts"
-],
-
-"Property":[
-"Land",
-"Apartments",
-"Houses",
-"Shops & Commercial Space",
-"Office Space",
-"Property for Rent"
-],
-
-"Phones & Tablets":[
-"Mobile Phones",
-"Tablets",
-"Phone Accessories",
-"Smart Watches"
-],
-
-"Electronics":[
-"TV",
-"Laptop & Computer",
-"Camera",
-"Audio",
-"Gaming",
-"Other Electronics"
-],
-
-"Home, Furniture & Garden":[
-"Furniture",
-"Home Decor",
-"Kitchen",
-"Garden",
-"Appliances"
-],
-
-"Fashion":[
-"Men",
-"Women",
-"Kids",
-"Shoes",
-"Bags & Accessories",
-"Watches"
-],
-
-"Beauty & Personal Care":[
-"Cosmetics",
-"Skin Care",
-"Hair Care",
-"Perfume",
-"Health & Personal Care"
-],
-
-"Services":[
-"Tutoring",
-"Cleaning",
-"Transport",
-"Photography",
-"IT & Digital",
-"Other Services"
-],
-
-"Repair & Construction":[
-"Electrician",
-"Plumber",
-"AC & Fridge Repair",
-"Construction Materials",
-"Mechanic",
-"Painter"
-],
-
-"Commercial Equipment & Machinery":[
-"Factory Equipment",
-"Restaurant Equipment",
-"Office Equipment",
-"Tools",
-"Machinery"
-],
-
-"Leisure & Activities":[
-"Sports",
-"Gym & Fitness",
-"Music",
-"Books",
-"Tickets & Events",
-"Hobbies"
-],
-
-"Babies & Kids":[
-"Baby Products",
-"Toys",
-"Kids Clothing",
-"Strollers",
-"School Items"
-],
-
-"Food, Agriculture & Supplies":[
-"Vegetables",
-"Fruits",
-"Fish",
-"Livestock Feed",
-"Seeds",
-"Farm Products"
-],
-
-"Animals & Pets":[
-"Cattle",
-"Goat",
-"Poultry",
-"Pets",
-"Pet Supplies"
-],
-
-"Jobs":[
-"Full Time",
-"Part Time",
-"Sales Jobs",
-"Driver Jobs",
-"Office Jobs",
-"Other Jobs"
-],
-
-"Seeking Work - CVs":[
-"CVs",
-"Job Seekers",
-"Freelancers",
-"Skilled Workers"
-],
-
-"Business & Industry":[
-"Business for Sale",
-"Wholesale",
-"Retail",
-"Industrial Products",
-"Agriculture Business"
-]
-
+const subs={
+"Vehicles":["Cars","Motorcycles","Bicycles","Auto Rickshaw","Trucks & Buses","Vehicle Parts"],
+"Property":["Land","Apartments","Houses","Shops & Commercial Space","Office Space","Property for Rent"],
+"Phones & Tablets":["Mobile Phones","Tablets","Phone Accessories","Smart Watches"],
+"Electronics":["TV","Laptop & Computer","Camera","Audio","Gaming","Other Electronics"],
+"Home, Furniture & Garden":["Furniture","Home Decor","Kitchen","Garden","Appliances"],
+"Fashion":["Men","Women","Kids","Shoes","Bags & Accessories","Watches"],
+"Beauty & Personal Care":["Cosmetics","Skin Care","Hair Care","Perfume","Health & Personal Care"],
+"Services":["Tutoring","Cleaning","Transport","Photography","IT & Digital","Other Services"],
+"Repair & Construction":["Electrician","Plumber","AC & Fridge Repair","Construction Materials","Mechanic","Painter"],
+"Commercial Equipment & Machinery":["Factory Equipment","Restaurant Equipment","Office Equipment","Tools","Machinery"],
+"Leisure & Activities":["Sports","Gym & Fitness","Music","Books","Tickets & Events","Hobbies"],
+"Babies & Kids":["Baby Products","Toys","Kids Clothing","Strollers","School Items"],
+"Food, Agriculture & Supplies":["Vegetables","Fruits","Fish","Livestock Feed","Seeds","Farm Products"],
+"Animals & Pets":["Cattle","Goat","Poultry","Pets","Pet Supplies"],
+"Jobs":["Full Time","Part Time","Sales Jobs","Driver Jobs","Office Jobs","Other Jobs"],
+"Seeking Work - CVs":["CVs","Job Seekers","Freelancers","Skilled Workers"],
+"Business & Industry":["Business for Sale","Wholesale","Retail","Industrial Products","Agriculture Business"]
 };
 
-
-
-/* ==========================================================
-   UPDATE SUBCATEGORY
-========================================================== */
-
-function updateSubs(
-selectedValue=""
-){
-
-  const items =
-    subs[cat.value] || [];
-
-
-  sub.innerHTML =
-    '<option value="">সব সাব-ক্যাটাগরি</option>';
-
-
-  items.forEach(
-    function(item){
-
-      const option =
-        document.createElement(
-          "option"
-        );
-
-      option.value =
-        item;
-
-      option.textContent =
-        item;
-
-      if(
-        item === selectedValue
-      ){
-
-        option.selected =
-          true;
-
-      }
-
-      sub.appendChild(
-        option
-      );
-
-    }
-  );
-
-}
-
-
-
-/* ==========================================================
-   SAFE TEXT
-========================================================== */
-
-function esc(value){
-
-  return String(
-    value ?? ""
-  )
-  .replace(/&/g,"&amp;")
-  .replace(/</g,"&lt;")
-  .replace(/>/g,"&gt;")
-  .replace(/"/g,"&quot;")
-  .replace(/'/g,"&#039;");
-
-}
-
-
-
-/* ==========================================================
-   INITIAL FILTER
-========================================================== */
-
-if(
-  initialCategory
-){
-
-  const categoryExists =
-    Array.from(
-      cat.options
-    ).some(
-      function(option){
-        return option.value ===
-          initialCategory;
-      }
-    );
-
-
-  if(categoryExists){
-
-    cat.value =
-      initialCategory;
-
+function esc(v){return String(v??"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#039;");}
+function getImage(ad){
+  if(Array.isArray(ad.image_urls)&&ad.image_urls.length)return ad.image_urls[0];
+  if(typeof ad.image_urls==="string"&&ad.image_urls.trim()){
+    try{const x=JSON.parse(ad.image_urls);if(Array.isArray(x)&&x.length)return x[0];}catch(e){}
+    return ad.image_urls.trim();
   }
-
+  return "";
+}
+function updateSubs(selected=""){
+  sub.innerHTML='<option value="">সব সাব-ক্যাটাগরি</option>';
+  (subs[cat.value]||[]).forEach(x=>{
+    const o=document.createElement("option");o.value=x;o.textContent=x;if(x===selected)o.selected=true;sub.appendChild(o);
+  });
 }
 
+if(initialCategory && Array.from(cat.options).some(o=>o.value===initialCategory))cat.value=initialCategory;
+q.value=initialQuery;topSearch.value=initialQuery;updateSubs();
 
-q.value =
-initialQuery;
-
-
-topSearch.value =
-initialQuery;
-
-
-updateSubs();
-
-
-
-/* ==========================================================
-   LOAD ADS
-========================================================== */
-
-function getAds(){
-
+async function loadAds(){
+  if(!SUPA_KEY){
+    if(typeof window.ads==="function")return window.ads();
+    return [];
+  }
   try{
-
-    if(
-      typeof window.ads ===
-      "function"
-    ){
-
-      const data =
-        window.ads();
-
-      if(
-        Array.isArray(data)
-      ){
-
-        return data;
-
-      }
-
-    }
-
-  }catch(error){
-
-    console.error(
-      "ads() error:",
-      error
-    );
-
+    const r=await fetch(SUPA_URL+"/rest/v1/ads?select=*&status=in.(approved,published)&order=created_at.desc",{
+      headers:{apikey:SUPA_KEY,Authorization:"Bearer "+SUPA_KEY,Accept:"application/json"}
+    });
+    if(!r.ok)throw new Error(await r.text());
+    const data=await r.json();
+    if(Array.isArray(data)&&typeof window.saveAds==="function")window.saveAds(data);
+    return Array.isArray(data)?data:[];
+  }catch(e){
+    console.error("Search ads load error:",e);
+    if(typeof window.ads==="function")return window.ads();
+    return [];
   }
-
-
-  return [];
-
 }
 
-
-
-/* ==========================================================
-   RENDER
-========================================================== */
-
-function render(){
-
-  let all =
-    getAds();
-
-
-  /*
-   * IMPORTANT
-   *
-   * Public marketplace-এ শুধু
-   * approved অথবা published বিজ্ঞাপন দেখাবে।
-   *
-   * pending / rejected এখানে আসবে না।
-   */
-
-  let list =
-    all.filter(
-      function(ad){
-
-        const status =
-          String(
-            ad.status || ""
-          )
-          .trim()
-          .toLowerCase();
-
-
-        return (
-          status === "approved" ||
-          status === "published"
-        );
-
-      }
-    );
-
-
-  const keyword =
-    q.value
-      .trim()
-      .toLowerCase();
-
-
-  const categoryValue =
-    cat.value;
-
-
-  const subcategoryValue =
-    sub.value;
-
-
-  const areaValue =
-    area.value;
-
-
-  const minValue =
-    min.value === ""
-    ? 0
-    : Number(
-        min.value
-      );
-
-
-  const maxValue =
-    max.value === ""
-    ? Infinity
-    : Number(
-        max.value
-      );
-
-
-
-  /* ========================================================
-     FILTER
-  ======================================================== */
-
-  list =
-    list.filter(
-      function(ad){
-
-        const title =
-          String(
-            ad.title || ""
-          );
-
-
-        const categoryText =
-          String(
-            ad.category || ""
-          );
-
-
-        const subcategoryText =
-          String(
-            ad.subcategory || ""
-          );
-
-
-        const locationText =
-          String(
-            ad.location || ""
-          );
-
-
-        const description =
-          String(
-            ad.description || ""
-          );
-
-
-        const searchable =
-          (
-            title +
-            " " +
-            categoryText +
-            " " +
-            subcategoryText +
-            " " +
-            locationText +
-            " " +
-            description
-          )
-          .toLowerCase();
-
-
-        const price =
-          Number(
-            ad.price || 0
-          );
-
-
-        /*
-         * Category
-         */
-
-        if(
-          categoryValue &&
-          categoryText !==
-          categoryValue
-        ){
-
-          return false;
-
-        }
-
-
-        /*
-         * Subcategory
-         */
-
-        if(
-          subcategoryValue &&
-          subcategoryText !==
-          subcategoryValue
-        ){
-
-          return false;
-
-        }
-
-
-        /*
-         * Search
-         */
-
-        if(
-          keyword &&
-          !searchable.includes(
-            keyword
-          )
-        ){
-
-          return false;
-
-        }
-
-
-        /*
-         * Area
-         *
-         * Exact match
-         */
-
-        if(
-          areaValue &&
-          locationText !==
-          areaValue
-        ){
-
-          return false;
-
-        }
-
-
-        /*
-         * Price
-         */
-
-        if(
-          price < minValue ||
-          price > maxValue
-        ){
-
-          return false;
-
-        }
-
-
-        return true;
-
-      }
-    );
-
-
-
-  /* ========================================================
-     SORT
-  ======================================================== */
-
-  if(
-    sort.value ===
-    "low"
-  ){
-
-    list.sort(
-      function(a,b){
-
-        return Number(
-          a.price || 0
-        ) -
-        Number(
-          b.price || 0
-        );
-
-      }
-    );
-
-  }
-
-
-  if(
-    sort.value ===
-    "high"
-  ){
-
-    list.sort(
-      function(a,b){
-
-        return Number(
-          b.price || 0
-        ) -
-        Number(
-          a.price || 0
-        );
-
-      }
-    );
-
-  }
-
-
-  if(
-    sort.value ===
-    "new"
-  ){
-
-    list.sort(
-      function(a,b){
-
-        return String(
-          b.created_at ||
-          b.id ||
-          ""
-        )
-        .localeCompare(
-          String(
-            a.created_at ||
-            a.id ||
-            ""
-          )
-        );
-
-      }
-    );
-
-  }
-
-
-  if(
-    trending
-  ){
-
-    list.sort(
-      function(a,b){
-
-        return Number(
-          b.views || 0
-        ) -
-        Number(
-          a.views || 0
-        );
-
-      }
-    );
-
-  }
-
-
-
-  /* ========================================================
-     COUNT
-  ======================================================== */
-
-  count.textContent =
-    list.length +
-    "টি বিজ্ঞাপন";
-
-
-
-  /* ========================================================
-     HEADING
-  ======================================================== */
-
-  if(
-    categoryValue
-  ){
-
-    heading.textContent =
-      categoryValue;
-
-  }else{
-
-    heading.textContent =
-      "সব বিজ্ঞাপন";
-
-  }
-
-
-
-  /* ========================================================
-     SUMMARY
-  ======================================================== */
-
-  if(
-    categoryValue &&
-    subcategoryValue
-  ){
-
-    summary.textContent =
-      categoryValue +
-      " — " +
-      subcategoryValue +
-      " এর বিজ্ঞাপন দেখানো হচ্ছে।";
-
-  }else if(
-    categoryValue
-  ){
-
-    summary.textContent =
-      categoryValue +
-      " এর বিজ্ঞাপন দেখানো হচ্ছে।";
-
-  }else if(
-    areaValue
-  ){
-
-    summary.textContent =
-      areaValue +
-      " এলাকার প্রকাশিত বিজ্ঞাপন দেখানো হচ্ছে।";
-
-  }else{
-
-    summary.textContent =
-      "আপনার এলাকার প্রকাশিত বিজ্ঞাপনগুলো দেখুন।";
-
-  }
-
-
-
-  /* ========================================================
-     EMPTY
-  ======================================================== */
-
-  if(
-    !list.length
-  ){
-
-    results.innerHTML = `
-
-      <div
-        style="
-          grid-column:1/-1;
-          padding:45px;
-          text-align:center;
-          color:#81948a;
-          border:1px solid rgba(105,245,165,.12);
-          border-radius:14px;
-        ">
-
-        এই filter অনুযায়ী কোনো বিজ্ঞাপন পাওয়া যায়নি।
-
-      </div>
-
-    `;
-
+function render(allAds){
+  let list=(Array.isArray(allAds)?allAds:[]).filter(ad=>{
+    const st=String(ad.status||"").toLowerCase();
+    return st==="approved"||st==="published";
+  });
+  const keyword=q.value.trim().toLowerCase();
+  const cv=cat.value,sv=sub.value,av=area.value;
+  const mn=min.value===""?0:Number(min.value),mx=max.value===""?Infinity:Number(max.value);
+
+  list=list.filter(ad=>{
+    const searchable=[ad.title,ad.category,ad.subcategory,ad.location,ad.description,ad.area,ad.brand,ad.model,ad.phone].map(x=>String(x||"")).join(" ").toLowerCase();
+    const location=String(ad.location||"");
+    const price=Number(ad.price||0);
+    if(cv&&String(ad.category||"")!==cv)return false;
+    if(sv&&String(ad.subcategory||"")!==sv)return false;
+    if(keyword&&!searchable.includes(keyword))return false;
+    if(av&&!location.toLowerCase().includes(av.toLowerCase()))return false;
+    if(price<mn||price>mx)return false;
+    return true;
+  });
+
+  if(sort.value==="low")list.sort((a,b)=>Number(a.price||0)-Number(b.price||0));
+  else if(sort.value==="high")list.sort((a,b)=>Number(b.price||0)-Number(a.price||0));
+  else if(trending)list.sort((a,b)=>Number(b.views||0)-Number(a.views||0));
+  else list.sort((a,b)=>String(b.created_at||b.id||"").localeCompare(String(a.created_at||a.id||"")));
+
+  count.textContent=list.length+"টি বিজ্ঞাপন";
+  heading.textContent=cv||"সব বিজ্ঞাপন";
+  summary.textContent=cv&&sv?cv+" — "+sv+" এর বিজ্ঞাপন দেখানো হচ্ছে।":cv?cv+" এর বিজ্ঞাপন দেখানো হচ্ছে।":av?av+" এলাকার প্রকাশিত বিজ্ঞাপন দেখানো হচ্ছে।":keyword?'"'+q.value.trim()+'" এর সার্চ রেজাল্ট দেখানো হচ্ছে।':"আপনার এলাকার প্রকাশিত বিজ্ঞাপনগুলো দেখুন।";
+
+  if(!list.length){
+    results.innerHTML="<div style='grid-column:1/-1;padding:45px;text-align:center;color:#81948a;border:1px solid rgba(105,245,165,.12);border-radius:14px'>কোনো বিজ্ঞাপন পাওয়া যায়নি।<br><small>অন্য শব্দ বা filter দিয়ে চেষ্টা করুন।</small></div>";
     return;
-
   }
 
+  results.innerHTML=list.map(ad=>{
+    const title=esc(ad.title||"বিজ্ঞাপন"), location=esc(ad.location||""), category=esc(ad.category||"বিজ্ঞাপন"), image=getImage(ad);
+    const price="৳ "+Number(ad.price||0).toLocaleString("bn-BD");
+    const photo=image?`<div class="photo" style="padding:0;overflow:hidden"><img src="${esc(image)}" alt="${title}" style="width:100%;height:100%;object-fit:cover;display:block" loading="lazy"></div>`:`<div class="photo">${category}</div>`;
+    return `<article class="product" data-id="${esc(ad.id||"")}" style="cursor:pointer">${photo}<div class="body"><span class="badge">${category}</span><h3>${title}</h3><div class="price">${price}</div><div class="meta">📍 ${location}</div></div></article>`;
+  }).join("");
 
-
-  /* ========================================================
-     CARD
-  ======================================================== */
-
-  results.innerHTML =
-    list.map(
-      function(ad){
-
-        const title =
-          esc(
-            ad.title ||
-            "বিজ্ঞাপন"
-          );
-
-
-        const location =
-          esc(
-            ad.location ||
-            ""
-          );
-
-
-        const categoryText =
-          esc(
-            ad.category ||
-            ""
-          );
-
-
-        let price =
-          "৳ " +
-          Number(
-            ad.price || 0
-          ).toLocaleString(
-            "bn-BD"
-          );
-
-
-        /*
-         * Image
-         */
-
-        let image = "";
-
-
-        if(
-          Array.isArray(
-            ad.image_urls
-          ) &&
-          ad.image_urls.length
-        ){
-
-          image =
-            ad.image_urls[0];
-
-        }else if(
-          typeof ad.image_urls ===
-          "string" &&
-          ad.image_urls
-        ){
-
-          try{
-
-            const parsed =
-              JSON.parse(
-                ad.image_urls
-              );
-
-            if(
-              Array.isArray(
-                parsed
-              ) &&
-              parsed.length
-            ){
-
-              image =
-                parsed[0];
-
-            }else{
-
-              image =
-                ad.image_urls;
-
-            }
-
-          }catch(e){
-
-            image =
-              ad.image_urls;
-
-          }
-
-        }
-
-
-        const photo =
-          image
-          ?
-
-          `
-
-          <div class="photo">
-
-            <img
-              src="${esc(image)}"
-              alt="${title}"
-              style="
-                width:100%;
-                height:100%;
-                object-fit:cover;
-                display:block;
-              "
-              loading="lazy"
-            >
-
-          </div>
-
-          `
-
-          :
-
-          `
-
-          <div class="photo">
-
-            ${categoryText ||
-              "বিজ্ঞাপন"}
-
-          </div>
-
-          `;
-
-
-
-        return `
-
-          <article
-            class="product"
-            onclick="
-              window.location.href =
-              'ad-details.html?id=${encodeURIComponent(
-                ad.id || ""
-              )}'
-            "
-            style="cursor:pointer"
-          >
-
-            ${photo}
-
-
-            <div class="body">
-
-              <span class="badge">
-                ${esc(
-                  ad.category ||
-                  "বিজ্ঞাপন"
-                )}
-              </span>
-
-
-              <h3>
-                ${title}
-              </h3>
-
-
-              <div class="price">
-                ${price}
-              </div>
-
-
-              <div class="meta">
-                ${location}
-              </div>
-
-            </div>
-
-          </article>
-
-        `;
-
-      }
-    )
-    .join("");
-
+  results.querySelectorAll(".product").forEach(card=>card.addEventListener("click",()=>{
+    const id=card.dataset.id;if(id)window.location.href="ad-details.html?id="+encodeURIComponent(id);
+  }));
 }
 
-
-
-/* ==========================================================
-   EVENTS
-========================================================== */
-
-
-/*
- * Category change
- */
-
-cat.addEventListener(
-"change",
-function(){
-
-  updateSubs();
-
-  render();
-
-});
-
-
-
-/*
- * Subcategory
- */
-
-sub.addEventListener(
-"change",
-render
-);
-
-
-
-/*
- * Area
- */
-
-area.addEventListener(
-"change",
-render
-);
-
-
-
-/*
- * Sort
- */
-
-sort.addEventListener(
-"change",
-render
-);
-
-
-
-/*
- * Price
- */
-
-min.addEventListener(
-"input",
-render
-);
-
-
-max.addEventListener(
-"input",
-render
-);
-
-
-
-/*
- * Search
- */
-
-q.addEventListener(
-"input",
-render
-);
-
-
-
-/*
- * Top search
- */
-
-searchForm.addEventListener(
-"submit",
-function(e){
-
-  e.preventDefault();
-
-  q.value =
-    topSearch.value.trim();
-
-  render();
-
-});
-
-
-
-/*
- * Reset
- */
-
-clear.addEventListener(
-"click",
-function(){
-
-  cat.value =
-    "";
-
-  updateSubs();
-
-  sub.value =
-    "";
-
-  q.value =
-    "";
-
-  topSearch.value =
-    "";
-
-  min.value =
-    "";
-
-  max.value =
-    "";
-
-  area.value =
-    "";
-
-  sort.value =
-    "new";
-
-
-  render();
-
-
-  /*
-   * URL clean
-   */
-
-  try{
-
-    history.replaceState(
-      {},
-      document.title,
-      "search.html"
-    );
-
-  }catch(e){}
-
-});
-
-
-
-/* ==========================================================
-   FIRST RENDER
-========================================================== */
-
-render();
-
-
+results.innerHTML="<div style='grid-column:1/-1;padding:45px;text-align:center;color:#81948a'>বিজ্ঞাপন লোড হচ্ছে...</div>";
+const allAds=await loadAds();
+render(allAds);
+
+cat.addEventListener("change",()=>{updateSubs();render(allAds)});
+sub.addEventListener("change",()=>render(allAds));
+area.addEventListener("change",()=>render(allAds));
+sort.addEventListener("change",()=>render(allAds));
+min.addEventListener("input",()=>render(allAds));
+max.addEventListener("input",()=>render(allAds));
+q.addEventListener("input",()=>{topSearch.value=q.value;render(allAds)});
+searchForm.addEventListener("submit",e=>{e.preventDefault();q.value=topSearch.value.trim();render(allAds)});
+clear.addEventListener("click",()=>{cat.value="";updateSubs();sub.value="";q.value="";topSearch.value="";min.value="";max.value="";area.value="";sort.value="new";render(allAds);try{history.replaceState({},document.title,"search.html")}catch(e){}});
 });
 </script>
-
-
 </body>
 </html>
