@@ -7,7 +7,7 @@ form.addEventListener("submit",async e=>{
  if(password!==confirmPassword){msg.textContent="Password মিলছে না।";return}
  btn.disabled=true;btn.textContent="ACCOUNT তৈরি হচ্ছে...";
  try{
-  const data=await auth("signup",{email:document.getElementById("email").value.trim().toLowerCase(),password, data:{name:document.getElementById("fullName").value.trim(),phone:document.getElementById("phone").value.trim()}});
+const data=await auth("signup",{email:document.getElementById("email").value.trim().toLowerCase(),password,options:{email_redirect_to:"https://rafibinarif1997.github.io/shahmahmudpurbazar/verify.html"},data:{name:document.getElementById("fullName").value.trim(),phone:document.getElementById("phone").value.trim()}});
   if(data.access_token) setSbSession(data);
   if(data.user) localStorage.setItem("smb_user_v1",JSON.stringify({id:data.user.id,name:document.getElementById("fullName").value.trim(),email:data.user.email,phone:document.getElementById("phone").value.trim()}));
   msg.textContent=data.access_token?"Account তৈরি হয়েছে!":"Account তৈরি হয়েছে। Email confirmation প্রয়োজন হতে পারে।";
