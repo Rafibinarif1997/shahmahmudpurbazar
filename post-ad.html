@@ -1,12 +1,25 @@
 <!doctype html>
 <html lang="bn">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>বিজ্ঞাপন দিন | শাহমাহমুদপুর বাজার</title>
-<link rel="stylesheet" href="style.css">
+
+<meta
+  name="viewport"
+  content="width=device-width,initial-scale=1">
+
+<title>
+বিজ্ঞাপন দিন | শাহমাহমুদপুর বাজার
+</title>
+
+<link
+  rel="stylesheet"
+  href="style.css">
+
 
 <style>
+
 .page{
   max-width:760px;
   padding:35px 16px 100px;
@@ -20,9 +33,9 @@
 
 .user-note{
   margin:15px 0 20px;
-  padding:12px 14px;
+  padding:13px 14px;
   border:1px solid rgba(105,245,165,.14);
-  border-radius:10px;
+  border-radius:12px;
   background:rgba(105,245,165,.03);
   color:#819089;
   font-size:11px;
@@ -31,241 +44,403 @@
 .user-note strong{
   color:#69f5a5;
 }
+
+.image-help{
+  margin-top:7px;
+  color:#66766e;
+  font-size:9px;
+}
+
+.preview-grid{
+  display:grid;
+  grid-template-columns:
+    repeat(3,1fr);
+
+  gap:8px;
+
+  margin-top:12px;
+}
+
+.preview-item{
+  position:relative;
+  aspect-ratio:1;
+  overflow:hidden;
+
+  border-radius:12px;
+
+  border:1px solid
+    rgba(105,245,165,.14);
+
+  background:#07110c;
+}
+
+.preview-item img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.image-number{
+  position:absolute;
+  left:6px;
+  top:6px;
+
+  padding:3px 7px;
+
+  border-radius:20px;
+
+  background:rgba(0,0,0,.65);
+
+  color:#fff;
+
+  font-size:8px;
+}
+
 </style>
+
 </head>
+
 
 <body>
 
+
 <main class="container page">
 
-<a href="index.html" class="brand">
+
+<a
+  href="index.html"
+  class="brand">
+
   <b>শাহমাহমুদপুর</b>
+
   <strong>বাজার</strong>
-  <small>LOCAL MARKETPLACE</small>
+
+  <small>
+    LOCAL MARKETPLACE
+  </small>
+
 </a>
 
-<section id="loading" class="authbox loading" style="margin-top:25px">
+
+
+<section
+  id="loading"
+  class="authbox loading"
+  style="margin-top:25px">
+
   আপনার account যাচাই করা হচ্ছে...
+
 </section>
+
+
 
 <section
   id="formBox"
   class="authbox"
-  style="margin-top:25px;display:none">
-
-  <span class="eyebrow">POST AN AD</span>
-
-  <h1 style="font-size:30px">
-    আপনার বিজ্ঞাপন দিন
-  </h1>
-
-  <p class="muted">
-    পণ্য বা সেবা স্থানীয় ক্রেতাদের কাছে পৌঁছে দিন।
-  </p>
-
-  <div id="userNote" class="user-note"></div>
-
-  <form id="adForm">
-
-    <label>
-      ক্যাটাগরি
-
-      <select id="category" required>
-
-        <option value="">
-          নির্বাচন করুন
-        </option>
-
-        <option>Vehicles</option>
-        <option>Property</option>
-        <option>Phones & Tablets</option>
-        <option>Electronics</option>
-        <option>Home, Furniture & Garden</option>
-        <option>Fashion</option>
-        <option>Beauty & Personal Care</option>
-        <option>Services</option>
-        <option>Repair & Construction</option>
-        <option>Commercial Equipment & Machinery</option>
-        <option>Leisure & Activities</option>
-        <option>Babies & Kids</option>
-        <option>Food, Agriculture & Supplies</option>
-        <option>Animals & Pets</option>
-        <option>Jobs</option>
-        <option>Seeking Work - CVs</option>
-        <option>Business & Industry</option>
-
-      </select>
-
-    </label>
+  style="
+    margin-top:25px;
+    display:none
+  ">
 
 
-    <label>
-      সাব-ক্যাটাগরি
-
-      <select id="subcategory">
-
-        <option value="">
-          নির্বাচন করুন
-        </option>
-
-      </select>
-
-    </label>
+<span class="eyebrow">
+POST AN AD
+</span>
 
 
-    <label>
-      শিরোনাম
-
-      <input
-        id="title"
-        maxlength="100"
-        required
-        placeholder="যেমন: iPhone 13 128GB">
-
-    </label>
+<h1 style="font-size:30px">
+আপনার বিজ্ঞাপন দিন
+</h1>
 
 
-    <label>
-      দাম
-
-      <input
-        id="price"
-        type="number"
-        min="0"
-        required
-        placeholder="৳">
-
-    </label>
+<p class="muted">
+পণ্য বা সেবা স্থানীয় ক্রেতাদের কাছে পৌঁছে দিন।
+</p>
 
 
-    <label>
-      বিস্তারিত
 
-      <textarea
-        id="description"
-        rows="6"
-        placeholder="পণ্যের বিস্তারিত লিখুন"></textarea>
-
-    </label>
+<div
+  id="userNote"
+  class="user-note">
+</div>
 
 
-    <label>
-      এলাকা
 
-      <input
-        id="location"
-        required
-        placeholder="যেমন: মহামায়া">
-
-    </label>
+<form id="adForm">
 
 
-    <label>
-      মোবাইল নম্বর
+<label>
 
-      <input
-        id="phone"
-        required
-        placeholder="01XXXXXXXXX">
+ক্যাটাগরি
 
-    </label>
+<select
+  id="category"
+  required>
+
+<option value="">
+নির্বাচন করুন
+</option>
+
+<option>Vehicles</option>
+<option>Property</option>
+<option>Phones & Tablets</option>
+<option>Electronics</option>
+<option>Home, Furniture & Garden</option>
+<option>Fashion</option>
+<option>Beauty & Personal Care</option>
+<option>Services</option>
+<option>Repair & Construction</option>
+<option>Commercial Equipment & Machinery</option>
+<option>Leisure & Activities</option>
+<option>Babies & Kids</option>
+<option>Food, Agriculture & Supplies</option>
+<option>Animals & Pets</option>
+<option>Jobs</option>
+<option>Seeking Work - CVs</option>
+<option>Business & Industry</option>
+
+</select>
+
+</label>
 
 
-    <label>
-      ছবি
 
-      <input
-        id="image"
-        type="file"
-        accept="image/*">
+<label>
 
-    </label>
+সাব-ক্যাটাগরি
+
+<select id="subcategory">
+
+<option value="">
+নির্বাচন করুন
+</option>
+
+</select>
+
+</label>
 
 
-    <button
-      id="submitBtn"
-      class="btn green"
-      style="width:100%;margin-top:12px">
 
-      Preview & Publish →
+<label>
 
-    </button>
+শিরোনাম
 
-  </form>
+<input
+  id="title"
+  maxlength="100"
+  required
+  placeholder="যেমন: iPhone 13 128GB">
 
-  <p id="msg" class="msg"></p>
+</label>
+
+
+
+<label>
+
+দাম
+
+<input
+  id="price"
+  type="number"
+  min="0"
+  required
+  placeholder="৳">
+
+</label>
+
+
+
+<label>
+
+বিস্তারিত
+
+<textarea
+  id="description"
+  rows="6"
+  placeholder="পণ্যের বিস্তারিত লিখুন"></textarea>
+
+</label>
+
+
+
+<label>
+
+এলাকা
+
+<input
+  id="location"
+  required
+  placeholder="যেমন: মহামায়া">
+
+</label>
+
+
+
+<label>
+
+মোবাইল নম্বর
+
+<input
+  id="phone"
+  required
+  placeholder="01XXXXXXXXX">
+
+</label>
+
+
+
+<label>
+
+ছবি
+
+<input
+  id="image"
+  type="file"
+  accept="image/jpeg,image/png,image/webp"
+  multiple>
+
+<div class="image-help">
+সর্বোচ্চ ৩টি ছবি • JPG, PNG অথবা WebP
+</div>
+
+</label>
+
+
+<div
+  id="preview"
+  class="preview-grid">
+</div>
+
+
+
+<button
+  id="submitBtn"
+  class="btn green"
+  type="submit"
+  style="
+    width:100%;
+    margin-top:15px
+  ">
+
+Preview & Publish →
+
+</button>
+
+
+</form>
+
+
+
+<p
+  id="msg"
+  class="msg">
+</p>
+
 
 </section>
 
 </main>
 
 
+
 <nav class="mobile-nav">
 
 <a href="index.html">
-  <span>⌂</span>
-  Home
+<span>⌂</span>
+Home
 </a>
 
 <a href="favorites.html">
-  <span>♡</span>
-  Saved
+<span>♡</span>
+Saved
 </a>
 
-<a class="active" href="post-ad.html">
-  <span>⊞</span>
-  Sell
+<a
+  class="active"
+  href="post-ad.html">
+<span>⊞</span>
+Sell
 </a>
 
 <a href="messages.html">
-  <span>▤</span>
-  Messages
+<span>▤</span>
+Messages
 </a>
 
 <a href="profile.html">
-  <span>♙</span>
-  Profile
+<span>♙</span>
+Profile
 </a>
 
 </nav>
+
 
 
 <script src="supabase.js?v=9"></script>
 <script src="app.js?v=9"></script>
 
 
+
 <script>
 
 (async function(){
 
+
 const loading =
-document.getElementById("loading");
+document.getElementById(
+  "loading"
+);
+
 
 const formBox =
-document.getElementById("formBox");
+document.getElementById(
+  "formBox"
+);
 
-const userNote =
-document.getElementById("userNote");
 
 const form =
-document.getElementById("adForm");
+document.getElementById(
+  "adForm"
+);
 
-const msg =
-document.getElementById("msg");
+
+const userNote =
+document.getElementById(
+  "userNote"
+);
+
+
+const message =
+document.getElementById(
+  "msg"
+);
+
 
 const submitBtn =
-document.getElementById("submitBtn");
+document.getElementById(
+  "submitBtn"
+);
 
 
-/*
- * User বের করার function
- */
+const imageInput =
+document.getElementById(
+  "image"
+);
+
+
+const preview =
+document.getElementById(
+  "preview"
+);
+
+
+
+/* ============================================================
+   GET USER
+============================================================ */
+
 
 async function getUser(){
-
-  /*
-   * প্রথমে smb_user_v1
-   */
 
   try{
 
@@ -293,10 +468,6 @@ async function getUser(){
   }catch(e){}
 
 
-  /*
-   * তারপর Supabase
-   */
-
   try{
 
     if(
@@ -311,6 +482,7 @@ async function getUser(){
 
         const metadata =
           user.user_metadata || {};
+
 
         const profile = {
 
@@ -335,10 +507,14 @@ async function getUser(){
 
         };
 
+
         localStorage.setItem(
           "smb_user_v1",
-          JSON.stringify(profile)
+          JSON.stringify(
+            profile
+          )
         );
+
 
         return profile;
 
@@ -346,9 +522,11 @@ async function getUser(){
 
     }
 
-  }catch(e){
+  }catch(error){
 
-    console.error(e);
+    console.error(
+      error
+    );
 
   }
 
@@ -358,21 +536,21 @@ async function getUser(){
 }
 
 
+
 let user =
 await getUser();
 
-
-/*
- * session তৈরি হওয়ার জন্য
- * একটু অপেক্ষা করে আবার check
- */
 
 if(!user){
 
   await new Promise(
     resolve =>
-      setTimeout(resolve,1200)
+      setTimeout(
+        resolve,
+        1000
+      )
   );
+
 
   user =
     await getUser();
@@ -380,9 +558,6 @@ if(!user){
 }
 
 
-/*
- * এখনও user না থাকলে Login
- */
 
 if(!user){
 
@@ -394,38 +569,47 @@ if(!user){
 }
 
 
-/*
- * User পাওয়া গেছে
- */
 
 loading.style.display =
 "none";
 
+
 formBox.style.display =
 "block";
+
 
 
 const userName =
 user.name ||
 "Google User";
 
+
 const userEmail =
 user.email ||
 "";
 
 
+const userId =
+user.id ||
+"";
+
+
+
 userNote.innerHTML =
+
 `
-  Signed in as
-  <strong>
-    ${escapeHtml(userEmail)}
-  </strong>
+Signed in as
+<strong>
+${escapeHtml(userEmail)}
+</strong>
 `;
 
 
-/*
- * Category map
- */
+
+/* ============================================================
+   CATEGORY
+============================================================ */
+
 
 const subMap={
 
@@ -575,16 +759,15 @@ const subMap={
 };
 
 
-/*
- * Category change
- */
 
-category.onchange=function(){
+category.onchange =
+function(){
 
   const items =
     subMap[
       category.value
     ] || [];
+
 
   subcategory.innerHTML =
     '<option value="">নির্বাচন করুন</option>' +
@@ -597,55 +780,261 @@ category.onchange=function(){
 };
 
 
-/*
- * Submit
- */
+
+/* ============================================================
+   IMAGE PREVIEW
+============================================================ */
+
+
+imageInput.addEventListener(
+"change",
+function(){
+
+  const files =
+    Array.from(
+      imageInput.files || []
+    );
+
+
+  if(files.length > 3){
+
+    message.textContent =
+      "সর্বোচ্চ ৩টি ছবি আপলোড করা যাবে।";
+
+
+    imageInput.value =
+      "";
+
+
+    preview.innerHTML =
+      "";
+
+
+    return;
+
+  }
+
+
+  preview.innerHTML =
+    "";
+
+
+  files.forEach(
+    function(file,index){
+
+      const reader =
+        new FileReader();
+
+
+      reader.onload =
+        function(e){
+
+          preview.innerHTML += `
+
+            <div
+              class="preview-item">
+
+              <img
+                src="${e.target.result}"
+                alt="Image">
+
+              <span
+                class="image-number">
+
+                ${index + 1}
+
+              </span>
+
+            </div>
+
+          `;
+
+        };
+
+
+      reader.readAsDataURL(
+        file
+      );
+
+    }
+  );
+
+});
+
+
+
+/* ============================================================
+   UPLOAD IMAGE
+============================================================ */
+
+
+async function uploadImage(
+  file,
+  adId,
+  index
+){
+
+  const safeName =
+    file.name
+      .replace(
+        /[^a-zA-Z0-9._-]/g,
+        "_"
+      );
+
+
+  const path =
+    userId +
+    "/" +
+    adId +
+    "/" +
+    index +
+    "-" +
+    Date.now() +
+    "-" +
+    safeName;
+
+
+  const response =
+    await fetch(
+
+      SUPABASE_URL +
+      "/storage/v1/object/ad-images/" +
+      path,
+
+      {
+
+        method:"POST",
+
+        headers:{
+
+          "apikey":
+            SUPABASE_ANON_KEY,
+
+          "Authorization":
+            "Bearer " +
+            getSbSession()
+              .access_token,
+
+          "Content-Type":
+            file.type,
+
+          "x-upsert":
+            "false"
+
+        },
+
+        body:file
+
+      }
+
+    );
+
+
+  if(!response.ok){
+
+    const text =
+      await response.text();
+
+
+    throw new Error(
+      "ছবি upload হয়নি: " +
+      text
+    );
+
+  }
+
+
+  return (
+
+    SUPABASE_URL +
+    "/storage/v1/object/public/ad-images/" +
+    path
+
+  );
+
+}
+
+
+
+/* ============================================================
+   SUBMIT
+============================================================ */
+
 
 form.addEventListener(
 "submit",
-function(e){
+async function(e){
 
   e.preventDefault();
 
-  msg.textContent = "";
+
+  message.textContent =
+    "";
+
+
+  const files =
+    Array.from(
+      imageInput.files || []
+    );
+
+
+  if(files.length > 3){
+
+    message.textContent =
+      "সর্বোচ্চ ৩টি ছবি দেওয়া যাবে।";
+
+    return;
+
+  }
 
 
   const titleValue =
-    document.getElementById(
-      "title"
-    ).value.trim();
+    document
+      .getElementById("title")
+      .value
+      .trim();
+
 
   const priceValue =
     Number(
-      document.getElementById(
-        "price"
-      ).value
+      document
+        .getElementById("price")
+        .value
     );
 
+
   const categoryValue =
-    document.getElementById(
-      "category"
-    ).value;
+    document
+      .getElementById("category")
+      .value;
+
 
   const subcategoryValue =
-    document.getElementById(
-      "subcategory"
-    ).value;
+    document
+      .getElementById("subcategory")
+      .value;
+
 
   const descriptionValue =
-    document.getElementById(
-      "description"
-    ).value.trim();
+    document
+      .getElementById("description")
+      .value
+      .trim();
+
 
   const locationValue =
-    document.getElementById(
-      "location"
-    ).value.trim();
+    document
+      .getElementById("location")
+      .value
+      .trim();
+
 
   const phoneValue =
-    document.getElementById(
-      "phone"
-    ).value.trim();
+    document
+      .getElementById("phone")
+      .value
+      .trim();
+
 
 
   if(
@@ -656,7 +1045,7 @@ function(e){
     !phoneValue
   ){
 
-    msg.textContent =
+    message.textContent =
       "সব প্রয়োজনীয় তথ্য পূরণ করুন।";
 
     return;
@@ -664,41 +1053,112 @@ function(e){
   }
 
 
+
   submitBtn.disabled =
     true;
 
+
   submitBtn.textContent =
-    "জমা হচ্ছে...";
+    "বিজ্ঞাপন তৈরি হচ্ছে...";
+
 
 
   try{
 
-    let allAds = [];
+
+    const session =
+      getSbSession();
 
 
     if(
-      typeof window.ads ===
-      "function"
+      !session ||
+      !session.access_token
     ){
 
-      allAds =
-        window.ads() || [];
+      throw new Error(
+        "আপনার Login session পাওয়া যায়নি। আবার Google Login করুন।"
+      );
 
     }
 
 
-    if(!Array.isArray(allAds)){
 
-      allAds = [];
+    /*
+     * Unique advertisement ID
+     */
+
+    const adId =
+      crypto.randomUUID
+        ? crypto.randomUUID()
+        : "ad_" +
+          Date.now();
+
+
+
+    /*
+     * Upload up to 3 images
+     */
+
+    const imageUrls = [];
+
+
+    for(
+      let i = 0;
+      i < files.length;
+      i++
+    ){
+
+      submitBtn.textContent =
+        "ছবি upload হচ্ছে " +
+        (i + 1) +
+        "/" +
+        files.length;
+
+
+      const url =
+        await uploadImage(
+          files[i],
+          adId,
+          i + 1
+        );
+
+
+      imageUrls.push(
+        url
+      );
 
     }
 
 
-    const newAd = {
+
+    /*
+     * Save advertisement
+     * permanently in Supabase
+     */
+
+    submitBtn.textContent =
+      "বিজ্ঞাপন save হচ্ছে...";
+
+
+    const adData = {
 
       id:
-        "ad_" +
-        Date.now(),
+        adId,
+
+      user_id:
+        userId,
+
+      seller_id:
+        userId,
+
+      seller:
+        userName,
+
+      seller_email:
+        userEmail,
+
+      email:
+        userEmail,
 
       title:
         titleValue,
@@ -721,117 +1181,153 @@ function(e){
       phone:
         phoneValue,
 
-      /*
-       * Google account identity
-       */
-
-      seller:
-        userName,
-
-      seller_email:
-        userEmail,
-
-      seller_id:
-        user.id || "",
-
-      user_id:
-        user.id || "",
-
-      email:
-        userEmail,
+      image_urls:
+        imageUrls,
 
       status:
         "pending",
 
-      time:
-        "এখন"
+      created_at:
+        new Date().toISOString()
 
     };
 
 
-    allAds.unshift(
-      newAd
-    );
 
+    const response =
+      await fetch(
 
-    /*
-     * app.js-এর saveAds থাকলে সেটি,
-     * না থাকলে সরাসরি localStorage
-     */
+        SUPABASE_URL +
+        "/rest/v1/ads",
 
-    if(
-      typeof window.saveAds ===
-      "function"
-    ){
+        {
 
-      window.saveAds(
-        allAds
+          method:"POST",
+
+          headers:{
+
+            "apikey":
+              SUPABASE_ANON_KEY,
+
+            "Authorization":
+              "Bearer " +
+              session.access_token,
+
+            "Content-Type":
+              "application/json",
+
+            "Prefer":
+              "return=representation"
+
+          },
+
+          body:
+            JSON.stringify(
+              adData
+            )
+
+        }
+
       );
 
-    }else{
 
-      localStorage.setItem(
-        "smb_ads_v1",
-        JSON.stringify(
-          allAds
-        )
+
+    if(!response.ok){
+
+      const text =
+        await response.text();
+
+
+      throw new Error(
+        "Database error: " +
+        text
       );
 
     }
 
 
-    msg.textContent =
-      "বিজ্ঞাপন জমা হয়েছে। Admin approval-এর পর এটি marketplace-এ দেখা যাবে।";
+
+    message.textContent =
+      "✅ বিজ্ঞাপন সফলভাবে জমা হয়েছে। Admin approval-এর পর marketplace-এ দেখা যাবে।";
 
 
     form.reset();
 
 
-    /*
-     * category reset
-     */
+    preview.innerHTML =
+      "";
+
 
     subcategory.innerHTML =
       '<option value="">নির্বাচন করুন</option>';
 
 
+
+    /*
+     * User চাইলে পরে My Ads-এ দেখতে পারবে
+     */
+
   }catch(error){
 
     console.error(
+      "POST AD ERROR:",
       error
     );
 
-    msg.textContent =
-      "বিজ্ঞাপন জমা দেওয়া যায়নি। আবার চেষ্টা করুন।";
+
+    message.textContent =
+      error.message ||
+      "বিজ্ঞাপন জমা দেওয়া যায়নি।";
+
+
+  }finally{
+
+    submitBtn.disabled =
+      false;
+
+
+    submitBtn.textContent =
+      "Preview & Publish →";
 
   }
-
-
-  submitBtn.disabled =
-    false;
-
-  submitBtn.textContent =
-    "Preview & Publish →";
 
 });
 
 
-/*
- * HTML escape
- */
+
+/* ============================================================
+   ESCAPE HTML
+============================================================ */
+
 
 function escapeHtml(value){
 
   return String(
     value ?? ""
   )
-  .replace(/&/g,"&amp;")
-  .replace(/</g,"&lt;")
-  .replace(/>/g,"&gt;")
-  .replace(/"/g,"&quot;")
-  .replace(/'/g,"&#039;");
+  .replace(
+    /&/g,
+    "&amp;"
+  )
+  .replace(
+    /</g,
+    "&lt;"
+  )
+  .replace(
+    />/g,
+    "&gt;"
+  )
+  .replace(
+    /"/g,
+    "&quot;"
+  )
+  .replace(
+    /'/g,
+    "&#039;"
+  );
 
 }
+
 
 })();
 
