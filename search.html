@@ -5,6 +5,93 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>বিজ্ঞাপন খুঁজুন | শাহমাহমুদপুর বাজার</title>
 <link rel="stylesheet" href="style.css">
+
+<style>
+/* ===== SEARCH PAGE PROFESSIONAL UI ===== */
+.header{
+  padding:18px 0 20px;
+  border-bottom:1px solid rgba(105,245,165,.10);
+  background:linear-gradient(180deg,rgba(5,14,10,.98),rgba(5,14,10,.88));
+}
+.head{
+  display:grid!important;
+  grid-template-columns:auto minmax(280px,1fr) auto;
+  align-items:center;
+  gap:22px;
+}
+.brand{
+  text-decoration:none;
+  line-height:1;
+  min-width:145px;
+}
+.brand b,.brand strong{display:block}
+.brand b{font-size:19px;letter-spacing:-.5px;color:#f2f8f5}
+.brand strong{font-size:22px;color:#69f5a5;margin-top:2px}
+.brand small{display:block;margin-top:7px;font-size:7px;letter-spacing:3px;color:#60736a}
+.search{
+  height:50px;
+  display:flex;
+  align-items:center;
+  border:1px solid rgba(105,245,165,.24);
+  border-radius:14px;
+  overflow:hidden;
+  background:rgba(10,25,18,.82);
+  box-shadow:0 8px 30px rgba(0,0,0,.20);
+}
+.search:focus-within{border-color:rgba(105,245,165,.62);box-shadow:0 0 0 3px rgba(105,245,165,.07),0 10px 35px rgba(0,0,0,.25)}
+.search>span{font-size:25px;color:#69f5a5;padding-left:16px}
+.search input{flex:1;min-width:0;height:100%;border:0!important;outline:0;background:transparent!important;color:#eef8f2!important;font-size:15px!important;padding:0 12px!important}
+.search input::placeholder{color:#6f8178}
+.search button{height:100%;border:0!important;padding:0 25px;background:#69f5a5;color:#062015;font-weight:900;font-size:13px;cursor:pointer}
+.search button:hover{background:#7df8b2}
+.head nav{display:flex;align-items:center;gap:8px}
+.head nav a:first-child{display:none}
+.head nav a:last-child{padding:10px 16px;border:1px solid rgba(105,245,165,.20);border-radius:10px;background:rgba(105,245,165,.045);color:#dcece4;text-decoration:none;font-size:11px;font-weight:800}
+.head nav a:last-child:hover{border-color:rgba(105,245,165,.55);color:#69f5a5}
+.page-top{padding-top:34px}
+.page-top .eyebrow{color:#69f5a5;letter-spacing:3px;font-weight:800;font-size:10px}
+.page-top h1{margin:8px 0 7px;letter-spacing:-1px}
+.filters{
+  display:grid!important;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px!important;
+  padding:16px!important;
+  border:1px solid rgba(105,245,165,.10);
+  border-radius:16px;
+  background:rgba(7,19,13,.60);
+}
+.filters select,.filters input{
+  width:100%;
+  min-height:44px;
+  box-sizing:border-box;
+  border:1px solid rgba(105,245,165,.15)!important;
+  border-radius:10px!important;
+  background:#0b1912!important;
+  color:#dcebe3!important;
+  outline:0;
+  padding:0 12px!important;
+  font-size:12px!important;
+}
+.filters select:focus,.filters input:focus{border-color:rgba(105,245,165,.55)!important;box-shadow:0 0 0 3px rgba(105,245,165,.06)}
+.filters select option{background:#0b1912;color:#eaf5ef}
+#cat{grid-column:1/-1}
+#q2{grid-column:1/-1}
+#clear{border-radius:10px!important}
+@media(max-width:700px){
+  .header{padding:14px 0 15px}
+  .head{display:grid!important;grid-template-columns:1fr auto;gap:12px}
+  .brand{min-width:0}
+  .brand b{font-size:17px}.brand strong{font-size:20px}.brand small{font-size:6px;letter-spacing:2px}
+  .head nav a:last-child{padding:9px 12px;font-size:10px}
+  .head .search{grid-column:1/-1;grid-row:2;height:50px}
+  .search button{padding:0 21px}
+  .page-top{padding-top:25px}
+  .page-top h1{font-size:30px}
+  .filters{grid-template-columns:1fr!important;padding:12px!important}
+  #cat,#q2{grid-column:auto}
+  .filters select,.filters input{min-height:46px;font-size:13px!important}
+}
+</style>
 </head>
 <body>
 <header class="header">
