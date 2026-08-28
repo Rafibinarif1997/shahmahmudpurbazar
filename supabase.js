@@ -423,3 +423,41 @@ window.auth =
 
 window.sbFetch =
   sbFetch;
+
+// ============================================================
+// AUTO HANDLE GOOGLE LOGIN CALLBACK
+// ============================================================
+
+(function(){
+
+  async function initAuthCallback(){
+
+    try{
+
+      // Google/Supabase callback থেকে session তৈরি
+      const user =
+        await handleAuthCallback();
+
+      if(user){
+
+        console.log(
+          "Google login successful:",
+          user.email
+        );
+
+      }
+
+    }catch(error){
+
+      console.error(
+        "Auth callback error:",
+        error
+      );
+
+    }
+
+  }
+
+  initAuthCallback();
+
+})();
