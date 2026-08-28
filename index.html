@@ -1,103 +1,815 @@
 <!doctype html>
 <html lang="bn">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>শাহমাহমুদপুর বাজার | Local Marketplace</title>
 <meta name="description" content="৪নং শাহমাহমুদপুর ইউনিয়নের স্থানীয় ক্রয়-বিক্রয় marketplace">
 <link rel="stylesheet" href="style.css">
+
+<style>
+#authArea{
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  min-width:90px;
+}
+
+.login-link{
+  padding:8px 14px;
+  border:1px solid rgba(105,245,165,.2);
+  border-radius:9px;
+  color:#eaf8f0;
+  background:rgba(105,245,165,.035);
+  font-size:11px;
+  font-weight:800;
+}
+
+.login-link:hover{
+  color:#69f5a5;
+  border-color:rgba(105,245,165,.45);
+  box-shadow:0 0 22px rgba(105,245,165,.12);
+}
+
+.profile-link{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding:5px 9px 5px 6px;
+  border:1px solid rgba(105,245,165,.2);
+  border-radius:10px;
+  background:rgba(105,245,165,.035);
+}
+
+.profile-avatar{
+  width:30px;
+  height:30px;
+  border-radius:50%;
+  object-fit:cover;
+  background:#102019;
+  border:1px solid rgba(105,245,165,.3);
+}
+
+.profile-name{
+  max-width:95px;
+  overflow:hidden;
+  white-space:nowrap;
+  text-overflow:ellipsis;
+  color:#eaf8f0;
+  font-size:10px;
+  font-weight:800;
+}
+
+.profile-email{
+  display:none;
+}
+
+.auth-loading{
+  width:18px;
+  height:18px;
+  border:2px solid rgba(105,245,165,.15);
+  border-top-color:#69f5a5;
+  border-radius:50%;
+  animation:smbSpin .7s linear infinite;
+}
+
+@keyframes smbSpin{
+  to{transform:rotate(360deg)}
+}
+
+@media(max-width:600px){
+  #authArea{
+    min-width:auto;
+  }
+
+  .profile-name{
+    max-width:65px;
+  }
+
+  .profile-link{
+    padding-right:7px;
+  }
+
+  .login-link{
+    padding:7px 10px;
+    font-size:10px;
+  }
+}
+</style>
 </head>
+
 <body>
+
 <header class="header">
+
   <div class="container topbar">
-    <a class="brand" href="index.html"><b>শাহমাহমুদপুর</b><strong>বাজার</strong><small>LOCAL MARKETPLACE</small></a>
-    <div class="top-actions"><a href="login.html">লগইন</a><i></i></div>
+
+    <a class="brand" href="index.html">
+      <b>শাহমাহমুদপুর</b>
+      <strong>বাজার</strong>
+      <small>LOCAL MARKETPLACE</small>
+    </a>
+
+    <div class="top-actions">
+      <div id="authArea">
+        <span class="auth-loading"></span>
+      </div>
+    </div>
+
   </div>
+
   <div class="container search-row">
-    <form id="searchForm" class="search"><span>⌕</span><input id="search" placeholder="কি খুঁজছেন? মোবাইল, গাড়ি, জমি, গরু..."><button>খুঁজুন</button></form>
+
+    <form id="searchForm" class="search">
+
+      <span>⌕</span>
+
+      <input
+        id="search"
+        type="search"
+        autocomplete="off"
+        placeholder="কি খুঁজছেন? মোবাইল, গাড়ি, জমি, গরু..."
+      >
+
+      <button type="submit">খুঁজুন</button>
+
+    </form>
+
   </div>
+
 </header>
 
+
 <main>
-<section class="container location">● ৪নং শাহমাহমুদপুর ইউনিয়ন, চাঁদপুর সদর, চাঁদপুর</section>
+
+<section class="container location">
+  ● ৪নং শাহমাহমুদপুর ইউনিয়ন, চাঁদপুর সদর, চাঁদপুর
+</section>
+
 
 <section class="container quick">
-  <a href="post-ad.html"><span>＋</span><div><b>বিজ্ঞাপন দিন</b><small>সহজে বিক্রি করুন</small></div></a>
-  <a href="search.html?sort=trending"><span>🔥</span><div><b>ট্রেন্ডিং বিজ্ঞাপন</b><small>জনপ্রিয় বিজ্ঞাপন দেখুন</small></div></a>
-  <a href="safety.html"><span>✓</span><div><b>নিরাপদ লেনদেন</b><small>নিরাপদে কেনাকাটা করুন</small></div></a>
+
+  <a href="post-ad.html">
+    <span>＋</span>
+    <div>
+      <b>বিজ্ঞাপন দিন</b>
+      <small>সহজে বিক্রি করুন</small>
+    </div>
+  </a>
+
+  <a href="search.html?sort=trending">
+    <span>🔥</span>
+    <div>
+      <b>ট্রেন্ডিং বিজ্ঞাপন</b>
+      <small>জনপ্রিয় বিজ্ঞাপন দেখুন</small>
+    </div>
+  </a>
+
+  <a href="safety.html">
+    <span>✓</span>
+    <div>
+      <b>নিরাপদ লেনদেন</b>
+      <small>নিরাপদে কেনাকাটা করুন</small>
+    </div>
+  </a>
+
 </section>
+
 
 <section class="container hero">
-  <div class="hero-copy"><small>YOUR LOCAL MARKETPLACE</small>
-    <h1>আপনার এলাকার<br><em>কেনাকাটা</em> এখন আরও সহজ</h1>
-    <p>স্থানীয় মানুষের সাথে সরাসরি পণ্য কেনাবেচা করুন।<br>বিজ্ঞাপন দিন, খুঁজে নিন, যোগাযোগ করুন।</p>
-    <a class="btn green" href="post-ad.html">বিজ্ঞাপন দিন →</a>
+
+  <div class="hero-copy">
+
+    <small>YOUR LOCAL MARKETPLACE</small>
+
+    <h1>
+      আপনার এলাকার<br>
+      <em>কেনাকাটা</em> এখন আরও সহজ
+    </h1>
+
+    <p>
+      স্থানীয় মানুষের সাথে সরাসরি পণ্য কেনাবেচা করুন।<br>
+      বিজ্ঞাপন দিন, খুঁজে নিন, যোগাযোগ করুন।
+    </p>
+
+    <a class="btn green" href="post-ad.html">
+      বিজ্ঞাপন দিন →
+    </a>
+
   </div>
-  <div class="hero-art"><div class="phone-art">🛒</div></div>
+
+  <div class="hero-art">
+    <div class="phone-art">🛒</div>
+  </div>
+
 </section>
+
 
 <section class="container section">
- <div class="section-title"><div><small>BROWSE MARKETPLACE</small><h2>ক্যাটাগরি</h2></div><a href="search.html">সব দেখুন →</a></div>
- <div class="cats">
-  <a class="cat" href="search.html?category=Vehicles"><i>▱</i><b>যানবাহন</b></a>
-  <a class="cat" href="search.html?category=Phones%20%26%20Tablets"><i>▯</i><b>মোবাইল ও ট্যাব</b></a>
-  <a class="cat" href="search.html?category=Property"><i>⌂</i><b>প্রপার্টি</b></a>
-  <a class="cat" href="search.html?category=Home%2C%20Furniture%20%26%20Garden"><i>▱</i><b>বাসা ও আসবাব</b></a>
-  <a class="cat" href="search.html?category=Electronics"><i>▭</i><b>ইলেকট্রনিক্স</b></a>
-  <a class="cat" href="search.html?category=Fashion"><i>♧</i><b>ফ্যাশন ও বিউটি</b></a>
-  <a class="cat" href="search.html?category=Animals%20%26%20Pets"><i>♢</i><b>পশুপাখি</b></a>
-  <a class="cat" href="search.html?category=Jobs"><i>▣</i><b>চাকরি</b></a>
-  <a class="cat" href="search.html?category=Business%20%26%20Industry"><i>⌁</i><b>ব্যবসা ও শিল্প</b></a>
-  <a class="cat" href="search.html?category=Services"><i>⚒</i><b>সেবা</b></a>
-  <a class="cat" href="search.html?category=Leisure%20%26%20Activities"><i>○</i><b>শিক্ষা</b></a>
-  <a class="cat" href="search.html?category=Leisure%20%26%20Activities"><i>◉</i><b>খেলা-ধুলা</b></a>
-  <a class="cat" href="search.html?category=Food%2C%20Agriculture%20%26%20Supplies"><i>♧</i><b>কৃষি ও বাগান</b></a>
-  <a class="cat" href="search.html?category=Beauty%20%26%20Personal%20Care"><i>♡</i><b>স্বাস্থ্য ও ফিটনেস</b></a>
-  <a class="cat" href="search.html?category=Babies%20%26%20Kids"><i>◌</i><b>বাচ্চা</b></a>
-  <a class="cat" href="search.html?category=Leisure%20%26%20Activities"><i>♫</i><b>বিনোদন</b></a>
-  <a class="cat" href="search.html?category=Business%20%26%20Industry"><i>◇</i><b>উপহার ও কালেকশন</b></a>
-  <a class="cat" href="search.html?category=Food%2C%20Agriculture%20%26%20Supplies"><i>♜</i><b>খাবার ও রেস্টুরেন্ট</b></a>
-  <a class="cat" href="search.html?category=Animals%20%26%20Pets"><i>♧</i><b>পোষা প্রাণী</b></a>
-  <a class="cat" href="search.html"><i>•••</i><b>অন্যান্য</b></a>
- </div>
+
+  <div class="section-title">
+
+    <div>
+      <small>BROWSE MARKETPLACE</small>
+      <h2>ক্যাটাগরি</h2>
+    </div>
+
+    <a href="search.html">সব দেখুন →</a>
+
+  </div>
+
+
+  <div class="cats">
+
+    <a class="cat" href="search.html?category=Vehicles">
+      <i>▱</i>
+      <b>যানবাহন</b>
+    </a>
+
+    <a class="cat" href="search.html?category=Phones%20%26%20Tablets">
+      <i>▯</i>
+      <b>মোবাইল ও ট্যাব</b>
+    </a>
+
+    <a class="cat" href="search.html?category=Property">
+      <i>⌂</i>
+      <b>প্রপার্টি</b>
+    </a>
+
+    <a class="cat" href="search.html?category=Home%2C%20Furniture%20%26%20Garden">
+      <i>▱</i>
+      <b>বাসা ও আসবাব</b>
+    </a>
+
+    <a class="cat" href="search.html?category=Electronics">
+      <i>▭</i>
+      <b>ইলেকট্রনিক্স</b>
+    </a>
+
+    <a class="cat" href="search.html?category=Fashion">
+      <i>♧</i>
+      <b>ফ্যাশন ও বিউটি</b>
+    </a>
+
+    <a class="cat" href="search.html?category=Animals%20%26%20Pets">
+      <i>♢</i>
+      <b>পশুপাখি</b>
+    </a>
+
+    <a class="cat" href="search.html?category=Jobs">
+      <i>▣</i>
+      <b>চাকরি</b>
+    </a>
+
+    <a class="cat" href="search.html?category=Business%20%26%20Industry">
+      <i>⌁</i>
+      <b>ব্যবসা ও শিল্প</b>
+    </a>
+
+    <a class="cat" href="search.html?category=Services">
+      <i>⚒</i>
+      <b>সেবা</b>
+    </a>
+
+    <a class="cat" href="search.html?category=Leisure%20%26%20Activities">
+      <i>▣</i>
+      <b>শিক্ষা</b>
+    </a>
+
+    <a class="cat" href="search.html?category=Leisure%20%26%20Activities">
+      <i>◉</i>
+      <b>খেলা-ধুলা</b>
+    </a>
+
+    <a class="cat" href="search.html?category=Food%2C%20Agriculture%20%26%20Supplies">
+      <i>♧</i>
+      <b>কৃষি ও বাগান</b>
+    </a>
+
+    <a class="cat" href="search.html?category=Beauty%20%26%20Personal%20Care">
+      <i>♡</i>
+      <b>স্বাস্থ্য ও ফিটনেস</b>
+    </a>
+
+    <a class="cat" href="search.html?category=Babies%20%26%20Kids">
+      <i>◌</i>
+      <b>বাচ্চা</b>
+    </a>
+
+    <a class="cat" href="search.html?category=Leisure%20%26%20Activities">
+      <i>♫</i>
+      <b>বিনোদন</b>
+    </a>
+
+    <a class="cat" href="search.html?category=Business%20%26%20Industry">
+      <i>◇</i>
+      <b>উপহার ও কালেকশন</b>
+    </a>
+
+    <a class="cat" href="search.html?category=Food%2C%20Agriculture%20%26%20Supplies">
+      <i>♜</i>
+      <b>খাবার ও রেস্টুরেন্ট</b>
+    </a>
+
+    <a class="cat" href="search.html?category=Animals%20%26%20Pets">
+      <i>♧</i>
+      <b>পোষা প্রাণী</b>
+    </a>
+
+    <a class="cat" href="search.html">
+      <i>•••</i>
+      <b>অন্যান্য</b>
+    </a>
+
+  </div>
+
 </section>
+
 
 <section class="container section">
- <div class="section-title"><div><small>JUST ARRIVED</small><h2>সর্বশেষ বিজ্ঞাপন</h2></div><a href="search.html">সব দেখুন →</a></div>
- <div id="latestAds" class="products"></div>
+
+  <div class="section-title">
+
+    <div>
+      <small>JUST ARRIVED</small>
+      <h2>সর্বশেষ বিজ্ঞাপন</h2>
+    </div>
+
+    <a href="search.html">সব দেখুন →</a>
+
+  </div>
+
+  <div id="latestAds" class="products"></div>
+
 </section>
 
-<section class="container promo"><div><small>SELL FASTER</small><h2>আপনার পণ্যটি <em>আজই বিক্রি করুন।</em></h2><p>বিজ্ঞাপন দিন এবং স্থানীয় ক্রেতার সাথে সরাসরি যোগাযোগ করুন।</p></div><a href="post-ad.html" class="btn green">বিজ্ঞাপন দিন →</a></section>
+
+<section class="container promo">
+
+  <div>
+
+    <small>SELL FASTER</small>
+
+    <h2>
+      আপনার পণ্যটি <em>আজই বিক্রি করুন।</em>
+    </h2>
+
+    <p>
+      বিজ্ঞাপন দিন এবং স্থানীয় ক্রেতার সাথে সরাসরি যোগাযোগ করুন।
+    </p>
+
+  </div>
+
+  <a href="post-ad.html" class="btn green">
+    বিজ্ঞাপন দিন →
+  </a>
+
+</section>
+
 </main>
 
-<nav class="mobile-nav"><a class="active" href="index.html"><span>⌂</span>হোম</a><a href="favorites.html"><span>♡</span>সেভড</a><a href="post-ad.html"><span>＋</span>বিজ্ঞাপন দিন</a><a href="messages.html"><span>▤</span>মেসেজ</a><a href="profile.html"><span>♙</span>প্রোফাইল</a></nav>
-<footer><div class="container foot"><b>শাহমাহমুদপুর বাজার</b><span>৪নং শাহমাহমুদপুর ইউনিয়ন • চাঁদপুর</span><div><a href="about.html">আমাদের সম্পর্কে</a><a href="contact.html">যোগাযোগ</a><a href="safety.html">নিরাপত্তা</a><a href="terms.html">শর্তাবলি</a></div><small>© 2026 Shahmahmudpur Bazar</small></div></footer>
-<script src="supabase.js"></script><script src="app.js"></script>
+
+<nav class="mobile-nav">
+
+  <a class="active" href="index.html">
+    <span>⌂</span>
+    হোম
+  </a>
+
+  <a href="favorites.html">
+    <span>♡</span>
+    সেভড
+  </a>
+
+  <a href="post-ad.html">
+    <span>＋</span>
+    বিজ্ঞাপন দিন
+  </a>
+
+  <a href="messages.html">
+    <span>▤</span>
+    মেসেজ
+  </a>
+
+  <a href="profile.html">
+    <span>♙</span>
+    প্রোফাইল
+  </a>
+
+</nav>
+
+
+<footer>
+
+  <div class="container foot">
+
+    <b>শাহমাহমুদপুর বাজার</b>
+
+    <span>
+      ৪নং শাহমাহমুদপুর ইউনিয়ন • চাঁদপুর
+    </span>
+
+    <div>
+
+      <a href="about.html">আমাদের সম্পর্কে</a>
+      <a href="contact.html">যোগাযোগ</a>
+      <a href="safety.html">নিরাপত্তা</a>
+      <a href="terms.html">শর্তাবলি</a>
+
+    </div>
+
+    <small>
+      © 2026 Shahmahmudpur Bazar
+    </small>
+
+  </div>
+
+</footer>
+
+
+<script src="supabase.js?v=7"></script>
+<script src="app.js?v=7"></script>
+
 
 <script>
 (function(){
-  const routes={
-    "/":"index.html",
-    "/login":"login.html",
-    "/profile":"profile.html",
-    "/search":"search.html",
-    "/post-ad":"post-ad.html",
-    "/favorites":"favorites.html",
-    "/messages":"messages.html",
-    "/ad-details":"ad-details.html",
-    "/admin":"admin.html",
-    "/hijama":"hijama.html",
-    "/about":"about.html",
-    "/contact":"contact.html",
-    "/safety":"safety.html",
-    "/terms":"terms.html",
-    "/verify":"verify.html"
-  };
-  const path=location.pathname.replace(/\/+$/,"")||"/";
-  if(routes[path] && path!=="/"){
-    // GitHub Pages serves the root 404.html for unknown extensionless paths.
-    // This marker lets 404.html route back to the requested page without folders.
-    sessionStorage.setItem("smb_route",path);
+
+  const SUPABASE_URL =
+    "https://jeupbfoceqmnpwlklche.supabase.co";
+
+  const authArea =
+    document.getElementById("authArea");
+
+  function escapeHtml(value){
+
+    return String(value || "")
+      .replace(/&/g,"&amp;")
+      .replace(/</g,"&lt;")
+      .replace(/>/g,"&gt;")
+      .replace(/"/g,"&quot;")
+      .replace(/'/g,"&#039;");
+
   }
+
+
+  function showLoggedOut(){
+
+    authArea.innerHTML = `
+      <a class="login-link" href="login.html">
+        লগইন
+      </a>
+    `;
+
+  }
+
+
+  function showLoggedIn(user){
+
+    if(!user){
+
+      showLoggedOut();
+      return;
+
+    }
+
+    const metadata =
+      user.user_metadata || {};
+
+    const name =
+      metadata.full_name ||
+      metadata.name ||
+      user.email ||
+      "প্রোফাইল";
+
+    const avatar =
+      metadata.avatar_url ||
+      metadata.picture ||
+      "";
+
+    authArea.innerHTML = `
+      <a class="profile-link" href="profile.html">
+
+        ${
+          avatar
+          ?
+          `<img
+             class="profile-avatar"
+             src="${escapeHtml(avatar)}"
+             alt="Profile"
+             referrerpolicy="no-referrer"
+           >`
+          :
+          `<div class="profile-avatar"
+                style="display:flex;align-items:center;justify-content:center;color:#69f5a5;font-size:15px;">
+             ♙
+           </div>`
+        }
+
+        <span class="profile-name">
+          ${escapeHtml(name)}
+        </span>
+
+      </a>
+    `;
+
+  }
+
+
+  async function checkGoogleSession(){
+
+    try{
+
+      /*
+       * প্রথমে Supabase session সরাসরি REST endpoint
+       * থেকে নেওয়ার চেষ্টা করা হচ্ছে।
+       */
+
+      const stored =
+        localStorage.getItem("smb_user_v1");
+
+      if(stored){
+
+        try{
+
+          const localUser =
+            JSON.parse(stored);
+
+          if(localUser && localUser.email){
+
+            showLoggedIn({
+              email:localUser.email,
+              user_metadata:{
+                name:localUser.name,
+                full_name:localUser.name
+              }
+            });
+
+          }
+
+        }catch(e){}
+
+      }
+
+
+      /*
+       * Supabase auth session cookie/local storage detect.
+       * supabase.js-এর existing helper থাকলে সেটাও ব্যবহার করা হবে।
+       */
+
+      if(
+        typeof window.getSbSession === "function"
+      ){
+
+        const session =
+          await window.getSbSession();
+
+        if(session && session.user){
+
+          saveUser(session.user);
+          showLoggedIn(session.user);
+          return;
+
+        }
+
+      }
+
+
+      /*
+       * Supabase JS client থাকলে সেটার session ব্যবহার।
+       */
+
+      if(window.sb && window.sb.auth){
+
+        const result =
+          await window.sb.auth.getSession();
+
+        if(
+          result &&
+          result.data &&
+          result.data.session &&
+          result.data.session.user
+        ){
+
+          const user =
+            result.data.session.user;
+
+          saveUser(user);
+          showLoggedIn(user);
+          return;
+
+        }
+
+      }
+
+
+      /*
+       * OAuth callback URL থেকে access_token থাকলে
+       * Supabase session তৈরি করার চেষ্টা।
+       */
+
+      const hash =
+        window.location.hash || "";
+
+      if(hash.includes("access_token=")){
+
+        const params =
+          new URLSearchParams(
+            hash.replace(/^#/,"")
+          );
+
+        const accessToken =
+          params.get("access_token");
+
+        const refreshToken =
+          params.get("refresh_token");
+
+        const expiresIn =
+          params.get("expires_in");
+
+        if(accessToken){
+
+          const tokenData = {
+            access_token:accessToken,
+            refresh_token:refreshToken || "",
+            expires_in:Number(expiresIn || 3600),
+            token_type:"bearer"
+          };
+
+          if(
+            typeof window.setSbSession === "function"
+          ){
+
+            try{
+              await window.setSbSession(tokenData);
+            }catch(e){}
+          }
+
+          const response =
+            await fetch(
+              SUPABASE_URL + "/auth/v1/user",
+              {
+                headers:{
+                  "Authorization":
+                    "Bearer " + accessToken,
+                  "apikey":
+                    SUPABASE_ANON_KEY
+                }
+              }
+            );
+
+          if(response.ok){
+
+            const user =
+              await response.json();
+
+            saveUser(user);
+            showLoggedIn(user);
+
+            history.replaceState(
+              {},
+              document.title,
+              window.location.pathname
+            );
+
+            return;
+
+          }
+
+        }
+
+      }
+
+      /*
+       * কোনো session না থাকলে Login দেখাবে।
+       */
+
+      if(!stored){
+
+        showLoggedOut();
+
+      }
+
+    }catch(error){
+
+      console.error(
+        "Google session check:",
+        error
+      );
+
+      /*
+       * Error হলেও site বন্ধ হবে না।
+       * শুধু Login দেখাবে।
+       */
+
+      showLoggedOut();
+
+    }
+
+  }
+
+
+  function saveUser(user){
+
+    if(!user) return;
+
+    const metadata =
+      user.user_metadata || {};
+
+    const name =
+      metadata.full_name ||
+      metadata.name ||
+      "";
+
+    const phone =
+      metadata.phone ||
+      "";
+
+    localStorage.setItem(
+      "smb_user_v1",
+      JSON.stringify({
+        id:user.id || "",
+        name:name,
+        email:user.email || "",
+        phone:phone
+      })
+    );
+
+  }
+
+
+  /*
+   * supabase.js-এ যদি SUPABASE_ANON_KEY global variable থাকে
+   * সেটি ব্যবহার করবে।
+   *
+   * না থাকলে existing Supabase config থেকে নেওয়ার চেষ্টা।
+   */
+
+  const SUPABASE_ANON_KEY =
+    window.SUPABASE_ANON_KEY ||
+    window.supabaseAnonKey ||
+    "";
+
+
+  /*
+   * Google OAuth redirect-এর পর Supabase auth state পরিবর্তন
+   * হলে header সঙ্গে সঙ্গে Profile-এ পরিবর্তন হবে।
+   */
+
+  if(window.sb && window.sb.auth){
+
+    try{
+
+      window.sb.auth.onAuthStateChange(
+        function(event,session){
+
+          if(session && session.user){
+
+            saveUser(session.user);
+            showLoggedIn(session.user);
+
+          }else{
+
+            showLoggedOut();
+
+          }
+
+        }
+      );
+
+    }catch(e){
+
+      console.error(e);
+
+    }
+
+  }
+
+
+  /*
+   * Page load
+   */
+
+  checkGoogleSession();
+
+
+  /*
+   * Google Login থেকে homepage-এ ফেরার সময়
+   * browser storage/session একটু পরে তৈরি হলে
+   * আবার check করবে।
+   */
+
+  setTimeout(
+    checkGoogleSession,
+    800
+  );
+
+  setTimeout(
+    checkGoogleSession,
+    2000
+  );
+
 })();
 </script>
-</body></html>
+
+</body>
+</html>
