@@ -1,1 +1,2233 @@
-<!doctype html><html lang="bn"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Admin Dashboard</title><link rel="stylesheet" href="style.css"></head><body><main class="container" style="padding:35px 0"><a class="brand" href="index.html"><b>শাহমাহমুদপুর</b><strong>বাজার</strong></a><div class="section-title" style="margin-top:30px"><h2>Admin Dashboard</h2><p class="muted">Demo moderation panel — production-এ server-side admin authentication লাগবে।</p><span class="eyebrow">LOCAL CONTROL</span></div><div id="list"></div></main><script src="supabase.js"></script><script src="app.js"></script><script>function render(){let a=ads();list.innerHTML=a.map(x=>`<div class="authbox" style="margin:8px 0;padding:15px;display:flex;justify-content:space-between;gap:12px;align-items:center"><div><b>${escapeHtml(x.title)}</b><div class="meta">${escapeHtml(x.category)} · ${escapeHtml(x.location)} · ${money(x.price)} · ${escapeHtml(x.status)}</div></div><div>${x.status==="pending"?`<button class="btn green" onclick="approve('${x.id}')">Approve</button>`:""} <button class="btn" onclick="removeAd('${x.id}')">Delete</button></div></div>`).join("")}function approve(id){let a=ads();let x=a.find(x=>x.id===id);if(x)x.status="approved";save(a);render()}function removeAd(id){save(ads().filter(x=>x.id!==id));render()}document.addEventListener("DOMContentLoaded",render)</script></body></html>
+<!doctype html>
+<html lang="bn">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+  name="viewport"
+  content="width=device-width,initial-scale=1">
+
+<title>
+Admin Panel | শাহমাহমুদপুর বাজার
+</title>
+
+<link
+  rel="stylesheet"
+  href="style.css">
+
+
+<style>
+
+/* ============================================================
+   PAGE
+============================================================ */
+
+.admin-page{
+  max-width:1100px;
+  margin:auto;
+  padding:30px 16px 110px;
+}
+
+
+/* ============================================================
+   ADMIN HEADER
+============================================================ */
+
+.admin-header{
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-between;
+
+  gap:20px;
+
+  margin-top:30px;
+
+  margin-bottom:25px;
+
+}
+
+
+.admin-title small{
+
+  color:#69f5a5;
+
+  font-size:8px;
+
+  font-weight:800;
+
+  letter-spacing:2px;
+
+}
+
+
+.admin-title h1{
+
+  margin:6px 0 0;
+
+  color:#eef8f2;
+
+  font-size:28px;
+
+}
+
+
+.admin-user{
+
+  padding:9px 13px;
+
+  border:1px solid
+    rgba(105,245,165,.15);
+
+  border-radius:10px;
+
+  background:
+    rgba(105,245,165,.035);
+
+  color:#819089;
+
+  font-size:9px;
+
+}
+
+
+.admin-user strong{
+
+  color:#69f5a5;
+
+}
+
+
+/* ============================================================
+   STATS
+============================================================ */
+
+.stats{
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(3,1fr);
+
+  gap:12px;
+
+  margin-bottom:25px;
+
+}
+
+
+.stat{
+
+  padding:17px;
+
+  border:1px solid
+    rgba(255,255,255,.07);
+
+  border-radius:15px;
+
+  background:
+    rgba(5,14,10,.72);
+
+}
+
+
+.stat small{
+
+  color:#718078;
+
+  font-size:8px;
+
+}
+
+
+.stat strong{
+
+  display:block;
+
+  margin-top:5px;
+
+  color:#eef8f2;
+
+  font-size:23px;
+
+}
+
+
+/* ============================================================
+   SECTION
+============================================================ */
+
+.admin-section{
+
+  margin-top:30px;
+
+}
+
+
+.section-heading{
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-between;
+
+  margin-bottom:14px;
+
+}
+
+
+.section-heading h2{
+
+  margin:0;
+
+  color:#edf7f1;
+
+  font-size:17px;
+
+}
+
+
+.section-heading span{
+
+  color:#718078;
+
+  font-size:9px;
+
+}
+
+
+/* ============================================================
+   ADS GRID
+============================================================ */
+
+.admin-ads{
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(2,1fr);
+
+  gap:15px;
+
+}
+
+
+/* ============================================================
+   ADMIN CARD
+============================================================ */
+
+.admin-card{
+
+  overflow:hidden;
+
+  border:1px solid
+    rgba(255,255,255,.07);
+
+  border-radius:18px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(10,22,16,.96),
+      rgba(4,10,7,.98)
+    );
+
+}
+
+
+.admin-card:hover{
+
+  border-color:
+    rgba(105,245,165,.18);
+
+}
+
+
+/* ============================================================
+   IMAGE
+============================================================ */
+
+.admin-image{
+
+  width:100%;
+
+  height:220px;
+
+  overflow:hidden;
+
+  background:#07110c;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  color:#69f5a5;
+
+}
+
+
+.admin-image img{
+
+  width:100%;
+
+  height:100%;
+
+  object-fit:cover;
+
+  display:block;
+
+}
+
+
+/* ============================================================
+   CARD BODY
+============================================================ */
+
+.admin-body{
+
+  padding:17px;
+
+}
+
+
+.status{
+
+  display:inline-block;
+
+  padding:5px 9px;
+
+  border-radius:20px;
+
+  font-size:8px;
+
+  font-weight:900;
+
+  letter-spacing:.5px;
+
+}
+
+
+.status.pending{
+
+  color:#f2c94c;
+
+  background:
+    rgba(242,201,76,.08);
+
+  border:1px solid
+    rgba(242,201,76,.18);
+
+}
+
+
+.status.published{
+
+  color:#69f5a5;
+
+  background:
+    rgba(105,245,165,.07);
+
+  border:1px solid
+    rgba(105,245,165,.16);
+
+}
+
+
+.status.rejected{
+
+  color:#ff9999;
+
+  background:
+    rgba(255,90,90,.07);
+
+  border:1px solid
+    rgba(255,90,90,.15);
+
+}
+
+
+.admin-body h3{
+
+  margin:12px 0 7px;
+
+  color:#eef8f2;
+
+  font-size:17px;
+
+}
+
+
+.admin-price{
+
+  color:#69f5a5;
+
+  font-size:18px;
+
+  font-weight:900;
+
+}
+
+
+.admin-meta{
+
+  margin-top:8px;
+
+  color:#7d8d85;
+
+  font-size:9px;
+
+  line-height:1.8;
+
+}
+
+
+.admin-description{
+
+  margin-top:12px;
+
+  color:#a0aea7;
+
+  font-size:10px;
+
+  line-height:1.7;
+
+  white-space:pre-line;
+
+}
+
+
+/* ============================================================
+   SELLER
+============================================================ */
+
+.seller-box{
+
+  margin-top:14px;
+
+  padding:11px;
+
+  border-radius:11px;
+
+  background:
+    rgba(255,255,255,.025);
+
+  border:
+    1px solid
+    rgba(255,255,255,.05);
+
+}
+
+
+.seller-box small{
+
+  color:#68776f;
+
+  font-size:8px;
+
+}
+
+
+.seller-box div{
+
+  margin-top:4px;
+
+  color:#dce9e1;
+
+  font-size:9px;
+
+}
+
+
+/* ============================================================
+   ACTIONS
+============================================================ */
+
+.admin-actions{
+
+  display:flex;
+
+  gap:8px;
+
+  margin-top:15px;
+
+}
+
+
+.admin-actions button{
+
+  flex:1;
+
+  min-height:42px;
+
+  border:0;
+
+  border-radius:10px;
+
+  cursor:pointer;
+
+  font-size:10px;
+
+  font-weight:900;
+
+}
+
+
+.approve-btn{
+
+  background:#69f5a5;
+
+  color:#031009;
+
+}
+
+
+.reject-btn{
+
+  background:
+    rgba(255,90,90,.08);
+
+  border:
+    1px solid
+    rgba(255,90,90,.18) !important;
+
+  color:#ff9999;
+
+}
+
+
+.delete-btn{
+
+  background:
+    rgba(255,255,255,.05);
+
+  color:#9ca9a2;
+
+}
+
+
+.admin-actions button:disabled{
+
+  opacity:.5;
+
+  cursor:wait;
+
+}
+
+
+/* ============================================================
+   EMPTY
+============================================================ */
+
+.empty{
+
+  grid-column:1/-1;
+
+  padding:50px 20px;
+
+  text-align:center;
+
+  border:1px solid
+    rgba(105,245,165,.10);
+
+  border-radius:17px;
+
+  background:
+    rgba(5,14,10,.65);
+
+}
+
+
+.empty strong{
+
+  color:#eaf5ef;
+
+}
+
+
+.empty p{
+
+  margin:7px 0 0;
+
+  color:#718078;
+
+  font-size:10px;
+
+}
+
+
+/* ============================================================
+   LOADING
+============================================================ */
+
+.loading{
+
+  padding:55px;
+
+  text-align:center;
+
+  color:#718078;
+
+}
+
+
+/* ============================================================
+   ERROR
+============================================================ */
+
+.error{
+
+  padding:15px;
+
+  margin-bottom:20px;
+
+  border:1px solid
+    rgba(255,90,90,.18);
+
+  border-radius:12px;
+
+  background:
+    rgba(255,90,90,.04);
+
+  color:#ff9d9d;
+
+  font-size:10px;
+
+  text-align:center;
+
+}
+
+
+/* ============================================================
+   MOBILE
+============================================================ */
+
+@media(max-width:700px){
+
+  .admin-header{
+
+    align-items:flex-start;
+
+    flex-direction:column;
+
+  }
+
+
+  .stats{
+
+    grid-template-columns:
+      1fr 1fr 1fr;
+
+  }
+
+
+  .stat{
+
+    padding:12px;
+
+  }
+
+
+  .stat strong{
+
+    font-size:19px;
+
+  }
+
+
+  .admin-ads{
+
+    grid-template-columns:1fr;
+
+  }
+
+}
+
+
+@media(max-width:450px){
+
+  .stats{
+
+    gap:7px;
+
+  }
+
+
+  .stat small{
+
+    font-size:7px;
+
+  }
+
+
+  .stat strong{
+
+    font-size:17px;
+
+  }
+
+
+  .admin-image{
+
+    height:200px;
+
+  }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<main class="container admin-page">
+
+
+<!-- ==========================================================
+     BRAND
+=========================================================== -->
+
+<a
+  href="index.html"
+  class="brand">
+
+  <b>
+    শাহমাহমুদপুর
+  </b>
+
+  <strong>
+    বাজার
+  </strong>
+
+  <small>
+    LOCAL MARKETPLACE
+  </small>
+
+</a>
+
+
+
+<!-- ==========================================================
+     HEADER
+=========================================================== -->
+
+<div class="admin-header">
+
+
+<div class="admin-title">
+
+  <small>
+    ADMIN CONTROL CENTER
+  </small>
+
+  <h1>
+    বিজ্ঞাপন ব্যবস্থাপনা
+  </h1>
+
+</div>
+
+
+<div
+  id="adminUser"
+  class="admin-user">
+
+  যাচাই হচ্ছে...
+
+</div>
+
+
+</div>
+
+
+
+<div
+  id="errorBox"
+  style="display:none">
+</div>
+
+
+
+<!-- ==========================================================
+     STATS
+=========================================================== -->
+
+<div class="stats">
+
+
+<div class="stat">
+
+  <small>
+    PENDING
+  </small>
+
+  <strong id="pendingCount">
+    0
+  </strong>
+
+</div>
+
+
+<div class="stat">
+
+  <small>
+    PUBLISHED
+  </small>
+
+  <strong id="publishedCount">
+    0
+  </strong>
+
+</div>
+
+
+<div class="stat">
+
+  <small>
+    REJECTED
+  </small>
+
+  <strong id="rejectedCount">
+    0
+  </strong>
+
+</div>
+
+
+</div>
+
+
+
+<!-- ==========================================================
+     PENDING
+=========================================================== -->
+
+<section class="admin-section">
+
+
+<div class="section-heading">
+
+  <h2>
+    🟡 Pending Ads
+  </h2>
+
+  <span>
+    Approval প্রয়োজন
+  </span>
+
+</div>
+
+
+<div
+  id="pendingAds"
+  class="admin-ads">
+
+  <div class="loading">
+
+    Pending বিজ্ঞাপন লোড হচ্ছে...
+
+  </div>
+
+</div>
+
+
+</section>
+
+
+
+<!-- ==========================================================
+     PUBLISHED
+=========================================================== -->
+
+<section class="admin-section">
+
+
+<div class="section-heading">
+
+  <h2>
+    🟢 Published Ads
+  </h2>
+
+  <span>
+    প্রকাশিত বিজ্ঞাপন
+  </span>
+
+</div>
+
+
+<div
+  id="publishedAds"
+  class="admin-ads">
+
+  <div class="loading">
+
+    Published বিজ্ঞাপন লোড হচ্ছে...
+
+  </div>
+
+</div>
+
+
+</section>
+
+
+
+<!-- ==========================================================
+     REJECTED
+=========================================================== -->
+
+<section class="admin-section">
+
+
+<div class="section-heading">
+
+  <h2>
+    🔴 Rejected Ads
+  </h2>
+
+  <span>
+    বাতিল বিজ্ঞাপন
+  </span>
+
+</div>
+
+
+<div
+  id="rejectedAds"
+  class="admin-ads">
+
+  <div class="loading">
+
+    Rejected বিজ্ঞাপন লোড হচ্ছে...
+
+  </div>
+
+</div>
+
+
+</section>
+
+
+</main>
+
+
+
+<!-- ==========================================================
+     MOBILE NAV
+=========================================================== -->
+
+<nav class="mobile-nav">
+
+
+<a href="index.html">
+
+  <span>⌂</span>
+  Home
+
+</a>
+
+
+<a href="favorites.html">
+
+  <span>♡</span>
+  Saved
+
+</a>
+
+
+<a href="post-ad.html">
+
+  <span>⊞</span>
+  Sell
+
+</a>
+
+
+<a href="messages.html">
+
+  <span>▤</span>
+  Messages
+
+</a>
+
+
+<a href="profile.html">
+
+  <span>♙</span>
+  Profile
+
+</a>
+
+
+</nav>
+
+
+
+<script src="supabase.js?v=12"></script>
+
+
+<script>
+
+(async function(){
+
+"use strict";
+
+
+/* ============================================================
+   CONFIG
+============================================================ */
+
+const SUPA_URL =
+  "https://jeupbfoceqmnpwlklche.supabase.co";
+
+
+const SUPA_KEY =
+  window.SUPABASE_ANON_KEY ||
+  window.supabaseAnonKey ||
+  "";
+
+
+const ADMIN_ID =
+  "0a6d1f2b-3de3-4d66-8f4a-2e764272684c";
+
+
+/* ============================================================
+   ELEMENTS
+============================================================ */
+
+const adminUser =
+  document.getElementById(
+    "adminUser"
+  );
+
+
+const errorBox =
+  document.getElementById(
+    "errorBox"
+  );
+
+
+const pendingAds =
+  document.getElementById(
+    "pendingAds"
+  );
+
+
+const publishedAds =
+  document.getElementById(
+    "publishedAds"
+  );
+
+
+const rejectedAds =
+  document.getElementById(
+    "rejectedAds"
+  );
+
+
+const pendingCount =
+  document.getElementById(
+    "pendingCount"
+  );
+
+
+const publishedCount =
+  document.getElementById(
+    "publishedCount"
+  );
+
+
+const rejectedCount =
+  document.getElementById(
+    "rejectedCount"
+  );
+
+
+/* ============================================================
+   ESCAPE
+============================================================ */
+
+function esc(value){
+
+  return String(
+    value ?? ""
+  )
+
+  .replace(
+    /&/g,
+    "&amp;"
+  )
+
+  .replace(
+    /</g,
+    "&lt;"
+  )
+
+  .replace(
+    />/g,
+    "&gt;"
+  )
+
+  .replace(
+    /"/g,
+    "&quot;"
+  )
+
+  .replace(
+    /'/g,
+    "&#039;"
+  );
+
+}
+
+
+/* ============================================================
+   ERROR
+============================================================ */
+
+function showError(text){
+
+  errorBox.style.display =
+    "block";
+
+  errorBox.className =
+    "error";
+
+  errorBox.textContent =
+    text;
+
+}
+
+
+/* ============================================================
+   SESSION
+============================================================ */
+
+async function getSession(){
+
+  try{
+
+    if(
+      typeof getSbSession ===
+      "function"
+    ){
+
+      const session =
+        await getSbSession();
+
+
+      if(
+        session &&
+        session.access_token
+      ){
+
+        return session;
+
+      }
+
+    }
+
+  }catch(error){
+
+    console.error(error);
+
+  }
+
+
+  return null;
+
+}
+
+
+/* ============================================================
+   CURRENT USER
+============================================================ */
+
+async function getCurrentAdmin(){
+
+  try{
+
+    if(
+      typeof getCurrentUser ===
+      "function"
+    ){
+
+      return await getCurrentUser();
+
+    }
+
+  }catch(error){
+
+    console.error(error);
+
+  }
+
+
+  return null;
+
+}
+
+
+/* ============================================================
+   IMAGE
+============================================================ */
+
+function getImage(ad){
+
+  const images =
+    ad.image_urls;
+
+
+  if(
+    Array.isArray(images) &&
+    images.length
+  ){
+
+    return images[0];
+
+  }
+
+
+  if(
+    typeof images ===
+    "string"
+  ){
+
+    try{
+
+      const parsed =
+        JSON.parse(images);
+
+
+      if(
+        Array.isArray(parsed) &&
+        parsed.length
+      ){
+
+        return parsed[0];
+
+      }
+
+    }catch(error){
+
+      if(
+        images.startsWith("http")
+      ){
+
+        return images;
+
+      }
+
+    }
+
+  }
+
+
+  return "";
+
+}
+
+
+/* ============================================================
+   MONEY
+============================================================ */
+
+function money(value){
+
+  return (
+    "৳ " +
+    Number(
+      value || 0
+    ).toLocaleString(
+      "bn-BD"
+    )
+  );
+
+}
+
+
+/* ============================================================
+   STATUS
+============================================================ */
+
+function statusText(status){
+
+  const s =
+    String(
+      status || ""
+    ).toLowerCase();
+
+
+  if(
+    s === "pending"
+  ){
+
+    return "PENDING";
+
+  }
+
+
+  if(
+    s === "published" ||
+    s === "approved" ||
+    s === "active"
+  ){
+
+    return "PUBLISHED";
+
+  }
+
+
+  if(
+    s === "rejected"
+  ){
+
+    return "REJECTED";
+
+  }
+
+
+  return s.toUpperCase();
+
+}
+
+
+/* ============================================================
+   CARD
+============================================================ */
+
+function card(ad){
+
+  const status =
+    String(
+      ad.status ||
+      "pending"
+    )
+    .toLowerCase();
+
+
+  const image =
+    getImage(ad);
+
+
+  const imageHTML =
+    image
+
+    ?
+
+    `
+
+      <div class="admin-image">
+
+        <img
+          src="${esc(image)}"
+          alt="${esc(
+            ad.title ||
+            "বিজ্ঞাপন"
+          )}"
+          loading="lazy"
+        >
+
+      </div>
+
+    `
+
+    :
+
+    `
+
+      <div class="admin-image">
+
+        ${esc(
+          ad.category ||
+          "বিজ্ঞাপন"
+        )}
+
+      </div>
+
+    `;
+
+
+  let actions = "";
+
+
+  /* ----------------------------------------------------------
+     PENDING ACTIONS
+  ---------------------------------------------------------- */
+
+  if(
+    status === "pending"
+  ){
+
+    actions = `
+
+      <div
+        class="admin-actions">
+
+        <button
+          class="approve-btn"
+          data-action="approve"
+          data-id="${esc(ad.id)}">
+
+          ✓ Approve
+
+        </button>
+
+
+        <button
+          class="reject-btn"
+          data-action="reject"
+          data-id="${esc(ad.id)}">
+
+          ✕ Reject
+
+        </button>
+
+      </div>
+
+    `;
+
+  }
+
+
+  /* ----------------------------------------------------------
+     PUBLISHED ACTION
+  ---------------------------------------------------------- */
+
+  if(
+    status === "published" ||
+    status === "approved" ||
+    status === "active"
+  ){
+
+    actions = `
+
+      <div
+        class="admin-actions">
+
+        <button
+          class="delete-btn"
+          data-action="delete"
+          data-id="${esc(ad.id)}">
+
+          🗑 Delete
+
+        </button>
+
+      </div>
+
+    `;
+
+  }
+
+
+  /* ----------------------------------------------------------
+     REJECTED ACTION
+  ---------------------------------------------------------- */
+
+  if(
+    status === "rejected"
+  ){
+
+    actions = `
+
+      <div
+        class="admin-actions">
+
+        <button
+          class="delete-btn"
+          data-action="delete"
+          data-id="${esc(ad.id)}">
+
+          🗑 Delete
+
+        </button>
+
+      </div>
+
+    `;
+
+  }
+
+
+  return `
+
+    <article
+      class="admin-card">
+
+
+      ${imageHTML}
+
+
+      <div
+        class="admin-body">
+
+
+        <span
+          class="status ${
+            status === "pending"
+            ? "pending"
+            : status === "rejected"
+            ? "rejected"
+            : "published"
+          }">
+
+          ${esc(
+            statusText(status)
+          )}
+
+        </span>
+
+
+        <h3>
+
+          ${esc(
+            ad.title ||
+            "Untitled"
+          )}
+
+        </h3>
+
+
+        <div
+          class="admin-price">
+
+          ${money(
+            ad.price
+          )}
+
+        </div>
+
+
+        <div
+          class="admin-meta">
+
+          📂 ${esc(
+            ad.category ||
+            ""
+          )}
+
+          ${
+            ad.subcategory
+            ?
+            " • " +
+            esc(
+              ad.subcategory
+            )
+            :
+            ""
+          }
+
+          <br>
+
+          📍 ${esc(
+            ad.location ||
+            ""
+          )}
+
+          <br>
+
+          📞 ${esc(
+            ad.phone ||
+            ""
+          )}
+
+        </div>
+
+
+        ${
+          ad.description
+
+          ?
+
+          `
+
+          <div
+            class="admin-description">
+
+            ${esc(
+              ad.description
+            )}
+
+          </div>
+
+          `
+
+          :
+
+          ""
+
+        }
+
+
+        <div
+          class="seller-box">
+
+          <small>
+            SELLER
+          </small>
+
+          <div>
+
+            ${esc(
+              ad.seller_email ||
+              ad.email ||
+              "Unknown"
+            )}
+
+          </div>
+
+        </div>
+
+
+        ${actions}
+
+
+      </div>
+
+    </article>
+
+  `;
+
+}
+
+
+/* ============================================================
+   LOAD ADS
+============================================================ */
+
+async function loadAds(){
+
+  const session =
+    await getSession();
+
+
+  if(
+    !session ||
+    !session.access_token
+  ){
+
+    throw new Error(
+      "Admin Login session পাওয়া যায়নি।"
+    );
+
+  }
+
+
+  const response =
+    await fetch(
+
+      SUPA_URL +
+      "/rest/v1/ads" +
+      "?select=*" +
+      "&order=created_at.desc",
+
+      {
+
+        headers:{
+
+          "apikey":
+            SUPA_KEY,
+
+          "Authorization":
+            "Bearer " +
+            session.access_token,
+
+          "Content-Type":
+            "application/json"
+
+        }
+
+      }
+
+    );
+
+
+  if(!response.ok){
+
+    const text =
+      await response.text();
+
+
+    throw new Error(
+      "Ads load error: " +
+      text
+    );
+
+  }
+
+
+  return await response.json();
+
+}
+
+
+/* ============================================================
+   RENDER
+============================================================ */
+
+function render(
+  ads
+){
+
+  const pending =
+    ads.filter(
+      ad =>
+        String(
+          ad.status || ""
+        ).toLowerCase()
+        === "pending"
+    );
+
+
+  const published =
+    ads.filter(
+      ad => {
+
+        const s =
+          String(
+            ad.status || ""
+          ).toLowerCase();
+
+
+        return (
+          s === "published" ||
+          s === "approved" ||
+          s === "active"
+        );
+
+      }
+    );
+
+
+  const rejected =
+    ads.filter(
+      ad =>
+        String(
+          ad.status || ""
+        ).toLowerCase()
+        === "rejected"
+    );
+
+
+  pendingCount.textContent =
+    pending.length;
+
+
+  publishedCount.textContent =
+    published.length;
+
+
+  rejectedCount.textContent =
+    rejected.length;
+
+
+  pendingAds.innerHTML =
+    pending.length
+
+    ?
+
+    pending
+      .map(card)
+      .join("")
+
+    :
+
+    `
+
+      <div class="empty">
+
+        <strong>
+          🎉 কোনো Pending বিজ্ঞাপন নেই
+        </strong>
+
+        <p>
+          নতুন বিজ্ঞাপন Submit হলে এখানে দেখা যাবে।
+        </p>
+
+      </div>
+
+    `;
+
+
+  publishedAds.innerHTML =
+    published.length
+
+    ?
+
+    published
+      .map(card)
+      .join("")
+
+    :
+
+    `
+
+      <div class="empty">
+
+        <strong>
+          এখনো কোনো Published বিজ্ঞাপন নেই
+        </strong>
+
+      </div>
+
+    `;
+
+
+  rejectedAds.innerHTML =
+    rejected.length
+
+    ?
+
+    rejected
+      .map(card)
+      .join("")
+
+    :
+
+    `
+
+      <div class="empty">
+
+        <strong>
+          কোনো Rejected বিজ্ঞাপন নেই
+        </strong>
+
+      </div>
+
+    `;
+
+}
+
+
+/* ============================================================
+   UPDATE STATUS
+============================================================ */
+
+async function updateStatus(
+  id,
+  newStatus
+){
+
+  const session =
+    await getSession();
+
+
+  if(
+    !session ||
+    !session.access_token
+  ){
+
+    throw new Error(
+      "Login session পাওয়া যায়নি।"
+    );
+
+  }
+
+
+  const response =
+    await fetch(
+
+      SUPA_URL +
+      "/rest/v1/ads?id=eq." +
+      encodeURIComponent(id),
+
+      {
+
+        method:"PATCH",
+
+        headers:{
+
+          "apikey":
+            SUPA_KEY,
+
+          "Authorization":
+            "Bearer " +
+            session.access_token,
+
+          "Content-Type":
+            "application/json",
+
+          "Prefer":
+            "return=representation"
+
+        },
+
+        body:
+          JSON.stringify({
+
+            status:
+              newStatus
+
+          })
+
+      }
+
+    );
+
+
+  if(!response.ok){
+
+    const text =
+      await response.text();
+
+
+    throw new Error(
+      "Status update failed: " +
+      text
+    );
+
+  }
+
+
+  return await response.json();
+
+}
+
+
+/* ============================================================
+   DELETE
+============================================================ */
+
+async function deleteAd(
+  id
+){
+
+  const session =
+    await getSession();
+
+
+  if(
+    !session ||
+    !session.access_token
+  ){
+
+    throw new Error(
+      "Login session পাওয়া যায়নি।"
+    );
+
+  }
+
+
+  const response =
+    await fetch(
+
+      SUPA_URL +
+      "/rest/v1/ads?id=eq." +
+      encodeURIComponent(id),
+
+      {
+
+        method:"DELETE",
+
+        headers:{
+
+          "apikey":
+            SUPA_KEY,
+
+          "Authorization":
+            "Bearer " +
+            session.access_token,
+
+          "Content-Type":
+            "application/json"
+
+        }
+
+      }
+
+    );
+
+
+  if(!response.ok){
+
+    const text =
+      await response.text();
+
+
+    throw new Error(
+      "Delete failed: " +
+      text
+    );
+
+  }
+
+}
+
+
+/* ============================================================
+   ACTION HANDLER
+============================================================ */
+
+document.addEventListener(
+  "click",
+  async function(event){
+
+    const button =
+      event.target.closest(
+        "[data-action]"
+      );
+
+
+    if(!button){
+
+      return;
+
+    }
+
+
+    const action =
+      button.dataset.action;
+
+
+    const id =
+      button.dataset.id;
+
+
+    if(!id){
+
+      return;
+
+    }
+
+
+    if(
+      action === "reject"
+    ){
+
+      const ok =
+        confirm(
+          "এই বিজ্ঞাপনটি Reject করতে চান?"
+        );
+
+
+      if(!ok){
+
+        return;
+
+      }
+
+    }
+
+
+    if(
+      action === "delete"
+    ){
+
+      const ok =
+        confirm(
+          "এই বিজ্ঞাপনটি Delete করতে চান?"
+        );
+
+
+      if(!ok){
+
+        return;
+
+      }
+
+    }
+
+
+    button.disabled =
+      true;
+
+
+    const oldText =
+      button.textContent;
+
+
+    button.textContent =
+      "Processing...";
+
+
+    try{
+
+      if(
+        action === "approve"
+      ){
+
+        await updateStatus(
+          id,
+          "published"
+        );
+
+      }
+
+
+      if(
+        action === "reject"
+      ){
+
+        await updateStatus(
+          id,
+          "rejected"
+        );
+
+      }
+
+
+      if(
+        action === "delete"
+      ){
+
+        await deleteAd(
+          id
+        );
+
+      }
+
+
+      const ads =
+        await loadAds();
+
+
+      render(
+        ads
+      );
+
+
+    }catch(error){
+
+      console.error(
+        error
+      );
+
+
+      showError(
+        error.message ||
+        "কাজটি সম্পন্ন করা যায়নি।"
+      );
+
+
+      button.disabled =
+        false;
+
+
+      button.textContent =
+        oldText;
+
+    }
+
+  }
+);
+
+
+/* ============================================================
+   INITIALIZE
+============================================================ */
+
+async function initialize(){
+
+  try{
+
+    const user =
+      await getCurrentAdmin();
+
+
+    if(!user){
+
+      adminUser.innerHTML =
+        "Login প্রয়োজন";
+
+
+      throw new Error(
+        "Admin Login পাওয়া যায়নি। আগে Google দিয়ে Login করুন।"
+      );
+
+    }
+
+
+    /*
+     * ADMIN SECURITY CHECK
+     */
+
+    if(
+      String(user.id) !==
+      ADMIN_ID
+    ){
+
+      adminUser.innerHTML =
+        "Access denied";
+
+
+      throw new Error(
+        "এই account-এর Admin access নেই।"
+      );
+
+    }
+
+
+    adminUser.innerHTML = `
+
+      Signed in as
+
+      <strong>
+
+        ${esc(
+          user.email ||
+          "Admin"
+        )}
+
+      </strong>
+
+    `;
+
+
+    const ads =
+      await loadAds();
+
+
+    render(
+      ads
+    );
+
+
+  }catch(error){
+
+    console.error(
+      "ADMIN ERROR:",
+      error
+    );
+
+
+    pendingAds.innerHTML =
+      "";
+
+
+    publishedAds.innerHTML =
+      "";
+
+
+    rejectedAds.innerHTML =
+      "";
+
+
+    showError(
+      error.message ||
+      "Admin panel load করা যায়নি।"
+    );
+
+  }
+
+}
+
+
+initialize();
+
+
+})();
+
+</script>
+
+</body>
+
+</html>
