@@ -3,9 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-
 <title>Login | শাহমাহমুদপুর বাজার</title>
-
 <link rel="stylesheet" href="style.css">
 
 <style>
@@ -27,8 +25,11 @@
   text-align:center;
   border:1px solid rgba(105,245,165,.18);
   border-radius:22px;
-  background:
-    linear-gradient(145deg,rgba(11,25,18,.97),rgba(4,11,8,.98));
+  background:linear-gradient(
+    145deg,
+    rgba(11,25,18,.97),
+    rgba(4,11,8,.98)
+  );
   box-shadow:
     0 25px 70px rgba(0,0,0,.55),
     0 0 45px rgba(105,245,165,.055);
@@ -47,7 +48,6 @@
   font-size:22px;
   font-weight:900;
   letter-spacing:-.05em;
-  text-shadow:0 0 22px rgba(105,245,165,.12);
 }
 
 .login-brand strong{
@@ -89,14 +89,12 @@
   gap:11px;
   border:1px solid rgba(255,255,255,.14);
   border-radius:11px;
-  background:#ffffff;
+  background:#fff;
   color:#151515;
   font-size:12px;
   font-weight:800;
   cursor:pointer;
-  box-shadow:
-    0 8px 28px rgba(0,0,0,.25),
-    0 0 0 rgba(105,245,165,0);
+  box-shadow:0 8px 28px rgba(0,0,0,.25);
   transition:.25s ease;
 }
 
@@ -105,10 +103,6 @@
   box-shadow:
     0 12px 35px rgba(0,0,0,.3),
     0 0 28px rgba(105,245,165,.12);
-}
-
-.google-btn:active{
-  transform:translateY(0);
 }
 
 .google-btn:disabled{
@@ -150,24 +144,6 @@
 .back-home:hover{
   color:#69f5a5;
 }
-
-@media(max-width:420px){
-
-  .login-box{
-    padding:32px 20px;
-    border-radius:18px;
-  }
-
-  .login-box h1{
-    font-size:24px;
-  }
-
-  .google-btn{
-    height:50px;
-    font-size:11px;
-  }
-
-}
 </style>
 </head>
 
@@ -175,113 +151,89 @@
 
 <main class="login-page">
 
-  <section class="login-box">
+<section class="login-box">
 
-    <a href="/" class="login-brand">
-      <b>শাহমাহমুদপুর</b>
-      <strong>বাজার</strong>
-      <small>LOCAL MARKETPLACE</small>
-    </a>
+<a href="/" class="login-brand">
+  <b>শাহমাহমুদপুর</b>
+  <strong>বাজার</strong>
+  <small>LOCAL MARKETPLACE</small>
+</a>
 
-    <h1>স্বাগতম 👋</h1>
+<h1>স্বাগতম 👋</h1>
 
-    <p class="login-subtitle">
-      আপনার Google account দিয়ে<br>
-      নিরাপদে Login করুন।
-    </p>
+<p class="login-subtitle">
+  আপনার Google account দিয়ে<br>
+  নিরাপদে Login করুন।
+</p>
 
-    <button
-      id="googleLogin"
-      class="google-btn"
-      type="button"
-    >
+<button id="googleLogin" class="google-btn" type="button">
 
-      <svg
-        class="google-icon"
-        viewBox="0 0 24 24"
-        aria-hidden="true"
-      >
-        <path
-          fill="#4285F4"
-          d="M21.35 12.27c0-.79-.07-1.54-.2-2.27H12v4.3h5.24a4.48 4.48 0 0 1-1.94 2.94v2.45h3.14c1.84-1.69 2.91-4.18 2.91-7.42z"
-        />
+<svg class="google-icon" viewBox="0 0 24 24">
+<path fill="#4285F4"
+d="M21.35 12.27c0-.79-.07-1.54-.2-2.27H12v4.3h5.24a4.48 4.48 0 0 1-1.94 2.94v2.45h3.14c1.84-1.69 2.91-4.18 2.91-7.42z"/>
+<path fill="#34A853"
+d="M12 21.6c2.63 0 4.84-.87 6.45-2.36l-3.14-2.45c-.87.58-1.98.93-3.31.93-2.54 0-4.7-1.72-5.47-4.04H3.29v2.52A9.74 9.74 0 0 0 12 21.6z"/>
+<path fill="#FBBC05"
+d="M6.53 13.68A5.85 5.85 0 0 1 6.22 12c0-.58.1-1.15.31-1.68V7.8H3.29A9.74 9.74 0 0 0 2.25 12c0 1.57.38 3.06 1.04 4.2l3.24-2.52z"/>
+<path fill="#EA4335"
+d="M12 6.28c1.43 0 2.71.49 3.72 1.45l2.79-2.79C16.83 3.31 14.63 2.4 12 2.4a9.74 9.74 0 0 0-8.71 5.4l3.24 2.52C7.3 8 9.46 6.28 12 6.28z"/>
+</svg>
 
-        <path
-          fill="#34A853"
-          d="M12 21.6c2.63 0 4.84-.87 6.45-2.36l-3.14-2.45c-.87.58-1.98.93-3.31.93-2.54 0-4.7-1.72-5.47-4.04H3.29v2.52A9.74 9.74 0 0 0 12 21.6z"
-        />
+Continue with Google
 
-        <path
-          fill="#FBBC05"
-          d="M6.53 13.68A5.85 5.85 0 0 1 6.22 12c0-.58.1-1.15.31-1.68V7.8H3.29A9.74 9.74 0 0 0 2.25 12c0 1.57.38 3.06 1.04 4.2l3.24-2.52z"
-        />
+</button>
 
-        <path
-          fill="#EA4335"
-          d="M12 6.28c1.43 0 2.71.49 3.72 1.45l2.79-2.79C16.83 3.31 14.63 2.4 12 2.4a9.74 9.74 0 0 0-8.71 5.4l3.24 2.52C7.3 8 9.46 6.28 12 6.28z"
-        />
-      </svg>
+<p id="loginMessage" class="login-message"></p>
 
-      Continue with Google
+<div class="secure">
+🔒 <span>Secure Google Login</span><br>
+আপনার Google password এই সাইটে সংরক্ষণ করা হয় না।
+</div>
 
-    </button>
+<a href="/" class="back-home">
+← Homepage
+</a>
 
-    <p id="loginMessage" class="login-message"></p>
-
-    <div class="secure">
-      🔒 <span>Secure Google Login</span><br>
-      আপনার Google password এই সাইটে সংরক্ষণ করা হয় না।
-    </div>
-
-    <a href="/" class="back-home">
-      ← Homepage
-    </a>
-
-  </section>
+</section>
 
 </main>
 
-
-<script src="supabase.js?v=5"></script>
+<script src="supabase.js?v=6"></script>
 
 <script>
-
 (function(){
 
-  const button =
-    document.getElementById("googleLogin");
+  const button = document.getElementById("googleLogin");
+  const message = document.getElementById("loginMessage");
 
-  const message =
-    document.getElementById("loginMessage");
+  button.addEventListener("click", async function(){
 
-  button.addEventListener("click",function(){
+    button.disabled = true;
+    button.textContent = "Google Login হচ্ছে...";
+    message.textContent = "";
 
     try{
 
-      button.disabled = true;
-      button.textContent = "Google Login হচ্ছে...";
-
       /*
-       * Google OAuth
-       *
-       * User Google account select করবে।
-       * কোনো email/password/verification page নেই।
-       *
-       * Login সফল হলে সরাসরি homepage:
-       * https://smbazar.cyou/
+       * সরাসরি Supabase OAuth URL ব্যবহার করা হয়েছে।
+       * এখানে আর window.SUPABASE_URL নেই,
+       * তাই undefined আসবে না।
        */
+
+      const supabaseUrl =
+        "https://jeupbfoceqmnpwlklche.supabase.co";
 
       const redirectTo =
         "https://smbazar.cyou/";
 
       const googleUrl =
-        window.SUPABASE_URL +
+        supabaseUrl +
         "/auth/v1/authorize" +
         "?provider=google" +
         "&redirect_to=" +
         encodeURIComponent(redirectTo);
 
-      window.location.assign(googleUrl);
+      window.location.href = googleUrl;
 
     }catch(error){
 
@@ -291,23 +243,13 @@
         "Google Login চালু করা যাচ্ছে না। আবার চেষ্টা করুন।";
 
       button.disabled = false;
-
-      button.innerHTML = `
-        <svg class="google-icon" viewBox="0 0 24 24">
-          <path fill="#4285F4" d="M21.35 12.27c0-.79-.07-1.54-.2-2.27H12v4.3h5.24a4.48 4.48 0 0 1-1.94 2.94v2.45h3.14c1.84-1.69 2.91-4.18 2.91-7.42z"/>
-          <path fill="#34A853" d="M12 21.6c2.63 0 4.84-.87 6.45-2.36l-3.14-2.45c-.87.58-1.98.93-3.31.93-2.54 0-4.7-1.72-5.47-4.04H3.29v2.52A9.74 9.74 0 0 0 12 21.6z"/>
-          <path fill="#FBBC05" d="M6.53 13.68A5.85 5.85 0 0 1 6.22 12c0-.58.1-1.15.31-1.68V7.8H3.29A9.74 9.74 0 0 0 2.25 12c0 1.57.38 3.06 1.04 4.2l3.24-2.52z"/>
-          <path fill="#EA4335" d="M12 6.28c1.43 0 2.71.49 3.72 1.45l2.79-2.79C16.83 3.31 14.63 2.4 12 2.4a9.74 9.74 0 0 0-8.71 5.4l3.24 2.52C7.3 8 9.46 6.28 12 6.28z"/>
-        </svg>
-        Continue with Google
-      `;
+      button.textContent = "Continue with Google";
 
     }
 
   });
 
 })();
-
 </script>
 
 </body>
