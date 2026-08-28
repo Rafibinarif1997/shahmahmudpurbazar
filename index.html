@@ -1140,11 +1140,6 @@ function setMessageBadge(count){
 
   if(topMessageLink){
 
-    /*
-     * Login করা থাকলে desktop message
-     * icon দেখাবে।
-     */
-
     topMessageLink.style.display =
       "flex";
 
@@ -1199,17 +1194,6 @@ async function getSession(){
 /* ============================================================
    MESSAGE NOTIFICATION
 ============================================================ */
-
-/*
- * বর্তমান Chat System:
- *
- * conversations
- *      ↓
- * messages.conversation_id
- *
- * তাই Homepage notification-ও
- * একই structure ব্যবহার করছে।
- */
 
 async function updateMessageNotification(user){
 
@@ -1377,7 +1361,12 @@ async function updateMessageNotification(user){
 
     /* ========================================================
        STEP 3
-       প্রতিটি conversation-এর messages
+       শুধু UNREAD messages
+       
+       ★ এখানে মূল পরিবর্তন ★
+       
+       is_read = false না হলে
+       Homepage notification-এ আসবে না।
     ======================================================== */
 
     const messageUrl =
@@ -1390,7 +1379,9 @@ async function updateMessageNotification(user){
       idList +
       ")" +
 
-      "&select=id,conversation_id,sender_id,receiver_id,created_at" +
+      "&is_read=eq.false" +
+
+      "&select=id,conversation_id,sender_id,receiver_id,created_at,is_read" +
 
       "&order=created_at.desc";
 
@@ -1450,7 +1441,7 @@ async function updateMessageNotification(user){
 
     /* ========================================================
        STEP 4
-       প্রতিটি conversation-এর latest message
+       প্রতিটি conversation-এর latest UNREAD message
     ======================================================== */
 
     const latestByConversation = {};
@@ -1476,7 +1467,8 @@ async function updateMessageNotification(user){
         /*
          * API created_at desc দিয়ে দিয়েছে।
          *
-         * তাই প্রথম message-টাই latest।
+         * তাই প্রথম unread message-টাই
+         * latest unread message।
          */
 
         if(
@@ -1525,8 +1517,8 @@ async function updateMessageNotification(user){
 
 
         /*
-         * সর্বশেষ message যদি অন্য
-         * user পাঠিয়ে থাকে
+         * শুধু অন্য user থেকে
+         * আমার কাছে আসা unread message।
          */
 
         if(
@@ -1535,7 +1527,9 @@ async function updateMessageNotification(user){
           String(user.id) &&
 
           receiver ===
-          String(user.id)
+          String(user.id) &&
+
+          message.is_read === false
         ){
 
           incomingUsers.add(
@@ -1605,10 +1599,6 @@ async function checkLogin(){
 
           showLoggedIn(user);
 
-
-          /*
-           * Message notification
-           */
 
           await updateMessageNotification(
             user
@@ -2109,5 +2099,4 @@ setInterval(
 
 
 </body>
-
 </html>
