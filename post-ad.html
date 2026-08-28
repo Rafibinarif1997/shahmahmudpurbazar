@@ -1162,27 +1162,38 @@ async function(e){
 
     const adData = {
 
-      id:
-        adId,
+  id: adId,
 
-      user_id:
-        userId,
+  seller_id: userId,
 
-      seller_id:
-        userId,
+  user_id: userId,
 
-      seller:
-        userName,
+  seller_email: userEmail,
 
-      seller_email:
-        userEmail,
+  email: userEmail,
 
-      email:
-        userEmail,
+  title: titleValue,
 
-      title:
-        titleValue,
+  price: priceValue,
 
+  category: categoryValue,
+
+  subcategory: subcategoryValue,
+
+  description: descriptionValue,
+
+  location: locationValue,
+
+  phone: phoneValue,
+
+  image_urls: imageUrls,
+
+  status: "pending",
+
+  created_at:
+    new Date().toISOString()
+
+};
       price:
         priceValue,
 
