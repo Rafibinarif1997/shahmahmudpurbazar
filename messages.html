@@ -31,7 +31,7 @@
 }
 
 .chat-header{
-  padding:17px;
+  padding:18px;
   border-bottom:1px solid rgba(255,255,255,.06);
 }
 
@@ -44,9 +44,9 @@
 }
 
 .chat-header h2{
-  margin:6px 0 3px;
+  margin:7px 0 4px;
   color:#edf7f1;
-  font-size:17px;
+  font-size:19px;
 }
 
 .chat-header p{
@@ -69,6 +69,7 @@
   text-align:center;
   color:#718078;
   font-size:11px;
+  line-height:1.8;
 }
 
 .message-row{
@@ -190,6 +191,8 @@
 
 
 
+<!-- LOGIN -->
+
 <section
   id="loginBox"
   class="authbox login-box"
@@ -216,6 +219,8 @@
 </section>
 
 
+
+<!-- CHAT -->
 
 <section
   id="chatBox"
@@ -269,7 +274,7 @@
       type="text"
       autocomplete="off"
       maxlength="2000"
-      placeholder="বিক্রেতাকে মেসেজ লিখুন...">
+      placeholder="মেসেজ লিখুন...">
 
     <button
       id="sendButton"
@@ -289,6 +294,8 @@
 </main>
 
 
+
+<!-- MOBILE NAV -->
 
 <nav class="mobile-nav">
 
@@ -327,6 +334,7 @@
 
 <script src="supabase.js?v=12"></script>
 
+
 <script>
 
 (function(){
@@ -355,57 +363,31 @@ const SUPA_KEY =
 ============================================================ */
 
 const loginBox =
-  document.getElementById(
-    "loginBox"
-  );
-
+  document.getElementById("loginBox");
 
 const chatBox =
-  document.getElementById(
-    "chatBox"
-  );
-
+  document.getElementById("chatBox");
 
 const messagesList =
-  document.getElementById(
-    "messagesList"
-  );
-
+  document.getElementById("messagesList");
 
 const chatForm =
-  document.getElementById(
-    "chatForm"
-  );
-
+  document.getElementById("chatForm");
 
 const messageInput =
-  document.getElementById(
-    "messageInput"
-  );
-
+  document.getElementById("messageInput");
 
 const sendButton =
-  document.getElementById(
-    "sendButton"
-  );
-
+  document.getElementById("sendButton");
 
 const chatError =
-  document.getElementById(
-    "chatError"
-  );
-
+  document.getElementById("chatError");
 
 const adTitle =
-  document.getElementById(
-    "adTitle"
-  );
-
+  document.getElementById("adTitle");
 
 const sellerInfo =
-  document.getElementById(
-    "sellerInfo"
-  );
+  document.getElementById("sellerInfo");
 
 
 
@@ -423,6 +405,15 @@ const adId =
   params.get("id") || "";
 
 
+/*
+ * Optional:
+ * messages.html?id=AD_ID&conversation=CONVERSATION_ID
+ */
+
+const conversationIdFromUrl =
+  params.get("conversation") || "";
+
+
 
 /* ============================================================
    STATE
@@ -431,6 +422,8 @@ const adId =
 let currentUser = null;
 
 let ad = null;
+
+let conversation = null;
 
 let otherUserId = null;
 
@@ -476,7 +469,6 @@ function showError(text){
 }
 
 
-
 function clearError(){
 
   chatError.style.display =
@@ -505,6 +497,7 @@ async function getSession(){
       const session =
         await getSbSession();
 
+
       if(
         session &&
         session.access_token
@@ -525,6 +518,7 @@ async function getSession(){
 
   }
 
+
   return null;
 
 }
@@ -532,7 +526,7 @@ async function getSession(){
 
 
 /* ============================================================
-   CURRENT USER
+   USER
 ============================================================ */
 
 async function getUser(){
@@ -546,6 +540,7 @@ async function getUser(){
 
       const user =
         await getCurrentUser();
+
 
       if(user){
 
@@ -574,18 +569,27 @@ async function getUser(){
         ) || "null"
       );
 
+
     if(
       stored &&
       stored.id
     ){
 
       return {
-        id:stored.id,
-        email:stored.email || "",
+
+        id:
+          stored.id,
+
+        email:
+          stored.email || "",
+
         user_metadata:{
+
           full_name:
             stored.name || ""
+
         }
+
       };
 
     }
@@ -614,19 +618,34 @@ async function getAd(){
   }
 
 
+  /*
+   * প্রথমে app.js-এর function
+   */
+
   if(
     typeof window.getAdById ===
     "function"
   ){
 
-    const result =
-      await window.getAdById(
-        adId
+    try{
+
+      const result =
+        await window.getAdById(
+          adId
+        );
+
+
+      if(result){
+
+        return result;
+
+      }
+
+    }catch(error){
+
+      console.error(
+        error
       );
-
-    if(result){
-
-      return result;
 
     }
 
@@ -686,8 +705,355 @@ async function getAd(){
     Array.isArray(data) &&
     data.length
   )
-  ? data[0]
-  : null;
+  ?
+  data[0]
+  :
+  null;
+
+}
+
+
+
+/* ============================================================
+   FIND EXISTING CONVERSATION
+============================================================ */
+
+async function findConversation(){
+
+  const session =
+    await getSession();
+
+
+  if(!session){
+
+    throw new Error(
+      "Login session পাওয়া যায়নি।"
+    );
+
+  }
+
+
+  /*
+   * URL-এ conversation ID থাকলে
+   * সেটাই ব্যবহার
+   */
+
+  if(conversationIdFromUrl){
+
+    const response =
+      await fetch(
+
+        SUPA_URL +
+        "/rest/v1/conversations" +
+        "?id=eq." +
+        encodeURIComponent(
+          conversationIdFromUrl
+        ) +
+        "&select=*",
+
+        {
+
+          headers:{
+
+            "apikey":
+              SUPA_KEY,
+
+            "Authorization":
+              "Bearer " +
+              session.access_token
+
+          }
+
+        }
+
+      );
+
+
+    if(!response.ok){
+
+      throw new Error(
+        await response.text()
+      );
+
+    }
+
+
+    const data =
+      await response.json();
+
+
+    if(
+      Array.isArray(data) &&
+      data.length
+    ){
+
+      return data[0];
+
+    }
+
+  }
+
+
+
+  /*
+   * Buyer-এর নিজের conversation খুঁজি
+   */
+
+  const buyerResponse =
+    await fetch(
+
+      SUPA_URL +
+      "/rest/v1/conversations" +
+      "?ad_id=eq." +
+      encodeURIComponent(adId) +
+      "&buyer_id=eq." +
+      encodeURIComponent(
+        currentUser.id
+      ) +
+      "&select=*" +
+      "&order=created_at.desc" +
+      "&limit=1",
+
+      {
+
+        headers:{
+
+          "apikey":
+            SUPA_KEY,
+
+          "Authorization":
+            "Bearer " +
+            session.access_token
+
+        }
+
+      }
+
+    );
+
+
+  if(!buyerResponse.ok){
+
+    throw new Error(
+      await buyerResponse.text()
+    );
+
+  }
+
+
+  const buyerData =
+    await buyerResponse.json();
+
+
+  if(
+    Array.isArray(buyerData) &&
+    buyerData.length
+  ){
+
+    return buyerData[0];
+
+  }
+
+
+
+  /*
+   * Seller হলে তার ad-এর
+   * সর্বশেষ conversation খুঁজি
+   */
+
+  if(
+    ad &&
+    String(ad.seller_id) ===
+    String(currentUser.id)
+  ){
+
+    const sellerResponse =
+      await fetch(
+
+        SUPA_URL +
+        "/rest/v1/conversations" +
+        "?ad_id=eq." +
+        encodeURIComponent(adId) +
+        "&seller_id=eq." +
+        encodeURIComponent(
+          currentUser.id
+        ) +
+        "&select=*" +
+        "&order=created_at.desc" +
+        "&limit=1",
+
+        {
+
+          headers:{
+
+            "apikey":
+              SUPA_KEY,
+
+            "Authorization":
+              "Bearer " +
+              session.access_token
+
+          }
+
+        }
+
+      );
+
+
+    if(!sellerResponse.ok){
+
+      throw new Error(
+        await sellerResponse.text()
+      );
+
+    }
+
+
+    const sellerData =
+      await sellerResponse.json();
+
+
+    if(
+      Array.isArray(sellerData) &&
+      sellerData.length
+    ){
+
+      return sellerData[0];
+
+    }
+
+  }
+
+
+  return null;
+
+}
+
+
+
+/* ============================================================
+   CREATE CONVERSATION
+============================================================ */
+
+async function createConversation(){
+
+  const session =
+    await getSession();
+
+
+  if(!session){
+
+    throw new Error(
+      "Login session পাওয়া যায়নি।"
+    );
+
+  }
+
+
+  if(
+    !ad ||
+    !ad.seller_id
+  ){
+
+    throw new Error(
+      "বিক্রেতার তথ্য পাওয়া যায়নি।"
+    );
+
+  }
+
+
+  if(
+    String(ad.seller_id) ===
+    String(currentUser.id)
+  ){
+
+    throw new Error(
+      "নিজের বিজ্ঞাপনে conversation তৈরি করা যাবে না।"
+    );
+
+  }
+
+
+  const data = {
+
+    ad_id:
+      adId,
+
+    buyer_id:
+      currentUser.id,
+
+    seller_id:
+      ad.seller_id
+
+  };
+
+
+  const response =
+    await fetch(
+
+      SUPA_URL +
+      "/rest/v1/conversations",
+
+      {
+
+        method:"POST",
+
+        headers:{
+
+          "apikey":
+            SUPA_KEY,
+
+          "Authorization":
+            "Bearer " +
+            session.access_token,
+
+          "Content-Type":
+            "application/json",
+
+          "Prefer":
+            "return=representation"
+
+        },
+
+        body:
+          JSON.stringify(data)
+
+      }
+
+    );
+
+
+  if(!response.ok){
+
+    const text =
+      await response.text();
+
+
+    throw new Error(
+      "Conversation তৈরি করা যায়নি: " +
+      text
+    );
+
+  }
+
+
+  const result =
+    await response.json();
+
+
+  if(
+    !Array.isArray(result) ||
+    !result.length
+  ){
+
+    throw new Error(
+      "Conversation তৈরি হয়েছে কিন্তু ID পাওয়া যায়নি।"
+    );
+
+  }
+
+
+  return result[0];
 
 }
 
@@ -701,7 +1067,7 @@ async function loadMessages(){
 
   if(
     loadingMessages ||
-    !adId ||
+    !conversation ||
     !currentUser
   ){
 
@@ -729,15 +1095,14 @@ async function loadMessages(){
     }
 
 
-    /*
-     * এই বিজ্ঞাপনের সব messages
-     */
-
     const url =
       SUPA_URL +
       "/rest/v1/messages" +
-      "?ad_id=eq." +
-      encodeURIComponent(adId) +
+      "?conversation_id=eq." +
+      encodeURIComponent(
+        conversation.id
+      ) +
+      "&select=*" +
       "&order=created_at.asc";
 
 
@@ -777,61 +1142,6 @@ async function loadMessages(){
       await response.json();
 
 
-    /*
-     * কার সাথে conversation
-     */
-
-    if(
-      Array.isArray(messages)
-    ){
-
-      const firstOther =
-        messages.find(
-          function(item){
-
-            return String(
-              item.sender_id
-            ) !== String(
-              currentUser.id
-            );
-
-          }
-        );
-
-
-      if(firstOther){
-
-        otherUserId =
-          firstOther.sender_id;
-
-      }
-
-    }
-
-
-    /*
-     * যদি Buyer হয়
-     */
-
-    if(
-      !otherUserId &&
-      ad &&
-      ad.seller_id
-    ){
-
-      if(
-        String(ad.seller_id) !==
-        String(currentUser.id)
-      ){
-
-        otherUserId =
-          ad.seller_id;
-
-      }
-
-    }
-
-
     renderMessages(
       Array.isArray(messages)
       ? messages
@@ -846,8 +1156,10 @@ async function loadMessages(){
       error
     );
 
+
     showError(
-      "মেসেজ লোড করা যাচ্ছে না।"
+      "মেসেজ লোড করা যাচ্ছে না। " +
+      (error.message || "")
     );
 
   }finally{
@@ -862,7 +1174,7 @@ async function loadMessages(){
 
 
 /* ============================================================
-   RENDER MESSAGES
+   RENDER
 ============================================================ */
 
 function renderMessages(
@@ -878,7 +1190,8 @@ function renderMessages(
       <div class="message-empty">
 
         এখনো কোনো মেসেজ নেই।<br>
-        নিচে লিখে বিক্রেতার সাথে যোগাযোগ করুন।
+
+        নিচে লিখে যোগাযোগ শুরু করুন।
 
       </div>
 
@@ -925,16 +1238,18 @@ function renderMessages(
             <div
               class="
                 message-row
-                ${mine
+                ${
+                  mine
                   ? "mine"
-                  : "theirs"}
+                  : "theirs"
+                }
               ">
 
               <div
                 class="message-bubble">
 
                 ${esc(
-                  item.message
+                  item.body || ""
                 )}
 
                 ${
@@ -942,7 +1257,9 @@ function renderMessages(
                   ?
                   `
                   <span class="message-time">
+
                     ${esc(date)}
+
                   </span>
                   `
                   :
@@ -988,10 +1305,53 @@ async function sendMessage(
   }
 
 
+  /*
+   * Conversation না থাকলে
+   * Buyer-এর জন্য তৈরি করব
+   */
+
+  if(!conversation){
+
+    conversation =
+      await createConversation();
+
+  }
+
+
+  /*
+   * অন্য user
+   */
+
+  if(
+    !otherUserId
+  ){
+
+    if(
+      String(
+        conversation.buyer_id
+      ) ===
+      String(
+        currentUser.id
+      )
+    ){
+
+      otherUserId =
+        conversation.seller_id;
+
+    }else{
+
+      otherUserId =
+        conversation.buyer_id;
+
+    }
+
+  }
+
+
   if(!otherUserId){
 
     throw new Error(
-      "বিক্রেতার User ID পাওয়া যায়নি।"
+      "অন্য user-এর ID পাওয়া যায়নি।"
     );
 
   }
@@ -1003,14 +1363,40 @@ async function sendMessage(
   ){
 
     throw new Error(
-      "নিজের বিজ্ঞাপনে নিজেকে মেসেজ করা যাবে না।"
+      "নিজেকে মেসেজ করা যাবে না।"
     );
 
   }
 
 
+  /*
+   * IMPORTANT:
+   *
+   * messages table-এ
+   * conversation_id + sender_id
+   * + receiver_id + body
+   */
+
+  const messageData = {
+
+    conversation_id:
+      conversation.id,
+
+    sender_id:
+      currentUser.id,
+
+    receiver_id:
+      otherUserId,
+
+    body:
+      text
+
+  };
+
+
   const response =
     await fetch(
+
       SUPA_URL +
       "/rest/v1/messages",
 
@@ -1036,21 +1422,9 @@ async function sendMessage(
         },
 
         body:
-          JSON.stringify({
-
-            ad_id:
-              adId,
-
-            sender_id:
-              currentUser.id,
-
-            receiver_id:
-              otherUserId,
-
-            message:
-              text
-
-          })
+          JSON.stringify(
+            messageData
+          )
 
       }
 
@@ -1062,7 +1436,9 @@ async function sendMessage(
     const text =
       await response.text();
 
+
     throw new Error(
+      "Message send failed: " +
       text
     );
 
@@ -1076,7 +1452,7 @@ async function sendMessage(
 
 
 /* ============================================================
-   FORM
+   SEND FORM
 ============================================================ */
 
 chatForm.addEventListener(
@@ -1101,12 +1477,19 @@ chatForm.addEventListener(
 
     if(!currentUser){
 
+      showError(
+        "আগে Login করুন।"
+      );
+
       return;
 
     }
 
 
     sendButton.disabled =
+      true;
+
+    messageInput.disabled =
       true;
 
     sendButton.textContent =
@@ -1130,7 +1513,7 @@ chatForm.addEventListener(
     }catch(error){
 
       console.error(
-        "Send message error:",
+        "Send error:",
         error
       );
 
@@ -1144,6 +1527,9 @@ chatForm.addEventListener(
     }finally{
 
       sendButton.disabled =
+        false;
+
+      messageInput.disabled =
         false;
 
       sendButton.textContent =
@@ -1170,6 +1556,10 @@ async function initialize(){
       await getUser();
 
 
+    /*
+     * Login নেই
+     */
+
     if(!currentUser){
 
       loginBox.style.display =
@@ -1180,14 +1570,22 @@ async function initialize(){
     }
 
 
+    /*
+     * Ad ID নেই
+     */
+
     if(!adId){
 
       throw new Error(
-        "বিজ্ঞাপন পাওয়া যায়নি।"
+        "বিজ্ঞাপনের ID পাওয়া যায়নি।"
       );
 
     }
 
+
+    /*
+     * Ad load
+     */
 
     ad =
       await getAd();
@@ -1203,15 +1601,25 @@ async function initialize(){
 
 
     /*
-     * নিজের বিজ্ঞাপন হলে Seller view
+     * নিজের বিজ্ঞাপন?
      */
 
     const isSeller =
       String(
         ad.seller_id || ""
-      ) === String(
+      ) ===
+      String(
         currentUser.id
       );
+
+
+    /*
+     * Header
+     */
+
+    adTitle.textContent =
+      ad.title ||
+      "বিজ্ঞাপন";
 
 
     if(isSeller){
@@ -1227,25 +1635,108 @@ async function initialize(){
     }
 
 
-    adTitle.textContent =
-      ad.title ||
-      "বিজ্ঞাপন";
+    /*
+     * Existing conversation
+     */
 
+    conversation =
+      await findConversation();
+
+
+    /*
+     * Existing conversation থাকলে
+     * other user বের করি
+     */
+
+    if(conversation){
+
+      if(
+        String(
+          conversation.buyer_id
+        ) ===
+        String(
+          currentUser.id
+        )
+      ){
+
+        otherUserId =
+          conversation.seller_id;
+
+      }else{
+
+        otherUserId =
+          conversation.buyer_id;
+
+      }
+
+    }
+
+
+    /*
+     * Seller কিন্তু কোনো conversation নেই
+     */
+
+    if(
+      isSeller &&
+      !conversation
+    ){
+
+      messagesList.innerHTML = `
+
+        <div class="message-empty">
+
+          এখনো কোনো Buyer মেসেজ করেনি।<br><br>
+
+          Buyer মেসেজ করলে এখানে conversation দেখা যাবে।
+
+        </div>
+
+      `;
+
+    }
+
+
+    /*
+     * Buyer হলে conversation না থাকলেও
+     * message box থাকবে।
+     *
+     * Send চাপলে conversation তৈরি হবে।
+     */
 
     chatBox.style.display =
       "block";
 
 
-    await loadMessages();
+    if(
+      !isSeller ||
+      conversation
+    ){
+
+      await loadMessages();
+
+    }
 
 
     /*
-     * নতুন মেসেজের জন্য প্রতি ৩ সেকেন্ডে
-     * refresh হবে।
+     * প্রতি ৩ সেকেন্ডে নতুন message check
      */
 
     setInterval(
-      loadMessages,
+      async function(){
+
+        /*
+         * Conversation এখনো না থাকলে
+         * Buyer-এর জন্য নতুন message
+         * পাঠানো পর্যন্ত কিছু করার নেই।
+         */
+
+        if(conversation){
+
+          await loadMessages();
+
+        }
+
+      },
       3000
     );
 
@@ -1282,7 +1773,6 @@ initialize();
 })();
 
 </script>
-
 
 </body>
 
