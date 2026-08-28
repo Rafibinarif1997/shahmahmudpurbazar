@@ -93,10 +93,10 @@
 
 .bubble{
   max-width:80%;
-  padding:10px 12px;
+  padding:8px 11px;
   border-radius:14px;
   font-size:11px;
-  line-height:1.6;
+  line-height:1.5;
   white-space:pre-wrap;
   word-break:break-word;
 }
@@ -116,7 +116,7 @@
 
 .time{
   display:block;
-  margin-top:4px;
+  margin-top:3px;
   font-size:7px;
   opacity:.65;
 }
@@ -260,8 +260,10 @@
 
 <a class="active"
    href="messages.html">
+
   <span>▤</span>
   Messages
+
 </a>
 
 <a href="profile.html">
@@ -273,7 +275,7 @@
 
 
 
-<script src="supabase.js?v=30"></script>
+<script src="supabase.js?v=31"></script>
 
 
 <script>
@@ -282,6 +284,10 @@
 
 "use strict";
 
+
+/* ============================================================
+   CONFIG
+============================================================ */
 
 const SUPA_URL =
   window.SUPABASE_URL ||
@@ -293,6 +299,10 @@ const SUPA_KEY =
   window.supabaseAnonKey ||
   "";
 
+
+/* ============================================================
+   ELEMENTS
+============================================================ */
 
 const titleEl =
   document.getElementById("title");
@@ -318,6 +328,10 @@ const send =
   document.getElementById("send");
 
 
+/* ============================================================
+   URL
+============================================================ */
+
 const params =
   new URLSearchParams(
     location.search
@@ -332,6 +346,10 @@ const adId =
   params.get("id") || "";
 
 
+/* ============================================================
+   STATE
+============================================================ */
+
 let currentUser = null;
 
 let session = null;
@@ -343,38 +361,54 @@ let otherUserId = null;
 let busy = false;
 
 
+/* ============================================================
+   ESCAPE
+============================================================ */
 
 function esc(value){
 
   return String(value ?? "")
 
     .replace(/&/g,"&amp;")
-
     .replace(/</g,"&lt;")
-
     .replace(/>/g,"&gt;")
-
     .replace(/"/g,"&quot;")
-
     .replace(/'/g,"&#039;");
 
 }
 
 
+/* ============================================================
+   SESSION
+============================================================ */
 
 async function getSession(){
 
-  if(typeof getSbSession === "function"){
+  if(
+    typeof getSbSession ===
+    "function"
+  ){
 
-    const s =
-      await getSbSession();
+    try{
 
-    if(
-      s &&
-      s.access_token
-    ){
+      const s =
+        await getSbSession();
 
-      return s;
+      if(
+        s &&
+        s.access_token
+      ){
+
+        return s;
+
+      }
+
+    }catch(error){
+
+      console.error(
+        "SESSION ERROR:",
+        error
+      );
 
     }
 
@@ -385,10 +419,16 @@ async function getSession(){
 }
 
 
+/* ============================================================
+   USER
+============================================================ */
 
 async function getUser(){
 
-  if(typeof getCurrentUser === "function"){
+  if(
+    typeof getCurrentUser ===
+    "function"
+  ){
 
     try{
 
@@ -401,9 +441,12 @@ async function getUser(){
 
       }
 
-    }catch(e){
+    }catch(error){
 
-      console.error(e);
+      console.error(
+        "USER ERROR:",
+        error
+      );
 
     }
 
@@ -419,16 +462,32 @@ async function getUser(){
         ) || "null"
       );
 
-    if(saved && saved.id){
+
+    if(
+      saved &&
+      saved.id
+    ){
 
       return {
-        id:saved.id,
-        email:saved.email || ""
+
+        id:
+          saved.id,
+
+        email:
+          saved.email || ""
+
       };
 
     }
 
-  }catch(e){}
+  }catch(error){
+
+    console.error(
+      "LOCAL USER ERROR:",
+      error
+    );
+
+  }
 
 
   return null;
@@ -436,6 +495,9 @@ async function getUser(){
 }
 
 
+/* ============================================================
+   API REQUEST
+============================================================ */
 
 async function request(
   url,
@@ -471,8 +533,12 @@ async function request(
 
   if(!response.ok){
 
+    const errorText =
+      await response.text();
+
+
     throw new Error(
-      await response.text()
+      errorText
     );
 
   }
@@ -489,10 +555,9 @@ async function request(
 }
 
 
-
-/*
- * পণ্যের তথ্য
- */
+/* ============================================================
+   GET AD
+============================================================ */
 
 async function getAd(
   id
@@ -501,9 +566,11 @@ async function getAd(
   const url =
 
     SUPA_URL +
+
     "/rest/v1/ads" +
 
     "?id=eq." +
+
     encodeURIComponent(id) +
 
     "&select=*";
@@ -514,19 +581,23 @@ async function getAd(
 
 
   return(
+
     Array.isArray(data) &&
+
     data.length
+
   )
+
   ? data[0]
+
   : null;
 
 }
 
 
-
-/*
- * Conversation খুঁজে বের করা
- */
+/* ============================================================
+   FIND CONVERSATION
+============================================================ */
 
 async function findConversation(
   ad
@@ -553,10 +624,6 @@ async function findConversation(
   }
 
 
-  /*
-   * নিজের পণ্যে নিজের সাথে chat নয়
-   */
-
   if(
     sellerId ===
     String(currentUser.id)
@@ -569,22 +636,22 @@ async function findConversation(
   }
 
 
-  /*
-   * Buyer + Seller + Product
-   */
-
   const url =
 
     SUPA_URL +
+
     "/rest/v1/conversations" +
 
     "?ad_id=eq." +
+
     encodeURIComponent(ad.id) +
 
     "&buyer_id=eq." +
+
     uid +
 
     "&seller_id=eq." +
+
     encodeURIComponent(sellerId) +
 
     "&select=*";
@@ -605,8 +672,7 @@ async function findConversation(
 
 
   /*
-   * Conversation নেই।
-   * নতুন conversation তৈরি হবে।
+   * Conversation না থাকলে তৈরি হবে
    */
 
   const insertUrl =
@@ -663,15 +729,14 @@ async function findConversation(
 }
 
 
-
-/*
- * Conversation যাচাই
- */
+/* ============================================================
+   LOAD CONVERSATION
+============================================================ */
 
 async function loadConversation(){
 
   /*
-   * যদি Inbox থেকে conversation ID আসে
+   * Inbox থেকে conversation ID
    */
 
   if(conversationId){
@@ -679,9 +744,11 @@ async function loadConversation(){
     const url =
 
       SUPA_URL +
+
       "/rest/v1/conversations" +
 
       "?id=eq." +
+
       encodeURIComponent(
         conversationId
       ) +
@@ -712,7 +779,7 @@ async function loadConversation(){
 
 
   /*
-   * যদি Product page থেকে id আসে
+   * Product page থেকে ad ID
    */
 
   else if(adId){
@@ -730,6 +797,23 @@ async function loadConversation(){
     }
 
 
+    /*
+     * Seller হলে seller-এর নিজের
+     * conversation খুঁজবে না।
+     */
+
+    if(
+      String(ad.seller_id) ===
+      String(currentUser.id)
+    ){
+
+      throw new Error(
+        "নিজের বিজ্ঞাপনে নতুন Buyer chat খুলতে Inbox ব্যবহার করুন।"
+      );
+
+    }
+
+
     conversation =
       await findConversation(
         ad
@@ -741,10 +825,6 @@ async function loadConversation(){
         conversation.id
       );
 
-
-    /*
-     * URL-এ conversation ID বসিয়ে দিই
-     */
 
     history.replaceState(
       null,
@@ -768,8 +848,7 @@ async function loadConversation(){
 
 
   /*
-   * User এই conversation-এর
-   * participant কি না
+   * Participant verification
    */
 
   const uid =
@@ -822,7 +901,7 @@ async function loadConversation(){
 
 
   /*
-   * Ad title
+   * Product title
    */
 
   try{
@@ -841,9 +920,12 @@ async function loadConversation(){
 
     }
 
-  }catch(e){
+  }catch(error){
 
-    console.error(e);
+    console.error(
+      "AD TITLE ERROR:",
+      error
+    );
 
   }
 
@@ -854,10 +936,124 @@ async function loadConversation(){
 }
 
 
+/* ============================================================
+   MARK INCOMING MESSAGES AS READ
+============================================================ */
 
-/*
- * Message load
- */
+async function markMessagesAsRead(){
+
+  if(
+    !conversationId ||
+    !currentUser ||
+    !currentUser.id
+  ){
+
+    return;
+
+  }
+
+
+  try{
+
+    /*
+     * শুধু এই conversation-এর
+     * এবং আমাকে পাঠানো message
+     * এবং unread message update হবে।
+     */
+
+    const url =
+
+      SUPA_URL +
+
+      "/rest/v1/messages" +
+
+      "?conversation_id=eq." +
+
+      encodeURIComponent(
+        conversationId
+      ) +
+
+      "&receiver_id=eq." +
+
+      encodeURIComponent(
+        currentUser.id
+      ) +
+
+      "&is_read=eq.false";
+
+
+    const response =
+      await fetch(
+        url,
+        {
+
+          method:"PATCH",
+
+          headers:{
+
+            "apikey":
+              SUPA_KEY,
+
+            "Authorization":
+              "Bearer " +
+              session.access_token,
+
+            "Content-Type":
+              "application/json",
+
+            "Prefer":
+              "return=minimal"
+
+          },
+
+          body:
+            JSON.stringify({
+
+              is_read:true
+
+            })
+
+        }
+      );
+
+
+    if(!response.ok){
+
+      console.warn(
+        "MARK READ ERROR:",
+        await response.text()
+      );
+
+      return;
+
+    }
+
+
+    console.log(
+      "Messages marked as read."
+    );
+
+
+  }catch(error){
+
+    /*
+     * Read update ব্যর্থ হলেও
+     * chat বন্ধ হবে না।
+     */
+
+    console.error(
+      "READ ERROR:",
+      error
+    );
+
+  }
+
+}
+
+
+/* ============================================================
+   LOAD MESSAGES
+============================================================ */
 
 async function loadMessages(){
 
@@ -871,9 +1067,11 @@ async function loadMessages(){
   const url =
 
     SUPA_URL +
+
     "/rest/v1/messages" +
 
     "?conversation_id=eq." +
+
     encodeURIComponent(
       conversationId
     ) +
@@ -891,6 +1089,14 @@ async function loadMessages(){
     Array.isArray(data)
     ? data
     : [];
+
+
+  /*
+   * Message দেখানোর আগে
+   * incoming unread messages read করা হবে।
+   */
+
+  await markMessagesAsRead();
 
 
   if(!messages.length){
@@ -917,6 +1123,7 @@ async function loadMessages(){
   messagesEl.innerHTML =
 
     messages
+
       .map(
         function(message){
 
@@ -942,10 +1149,15 @@ async function loadMessages(){
             ).toLocaleString(
               "bn-BD",
               {
+
                 day:"numeric",
+
                 month:"short",
+
                 hour:"numeric",
+
                 minute:"2-digit"
+
               }
             )
 
@@ -984,6 +1196,7 @@ async function loadMessages(){
 
         }
       )
+
       .join("");
 
 
@@ -993,10 +1206,9 @@ async function loadMessages(){
 }
 
 
-
-/*
- * Send
- */
+/* ============================================================
+   SEND MESSAGE
+============================================================ */
 
 async function sendMessage(){
 
@@ -1077,7 +1289,14 @@ async function sendMessage(){
               otherUserId,
 
             body:
-              text
+              text,
+
+            /*
+             * নতুন message অবশ্যই unread
+             */
+
+            is_read:
+              false
 
           })
 
@@ -1121,12 +1340,15 @@ async function sendMessage(){
 }
 
 
+/* ============================================================
+   FORM
+============================================================ */
 
 form.addEventListener(
   "submit",
-  function(e){
+  function(event){
 
-    e.preventDefault();
+    event.preventDefault();
 
     sendMessage();
 
@@ -1134,6 +1356,9 @@ form.addEventListener(
 );
 
 
+/* ============================================================
+   START
+============================================================ */
 
 async function start(){
 
@@ -1183,13 +1408,23 @@ async function start(){
     }
 
 
+    /*
+     * Conversation load
+     */
+
     await loadConversation();
+
+
+    /*
+     * প্রথমবার message load
+     * + unread mark as read
+     */
 
     await loadMessages();
 
 
     /*
-     * প্রতি ৩ সেকেন্ডে নতুন message
+     * প্রতি ৩ সেকেন্ডে নতুন message check
      */
 
     setInterval(
@@ -1199,9 +1434,12 @@ async function start(){
 
           await loadMessages();
 
-        }catch(e){
+        }catch(error){
 
-          console.error(e);
+          console.error(
+            "AUTO MESSAGE LOAD ERROR:",
+            error
+          );
 
         }
 
