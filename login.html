@@ -4,8 +4,8 @@ document.getElementById("loginForm").addEventListener("submit",async e=>{
  try{
   const data=await auth("token?grant_type=password",{email:document.getElementById("email").value.trim().toLowerCase(),password:document.getElementById("password").value});
   setSbSession(data);
-  const profile=await sb("profiles?select=id,name,email,phone,is_admin&id=eq."+encodeURIComponent(data.user.id)+"&limit=1");
-  if(profile?.[0])localStorage.setItem("smb_user_v1",JSON.stringify(profile[0]));
+  const profile=await sb("profiles?select=id,name,phone,is_admin&id=eq."+encodeURIComponent(data.user.id)+"&limit=1");
+  if(profile?.[0])localStorage.setItem("smb_user_v1",JSON.stringify(Object.assign({},profile[0],{email:data.user.email})));
   location.href=new URLSearchParams(location.search).get("next")||"index.html";
  }catch(err){msg.textContent=err.message||"Login failed."}
  finally{btn.disabled=false;btn.textContent="LOGIN →"}
