@@ -1,0 +1,13 @@
+<!doctype html><html lang="bn"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>লগইন | শাহমাহমুদপুর বাজার</title><link rel="stylesheet" href="style.css"></head><body><main class="auth"><div class="authbox"><a class="brand" href="index.html"><b>শাহমাহমুদপুর</b><strong>বাজার</strong><small>LOCAL MARKETPLACE</small></a><h1>স্বাগতম 👋</h1><p class="muted">আপনার account-এ login করুন।</p><form id="loginForm"><label>Email<input id="email" type="email" required></label><label>Password<input id="password" type="password" minlength="6" required></label><button id="loginBtn" class="btn green" style="width:100%">LOGIN →</button></form><p id="msg" class="msg"></p><p class="center"></p><p class="center"><a href="index.html">← Homepage</a></p></div></main><script src="supabase.js"></script><script>
+document.getElementById("loginForm").addEventListener("submit",async e=>{
+ e.preventDefault();const msg=document.getElementById("msg"),btn=document.getElementById("loginBtn");msg.textContent="";btn.disabled=true;btn.textContent="LOGIN হচ্ছে...";
+ try{
+  const data=await auth("token?grant_type=password",{email:document.getElementById("email").value.trim().toLowerCase(),password:document.getElementById("password").value});
+  setSbSession(data);
+  const profile=await sb("profiles?select=id,name,phone,is_admin&id=eq."+encodeURIComponent(data.user.id)+"&limit=1");
+  if(profile?.[0])localStorage.setItem("smb_user_v1",JSON.stringify(Object.assign({},profile[0],{email:data.user.email})));
+  location.href=new URLSearchParams(location.search).get("next")||"index.html";
+ }catch(err){msg.textContent=err.message||"Login failed."}
+ finally{btn.disabled=false;btn.textContent="LOGIN →"}
+});
+</script></body></html>

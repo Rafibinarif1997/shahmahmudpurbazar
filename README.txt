@@ -1,21 +1,24 @@
-SHAHMAHMUDPUR BAZAR — AUTH FIXED MASTER
-========================================
-Upload all files directly to GitHub repository ROOT. No folder is required.
+SHAHMAHMUDPUR BAZAR — PREMIUM ROOT MASTER
+=========================================
+NO FOLDERS. NO REGISTRATION PAGE.
 
-FIX:
-- Registration uses Supabase Auth.
-- Login uses Supabase Auth.
-- Password confirmation uses non-conflicting element IDs.
-- User metadata (name + phone) is sent to Supabase.
-- The SQL trigger creates public.profiles automatically.
-- Access tokens are stored locally for this client-side GitHub Pages build.
+Authentication:
+- Google Sign-In only
+- User profile uses Google email and available Google name
+- Email/password registration removed from UI
 
-IMPORTANT:
-Do not publish or use a Supabase service-role key in the browser.
-The included key is the public anon key.
+Custom domain:
+https://smbazar.cyou/
 
-After uploading:
-1. Open Register.
-2. Create a new account.
-3. If Supabase requires email confirmation, confirm the email first.
-4. Login.
+Clean routes are handled by the root 404 router:
+/
+/login
+/profile
+/search
+/post-ad
+/favorites
+/messages
+/hijama
+/verify
+
+Upload every file directly into the GitHub repository root.
