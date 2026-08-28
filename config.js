@@ -1,3 +1,0 @@
-window.SUPABASE_URL="https://jeupbfoceqmnpwlklche.supabase.co";
-window.SUPABASE_ANON_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpldXBiZm9jZXFtbnB3bGtsY2hlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc4Nzc4NjEsImV4cCI6MjEwMzQ1Mzg2MX0.-1NNm67t4HiB-I8fgTZcOwDHVrwmFtTH7T6DnkveXt4";
-window.sb=window.supabase.createClient(window.SUPABASE_URL,window.SUPABASE_ANON_KEY);
