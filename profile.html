@@ -1,1 +1,658 @@
-<!doctype html><html lang="bn"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>আমার প্রোফাইল</title><link rel="stylesheet" href="style.css"></head><body><main class="container" style="padding:35px 0"><a href="index.html" class="brand"><b>শাহমাহমুদপুর</b><strong>বাজার</strong></a><section class="authbox" style="margin-top:25px"><span class="eyebrow">ACCOUNT</span><h1 id="name">Profile</h1><p id="info" class="muted"></p><div class="actions"><a class="btn" href="my-ads.html">আমার বিজ্ঞাপন</a><a class="btn" href="favorites.html">Favourite</a><button class="btn green" id="logout">Logout</button></div></section></main><script>let u=JSON.parse(localStorage.getItem("smb_user")||"null");if(!u)location.href="login.html";else{name.textContent=u.name;info.textContent=u.email+" · "+u.phone}logout.onclick=()=>{localStorage.removeItem("smb_user");location.href="index.html"}</script><nav class="mobile-nav"><a href="index.html"><span>⌂</span>Home</a><a href="favorites.html"><span>♡</span>Saved</a><a href="post-ad.html"><span>⊞</span>Sell</a><a href="messages.html"><span>▤</span>Messages</a><a href="profile.html"><span>♙</span>Profile</a></nav></body></html>
+<!doctype html>
+<html lang="bn">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>আমার প্রোফাইল | শাহমাহমুদপুর বাজার</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+.profile-page{
+  min-height:100vh;
+  padding:35px 16px 100px;
+}
+
+.profile-wrap{
+  max-width:650px;
+  margin:25px auto 0;
+}
+
+.profile-card{
+  position:relative;
+  overflow:hidden;
+  padding:30px 24px;
+  border:1px solid rgba(105,245,165,.16);
+  border-radius:22px;
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(105,245,165,.08),
+      transparent 45%
+    ),
+    rgba(5,14,10,.96);
+  box-shadow:
+    0 25px 70px rgba(0,0,0,.45),
+    0 0 40px rgba(105,245,165,.05);
+}
+
+.profile-head{
+  display:flex;
+  align-items:center;
+  gap:16px;
+  margin:20px 0 25px;
+}
+
+.avatar{
+  width:72px;
+  height:72px;
+  flex:none;
+  border-radius:50%;
+  object-fit:cover;
+  border:2px solid rgba(105,245,165,.45);
+  background:#102019;
+  box-shadow:0 0 28px rgba(105,245,165,.1);
+}
+
+.avatar-placeholder{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#69f5a5;
+  font-size:30px;
+}
+
+.profile-name{
+  margin:0;
+  color:#f1f8f4;
+  font-size:24px;
+  font-weight:900;
+}
+
+.profile-email{
+  margin:6px 0 0;
+  color:#84948c;
+  font-size:11px;
+  word-break:break-all;
+}
+
+.profile-info{
+  display:grid;
+  gap:10px;
+  margin-top:20px;
+}
+
+.info-item{
+  padding:14px 15px;
+  border:1px solid rgba(255,255,255,.07);
+  border-radius:12px;
+  background:rgba(255,255,255,.025);
+}
+
+.info-label{
+  display:block;
+  margin-bottom:5px;
+  color:#65756d;
+  font-size:8px;
+  letter-spacing:1px;
+  text-transform:uppercase;
+}
+
+.info-value{
+  color:#dce8e1;
+  font-size:11px;
+  font-weight:700;
+  word-break:break-word;
+}
+
+.profile-actions{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin-top:22px;
+}
+
+.profile-actions .btn{
+  text-align:center;
+}
+
+.logout-btn{
+  width:100%;
+  margin-top:12px;
+  border:1px solid rgba(255,90,90,.22);
+  color:#ff9c9c;
+  background:rgba(255,70,70,.04);
+  cursor:pointer;
+}
+
+.logout-btn:hover{
+  border-color:rgba(255,90,90,.45);
+  background:rgba(255,70,70,.08);
+}
+
+.loading{
+  text-align:center;
+  padding:50px 20px;
+  color:#718078;
+  font-size:11px;
+}
+
+@media(max-width:500px){
+
+  .profile-page{
+    padding-top:25px;
+  }
+
+  .profile-card{
+    padding:25px 17px;
+  }
+
+  .profile-head{
+    gap:13px;
+  }
+
+  .avatar{
+    width:62px;
+    height:62px;
+  }
+
+  .profile-name{
+    font-size:20px;
+  }
+
+  .profile-actions{
+    grid-template-columns:1fr;
+  }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+<main class="container profile-page">
+
+  <a href="index.html" class="brand">
+
+    <b>শাহমাহমুদপুর</b>
+    <strong>বাজার</strong>
+
+    <small>LOCAL MARKETPLACE</small>
+
+  </a>
+
+
+  <section class="profile-wrap">
+
+    <div id="loading" class="profile-card loading">
+      Profile লোড হচ্ছে...
+    </div>
+
+
+    <div id="profileCard"
+         class="profile-card"
+         style="display:none">
+
+      <span class="eyebrow">MY ACCOUNT</span>
+
+
+      <div class="profile-head">
+
+        <div id="avatarBox"></div>
+
+        <div>
+
+          <h1
+            id="profileName"
+            class="profile-name">
+            Profile
+          </h1>
+
+          <p
+            id="profileEmail"
+            class="profile-email">
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="profile-info">
+
+        <div class="info-item">
+
+          <span class="info-label">
+            Email
+          </span>
+
+          <div
+            id="emailValue"
+            class="info-value">
+          </div>
+
+        </div>
+
+
+        <div class="info-item">
+
+          <span class="info-label">
+            Account
+          </span>
+
+          <div class="info-value">
+            Google Account
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="profile-actions">
+
+        <a
+          class="btn"
+          href="my-ads.html">
+          আমার বিজ্ঞাপন
+        </a>
+
+        <a
+          class="btn"
+          href="favorites.html">
+          Favourite
+        </a>
+
+      </div>
+
+
+      <button
+        id="logoutBtn"
+        class="btn logout-btn">
+        Logout
+      </button>
+
+    </div>
+
+  </section>
+
+</main>
+
+
+<nav class="mobile-nav">
+
+  <a href="index.html">
+    <span>⌂</span>
+    Home
+  </a>
+
+  <a href="favorites.html">
+    <span>♡</span>
+    Saved
+  </a>
+
+  <a href="post-ad.html">
+    <span>⊞</span>
+    Sell
+  </a>
+
+  <a href="messages.html">
+    <span>▤</span>
+    Messages
+  </a>
+
+  <a class="active" href="profile.html">
+    <span>♙</span>
+    Profile
+  </a>
+
+</nav>
+
+
+<script src="supabase.js?v=8"></script>
+
+
+<script>
+
+(function(){
+
+  const loading =
+    document.getElementById("loading");
+
+  const card =
+    document.getElementById("profileCard");
+
+  const nameEl =
+    document.getElementById("profileName");
+
+  const emailEl =
+    document.getElementById("profileEmail");
+
+  const emailValue =
+    document.getElementById("emailValue");
+
+  const avatarBox =
+    document.getElementById("avatarBox");
+
+  const logoutBtn =
+    document.getElementById("logoutBtn");
+
+
+  function escapeHtml(value){
+
+    return String(value || "")
+      .replace(/&/g,"&amp;")
+      .replace(/</g,"&lt;")
+      .replace(/>/g,"&gt;")
+      .replace(/"/g,"&quot;")
+      .replace(/'/g,"&#039;");
+
+  }
+
+
+  function renderProfile(user){
+
+    if(!user){
+
+      window.location.href =
+        "login.html";
+
+      return;
+
+    }
+
+
+    const metadata =
+      user.user_metadata || {};
+
+
+    const name =
+      metadata.full_name ||
+      metadata.name ||
+      user.email ||
+      "User";
+
+
+    const email =
+      user.email || "";
+
+
+    const avatar =
+      metadata.avatar_url ||
+      metadata.picture ||
+      "";
+
+
+    nameEl.textContent =
+      name;
+
+
+    emailEl.textContent =
+      email;
+
+
+    emailValue.textContent =
+      email;
+
+
+    if(avatar){
+
+      avatarBox.innerHTML = `
+        <img
+          class="avatar"
+          src="${escapeHtml(avatar)}"
+          alt="Profile"
+          referrerpolicy="no-referrer"
+        >
+      `;
+
+    }else{
+
+      avatarBox.innerHTML = `
+        <div class="avatar avatar-placeholder">
+          ♙
+        </div>
+      `;
+
+    }
+
+
+    loading.style.display =
+      "none";
+
+    card.style.display =
+      "block";
+
+  }
+
+
+  async function loadProfile(){
+
+    try{
+
+      /*
+       * প্রথমে Supabase session
+       */
+
+      let session = null;
+
+      if(
+        typeof getSbSession ===
+        "function"
+      ){
+
+        session =
+          getSbSession();
+
+      }
+
+
+      /*
+       * Session পাওয়া গেলে Supabase
+       * থেকে আসল Google user নেওয়া হবে।
+       */
+
+      if(session && session.access_token){
+
+        const user =
+          await getCurrentUser();
+
+        if(user){
+
+          renderProfile(user);
+          return;
+
+        }
+
+      }
+
+
+      /*
+       * OAuth callback-এর পরে
+       * local user backup হিসেবে ব্যবহার।
+       */
+
+      const saved =
+        localStorage.getItem(
+          "smb_user_v1"
+        );
+
+
+      if(saved){
+
+        try{
+
+          const localUser =
+            JSON.parse(saved);
+
+
+          if(
+            localUser &&
+            localUser.email
+          ){
+
+            renderProfile({
+
+              id:
+                localUser.id || "",
+
+              email:
+                localUser.email,
+
+              user_metadata:{
+                name:
+                  localUser.name || ""
+              }
+
+            });
+
+            return;
+
+          }
+
+        }catch(e){
+
+          console.error(e);
+
+        }
+
+      }
+
+
+      /*
+       * কোথাও session নেই।
+       */
+
+      window.location.href =
+        "login.html";
+
+    }catch(error){
+
+      console.error(
+        "Profile error:",
+        error
+      );
+
+      /*
+       * Local backup থাকলে
+       * সেটাও চেষ্টা করবে।
+       */
+
+      const saved =
+        localStorage.getItem(
+          "smb_user_v1"
+        );
+
+
+      if(saved){
+
+        try{
+
+          const localUser =
+            JSON.parse(saved);
+
+          if(
+            localUser &&
+            localUser.email
+          ){
+
+            renderProfile({
+
+              email:
+                localUser.email,
+
+              user_metadata:{
+                name:
+                  localUser.name || ""
+              }
+
+            });
+
+            return;
+
+          }
+
+        }catch(e){}
+
+      }
+
+
+      window.location.href =
+        "login.html";
+
+    }
+
+  }
+
+
+  logoutBtn.addEventListener(
+    "click",
+    async function(){
+
+      logoutBtn.disabled = true;
+
+      logoutBtn.textContent =
+        "Logging out...";
+
+
+      try{
+
+        if(
+          typeof logout ===
+          "function"
+        ){
+
+          await logout();
+
+        }else{
+
+          localStorage.removeItem(
+            "smb_user_v1"
+          );
+
+          localStorage.removeItem(
+            "smb_supabase_session"
+          );
+
+          window.location.href =
+            "index.html";
+
+        }
+
+      }catch(error){
+
+        console.error(
+          "Logout error:",
+          error
+        );
+
+        localStorage.removeItem(
+          "smb_user_v1"
+        );
+
+        localStorage.removeItem(
+          "smb_supabase_session"
+        );
+
+        window.location.href =
+          "index.html";
+
+      }
+
+    }
+  );
+
+
+  loadProfile();
+
+})();
+
+</script>
+
+</body>
+</html>
