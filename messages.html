@@ -15,61 +15,99 @@
 
 <style>
 
-/* ==========================================================
-   PAGE
-========================================================== */
-
 .messages-page{
   max-width:760px;
   padding:30px 16px 110px;
 }
 
+.brand{
+  text-decoration:none;
+}
 
-/* ==========================================================
-   HEADER
-========================================================== */
-
-.messages-head{
-  margin-top:28px;
+.inbox-head{
+  margin-top:30px;
   margin-bottom:20px;
 }
 
-.messages-head small{
-  display:block;
+.inbox-head small{
   color:#69f5a5;
   font-size:8px;
   font-weight:800;
   letter-spacing:2px;
 }
 
-.messages-head h1{
+.inbox-head h1{
   margin:7px 0 5px;
   color:#edf7f1;
   font-size:30px;
 }
 
-.messages-head p{
+.inbox-head p{
   margin:0;
   color:#718078;
   font-size:10px;
 }
 
 
-/* ==========================================================
-   LOADING
-========================================================== */
+/* =========================================================
+   INBOX
+========================================================= */
 
-.loading{
-  padding:60px 20px;
-  text-align:center;
-  color:#718078;
-  font-size:11px;
+.conversation-list{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
 }
 
+.conversation{
+  display:block;
+  padding:16px;
+  border:1px solid rgba(105,245,165,.12);
+  border-radius:16px;
+  background:rgba(5,14,10,.72);
+  text-decoration:none;
+}
 
-/* ==========================================================
-   EMPTY
-========================================================== */
+.conversation:hover{
+  border-color:rgba(105,245,165,.3);
+}
+
+.conversation-top{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+}
+
+.ad-title{
+  color:#edf7f1;
+  font-size:14px;
+  font-weight:800;
+}
+
+.role{
+  display:inline-block;
+  margin-top:6px;
+  color:#69f5a5;
+  font-size:8px;
+  font-weight:800;
+  letter-spacing:1px;
+}
+
+.last-message{
+  margin-top:10px;
+  color:#87978f;
+  font-size:10px;
+  line-height:1.6;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.time{
+  color:#64746c;
+  font-size:8px;
+  white-space:nowrap;
+}
 
 .empty{
   padding:60px 20px;
@@ -91,7 +129,6 @@
   border-radius:50%;
 
   color:#69f5a5;
-
   background:rgba(105,245,165,.06);
 
   border:1px solid rgba(105,245,165,.15);
@@ -111,13 +148,15 @@
   line-height:1.8;
 }
 
-
-/* ==========================================================
-   ERROR
-========================================================== */
+.loading{
+  padding:50px 20px;
+  text-align:center;
+  color:#718078;
+  font-size:10px;
+}
 
 .error{
-  padding:15px;
+  padding:14px;
 
   border-radius:12px;
 
@@ -133,107 +172,9 @@
 }
 
 
-/* ==========================================================
-   CONVERSATION LIST
-========================================================== */
-
-.conversation-list{
-  display:flex;
-  flex-direction:column;
-  gap:10px;
-}
-
-
-/* ==========================================================
-   CONVERSATION CARD
-========================================================== */
-
-.conversation{
-  display:block;
-
-  padding:16px;
-
-  border:1px solid rgba(105,245,165,.12);
-
-  border-radius:16px;
-
-  background:rgba(5,14,10,.72);
-
-  text-decoration:none;
-
-  transition:.2s;
-}
-
-.conversation:hover{
-  border-color:rgba(105,245,165,.35);
-  transform:translateY(-1px);
-}
-
-
-.conversation-top{
-  display:flex;
-
-  justify-content:space-between;
-
-  gap:12px;
-}
-
-
-.ad-title{
-  color:#edf7f1;
-
-  font-size:14px;
-
-  font-weight:800;
-
-  line-height:1.4;
-}
-
-
-.role{
-  display:inline-block;
-
-  margin-top:6px;
-
-  color:#69f5a5;
-
-  font-size:8px;
-
-  font-weight:800;
-
-  letter-spacing:1px;
-}
-
-
-.time{
-  color:#64746c;
-
-  font-size:8px;
-
-  white-space:nowrap;
-}
-
-
-.last-message{
-  margin-top:10px;
-
-  color:#87978f;
-
-  font-size:10px;
-
-  line-height:1.6;
-
-  white-space:nowrap;
-
-  overflow:hidden;
-
-  text-overflow:ellipsis;
-}
-
-
-/* ==========================================================
+/* =========================================================
    CHAT
-========================================================== */
+========================================================= */
 
 .chat-box{
   margin-top:25px;
@@ -247,13 +188,11 @@
   background:rgba(5,14,10,.72);
 }
 
-
 .chat-header{
   padding:17px;
 
   border-bottom:1px solid rgba(255,255,255,.06);
 }
-
 
 .chat-header small{
   display:block;
@@ -267,15 +206,13 @@
   letter-spacing:1.5px;
 }
 
-
 .chat-header h2{
   margin:6px 0 3px;
 
   color:#edf7f1;
 
-  font-size:18px;
+  font-size:17px;
 }
-
 
 .chat-header p{
   margin:0;
@@ -285,24 +222,6 @@
   font-size:9px;
 }
 
-
-.back-button{
-  display:inline-block;
-
-  margin-bottom:12px;
-
-  color:#69f5a5;
-
-  font-size:10px;
-
-  text-decoration:none;
-}
-
-
-/* ==========================================================
-   MESSAGES
-========================================================== */
-
 .messages-list{
   height:390px;
 
@@ -310,7 +229,6 @@
 
   padding:16px;
 }
-
 
 .message-empty{
   height:100%;
@@ -326,10 +244,7 @@
   color:#718078;
 
   font-size:11px;
-
-  line-height:1.8;
 }
-
 
 .message-row{
   display:flex;
@@ -337,16 +252,13 @@
   margin-bottom:12px;
 }
 
-
 .message-row.mine{
   justify-content:flex-end;
 }
 
-
 .message-row.theirs{
   justify-content:flex-start;
 }
-
 
 .message-bubble{
   max-width:78%;
@@ -364,7 +276,6 @@
   word-break:break-word;
 }
 
-
 .mine .message-bubble{
   color:#031009;
 
@@ -372,7 +283,6 @@
 
   border-bottom-right-radius:4px;
 }
-
 
 .theirs .message-bubble{
   color:#dce9e1;
@@ -384,7 +294,6 @@
   border-bottom-left-radius:4px;
 }
 
-
 .message-time{
   display:block;
 
@@ -394,11 +303,6 @@
 
   opacity:.65;
 }
-
-
-/* ==========================================================
-   CHAT FORM
-========================================================== */
 
 .chat-form{
   display:flex;
@@ -410,22 +314,45 @@
   border-top:1px solid rgba(255,255,255,.06);
 }
 
-
 .chat-form input{
   flex:1;
 
   min-width:0;
 }
 
-
 .chat-form button{
   flex:0 0 auto;
 }
 
+.chat-error{
+  margin:15px;
 
-/* ==========================================================
-   MOBILE
-========================================================== */
+  padding:12px;
+
+  border-radius:10px;
+
+  border:1px solid rgba(255,90,90,.16);
+
+  background:rgba(255,90,90,.04);
+
+  color:#ff9d9d;
+
+  font-size:10px;
+
+  line-height:1.6;
+}
+
+.back-button{
+  display:inline-block;
+
+  margin-top:15px;
+
+  color:#69f5a5;
+
+  font-size:10px;
+
+  text-decoration:none;
+}
 
 @media(max-width:500px){
 
@@ -435,10 +362,6 @@
 
   .message-bubble{
     max-width:85%;
-  }
-
-  .conversation-top{
-    gap:8px;
   }
 
 }
@@ -454,56 +377,19 @@
 <main class="container messages-page">
 
 
-<!-- ========================================================
-     BRAND
-========================================================= -->
-
 <a href="index.html"
    class="brand">
 
-  <b>
-    শাহমাহমুদপুর
-  </b>
+  <b>শাহমাহমুদপুর</b>
 
-  <strong>
-    বাজার
-  </strong>
+  <strong>বাজার</strong>
 
-  <small>
-    LOCAL MARKETPLACE
-  </small>
+  <small>LOCAL MARKETPLACE</small>
 
 </a>
 
 
-
-<!-- ========================================================
-     PAGE HEADER
-========================================================= -->
-
-<div class="messages-head">
-
-  <small>
-    PRIVATE MESSAGES
-  </small>
-
-  <h1 id="pageTitle">
-    Messages
-  </h1>
-
-  <p id="pageSubtitle">
-    আপনার Buyer ও Seller কথোপকথন
-  </p>
-
-</div>
-
-
-
-<!-- ========================================================
-     MAIN CONTENT
-========================================================= -->
-
-<div id="result">
+<div id="app">
 
   <div class="loading">
     মেসেজ লোড হচ্ছে...
@@ -515,10 +401,6 @@
 </main>
 
 
-
-<!-- ========================================================
-     MOBILE NAV
-========================================================= -->
 
 <nav class="mobile-nav">
 
@@ -554,10 +436,6 @@
 
 
 
-<!-- ========================================================
-     SUPABASE
-========================================================= -->
-
 <script src="supabase.js?v=30"></script>
 
 
@@ -568,9 +446,9 @@
 "use strict";
 
 
-/* ==========================================================
+/* =========================================================
    CONFIG
-========================================================== */
+========================================================= */
 
 const SUPA_URL =
   window.SUPABASE_URL ||
@@ -583,31 +461,9 @@ const SUPA_KEY =
   "";
 
 
-/* ==========================================================
-   ELEMENTS
-========================================================== */
+const app =
+  document.getElementById("app");
 
-const result =
-  document.getElementById(
-    "result"
-  );
-
-
-const pageTitle =
-  document.getElementById(
-    "pageTitle"
-  );
-
-
-const pageSubtitle =
-  document.getElementById(
-    "pageSubtitle"
-  );
-
-
-/* ==========================================================
-   URL
-========================================================== */
 
 const params =
   new URLSearchParams(
@@ -615,83 +471,49 @@ const params =
   );
 
 
+const conversationId =
+  params.get("conversation");
+
+
 const adId =
-  params.get("id") || "";
+  params.get("id");
 
 
-/* ==========================================================
-   STATE
-========================================================== */
+let currentUser = null;
 
-let currentUser =
-  null;
+let currentConversation = null;
 
-let currentSession =
-  null;
+let currentAd = null;
 
-let currentAd =
-  null;
+let currentOtherUser = null;
 
-let currentConversation =
-  null;
-
-let chatInterval =
-  null;
-
-let inboxInterval =
-  null;
-
-let sending =
-  false;
+let loading = false;
 
 
-/* ==========================================================
+/* =========================================================
    ESCAPE
-========================================================== */
+========================================================= */
 
 function esc(value){
 
-  return String(
-    value ?? ""
-  )
+  return String(value ?? "")
 
-  .replace(/&/g,"&amp;")
-  .replace(/</g,"&lt;")
+    .replace(/&/g,"&amp;")
 
-  .replace(/>/g,"&gt;")
+    .replace(/</g,"&lt;")
 
-  .replace(/"/g,"&quot;")
+    .replace(/>/g,"&gt;")
 
-  .replace(/'/g,"&#039;");
+    .replace(/"/g,"&quot;")
 
-}
-
-
-/* ==========================================================
-   SHOW ERROR
-========================================================== */
-
-function showError(message){
-
-  result.innerHTML = `
-
-    <div class="error">
-
-      ${esc(
-        message ||
-        "একটি সমস্যা হয়েছে।"
-      )}
-
-    </div>
-
-  `;
+    .replace(/'/g,"&#039;");
 
 }
 
 
-/* ==========================================================
+/* =========================================================
    SESSION
-========================================================== */
+========================================================= */
 
 async function getSession(){
 
@@ -719,21 +541,20 @@ async function getSession(){
   }catch(error){
 
     console.error(
-      "SESSION ERROR:",
+      "Session error:",
       error
     );
 
   }
-
 
   return null;
 
 }
 
 
-/* ==========================================================
+/* =========================================================
    USER
-========================================================== */
+========================================================= */
 
 async function getUser(){
 
@@ -758,14 +579,12 @@ async function getUser(){
   }catch(error){
 
     console.error(
-      "USER ERROR:",
+      "User error:",
       error
     );
 
   }
 
-
-  /* fallback */
 
   try{
 
@@ -776,25 +595,18 @@ async function getUser(){
         ) || "null"
       );
 
-
     if(
       stored &&
       stored.id
     ){
 
       return {
-
-        id:
-          stored.id,
-
-        email:
-          stored.email || "",
-
+        id:stored.id,
+        email:stored.email || "",
         user_metadata:{
           full_name:
             stored.name || ""
         }
-
       };
 
     }
@@ -807,13 +619,24 @@ async function getUser(){
 }
 
 
-/* ==========================================================
-   SUPABASE GET
-========================================================== */
+/* =========================================================
+   API GET
+========================================================= */
 
-async function supaGet(
-  path
-){
+async function apiGet(path){
+
+  const session =
+    await getSession();
+
+
+  if(!session){
+
+    throw new Error(
+      "Login session পাওয়া যায়নি।"
+    );
+
+  }
+
 
   const response =
     await fetch(
@@ -828,7 +651,7 @@ async function supaGet(
 
           "Authorization":
             "Bearer " +
-            currentSession.access_token,
+            session.access_token,
 
           "Content-Type":
             "application/json"
@@ -841,12 +664,8 @@ async function supaGet(
 
   if(!response.ok){
 
-    const text =
-      await response.text();
-
     throw new Error(
-      text ||
-      "Supabase request failed."
+      await response.text()
     );
 
   }
@@ -857,14 +676,27 @@ async function supaGet(
 }
 
 
-/* ==========================================================
-   SUPABASE POST
-========================================================== */
+/* =========================================================
+   API POST
+========================================================= */
 
-async function supaPost(
+async function apiPost(
   path,
   data
 ){
+
+  const session =
+    await getSession();
+
+
+  if(!session){
+
+    throw new Error(
+      "Login session পাওয়া যায়নি।"
+    );
+
+  }
+
 
   const response =
     await fetch(
@@ -881,7 +713,7 @@ async function supaPost(
 
           "Authorization":
             "Bearer " +
-            currentSession.access_token,
+            session.access_token,
 
           "Content-Type":
             "application/json",
@@ -900,12 +732,8 @@ async function supaPost(
 
   if(!response.ok){
 
-    const text =
-      await response.text();
-
     throw new Error(
-      text ||
-      "Supabase insert failed."
+      await response.text()
     );
 
   }
@@ -916,197 +744,119 @@ async function supaPost(
 }
 
 
-/* ==========================================================
+/* =========================================================
    GET AD
-========================================================== */
+========================================================= */
 
-async function getAd(){
-
-  if(!adId){
-
-    return null;
-
-  }
-
+async function getAd(id){
 
   if(
     typeof window.getAdById ===
     "function"
   ){
 
-    try{
+    const ad =
+      await window.getAdById(id);
 
-      const ad =
-        await window.getAdById(
-          adId
-        );
+    if(ad){
 
-      if(ad){
-
-        return ad;
-
-      }
-
-    }catch(error){
-
-      console.error(
-        "getAdById ERROR:",
-        error
-      );
+      return ad;
 
     }
 
   }
 
 
-  const data =
-    await supaGet(
+  const rows =
+    await apiGet(
 
       "/rest/v1/ads" +
 
       "?id=eq." +
-      encodeURIComponent(adId) +
+      encodeURIComponent(id) +
 
       "&select=*"
 
     );
 
 
-  if(
-    Array.isArray(data) &&
-    data.length
-  ){
-
-    return data[0];
-
-  }
-
-
-  return null;
+  return rows[0] || null;
 
 }
 
 
-/* ==========================================================
-   FIND MY CONVERSATION FOR THIS AD
-========================================================== */
+/* =========================================================
+   FIND CONVERSATION FOR AD
+========================================================= */
 
-async function findConversation(){
+async function findConversationForAd(
+  id
+){
 
-  const buyerId =
+  const userId =
     encodeURIComponent(
       currentUser.id
     );
 
 
-  const sellerId =
-    encodeURIComponent(
-      String(
-        currentAd.seller_id
-      )
-    );
-
-
   /*
-   * প্রথমে Buyer + Seller + Ad
+   * Buyer অথবা seller — দুজনের
+   * যেকোনো একজন হলে conversation পাওয়া যাবে।
    */
 
-  const url =
+  const rows =
+    await apiGet(
 
-    "/rest/v1/conversations" +
+      "/rest/v1/conversations" +
 
-    "?ad_id=eq." +
-    encodeURIComponent(
-      adId
-    ) +
+      "?ad_id=eq." +
+      encodeURIComponent(id) +
 
-    "&buyer_id=eq." +
-    buyerId +
+      "&or=(" +
 
-    "&seller_id=eq." +
-    sellerId +
+        "buyer_id.eq." +
+        userId +
 
-    "&select=id,ad_id,buyer_id,seller_id,created_at" +
+        ",seller_id.eq." +
+        userId +
 
-    "&order=created_at.asc";
+      ")" +
 
+      "&select=*" +
 
-  const data =
-    await supaGet(
-      url
+      "&order=created_at.desc" +
+
+      "&limit=1"
+
     );
 
 
-  if(
-    Array.isArray(data) &&
-    data.length
-  ){
-
-    return data[0];
-
-  }
-
-
-  /*
-   * fallback:
-   * current user buyer/seller যেকোনো role-এ থাকলে
-   */
-
-  const fallbackUrl =
-
-    "/rest/v1/conversations" +
-
-    "?ad_id=eq." +
-    encodeURIComponent(
-      adId
-    ) +
-
-    "&or=(" +
-
-      "buyer_id.eq." +
-      buyerId +
-
-      ",seller_id.eq." +
-      buyerId +
-
-    ")" +
-
-    "&select=id,ad_id,buyer_id,seller_id,created_at" +
-
-    "&order=created_at.asc";
-
-
-  const fallback =
-    await supaGet(
-      fallbackUrl
-    );
-
-
-  if(
-    Array.isArray(fallback) &&
-    fallback.length
-  ){
-
-    return fallback[0];
-
-  }
-
-
-  return null;
+  return rows[0] || null;
 
 }
 
 
-/* ==========================================================
+/* =========================================================
    CREATE CONVERSATION
-========================================================== */
+========================================================= */
 
 async function createConversation(){
 
-  if(
-    !currentAd ||
-    !currentAd.seller_id
-  ){
+  if(!currentAd){
+
+    throw new Error(
+      "বিজ্ঞাপন পাওয়া যায়নি।"
+    );
+
+  }
+
+
+  const sellerId =
+    currentAd.seller_id ||
+    currentAd.user_id;
+
+
+  if(!sellerId){
 
     throw new Error(
       "এই বিজ্ঞাপনের Seller ID পাওয়া যায়নি।"
@@ -1115,25 +865,13 @@ async function createConversation(){
   }
 
 
-  const sellerId =
-    String(
-      currentAd.seller_id
-    );
-
-
-  /*
-   * Seller নিজের product-এ conversation শুরু করতে পারবে না।
-   */
-
   if(
-    sellerId ===
-    String(
-      currentUser.id
-    )
+    String(sellerId) ===
+    String(currentUser.id)
   ){
 
     throw new Error(
-      "এটি আপনার নিজের বিজ্ঞাপন।"
+      "নিজের বিজ্ঞাপনে নিজেকে মেসেজ করা যাবে না।"
     );
 
   }
@@ -1142,7 +880,7 @@ async function createConversation(){
   const data = {
 
     ad_id:
-      adId,
+      currentAd.id,
 
     buyer_id:
       currentUser.id,
@@ -1154,88 +892,238 @@ async function createConversation(){
 
 
   const created =
-    await supaPost(
+    await apiPost(
       "/rest/v1/conversations",
       data
     );
 
 
-  if(
-    Array.isArray(created) &&
-    created.length
-  ){
+  return created[0];
 
-    return created[0];
-
-  }
+}
 
 
-  throw new Error(
-    "Conversation তৈরি করা যায়নি।"
+/* =========================================================
+   GET MESSAGES
+========================================================= */
+
+async function getMessages(
+  convId
+){
+
+  return await apiGet(
+
+    "/rest/v1/messages" +
+
+    "?conversation_id=eq." +
+    encodeURIComponent(convId) +
+
+    "&select=*" +
+
+    "&order=created_at.asc"
+
   );
 
 }
 
 
-/* ==========================================================
-   GET OR CREATE CONVERSATION
-========================================================== */
+/* =========================================================
+   SEND MESSAGE
+========================================================= */
 
-async function getOrCreateConversation(){
+async function sendMessage(
+  text
+){
 
-  let conversation =
-    await findConversation();
+  if(
+    !currentConversation
+  ){
 
-
-  if(conversation){
-
-    return conversation;
+    throw new Error(
+      "Conversation পাওয়া যায়নি।"
+    );
 
   }
 
 
-  /*
-   * Seller নিজের ad খুললে
-   * conversation তৈরি করবে না।
-   */
-
-  if(
+  const receiverId =
     String(
-      currentAd.seller_id
+      currentConversation.buyer_id
     ) ===
     String(
       currentUser.id
     )
-  ){
 
-    return null;
+    ?
+
+    currentConversation.seller_id
+
+    :
+
+    currentConversation.buyer_id;
+
+
+  if(!receiverId){
+
+    throw new Error(
+      "Receiver ID পাওয়া যায়নি।"
+    );
 
   }
 
 
-  conversation =
-    await createConversation();
+  return await apiPost(
 
+    "/rest/v1/messages",
 
-  return conversation;
+    {
+
+      conversation_id:
+        currentConversation.id,
+
+      sender_id:
+        currentUser.id,
+
+      receiver_id:
+        receiverId,
+
+      body:
+        text
+
+    }
+
+  );
 
 }
 
 
-/* ==========================================================
-   LOAD INBOX
-========================================================== */
+/* =========================================================
+   FORMAT TIME
+========================================================= */
+
+function formatTime(
+  value
+){
+
+  if(!value){
+
+    return "";
+
+  }
+
+
+  try{
+
+    return new Date(
+      value
+    ).toLocaleString(
+      "bn-BD",
+      {
+
+        day:"numeric",
+
+        month:"short",
+
+        hour:"numeric",
+
+        minute:"2-digit"
+
+      }
+    );
+
+  }catch(error){
+
+    return "";
+
+  }
+
+}
+
+
+/* =========================================================
+   SHOW ERROR
+========================================================= */
+
+function errorBox(
+  text
+){
+
+  app.innerHTML = `
+
+    <div class="error">
+
+      ${esc(text)}
+
+    </div>
+
+  `;
+
+}
+
+
+/* =========================================================
+   LOGIN
+========================================================= */
+
+function showLogin(){
+
+  app.innerHTML = `
+
+    <div class="empty">
+
+      <div class="empty-icon">
+        🔐
+      </div>
+
+      <h2>
+        Login করুন
+      </h2>
+
+      <p>
+        আপনার Messages দেখতে
+        আগে Login করতে হবে।
+      </p>
+
+      <br>
+
+      <a
+        href="login.html"
+        class="btn green">
+
+        Google দিয়ে Login করুন
+
+      </a>
+
+    </div>
+
+  `;
+
+}
+
+
+/* =========================================================
+   INBOX
+========================================================= */
 
 async function loadInbox(){
 
-  pageTitle.textContent =
-    "Messages";
+  app.innerHTML = `
 
-  pageSubtitle.textContent =
-    "আপনার Buyer ও Seller কথোপকথন";
+    <div class="inbox-head">
 
+      <small>
+        PRIVATE MESSAGES
+      </small>
 
-  result.innerHTML = `
+      <h1>
+        Messages
+      </h1>
+
+      <p>
+        আপনার সব Buyer ও Seller কথোপকথন
+      </p>
+
+    </div>
 
     <div class="loading">
       মেসেজ লোড হচ্ছে...
@@ -1246,60 +1134,10 @@ async function loadInbox(){
 
   try{
 
-    currentUser =
-      await getUser();
-
-
-    if(!currentUser){
-
-      result.innerHTML = `
-
-        <div class="empty">
-
-          <div class="empty-icon">
-            🔐
-          </div>
-
-          <h2>
-            Login করুন
-          </h2>
-
-          <p>
-            আপনার Messages দেখতে
-            আগে Login করতে হবে।
-          </p>
-
-          <br>
-
-          <a
-            href="login.html"
-            class="btn green">
-
-            Google দিয়ে Login করুন
-
-          </a>
-
-        </div>
-
-      `;
-
-      return;
-
-    }
-
-
-    currentSession =
-      await getSession();
-
-
-    if(!currentSession){
-
-      throw new Error(
-        "Login session পাওয়া যায়নি। আবার Login করুন।"
-      );
-
-    }
-
+    /*
+     * প্রথমে current user-এর
+     * conversations বের করি।
+     */
 
     const userId =
       encodeURIComponent(
@@ -1307,12 +1145,8 @@ async function loadInbox(){
       );
 
 
-    /* ======================================================
-       MY CONVERSATIONS
-    ====================================================== */
-
     const conversations =
-      await supaGet(
+      await apiGet(
 
         "/rest/v1/conversations" +
 
@@ -1326,7 +1160,7 @@ async function loadInbox(){
 
         ")" +
 
-        "&select=id,ad_id,buyer_id,seller_id,created_at" +
+        "&select=*" +
 
         "&order=created_at.desc"
 
@@ -1334,11 +1168,30 @@ async function loadInbox(){
 
 
     if(
-      !Array.isArray(conversations) ||
-      conversations.length === 0
+      !Array.isArray(
+        conversations
+      ) ||
+      !conversations.length
     ){
 
-      result.innerHTML = `
+      app.innerHTML = `
+
+        <div class="inbox-head">
+
+          <small>
+            PRIVATE MESSAGES
+          </small>
+
+          <h1>
+            Messages
+          </h1>
+
+          <p>
+            আপনার সব Buyer ও Seller কথোপকথন
+          </p>
+
+        </div>
+
 
         <div class="empty">
 
@@ -1352,8 +1205,8 @@ async function loadInbox(){
 
           <p>
             কোনো পণ্যের ভিতর থেকে
-            Buyer অথবা Seller-কে মেসেজ করলে
-            এখানে কথোপকথন দেখা যাবে।
+            Seller অথবা Buyer-কে মেসেজ করলে
+            কথোপকথন এখানে দেখা যাবে।
           </p>
 
         </div>
@@ -1365,166 +1218,70 @@ async function loadInbox(){
     }
 
 
-    /* ======================================================
-       MESSAGE DATA
-    ====================================================== */
-
-    const conversationIds =
-      conversations
-        .map(
-          function(c){
-
-            return String(
-              c.id
-            );
-
-          }
-        )
-        .filter(Boolean);
-
-
-    const messageMap = {};
-
-
-    if(
-      conversationIds.length
-    ){
-
-      const query =
-        conversationIds
-          .map(
-            function(id){
-
-              return encodeURIComponent(
-                id
-              );
-
-            }
-          )
-          .join(",");
-
-
-      const messages =
-        await supaGet(
-
-          "/rest/v1/messages" +
-
-          "?conversation_id=in.(" +
-          query +
-          ")" +
-
-          "&select=id,conversation_id,sender_id,receiver_id,body,created_at" +
-
-          "&order=created_at.desc"
-
-        );
-
-
-      if(
-        Array.isArray(messages)
-      ){
-
-        messages.forEach(
-          function(message){
-
-            const cid =
-              String(
-                message.conversation_id
-              );
-
-
-            /*
-             * order desc
-             * তাই প্রথমটাই latest
-             */
-
-            if(
-              !messageMap[cid]
-            ){
-
-              messageMap[cid] =
-                message;
-
-            }
-
-          }
-        );
-
-      }
-
-    }
-
-
-    /* ======================================================
-       ADS
-    ====================================================== */
+    /*
+     * সব conversation-এর ad ID
+     */
 
     const adIds =
       [
         ...new Set(
 
           conversations
+
             .map(
-              function(c){
-
-                return String(
-                  c.ad_id || ""
-                );
-
-              }
+              c =>
+                c.ad_id
             )
+
             .filter(Boolean)
 
+            .map(
+              String
+            )
+
         )
+
       ];
 
 
-    const adMap = {};
+    /*
+     * Ads একসাথে load
+     */
+
+    let ads = [];
 
 
     if(adIds.length){
 
-      const adQuery =
+      const ids =
         adIds
           .map(
-            function(id){
-
-              return encodeURIComponent(
-                id
-              );
-
-            }
+            id =>
+              encodeURIComponent(id)
           )
           .join(",");
 
 
-      const ads =
-        await supaGet(
+      try{
 
-          "/rest/v1/ads" +
+        ads =
+          await apiGet(
 
-          "?id=in.(" +
-          adQuery +
-          ")" +
+            "/rest/v1/ads" +
 
-          "&select=id,title"
+            "?id=in.(" +
+            ids +
+            ")" +
 
-        );
+            "&select=id,title"
 
+          );
 
-      if(
-        Array.isArray(ads)
-      ){
+      }catch(error){
 
-        ads.forEach(
-          function(ad){
-
-            adMap[
-              String(ad.id)
-            ] =
-              ad;
-
-          }
+        console.error(
+          "Ads load error:",
+          error
         );
 
       }
@@ -1532,170 +1289,255 @@ async function loadInbox(){
     }
 
 
-    /* ======================================================
-       RENDER INBOX
-    ====================================================== */
+    const adMap = {};
 
-    result.innerHTML = `
+
+    ads.forEach(
+      function(ad){
+
+        adMap[
+          String(ad.id)
+        ] = ad;
+
+      }
+    );
+
+
+    /*
+     * প্রতিটি conversation-এর
+     * latest message বের করি।
+     */
+
+    const items = [];
+
+
+    for(
+      const conversation
+      of conversations
+    ){
+
+      let messages = [];
+
+
+      try{
+
+        messages =
+          await getMessages(
+            conversation.id
+          );
+
+      }catch(error){
+
+        console.error(
+          "Conversation messages error:",
+          error
+        );
+
+      }
+
+
+      const last =
+        messages.length
+        ?
+        messages[
+          messages.length - 1
+        ]
+        :
+        null;
+
+
+      const isBuyer =
+        String(
+          conversation.buyer_id
+        ) ===
+        String(
+          currentUser.id
+        );
+
+
+      const role =
+        isBuyer
+        ?
+        "BUYER"
+        :
+        "SELLER";
+
+
+      const ad =
+        adMap[
+          String(
+            conversation.ad_id
+          )
+        ];
+
+
+      items.push({
+
+        conversation,
+        last,
+        role,
+        ad
+
+      });
+
+    }
+
+
+    /*
+     * Latest message অনুযায়ী sort
+     */
+
+    items.sort(
+      function(a,b){
+
+        const ta =
+          new Date(
+            a.last?.created_at ||
+            a.conversation.created_at
+          ).getTime();
+
+
+        const tb =
+          new Date(
+            b.last?.created_at ||
+            b.conversation.created_at
+          ).getTime();
+
+
+        return tb - ta;
+
+      }
+    );
+
+
+    app.innerHTML = `
+
+      <div class="inbox-head">
+
+        <small>
+          PRIVATE MESSAGES
+        </small>
+
+        <h1>
+          Messages
+        </h1>
+
+        <p>
+          আপনার সব Buyer ও Seller কথোপকথন
+        </p>
+
+      </div>
+
 
       <div class="conversation-list">
 
         ${
-          conversations
-            .map(
-              function(conversation){
+          items.map(
+            function(item){
 
-                const cid =
-                  String(
-                    conversation.id
-                  );
+              const c =
+                item.conversation;
 
 
-                const last =
-                  messageMap[cid];
+              const last =
+                item.last;
 
 
-                const ad =
-                  adMap[
-                    String(
-                      conversation.ad_id
-                    )
-                  ];
+              const title =
+                item.ad?.title ||
+                "বিজ্ঞাপন";
 
 
-                const title =
-                  ad?.title ||
-                  "বিজ্ঞাপন";
+              const preview =
+                last?.body ||
+                "কোনো মেসেজ নেই";
 
 
-                const isSeller =
-                  String(
-                    conversation.seller_id
-                  ) ===
-                  String(
-                    currentUser.id
-                  );
+              const time =
+                last?.created_at
+                ?
+
+                formatTime(
+                  last.created_at
+                )
+
+                :
+
+                formatTime(
+                  c.created_at
+                );
 
 
-                const role =
-                  isSeller
-                  ? "SELLER"
-                  : "BUYER";
+              return `
 
+                <a
+                  class="conversation"
+                  href="messages.html?conversation=${encodeURIComponent(
+                    c.id
+                  )}">
 
-                const body =
-                  last?.body ||
-                  "কথোপকথন শুরু করুন";
+                  <div
+                    class="conversation-top">
 
+                    <div>
 
-                const time =
-                  last?.created_at
+                      <div class="ad-title">
 
-                  ?
-
-                  new Date(
-                    last.created_at
-                  ).toLocaleString(
-                    "bn-BD",
-                    {
-                      day:"numeric",
-                      month:"short",
-                      hour:"numeric",
-                      minute:"2-digit"
-                    }
-                  )
-
-                  :
-
-                  new Date(
-                    conversation.created_at
-                  ).toLocaleString(
-                    "bn-BD",
-                    {
-                      day:"numeric",
-                      month:"short",
-                      hour:"numeric",
-                      minute:"2-digit"
-                    }
-                  );
-
-
-                return `
-
-                  <a
-                    class="conversation"
-                    href="messages.html?id=${encodeURIComponent(
-                      conversation.ad_id
-                    )}">
-
-                    <div
-                      class="conversation-top">
-
-                      <div>
-
-                        <div class="ad-title">
-
-                          ${esc(
-                            title
-                          )}
-
-                        </div>
-
-                        <span class="role">
-
-                          ${role}
-
-                        </span>
+                        ${esc(title)}
 
                       </div>
 
+                      <span class="role">
 
-                      <span class="time">
-
-                        ${esc(
-                          time
+                        ${roleLabel(
+                          item.role
                         )}
 
                       </span>
 
                     </div>
 
+                    <span class="time">
 
-                    <div class="last-message">
+                      ${esc(time)}
 
-                      ${esc(
-                        body
-                      )}
+                    </span>
 
-                    </div>
+                  </div>
 
-                  </a>
 
-                `;
+                  <div class="last-message">
 
-              }
-            )
-            .join("")
+                    ${esc(preview)}
+
+                  </div>
+
+                </a>
+
+              `;
+
+            }
+          ).join("")
+
         }
 
       </div>
 
     `;
 
-
   }catch(error){
 
     console.error(
-      "INBOX ERROR:",
+      "Inbox error:",
       error
     );
 
 
-    showError(
-      "Messages লোড করা যাচ্ছে না। " +
+    errorBox(
+      "Messages লোড করা যাচ্ছে না: " +
       (
         error.message ||
-        ""
+        "Unknown error"
       )
     );
 
@@ -1704,462 +1546,283 @@ async function loadInbox(){
 }
 
 
-/* ==========================================================
-   LOAD CHAT
-========================================================== */
+/* =========================================================
+   ROLE LABEL
+========================================================= */
+
+function roleLabel(
+  role
+){
+
+  return role === "BUYER"
+    ? "BUYER"
+    : "SELLER";
+
+}
+
+
+/* =========================================================
+   CHAT PAGE
+========================================================= */
 
 async function loadChat(){
 
-  pageTitle.textContent =
-    "Private Message";
-
-  pageSubtitle.textContent =
-    "বিক্রেতার সাথে সরাসরি যোগাযোগ করুন";
-
-
-  result.innerHTML = `
-
-    <div class="loading">
-      Chat লোড হচ্ছে...
-    </div>
-
-  `;
-
-
   try{
 
-    currentUser =
-      await getUser();
+    let conversation =
+      null;
 
 
-    if(!currentUser){
+    /*
+     * যদি সরাসরি conversation ID দেওয়া থাকে
+     */
 
-      result.innerHTML = `
+    if(conversationId){
 
-        <div class="empty">
+      const rows =
+        await apiGet(
 
-          <div class="empty-icon">
-            🔐
-          </div>
+          "/rest/v1/conversations" +
 
-          <h2>
-            Login করুন
-          </h2>
+          "?id=eq." +
+          encodeURIComponent(
+            conversationId
+          ) +
 
-          <p>
-            মেসেজ করতে আগে Login করতে হবে।
-          </p>
+          "&select=*"
 
-          <br>
+        );
 
-          <a
-            href="login.html"
-            class="btn green">
 
-            Google দিয়ে Login করুন
-
-          </a>
-
-        </div>
-
-      `;
-
-      return;
+      conversation =
+        rows[0] || null;
 
     }
 
 
-    currentSession =
-      await getSession();
+    /*
+     * যদি ad ID দিয়ে আসা হয়
+     */
+
+    if(
+      !conversation &&
+      adId
+    ){
+
+      currentAd =
+        await getAd(
+          adId
+        );
 
 
-    if(!currentSession){
+      if(!currentAd){
+
+        throw new Error(
+          "বিজ্ঞাপনটি পাওয়া যায়নি।"
+        );
+
+      }
+
+
+      conversation =
+        await findConversationForAd(
+          adId
+        );
+
+
+      /*
+       * Conversation নেই।
+       *
+       * Buyer হলে নতুন conversation
+       * তৈরি করা যাবে।
+       */
+
+      if(!conversation){
+
+        const sellerId =
+          currentAd.seller_id ||
+          currentAd.user_id;
+
+
+        if(
+          String(sellerId) ===
+          String(currentUser.id)
+        ){
+
+          throw new Error(
+            "নিজের বিজ্ঞাপনের chat খুলতে কোনো Buyer conversation নেই।"
+          );
+
+        }
+
+
+        conversation =
+          await createConversation();
+
+      }
+
+    }
+
+
+    if(!conversation){
 
       throw new Error(
-        "Login session পাওয়া যায়নি। আবার Login করুন।"
+        "কোনো কথোপকথন পাওয়া যায়নি।"
       );
 
     }
 
 
-    /* ======================================================
-       AD
-    ====================================================== */
+    /*
+     * User এই conversation-এর
+     * participant কি না
+     */
 
-    currentAd =
-      await getAd();
-
-
-    if(!currentAd){
-
-      throw new Error(
-        "এই বিজ্ঞাপনটি পাওয়া যায়নি।"
-      );
-
-    }
-
-
-    /* ======================================================
-       SELLER CHECK
-    ====================================================== */
-
-    const isSeller =
+    const participant =
       String(
-        currentAd.seller_id
+        conversation.buyer_id
+      ) ===
+      String(
+        currentUser.id
+      )
+
+      ||
+
+      String(
+        conversation.seller_id
       ) ===
       String(
         currentUser.id
       );
 
 
-    /* ======================================================
-       CONVERSATION
-    ====================================================== */
+    if(!participant){
+
+      throw new Error(
+        "এই কথোপকথনে আপনার access নেই।"
+      );
+
+    }
+
 
     currentConversation =
-      await getOrCreateConversation();
+      conversation;
 
 
     /*
-     * Seller-এর নিজের ad হলে conversation না থাকতেই পারে।
+     * Ad load
      */
 
     if(
-      !currentConversation &&
-      isSeller
+      !currentAd &&
+      conversation.ad_id
     ){
 
-      renderChat(
-        [],
-        true
-      );
-
-      return;
+      currentAd =
+        await getAd(
+          conversation.ad_id
+        );
 
     }
-
-
-    if(!currentConversation){
-
-      throw new Error(
-        "Conversation তৈরি করা যায়নি।"
-      );
-
-    }
-
-
-    await refreshChat();
 
 
     /*
-     * প্রতি ৩ সেকেন্ডে নতুন message
+     * অপর পক্ষ
      */
 
-    if(chatInterval){
+    currentOtherUser =
 
-      clearInterval(
-        chatInterval
-      );
+      String(
+        conversation.buyer_id
+      ) ===
+      String(
+        currentUser.id
+      )
 
-    }
+      ?
 
+      conversation.seller_id
 
-    chatInterval =
-      setInterval(
-        refreshChat,
-        3000
-      );
+      :
 
+      conversation.buyer_id;
 
-  }catch(error){
 
-    console.error(
-      "CHAT ERROR:",
-      error
-    );
+    /*
+     * Chat UI
+     */
 
+    app.innerHTML = `
 
-    showError(
-      error.message ||
-      "Chat চালু করা যাচ্ছে না।"
-    );
+      <a
+        class="back-button"
+        href="messages.html">
 
-  }
+        ← Messages-এ ফিরে যান
 
-}
+      </a>
 
 
-/* ==========================================================
-   REFRESH CHAT
-========================================================== */
+      <section class="chat-box">
 
-async function refreshChat(){
+        <div class="chat-header">
 
-  if(
-    !currentConversation ||
-    !currentSession
-  ){
+          <small>
+            PRIVATE MESSAGE
+          </small>
 
-    return;
+          <h2 id="chatTitle">
 
-  }
+            ${esc(
+              currentAd?.title ||
+              "বিজ্ঞাপন"
+            )}
 
+          </h2>
 
-  try{
-
-    const cid =
-      encodeURIComponent(
-        currentConversation.id
-      );
-
-
-    const messages =
-      await supaGet(
-
-        "/rest/v1/messages" +
-
-        "?conversation_id=eq." +
-        cid +
-
-        "&select=id,conversation_id,sender_id,receiver_id,body,created_at" +
-
-        "&order=created_at.asc"
-
-      );
-
-
-    renderChat(
-      Array.isArray(messages)
-      ? messages
-      : [],
-      false
-    );
-
-
-  }catch(error){
-
-    console.error(
-      "CHAT REFRESH ERROR:",
-      error
-    );
-
-  }
-
-}
-
-
-/* ==========================================================
-   RENDER CHAT
-========================================================== */
-
-function renderChat(
-  messages,
-  sellerOnly
-){
-
-  const sellerName =
-    currentAd?.seller_name ||
-    currentAd?.seller ||
-    currentAd?.seller_email ||
-    "বিক্রেতা";
-
-
-  const isSeller =
-    currentAd &&
-    String(
-      currentAd.seller_id
-    ) ===
-    String(
-      currentUser.id
-    );
-
-
-  result.innerHTML = `
-
-    <div class="chat-box">
-
-      <div class="chat-header">
-
-        <a
-          href="messages.html"
-          class="back-button">
-
-          ← Messages
-
-        </a>
-
-
-        <small>
-          PRIVATE MESSAGE
-        </small>
-
-
-        <h2>
-
-          ${esc(
-            currentAd?.title ||
-            "বিজ্ঞাপন"
-          )}
-
-        </h2>
-
-
-        <p>
-
-          ${
-            isSeller
-
-            ?
-
-            "আপনার বিজ্ঞাপন • ক্রেতার মেসেজ"
-
-            :
-
-            "বিক্রেতা: " +
-            esc(
-              sellerName
-            )
-
-          }
-
-        </p>
-
-      </div>
-
-
-      <div
-        id="chatMessages"
-        class="messages-list">
-
-        ${
-          messages.length
-
-          ?
-
-          messages
-            .map(
-              function(message){
-
-                const mine =
-                  String(
-                    message.sender_id
-                  ) ===
-                  String(
-                    currentUser.id
-                  );
-
-
-                const time =
-                  message.created_at
-
-                  ?
-
-                  new Date(
-                    message.created_at
-                  ).toLocaleString(
-                    "bn-BD",
-                    {
-                      day:"numeric",
-                      month:"short",
-                      hour:"numeric",
-                      minute:"2-digit"
-                    }
-                  )
-
-                  :
-
-                  "";
-
-
-                return `
-
-                  <div
-                    class="
-                      message-row
-                      ${
-                        mine
-                        ? "mine"
-                        : "theirs"
-                      }
-                    ">
-
-                    <div
-                      class="message-bubble">
-
-                      ${esc(
-                        message.body
-                      )}
-
-                      ${
-                        time
-
-                        ?
-
-                        `
-                        <span
-                          class="message-time">
-
-                          ${esc(
-                            time
-                          )}
-
-                        </span>
-                        `
-
-                        :
-
-                        ""
-
-                      }
-
-                    </div>
-
-                  </div>
-
-                `;
-
-              }
-            )
-            .join("")
-
-          :
-
-          `
-
-          <div class="message-empty">
+          <p>
 
             ${
-              sellerOnly
+              String(
+                conversation.buyer_id
+              ) ===
+              String(
+                currentUser.id
+              )
 
               ?
 
-              "কোনো ক্রেতা এখনো মেসেজ করেনি।"
+              "বিক্রেতার সাথে যোগাযোগ করুন"
 
               :
 
-              "এখনো কোনো মেসেজ নেই।<br>নিচে মেসেজ লিখে কথোপকথন শুরু করুন।"
+              "ক্রেতার সাথে কথোপকথন"
 
             }
 
+          </p>
+
+        </div>
+
+
+        <div
+          id="chatError"
+          style="display:none">
+        </div>
+
+
+        <div
+          id="messagesList"
+          class="messages-list">
+
+          <div class="message-empty">
+
+            মেসেজ লোড হচ্ছে...
+
           </div>
 
-          `
+        </div>
 
-        }
-
-      </div>
-
-
-      ${
-        sellerOnly
-
-        ?
-
-        ""
-
-        :
-
-        `
 
         <form
           id="chatForm"
@@ -2168,8 +1831,8 @@ function renderChat(
           <input
             id="messageInput"
             type="text"
-            autocomplete="off"
             maxlength="2000"
+            autocomplete="off"
             placeholder="মেসেজ লিখুন...">
 
           <button
@@ -2183,40 +1846,119 @@ function renderChat(
 
         </form>
 
-        `
+      </section>
+
+    `;
+
+
+    await refreshChat();
+
+
+    const form =
+      document.getElementById(
+        "chatForm"
+      );
+
+
+    const input =
+      document.getElementById(
+        "messageInput"
+      );
+
+
+    const button =
+      document.getElementById(
+        "sendButton"
+      );
+
+
+    form.addEventListener(
+      "submit",
+      async function(event){
+
+        event.preventDefault();
+
+
+        const text =
+          input.value.trim();
+
+
+        if(!text){
+
+          return;
+
+        }
+
+
+        button.disabled =
+          true;
+
+        button.textContent =
+          "Sending...";
+
+
+        try{
+
+          await sendMessage(
+            text
+          );
+
+
+          input.value =
+            "";
+
+
+          await refreshChat();
+
+        }catch(error){
+
+          console.error(
+            "Send error:",
+            error
+          );
+
+
+          showChatError(
+            error.message ||
+            "মেসেজ পাঠানো যায়নি।"
+          );
+
+        }finally{
+
+          button.disabled =
+            false;
+
+          button.textContent =
+            "Send";
+
+          input.focus();
+
+        }
 
       }
-
-    </div>
-
-  `;
-
-
-  const chatMessages =
-    document.getElementById(
-      "chatMessages"
     );
 
 
-  if(chatMessages){
+    /*
+     * প্রতি ৫ সেকেন্ডে শুধু message refresh
+     */
 
-    chatMessages.scrollTop =
-      chatMessages.scrollHeight;
+    setInterval(
+      refreshChat,
+      5000
+    );
 
-  }
+  }catch(error){
 
-
-  const chatForm =
-    document.getElementById(
-      "chatForm"
+    console.error(
+      "Chat error:",
+      error
     );
 
 
-  if(chatForm){
-
-    chatForm.addEventListener(
-      "submit",
-      sendMessage
+    errorBox(
+      error.message ||
+      "Chat চালু করা যাচ্ছে না।"
     );
 
   }
@@ -2224,53 +1966,11 @@ function renderChat(
 }
 
 
-/* ==========================================================
-   SEND MESSAGE
-========================================================== */
+/* =========================================================
+   REFRESH CHAT
+========================================================= */
 
-async function sendMessage(
-  event
-){
-
-  event.preventDefault();
-
-
-  if(sending){
-
-    return;
-
-  }
-
-
-  const input =
-    document.getElementById(
-      "messageInput"
-    );
-
-
-  const button =
-    document.getElementById(
-      "sendButton"
-    );
-
-
-  if(!input){
-
-    return;
-
-  }
-
-
-  const text =
-    input.value.trim();
-
-
-  if(!text){
-
-    return;
-
-  }
-
+async function refreshChat(){
 
   if(
     !currentConversation
@@ -2281,32 +1981,66 @@ async function sendMessage(
   }
 
 
-  const isSeller =
-    String(
-      currentConversation.seller_id
-    ) ===
-    String(
-      currentUser.id
+  if(loading){
+
+    return;
+
+  }
+
+
+  loading =
+    true;
+
+
+  try{
+
+    const messages =
+      await getMessages(
+        currentConversation.id
+      );
+
+
+    renderMessages(
+      messages
+    );
+
+  }catch(error){
+
+    console.error(
+      "Refresh chat error:",
+      error
     );
 
 
-  const receiverId =
-    isSeller
-
-    ?
-
-    currentConversation.buyer_id
-
-    :
-
-    currentConversation.seller_id;
-
-
-  if(!receiverId){
-
-    alert(
-      "Receiver ID পাওয়া যায়নি।"
+    showChatError(
+      "মেসেজ লোড করা যাচ্ছে না।"
     );
+
+  }finally{
+
+    loading =
+      false;
+
+  }
+
+}
+
+
+/* =========================================================
+   RENDER CHAT
+========================================================= */
+
+function renderMessages(
+  messages
+){
+
+  const list =
+    document.getElementById(
+      "messagesList"
+    );
+
+
+  if(!list){
 
     return;
 
@@ -2314,165 +2048,191 @@ async function sendMessage(
 
 
   if(
-    String(
-      receiverId
-    ) ===
-    String(
-      currentUser.id
-    )
+    !messages.length
   ){
 
-    alert(
-      "নিজেকে মেসেজ করা যাবে না।"
-    );
+    list.innerHTML = `
+
+      <div class="message-empty">
+
+        এখনো কোনো মেসেজ নেই।<br>
+        নিচে লিখে কথোপকথন শুরু করুন।
+
+      </div>
+
+    `;
 
     return;
 
   }
 
 
-  sending = true;
+  list.innerHTML =
+    messages.map(
+      function(message){
+
+        const mine =
+          String(
+            message.sender_id
+          ) ===
+          String(
+            currentUser.id
+          );
 
 
-  if(button){
+        return `
 
-    button.disabled =
-      true;
+          <div
+            class="
+              message-row
+              ${
+                mine
+                ?
+                "mine"
+                :
+                "theirs"
+              }
+            ">
 
-    button.textContent =
-      "Sending...";
+            <div
+              class="message-bubble">
 
-  }
+              ${esc(
+                message.body ||
+                ""
+              )}
 
+              <span
+                class="message-time">
 
-  try{
+                ${esc(
+                  formatTime(
+                    message.created_at
+                  )
+                )}
 
-    await supaPost(
+              </span>
 
-      "/rest/v1/messages",
+            </div>
 
-      {
+          </div>
 
-        conversation_id:
-          currentConversation.id,
-
-        sender_id:
-          currentUser.id,
-
-        receiver_id:
-          receiverId,
-
-        body:
-          text
+        `;
 
       }
-
-    );
-
-
-    input.value = "";
+    ).join("");
 
 
-    await refreshChat();
+  /*
+   * সবসময় নিচের latest message
+   */
 
-
-  }catch(error){
-
-    console.error(
-      "SEND MESSAGE ERROR:",
-      error
-    );
-
-
-    alert(
-      "মেসেজ পাঠানো যায়নি:\n\n" +
-      (
-        error.message ||
-        "Unknown error"
-      )
-    );
-
-  }finally{
-
-    sending = false;
-
-
-    if(button){
-
-      button.disabled =
-        false;
-
-      button.textContent =
-        "Send";
-
-    }
-
-
-    input.focus();
-
-  }
+  list.scrollTop =
+    list.scrollHeight;
 
 }
 
 
-/* ==========================================================
-   START
-========================================================== */
+/* =========================================================
+   CHAT ERROR
+========================================================= */
+
+function showChatError(
+  text
+){
+
+  const box =
+    document.getElementById(
+      "chatError"
+    );
+
+
+  if(!box){
+
+    return;
+
+  }
+
+
+  box.style.display =
+    "block";
+
+  box.className =
+    "chat-error";
+
+  box.textContent =
+    text;
+
+}
+
+
+/* =========================================================
+   INITIALIZE
+========================================================= */
 
 async function initialize(){
 
-  /*
-   * আগের chat interval বন্ধ
-   */
+  try{
 
-  if(chatInterval){
-
-    clearInterval(
-      chatInterval
-    );
-
-    chatInterval =
-      null;
-
-  }
+    currentUser =
+      await getUser();
 
 
-  if(inboxInterval){
+    if(!currentUser){
 
-    clearInterval(
-      inboxInterval
-    );
+      showLogin();
 
-    inboxInterval =
-      null;
+      return;
 
-  }
-
-
-  /*
-   * URL-এ id থাকলে CHAT
-   */
-
-  if(adId){
-
-    await loadChat();
-
-  }
-
-  else{
-
-    await loadInbox();
+    }
 
 
     /*
-     * Inbox প্রতি ৫ সেকেন্ডে refresh
+     * ?conversation= থাকলে
+     * সরাসরি chat
      */
 
-    inboxInterval =
-      setInterval(
-        loadInbox,
-        5000
-      );
+    if(conversationId){
+
+      await loadChat();
+
+      return;
+
+    }
+
+
+    /*
+     * ?id= থাকলে
+     * ad-এর conversation
+     */
+
+    if(adId){
+
+      await loadChat();
+
+      return;
+
+    }
+
+
+    /*
+     * কোনো ID না থাকলে Inbox
+     */
+
+    await loadInbox();
+
+  }catch(error){
+
+    console.error(
+      "Initialize error:",
+      error
+    );
+
+
+    errorBox(
+      error.message ||
+      "Messages চালু করা যাচ্ছে না।"
+    );
 
   }
 
@@ -2481,8 +2241,8 @@ async function initialize(){
 
 initialize();
 
-
 })();
+
 </script>
 
 
