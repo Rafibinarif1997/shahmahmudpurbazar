@@ -1,13 +1,314 @@
-<!doctype html><html lang="bn"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>লগইন | শাহমাহমুদপুর বাজার</title><link rel="stylesheet" href="style.css"></head><body><main class="auth"><div class="authbox"><a class="brand" href="index.html"><b>শাহমাহমুদপুর</b><strong>বাজার</strong><small>LOCAL MARKETPLACE</small></a><h1>স্বাগতম 👋</h1><p class="muted">আপনার account-এ login করুন।</p><form id="loginForm"><label>Email<input id="email" type="email" required></label><label>Password<input id="password" type="password" minlength="6" required></label><button id="loginBtn" class="btn green" style="width:100%">LOGIN →</button></form><p id="msg" class="msg"></p><p class="center"></p><p class="center"><a href="index.html">← Homepage</a></p></div></main><script src="supabase.js"></script><script>
-document.getElementById("loginForm").addEventListener("submit",async e=>{
- e.preventDefault();const msg=document.getElementById("msg"),btn=document.getElementById("loginBtn");msg.textContent="";btn.disabled=true;btn.textContent="LOGIN হচ্ছে...";
- try{
-  const data=await auth("token?grant_type=password",{email:document.getElementById("email").value.trim().toLowerCase(),password:document.getElementById("password").value});
-  setSbSession(data);
-  const profile=await sb("profiles?select=id,name,phone,is_admin&id=eq."+encodeURIComponent(data.user.id)+"&limit=1");
-  if(profile?.[0])localStorage.setItem("smb_user_v1",JSON.stringify(Object.assign({},profile[0],{email:data.user.email})));
-  location.href=new URLSearchParams(location.search).get("next")||"index.html";
- }catch(err){msg.textContent=err.message||"Login failed."}
- finally{btn.disabled=false;btn.textContent="LOGIN →"}
-});
-</script></body></html>
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>Login | শাহমাহমুদপুর বাজার</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+.login-page{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:24px 16px;
+  background:
+    radial-gradient(circle at 50% 25%,rgba(105,245,165,.09),transparent 32%),
+    #030705;
+}
+
+.login-box{
+  width:100%;
+  max-width:430px;
+  padding:36px 26px;
+  text-align:center;
+  border:1px solid rgba(105,245,165,.18);
+  border-radius:22px;
+  background:
+    linear-gradient(145deg,rgba(11,25,18,.97),rgba(4,11,8,.98));
+  box-shadow:
+    0 25px 70px rgba(0,0,0,.55),
+    0 0 45px rgba(105,245,165,.055);
+}
+
+.login-brand{
+  display:inline-flex;
+  flex-direction:column;
+  align-items:center;
+  line-height:1;
+  margin-bottom:32px;
+}
+
+.login-brand b{
+  color:#f1f8f4;
+  font-size:22px;
+  font-weight:900;
+  letter-spacing:-.05em;
+  text-shadow:0 0 22px rgba(105,245,165,.12);
+}
+
+.login-brand strong{
+  color:#69f5a5;
+  font-size:22px;
+  font-weight:900;
+  text-shadow:0 0 22px rgba(105,245,165,.25);
+}
+
+.login-brand small{
+  margin-top:7px;
+  color:#718179;
+  font-family:Arial,sans-serif;
+  font-size:7px;
+  letter-spacing:3px;
+}
+
+.login-box h1{
+  margin:0;
+  color:#f3faf6;
+  font-size:27px;
+  font-weight:850;
+  line-height:1.25;
+}
+
+.login-subtitle{
+  margin:9px 0 27px;
+  color:#8fa098;
+  font-size:11px;
+  line-height:1.7;
+}
+
+.google-btn{
+  width:100%;
+  height:52px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:11px;
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:11px;
+  background:#ffffff;
+  color:#151515;
+  font-size:12px;
+  font-weight:800;
+  cursor:pointer;
+  box-shadow:
+    0 8px 28px rgba(0,0,0,.25),
+    0 0 0 rgba(105,245,165,0);
+  transition:.25s ease;
+}
+
+.google-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:
+    0 12px 35px rgba(0,0,0,.3),
+    0 0 28px rgba(105,245,165,.12);
+}
+
+.google-btn:active{
+  transform:translateY(0);
+}
+
+.google-btn:disabled{
+  opacity:.65;
+  cursor:wait;
+}
+
+.google-icon{
+  width:21px;
+  height:21px;
+  flex:none;
+}
+
+.secure{
+  margin-top:20px;
+  color:#66766e;
+  font-size:8px;
+  line-height:1.7;
+}
+
+.secure span{
+  color:#69f5a5;
+}
+
+.login-message{
+  min-height:20px;
+  margin-top:14px;
+  color:#ff9b9b;
+  font-size:9px;
+}
+
+.back-home{
+  display:inline-block;
+  margin-top:22px;
+  color:#7e9087;
+  font-size:9px;
+}
+
+.back-home:hover{
+  color:#69f5a5;
+}
+
+@media(max-width:420px){
+
+  .login-box{
+    padding:32px 20px;
+    border-radius:18px;
+  }
+
+  .login-box h1{
+    font-size:24px;
+  }
+
+  .google-btn{
+    height:50px;
+    font-size:11px;
+  }
+
+}
+</style>
+</head>
+
+<body>
+
+<main class="login-page">
+
+  <section class="login-box">
+
+    <a href="/" class="login-brand">
+      <b>শাহমাহমুদপুর</b>
+      <strong>বাজার</strong>
+      <small>LOCAL MARKETPLACE</small>
+    </a>
+
+    <h1>স্বাগতম 👋</h1>
+
+    <p class="login-subtitle">
+      আপনার Google account দিয়ে<br>
+      নিরাপদে Login করুন।
+    </p>
+
+    <button
+      id="googleLogin"
+      class="google-btn"
+      type="button"
+    >
+
+      <svg
+        class="google-icon"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+      >
+        <path
+          fill="#4285F4"
+          d="M21.35 12.27c0-.79-.07-1.54-.2-2.27H12v4.3h5.24a4.48 4.48 0 0 1-1.94 2.94v2.45h3.14c1.84-1.69 2.91-4.18 2.91-7.42z"
+        />
+
+        <path
+          fill="#34A853"
+          d="M12 21.6c2.63 0 4.84-.87 6.45-2.36l-3.14-2.45c-.87.58-1.98.93-3.31.93-2.54 0-4.7-1.72-5.47-4.04H3.29v2.52A9.74 9.74 0 0 0 12 21.6z"
+        />
+
+        <path
+          fill="#FBBC05"
+          d="M6.53 13.68A5.85 5.85 0 0 1 6.22 12c0-.58.1-1.15.31-1.68V7.8H3.29A9.74 9.74 0 0 0 2.25 12c0 1.57.38 3.06 1.04 4.2l3.24-2.52z"
+        />
+
+        <path
+          fill="#EA4335"
+          d="M12 6.28c1.43 0 2.71.49 3.72 1.45l2.79-2.79C16.83 3.31 14.63 2.4 12 2.4a9.74 9.74 0 0 0-8.71 5.4l3.24 2.52C7.3 8 9.46 6.28 12 6.28z"
+        />
+      </svg>
+
+      Continue with Google
+
+    </button>
+
+    <p id="loginMessage" class="login-message"></p>
+
+    <div class="secure">
+      🔒 <span>Secure Google Login</span><br>
+      আপনার Google password এই সাইটে সংরক্ষণ করা হয় না।
+    </div>
+
+    <a href="/" class="back-home">
+      ← Homepage
+    </a>
+
+  </section>
+
+</main>
+
+
+<script src="supabase.js?v=5"></script>
+
+<script>
+
+(function(){
+
+  const button =
+    document.getElementById("googleLogin");
+
+  const message =
+    document.getElementById("loginMessage");
+
+  button.addEventListener("click",function(){
+
+    try{
+
+      button.disabled = true;
+      button.textContent = "Google Login হচ্ছে...";
+
+      /*
+       * Google OAuth
+       *
+       * User Google account select করবে।
+       * কোনো email/password/verification page নেই।
+       *
+       * Login সফল হলে সরাসরি homepage:
+       * https://smbazar.cyou/
+       */
+
+      const redirectTo =
+        "https://smbazar.cyou/";
+
+      const googleUrl =
+        window.SUPABASE_URL +
+        "/auth/v1/authorize" +
+        "?provider=google" +
+        "&redirect_to=" +
+        encodeURIComponent(redirectTo);
+
+      window.location.assign(googleUrl);
+
+    }catch(error){
+
+      console.error(error);
+
+      message.textContent =
+        "Google Login চালু করা যাচ্ছে না। আবার চেষ্টা করুন।";
+
+      button.disabled = false;
+
+      button.innerHTML = `
+        <svg class="google-icon" viewBox="0 0 24 24">
+          <path fill="#4285F4" d="M21.35 12.27c0-.79-.07-1.54-.2-2.27H12v4.3h5.24a4.48 4.48 0 0 1-1.94 2.94v2.45h3.14c1.84-1.69 2.91-4.18 2.91-7.42z"/>
+          <path fill="#34A853" d="M12 21.6c2.63 0 4.84-.87 6.45-2.36l-3.14-2.45c-.87.58-1.98.93-3.31.93-2.54 0-4.7-1.72-5.47-4.04H3.29v2.52A9.74 9.74 0 0 0 12 21.6z"/>
+          <path fill="#FBBC05" d="M6.53 13.68A5.85 5.85 0 0 1 6.22 12c0-.58.1-1.15.31-1.68V7.8H3.29A9.74 9.74 0 0 0 2.25 12c0 1.57.38 3.06 1.04 4.2l3.24-2.52z"/>
+          <path fill="#EA4335" d="M12 6.28c1.43 0 2.71.49 3.72 1.45l2.79-2.79C16.83 3.31 14.63 2.4 12 2.4a9.74 9.74 0 0 0-8.71 5.4l3.24 2.52C7.3 8 9.46 6.28 12 6.28z"/>
+        </svg>
+        Continue with Google
+      `;
+
+    }
+
+  });
+
+})();
+
+</script>
+
+</body>
+</html>
