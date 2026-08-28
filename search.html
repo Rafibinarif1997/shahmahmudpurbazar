@@ -53,30 +53,30 @@
 .page-top h1{margin:8px 0 7px;letter-spacing:-1px}
 .filters{
   display:grid!important;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:10px!important;
-  padding:16px!important;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:8px!important;
+  padding:10px!important;
   border:1px solid rgba(105,245,165,.10);
-  border-radius:16px;
-  background:rgba(7,19,13,.60);
+  border-radius:14px;
+  background:rgba(7,19,13,.48);
 }
 .filters select,.filters input{
   width:100%;
-  min-height:44px;
+  min-height:38px;
   box-sizing:border-box;
-  border:1px solid rgba(105,245,165,.15)!important;
-  border-radius:10px!important;
+  border:1px solid rgba(105,245,165,.14)!important;
+  border-radius:9px!important;
   background:#0b1912!important;
   color:#dcebe3!important;
   outline:0;
-  padding:0 12px!important;
-  font-size:12px!important;
+  padding:0 10px!important;
+  font-size:11px!important;
 }
-.filters select:focus,.filters input:focus{border-color:rgba(105,245,165,.55)!important;box-shadow:0 0 0 3px rgba(105,245,165,.06)}
+.filters select:focus,.filters input:focus{border-color:rgba(105,245,165,.55)!important;box-shadow:0 0 0 3px rgba(105,245,165,.05)}
 .filters select option{background:#0b1912;color:#eaf5ef}
-#cat{grid-column:1/-1}
+#cat{grid-column:span 2}
 #q2{grid-column:1/-1}
-#clear{border-radius:10px!important}
+#clear{border-radius:9px!important}
 @media(max-width:700px){
   .header{padding:14px 0 15px}
   .head{display:grid!important;grid-template-columns:1fr auto;gap:12px}
@@ -85,11 +85,13 @@
   .head nav a:last-child{padding:9px 12px;font-size:10px}
   .head .search{grid-column:1/-1;grid-row:2;height:50px}
   .search button{padding:0 21px}
-  .page-top{padding-top:25px}
-  .page-top h1{font-size:30px}
-  .filters{grid-template-columns:1fr!important;padding:12px!important}
-  #cat,#q2{grid-column:auto}
-  .filters select,.filters input{min-height:46px;font-size:13px!important}
+  .page-top{padding-top:22px}
+  .page-top h1{font-size:28px;margin-bottom:4px}
+  .page-top p{margin-top:0;font-size:13px}
+  .filters{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:7px!important;padding:8px!important}
+  #cat{grid-column:1/-1}
+  #q2{grid-column:1/-1}
+  .filters select,.filters input{min-height:40px;font-size:12px!important;padding:0 9px!important}
 }
 </style>
 </head>
@@ -123,7 +125,27 @@
     <select id="subcat"><option value="">সব সাব-ক্যাটাগরি</option></select>
     <input id="minPrice" type="number" min="0" placeholder="সর্বনিম্ন দাম">
     <input id="maxPrice" type="number" min="0" placeholder="সর্বোচ্চ দাম">
-    <input id="area" placeholder="এলাকা">
+    <select id="area">
+      <option value="">সব এলাকা</option>
+      <option value="টাহরখীল">টাহরখীল</option>
+      <option value="মান্দারী">মান্দারী</option>
+      <option value="লোধেরগাঁও">লোধেরগাঁও</option>
+      <option value="বিমলেরগাঁও">বিমলেরগাঁও</option>
+      <option value="দাসেরগাঁও">দাসেরগাঁও</option>
+      <option value="দমকেরগাঁও">দমকেরগাঁও</option>
+      <option value="ভাটেরগাঁও">ভাটেরগাঁও</option>
+      <option value="পাঁচগাঁও">পাঁচগাঁও</option>
+      <option value="কুমারডুগী">কুমারডুগী</option>
+      <option value="কৃষ্ণপুর">কৃষ্ণপুর</option>
+      <option value="ভরঙ্গারচর">ভরঙ্গারচর</option>
+      <option value="কেতুয়া">কেতুয়া</option>
+      <option value="আলুমুড়া">আলুমুড়া</option>
+      <option value="ছোট শাহতলী">ছোট শাহতলী</option>
+      <option value="বড় শাহতলী">বড় শাহতলী</option>
+      <option value="পাইকদি">পাইকদি</option>
+      <option value="রনবলিয়া">রনবলিয়া</option>
+      <option value="কদ্দি">কদ্দি</option>
+    </select>
     <select id="sort"><option value="new">নতুন আগে</option><option value="low">কম দাম</option><option value="high">বেশি দাম</option></select>
     <input id="q2" placeholder="পণ্য/বিজ্ঞাপন খুঁজুন">
   </div>
