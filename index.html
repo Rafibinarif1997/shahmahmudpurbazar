@@ -127,28 +127,8 @@
   color:#718078;
 }
 
-@media(max-width:600px){
 
-  #authArea{
-    min-width:auto;
-  }
-
-  .profile-name{
-    max-width:65px;
-  }
-
-  .profile-link{
-    padding-right:7px;
-  }
-
-  .login-link{
-    padding:7px 10px;
-    font-size:10px;
-  }
-
-}
-
-  /* ============================================================
+/* ============================================================
    MESSAGE NOTIFICATION
 ============================================================ */
 
@@ -158,6 +138,7 @@
 
 .message-badge{
   position:absolute;
+
   top:-7px;
   right:-9px;
 
@@ -167,6 +148,7 @@
   padding:0 5px;
 
   display:none;
+
   align-items:center;
   justify-content:center;
 
@@ -185,7 +167,12 @@
   box-shadow:
     0 0 0 2px rgba(255,77,103,.12),
     0 4px 12px rgba(0,0,0,.35);
+
+  z-index:20;
 }
+
+
+/* desktop message icon */
 
 .message-top-link{
   position:relative;
@@ -193,7 +180,8 @@
   width:38px;
   height:38px;
 
-  display:flex;
+  display:none;
+
   align-items:center;
   justify-content:center;
 
@@ -221,14 +209,34 @@
   right:-6px;
 }
 
+
+/* mobile */
+
 @media(max-width:600px){
 
+  #authArea{
+    min-width:auto;
+  }
+
+  .profile-name{
+    max-width:65px;
+  }
+
+  .profile-link{
+    padding-right:7px;
+  }
+
+  .login-link{
+    padding:7px 10px;
+    font-size:10px;
+  }
+
   .message-top-link{
-    display:none;
+    display:none !important;
   }
 
 }
-  
+
 </style>
 
 </head>
@@ -263,8 +271,7 @@
   <a
     id="topMessageLink"
     class="message-top-link"
-    href="messages.html"
-    style="display:none">
+    href="messages.html">
 
     💬
 
@@ -378,8 +385,6 @@
 </div>
 
 </a>
-
-
 
 
 </section>
@@ -833,15 +838,18 @@ const latestAds =
     "latestAds"
   );
 
-  const homeMessageBadge =
+
+const homeMessageBadge =
   document.getElementById(
     "homeMessageBadge"
   );
+
 
 const topMessageBadge =
   document.getElementById(
     "topMessageBadge"
   );
+
 
 const topMessageLink =
   document.getElementById(
@@ -858,22 +866,27 @@ function escapeHtml(value){
   return String(
     value ?? ""
   )
+
   .replace(
     /&/g,
     "&amp;"
   )
+
   .replace(
     /</g,
     "&lt;"
   )
+
   .replace(
     />/g,
     "&gt;"
   )
+
   .replace(
     /"/g,
     "&quot;"
   )
+
   .replace(
     /'/g,
     "&#039;"
@@ -1058,6 +1071,339 @@ function showLoggedIn(user){
 
 
 /* ============================================================
+   MESSAGE BADGE
+============================================================ */
+
+function setMessageBadge(count){
+
+  const value =
+    Number(count || 0);
+
+
+  const badges = [
+
+    homeMessageBadge,
+
+    topMessageBadge
+
+  ];
+
+
+  badges.forEach(
+    function(badge){
+
+      if(!badge){
+
+        return;
+
+      }
+
+
+      if(value > 0){
+
+        badge.textContent =
+          value > 99
+          ? "99+"
+          : String(value);
+
+
+        badge.style.display =
+          "flex";
+
+      }else{
+
+        badge.textContent =
+          "";
+
+        badge.style.display =
+          "none";
+
+      }
+
+    }
+  );
+
+
+  if(topMessageLink){
+
+    /*
+     * Login করা থাকলেই desktop icon
+     * দেখা যাবে।
+     */
+
+    topMessageLink.style.display =
+      "flex";
+
+  }
+
+}
+
+
+/* ============================================================
+   UPDATE MESSAGE NOTIFICATION
+============================================================ */
+
+async function updateMessageNotification(user){
+
+  if(
+    !user ||
+    !user.id
+  ){
+
+    setMessageBadge(0);
+
+    return;
+
+  }
+
+
+  try{
+
+    let session = null;
+
+
+    if(
+      typeof window.getSbSession ===
+      "function"
+    ){
+
+      session =
+        await window.getSbSession();
+
+    }
+
+
+    if(
+      !session ||
+      !session.access_token
+    ){
+
+      setMessageBadge(0);
+
+      return;
+
+    }
+
+
+    /*
+     * সরাসরি messages table থেকে
+     * আমার সাথে সম্পর্কিত message নেওয়া হচ্ছে।
+     */
+
+    const uid =
+      encodeURIComponent(
+        user.id
+      );
+
+
+    const url =
+
+      SB_URL +
+
+      "/rest/v1/messages" +
+
+      "?or=(" +
+
+        "sender_id.eq." +
+        uid +
+
+        ",receiver_id.eq." +
+        uid +
+
+      ")" +
+
+      "&select=sender_id,receiver_id,ad_id,created_at" +
+
+      "&order=created_at.desc";
+
+
+    const response =
+      await fetch(
+        url,
+        {
+
+          method:"GET",
+
+          headers:{
+
+            "apikey":
+              SB_KEY,
+
+            "Authorization":
+              "Bearer " +
+              session.access_token,
+
+            "Content-Type":
+              "application/json"
+
+          }
+
+        }
+      );
+
+
+    if(!response.ok){
+
+      /*
+       * Notification কাজ না করলেও
+       * Homepage-এর অন্য কিছু থামবে না।
+       */
+
+      console.warn(
+        "Message notification request failed:",
+        await response.text()
+      );
+
+      return;
+
+    }
+
+
+    const messages =
+      await response.json();
+
+
+    if(
+      !Array.isArray(messages) ||
+      !messages.length
+    ){
+
+      setMessageBadge(0);
+
+      return;
+
+    }
+
+
+    /*
+     * এখানে unique conversation বানানো হচ্ছে।
+     *
+     * একই:
+     *   User + Ad
+     *
+     * = একটি conversation
+     *
+     * ফলে একই user ১০টি message পাঠালেও
+     * ১ হিসেবেই count হবে।
+     */
+
+    const conversations =
+      new Set();
+
+
+    messages.forEach(
+      function(message){
+
+        const sender =
+          String(
+            message.sender_id || ""
+          );
+
+
+        const receiver =
+          String(
+            message.receiver_id || ""
+          );
+
+
+        const adId =
+          String(
+            message.ad_id || ""
+          );
+
+
+        if(!adId){
+
+          return;
+
+        }
+
+
+        /*
+         * অপর পক্ষের ID বের করা
+         */
+
+        let otherUser = "";
+
+
+        if(
+          sender ===
+          String(user.id)
+        ){
+
+          otherUser =
+            receiver;
+
+        }else{
+
+          otherUser =
+            sender;
+
+        }
+
+
+        if(!otherUser){
+
+          return;
+
+        }
+
+
+        /*
+         * নিজের সাথে conversation count হবে না
+         */
+
+        if(
+          otherUser ===
+          String(user.id)
+        ){
+
+          return;
+
+        }
+
+
+        /*
+         * User + Product
+         */
+
+        const key =
+
+          adId +
+          "__" +
+          otherUser;
+
+
+        conversations.add(
+          key
+        );
+
+      }
+    );
+
+
+    /*
+     * মোট আলাদা conversation
+     */
+
+    setMessageBadge(
+      conversations.size
+    );
+
+
+  }catch(error){
+
+    console.error(
+      "Message notification error:",
+      error
+    );
+
+  }
+
+}
+
+
+/* ============================================================
    CHECK LOGIN
 ============================================================ */
 
@@ -1078,7 +1424,7 @@ async function checkLogin(){
     ){
 
       const session =
-        window.getSbSession();
+        await window.getSbSession();
 
 
       if(
@@ -1095,6 +1441,14 @@ async function checkLogin(){
           saveUser(user);
 
           showLoggedIn(user);
+
+          /*
+           * Notification
+           */
+
+          updateMessageNotification(
+            user
+          );
 
           return;
 
@@ -1126,7 +1480,7 @@ async function checkLogin(){
         user.email
       ){
 
-        showLoggedIn({
+        const fallbackUser = {
 
           id:
             user.id || "",
@@ -1147,7 +1501,18 @@ async function checkLogin(){
 
           }
 
-        });
+        };
+
+
+        showLoggedIn(
+          fallbackUser
+        );
+
+
+        updateMessageNotification(
+          fallbackUser
+        );
+
 
         return;
 
@@ -1191,11 +1556,6 @@ function firstImage(ad){
   }
 
 
-  /*
-   * কিছু ক্ষেত্রে Supabase
-   * array string হিসেবেও দিতে পারে।
-   */
-
   if(
     typeof ad.image_urls ===
     "string" &&
@@ -1205,10 +1565,6 @@ function firstImage(ad){
     let value =
       ad.image_urls.trim();
 
-
-    /*
-     * {"url1","url2"} format
-     */
 
     if(
       value.startsWith("{") &&
@@ -1534,6 +1890,49 @@ if(searchForm){
 checkLogin();
 
 loadLatestAds();
+
+
+/*
+ * নতুন message check
+ * প্রতি 10 সেকেন্ডে।
+ */
+
+setInterval(
+  async function(){
+
+    try{
+
+      if(
+        typeof window.getCurrentUser ===
+        "function"
+      ){
+
+        const user =
+          await window.getCurrentUser();
+
+
+        if(user){
+
+          updateMessageNotification(
+            user
+          );
+
+        }
+
+      }
+
+    }catch(error){
+
+      console.error(
+        "Notification refresh error:",
+        error
+      );
+
+    }
+
+  },
+  10000
+);
 
 
 })();
