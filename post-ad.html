@@ -2,21 +2,12 @@
 <html lang="bn">
 
 <head>
-
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 
-<meta
-  name="viewport"
-  content="width=device-width,initial-scale=1">
+<title>বিজ্ঞাপন দিন | শাহমাহমুদপুর বাজার</title>
 
-<title>
-বিজ্ঞাপন দিন | শাহমাহমুদপুর বাজার
-</title>
-
-<link
-  rel="stylesheet"
-  href="style.css">
-
+<link rel="stylesheet" href="style.css">
 
 <style>
 
@@ -53,11 +44,8 @@
 
 .preview-grid{
   display:grid;
-  grid-template-columns:
-    repeat(3,1fr);
-
+  grid-template-columns:repeat(3,1fr);
   gap:8px;
-
   margin-top:12px;
 }
 
@@ -65,12 +53,8 @@
   position:relative;
   aspect-ratio:1;
   overflow:hidden;
-
   border-radius:12px;
-
-  border:1px solid
-    rgba(105,245,165,.14);
-
+  border:1px solid rgba(105,245,165,.14);
   background:#07110c;
 }
 
@@ -84,20 +68,14 @@
   position:absolute;
   left:6px;
   top:6px;
-
   padding:3px 7px;
-
   border-radius:20px;
-
   background:rgba(0,0,0,.65);
-
   color:#fff;
-
   font-size:8px;
 }
 
 </style>
-
 </head>
 
 
@@ -107,9 +85,7 @@
 <main class="container page">
 
 
-<a
-  href="index.html"
-  class="brand">
+<a href="index.html" class="brand">
 
   <b>শাহমাহমুদপুর</b>
 
@@ -173,9 +149,7 @@ POST AN AD
 
 ক্যাটাগরি
 
-<select
-  id="category"
-  required>
+<select id="category" required>
 
 <option value="">
 নির্বাচন করুন
@@ -306,6 +280,7 @@ POST AN AD
 </label>
 
 
+
 <div
   id="preview"
   class="preview-grid">
@@ -331,10 +306,7 @@ Preview & Publish →
 
 
 
-<p
-  id="msg"
-  class="msg">
-</p>
+<p id="msg" class="msg"></p>
 
 
 </section>
@@ -377,106 +349,96 @@ Profile
 
 
 <script src="supabase.js?v=9"></script>
-<script src="app.js?v=9"></script>
-
 
 
 <script>
 
-(async function(){
+(function(){
 
-
-const loading =
-document.getElementById(
-  "loading"
-);
-
-
-const formBox =
-document.getElementById(
-  "formBox"
-);
-
-
-const form =
-document.getElementById(
-  "adForm"
-);
-
-
-const userNote =
-document.getElementById(
-  "userNote"
-);
-
-
-const message =
-document.getElementById(
-  "msg"
-);
-
-
-const submitBtn =
-document.getElementById(
-  "submitBtn"
-);
-
-
-const imageInput =
-document.getElementById(
-  "image"
-);
-
-
-const preview =
-document.getElementById(
-  "preview"
-);
-
+"use strict";
 
 
 /* ============================================================
-   GET USER
+   ELEMENTS
 ============================================================ */
 
+const loading =
+document.getElementById("loading");
+
+const formBox =
+document.getElementById("formBox");
+
+const form =
+document.getElementById("adForm");
+
+const userNote =
+document.getElementById("userNote");
+
+const message =
+document.getElementById("msg");
+
+const submitBtn =
+document.getElementById("submitBtn");
+
+const imageInput =
+document.getElementById("image");
+
+const preview =
+document.getElementById("preview");
+
+const category =
+document.getElementById("category");
+
+const subcategory =
+document.getElementById("subcategory");
+
+
+let currentUser = null;
+
+
+/* ============================================================
+   ESCAPE HTML
+============================================================ */
+
+function escapeHtml(value){
+
+  return String(value ?? "")
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+
+}
+
+
+/* ============================================================
+   GET GOOGLE USER
+============================================================ */
 
 async function getUser(){
 
-  try{
-
-    const saved =
-      localStorage.getItem(
-        "smb_user_v1"
-      );
-
-    if(saved){
-
-      const user =
-        JSON.parse(saved);
-
-      if(
-        user &&
-        user.email
-      ){
-
-        return user;
-
-      }
-
-    }
-
-  }catch(e){}
-
+  /*
+   * 1. Supabase session থেকে সরাসরি user
+   */
 
   try{
+
+    const session =
+      typeof getSbSession === "function"
+      ? getSbSession()
+      : null;
+
 
     if(
-      typeof getCurrentUser ===
-      "function"
+      session &&
+      session.access_token &&
+      typeof getCurrentUser === "function"
     ){
 
       const user =
         await getCurrentUser();
+
 
       if(user){
 
@@ -510,9 +472,7 @@ async function getUser(){
 
         localStorage.setItem(
           "smb_user_v1",
-          JSON.stringify(
-            profile
-          )
+          JSON.stringify(profile)
         );
 
 
@@ -525,6 +485,47 @@ async function getUser(){
   }catch(error){
 
     console.error(
+      "Supabase user error:",
+      error
+    );
+
+  }
+
+
+  /*
+   * 2. Local backup
+   */
+
+  try{
+
+    const saved =
+      localStorage.getItem(
+        "smb_user_v1"
+      );
+
+
+    if(saved){
+
+      const profile =
+        JSON.parse(saved);
+
+
+      if(
+        profile &&
+        profile.id &&
+        profile.email
+      ){
+
+        return profile;
+
+      }
+
+    }
+
+  }catch(error){
+
+    console.error(
+      "Local user error:",
       error
     );
 
@@ -536,82 +537,113 @@ async function getUser(){
 }
 
 
+/* ============================================================
+   INITIALIZE
+============================================================ */
 
-let user =
-await getUser();
+async function initialize(){
+
+  /*
+   * প্রথমে Google callback handle করার চেষ্টা
+   */
+
+  try{
+
+    if(
+      typeof handleAuthCallback ===
+      "function"
+    ){
+
+      await handleAuthCallback();
+
+    }
+
+  }catch(error){
+
+    console.error(
+      "Callback error:",
+      error
+    );
+
+  }
 
 
-if(!user){
-
-  await new Promise(
-    resolve =>
-      setTimeout(
-        resolve,
-        1000
-      )
-  );
-
-
-  user =
+  currentUser =
     await getUser();
 
+
+  /*
+   * Session একটু দেরিতে তৈরি হলে retry
+   */
+
+  if(!currentUser){
+
+    await new Promise(
+      resolve =>
+        setTimeout(
+          resolve,
+          800
+        )
+    );
+
+
+    currentUser =
+      await getUser();
+
+  }
+
+
+  if(!currentUser){
+
+    loading.innerHTML = `
+      <div>
+        আপনার Login session পাওয়া যায়নি।
+        <br><br>
+        <a
+          class="btn green"
+          href="login.html?next=post-ad.html">
+          Google দিয়ে Login করুন
+        </a>
+      </div>
+    `;
+
+    return;
+
+  }
+
+
+  loading.style.display =
+    "none";
+
+  formBox.style.display =
+    "block";
+
+
+  const userName =
+    currentUser.name ||
+    "Google User";
+
+
+  userNote.innerHTML = `
+    Signed in as
+    <strong>
+      ${escapeHtml(
+        currentUser.email
+      )}
+    </strong>
+  `;
+
 }
 
 
-
-if(!user){
-
-  window.location.href =
-    "login.html?next=post-ad.html";
-
-  return;
-
-}
-
-
-
-loading.style.display =
-"none";
-
-
-formBox.style.display =
-"block";
-
-
-
-const userName =
-user.name ||
-"Google User";
-
-
-const userEmail =
-user.email ||
-"";
-
-
-const userId =
-user.id ||
-"";
-
-
-
-userNote.innerHTML =
-
-`
-Signed in as
-<strong>
-${escapeHtml(userEmail)}
-</strong>
-`;
-
+initialize();
 
 
 /* ============================================================
-   CATEGORY
+   CATEGORY MAP
 ============================================================ */
 
-
-const subMap={
+const subMap = {
 
 "Vehicles":[
 "Cars",
@@ -759,8 +791,12 @@ const subMap={
 };
 
 
+/* ============================================================
+   CATEGORY CHANGE
+============================================================ */
 
-category.onchange =
+category.addEventListener(
+"change",
 function(){
 
   const items =
@@ -773,18 +809,23 @@ function(){
     '<option value="">নির্বাচন করুন</option>' +
 
     items.map(
-      x =>
-      `<option>${escapeHtml(x)}</option>`
+      function(item){
+
+        return `
+          <option value="${escapeHtml(item)}">
+            ${escapeHtml(item)}
+          </option>
+        `;
+
+      }
     ).join("");
 
-};
-
+});
 
 
 /* ============================================================
    IMAGE PREVIEW
 ============================================================ */
-
 
 imageInput.addEventListener(
 "change",
@@ -794,6 +835,10 @@ function(){
     Array.from(
       imageInput.files || []
     );
+
+
+  message.textContent =
+    "";
 
 
   if(files.length > 3){
@@ -822,21 +867,33 @@ function(){
   files.forEach(
     function(file,index){
 
+      if(
+        ![
+          "image/jpeg",
+          "image/png",
+          "image/webp"
+        ].includes(file.type)
+      ){
+
+        return;
+
+      }
+
+
       const reader =
         new FileReader();
 
 
       reader.onload =
-        function(e){
+        function(event){
 
           preview.innerHTML += `
 
-            <div
-              class="preview-item">
+            <div class="preview-item">
 
               <img
-                src="${e.target.result}"
-                alt="Image">
+                src="${event.target.result}"
+                alt="Image ${index + 1}">
 
               <span
                 class="image-number">
@@ -852,9 +909,7 @@ function(){
         };
 
 
-      reader.readAsDataURL(
-        file
-      );
+      reader.readAsDataURL(file);
 
     }
   );
@@ -862,36 +917,38 @@ function(){
 });
 
 
-
 /* ============================================================
    UPLOAD IMAGE
 ============================================================ */
 
-
 async function uploadImage(
   file,
   adId,
-  index
+  index,
+  session
 ){
 
-  const safeName =
+  const extension =
     file.name
+      .split(".")
+      .pop()
+      .toLowerCase()
       .replace(
-        /[^a-zA-Z0-9._-]/g,
-        "_"
-      );
+        /[^a-z0-9]/g,
+        ""
+      ) || "jpg";
 
 
   const path =
-    userId +
+    currentUser.id +
     "/" +
     adId +
     "/" +
     index +
     "-" +
     Date.now() +
-    "-" +
-    safeName;
+    "." +
+    extension;
 
 
   const response =
@@ -912,11 +969,10 @@ async function uploadImage(
 
           "Authorization":
             "Bearer " +
-            getSbSession()
-              .access_token,
+            session.access_token,
 
           "Content-Type":
-            file.type,
+            file.type || "image/jpeg",
 
           "x-upsert":
             "false"
@@ -932,13 +988,13 @@ async function uploadImage(
 
   if(!response.ok){
 
-    const text =
+    const errorText =
       await response.text();
 
 
     throw new Error(
-      "ছবি upload হয়নি: " +
-      text
+      "ছবি upload করা যায়নি: " +
+      errorText
     );
 
   }
@@ -955,21 +1011,50 @@ async function uploadImage(
 }
 
 
-
 /* ============================================================
    SUBMIT
 ============================================================ */
 
-
 form.addEventListener(
 "submit",
-async function(e){
+async function(event){
 
-  e.preventDefault();
+  event.preventDefault();
 
 
   message.textContent =
     "";
+
+
+  if(!currentUser){
+
+    message.textContent =
+      "আপনার Google Login পাওয়া যাচ্ছে না।";
+
+
+    return;
+
+  }
+
+
+  const session =
+    typeof getSbSession === "function"
+    ? getSbSession()
+    : null;
+
+
+  if(
+    !session ||
+    !session.access_token
+  ){
+
+    message.textContent =
+      "Login session পাওয়া যায়নি। আবার Google Login করুন।";
+
+
+    return;
+
+  }
 
 
   const files =
@@ -982,6 +1067,7 @@ async function(e){
 
     message.textContent =
       "সর্বোচ্চ ৩টি ছবি দেওয়া যাবে।";
+
 
     return;
 
@@ -1004,15 +1090,11 @@ async function(e){
 
 
   const categoryValue =
-    document
-      .getElementById("category")
-      .value;
+    category.value;
 
 
   const subcategoryValue =
-    document
-      .getElementById("subcategory")
-      .value;
+    subcategory.value;
 
 
   const descriptionValue =
@@ -1036,7 +1118,6 @@ async function(e){
       .trim();
 
 
-
   if(
     !titleValue ||
     !categoryValue ||
@@ -1048,75 +1129,116 @@ async function(e){
     message.textContent =
       "সব প্রয়োজনীয় তথ্য পূরণ করুন।";
 
+
     return;
 
   }
-
 
 
   submitBtn.disabled =
     true;
 
 
-  submitBtn.textContent =
-    "বিজ্ঞাপন তৈরি হচ্ছে...";
-
-
-
   try{
 
+    /*
+     * --------------------------------------------------------
+     * PROFILE নিশ্চিত করা
+     * --------------------------------------------------------
+     */
 
-    const session =
-      getSbSession();
-    await sbFetch(
-  "/rest/v1/rpc/ensure_profile",
-  {
-    method: "POST",
+    submitBtn.textContent =
+      "Account প্রস্তুত হচ্ছে...";
 
-    headers: {
-      "Authorization":
-        "Bearer " +
-        session.access_token
-    },
 
-    body: JSON.stringify({
-      p_user_id: userId,
-      p_name: userName,
-      p_phone: "",
-      p_avatar_url:
-        user.avatar || null
-    })
-  }
-);
+    const profileResponse =
+      await fetch(
+
+        SUPABASE_URL +
+        "/rest/v1/profiles?on_conflict=id",
+
+        {
+
+          method:"POST",
+
+          headers:{
+
+            "apikey":
+              SUPABASE_ANON_KEY,
+
+            "Authorization":
+              "Bearer " +
+              session.access_token,
+
+            "Content-Type":
+              "application/json",
+
+            "Prefer":
+              "resolution=merge-duplicates,return=minimal"
+
+          },
+
+          body:
+            JSON.stringify({
+
+              id:
+                currentUser.id,
+
+              name:
+                currentUser.name ||
+                "",
+
+              phone:
+                phoneValue,
+
+              avatar_url:
+                currentUser.avatar ||
+                null
+
+            })
+
+        }
+
+      );
 
 
     if(
-      !session ||
-      !session.access_token
+      !profileResponse.ok
     ){
 
+      const text =
+        await profileResponse.text();
+
+
       throw new Error(
-        "আপনার Login session পাওয়া যায়নি। আবার Google Login করুন।"
+        "Profile save error: " +
+        text
       );
 
     }
 
 
-
     /*
-     * Unique advertisement ID
+     * --------------------------------------------------------
+     * Advertisement ID
+     * --------------------------------------------------------
      */
 
     const adId =
-      crypto.randomUUID
-        ? crypto.randomUUID()
-        : "ad_" +
-          Date.now();
-
+      (
+        crypto &&
+        typeof crypto.randomUUID ===
+        "function"
+      )
+      ? crypto.randomUUID()
+      : "ad_" +
+        Date.now();
 
 
     /*
-     * Upload up to 3 images
+     * --------------------------------------------------------
+     * Upload images
+     * --------------------------------------------------------
      */
 
     const imageUrls = [];
@@ -1139,61 +1261,44 @@ async function(e){
         await uploadImage(
           files[i],
           adId,
-          i + 1
+          i + 1,
+          session
         );
 
 
-      imageUrls.push(
-        url
-      );
+      imageUrls.push(url);
 
     }
 
 
-
     /*
-     * Save advertisement
-     * permanently in Supabase
+     * --------------------------------------------------------
+     * ADS DATA
+     *
+     * শুধু তোমার ads table-এর column ব্যবহার করা হচ্ছে।
+     * --------------------------------------------------------
      */
-
-    submitBtn.textContent =
-      "বিজ্ঞাপন save হচ্ছে...";
-
 
     const adData = {
 
-  id: adId,
+      id:
+        adId,
 
-  seller_id: userId,
+      seller_id:
+        currentUser.id,
 
-  user_id: userId,
+      user_id:
+        currentUser.id,
 
-  seller_email: userEmail,
+      seller_email:
+        currentUser.email,
 
-  email: userEmail,
+      email:
+        currentUser.email,
 
-  title: titleValue,
+      title:
+        titleValue,
 
-  price: priceValue,
-
-  category: categoryValue,
-
-  subcategory: subcategoryValue,
-
-  description: descriptionValue,
-
-  location: locationValue,
-
-  phone: phoneValue,
-
-  image_urls: imageUrls,
-
-  status: "pending",
-
-  created_at:
-    new Date().toISOString()
-
-};
       price:
         priceValue,
 
@@ -1223,6 +1328,15 @@ async function(e){
 
     };
 
+
+    /*
+     * --------------------------------------------------------
+     * SAVE ADS
+     * --------------------------------------------------------
+     */
+
+    submitBtn.textContent =
+      "বিজ্ঞাপন save হচ্ছে...";
 
 
     const response =
@@ -1262,7 +1376,6 @@ async function(e){
       );
 
 
-
     if(!response.ok){
 
       const text =
@@ -1277,9 +1390,19 @@ async function(e){
     }
 
 
+    /*
+     * SUCCESS
+     */
 
-    message.textContent =
-      "✅ বিজ্ঞাপন সফলভাবে জমা হয়েছে। Admin approval-এর পর marketplace-এ দেখা যাবে।";
+    message.innerHTML = `
+      <span style="color:#69f5a5">
+        ✅ বিজ্ঞাপন সফলভাবে জমা হয়েছে।
+      </span>
+      <br>
+      <small>
+        Admin approval-এর পর এটি marketplace-এ দেখা যাবে।
+      </small>
+    `;
 
 
     form.reset();
@@ -1292,11 +1415,6 @@ async function(e){
     subcategory.innerHTML =
       '<option value="">নির্বাচন করুন</option>';
 
-
-
-    /*
-     * User চাইলে পরে My Ads-এ দেখতে পারবে
-     */
 
   }catch(error){
 
@@ -1323,42 +1441,6 @@ async function(e){
   }
 
 });
-
-
-
-/* ============================================================
-   ESCAPE HTML
-============================================================ */
-
-
-function escapeHtml(value){
-
-  return String(
-    value ?? ""
-  )
-  .replace(
-    /&/g,
-    "&amp;"
-  )
-  .replace(
-    /</g,
-    "&lt;"
-  )
-  .replace(
-    />/g,
-    "&gt;"
-  )
-  .replace(
-    /"/g,
-    "&quot;"
-  )
-  .replace(
-    /'/g,
-    "&#039;"
-  );
-
-}
-
 
 })();
 
