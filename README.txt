@@ -1,12 +1,21 @@
-SHAHMAHMUDPUR BAZAR — SUPABASE MASTER FINAL
-==========================================
+SHAHMAHMUDPUR BAZAR — AUTH FIXED MASTER
+========================================
+Upload all files directly to GitHub repository ROOT. No folder is required.
 
-1) Extract this ZIP.
-2) Upload every file directly to the GitHub repository ROOT. No folder is required.
-3) IMPORTANT: Before using the site, open schema.sql and run the entire SQL in Supabase SQL Editor once.
-4) Supabase Auth should use Email provider. For easiest testing, disable Confirm email temporarily in Auth settings; you can enable it later.
-5) After your first registration, set that user's profile is_admin=true from Supabase Table Editor if you want admin access.
+FIX:
+- Registration uses Supabase Auth.
+- Login uses Supabase Auth.
+- Password confirmation uses non-conflicting element IDs.
+- User metadata (name + phone) is sent to Supabase.
+- The SQL trigger creates public.profiles automatically.
+- Access tokens are stored locally for this client-side GitHub Pages build.
 
-Included: real Supabase Auth, profiles, ads, image storage, category/subcategory, search/filter, favourites, conversations, messages, reports, Hijama appointments, admin moderation, and GitHub Pages frontend.
+IMPORTANT:
+Do not publish or use a Supabase service-role key in the browser.
+The included key is the public anon key.
 
-The Supabase anon key in config.js is intended for browser use. NEVER put a Supabase service-role key in this project.
+After uploading:
+1. Open Register.
+2. Create a new account.
+3. If Supabase requires email confirmation, confirm the email first.
+4. Login.
