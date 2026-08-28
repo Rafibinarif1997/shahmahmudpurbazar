@@ -1,23 +1,36 @@
-SHAHMAHMUDPUR BAZAR
-======================
-এই ZIP-এর সব ফাইল GitHub repository-এর ROOT directory-তে রাখবেন।
-কোনো folder দরকার নেই।
+SHAHMAHMUDPUR BAZAR — FINAL MASTER PACKAGE
+==========================================
 
-এটি একটি fully client-side starter marketplace:
-- Homepage
-- Search/filter
-- Categories
-- Registration/login
-- Post ad
-- My ads
+Upload:
+1. Extract this ZIP.
+2. Upload ALL files directly into the GitHub repository ROOT.
+3. There is NO required folder.
+4. Enable GitHub Pages from the repository's Pages settings.
+
+Included:
+- Premium responsive homepage
+- 19 marketplace categories
+- Category -> sub-category selection
+- Category-specific search/filter
+- Price range + area filtering
+- Newest / price sorting
+- Post Ad flow
+- Login / Register demo
+- Profile / My Ads
 - Favourite
-- Ad details
-- Messages demo
-- Hijama appointment demo
+- Ad details + Call + Message UI
+- Messages UI
+- Hijama appointment UI
 - Admin moderation demo
-- Static information pages
+- Safety / Terms / Contact / About pages
+- Mobile bottom navigation
 
-ডেটা browser localStorage-এ থাকে। অর্থাৎ GitHub Pages-এ upload করলেই demo/working frontend চলবে।
+IMPORTANT:
+This package is a GitHub Pages-ready client-side marketplace demo.
+Data is stored in the browser's localStorage. It is NOT secure production authentication.
+For a real public marketplace with multiple users, real image storage, secure passwords,
+server-side admin controls, real-time chat, and persistent database records, connect
+Supabase (Auth + Database + Storage + RLS) or another backend before launch.
 
-PRODUCTION NOTE:
-Real multi-user deployment-এর জন্য Supabase database/auth/storage এবং server-side/RLS security যুক্ত করতে হবে। বর্তমান demo-তে password localStorage-এ রাখা হয়, তাই এটিকে production authentication হিসেবে ব্যবহার করবেন না।
+The final visual/frontend package is intentionally dependency-light and uses no required
+build step.

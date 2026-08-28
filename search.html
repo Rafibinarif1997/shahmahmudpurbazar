@@ -1,28 +1,133 @@
-<!doctype html><html lang="bn"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>বিজ্ঞাপন খুঁজুন | শাহমাহমুদপুর বাজার</title><link rel="stylesheet" href="style.css"></head><body><header class="header"><div class="container head"><a class="brand" href="index.html"><b>শাহমাহমুদপুর</b><strong>বাজার</strong><small>LOCAL MARKETPLACE</small></a><form id="searchForm" class="search"><span>⌕</span><input id="search" placeholder="কি খুঁজছেন?"><button>খুঁজুন</button></form><nav><a href="favorites.html">♡</a><a href="login.html">লগইন</a></nav></div></header><main class="container"><div style="padding:28px 0 10px"><span class="eyebrow">MARKETPLACE</span><h1 style="font-size:30px">সব বিজ্ঞাপন</h1></div><div class="filters" style="display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:8px;margin-bottom:18px">
-<select id="cat"><option value="">সব ক্যাটাগরি</option>
-<option>Vehicles</option><option>Property</option><option>Phones & Tablets</option><option>Electronics</option>
-<option>Home, Furniture & Garden</option><option>Fashion</option><option>Beauty & Personal Care</option>
-<option>Services</option><option>Repair & Construction</option><option>Commercial Equipment & Machinery</option>
-<option>Leisure & Activities</option><option>Babies & Kids</option><option>Food, Agriculture & Supplies</option>
-<option>Animals & Pets</option><option>Jobs</option><option>Seeking Work - CVs</option><option>Business & Industry</option>
-</select>
-<select id="subcat"><option value="">সব সাব-ক্যাটাগরি</option></select>
-<select id="sort"><option value="new">নতুন আগে</option><option value="low">কম দাম</option><option value="high">বেশি দাম</option></select>
-<input id="q2" placeholder="কী খুঁজছেন?">
-</div><div id="results" class="products"></div></main><footer><div class="container foot"><b>শাহমাহমুদপুর বাজার</b><small>© 2026</small></div></footer>
-<nav class="mobile-nav"><a href="index.html"><span>⌂</span>Home</a><a href="favorites.html"><span>♡</span>Saved</a><a href="post-ad.html"><span>⊞</span>Sell</a><a href="messages.html"><span>▤</span>Messages</a><a href="profile.html"><span>♙</span>Profile</a></nav>
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>বিজ্ঞাপন খুঁজুন | শাহমাহমুদপুর বাজার</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="header">
+  <div class="container head">
+    <a class="brand" href="index.html"><b>শাহমাহমুদপুর</b><strong>বাজার</strong><small>LOCAL MARKETPLACE</small></a>
+    <form id="searchForm" class="search"><span>⌕</span><input id="search" placeholder="কি খুঁজছেন?"><button>খুঁজুন</button></form>
+    <nav><a href="favorites.html">♡</a><a href="login.html">লগইন</a></nav>
+  </div>
+</header>
+
+<main class="container">
+  <div class="page-top">
+    <span class="eyebrow">MARKETPLACE</span>
+    <h1 id="heading">সব বিজ্ঞাপন</h1>
+    <p id="summary">আপনার এলাকার প্রকাশিত বিজ্ঞাপনগুলো দেখুন।</p>
+  </div>
+
+  <div class="filters">
+    <select id="cat">
+      <option value="">সব ক্যাটাগরি</option>
+      <option>Vehicles</option><option>Property</option><option>Phones & Tablets</option>
+      <option>Electronics</option><option>Home, Furniture & Garden</option><option>Fashion</option>
+      <option>Beauty & Personal Care</option><option>Services</option><option>Repair & Construction</option>
+      <option>Commercial Equipment & Machinery</option><option>Leisure & Activities</option>
+      <option>Babies & Kids</option><option>Food, Agriculture & Supplies</option>
+      <option>Animals & Pets</option><option>Jobs</option><option>Seeking Work - CVs</option>
+      <option>Business & Industry</option>
+    </select>
+    <select id="subcat"><option value="">সব সাব-ক্যাটাগরি</option></select>
+    <input id="minPrice" type="number" min="0" placeholder="সর্বনিম্ন দাম">
+    <input id="maxPrice" type="number" min="0" placeholder="সর্বোচ্চ দাম">
+    <input id="area" placeholder="এলাকা">
+    <select id="sort"><option value="new">নতুন আগে</option><option value="low">কম দাম</option><option value="high">বেশি দাম</option></select>
+    <input id="q2" placeholder="পণ্য/বিজ্ঞাপন খুঁজুন">
+  </div>
+
+  <div style="display:flex;justify-content:space-between;align-items:center;margin:15px 0 10px">
+    <strong id="count" style="font-size:10px;color:#a9b8af">0টি বিজ্ঞাপন</strong>
+    <button id="clear" class="btn" type="button">Filter Reset</button>
+  </div>
+
+  <div id="results" class="products"></div>
+</main>
+
+<footer><div class="container foot"><b>শাহমাহমুদপুর বাজার</b><small>© 2026</small></div></footer>
+<nav class="mobile-nav">
+<a href="index.html"><span>⌂</span>Home</a>
+<a href="favorites.html"><span>♡</span>Saved</a>
+<a href="post-ad.html"><span>⊞</span>Sell</a>
+<a class="active" href="search.html"><span>⌕</span>Search</a>
+<a href="profile.html"><span>♙</span>Profile</a>
+</nav>
+
 <script src="app.js"></script>
 <script>
 document.addEventListener("DOMContentLoaded",()=>{
- const p=new URLSearchParams(location.search), q0=p.get("q")||"", c0=p.get("category")||"", trending=p.get("sort")==="trending";
- const cat=document.getElementById("cat"), sub=document.getElementById("subcat"), q=document.getElementById("q2"), sort=document.getElementById("sort");
- const subs={"Vehicles":["Cars","Motorcycles","Bicycles","Auto Rickshaw","Trucks & Buses","Vehicle Parts"],"Property":["Land","Apartments","Houses","Shops & Commercial Space","Office Space","Property for Rent"],"Phones & Tablets":["Mobile Phones","Tablets","Phone Accessories","Smart Watches"],"Electronics":["TV","Laptop & Computer","Camera","Audio","Gaming","Other Electronics"],"Home, Furniture & Garden":["Furniture","Home Decor","Kitchen","Garden","Appliances"],"Fashion":["Men","Women","Kids","Shoes","Bags & Accessories","Watches"],"Beauty & Personal Care":["Cosmetics","Skin Care","Hair Care","Perfume","Health & Personal Care"],"Services":["Tutoring","Cleaning","Transport","Photography","IT & Digital","Other Services"],"Repair & Construction":["Electrician","Plumber","AC & Fridge Repair","Construction Materials","Mechanic","Painter"],"Commercial Equipment & Machinery":["Factory Equipment","Restaurant Equipment","Office Equipment","Tools","Machinery"],"Leisure & Activities":["Sports","Gym & Fitness","Music","Books","Tickets & Events","Hobbies"],"Babies & Kids":["Baby Products","Toys","Kids Clothing","Strollers","School Items"],"Food, Agriculture & Supplies":["Vegetables","Fruits","Fish","Livestock Feed","Seeds","Farm Products"],"Animals & Pets":["Cattle","Goat","Poultry","Pets","Pet Supplies"],"Jobs":["Full Time","Part Time","Sales Jobs","Driver Jobs","Office Jobs","Other Jobs"],"Seeking Work - CVs":["CVs","Job Seekers","Freelancers","Skilled Workers"],"Business & Industry":["Business for Sale","Wholesale","Retail","Industrial Products","Tools"]};
- function updateSubs(){sub.innerHTML='<option value="">সব সাব-ক্যাটাগরি</option>'+(subs[cat.value]||[]).map(x=>`<option>${x}</option>`).join("")}
- cat.value=c0;q.value=q0;updateSubs();
- function render(){let a=ads().filter(x=>x.status==="approved"),qq=q.value.trim().toLowerCase(),cc=cat.value,ss=sub.value;
- a=a.filter(x=>{let h=(x.title+" "+x.category+" "+(x.subcategory||"")+" "+x.location+" "+(x.description||"")).toLowerCase();return(!cc||x.category===cc)&&(!ss||x.subcategory===ss)&&(!qq||h.includes(qq))});
- if(sort.value==="low")a.sort((x,y)=>x.price-y.price);if(sort.value==="high")a.sort((x,y)=>y.price-x.price);if(trending)a.sort((x,y)=>y.id.localeCompare(x.id));
- document.getElementById("results").innerHTML=a.length?a.map(card).join(""):"<div style='grid-column:1/-1;padding:45px;text-align:center;color:#81948a'>কোনো বিজ্ঞাপন পাওয়া যায়নি।</div>"}
- cat.onchange=()=>{updateSubs();render()};sub.onchange=render;sort.onchange=render;q.oninput=render;render();
+  const p=new URLSearchParams(location.search);
+  const q0=p.get("q")||"", c0=p.get("category")||"", trend=p.get("sort")==="trending";
+  const cat=document.getElementById("cat"), sub=document.getElementById("subcat"), q=document.getElementById("q2");
+  const min=document.getElementById("minPrice"), max=document.getElementById("maxPrice"), area=document.getElementById("area"), sort=document.getElementById("sort");
+  const subs={
+    "Vehicles":["Cars","Motorcycles","Bicycles","Auto Rickshaw","Trucks & Buses","Vehicle Parts"],
+    "Property":["Land","Apartments","Houses","Shops & Commercial Space","Office Space","Property for Rent"],
+    "Phones & Tablets":["Mobile Phones","Tablets","Phone Accessories","Smart Watches"],
+    "Electronics":["TV","Laptop & Computer","Camera","Audio","Gaming","Other Electronics"],
+    "Home, Furniture & Garden":["Furniture","Home Decor","Kitchen","Garden","Appliances"],
+    "Fashion":["Men","Women","Kids","Shoes","Bags & Accessories","Watches"],
+    "Beauty & Personal Care":["Cosmetics","Skin Care","Hair Care","Perfume","Health & Personal Care"],
+    "Services":["Tutoring","Cleaning","Transport","Photography","IT & Digital","Other Services"],
+    "Repair & Construction":["Electrician","Plumber","AC & Fridge Repair","Construction Materials","Mechanic","Painter"],
+    "Commercial Equipment & Machinery":["Factory Equipment","Restaurant Equipment","Office Equipment","Tools","Machinery"],
+    "Leisure & Activities":["Sports","Gym & Fitness","Music","Books","Tickets & Events","Hobbies"],
+    "Babies & Kids":["Baby Products","Toys","Kids Clothing","Strollers","School Items"],
+    "Food, Agriculture & Supplies":["Vegetables","Fruits","Fish","Livestock Feed","Seeds","Farm Products"],
+    "Animals & Pets":["Cattle","Goat","Poultry","Pets","Pet Supplies"],
+    "Jobs":["Full Time","Part Time","Sales Jobs","Driver Jobs","Office Jobs","Other Jobs"],
+    "Seeking Work - CVs":["CVs","Job Seekers","Freelancers","Skilled Workers"],
+    "Business & Industry":["Business for Sale","Wholesale","Retail","Industrial Products","Tools"]
+  };
+
+  function updateSubs(){
+    sub.innerHTML='<option value="">সব সাব-ক্যাটাগরি</option>'+
+      (subs[cat.value]||[]).map(x=>`<option>${x}</option>`).join("");
+  }
+
+  cat.value=c0;q.value=q0;
+  updateSubs();
+
+  function render(){
+    let a=ads().filter(x=>x.status==="approved");
+    const qq=q.value.trim().toLowerCase(), cc=cat.value, ss=sub.value, aa=area.value.trim().toLowerCase();
+    const mn=min.value===""?0:Number(min.value), mx=max.value===""?Infinity:Number(max.value);
+
+    a=a.filter(x=>{
+      const h=(x.title+" "+x.category+" "+(x.subcategory||"")+" "+x.location+" "+(x.description||"")).toLowerCase();
+      return (!cc||x.category===cc)&&(!ss||x.subcategory===ss)&&(!qq||h.includes(qq))&&
+             (!aa||(x.location||"").toLowerCase().includes(aa))&&
+             Number(x.price)>=mn&&Number(x.price)<=mx;
+    });
+
+    if(sort.value==="low")a.sort((x,y)=>Number(x.price)-Number(y.price));
+    if(sort.value==="high")a.sort((x,y)=>Number(y.price)-Number(x.price));
+    if(trend)a.sort((x,y)=>String(y.id).localeCompare(String(x.id)));
+
+    document.getElementById("count").textContent=a.length+"টি বিজ্ঞাপন";
+    document.getElementById("heading").textContent=cc||"সব বিজ্ঞাপন";
+    document.getElementById("summary").textContent=
+      cc ? `${cc}${ss?" — "+ss:""} এর বিজ্ঞাপন দেখানো হচ্ছে।`
+         : "আপনার এলাকার প্রকাশিত বিজ্ঞাপনগুলো দেখুন।";
+
+    document.getElementById("results").innerHTML=a.length
+      ? a.map(card).join("")
+      : "<div style='grid-column:1/-1;padding:45px;text-align:center;color:#81948a;border:1px solid rgba(105,245,165,.12);border-radius:10px'>এই filter অনুযায়ী কোনো বিজ্ঞাপন পাওয়া যায়নি।</div>";
+  }
+
+  cat.onchange=()=>{updateSubs();render()};
+  sub.onchange=render; sort.onchange=render; q.oninput=render;
+  min.oninput=render; max.oninput=render; area.oninput=render;
+  document.getElementById("clear").onclick=()=>{
+    cat.value="";updateSubs();sub.value="";q.value="";min.value="";max.value="";area.value="";sort.value="new";render();
+  };
+  render();
 });
-</script></body></html>
+</script>
+</body>
+</html>

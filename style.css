@@ -36,3 +36,9 @@
   .page-top h1{font-size:28px}
   .filters{grid-template-columns:1fr!important}
 }
+
+/* FINAL MASTER POLISH */
+body{min-height:100vh}
+.product .photo{font-size:11px;letter-spacing:1px}
+@media(max-width:800px){.head{grid-template-columns:1fr auto}.filters{grid-template-columns:1fr 1fr!important}.products{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.filters{grid-template-columns:1fr!important}.head nav a:first-child{font-size:20px}.products{grid-template-columns:repeat(2,1fr)}.product h3{font-size:9px}.price{font-size:13px}}
