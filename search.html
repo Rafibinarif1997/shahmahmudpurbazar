@@ -123,8 +123,6 @@
       <option>Business & Industry</option>
     </select>
     <select id="subcat"><option value="">সব সাব-ক্যাটাগরি</option></select>
-    <input id="minPrice" type="number" min="0" placeholder="সর্বনিম্ন দাম">
-    <input id="maxPrice" type="number" min="0" placeholder="সর্বোচ্চ দাম">
     <select id="area">
       <option value="">সব এলাকা</option>
       <option value="টাহরখীল">টাহরখীল</option>
@@ -180,8 +178,6 @@ const trending=params.get("sort")==="trending";
 const cat=document.getElementById("cat");
 const sub=document.getElementById("subcat");
 const q=document.getElementById("q2");
-const min=document.getElementById("minPrice");
-const max=document.getElementById("maxPrice");
 const area=document.getElementById("area");
 const sort=document.getElementById("sort");
 const clear=document.getElementById("clear");
