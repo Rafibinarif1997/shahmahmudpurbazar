@@ -1,57 +1,179 @@
-<!doctype html><html lang="bn"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Register | শাহমাহমুদপুর বাজার</title><link rel="stylesheet" href="style.css"></head><body><main class="auth"><div class="authbox"><a class="brand" href="index.html"><b>শাহমাহমুদপুর</b><strong>বাজার</strong><small>LOCAL MARKETPLACE</small></a><h1>Account তৈরি করুন</h1><p class="muted">কয়েকটি তথ্য দিয়ে account তৈরি করুন।</p><form id="registerForm"><label>পূর্ণ নাম<input id="fullName" required maxlength="80"></label><label>Email<input id="email" type="email" required></label><label>মোবাইল<input id="phone" required placeholder="01XXXXXXXXX"></label><label>Password<input id="passwordInput" type="password" minlength="6" required></label><label>Confirm Password<input id="confirmPassword" type="password" minlength="6" required></label><label><input id="terms" type="checkbox" required> আমি Terms & Conditions মেনে নিচ্ছি।</label><button id="submitBtn" class="btn green" style="width:100%">CREATE ACCOUNT →</button></form><p id="msg" class="msg"></p><p class="center"><a href="login.html">আগে account আছে? Login করুন</a></p></div></main><script src="supabase.js?v=2"></script><script>
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Register | শাহমাহমুদপুর বাজার</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<main class="auth">
+<div class="authbox">
+
+<a class="brand" href="index.html">
+<b>শাহমাহমুদপুর</b>
+<strong>বাজার</strong>
+<small>LOCAL MARKETPLACE</small>
+</a>
+
+<h1>Account তৈরি করুন</h1>
+<p class="muted">কয়েকটি তথ্য দিয়ে account তৈরি করুন।</p>
+
+<form id="registerForm">
+
+<label>
+পূর্ণ নাম
+<input id="fullName" required maxlength="80">
+</label>
+
+<label>
+Email
+<input id="email" type="email" required>
+</label>
+
+<label>
+মোবাইল
+<input id="phone" required placeholder="01XXXXXXXXX">
+</label>
+
+<label>
+Password
+<input id="passwordInput" type="password" minlength="6" required>
+</label>
+
+<label>
+Confirm Password
+<input id="confirmPassword" type="password" minlength="6" required>
+</label>
+
+<label>
+<input id="terms" type="checkbox" required>
+আমি Terms & Conditions মেনে নিচ্ছি।
+</label>
+
+<button id="submitBtn" class="btn green" style="width:100%">
+CREATE ACCOUNT →
+</button>
+
+</form>
+
+<p id="msg" class="msg"></p>
+
+<p class="center">
+<a href="login.html">আগে account আছে? Login করুন</a>
+</p>
+
+</div>
+</main>
+
+<script src="supabase.js?v=3"></script>
+
+<script>
 (function(){
-  const form=document.getElementById("registerForm");
-  const nameEl=document.getElementById("fullName");
-  const emailEl=document.getElementById("email");
-  const phoneEl=document.getElementById("phone");
-  const passEl=document.getElementById("passwordInput");
-  const confirmEl=document.getElementById("confirmPassword");
-  const termsEl=document.getElementById("terms");
-  const msgEl=document.getElementById("msg");
-  const btn=document.getElementById("submitBtn");
+
+  const form = document.getElementById("registerForm");
+  const nameEl = document.getElementById("fullName");
+  const emailEl = document.getElementById("email");
+  const phoneEl = document.getElementById("phone");
+  const passEl = document.getElementById("passwordInput");
+  const confirmEl = document.getElementById("confirmPassword");
+  const msgEl = document.getElementById("msg");
+  const btn = document.getElementById("submitBtn");
 
   form.addEventListener("submit", async function(e){
+
     e.preventDefault();
-    msgEl.textContent="";
-    const password=passEl.value;
-    const confirmPassword=confirmEl.value;
 
-    if(password.length<6){ msgEl.textContent="Password কমপক্ষে ৬ অক্ষরের হতে হবে।"; return; }
-    if(password !== confirmPassword){ msgEl.textContent="Password মিলছে না। দুই জায়গায় একই password লিখুন।"; return; }
+    msgEl.textContent = "";
 
-    btn.disabled=true;
-    btn.textContent="ACCOUNT তৈরি হচ্ছে...";
+    const password = passEl.value;
+    const confirmPassword = confirmEl.value;
+
+    if(password.length < 6){
+      msgEl.textContent = "Password কমপক্ষে ৬ অক্ষরের হতে হবে।";
+      return;
+    }
+
+    if(password !== confirmPassword){
+      msgEl.textContent = "Password মিলছে না। দুই জায়গায় একই password লিখুন।";
+      return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = "ACCOUNT তৈরি হচ্ছে...";
 
     try{
-      const email=emailEl.value.trim().toLowerCase();
-      const name=nameEl.value.trim();
-      const phone=phoneEl.value.trim();
 
-      const data=await auth("signup",{
-        email:email,
-        password:password,
-        data:{name:name,phone:phone}
+      const email = emailEl.value.trim().toLowerCase();
+      const name = nameEl.value.trim();
+      const phone = phoneEl.value.trim();
+
+      const data = await auth("signup", {
+
+        email: email,
+
+        password: password,
+
+        options: {
+          email_redirect_to:
+            "https://smbazar.cyou/verify.html"
+        },
+
+        data: {
+          name: name,
+          phone: phone
+        }
+
       });
 
-      if(data.access_token) setSbSession(data);
-
-      if(data.user){
-        localStorage.setItem("smb_user_v1",JSON.stringify({
-          id:data.user.id,name:name,email:data.user.email,phone:phone
-        }));
+      if(data.access_token){
+        setSbSession(data);
       }
 
-      msgEl.textContent=data.access_token
-        ? "Account তৈরি হয়েছে। Redirect হচ্ছে..."
-        : "Account তৈরি হয়েছে। আপনার email confirm করে Login করুন।";
+      if(data.user){
 
-      if(data.access_token) setTimeout(function(){location.href="index.html"},700);
+        localStorage.setItem(
+          "smb_user_v1",
+          JSON.stringify({
+            id: data.user.id,
+            name: name,
+            email: data.user.email,
+            phone: phone
+          })
+        );
+
+      }
+
+      msgEl.textContent = data.access_token
+        ? "Account তৈরি হয়েছে। Redirect হচ্ছে..."
+        : "Account তৈরি হয়েছে। আপনার email-এ Confirm Email link পাঠানো হয়েছে।";
+
+      if(data.access_token){
+
+        setTimeout(function(){
+          location.href = "index.html";
+        },700);
+
+      }
+
     }catch(err){
-      msgEl.textContent=err.message||"Registration failed.";
+
+      msgEl.textContent =
+        err.message || "Registration failed.";
+
     }finally{
-      btn.disabled=false;
-      btn.textContent="CREATE ACCOUNT →";
+
+      btn.disabled = false;
+      btn.textContent = "CREATE ACCOUNT →";
+
     }
+
   });
+
 })();
-</script></body></html>
+</script>
+
+</body>
+</html>
