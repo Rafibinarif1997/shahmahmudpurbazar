@@ -14,14 +14,14 @@
 <script src="app.js"></script>
 <script>
 document.addEventListener("DOMContentLoaded",()=>{
- const p=new URLSearchParams(location.search), q0=p.get("q")||"", c0=p.get("category")||"";
+ const p=new URLSearchParams(location.search), q0=p.get("q")||"", c0=p.get("category")||"", trending=p.get("sort")==="trending";
  const cat=document.getElementById("cat"), sub=document.getElementById("subcat"), q=document.getElementById("q2"), sort=document.getElementById("sort");
  const subs={"Vehicles":["Cars","Motorcycles","Bicycles","Auto Rickshaw","Trucks & Buses","Vehicle Parts"],"Property":["Land","Apartments","Houses","Shops & Commercial Space","Office Space","Property for Rent"],"Phones & Tablets":["Mobile Phones","Tablets","Phone Accessories","Smart Watches"],"Electronics":["TV","Laptop & Computer","Camera","Audio","Gaming","Other Electronics"],"Home, Furniture & Garden":["Furniture","Home Decor","Kitchen","Garden","Appliances"],"Fashion":["Men","Women","Kids","Shoes","Bags & Accessories","Watches"],"Beauty & Personal Care":["Cosmetics","Skin Care","Hair Care","Perfume","Health & Personal Care"],"Services":["Tutoring","Cleaning","Transport","Photography","IT & Digital","Other Services"],"Repair & Construction":["Electrician","Plumber","AC & Fridge Repair","Construction Materials","Mechanic","Painter"],"Commercial Equipment & Machinery":["Factory Equipment","Restaurant Equipment","Office Equipment","Tools","Machinery"],"Leisure & Activities":["Sports","Gym & Fitness","Music","Books","Tickets & Events","Hobbies"],"Babies & Kids":["Baby Products","Toys","Kids Clothing","Strollers","School Items"],"Food, Agriculture & Supplies":["Vegetables","Fruits","Fish","Livestock Feed","Seeds","Farm Products"],"Animals & Pets":["Cattle","Goat","Poultry","Pets","Pet Supplies"],"Jobs":["Full Time","Part Time","Sales Jobs","Driver Jobs","Office Jobs","Other Jobs"],"Seeking Work - CVs":["CVs","Job Seekers","Freelancers","Skilled Workers"],"Business & Industry":["Business for Sale","Wholesale","Retail","Industrial Products","Tools"]};
  function updateSubs(){sub.innerHTML='<option value="">সব সাব-ক্যাটাগরি</option>'+(subs[cat.value]||[]).map(x=>`<option>${x}</option>`).join("")}
  cat.value=c0;q.value=q0;updateSubs();
  function render(){let a=ads().filter(x=>x.status==="approved"),qq=q.value.trim().toLowerCase(),cc=cat.value,ss=sub.value;
  a=a.filter(x=>{let h=(x.title+" "+x.category+" "+(x.subcategory||"")+" "+x.location+" "+(x.description||"")).toLowerCase();return(!cc||x.category===cc)&&(!ss||x.subcategory===ss)&&(!qq||h.includes(qq))});
- if(sort.value==="low")a.sort((x,y)=>x.price-y.price);if(sort.value==="high")a.sort((x,y)=>y.price-x.price);
+ if(sort.value==="low")a.sort((x,y)=>x.price-y.price);if(sort.value==="high")a.sort((x,y)=>y.price-x.price);if(trending)a.sort((x,y)=>y.id.localeCompare(x.id));
  document.getElementById("results").innerHTML=a.length?a.map(card).join(""):"<div style='grid-column:1/-1;padding:45px;text-align:center;color:#81948a'>কোনো বিজ্ঞাপন পাওয়া যায়নি।</div>"}
  cat.onchange=()=>{updateSubs();render()};sub.onchange=render;sort.onchange=render;q.oninput=render;render();
 });
