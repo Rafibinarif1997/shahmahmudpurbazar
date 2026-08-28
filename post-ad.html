@@ -2,38 +2,66 @@
 <html lang="bn">
 
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
 
-<title>বিজ্ঞাপন দিন | শাহমাহমুদপুর বাজার</title>
+<meta
+  name="viewport"
+  content="width=device-width,initial-scale=1">
 
-<link rel="stylesheet" href="style.css">
+<title>
+বিজ্ঞাপন দিন | শাহমাহমুদপুর বাজার
+</title>
+
+<link
+  rel="stylesheet"
+  href="style.css">
+
 
 <style>
+
+/* ============================================================
+   PAGE
+============================================================ */
 
 .page{
   max-width:760px;
   padding:35px 16px 110px;
 }
 
+
+/* ============================================================
+   LOADING
+============================================================ */
+
 .loading{
   text-align:center;
-  padding:50px 20px;
+  padding:55px 20px;
   color:#718078;
 }
+
+
+/* ============================================================
+   USER NOTE
+============================================================ */
 
 .user-note{
   margin:18px 0 24px;
   padding:15px 16px;
-  border:1px solid rgba(105,245,165,.16);
-  border-radius:14px;
+
+  border:1px solid
+    rgba(105,245,165,.16);
+
+  border-radius:15px;
+
   background:
     linear-gradient(
       135deg,
       rgba(105,245,165,.055),
-      rgba(105,245,165,.015)
+      rgba(105,245,165,.012)
     );
-  color:#87978f;
+
+  color:#84948c;
   font-size:11px;
 }
 
@@ -41,62 +69,88 @@
   color:#69f5a5;
 }
 
+
+/* ============================================================
+   FORM SECTIONS
+============================================================ */
+
 .form-section{
-  margin-top:26px;
-  padding-top:22px;
-  border-top:1px solid rgba(255,255,255,.055);
+  margin-top:28px;
+  padding-top:24px;
+
+  border-top:
+    1px solid
+    rgba(255,255,255,.055);
 }
 
 .form-section-title{
-  margin-bottom:17px;
+  margin-bottom:18px;
 }
 
 .form-section-title small{
   color:#69f5a5;
   font-size:8px;
-  letter-spacing:2px;
   font-weight:800;
+  letter-spacing:2px;
 }
 
 .form-section-title h3{
-  margin:5px 0 0;
+  margin:6px 0 0;
   color:#edf7f1;
-  font-size:15px;
+  font-size:16px;
 }
 
 .required{
   color:#69f5a5;
 }
 
+
+/* ============================================================
+   IMAGE
+============================================================ */
+
 .image-help{
   margin-top:8px;
   color:#66766e;
   font-size:9px;
-  line-height:1.6;
+  line-height:1.7;
 }
 
 .image-count{
   margin-top:8px;
   color:#69f5a5;
   font-size:9px;
-  font-weight:700;
+  font-weight:800;
 }
 
 .preview-grid{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
+  grid-template-columns:
+    repeat(3,1fr);
+
   gap:9px;
-  margin-top:13px;
+
+  margin-top:14px;
 }
 
 .preview-item{
   position:relative;
+
   aspect-ratio:1;
+
   overflow:hidden;
+
   border-radius:14px;
-  border:1px solid rgba(105,245,165,.16);
+
+  border:
+    1px solid
+    rgba(105,245,165,.16);
+
   background:#07110c;
-  box-shadow:0 8px 25px rgba(0,0,0,.2);
+
+  box-shadow:
+    0 10px 30px
+    rgba(0,0,0,.2);
 }
 
 .preview-item img{
@@ -107,56 +161,147 @@
 
 .image-number{
   position:absolute;
+
   left:7px;
   top:7px;
+
   padding:4px 8px;
+
   border-radius:20px;
-  background:rgba(0,0,0,.68);
+
+  background:
+    rgba(0,0,0,.7);
+
   color:#fff;
+
   font-size:8px;
   font-weight:800;
 }
 
 .remove-image{
   position:absolute;
+
   right:7px;
   top:7px;
-  width:25px;
-  height:25px;
+
+  width:26px;
+  height:26px;
+
   border:0;
   border-radius:50%;
-  background:rgba(0,0,0,.72);
+
+  background:
+    rgba(0,0,0,.72);
+
   color:#fff;
+
   cursor:pointer;
-  font-size:13px;
+
+  font-size:15px;
+  line-height:26px;
+
+  padding:0;
 }
 
 .remove-image:hover{
   background:#ef5350;
 }
 
-.submit-note{
-  margin-top:13px;
-  text-align:center;
-  color:#65756d;
-  font-size:9px;
-  line-height:1.7;
-}
 
-.msg{
+/* ============================================================
+   SUBMIT NOTE
+============================================================ */
+
+.submit-note{
+  margin-top:14px;
+
   text-align:center;
+
+  color:#65756d;
+
+  font-size:9px;
+
   line-height:1.8;
 }
 
+
+/* ============================================================
+   SUCCESS
+============================================================ */
+
 .success-box{
-  margin-top:15px;
-  padding:16px;
-  border:1px solid rgba(105,245,165,.2);
-  border-radius:14px;
-  background:rgba(105,245,165,.04);
+  margin-top:18px;
+
+  padding:22px 16px;
+
+  border:
+    1px solid
+    rgba(105,245,165,.2);
+
+  border-radius:16px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(105,245,165,.055),
+      rgba(105,245,165,.015)
+    );
+
+  text-align:center;
+
   color:#69f5a5;
+}
+
+.success-icon{
+  width:42px;
+  height:42px;
+
+  margin:0 auto 12px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  border-radius:50%;
+
+  background:
+    rgba(105,245,165,.1);
+
+  border:
+    1px solid
+    rgba(105,245,165,.22);
+
+  font-size:20px;
+}
+
+
+/* ============================================================
+   ERROR
+============================================================ */
+
+.error-box{
+  margin-top:15px;
+
+  padding:13px 15px;
+
+  border:
+    1px solid
+    rgba(255,100,100,.16);
+
+  border-radius:12px;
+
+  background:
+    rgba(255,80,80,.035);
+
+  color:#ff9d9d;
+
+  font-size:10px;
+
+  line-height:1.7;
+
   text-align:center;
 }
+
 
 @media(max-width:500px){
 
@@ -167,23 +312,42 @@
 }
 
 </style>
+
 </head>
 
 
 <body>
 
+
 <main class="container page">
 
-<a href="index.html" class="brand">
 
-  <b>শাহমাহমুদপুর</b>
+<!-- ==========================================================
+     BRAND
+=========================================================== -->
 
-  <strong>বাজার</strong>
+<a
+  href="index.html"
+  class="brand">
 
-  <small>LOCAL MARKETPLACE</small>
+  <b>
+    শাহমাহমুদপুর
+  </b>
+
+  <strong>
+    বাজার
+  </strong>
+
+  <small>
+    LOCAL MARKETPLACE
+  </small>
 
 </a>
 
+
+<!-- ==========================================================
+     LOADING
+=========================================================== -->
 
 <section
   id="loading"
@@ -195,47 +359,73 @@
 </section>
 
 
+<!-- ==========================================================
+     FORM BOX
+=========================================================== -->
+
 <section
   id="formBox"
   class="authbox"
-  style="margin-top:25px;display:none">
+  style="
+    margin-top:25px;
+    display:none
+  ">
+
 
 <span class="eyebrow">
-POST AN AD
+  POST AN AD
 </span>
 
+
 <h1 style="font-size:30px">
-আপনার বিজ্ঞাপন দিন
+  আপনার বিজ্ঞাপন দিন
 </h1>
 
+
 <p class="muted">
-সঠিক তথ্য দিন। Admin approval-এর পর বিজ্ঞাপনটি marketplace-এ প্রকাশিত হবে।
+  সঠিক তথ্য দিন। Admin approval-এর পর বিজ্ঞাপনটি marketplace-এ প্রকাশিত হবে।
 </p>
 
 
-<div id="userNote" class="user-note"></div>
+<div
+  id="userNote"
+  class="user-note">
+</div>
 
 
-<form id="adForm">
+<form
+  id="adForm"
+  novalidate>
 
 
-<!-- =========================================================
+<!-- ==========================================================
      BASIC INFORMATION
-========================================================= -->
+=========================================================== -->
 
 <div class="form-section">
 
+
 <div class="form-section-title">
-  <small>01 — BASIC INFORMATION</small>
-  <h3>পণ্যের তথ্য</h3>
+
+  <small>
+    01 — BASIC INFORMATION
+  </small>
+
+  <h3>
+    পণ্যের তথ্য
+  </h3>
+
 </div>
 
 
 <label>
 
-ক্যাটাগরি <span class="required">*</span>
+ক্যাটাগরি
+<span class="required">*</span>
 
-<select id="category" required>
+
+<select
+  id="category">
 
 <option value="">
 ক্যাটাগরি নির্বাচন করুন
@@ -266,9 +456,12 @@ POST AN AD
 
 <label>
 
-সাব-ক্যাটাগরি <span class="required">*</span>
+সাব-ক্যাটাগরি
+<span class="required">*</span>
 
-<select id="subcategory" required>
+
+<select
+  id="subcategory">
 
 <option value="">
 আগে ক্যাটাগরি নির্বাচন করুন
@@ -281,12 +474,14 @@ POST AN AD
 
 <label>
 
-শিরোনাম <span class="required">*</span>
+শিরোনাম
+<span class="required">*</span>
+
 
 <input
   id="title"
+  type="text"
   maxlength="100"
-  required
   placeholder="যেমন: iPhone 13 128GB">
 
 </label>
@@ -294,13 +489,14 @@ POST AN AD
 
 <label>
 
-দাম <span class="required">*</span>
+দাম
+<span class="required">*</span>
+
 
 <input
   id="price"
   type="number"
   min="1"
-  required
   placeholder="৳">
 
 </label>
@@ -308,130 +504,230 @@ POST AN AD
 
 <label>
 
-বিস্তারিত <span class="required">*</span>
+বিস্তারিত
+<span class="required">*</span>
+
 
 <textarea
   id="description"
   rows="6"
-  required
+  maxlength="3000"
   placeholder="পণ্যের বিস্তারিত লিখুন"></textarea>
 
 </label>
 
+
 </div>
 
 
-<!-- =========================================================
+<!-- ==========================================================
      LOCATION
-========================================================= -->
+=========================================================== -->
 
 <div class="form-section">
 
+
 <div class="form-section-title">
-  <small>02 — LOCATION</small>
-  <h3>আপনার এলাকার তথ্য</h3>
+
+  <small>
+    02 — LOCATION
+  </small>
+
+  <h3>
+    আপনার এলাকার তথ্য
+  </h3>
+
 </div>
 
 
 <label>
 
-এলাকা <span class="required">*</span>
+এলাকা
+<span class="required">*</span>
 
-<select id="location" required>
+
+<select
+  id="location">
 
 <option value="">
 আপনার এলাকা নির্বাচন করুন
 </option>
 
-<option value="টাহরখীল">টাহরখীল</option>
-<option value="মান্দারী">মান্দারী</option>
-<option value="লোধেরগাঁও">লোধেরগাঁও</option>
-<option value="বিমলেরগাঁও">বিমলেরগাঁও</option>
-<option value="দাসেরগাঁও">দাসেরগাঁও</option>
-<option value="দমকেরগাঁও">দমকেরগাঁও</option>
-<option value="ভাটেরগাঁও">ভাটেরগাঁও</option>
-<option value="পাঁচগাঁও">পাঁচগাঁও</option>
-<option value="কুমারডুগী">কুমারডুগী</option>
-<option value="কৃষ্ণপুর">কৃষ্ণপুর</option>
-<option value="ভরঙ্গারচর">ভরঙ্গারচর</option>
-<option value="কেতুয়া">কেতুয়া</option>
-<option value="আলুমুড়া">আলুমুড়া</option>
-<option value="ছোট শাহতলী">ছোট শাহতলী</option>
-<option value="বড় শাহতলী">বড় শাহতলী</option>
-<option value="পাইকদি">পাইকদি</option>
-<option value="রনবলিয়া">রনবলিয়া</option>
-<option value="কদ্দি">কদ্দি</option>
+<option value="টাহরখীল">
+টাহরখীল
+</option>
+
+<option value="মান্দারী">
+মান্দারী
+</option>
+
+<option value="লোধেরগাঁও">
+লোধেরগাঁও
+</option>
+
+<option value="বিমলেরগাঁও">
+বিমলেরগাঁও
+</option>
+
+<option value="দাসেরগাঁও">
+দাসেরগাঁও
+</option>
+
+<option value="দমকেরগাঁও">
+দমকেরগাঁও
+</option>
+
+<option value="ভাটেরগাঁও">
+ভাটেরগাঁও
+</option>
+
+<option value="পাঁচগাঁও">
+পাঁচগাঁও
+</option>
+
+<option value="কুমারডুগী">
+কুমারডুগী
+</option>
+
+<option value="কৃষ্ণপুর">
+কৃষ্ণপুর
+</option>
+
+<option value="ভরঙ্গারচর">
+ভরঙ্গারচর
+</option>
+
+<option value="কেতুয়া">
+কেতুয়া
+</option>
+
+<option value="আলুমুড়া">
+আলুমুড়া
+</option>
+
+<option value="ছোট শাহতলী">
+ছোট শাহতলী
+</option>
+
+<option value="বড় শাহতলী">
+বড় শাহতলী
+</option>
+
+<option value="পাইকদি">
+পাইকদি
+</option>
+
+<option value="রনবলিয়া">
+রনবলিয়া
+</option>
+
+<option value="কদ্দি">
+কদ্দি
+</option>
 
 </select>
 
 </label>
 
+
 </div>
 
 
-<!-- =========================================================
+<!-- ==========================================================
      CONTACT
-========================================================= -->
+=========================================================== -->
 
 <div class="form-section">
 
+
 <div class="form-section-title">
-  <small>03 — CONTACT</small>
-  <h3>যোগাযোগের তথ্য</h3>
+
+  <small>
+    03 — CONTACT
+  </small>
+
+  <h3>
+    যোগাযোগের তথ্য
+  </h3>
+
 </div>
 
 
 <label>
 
-মোবাইল নম্বর <span class="required">*</span>
+মোবাইল নম্বর
+<span class="required">*</span>
+
 
 <input
   id="phone"
   type="tel"
   inputmode="numeric"
   maxlength="11"
-  required
   placeholder="01XXXXXXXXX">
 
 </label>
 
+
 </div>
 
 
-<!-- =========================================================
-     IMAGES
-========================================================= -->
+<!-- ==========================================================
+     PHOTOS
+=========================================================== -->
 
 <div class="form-section">
 
+
 <div class="form-section-title">
-  <small>04 — PHOTOS</small>
-  <h3>পণ্যের ছবি</h3>
+
+  <small>
+    04 — PHOTOS
+  </small>
+
+  <h3>
+    পণ্যের ছবি
+  </h3>
+
 </div>
 
 
 <label>
 
-ছবি <span class="required">*</span>
+ছবি
+<span class="required">*</span>
+
 
 <input
   id="image"
   type="file"
   accept="image/jpeg,image/png,image/webp"
-  multiple
-  required>
+  multiple>
+
 
 <div class="image-help">
-সর্বনিম্ন ১টি এবং সর্বোচ্চ ৩টি ছবি দিন।
+
+কমপক্ষে ১টি এবং সর্বোচ্চ ৩টি ছবি দিন।
+
 <br>
-JPG, PNG অথবা WebP ব্যবহার করুন।
+
+JPG, PNG অথবা WebP।
+
+<br>
+
+একবার ছবি দেওয়ার পর আবার Choose File চাপলেও আগের ছবি থাকবে।
+
 </div>
+
 
 <div
   id="imageCount"
   class="image-count">
+
 ০ / ৩ ছবি নির্বাচিত
+
 </div>
+
 
 </label>
 
@@ -441,8 +737,13 @@ JPG, PNG অথবা WebP ব্যবহার করুন।
   class="preview-grid">
 </div>
 
+
 </div>
 
+
+<!-- ==========================================================
+     SUBMIT
+=========================================================== -->
 
 <button
   id="submitBtn"
@@ -460,8 +761,16 @@ Review & Publish →
 
 <div class="submit-note">
 
-বিজ্ঞাপনটি প্রথমে <b>Pending</b> অবস্থায় Admin-এর কাছে যাবে।
+Review & Publish চাপলে বিজ্ঞাপনটি প্রথমে
+
+<b style="color:#f2c94c;">
+Pending
+</b>
+
+অবস্থায় Admin approval-এর জন্য যাবে।
+
 <br>
+
 Admin approve করার পর এটি marketplace-এ প্রকাশিত হবে।
 
 </div>
@@ -470,7 +779,9 @@ Admin approve করার পর এটি marketplace-এ প্রকাশ�
 </form>
 
 
-<p id="msg" class="msg"></p>
+<div
+  id="msg">
+</div>
 
 
 </section>
@@ -478,37 +789,68 @@ Admin approve করার পর এটি marketplace-এ প্রকাশ�
 </main>
 
 
+<!-- ==========================================================
+     MOBILE NAV
+=========================================================== -->
+
 <nav class="mobile-nav">
 
+
 <a href="index.html">
+
 <span>⌂</span>
+
 Home
+
 </a>
+
 
 <a href="favorites.html">
+
 <span>♡</span>
+
 Saved
+
 </a>
 
-<a class="active" href="post-ad.html">
+
+<a
+  class="active"
+  href="post-ad.html">
+
 <span>⊞</span>
+
 Sell
+
 </a>
+
 
 <a href="messages.html">
+
 <span>▤</span>
+
 Messages
+
 </a>
 
+
 <a href="profile.html">
+
 <span>♙</span>
+
 Profile
+
 </a>
+
 
 </nav>
 
 
-<script src="supabase.js?v=10"></script>
+<!-- ==========================================================
+     SUPABASE
+=========================================================== -->
+
+<script src="supabase.js?v=11"></script>
 
 
 <script>
@@ -523,48 +865,94 @@ Profile
 ============================================================ */
 
 const loading =
-document.getElementById("loading");
+document.getElementById(
+  "loading"
+);
 
 const formBox =
-document.getElementById("formBox");
+document.getElementById(
+  "formBox"
+);
 
 const form =
-document.getElementById("adForm");
+document.getElementById(
+  "adForm"
+);
 
 const userNote =
-document.getElementById("userNote");
+document.getElementById(
+  "userNote"
+);
 
 const message =
-document.getElementById("msg");
+document.getElementById(
+  "msg"
+);
 
 const submitBtn =
-document.getElementById("submitBtn");
+document.getElementById(
+  "submitBtn"
+);
 
 const imageInput =
-document.getElementById("image");
+document.getElementById(
+  "image"
+);
 
 const preview =
-document.getElementById("preview");
+document.getElementById(
+  "preview"
+);
 
 const imageCount =
-document.getElementById("imageCount");
+document.getElementById(
+  "imageCount"
+);
 
 const category =
-document.getElementById("category");
+document.getElementById(
+  "category"
+);
 
 const subcategory =
-document.getElementById("subcategory");
+document.getElementById(
+  "subcategory"
+);
 
 const locationSelect =
-document.getElementById("location");
+document.getElementById(
+  "location"
+);
+
+const titleInput =
+document.getElementById(
+  "title"
+);
+
+const priceInput =
+document.getElementById(
+  "price"
+);
+
+const descriptionInput =
+document.getElementById(
+  "description"
+);
+
+const phoneInput =
+document.getElementById(
+  "phone"
+);
 
 
 let currentUser = null;
 
 
 /*
- * Browser FileList সরাসরি modify করা যায় না।
- * তাই আলাদা array-তে selected images রাখা হচ্ছে।
+ * Selected images এখানে রাখা হবে।
+ *
+ * File input reset হলেও
+ * এই array-এর ছবি থাকবে।
  */
 
 let selectedFiles = [];
@@ -587,10 +975,40 @@ function escapeHtml(value){
 
 
 /* ============================================================
+   SHOW MESSAGE
+============================================================ */
+
+function showError(text){
+
+  message.innerHTML = `
+
+    <div class="error-box">
+
+      ${escapeHtml(text)}
+
+    </div>
+
+  `;
+
+}
+
+
+function clearMessage(){
+
+  message.innerHTML = "";
+
+}
+
+
+/* ============================================================
    GET USER
 ============================================================ */
 
 async function getUser(){
+
+  /*
+   * Supabase session-ই primary authentication।
+   */
 
   try{
 
@@ -632,7 +1050,8 @@ async function getUser(){
               user.email || "",
 
             phone:
-              metadata.phone || "",
+              metadata.phone ||
+              "",
 
             avatar:
               metadata.avatar_url ||
@@ -666,7 +1085,9 @@ async function getUser(){
   }
 
 
-  /* Local backup */
+  /*
+   * Local backup.
+   */
 
   try{
 
@@ -715,6 +1136,10 @@ async function getUser(){
 
 async function initialize(){
 
+  /*
+   * OAuth callback থাকলে handle করবে।
+   */
+
   try{
 
     if(
@@ -729,7 +1154,7 @@ async function initialize(){
   }catch(error){
 
     console.error(
-      "Callback error:",
+      "OAuth callback error:",
       error
     );
 
@@ -740,14 +1165,21 @@ async function initialize(){
     await getUser();
 
 
+  /*
+   * Session তৈরি হতে সামান্য সময় লাগলে retry।
+   */
+
   if(!currentUser){
 
     await new Promise(
-      resolve =>
+      function(resolve){
+
         setTimeout(
           resolve,
-          800
-        )
+          900
+        );
+
+      }
     );
 
 
@@ -787,6 +1219,7 @@ async function initialize(){
   loading.style.display =
     "none";
 
+
   formBox.style.display =
     "block";
 
@@ -802,6 +1235,21 @@ async function initialize(){
     </strong>
 
   `;
+
+
+  /*
+   * যদি Google profile-এ phone থাকে,
+   * তাহলে phone field-এ সেটি দেখাবে।
+   */
+
+  if(
+    currentUser.phone
+  ){
+
+    phoneInput.value =
+      currentUser.phone;
+
+  }
 
 }
 
@@ -976,14 +1424,18 @@ function(){
 
 
   subcategory.innerHTML =
+
     '<option value="">সাব-ক্যাটাগরি নির্বাচন করুন</option>' +
 
     items.map(
       function(item){
 
+        const safe =
+          escapeHtml(item);
+
         return `
-          <option value="${escapeHtml(item)}">
-            ${escapeHtml(item)}
+          <option value="${safe}">
+            ${safe}
           </option>
         `;
 
@@ -994,7 +1446,7 @@ function(){
 
 
 /* ============================================================
-   IMAGE MANAGEMENT
+   IMAGE PREVIEW
 ============================================================ */
 
 function renderPreview(){
@@ -1010,47 +1462,45 @@ function renderPreview(){
   selectedFiles.forEach(
     function(file,index){
 
-      const reader =
-        new FileReader();
+      const objectUrl =
+        URL.createObjectURL(file);
 
 
-      reader.onload =
-        function(event){
-
-          const item =
-            document.createElement("div");
-
-
-          item.className =
-            "preview-item";
+      const item =
+        document.createElement(
+          "div"
+        );
 
 
-          item.innerHTML = `
-
-            <img
-              src="${event.target.result}"
-              alt="Image ${index + 1}">
-
-            <span class="image-number">
-              ${index + 1}
-            </span>
-
-            <button
-              type="button"
-              class="remove-image"
-              data-index="${index}">
-              ×
-            </button>
-
-          `;
+      item.className =
+        "preview-item";
 
 
-          preview.appendChild(item);
+      item.innerHTML = `
 
-        };
+        <img
+          src="${objectUrl}"
+          alt="Image ${index + 1}">
+
+        <span class="image-number">
+
+          ${index + 1}
+
+        </span>
+
+        <button
+          type="button"
+          class="remove-image"
+          data-index="${index}">
+
+          ×
+
+        </button>
+
+      `;
 
 
-      reader.readAsDataURL(file);
+      preview.appendChild(item);
 
     }
   );
@@ -1058,22 +1508,37 @@ function renderPreview(){
 }
 
 
+/* ============================================================
+   ADD IMAGES
+============================================================ */
+
 imageInput.addEventListener(
 "change",
 function(){
 
-  message.textContent = "";
+  clearMessage();
 
 
-  const newFiles =
+  const files =
     Array.from(
       imageInput.files || []
     );
 
 
+  if(!files.length){
+
+    return;
+
+  }
+
+
   for(
-    const file of newFiles
+    const file of files
   ){
+
+    /*
+     * File type check
+     */
 
     if(
       ![
@@ -1083,8 +1548,9 @@ function(){
       ].includes(file.type)
     ){
 
-      message.textContent =
-        "শুধু JPG, PNG অথবা WebP ছবি ব্যবহার করুন।";
+      showError(
+        "শুধু JPG, PNG অথবা WebP ছবি ব্যবহার করুন।"
+      );
 
       continue;
 
@@ -1092,10 +1558,10 @@ function(){
 
 
     /*
-     * একই ছবি আবার add না করা
+     * Duplicate check
      */
 
-    const alreadyExists =
+    const duplicate =
       selectedFiles.some(
         function(existing){
 
@@ -1110,17 +1576,24 @@ function(){
       );
 
 
-    if(alreadyExists){
+    if(duplicate){
+
       continue;
+
     }
 
+
+    /*
+     * Maximum 3
+     */
 
     if(
       selectedFiles.length >= 3
     ){
 
-      message.textContent =
-        "সর্বোচ্চ ৩টি ছবি দেওয়া যাবে।";
+      showError(
+        "সর্বোচ্চ ৩টি ছবি দেওয়া যাবে।"
+      );
 
       break;
 
@@ -1133,9 +1606,11 @@ function(){
 
 
   /*
-   * Input reset করছি।
-   * ফলে user আবার Choose File চাপলে
-   * আগের selectedFiles মুছে যাবে না।
+   * খুব গুরুত্বপূর্ণ:
+   *
+   * Input clear করা হচ্ছে যাতে
+   * আবার Choose File চাপলে
+   * আগের selectedFiles মুছে না যায়।
    */
 
   imageInput.value = "";
@@ -1160,7 +1635,11 @@ function(event){
     );
 
 
-  if(!button) return;
+  if(!button){
+
+    return;
+
+  }
 
 
   const index =
@@ -1169,10 +1648,22 @@ function(event){
     );
 
 
+  if(
+    Number.isNaN(index)
+  ){
+
+    return;
+
+  }
+
+
   selectedFiles.splice(
     index,
     1
   );
+
+
+  clearMessage();
 
 
   renderPreview();
@@ -1223,7 +1714,8 @@ async function uploadImage(
 
       {
 
-        method:"POST",
+        method:
+          "POST",
 
         headers:{
 
@@ -1235,14 +1727,16 @@ async function uploadImage(
             session.access_token,
 
           "Content-Type":
-            file.type,
+            file.type ||
+            "image/jpeg",
 
           "x-upsert":
             "false"
 
         },
 
-        body:file
+        body:
+          file
 
       }
 
@@ -1251,29 +1745,31 @@ async function uploadImage(
 
   if(!response.ok){
 
-    const text =
+    const errorText =
       await response.text();
 
 
     throw new Error(
       "ছবি upload করা যায়নি: " +
-      text
+      errorText
     );
 
   }
 
 
   return (
+
     SUPABASE_URL +
     "/storage/v1/object/public/ad-images/" +
     path
+
   );
 
 }
 
 
 /* ============================================================
-   SUBMIT AD
+   SUBMIT
 ============================================================ */
 
 form.addEventListener(
@@ -1283,33 +1779,27 @@ async function(event){
   event.preventDefault();
 
 
-  message.textContent = "";
+  clearMessage();
 
 
   /*
-   * Browser native validation
+   * Login check
    */
-
-  if(
-    !form.checkValidity()
-  ){
-
-    form.reportValidity();
-
-    return;
-
-  }
-
 
   if(!currentUser){
 
-    message.textContent =
-      "আপনার Login session পাওয়া যাচ্ছে না।";
+    showError(
+      "আপনার Login session পাওয়া যাচ্ছে না।"
+    );
 
     return;
 
   }
 
+
+  /*
+   * Session check
+   */
 
   const session =
     typeof getSbSession === "function"
@@ -1322,8 +1812,165 @@ async function(event){
     !session.access_token
   ){
 
-    message.textContent =
-      "Login session পাওয়া যায়নি। আবার Google Login করুন।";
+    showError(
+      "Login session পাওয়া যায়নি। আবার Google Login করুন।"
+    );
+
+    return;
+
+  }
+
+
+  /*
+   * Get values
+   */
+
+  const titleValue =
+    titleInput.value.trim();
+
+
+  const priceValue =
+    Number(
+      priceInput.value
+    );
+
+
+  const categoryValue =
+    category.value;
+
+
+  const subcategoryValue =
+    subcategory.value;
+
+
+  const descriptionValue =
+    descriptionInput.value.trim();
+
+
+  const locationValue =
+    locationSelect.value;
+
+
+  const phoneValue =
+    phoneInput.value.trim();
+
+
+  /*
+   * ==========================================================
+   * VALIDATION
+   * ==========================================================
+   */
+
+
+  if(!categoryValue){
+
+    showError(
+      "ক্যাটাগরি নির্বাচন করুন।"
+    );
+
+    category.focus();
+
+    return;
+
+  }
+
+
+  if(!subcategoryValue){
+
+    showError(
+      "সাব-ক্যাটাগরি নির্বাচন করুন।"
+    );
+
+    subcategory.focus();
+
+    return;
+
+  }
+
+
+  if(!titleValue){
+
+    showError(
+      "শিরোনাম লিখুন।"
+    );
+
+    titleInput.focus();
+
+    return;
+
+  }
+
+
+  if(
+    !priceValue ||
+    priceValue < 1
+  ){
+
+    showError(
+      "সঠিক দাম লিখুন।"
+    );
+
+    priceInput.focus();
+
+    return;
+
+  }
+
+
+  if(!descriptionValue){
+
+    showError(
+      "পণ্যের বিস্তারিত লিখুন।"
+    );
+
+    descriptionInput.focus();
+
+    return;
+
+  }
+
+
+  if(!locationValue){
+
+    showError(
+      "আপনার এলাকা নির্বাচন করুন।"
+    );
+
+    locationSelect.focus();
+
+    return;
+
+  }
+
+
+  if(!phoneValue){
+
+    showError(
+      "মোবাইল নম্বর দিন।"
+    );
+
+    phoneInput.focus();
+
+    return;
+
+  }
+
+
+  /*
+   * Bangladesh phone
+   */
+
+  if(
+    !/^01[3-9]\d{8}$/.test(
+      phoneValue
+    )
+  ){
+
+    showError(
+      "সঠিক ১১ সংখ্যার মোবাইল নম্বর দিন।"
+    );
+
+    phoneInput.focus();
 
     return;
 
@@ -1338,8 +1985,9 @@ async function(event){
     selectedFiles.length < 1
   ){
 
-    message.textContent =
-      "কমপক্ষে ১টি ছবি দিতে হবে।";
+    showError(
+      "কমপক্ষে ১টি ছবি দিতে হবে।"
+    );
 
     return;
 
@@ -1347,113 +1995,40 @@ async function(event){
 
 
   /*
-   * Maximum 3 images
+   * Maximum 3 image
    */
 
   if(
     selectedFiles.length > 3
   ){
 
-    message.textContent =
-      "সর্বোচ্চ ৩টি ছবি দেওয়া যাবে।";
-
-    return;
-
-  }
-
-
-  const titleValue =
-    document
-      .getElementById("title")
-      .value
-      .trim();
-
-
-  const priceValue =
-    Number(
-      document
-        .getElementById("price")
-        .value
+    showError(
+      "সর্বোচ্চ ৩টি ছবি দেওয়া যাবে।"
     );
 
-
-  const categoryValue =
-    category.value;
-
-
-  const subcategoryValue =
-    subcategory.value;
-
-
-  const descriptionValue =
-    document
-      .getElementById("description")
-      .value
-      .trim();
-
-
-  const locationValue =
-    locationSelect.value;
-
-
-  const phoneValue =
-    document
-      .getElementById("phone")
-      .value
-      .trim();
-
-
-  /*
-   * Extra validation
-   */
-
-  if(
-    !titleValue ||
-    !priceValue ||
-    !categoryValue ||
-    !subcategoryValue ||
-    !descriptionValue ||
-    !locationValue ||
-    !phoneValue
-  ){
-
-    message.textContent =
-      "কোনো ঘর খালি রাখা যাবে না।";
-
     return;
 
   }
 
 
   /*
-   * Bangladesh phone validation
+   * Disable button
    */
-
-  if(
-    !/^01[3-9]\d{8}$/.test(
-      phoneValue
-    )
-  ){
-
-    message.textContent =
-      "সঠিক ১১ সংখ্যার মোবাইল নম্বর দিন।";
-
-    return;
-
-  }
-
 
   submitBtn.disabled =
     true;
 
 
+  submitBtn.style.opacity =
+    ".65";
+
+
   try{
 
-    /*
-     * --------------------------------------------------------
-     * AD ID
-     * --------------------------------------------------------
-     */
+
+    /* ========================================================
+       CREATE AD ID
+    ======================================================== */
 
     const adId =
       (
@@ -1463,14 +2038,17 @@ async function(event){
       ?
       crypto.randomUUID()
       :
-      "ad_" + Date.now();
+      "ad_" +
+      Date.now() +
+      "_" +
+      Math.random()
+        .toString(36)
+        .slice(2);
 
 
-    /*
-     * --------------------------------------------------------
-     * IMAGE UPLOAD
-     * --------------------------------------------------------
-     */
+    /* ========================================================
+       UPLOAD IMAGES
+    ======================================================== */
 
     const imageUrls = [];
 
@@ -1488,7 +2066,7 @@ async function(event){
         selectedFiles.length;
 
 
-      const url =
+      const imageUrl =
         await uploadImage(
           selectedFiles[i],
           adId,
@@ -1497,19 +2075,35 @@ async function(event){
         );
 
 
-      imageUrls.push(url);
+      imageUrls.push(
+        imageUrl
+      );
 
     }
 
 
-    /*
-     * --------------------------------------------------------
-     * ADS TABLE DATA
-     *
-     * তোমার screenshot অনুযায়ী
-     * শুধু existing columns ব্যবহার করা হচ্ছে।
-     * --------------------------------------------------------
-     */
+    /* ========================================================
+       CREATE DATABASE DATA
+       
+       তোমার ads table অনুযায়ী:
+       
+       id
+       seller_id
+       title
+       price
+       category
+       subcategory
+       description
+       location
+       phone
+       image_urls
+       status
+       views
+       created_at
+       user_id
+       seller_email
+       email
+    ======================================================== */
 
     const adData = {
 
@@ -1553,9 +2147,7 @@ async function(event){
         imageUrls,
 
       /*
-       * এখানেই মূল workflow:
-       *
-       * নতুন বিজ্ঞাপন = pending
+       * নতুন বিজ্ঞাপন সবসময় Pending
        */
 
       status:
@@ -1567,11 +2159,9 @@ async function(event){
     };
 
 
-    /*
-     * --------------------------------------------------------
-     * SAVE TO SUPABASE
-     * --------------------------------------------------------
-     */
+    /* ========================================================
+       SAVE AD
+    ======================================================== */
 
     submitBtn.textContent =
       "বিজ্ঞাপন জমা হচ্ছে...";
@@ -1585,7 +2175,8 @@ async function(event){
 
         {
 
-          method:"POST",
+          method:
+            "POST",
 
           headers:{
 
@@ -1616,23 +2207,21 @@ async function(event){
 
     if(!response.ok){
 
-      const text =
+      const errorText =
         await response.text();
 
 
       throw new Error(
         "Database error: " +
-        text
+        errorText
       );
 
     }
 
 
-    /*
-     * --------------------------------------------------------
-     * SUCCESS
-     * --------------------------------------------------------
-     */
+    /* ========================================================
+       SUCCESS
+    ======================================================== */
 
     form.style.display =
       "none";
@@ -1642,7 +2231,7 @@ async function(event){
 
       <div class="success-box">
 
-        <div style="font-size:25px;margin-bottom:8px;">
+        <div class="success-icon">
           ✓
         </div>
 
@@ -1650,20 +2239,22 @@ async function(event){
           বিজ্ঞাপন সফলভাবে জমা হয়েছে
         </strong>
 
-        <br>
+        <br><br>
 
-        <small style="color:#819089;">
+        <small style="color:#84948c;">
 
           আপনার বিজ্ঞাপন এখন
+
           <b style="color:#f2c94c;">
-            Pending Approval
+            Pending
           </b>
-          অবস্থায় আছে।
+
+          অবস্থায় Admin approval-এর অপেক্ষায় আছে।
 
           <br>
 
           Admin approve করার পর
-          এটি marketplace-এ প্রকাশিত হবে।
+          বিজ্ঞাপনটি marketplace-এ প্রকাশিত হবে।
 
         </small>
 
@@ -1683,12 +2274,15 @@ async function(event){
 
 
     /*
-     * Selected files clear
+     * Clear selected images
      */
 
     selectedFiles = [];
 
-    preview.innerHTML = "";
+
+    preview.innerHTML =
+      "";
+
 
     imageCount.textContent =
       "০ / ৩ ছবি নির্বাচিত";
@@ -1702,15 +2296,19 @@ async function(event){
     );
 
 
-    message.textContent =
+    showError(
       error.message ||
-      "বিজ্ঞাপন জমা দেওয়া যায়নি।";
+      "বিজ্ঞাপন জমা দেওয়া যায়নি।"
+    );
 
 
   }finally{
 
     submitBtn.disabled =
       false;
+
+    submitBtn.style.opacity =
+      "1";
 
     submitBtn.textContent =
       "Review & Publish →";
