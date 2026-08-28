@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="style.css">
 
 <style>
+
 .page{
   padding:35px 16px 100px;
 }
@@ -51,11 +52,13 @@
   min-height:100px;
   color:#69f5a5;
 }
+
 </style>
 </head>
 
 
 <body>
+
 
 <main class="container page">
 
@@ -76,14 +79,20 @@
       style="margin-top:30px">
 
       <div>
+
         <small>MY MARKETPLACE</small>
+
         <h2>আমার বিজ্ঞাপন</h2>
+
       </div>
+
 
       <a
         class="btn green"
         href="post-ad.html">
+
         ＋ বিজ্ঞাপন দিন
+
       </a>
 
     </div>
@@ -102,6 +111,7 @@
   </div>
 
 </main>
+
 
 
 <nav class="mobile-nav">
@@ -129,11 +139,14 @@
   <a
     class="active"
     href="profile.html">
+
     <span>♙</span>
     Profile
+
   </a>
 
 </nav>
+
 
 
 <script src="supabase.js?v=9"></script>
@@ -144,13 +157,18 @@
 
 (async function(){
 
+
   const list =
     document.getElementById("list");
 
 
+  // ----------------------------------------------------------
+  // Escape HTML
+  // ----------------------------------------------------------
+
   function escapeHTML(value){
 
-    return String(value || "")
+    return String(value ?? "")
       .replace(/&/g,"&amp;")
       .replace(/</g,"&lt;")
       .replace(/>/g,"&gt;")
@@ -160,79 +178,173 @@
   }
 
 
-  /*
-   * প্রথমে আমাদের নতুন Supabase session নেওয়া হবে।
-   */
+  // ----------------------------------------------------------
+  // Get saved Google user
+  // ----------------------------------------------------------
 
-  let user = null;
+  function getSavedUser(){
 
+    try{
 
-  try{
-
-    if(
-      typeof getCurrentUser ===
-      "function"
-    ){
-
-      user =
-        await getCurrentUser();
-
-    }
-
-
-    /*
-     * Supabase থেকে user না পেলে
-     * local Google profile backup ব্যবহার।
-     */
-
-    if(!user){
-
-      const saved =
+      const raw =
         localStorage.getItem(
           "smb_user_v1"
         );
 
-      if(saved){
+      if(!raw) return null;
 
-        try{
+      const data =
+        JSON.parse(raw);
 
-          const localUser =
-            JSON.parse(saved);
+      if(
+        data &&
+        data.email
+      ){
 
-          if(
-            localUser &&
-            localUser.email
-          ){
-
-            user = {
-
-              id:
-                localUser.id || "",
-
-              email:
-                localUser.email,
-
-              user_metadata:{
-                name:
-                  localUser.name || ""
-              }
-
-            };
-
-          }
-
-        }catch(e){}
+        return data;
 
       }
+
+    }catch(error){
+
+      console.error(
+        "Saved user error:",
+        error
+      );
+
+    }
+
+    return null;
+
+  }
+
+
+  // ----------------------------------------------------------
+  // Get user
+  // ----------------------------------------------------------
+
+  async function getUser(){
+
+    /*
+     * প্রথমে local profile নেওয়া হচ্ছে।
+     * কারণ Google login-এর পরে এটিই আমাদের
+     * reliable browser profile।
+     */
+
+    const savedUser =
+      getSavedUser();
+
+
+    if(savedUser){
+
+      return savedUser;
 
     }
 
 
     /*
-     * কোনো user না থাকলে Login page।
+     * local profile না থাকলে Supabase session
+     * থেকে user নেওয়া হবে।
      */
 
-    if(!user){
+    try{
+
+      if(
+        typeof window.getCurrentUser ===
+        "function"
+      ){
+
+        const user =
+          await window.getCurrentUser();
+
+
+        if(user){
+
+          const metadata =
+            user.user_metadata || {};
+
+
+          const profile = {
+
+            id:
+              user.id || "",
+
+            name:
+              metadata.full_name ||
+              metadata.name ||
+              "",
+
+            email:
+              user.email || "",
+
+            phone:
+              metadata.phone || "",
+
+            avatar:
+              metadata.avatar_url ||
+              metadata.picture ||
+              ""
+
+          };
+
+
+          localStorage.setItem(
+            "smb_user_v1",
+            JSON.stringify(profile)
+          );
+
+
+          return profile;
+
+        }
+
+      }
+
+    }catch(error){
+
+      console.error(
+        "Supabase user error:",
+        error
+      );
+
+    }
+
+
+    return null;
+
+  }
+
+
+  // ----------------------------------------------------------
+  // Load user
+  // ----------------------------------------------------------
+
+  const user =
+    await getUser();
+
+
+  /*
+   * User না পাওয়া গেলে Login page।
+   *
+   * কিন্তু সঙ্গে সঙ্গে redirect নয়।
+   * Browser storage/session initialize হওয়ার জন্য
+   * একটু সময় দেওয়া হচ্ছে।
+   */
+
+  if(!user){
+
+    await new Promise(
+      function(resolve){
+        setTimeout(resolve,1200);
+      }
+    );
+
+
+    const retryUser =
+      await getUser();
+
+
+    if(!retryUser){
 
       window.location.href =
         "login.html";
@@ -241,70 +353,178 @@
 
     }
 
-
-    /*
-     * User information
-     */
-
-    const metadata =
-      user.user_metadata || {};
-
-    const userName =
-      metadata.full_name ||
-      metadata.name ||
-      "";
-
-    const userEmail =
-      user.email ||
-      "";
+  }
 
 
-    /*
-     * app.js-এর ads() ব্যবহার করছি।
-     */
+  const currentUser =
+    user || await getUser();
 
-    let allAds = [];
 
+  if(!currentUser){
+
+    window.location.href =
+      "login.html";
+
+    return;
+
+  }
+
+
+  // ----------------------------------------------------------
+  // User information
+  // ----------------------------------------------------------
+
+  const userId =
+    String(
+      currentUser.id || ""
+    );
+
+
+  const userEmail =
+    String(
+      currentUser.email || ""
+    ).trim().toLowerCase();
+
+
+  const userName =
+    String(
+      currentUser.name || ""
+    ).trim().toLowerCase();
+
+
+  // ----------------------------------------------------------
+  // Get local advertisements
+  // ----------------------------------------------------------
+
+  let allAds = [];
+
+
+  try{
 
     if(
-      typeof ads ===
+      typeof window.ads ===
       "function"
     ){
 
-      allAds = ads() || [];
+      allAds =
+        window.ads() || [];
 
     }
 
+  }catch(error){
 
-    /*
-     * Google account-এর email অথবা
-     * user ID দিয়ে matching করার চেষ্টা।
-     */
+    console.error(
+      "Ads function error:",
+      error
+    );
 
-    const myAds =
-      allAds.filter(function(ad){
+  }
+
+
+  /*
+   * যদি ads() না থাকে তাহলে localStorage থেকেও
+   * সরাসরি নেওয়া হবে।
+   */
+
+  if(!Array.isArray(allAds)){
+
+    allAds = [];
+
+  }
+
+
+  if(!allAds.length){
+
+    try{
+
+      const raw =
+        localStorage.getItem(
+          "smb_ads_v1"
+        );
+
+      if(raw){
+
+        const storedAds =
+          JSON.parse(raw);
+
+        if(
+          Array.isArray(storedAds)
+        ){
+
+          allAds =
+            storedAds;
+
+        }
+
+      }
+
+    }catch(error){
+
+      console.error(
+        "Direct ads load error:",
+        error
+      );
+
+    }
+
+  }
+
+
+  // ----------------------------------------------------------
+  // Match user's advertisements
+  // ----------------------------------------------------------
+
+  const myAds =
+    allAds.filter(
+      function(ad){
 
         if(!ad) return false;
 
 
         /*
-         * যদি seller_id থাকে,
-         * সেটাকে অগ্রাধিকার।
+         * 1. seller_id
          */
 
         if(
           ad.seller_id &&
-          user.id
+          userId
         ){
 
-          return String(ad.seller_id) ===
-                 String(user.id);
+          if(
+            String(ad.seller_id) ===
+            userId
+          ){
+
+            return true;
+
+          }
 
         }
 
 
         /*
-         * Email দিয়ে match।
+         * 2. user_id
+         */
+
+        if(
+          ad.user_id &&
+          userId
+        ){
+
+          if(
+            String(ad.user_id) ===
+            userId
+          ){
+
+            return true;
+
+          }
+
+        }
+
+
+        /*
+         * 3. seller_email
          */
 
         if(
@@ -312,19 +532,45 @@
           userEmail
         ){
 
-          return String(
-            ad.seller_email
-          ).toLowerCase() ===
-          String(
+          if(
+            String(ad.seller_email)
+              .trim()
+              .toLowerCase() ===
             userEmail
-          ).toLowerCase();
+          ){
+
+            return true;
+
+          }
 
         }
 
 
         /*
-         * পুরোনো data হলে seller name
-         * দিয়ে match করার চেষ্টা।
+         * 4. email
+         */
+
+        if(
+          ad.email &&
+          userEmail
+        ){
+
+          if(
+            String(ad.email)
+              .trim()
+              .toLowerCase() ===
+            userEmail
+          ){
+
+            return true;
+
+          }
+
+        }
+
+
+        /*
+         * 5. seller name
          */
 
         if(
@@ -332,163 +578,177 @@
           userName
         ){
 
-          return String(ad.seller)
-            .trim()
-            .toLowerCase() ===
-          String(userName)
-            .trim()
-            .toLowerCase();
+          if(
+            String(ad.seller)
+              .trim()
+              .toLowerCase() ===
+            userName
+          ){
+
+            return true;
+
+          }
 
         }
 
 
         return false;
 
-      });
+      }
+    );
 
 
-    /*
-     * কোনো বিজ্ঞাপন নেই
-     */
+  // ----------------------------------------------------------
+  // No ads
+  // ----------------------------------------------------------
 
-    if(!myAds.length){
+  if(!myAds.length){
 
-      list.innerHTML = `
-        <div class="empty-ads">
+    list.innerHTML = `
 
-          <strong>
-            আপনার কোনো বিজ্ঞাপন নেই।
-          </strong>
+      <div class="empty-ads">
 
-          <span>
-            নতুন পণ্য বিক্রি করতে একটি বিজ্ঞাপন দিন।
-          </span>
+        <strong>
+          আপনার কোনো বিজ্ঞাপন নেই।
+        </strong>
 
-          <br><br>
+        <span>
+          নতুন পণ্য বিক্রি করতে একটি বিজ্ঞাপন দিন।
+        </span>
 
-          <a
-            class="btn green"
-            href="post-ad.html">
-            ＋ বিজ্ঞাপন দিন
-          </a>
+        <br><br>
 
-        </div>
-      `;
+        <a
+          class="btn green"
+          href="post-ad.html">
 
-      return;
+          ＋ বিজ্ঞাপন দিন
 
-    }
+        </a>
+
+      </div>
+
+    `;
+
+    return;
+
+  }
 
 
-    /*
-     * বিজ্ঞাপন দেখানো
-     */
+  // ----------------------------------------------------------
+  // Render ads
+  // ----------------------------------------------------------
 
-    list.innerHTML =
-      myAds.map(function(x){
+  list.innerHTML =
+    myAds.map(
+      function(ad){
 
         let price = "";
+
 
         try{
 
           if(
-            typeof money ===
+            typeof window.money ===
             "function"
           ){
 
             price =
-              money(x.price);
+              window.money(
+                ad.price
+              );
 
           }else{
 
             price =
               "৳ " +
-              Number(x.price || 0)
-                .toLocaleString("bn-BD");
+              Number(
+                ad.price || 0
+              ).toLocaleString(
+                "bn-BD"
+              );
 
           }
 
-        }catch(e){
+        }catch(error){
 
           price =
             "৳ " +
-            Number(x.price || 0)
-              .toLocaleString("bn-BD");
+            Number(
+              ad.price || 0
+            ).toLocaleString(
+              "bn-BD"
+            );
 
         }
 
 
         return `
+
           <article class="product">
 
             <div class="photo">
+
               ${escapeHTML(
-                x.category ||
+                ad.category ||
                 "বিজ্ঞাপন"
               )}
+
             </div>
+
 
             <div class="body">
 
               <span class="badge">
+
                 ${escapeHTML(
-                  x.status ||
+                  ad.status ||
                   "ACTIVE"
                 )}
+
               </span>
 
+
               <h3>
+
                 ${escapeHTML(
-                  x.title ||
+                  ad.title ||
                   "Untitled"
                 )}
+
               </h3>
 
+
               <div class="price">
+
                 ${price}
+
               </div>
 
+
               <div class="meta">
+
                 ${escapeHTML(
-                  x.location ||
+                  ad.location ||
                   ""
                 )}
+
               </div>
 
             </div>
 
           </article>
+
         `;
 
-      }).join("");
+      }
+    ).join("");
 
-
-  }catch(error){
-
-    console.error(
-      "My Ads Error:",
-      error
-    );
-
-    list.innerHTML = `
-      <div class="empty-ads">
-
-        <strong>
-          বিজ্ঞাপন লোড করা যায়নি।
-        </strong>
-
-        <span>
-          একটু পরে আবার চেষ্টা করুন।
-        </span>
-
-      </div>
-    `;
-
-  }
 
 })();
 
 </script>
+
 
 </body>
 </html>
