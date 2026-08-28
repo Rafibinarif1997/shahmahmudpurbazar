@@ -1,8 +1,26 @@
 // ============================================================
 // শাহমাহমুদপুর বাজার — APP.JS
+// SUPABASE MARKETPLACE VERSION
 // ============================================================
 
 (function () {
+
+  "use strict";
+
+
+  // ----------------------------------------------------------
+  // Supabase configuration
+  // ----------------------------------------------------------
+
+  const SUPA_URL =
+    window.SUPABASE_URL ||
+    "https://jeupbfoceqmnpwlklche.supabase.co";
+
+  const SUPA_KEY =
+    window.SUPABASE_ANON_KEY ||
+    window.supabaseAnonKey ||
+    "";
+
 
   // ----------------------------------------------------------
   // HTML escape
@@ -21,7 +39,7 @@
 
 
   // ----------------------------------------------------------
-  // Money formatter
+  // Money
   // ----------------------------------------------------------
 
   window.money = function (value) {
@@ -36,7 +54,7 @@
 
 
   // ----------------------------------------------------------
-  // Local ads storage
+  // Local cache
   // ----------------------------------------------------------
 
   window.ads = function () {
@@ -44,7 +62,9 @@
     try {
 
       const raw =
-        localStorage.getItem("smb_ads_v1");
+        localStorage.getItem(
+          "smb_ads_v1"
+        );
 
       if (!raw) return [];
 
@@ -58,7 +78,7 @@
     } catch (error) {
 
       console.error(
-        "Ads load error:",
+        "Ads cache error:",
         error
       );
 
@@ -70,7 +90,7 @@
 
 
   // ----------------------------------------------------------
-  // Save ads
+  // Save local cache
   // ----------------------------------------------------------
 
   window.saveAds = function (data) {
@@ -91,7 +111,7 @@
     } catch (error) {
 
       console.error(
-        "Ads save error:",
+        "Ads cache save error:",
         error
       );
 
@@ -103,6 +123,298 @@
 
 
   // ----------------------------------------------------------
+  // LOAD PUBLISHED ADS FROM SUPABASE
+  // ----------------------------------------------------------
+
+  window.syncPublishedAds =
+    async function () {
+
+      if (!SUPA_KEY) {
+
+        console.error(
+          "SUPABASE_ANON_KEY পাওয়া যায়নি।"
+        );
+
+        return window.ads();
+
+      }
+
+
+      try {
+
+        const response =
+          await fetch(
+
+            SUPA_URL +
+            "/rest/v1/ads" +
+            "?status=eq.approved" +
+            "&select=*" +
+            "&order=created_at.desc",
+
+            {
+
+              method: "GET",
+
+              headers: {
+
+                "apikey":
+                  SUPA_KEY,
+
+                "Authorization":
+                  "Bearer " +
+                  SUPA_KEY,
+
+                "Content-Type":
+                  "application/json"
+
+              }
+
+            }
+
+          );
+
+
+        if (!response.ok) {
+
+          const text =
+            await response.text();
+
+          console.error(
+            "Published ads fetch error:",
+            text
+          );
+
+          return window.ads();
+
+        }
+
+
+        const data =
+          await response.json();
+
+
+        if (
+          Array.isArray(data)
+        ) {
+
+          window.saveAds(data);
+
+          return data;
+
+        }
+
+
+        return [];
+
+      } catch (error) {
+
+        console.error(
+          "Published ads sync error:",
+          error
+        );
+
+        return window.ads();
+
+      }
+
+    };
+
+
+  // ----------------------------------------------------------
+  // GET SINGLE AD FROM SUPABASE
+  // ----------------------------------------------------------
+
+  window.getAdById =
+    async function (adId) {
+
+      if (!adId) return null;
+
+
+      /*
+       * প্রথমে local cache
+       */
+
+      try {
+
+        const cached =
+          window.ads();
+
+
+        const localAd =
+          cached.find(
+            function (item) {
+
+              return String(
+                item.id
+              ) === String(
+                adId
+              );
+
+            }
+          );
+
+
+        if (
+          localAd &&
+          (
+            localAd.status === "approved" ||
+            localAd.status === "published"
+          )
+        ) {
+
+          return localAd;
+
+        }
+
+      } catch (error) {
+
+        console.error(
+          "Local ad lookup error:",
+          error
+        );
+
+      }
+
+
+      /*
+       * Local cache-এ না থাকলে
+       * সরাসরি Supabase
+       */
+
+      if (!SUPA_KEY) {
+
+        return null;
+
+      }
+
+
+      try {
+
+        const response =
+          await fetch(
+
+            SUPA_URL +
+            "/rest/v1/ads" +
+            "?id=eq." +
+            encodeURIComponent(adId) +
+            "&status=eq.approved" +
+            "&select=*",
+
+            {
+
+              method: "GET",
+
+              headers: {
+
+                "apikey":
+                  SUPA_KEY,
+
+                "Authorization":
+                  "Bearer " +
+                  SUPA_KEY,
+
+                "Content-Type":
+                  "application/json"
+
+              }
+
+            }
+
+          );
+
+
+        if (!response.ok) {
+
+          console.error(
+            "Single ad fetch error:",
+            await response.text()
+          );
+
+          return null;
+
+        }
+
+
+        const data =
+          await response.json();
+
+
+        if (
+          Array.isArray(data) &&
+          data.length > 0
+        ) {
+
+          return data[0];
+
+        }
+
+
+        /*
+         * যদি status approved না হয়ে
+         * published থাকে
+         */
+
+        const response2 =
+          await fetch(
+
+            SUPA_URL +
+            "/rest/v1/ads" +
+            "?id=eq." +
+            encodeURIComponent(adId) +
+            "&status=eq.published" +
+            "&select=*",
+
+            {
+
+              headers: {
+
+                "apikey":
+                  SUPA_KEY,
+
+                "Authorization":
+                  "Bearer " +
+                  SUPA_KEY
+
+              }
+
+            }
+
+          );
+
+
+        if (response2.ok) {
+
+          const data2 =
+            await response2.json();
+
+
+          if (
+            Array.isArray(data2) &&
+            data2.length > 0
+          ) {
+
+            return data2[0];
+
+          }
+
+        }
+
+      } catch (error) {
+
+        console.error(
+          "Get ad by ID error:",
+          error
+        );
+
+      }
+
+
+      return null;
+
+    };
+
+
+  // ----------------------------------------------------------
   // Current Google user
   // ----------------------------------------------------------
 
@@ -111,7 +423,6 @@
 
       try {
 
-        // প্রথমে Supabase session
         if (
           typeof window.getCurrentUser ===
           "function"
@@ -120,10 +431,12 @@
           const user =
             await window.getCurrentUser();
 
+
           if (user) {
 
             const metadata =
               user.user_metadata || {};
+
 
             const profile = {
 
@@ -148,10 +461,12 @@
 
             };
 
+
             localStorage.setItem(
               "smb_user_v1",
               JSON.stringify(profile)
             );
+
 
             return profile;
 
@@ -160,20 +475,24 @@
         }
 
 
-        // Backup local profile
         const raw =
           localStorage.getItem(
             "smb_user_v1"
           );
 
+
         if (!raw) return null;
+
 
         const user =
           JSON.parse(raw);
 
-        return user && user.email
+
+        return user &&
+          user.email
           ? user
           : null;
+
 
       } catch (error) {
 
@@ -199,6 +518,7 @@
       const user =
         await window.getSmbUser();
 
+
       if (!user) {
 
         window.location.href =
@@ -208,13 +528,14 @@
 
       }
 
+
       return user;
 
     };
 
 
   // ----------------------------------------------------------
-  // Render header authentication
+  // Header authentication
   // ----------------------------------------------------------
 
   window.renderSmbAuth =
@@ -227,7 +548,9 @@
           elementId
         );
 
+
       if (!area) return;
+
 
       const user =
         await window.getSmbUser();
@@ -236,11 +559,15 @@
       if (!user) {
 
         area.innerHTML = `
+
           <a
             class="login-link"
             href="login.html">
+
             লগইন
+
           </a>
+
         `;
 
         return;
@@ -267,18 +594,21 @@
           ${
             avatar
 
-            ? `
+            ?
+
+            `
 
               <img
                 class="profile-avatar"
                 src="${window.escapeHtml(avatar)}"
                 alt="Profile"
-                referrerpolicy="no-referrer"
-              >
+                referrerpolicy="no-referrer">
 
             `
 
-            : `
+            :
+
+            `
 
               <div
                 class="profile-avatar"
@@ -288,14 +618,18 @@
                   justify-content:center;
                   color:#69f5a5;
                 ">
+
                 ♙
+
               </div>
 
             `
           }
 
           <span class="profile-name">
+
             ${window.escapeHtml(name)}
+
           </span>
 
         </a>
@@ -339,9 +673,11 @@
         "smb_user_v1"
       );
 
+
       localStorage.removeItem(
         "smb_supabase_session"
       );
+
 
       window.location.href =
         "index.html";
@@ -354,13 +690,6 @@
   // ----------------------------------------------------------
 
   async function init() {
-
-    /*
-     * Google OAuth callback handle
-     *
-     * supabase.js যদি callback handle করার
-     * function দেয়, সেটি চালানো হবে।
-     */
 
     try {
 
@@ -383,12 +712,10 @@
     }
 
 
-    /*
-     * Header থাকলে authentication render
-     */
-
     if (
-      document.getElementById("authArea")
+      document.getElementById(
+        "authArea"
+      )
     ) {
 
       await window.renderSmbAuth(
@@ -400,7 +727,6 @@
   }
 
 
-  // DOM ready
   if (
     document.readyState ===
     "loading"
