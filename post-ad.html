@@ -1068,6 +1068,26 @@ async function(e){
 
     const session =
       getSbSession();
+    await sbFetch(
+  "/rest/v1/rpc/ensure_profile",
+  {
+    method: "POST",
+
+    headers: {
+      "Authorization":
+        "Bearer " +
+        session.access_token
+    },
+
+    body: JSON.stringify({
+      p_user_id: userId,
+      p_name: userName,
+      p_phone: "",
+      p_avatar_url:
+        user.avatar || null
+    })
+  }
+);
 
 
     if(
