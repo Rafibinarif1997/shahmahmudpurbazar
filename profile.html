@@ -2,316 +2,1255 @@
 <html lang="bn">
 
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
 
-<title>আমার প্রোফাইল | শাহমাহমুদপুর বাজার</title>
+<meta
+  name="viewport"
+  content="width=device-width,initial-scale=1">
 
-<link rel="stylesheet" href="style.css">
+<title>
+আমার প্রোফাইল | শাহমাহমুদপুর বাজার
+</title>
+
+<link
+  rel="stylesheet"
+  href="style.css">
+
 
 <style>
 
-.profile-page{
-  min-height:100vh;
-  padding:35px 16px 100px;
+/* ============================================================
+   PROFILE PAGE — MODERN WHITE DESIGN
+============================================================ */
+
+:root{
+
+  --green:#0b8f4b;
+  --green-dark:#05743a;
+  --green-light:#eaf8ef;
+
+  --text:#1d2923;
+  --muted:#758078;
+
+  --border:#e6ece8;
+
+  --bg:#f8faf9;
+  --card:#ffffff;
+
+  --shadow:
+    0 10px 35px rgba(30,55,42,.08);
+
 }
+
+
+/* ============================================================
+   RESET
+============================================================ */
+
+*{
+  box-sizing:border-box;
+}
+
+
+body{
+
+  margin:0;
+
+  background:
+    linear-gradient(
+      180deg,
+      #f8faf9 0%,
+      #ffffff 45%,
+      #f8faf9 100%
+    );
+
+  color:var(--text);
+
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+}
+
+
+/* ============================================================
+   PAGE
+============================================================ */
+
+.profile-page{
+
+  min-height:100vh;
+
+  padding:
+    28px
+    16px
+    115px;
+
+}
+
 
 .profile-wrap{
-  max-width:650px;
-  margin:25px auto 0;
+
+  max-width:680px;
+
+  margin:
+    26px
+    auto
+    0;
+
 }
+
+
+/* ============================================================
+   BRAND
+============================================================ */
+
+.profile-page > .brand{
+
+  width:250px;
+
+  display:flex;
+
+  flex-wrap:wrap;
+
+  align-items:center;
+
+  position:relative;
+
+  padding-left:58px;
+
+  margin:auto;
+
+}
+
+
+.profile-page > .brand:before{
+
+  content:"🛍";
+
+  position:absolute;
+
+  left:0;
+
+  top:50%;
+
+  transform:translateY(-50%);
+
+  width:45px;
+
+  height:45px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  border-radius:14px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #0d9b55,
+      #05743a
+    );
+
+  font-size:26px;
+
+  box-shadow:
+    0 8px 18px
+    rgba(11,143,75,.20);
+
+}
+
+
+.profile-page > .brand b{
+
+  width:100%;
+
+  font-size:19px;
+
+  font-weight:900;
+
+  letter-spacing:-.5px;
+
+  color:#27352e;
+
+}
+
+
+.profile-page > .brand strong{
+
+  position:absolute;
+
+  top:0;
+
+  left:188px;
+
+  color:var(--green);
+
+  font-size:19px;
+
+  font-weight:900;
+
+}
+
+
+.profile-page > .brand small{
+
+  width:100%;
+
+  margin-top:3px;
+
+  color:#66726b;
+
+  font-size:9px;
+
+  font-weight:800;
+
+  letter-spacing:1.5px;
+
+}
+
+
+/* ============================================================
+   PROFILE CARD
+============================================================ */
 
 .profile-card{
+
   position:relative;
+
   overflow:hidden;
-  padding:30px 24px;
-  border:1px solid rgba(105,245,165,.16);
-  border-radius:22px;
+
+  padding:
+    30px
+    28px;
+
+  border:
+    1px solid
+    var(--border);
+
+  border-radius:24px;
+
   background:
     radial-gradient(
-      circle at 50% 0%,
-      rgba(105,245,165,.08),
-      transparent 45%
+      circle at 90% 0%,
+      rgba(192,244,207,.45),
+      transparent 30%
     ),
-    rgba(5,14,10,.96);
+    linear-gradient(
+      145deg,
+      #ffffff,
+      #fbfdfb
+    );
+
   box-shadow:
-    0 25px 70px rgba(0,0,0,.45),
-    0 0 40px rgba(105,245,165,.05);
+    var(--shadow);
+
 }
 
-.profile-head{
-  display:flex;
-  align-items:center;
-  gap:16px;
-  margin:20px 0 25px;
-}
 
-.avatar{
-  width:72px;
-  height:72px;
-  flex:none;
+/* decorative background */
+
+.profile-card:before{
+
+  content:"";
+
+  position:absolute;
+
+  width:220px;
+
+  height:220px;
+
+  top:-140px;
+
+  right:-80px;
+
   border-radius:50%;
-  object-fit:cover;
-  border:2px solid rgba(105,245,165,.45);
-  background:#102019;
-  box-shadow:0 0 28px rgba(105,245,165,.1);
+
+  background:
+    rgba(11,143,75,.04);
+
+  pointer-events:none;
+
 }
 
-.avatar-placeholder{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:#69f5a5;
-  font-size:30px;
+
+.profile-card > *{
+
+  position:relative;
+
+  z-index:2;
+
 }
 
-.profile-name{
-  margin:0;
-  color:#f1f8f4;
-  font-size:24px;
-  font-weight:900;
-}
 
-.profile-email{
-  margin:6px 0 0;
-  color:#84948c;
-  font-size:11px;
-  word-break:break-all;
-}
-
-.profile-info{
-  display:grid;
-  gap:10px;
-  margin-top:20px;
-}
-
-.info-item{
-  padding:14px 15px;
-  border:1px solid rgba(255,255,255,.07);
-  border-radius:12px;
-  background:rgba(255,255,255,.025);
-}
-
-.info-label{
-  display:block;
-  margin-bottom:5px;
-  color:#65756d;
-  font-size:8px;
-  letter-spacing:1px;
-  text-transform:uppercase;
-}
-
-.info-value{
-  color:#dce8e1;
-  font-size:11px;
-  font-weight:700;
-  word-break:break-word;
-}
-
-.profile-actions{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px;
-  margin-top:22px;
-}
-
-.profile-actions .btn{
-  text-align:center;
-}
-
-.logout-btn{
-  width:100%;
-  margin-top:12px;
-  border:1px solid rgba(255,90,90,.22);
-  color:#ff9c9c;
-  background:rgba(255,70,70,.04);
-  cursor:pointer;
-}
-
-.logout-btn:hover{
-  border-color:rgba(255,90,90,.45);
-  background:rgba(255,70,70,.08);
-}
+/* ============================================================
+   LOADING
+============================================================ */
 
 .loading{
+
+  min-height:220px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
   text-align:center;
-  padding:50px 20px;
+
   color:#718078;
-  font-size:11px;
+
+  font-size:12px;
+
+  font-weight:700;
+
 }
 
-@media(max-width:500px){
+
+/* ============================================================
+   EYEBROW
+============================================================ */
+
+.eyebrow{
+
+  display:inline-flex;
+
+  align-items:center;
+
+  gap:6px;
+
+  padding:
+    6px
+    10px;
+
+  border-radius:50px;
+
+  color:var(--green);
+
+  background:
+    var(--green-light);
+
+  font-size:8px;
+
+  font-weight:900;
+
+  letter-spacing:1.2px;
+
+}
+
+
+.eyebrow:before{
+
+  content:"●";
+
+  font-size:7px;
+
+}
+
+
+/* ============================================================
+   PROFILE HEADER
+============================================================ */
+
+.profile-head{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:18px;
+
+  margin:
+    22px
+    0
+    26px;
+
+}
+
+
+.avatar{
+
+  width:78px;
+
+  height:78px;
+
+  flex:none;
+
+  border-radius:50%;
+
+  object-fit:cover;
+
+  border:
+    4px solid
+    #eaf8ef;
+
+  background:
+    linear-gradient(
+      135deg,
+      #eef9f1,
+      #dff4e6
+    );
+
+  box-shadow:
+    0 8px 20px
+    rgba(11,143,75,.13);
+
+}
+
+
+.avatar-placeholder{
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  color:var(--green);
+
+  font-size:33px;
+
+}
+
+
+.profile-name{
+
+  margin:0;
+
+  color:#243229;
+
+  font-size:27px;
+
+  line-height:1.2;
+
+  font-weight:900;
+
+  letter-spacing:-.6px;
+
+}
+
+
+.profile-email{
+
+  margin:
+    7px
+    0
+    0;
+
+  color:#718078;
+
+  font-size:11px;
+
+  line-height:1.6;
+
+  word-break:break-all;
+
+}
+
+
+/* ============================================================
+   PROFILE INFO
+============================================================ */
+
+.profile-info{
+
+  display:grid;
+
+  gap:10px;
+
+  margin-top:8px;
+
+}
+
+
+.info-item{
+
+  display:flex;
+
+  flex-direction:column;
+
+  gap:5px;
+
+  padding:
+    15px
+    16px;
+
+  border:
+    1px solid
+    var(--border);
+
+  border-radius:15px;
+
+  background:
+    #ffffff;
+
+  transition:.2s ease;
+
+}
+
+
+.info-item:hover{
+
+  border-color:
+    rgba(11,143,75,.25);
+
+}
+
+
+.info-label{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:6px;
+
+  color:#8a948e;
+
+  font-size:8px;
+
+  font-weight:900;
+
+  letter-spacing:1px;
+
+  text-transform:uppercase;
+
+}
+
+
+.info-value{
+
+  color:#2b3831;
+
+  font-size:12px;
+
+  font-weight:750;
+
+  word-break:break-word;
+
+}
+
+
+/* ============================================================
+   PROFILE ACTIONS
+============================================================ */
+
+.profile-actions{
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(2,1fr);
+
+  gap:11px;
+
+  margin-top:22px;
+
+}
+
+
+.profile-actions .btn{
+
+  min-height:52px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  gap:8px;
+
+  padding:
+    12px
+    15px;
+
+  border:
+    1px solid
+    var(--border);
+
+  border-radius:14px;
+
+  background:#fff;
+
+  color:#29362f;
+
+  font-size:12px;
+
+  font-weight:850;
+
+  text-align:center;
+
+  transition:.2s ease;
+
+}
+
+
+.profile-actions .btn:first-child{
+
+  color:#fff;
+
+  border-color:
+    transparent;
+
+  background:
+    linear-gradient(
+      135deg,
+      #0d9b55,
+      #05743a
+    );
+
+  box-shadow:
+    0 8px 20px
+    rgba(11,143,75,.16);
+
+}
+
+
+.profile-actions .btn:first-child:before{
+
+  content:"▣";
+
+  font-size:16px;
+
+}
+
+
+.profile-actions .btn:last-child{
+
+  background:
+    #fff;
+
+}
+
+
+.profile-actions .btn:last-child:before{
+
+  content:"♡";
+
+  color:#e53935;
+
+  font-size:20px;
+
+  line-height:1;
+
+}
+
+
+.profile-actions .btn:hover{
+
+  transform:
+    translateY(-2px);
+
+}
+
+
+/* ============================================================
+   LOGOUT
+============================================================ */
+
+.logout-btn{
+
+  width:100%;
+
+  min-height:48px;
+
+  margin-top:12px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  gap:8px;
+
+  border:
+    1px solid
+    rgba(229,57,53,.18);
+
+  border-radius:14px;
+
+  color:#d93632;
+
+  background:
+    #fffafa;
+
+  font-size:12px;
+
+  font-weight:850;
+
+  cursor:pointer;
+
+  transition:.2s ease;
+
+}
+
+
+.logout-btn:before{
+
+  content:"↪";
+
+  font-size:18px;
+
+}
+
+
+.logout-btn:hover{
+
+  transform:
+    translateY(-1px);
+
+  border-color:
+    rgba(229,57,53,.35);
+
+  background:
+    #fff5f5;
+
+}
+
+
+.logout-btn:disabled{
+
+  opacity:.65;
+
+  cursor:wait;
+
+}
+
+
+/* ============================================================
+   MOBILE NAVIGATION
+============================================================ */
+
+.mobile-nav{
+
+  position:fixed;
+
+  left:0;
+
+  right:0;
+
+  bottom:0;
+
+  z-index:200;
+
+  height:72px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-around;
+
+  padding-bottom:
+    env(safe-area-inset-bottom);
+
+  border-top:
+    1px solid
+    #e8eeea;
+
+  background:
+    rgba(255,255,255,.96);
+
+  box-shadow:
+    0 -8px 25px
+    rgba(0,0,0,.05);
+
+}
+
+
+.mobile-nav a{
+
+  min-width:55px;
+
+  display:flex;
+
+  flex-direction:column;
+
+  align-items:center;
+
+  justify-content:center;
+
+  gap:3px;
+
+  color:#7c8780;
+
+  font-size:8px;
+
+  font-weight:700;
+
+  text-decoration:none;
+
+}
+
+
+.mobile-nav a span{
+
+  font-size:22px;
+
+}
+
+
+.mobile-nav a.active{
+
+  color:var(--green);
+
+}
+
+
+.mobile-nav a:nth-child(3) span{
+
+  width:48px;
+
+  height:48px;
+
+  margin-top:-28px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  border-radius:50%;
+
+  color:#fff;
+
+  background:
+    linear-gradient(
+      135deg,
+      #10a85d,
+      #05733b
+    );
+
+  font-size:30px;
+
+}
+
+
+/* ============================================================
+   MOBILE
+============================================================ */
+
+@media(max-width:600px){
 
   .profile-page{
-    padding-top:25px;
+
+    padding:
+      22px
+      12px
+      100px;
+
   }
+
+
+  .profile-wrap{
+
+    margin-top:20px;
+
+  }
+
+
+  .profile-page > .brand{
+
+    width:210px;
+
+    padding-left:48px;
+
+  }
+
+
+  .profile-page > .brand:before{
+
+    width:38px;
+
+    height:38px;
+
+    border-radius:12px;
+
+    font-size:22px;
+
+  }
+
+
+  .profile-page > .brand b{
+
+    font-size:15px;
+
+  }
+
+
+  .profile-page > .brand strong{
+
+    left:160px;
+
+    font-size:15px;
+
+  }
+
+
+  .profile-page > .brand small{
+
+    font-size:7px;
+
+  }
+
 
   .profile-card{
-    padding:25px 17px;
+
+    padding:
+      24px
+      17px;
+
+    border-radius:20px;
+
   }
+
 
   .profile-head{
-    gap:13px;
+
+    gap:14px;
+
+    margin:
+      19px
+      0
+      22px;
+
   }
+
 
   .avatar{
-    width:62px;
-    height:62px;
+
+    width:66px;
+
+    height:66px;
+
+    border-width:3px;
+
   }
+
+
+  .avatar-placeholder{
+
+    font-size:28px;
+
+  }
+
 
   .profile-name{
-    font-size:20px;
+
+    font-size:21px;
+
   }
 
+
+  .profile-email{
+
+    margin-top:5px;
+
+    font-size:10px;
+
+  }
+
+
+  .info-item{
+
+    padding:
+      13px
+      14px;
+
+    border-radius:13px;
+
+  }
+
+
+  .info-value{
+
+    font-size:10px;
+
+  }
+
+
   .profile-actions{
-    grid-template-columns:1fr;
+
+    gap:9px;
+
+    margin-top:18px;
+
+  }
+
+
+  .profile-actions .btn{
+
+    min-height:48px;
+
+    padding:
+      10px
+      8px;
+
+    border-radius:13px;
+
+    font-size:10px;
+
+  }
+
+
+  .logout-btn{
+
+    min-height:46px;
+
+    margin-top:10px;
+
+    border-radius:13px;
+
+    font-size:11px;
+
   }
 
 }
 
+
 </style>
+
 </head>
 
 
 <body>
 
+
 <main class="container profile-page">
 
-  <a href="index.html" class="brand">
+
+  <a
+    href="index.html"
+    class="brand">
 
     <b>শাহমাহমুদপুর</b>
+
     <strong>বাজার</strong>
 
-    <small>LOCAL MARKETPLACE</small>
+    <small>
+      LOCAL MARKETPLACE
+    </small>
 
   </a>
 
 
+
   <section class="profile-wrap">
 
-    <div id="loading" class="profile-card loading">
+
+    <div
+      id="loading"
+      class="profile-card loading">
+
       Profile লোড হচ্ছে...
+
     </div>
 
 
-    <div id="profileCard"
-         class="profile-card"
-         style="display:none">
 
-      <span class="eyebrow">MY ACCOUNT</span>
+    <div
+      id="profileCard"
+      class="profile-card"
+      style="display:none">
+
+
+      <span class="eyebrow">
+        MY ACCOUNT
+      </span>
+
 
 
       <div class="profile-head">
 
+
         <div id="avatarBox"></div>
 
+
         <div>
+
 
           <h1
             id="profileName"
             class="profile-name">
+
             Profile
+
           </h1>
+
 
           <p
             id="profileEmail"
             class="profile-email">
           </p>
 
+
         </div>
+
 
       </div>
 
 
+
       <div class="profile-info">
+
 
         <div class="info-item">
 
+
           <span class="info-label">
+
             Email
+
           </span>
+
 
           <div
             id="emailValue"
             class="info-value">
           </div>
 
+
         </div>
+
 
 
         <div class="info-item">
 
+
           <span class="info-label">
+
             Account
+
           </span>
 
+
           <div class="info-value">
+
             Google Account
+
           </div>
+
 
         </div>
 
+
       </div>
+
 
 
       <div class="profile-actions">
 
+
         <a
           class="btn"
           href="my-ads.html">
+
           আমার বিজ্ঞাপন
+
         </a>
+
+
 
         <a
           class="btn"
           href="favorites.html">
+
           Favourite
+
         </a>
+
 
       </div>
 
 
+
       <button
         id="logoutBtn"
-        class="btn logout-btn">
+        class="logout-btn"
+        type="button">
+
         Logout
+
       </button>
+
 
     </div>
 
+
   </section>
+
 
 </main>
 
 
+
 <nav class="mobile-nav">
 
+
   <a href="index.html">
+
     <span>⌂</span>
+
     Home
+
   </a>
+
+
 
   <a href="favorites.html">
+
     <span>♡</span>
+
     Saved
+
   </a>
+
+
 
   <a href="post-ad.html">
+
     <span>⊞</span>
+
     Sell
+
   </a>
+
+
 
   <a href="messages.html">
+
     <span>▤</span>
+
     Messages
+
   </a>
 
-  <a class="active" href="profile.html">
+
+
+  <a
+    class="active"
+    href="profile.html">
+
     <span>♙</span>
+
     Profile
+
   </a>
+
 
 </nav>
+
 
 
 <script src="supabase.js?v=9"></script>
@@ -435,11 +1374,13 @@
 
     try{
 
+
       /*
        * প্রথমে Supabase session
        */
 
       let session = null;
+
 
       if(
         typeof getSbSession ===
@@ -447,7 +1388,7 @@
       ){
 
         session =
-          getSbSession();
+          await getSbSession();
 
       }
 
@@ -457,14 +1398,19 @@
        * থেকে আসল Google user নেওয়া হবে।
        */
 
-      if(session && session.access_token){
+      if(
+        session &&
+        session.access_token
+      ){
 
         const user =
           await getCurrentUser();
 
+
         if(user){
 
           renderProfile(user);
+
           return;
 
         }
@@ -505,8 +1451,13 @@
                 localUser.email,
 
               user_metadata:{
+
                 name:
-                  localUser.name || ""
+                  localUser.name || "",
+
+                avatar_url:
+                  localUser.avatar || ""
+
               }
 
             });
@@ -531,12 +1482,14 @@
       window.location.href =
         "login.html";
 
+
     }catch(error){
 
       console.error(
         "Profile error:",
         error
       );
+
 
       /*
        * Local backup থাকলে
@@ -556,6 +1509,7 @@
           const localUser =
             JSON.parse(saved);
 
+
           if(
             localUser &&
             localUser.email
@@ -563,12 +1517,20 @@
 
             renderProfile({
 
+              id:
+                localUser.id || "",
+
               email:
                 localUser.email,
 
               user_metadata:{
+
                 name:
-                  localUser.name || ""
+                  localUser.name || "",
+
+                avatar_url:
+                  localUser.avatar || ""
+
               }
 
             });
@@ -577,7 +1539,11 @@
 
           }
 
-        }catch(e){}
+        }catch(e){
+
+          console.error(e);
+
+        }
 
       }
 
@@ -590,17 +1556,24 @@
   }
 
 
+
   logoutBtn.addEventListener(
+
     "click",
+
     async function(){
 
-      logoutBtn.disabled = true;
+
+      logoutBtn.disabled =
+        true;
+
 
       logoutBtn.textContent =
         "Logging out...";
 
 
       try{
+
 
         if(
           typeof logout ===
@@ -611,33 +1584,41 @@
 
         }else{
 
+
           localStorage.removeItem(
             "smb_user_v1"
           );
 
+
           localStorage.removeItem(
             "smb_supabase_session"
           );
+
 
           window.location.href =
             "index.html";
 
         }
 
+
       }catch(error){
+
 
         console.error(
           "Logout error:",
           error
         );
 
+
         localStorage.removeItem(
           "smb_user_v1"
         );
 
+
         localStorage.removeItem(
           "smb_supabase_session"
         );
+
 
         window.location.href =
           "index.html";
@@ -645,14 +1626,17 @@
       }
 
     }
+
   );
 
 
   loadProfile();
 
+
 })();
 
 </script>
+
 
 </body>
 </html>
