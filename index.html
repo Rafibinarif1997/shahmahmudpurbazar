@@ -1424,6 +1424,25 @@ footer{
   -webkit-text-fill-color:#6b7280 !important;
   opacity:1 !important;
 }
+
+  /* মোবাইল ভার্সনে Hero-এর CVS/দোকান image সম্পূর্ণ বন্ধ */
+@media(max-width:600px){
+
+  .hero-art{
+    display:none !important;
+    min-height:0 !important;
+    height:0 !important;
+    margin:0 !important;
+    padding:0 !important;
+  }
+
+  .hero{
+    grid-template-columns:1fr !important;
+    min-height:0 !important;
+    padding-bottom:22px !important;
+  }
+
+}
   
 </style>
 
