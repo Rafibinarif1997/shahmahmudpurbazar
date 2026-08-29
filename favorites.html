@@ -35,59 +35,6 @@ body{
   margin:auto;
 }
 
-   <!-- =========================
-     MOBILE NAVIGATION
-========================= -->
-
-<nav class="mobile-nav">
-
-  <a href="index.html">
-
-    <span>⌂</span>
-
-    হোম
-
-  </a>
-
-
-  <a
-  class="active"
-  href="favorites.html">
-
-    <span>♡</span>
-
-    সেভ করা
-
-  </a>
-
-
-  <a href="post-ad.html">
-
-    <span>＋</span>
-
-    বিজ্ঞাপন দিন
-
-  </a>
-
-
-  <a href="messages.html">
-
-    <span>▤</span>
-
-    মেসেজ
-
-  </a>
-
-
-  <a href="profile.html">
-
-    <span>♙</span>
-
-    প্রোফাইল
-
-  </a>
-
-</nav>
 
 /* =========================
    HEADER
@@ -801,22 +748,13 @@ body{
 <main class="fav-page">
 
 
-<!-- =========================
-     PAGE HEADER
-========================= -->
-
 <section class="fav-hero">
-
 
 <div class="fav-top">
 
-
 <div class="fav-icon">
-
 ♥
-
 </div>
-
 
 <div class="fav-heading">
 
@@ -824,13 +762,11 @@ body{
 সেভ করা বিজ্ঞাপন
 </h1>
 
-
 <p>
 আপনার পছন্দের বিজ্ঞাপনগুলো এক জায়গায় রাখুন
 </p>
 
 </div>
-
 
 </div>
 
@@ -844,26 +780,19 @@ class="fav-info">
 
 </div>
 
-
 </section>
 
 
 
-<!-- =========================
-     ADS
-========================= -->
-
 <div
 id="list"
 class="products">
-
 
 <div class="fav-loading">
 
 আপনার সেভ করা বিজ্ঞাপন লোড হচ্ছে...
 
 </div>
-
 
 </div>
 
@@ -874,6 +803,7 @@ class="products">
 
 <!-- =========================
      MOBILE NAVIGATION
+     SAME AS HOMEPAGE
 ========================= -->
 
 <nav class="mobile-nav">
@@ -959,11 +889,6 @@ const favCount =
   document.getElementById("favCount");
 
 
-
-/* =========================
-   ESCAPE HTML
-========================= */
-
 function escapeHtml(value){
 
   return String(value ?? "")
@@ -977,11 +902,6 @@ function escapeHtml(value){
 }
 
 
-
-/* =========================
-   PRICE FORMAT
-========================= */
-
 function money(value){
 
   return "৳ " +
@@ -991,11 +911,6 @@ function money(value){
 
 }
 
-
-
-/* =========================
-   GET FAVORITES
-========================= */
 
 function getFavorites(){
 
@@ -1044,11 +959,6 @@ function getFavorites(){
 }
 
 
-
-/* =========================
-   SAVE FAVORITES
-========================= */
-
 function saveFavorites(favorites){
 
   localStorage.setItem(
@@ -1061,11 +971,6 @@ function saveFavorites(favorites){
 
 }
 
-
-
-/* =========================
-   GET FIRST IMAGE
-========================= */
 
 function firstImage(ad){
 
@@ -1141,11 +1046,6 @@ function firstImage(ad){
 }
 
 
-
-/* =========================
-   UPDATE COUNT
-========================= */
-
 function updateCount(count){
 
   if(!favCount) return;
@@ -1172,11 +1072,6 @@ function updateCount(count){
 }
 
 
-
-/* =========================
-   EMPTY STATE
-========================= */
-
 function showEmpty(){
 
   updateCount(0);
@@ -1186,36 +1081,23 @@ function showEmpty(){
 
     <div class="fav-empty">
 
-
       <div class="fav-empty-icon">
-
         ♡
-
       </div>
 
-
       <h3>
-
         এখনো কোনো সেভ করা বিজ্ঞাপন নেই
-
       </h3>
 
-
       <p>
-
         পছন্দের বিজ্ঞাপনের
         হার্ট আইকনে চাপ দিয়ে
         এখানে সেভ করে রাখুন।
-
       </p>
 
-
       <a href="index.html">
-
         বিজ্ঞাপন দেখুন
-
       </a>
-
 
     </div>
 
@@ -1223,11 +1105,6 @@ function showEmpty(){
 
 }
 
-
-
-/* =========================
-   REMOVE FAVORITE
-========================= */
 
 function removeFavorite(id){
 
@@ -1256,11 +1133,6 @@ function removeFavorite(id){
 
 }
 
-
-
-/* =========================
-   LOAD FAVORITES
-========================= */
 
 async function loadFavorites(){
 
@@ -1598,11 +1470,6 @@ async function loadFavorites(){
 }
 
 
-
-/* =========================
-   GLOBAL REMOVE FUNCTION
-========================= */
-
 window.removeFav =
 function(id){
 
@@ -1610,11 +1477,6 @@ function(id){
 
 };
 
-
-
-/* =========================
-   START
-========================= */
 
 loadFavorites();
 
