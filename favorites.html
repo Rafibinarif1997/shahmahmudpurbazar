@@ -1,5 +1,4 @@
 <!doctype html>
-
 <html lang="bn">
 
 <head>
@@ -7,136 +6,111 @@
 <meta charset="UTF-8">
 
 <meta
-  name="viewport"
-  content="width=device-width,initial-scale=1">
-
+name="viewport"
+content="width=device-width,initial-scale=1">
 
 <title>
 Favourite | শাহমাহমুদপুর বাজার
 </title>
 
-
 <link
-  rel="stylesheet"
-  href="style.css">
+rel="stylesheet"
+href="style.css">
 
 
 <style>
 
-/* ============================================================
-   FAVOURITE PAGE
-============================================================ */
-
-body{
-  background:#f8faf9;
-}
-
-
 .fav-page{
-  padding:
-    28px
-    0
-    100px;
+  padding:28px 0 110px;
 }
 
 
 .fav-header{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:15px;
   margin-bottom:22px;
 }
 
 
-.fav-title small{
-  display:block;
-  color:#0b8f4b;
-  font-size:9px;
-  font-weight:900;
-  letter-spacing:1.5px;
-  margin-bottom:4px;
-}
-
-
-.fav-title h1{
+.fav-header h1{
   margin:0;
-  color:#213129;
-  font-size:28px;
+  font-size:26px;
   font-weight:900;
-}
-
-
-.back-home{
-  padding:10px 14px;
-  border:1px solid #e6ece8;
-  border-radius:12px;
-  background:#fff;
-  color:#0b8f4b;
-  font-size:11px;
-  font-weight:800;
-}
-
-
-.fav-empty{
-  grid-column:1/-1;
-  padding:60px 20px;
-  text-align:center;
-  border:1px dashed #dbe5de;
-  border-radius:20px;
-  background:#fff;
-}
-
-
-.fav-empty .empty-icon{
-  font-size:48px;
-  margin-bottom:12px;
-}
-
-
-.fav-empty h3{
-  margin:0 0 7px;
   color:#26352d;
-  font-size:18px;
 }
 
 
-.fav-empty p{
-  margin:0;
+.fav-header p{
+  margin:6px 0 0;
   color:#7c8780;
   font-size:11px;
 }
 
 
-.fav-empty a{
-  display:inline-flex;
-  margin-top:18px;
-  padding:11px 18px;
-  border-radius:12px;
-  background:#0b8f4b;
-  color:#fff;
-  font-size:11px;
-  font-weight:800;
+.fav-empty{
+  grid-column:1/-1;
+
+  padding:55px 20px;
+
+  text-align:center;
+
+  border:1px dashed #dbe5de;
+
+  border-radius:18px;
+
+  background:#fff;
+
+  color:#7c8780;
 }
 
 
-/* ============================================================
-   HEART BUTTON
-============================================================ */
+.fav-empty .icon{
+  display:block;
+  margin-bottom:12px;
+  font-size:42px;
+}
 
-.fav-heart{
+
+.fav-empty h3{
+  margin:0 0 7px;
+  color:#334039;
+  font-size:17px;
+}
+
+
+.fav-empty p{
+  margin:0;
+  font-size:11px;
+}
+
+
+.fav-loading{
+  grid-column:1/-1;
+
+  padding:50px 20px;
+
+  text-align:center;
+
+  color:#7c8780;
+}
+
+
+.product{
+  position:relative;
+}
+
+
+.fav-remove{
 
   position:absolute;
 
-  top:9px;
+  top:10px;
 
-  right:9px;
+  right:10px;
 
-  z-index:5;
+  z-index:20;
 
-  width:36px;
+  width:34px;
 
-  height:36px;
+  height:34px;
 
   display:flex;
 
@@ -148,43 +122,34 @@ body{
 
   border-radius:50%;
 
-  background:
-    rgba(255,255,255,.95);
+  background:#fff;
 
-  color:#68736d;
+  color:#ef476f;
 
-  font-size:21px;
+  font-size:19px;
 
   cursor:pointer;
 
   box-shadow:
-    0 4px 12px
-    rgba(0,0,0,.10);
+  0 4px 12px rgba(0,0,0,.12);
 
 }
 
 
-.fav-heart.active{
-
-  color:#e63946;
-
+.fav-remove:hover{
+  transform:scale(1.08);
 }
 
 
 @media(max-width:600px){
 
   .fav-page{
-    padding-top:20px;
+    padding-top:22px;
   }
 
 
-  .fav-title h1{
-    font-size:23px;
-  }
-
-
-  .fav-header{
-    margin-bottom:16px;
+  .fav-header h1{
+    font-size:22px;
   }
 
 }
@@ -197,41 +162,34 @@ body{
 <body>
 
 
-<main class="container fav-page">
+<main
+class="container fav-page">
 
 
 <div class="fav-header">
 
-
-<div class="fav-title">
-
-<small>
-SAVED ADS
-</small>
-
 <h1>
-পছন্দের বিজ্ঞাপন
+♡ সেভ করা বিজ্ঞাপন
 </h1>
 
-</div>
-
-
-<a
-  href="index.html"
-  class="back-home">
-
-← হোম
-
-</a>
-
+<p>
+আপনার পছন্দের বিজ্ঞাপনগুলো এখানে দেখুন
+</p>
 
 </div>
-
 
 
 <div
-  id="list"
-  class="products">
+id="list"
+class="products">
+
+
+<div class="fav-loading">
+
+বিজ্ঞাপন লোড হচ্ছে...
+
+</div>
+
 
 </div>
 
@@ -239,10 +197,6 @@ SAVED ADS
 </main>
 
 
-
-<!-- ============================================================
-     MOBILE NAVIGATION
-============================================================ -->
 
 <nav class="mobile-nav">
 
@@ -257,8 +211,8 @@ SAVED ADS
 
 
 <a
-  class="active"
-  href="favorites.html">
+class="active"
+href="favorites.html">
 
 <span>♡</span>
 
@@ -276,7 +230,9 @@ SAVED ADS
 </a>
 
 
-<a href="messages.html">
+<a
+href="messages.html"
+class="message-nav">
 
 <span>▤</span>
 
@@ -339,12 +295,9 @@ function escapeHtml(value){
 function money(value){
 
   return (
-
     "৳ " +
-
     Number(value || 0)
     .toLocaleString("bn-BD")
-
   );
 
 }
@@ -354,53 +307,53 @@ function getFavorites(){
 
   try{
 
-    return JSON.parse(
+    const favorites =
+      JSON.parse(
+        localStorage.getItem(
+          "smb_fav"
+        ) || "[]"
+      );
 
-      localStorage.getItem(
-        "smb_fav"
-      ) || "[]"
 
-    );
+    if(
+      Array.isArray(favorites)
+    ){
+
+      return favorites.map(
+        function(id){
+
+          return String(id);
+
+        }
+      );
+
+    }
+
 
   }catch(error){
 
-    return [];
+    console.error(
+      "Favorite read error:",
+      error
+    );
 
   }
+
+
+  return [];
 
 }
 
 
-function saveFavorites(ids){
+function saveFavorites(favorites){
 
   localStorage.setItem(
 
     "smb_fav",
 
-    JSON.stringify(ids)
+    JSON.stringify(favorites)
 
   );
-
-}
-
-
-function removeFavorite(id){
-
-  const favorites =
-    getFavorites();
-
-  const updated =
-    favorites.filter(function(item){
-
-      return String(item) !==
-        String(id);
-
-    });
-
-
-  saveFavorites(updated);
-
-  loadFavorites();
 
 }
 
@@ -462,6 +415,56 @@ function firstImage(ad){
 }
 
 
+function removeFavorite(id){
+
+  const favorites =
+    getFavorites();
+
+
+  const updated =
+    favorites.filter(
+      function(favId){
+
+        return String(favId) !==
+        String(id);
+
+      }
+    );
+
+
+  saveFavorites(updated);
+
+
+  loadFavorites();
+
+}
+
+
+function showEmpty(){
+
+  list.innerHTML = `
+
+    <div class="fav-empty">
+
+      <span class="icon">
+        ♡
+      </span>
+
+      <h3>
+        এখনো কোনো সেভ করা বিজ্ঞাপন নেই
+      </h3>
+
+      <p>
+        আপনার পছন্দের বিজ্ঞাপনের ♡ আইকনে চাপ দিন।
+      </p>
+
+    </div>
+
+  `;
+
+}
+
+
 async function loadFavorites(){
 
   const favoriteIds =
@@ -470,30 +473,7 @@ async function loadFavorites(){
 
   if(!favoriteIds.length){
 
-    list.innerHTML = `
-
-      <div class="fav-empty">
-
-        <div class="empty-icon">
-          ♡
-        </div>
-
-        <h3>
-          এখনো কোনো পছন্দের বিজ্ঞাপন নেই
-        </h3>
-
-        <p>
-          পছন্দের বিজ্ঞাপনের ♡ বাটনে চাপ দিয়ে এখানে সেভ করুন।
-        </p>
-
-        <a href="index.html">
-          বিজ্ঞাপন দেখুন
-        </a>
-
-      </div>
-
-    `;
-
+    showEmpty();
     return;
 
   }
@@ -501,7 +481,7 @@ async function loadFavorites(){
 
   list.innerHTML = `
 
-    <div class="fav-empty">
+    <div class="fav-loading">
 
       বিজ্ঞাপন লোড হচ্ছে...
 
@@ -512,20 +492,6 @@ async function loadFavorites(){
 
   try{
 
-    const ids =
-      favoriteIds
-      .map(function(id){
-
-        return
-          '"' +
-          String(id)
-          .replace(/"/g,"") +
-          '"';
-
-      })
-      .join(",");
-
-
     const url =
 
       SB_URL +
@@ -534,20 +500,14 @@ async function loadFavorites(){
 
       "?select=*" +
 
-      "&id=in.(" +
+      "&status=eq.approved" +
 
-      encodeURIComponent(ids) +
-
-      ")" +
-
-      "&status=eq.approved";
+      "&order=created_at.desc";
 
 
     const response =
       await fetch(
-
         url,
-
         {
 
           method:"GET",
@@ -562,7 +522,6 @@ async function loadFavorites(){
           }
 
         }
-
       );
 
 
@@ -579,34 +538,21 @@ async function loadFavorites(){
       await response.json();
 
 
-    if(
+    const favoriteAds =
+      ads.filter(
+        function(ad){
 
-      !Array.isArray(ads) ||
+          return favoriteIds.includes(
+            String(ad.id)
+          );
 
-      !ads.length
+        }
+      );
 
-    ){
 
-      list.innerHTML = `
+    if(!favoriteAds.length){
 
-        <div class="fav-empty">
-
-          <div class="empty-icon">
-            ♡
-          </div>
-
-          <h3>
-            কোনো বিজ্ঞাপন পাওয়া যায়নি
-          </h3>
-
-          <p>
-            কিছু বিজ্ঞাপন হয়তো আর পাওয়া যাচ্ছে না।
-          </p>
-
-        </div>
-
-      `;
-
+      showEmpty();
       return;
 
     }
@@ -614,141 +560,124 @@ async function loadFavorites(){
 
     list.innerHTML =
 
-      ads.map(function(ad){
+      favoriteAds.map(
+        function(ad){
 
-        const image =
-          firstImage(ad);
+          const image =
+            firstImage(ad);
 
 
-        return `
+          const photo =
 
-          <article
-            class="product">
+            image
+
+            ?
+
+            `
+
+            <div class="photo">
+
+              <img
+              class="ad-image"
+              src="${escapeHtml(image)}"
+              alt="${escapeHtml(
+                ad.title || "বিজ্ঞাপন"
+              )}"
+              loading="lazy">
+
+            </div>
+
+            `
+
+            :
+
+            `
 
             <div
-              class="photo"
-              onclick="
-                window.location.href=
-                'ad-details.html?id=${encodeURIComponent(
-                  ad.id
-                )}'
-              ">
+            class="photo ad-image-placeholder">
+
+              ${escapeHtml(
+                ad.category ||
+                "বিজ্ঞাপন"
+              )}
+
+            </div>
+
+            `;
 
 
-              ${
-                image
+          return `
 
-                ?
+          <article
+          class="product">
 
-                `
+            <button
+            class="fav-remove"
+            onclick="removeFav('${escapeHtml(ad.id)}')">
 
-                <img
-                  class="ad-image"
-                  src="${escapeHtml(image)}"
-                  alt="${escapeHtml(
-                    ad.title ||
-                    "বিজ্ঞাপন"
-                  )}"
-                >
+              ♥️
 
-                `
+            </button>
 
-                :
 
-                `
+            <div
+            onclick="window.location.href='ad-details.html?id=${encodeURIComponent(ad.id)}'">
 
-                <div
-                  class="ad-image-placeholder">
+              ${photo}
+
+
+              <div class="body">
+
+
+                <span class="badge">
 
                   ${escapeHtml(
                     ad.category ||
-                    "বিজ্ঞাপন"
+                    "Marketplace"
+                  )}
+
+                </span>
+
+
+                <h3>
+
+                  ${escapeHtml(
+                    ad.title ||
+                    "Untitled"
+                  )}
+
+                </h3>
+
+
+                <div class="price">
+
+                  ${money(ad.price)}
+
+                </div>
+
+
+                <div class="meta">
+
+                  📍
+                  ${escapeHtml(
+                    ad.location ||
+                    ""
                   )}
 
                 </div>
 
-                `
-
-              }
-
-
-              <button
-                class="
-                  fav-heart
-                  active
-                "
-                onclick="
-                  event.stopPropagation();
-                  removeFavorite('${escapeHtml(
-                    ad.id
-                  )}');
-                ">
-
-                ♥ 
-
-              </button>
-
-
-            </div>
-
-
-            <div
-              class="body"
-              onclick="
-                window.location.href=
-                'ad-details.html?id=${encodeURIComponent(
-                  ad.id
-                )}'
-              ">
-
-
-              <span class="badge">
-
-                ${escapeHtml(
-                  ad.category ||
-                  "Marketplace"
-                )}
-
-              </span>
-
-
-              <h3>
-
-                ${escapeHtml(
-                  ad.title ||
-                  "Untitled"
-                )}
-
-              </h3>
-
-
-              <div class="price">
-
-                ${money(ad.price)}
 
               </div>
-
-
-              <div class="meta">
-
-                📍
-
-                ${escapeHtml(
-                  ad.location ||
-                  ""
-                )}
-
-              </div>
-
 
             </div>
 
 
           </article>
 
-        `;
+          `;
 
-      }).join("");
+        }
+      ).join("");
 
 
   }catch(error){
@@ -763,9 +692,9 @@ async function loadFavorites(){
 
       <div class="fav-empty">
 
-        <div class="empty-icon">
+        <span class="icon">
           ⚠️
-        </div>
+        </span>
 
         <h3>
           বিজ্ঞাপন লোড করা যাচ্ছে না
@@ -784,13 +713,13 @@ async function loadFavorites(){
 }
 
 
-/* GLOBAL REMOVE */
+window.removeFav =
+function(id){
 
-window.removeFavorite =
-  removeFavorite;
+  removeFavorite(id);
 
+};
 
-/* START */
 
 loadFavorites();
 
