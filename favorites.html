@@ -1,1 +1,805 @@
-<!doctype html><html lang="bn"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Favourite | শাহমাহমুদপুর বাজার</title><link rel="stylesheet" href="style.css"></head><body><main class="container" style="padding:35px 0"><a class="brand" href="index.html"><b>শাহমাহমুদপুর</b><strong>বাজার</strong></a><h1 style="font-size:30px;margin-top:30px">Favourite Ads</h1><div id="list" class="products"></div></main><script src="supabase.js"></script><script src="app.js"></script><script>document.addEventListener("DOMContentLoaded",()=>{let f=JSON.parse(localStorage.getItem("smb_fav")||"[]");let a=ads().filter(x=>f.includes(x.id));list.innerHTML=a.length?a.map(card).join(""):"<p class='muted'>এখনো কোনো Favourite নেই।</p>"})</script><nav class="mobile-nav"><a href="index.html"><span>⌂</span>Home</a><a href="favorites.html"><span>♡</span>Saved</a><a href="post-ad.html"><span>⊞</span>Sell</a><a href="messages.html"><span>▤</span>Messages</a><a href="profile.html"><span>♙</span>Profile</a></nav></body></html>
+<!doctype html>
+
+<html lang="bn">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+  name="viewport"
+  content="width=device-width,initial-scale=1">
+
+
+<title>
+Favourite | শাহমাহমুদপুর বাজার
+</title>
+
+
+<link
+  rel="stylesheet"
+  href="style.css">
+
+
+<style>
+
+/* ============================================================
+   FAVOURITE PAGE
+============================================================ */
+
+body{
+  background:#f8faf9;
+}
+
+
+.fav-page{
+  padding:
+    28px
+    0
+    100px;
+}
+
+
+.fav-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+  margin-bottom:22px;
+}
+
+
+.fav-title small{
+  display:block;
+  color:#0b8f4b;
+  font-size:9px;
+  font-weight:900;
+  letter-spacing:1.5px;
+  margin-bottom:4px;
+}
+
+
+.fav-title h1{
+  margin:0;
+  color:#213129;
+  font-size:28px;
+  font-weight:900;
+}
+
+
+.back-home{
+  padding:10px 14px;
+  border:1px solid #e6ece8;
+  border-radius:12px;
+  background:#fff;
+  color:#0b8f4b;
+  font-size:11px;
+  font-weight:800;
+}
+
+
+.fav-empty{
+  grid-column:1/-1;
+  padding:60px 20px;
+  text-align:center;
+  border:1px dashed #dbe5de;
+  border-radius:20px;
+  background:#fff;
+}
+
+
+.fav-empty .empty-icon{
+  font-size:48px;
+  margin-bottom:12px;
+}
+
+
+.fav-empty h3{
+  margin:0 0 7px;
+  color:#26352d;
+  font-size:18px;
+}
+
+
+.fav-empty p{
+  margin:0;
+  color:#7c8780;
+  font-size:11px;
+}
+
+
+.fav-empty a{
+  display:inline-flex;
+  margin-top:18px;
+  padding:11px 18px;
+  border-radius:12px;
+  background:#0b8f4b;
+  color:#fff;
+  font-size:11px;
+  font-weight:800;
+}
+
+
+/* ============================================================
+   HEART BUTTON
+============================================================ */
+
+.fav-heart{
+
+  position:absolute;
+
+  top:9px;
+
+  right:9px;
+
+  z-index:5;
+
+  width:36px;
+
+  height:36px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  border:0;
+
+  border-radius:50%;
+
+  background:
+    rgba(255,255,255,.95);
+
+  color:#68736d;
+
+  font-size:21px;
+
+  cursor:pointer;
+
+  box-shadow:
+    0 4px 12px
+    rgba(0,0,0,.10);
+
+}
+
+
+.fav-heart.active{
+
+  color:#e63946;
+
+}
+
+
+@media(max-width:600px){
+
+  .fav-page{
+    padding-top:20px;
+  }
+
+
+  .fav-title h1{
+    font-size:23px;
+  }
+
+
+  .fav-header{
+    margin-bottom:16px;
+  }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<main class="container fav-page">
+
+
+<div class="fav-header">
+
+
+<div class="fav-title">
+
+<small>
+SAVED ADS
+</small>
+
+<h1>
+পছন্দের বিজ্ঞাপন
+</h1>
+
+</div>
+
+
+<a
+  href="index.html"
+  class="back-home">
+
+← হোম
+
+</a>
+
+
+</div>
+
+
+
+<div
+  id="list"
+  class="products">
+
+</div>
+
+
+</main>
+
+
+
+<!-- ============================================================
+     MOBILE NAVIGATION
+============================================================ -->
+
+<nav class="mobile-nav">
+
+
+<a href="index.html">
+
+<span>⌂</span>
+
+হোম
+
+</a>
+
+
+<a
+  class="active"
+  href="favorites.html">
+
+<span>♡</span>
+
+সেভ করা
+
+</a>
+
+
+<a href="post-ad.html">
+
+<span>＋</span>
+
+বিজ্ঞাপন দিন
+
+</a>
+
+
+<a href="messages.html">
+
+<span>▤</span>
+
+মেসেজ
+
+</a>
+
+
+<a href="profile.html">
+
+<span>♙</span>
+
+প্রোফাইল
+
+</a>
+
+
+</nav>
+
+
+
+<script src="supabase.js?v=10"></script>
+
+
+<script>
+
+(function(){
+
+"use strict";
+
+
+const SB_URL =
+  window.SUPABASE_URL ||
+  "https://jeupbfoceqmnpwlklche.supabase.co";
+
+
+const SB_KEY =
+  window.SUPABASE_ANON_KEY ||
+  window.supabaseAnonKey ||
+  "";
+
+
+const list =
+  document.getElementById("list");
+
+
+function escapeHtml(value){
+
+  return String(value ?? "")
+
+  .replace(/&/g,"&amp;")
+  .replace(/</g,"&lt;")
+  .replace(/>/g,"&gt;")
+  .replace(/"/g,"&quot;")
+  .replace(/'/g,"&#039;");
+
+}
+
+
+function money(value){
+
+  return (
+
+    "৳ " +
+
+    Number(value || 0)
+    .toLocaleString("bn-BD")
+
+  );
+
+}
+
+
+function getFavorites(){
+
+  try{
+
+    return JSON.parse(
+
+      localStorage.getItem(
+        "smb_fav"
+      ) || "[]"
+
+    );
+
+  }catch(error){
+
+    return [];
+
+  }
+
+}
+
+
+function saveFavorites(ids){
+
+  localStorage.setItem(
+
+    "smb_fav",
+
+    JSON.stringify(ids)
+
+  );
+
+}
+
+
+function removeFavorite(id){
+
+  const favorites =
+    getFavorites();
+
+  const updated =
+    favorites.filter(function(item){
+
+      return String(item) !==
+        String(id);
+
+    });
+
+
+  saveFavorites(updated);
+
+  loadFavorites();
+
+}
+
+
+function firstImage(ad){
+
+  if(
+
+    Array.isArray(ad.image_urls) &&
+
+    ad.image_urls.length
+
+  ){
+
+    return ad.image_urls[0];
+
+  }
+
+
+  if(
+
+    typeof ad.image_urls ===
+    "string" &&
+
+    ad.image_urls.trim()
+
+  ){
+
+    let value =
+      ad.image_urls.trim();
+
+
+    if(
+
+      value.startsWith("{") &&
+
+      value.endsWith("}")
+
+    ){
+
+      value =
+
+        value
+        .slice(1,-1)
+        .split(",")[0]
+        .replace(/^"/,"")
+        .replace(/"$/,"");
+
+    }
+
+
+    return value;
+
+  }
+
+
+  return "";
+
+}
+
+
+async function loadFavorites(){
+
+  const favoriteIds =
+    getFavorites();
+
+
+  if(!favoriteIds.length){
+
+    list.innerHTML = `
+
+      <div class="fav-empty">
+
+        <div class="empty-icon">
+          ♡
+        </div>
+
+        <h3>
+          এখনো কোনো পছন্দের বিজ্ঞাপন নেই
+        </h3>
+
+        <p>
+          পছন্দের বিজ্ঞাপনের ♡ বাটনে চাপ দিয়ে এখানে সেভ করুন।
+        </p>
+
+        <a href="index.html">
+          বিজ্ঞাপন দেখুন
+        </a>
+
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+
+  list.innerHTML = `
+
+    <div class="fav-empty">
+
+      বিজ্ঞাপন লোড হচ্ছে...
+
+    </div>
+
+  `;
+
+
+  try{
+
+    const ids =
+      favoriteIds
+      .map(function(id){
+
+        return
+          '"' +
+          String(id)
+          .replace(/"/g,"") +
+          '"';
+
+      })
+      .join(",");
+
+
+    const url =
+
+      SB_URL +
+
+      "/rest/v1/ads" +
+
+      "?select=*" +
+
+      "&id=in.(" +
+
+      encodeURIComponent(ids) +
+
+      ")" +
+
+      "&status=eq.approved";
+
+
+    const response =
+      await fetch(
+
+        url,
+
+        {
+
+          method:"GET",
+
+          headers:{
+
+            "apikey":SB_KEY,
+
+            "Content-Type":
+              "application/json"
+
+          }
+
+        }
+
+      );
+
+
+    if(!response.ok){
+
+      throw new Error(
+        await response.text()
+      );
+
+    }
+
+
+    const ads =
+      await response.json();
+
+
+    if(
+
+      !Array.isArray(ads) ||
+
+      !ads.length
+
+    ){
+
+      list.innerHTML = `
+
+        <div class="fav-empty">
+
+          <div class="empty-icon">
+            ♡
+          </div>
+
+          <h3>
+            কোনো বিজ্ঞাপন পাওয়া যায়নি
+          </h3>
+
+          <p>
+            কিছু বিজ্ঞাপন হয়তো আর পাওয়া যাচ্ছে না।
+          </p>
+
+        </div>
+
+      `;
+
+      return;
+
+    }
+
+
+    list.innerHTML =
+
+      ads.map(function(ad){
+
+        const image =
+          firstImage(ad);
+
+
+        return `
+
+          <article
+            class="product">
+
+            <div
+              class="photo"
+              onclick="
+                window.location.href=
+                'ad-details.html?id=${encodeURIComponent(
+                  ad.id
+                )}'
+              ">
+
+
+              ${
+                image
+
+                ?
+
+                `
+
+                <img
+                  class="ad-image"
+                  src="${escapeHtml(image)}"
+                  alt="${escapeHtml(
+                    ad.title ||
+                    "বিজ্ঞাপন"
+                  )}"
+                >
+
+                `
+
+                :
+
+                `
+
+                <div
+                  class="ad-image-placeholder">
+
+                  ${escapeHtml(
+                    ad.category ||
+                    "বিজ্ঞাপন"
+                  )}
+
+                </div>
+
+                `
+
+              }
+
+
+              <button
+                class="
+                  fav-heart
+                  active
+                "
+                onclick="
+                  event.stopPropagation();
+                  removeFavorite('${escapeHtml(
+                    ad.id
+                  )}');
+                ">
+
+                ♥ 
+
+              </button>
+
+
+            </div>
+
+
+            <div
+              class="body"
+              onclick="
+                window.location.href=
+                'ad-details.html?id=${encodeURIComponent(
+                  ad.id
+                )}'
+              ">
+
+
+              <span class="badge">
+
+                ${escapeHtml(
+                  ad.category ||
+                  "Marketplace"
+                )}
+
+              </span>
+
+
+              <h3>
+
+                ${escapeHtml(
+                  ad.title ||
+                  "Untitled"
+                )}
+
+              </h3>
+
+
+              <div class="price">
+
+                ${money(ad.price)}
+
+              </div>
+
+
+              <div class="meta">
+
+                📍
+
+                ${escapeHtml(
+                  ad.location ||
+                  ""
+                )}
+
+              </div>
+
+
+            </div>
+
+
+          </article>
+
+        `;
+
+      }).join("");
+
+
+  }catch(error){
+
+    console.error(
+      "Favorite load error:",
+      error
+    );
+
+
+    list.innerHTML = `
+
+      <div class="fav-empty">
+
+        <div class="empty-icon">
+          ⚠️
+        </div>
+
+        <h3>
+          বিজ্ঞাপন লোড করা যাচ্ছে না
+        </h3>
+
+        <p>
+          একটু পরে আবার চেষ্টা করুন।
+        </p>
+
+      </div>
+
+    `;
+
+  }
+
+}
+
+
+/* GLOBAL REMOVE */
+
+window.removeFavorite =
+  removeFavorite;
+
+
+/* START */
+
+loadFavorites();
+
+
+})();
+
+</script>
+
+
+</body>
+
+</html>
