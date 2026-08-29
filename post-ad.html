@@ -1004,6 +1004,33 @@ a{
   background:
     rgba(255,255,255,.96);
 
+.mobile-nav{
+
+  position:fixed;
+
+  left:0;
+  right:0;
+  bottom:0;
+
+  z-index:9999;
+
+  height:72px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-around;
+
+  padding-bottom:
+    env(safe-area-inset-bottom);
+
+  border-top:
+    1px solid #e8eeea;
+
+  background:
+    rgba(255,255,255,.97);
+
   box-shadow:
     0 -8px 25px
     rgba(0,0,0,.05);
@@ -1025,7 +1052,7 @@ a{
 
   gap:3px;
 
-  color:#7c8780;
+  color:#657169;
 
   font-size:8px;
 
@@ -1038,12 +1065,14 @@ a{
 
   font-size:22px;
 
+  line-height:1;
+
 }
 
 
 .mobile-nav a.active{
 
-  color:var(--green);
+  color:#0b8f4b;
 
 }
 
@@ -1067,6 +1096,7 @@ a{
   color:#fff;
 
   background:
+
     linear-gradient(
       135deg,
       #10a85d,
@@ -1075,9 +1105,12 @@ a{
 
   font-size:30px;
 
+  box-shadow:
+    0 8px 20px
+    rgba(11,143,75,.25);
+
 }
-
-
+  
 /* ============================================================
    MOBILE
 ============================================================ */
