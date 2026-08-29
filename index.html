@@ -24,191 +24,1875 @@
 
 <style>
 
-#authArea{
-  display:flex;
-  align-items:center;
-  justify-content:flex-end;
-  min-width:90px;
-}
+/* ============================================================
+   MODERN BRIGHT MARKETPLACE DESIGN
+============================================================ */
 
-.login-link{
-  padding:8px 14px;
-  border:1px solid rgba(105,245,165,.2);
-  border-radius:9px;
-  color:#eaf8f0;
-  background:rgba(105,245,165,.035);
-  font-size:11px;
-  font-weight:800;
-}
+:root{
 
-.login-link:hover{
-  color:#69f5a5;
-  border-color:rgba(105,245,165,.45);
-  box-shadow:0 0 22px rgba(105,245,165,.12);
-}
+  --green:#0b8f4b;
+  --green-dark:#05743a;
+  --green-light:#e9f8ef;
 
-.profile-link{
-  display:flex;
-  align-items:center;
-  gap:8px;
-  padding:5px 9px 5px 6px;
-  border:1px solid rgba(105,245,165,.2);
-  border-radius:10px;
-  background:rgba(105,245,165,.035);
-}
+  --text:#1d2923;
+  --muted:#758078;
 
-.profile-avatar{
-  width:30px;
-  height:30px;
-  border-radius:50%;
-  object-fit:cover;
-  background:#102019;
-  border:1px solid rgba(105,245,165,.3);
-}
+  --border:#e6ece8;
 
-.profile-name{
-  max-width:95px;
-  overflow:hidden;
-  white-space:nowrap;
-  text-overflow:ellipsis;
-  color:#eaf8f0;
-  font-size:10px;
-  font-weight:800;
-}
+  --bg:#f8faf9;
 
-.auth-loading{
-  width:18px;
-  height:18px;
-  border:2px solid rgba(105,245,165,.15);
-  border-top-color:#69f5a5;
-  border-radius:50%;
-  animation:smbSpin .7s linear infinite;
-}
+  --card:#ffffff;
 
-@keyframes smbSpin{
-  to{
-    transform:rotate(360deg)
-  }
-}
+  --shadow:
+    0 8px 30px rgba(30,55,42,.08);
 
-.ad-image{
-  width:100%;
-  height:150px;
-  object-fit:cover;
-  display:block;
-}
-
-.ad-image-placeholder{
-  min-height:150px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:#69f5a5;
-  font-size:12px;
-  background:
-    radial-gradient(
-      circle at center,
-      rgba(105,245,165,.07),
-      transparent 60%
-    );
-}
-
-.ads-loading{
-  width:100%;
-  padding:45px 20px;
-  text-align:center;
-  color:#718078;
-}
-
-.ads-empty{
-  width:100%;
-  padding:45px 20px;
-  text-align:center;
-  color:#718078;
 }
 
 
 /* ============================================================
-   MESSAGE NOTIFICATION
+   RESET / BODY
 ============================================================ */
 
-.message-nav{
-  position:relative;
+*{
+  box-sizing:border-box;
 }
 
-.message-badge{
+
+html{
+  scroll-behavior:smooth;
+}
+
+
+body{
+
+  margin:0;
+
+  background:
+    linear-gradient(
+      180deg,
+      #f8faf9 0%,
+      #ffffff 45%,
+      #f8faf9 100%
+    );
+
+  color:var(--text);
+
+  font-family:
+
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  padding-bottom:90px;
+
+}
+
+
+a{
+
+  text-decoration:none;
+
+  color:inherit;
+
+}
+
+
+.container{
+
+  width:min(1180px,calc(100% - 40px));
+
+  margin:auto;
+
+}
+
+
+/* ============================================================
+   HEADER
+============================================================ */
+
+.header{
+
+  position:sticky;
+
+  top:0;
+
+  z-index:100;
+
+  background:
+    rgba(255,255,255,.92);
+
+  backdrop-filter:
+    blur(18px);
+
+  border-bottom:
+    1px solid rgba(20,70,45,.07);
+
+}
+
+
+.topbar{
+
+  min-height:88px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-between;
+
+  gap:20px;
+
+}
+
+
+/* ============================================================
+   BRAND
+============================================================ */
+
+.brand{
+
+  display:flex;
+
+  flex-wrap:wrap;
+
+  align-items:center;
+
+  width:250px;
+
+  position:relative;
+
+  padding-left:58px;
+
+}
+
+
+.brand:before{
+
+  content:"🛍";
+
   position:absolute;
 
-  top:-7px;
-  right:-9px;
+  left:0;
 
-  min-width:18px;
-  height:18px;
+  top:50%;
+
+  transform:translateY(-50%);
+
+  width:45px;
+
+  height:45px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  border-radius:14px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #0d9b55,
+      #05743a
+    );
+
+  font-size:26px;
+
+  box-shadow:
+    0 8px 18px
+    rgba(11,143,75,.22);
+
+}
+
+
+.brand b{
+
+  width:100%;
+
+  font-size:19px;
+
+  font-weight:900;
+
+  letter-spacing:-.5px;
+
+  color:#27352e;
+
+}
+
+
+.brand strong{
+
+  position:absolute;
+
+  top:0;
+
+  left:188px;
+
+  color:var(--green);
+
+  font-size:19px;
+
+  font-weight:900;
+
+}
+
+
+.brand small{
+
+  width:100%;
+
+  margin-top:3px;
+
+  color:#66726b;
+
+  font-size:9px;
+
+  font-weight:800;
+
+  letter-spacing:1.5px;
+
+}
+
+
+/* ============================================================
+   TOP ACTIONS
+============================================================ */
+
+.top-actions{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:10px;
+
+}
+
+
+#authArea{
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:flex-end;
+
+  min-width:100px;
+
+}
+
+
+.login-link{
+
+  padding:12px 20px;
+
+  border-radius:13px;
+
+  color:#fff;
+
+  background:
+    linear-gradient(
+      135deg,
+      #0d9b55,
+      #05743a
+    );
+
+  font-size:13px;
+
+  font-weight:800;
+
+  box-shadow:
+    0 8px 20px
+    rgba(11,143,75,.18);
+
+}
+
+
+.login-link:hover{
+
+  transform:
+    translateY(-1px);
+
+}
+
+
+.profile-link{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:9px;
+
+  padding:6px 11px 6px 7px;
+
+  border:
+
+    1px solid
+    var(--border);
+
+  border-radius:14px;
+
+  background:#fff;
+
+  box-shadow:
+    0 4px 16px
+    rgba(0,0,0,.04);
+
+}
+
+
+.profile-avatar{
+
+  width:34px;
+
+  height:34px;
+
+  border-radius:50%;
+
+  object-fit:cover;
+
+  background:#eef5f0;
+
+  border:
+    1px solid
+    rgba(11,143,75,.15);
+
+}
+
+
+.profile-name{
+
+  max-width:105px;
+
+  overflow:hidden;
+
+  white-space:nowrap;
+
+  text-overflow:ellipsis;
+
+  color:#27352e;
+
+  font-size:11px;
+
+  font-weight:800;
+
+}
+
+
+.auth-loading{
+
+  width:22px;
+
+  height:22px;
+
+  border:
+    2px solid
+    #e4eee7;
+
+  border-top-color:
+    var(--green);
+
+  border-radius:50%;
+
+  animation:
+    smbSpin .7s linear infinite;
+
+}
+
+
+@keyframes smbSpin{
+
+  to{
+
+    transform:
+      rotate(360deg);
+
+  }
+
+}
+
+
+/* ============================================================
+   MESSAGE TOP BUTTON
+============================================================ */
+
+.message-top-link{
+
+  position:relative;
+
+  width:45px;
+
+  height:45px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  border:
+    1px solid
+    var(--border);
+
+  border-radius:14px;
+
+  background:#fff;
+
+  color:#27352e;
+
+  font-size:20px;
+
+  box-shadow:
+    0 4px 16px
+    rgba(0,0,0,.04);
+
+}
+
+
+.message-badge{
+
+  position:absolute;
+
+  top:-6px;
+
+  right:-6px;
+
+  min-width:19px;
+
+  height:19px;
 
   padding:0 5px;
 
   display:none;
 
   align-items:center;
+
   justify-content:center;
 
-  border-radius:20px;
+  border-radius:50px;
 
-  background:#ff4d67;
+  background:#ef476f;
+
   color:#fff;
 
-  border:2px solid #07110c;
+  border:2px solid #fff;
 
   font-size:8px;
+
   font-weight:900;
 
-  line-height:1;
-
-  box-shadow:
-    0 0 0 2px rgba(255,77,103,.12),
-    0 4px 12px rgba(0,0,0,.35);
-
   z-index:20;
+
 }
 
 
 /* ============================================================
-   DESKTOP MESSAGE ICON
+   HERO
 ============================================================ */
 
-.message-top-link{
-  position:relative;
+.hero{
 
-  width:38px;
-  height:38px;
+  margin-top:30px;
 
-  display:none;
+  min-height:330px;
+
+  overflow:hidden;
+
+  display:grid;
+
+  grid-template-columns:
+    1fr
+    1fr;
 
   align-items:center;
+
+  border-radius:28px;
+
+  padding:45px 55px;
+
+  position:relative;
+
+  background:
+
+    radial-gradient(
+      circle at 20% 50%,
+      rgba(192,244,207,.7),
+      transparent 35%
+    ),
+
+    radial-gradient(
+      circle at 85% 40%,
+      rgba(211,244,217,.8),
+      transparent 35%
+    ),
+
+    linear-gradient(
+      135deg,
+      #ffffff,
+      #f0fbf3
+    );
+
+  border:
+    1px solid
+    rgba(11,143,75,.08);
+
+  box-shadow:
+    var(--shadow);
+
+}
+
+
+.hero-copy{
+
+  position:relative;
+
+  z-index:2;
+
+}
+
+
+.hero-copy small{
+
+  display:inline-block;
+
+  color:var(--green);
+
+  font-size:11px;
+
+  font-weight:900;
+
+  letter-spacing:1px;
+
+  margin-bottom:10px;
+
+}
+
+
+.hero h1{
+
+  margin:0;
+
+  max-width:520px;
+
+  font-size:43px;
+
+  line-height:1.25;
+
+  letter-spacing:-1.5px;
+
+  font-weight:900;
+
+  color:#213129;
+
+}
+
+
+.hero h1 em{
+
+  font-style:normal;
+
+  color:var(--green);
+
+}
+
+
+.hero p{
+
+  margin:
+
+    18px
+    0
+    25px;
+
+  color:#66736c;
+
+  font-size:15px;
+
+  line-height:1.8;
+
+}
+
+
+.btn{
+
+  display:inline-flex;
+
+  align-items:center;
+
   justify-content:center;
 
-  margin-right:8px;
+  gap:8px;
 
-  border:1px solid rgba(105,245,165,.16);
-  border-radius:10px;
+  padding:
 
-  background:rgba(105,245,165,.035);
+    13px
+    22px;
 
-  color:#eaf8f0;
+  border-radius:13px;
 
-  text-decoration:none;
+  font-size:13px;
 
-  font-size:17px;
+  font-weight:800;
+
+  transition:.2s;
+
 }
 
-.message-top-link:hover{
-  color:#69f5a5;
-  border-color:rgba(105,245,165,.4);
+
+.btn.green{
+
+  color:#fff;
+
+  background:
+    linear-gradient(
+      135deg,
+      #0c9d55,
+      #05733b
+    );
+
+  box-shadow:
+    0 10px 25px
+    rgba(11,143,75,.2);
+
 }
 
-.message-top-link .message-badge{
-  top:-6px;
-  right:-6px;
+
+.btn:hover{
+
+  transform:
+    translateY(-2px);
+
+}
+
+
+/* ============================================================
+   HERO SHOP ART
+============================================================ */
+
+.hero-art{
+
+  height:100%;
+
+  min-height:250px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  position:relative;
+
+}
+
+
+.hero-art:before{
+
+  content:"";
+
+  position:absolute;
+
+  width:260px;
+
+  height:260px;
+
+  border-radius:50%;
+
+  background:
+
+    radial-gradient(
+      circle,
+      rgba(107,209,136,.25),
+      rgba(107,209,136,.04)
+    );
+
+}
+
+
+.hero-art:after{
+
+  content:"🏪";
+
+  position:relative;
+
+  z-index:2;
+
+  font-size:160px;
+
+  filter:
+    drop-shadow(
+      0 18px 15px
+      rgba(0,0,0,.12)
+    );
+
+}
+
+
+.phone-art{
+
+  position:absolute;
+
+  right:10px;
+
+  bottom:15px;
+
+  z-index:3;
+
+  width:58px;
+
+  height:58px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  border-radius:18px;
+
+  background:#fff;
+
+  font-size:28px;
+
+  box-shadow:
+    0 12px 25px
+    rgba(0,0,0,.12);
+
+}
+
+
+/* ============================================================
+   SEARCH BAR
+============================================================ */
+
+.search-row{
+
+  margin-top:26px;
+
+}
+
+
+.search{
+
+  min-height:74px;
+
+  display:flex;
+
+  align-items:center;
+
+  gap:15px;
+
+  padding:
+
+    10px
+    12px
+    10px
+    22px;
+
+  border:
+    1px solid
+    var(--border);
+
+  border-radius:22px;
+
+  background:#fff;
+
+  box-shadow:
+    var(--shadow);
+
+}
+
+
+.search > span{
+
+  font-size:30px;
+
+  color:#68756e;
+
+}
+
+
+.search input{
+
+  flex:1;
+
+  min-width:0;
+
+  border:0;
+
+  outline:0;
+
+  background:transparent;
+
+  color:#27352e;
+
+  font-size:15px;
+
+}
+
+
+.search input::placeholder{
+
+  color:#a0aaa4;
+
+}
+
+
+.search:after{
+
+  content:"⌖ আপনার এলাকা";
+
+  padding:
+
+    0
+    25px;
+
+  border-left:
+    1px solid
+    var(--border);
+
+  color:#66736c;
+
+  font-size:13px;
+
+  white-space:nowrap;
+
+}
+
+
+.search button{
+
+  border:0;
+
+  min-width:120px;
+
+  height:52px;
+
+  border-radius:15px;
+
+  color:#fff;
+
+  cursor:pointer;
+
+  background:
+    linear-gradient(
+      135deg,
+      #0d9b55,
+      #05743a
+    );
+
+  font-size:14px;
+
+  font-weight:800;
+
+}
+
+
+/* ============================================================
+   LOCATION
+============================================================ */
+
+.location{
+
+  margin-top:20px;
+
+  color:#748078;
+
+  font-size:12px;
+
+  text-align:center;
+
+}
+
+
+.location::first-letter{
+
+  color:var(--green);
+
+}
+
+
+/* ============================================================
+   QUICK BUTTONS
+============================================================ */
+
+.quick{
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(2,1fr);
+
+  gap:15px;
+
+  margin-top:28px;
+
+}
+
+
+.quick a{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:14px;
+
+  padding:18px 20px;
+
+  border:
+    1px solid
+    var(--border);
+
+  border-radius:18px;
+
+  background:#fff;
+
+  box-shadow:
+    0 6px 20px
+    rgba(0,0,0,.04);
+
+}
+
+
+.quick a span{
+
+  width:44px;
+
+  height:44px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  border-radius:13px;
+
+  background:#eaf8ef;
+
+  color:var(--green);
+
+  font-size:24px;
+
+  font-weight:800;
+
+}
+
+
+.quick a:nth-child(2) span{
+
+  background:#fff3df;
+
+}
+
+
+.quick b{
+
+  display:block;
+
+  color:#26342d;
+
+  font-size:14px;
+
+}
+
+
+.quick small{
+
+  display:block;
+
+  margin-top:4px;
+
+  color:#87918b;
+
+  font-size:10px;
+
+}
+
+
+/* ============================================================
+   SECTION
+============================================================ */
+
+.section{
+
+  margin-top:42px;
+
+}
+
+
+.section-title{
+
+  display:flex;
+
+  align-items:end;
+
+  justify-content:space-between;
+
+  margin-bottom:20px;
+
+}
+
+
+.section-title small{
+
+  display:block;
+
+  color:var(--green);
+
+  font-size:9px;
+
+  font-weight:900;
+
+  letter-spacing:1.5px;
+
+  margin-bottom:5px;
+
+}
+
+
+.section-title h2{
+
+  margin:0;
+
+  font-size:25px;
+
+  font-weight:900;
+
+  letter-spacing:-.5px;
+
+}
+
+
+.section-title > a{
+
+  color:var(--green);
+
+  font-size:12px;
+
+  font-weight:800;
+
+}
+
+
+/* ============================================================
+   CATEGORIES
+============================================================ */
+
+.cats{
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(8,1fr);
+
+  gap:12px;
+
+}
+
+
+.cat{
+
+  min-height:125px;
+
+  display:flex;
+
+  flex-direction:column;
+
+  align-items:center;
+
+  justify-content:center;
+
+  gap:13px;
+
+  padding:12px 8px;
+
+  border:
+    1px solid
+    var(--border);
+
+  border-radius:20px;
+
+  background:#fff;
+
+  box-shadow:
+    0 5px 18px
+    rgba(0,0,0,.035);
+
+  transition:.2s;
+
+}
+
+
+.cat:hover{
+
+  transform:
+    translateY(-4px);
+
+  border-color:
+    rgba(11,143,75,.25);
+
+  box-shadow:
+    0 12px 25px
+    rgba(11,143,75,.1);
+
+}
+
+
+.cat i{
+
+  width:48px;
+
+  height:48px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  border-radius:15px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #f1faf4,
+      #e3f6e9
+    );
+
+  color:var(--green);
+
+  font-size:27px;
+
+  font-style:normal;
+
+}
+
+
+.cat b{
+
+  color:#344039;
+
+  font-size:11px;
+
+  text-align:center;
+
+}
+
+
+/* ============================================================
+   PRODUCTS
+============================================================ */
+
+.products{
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(4,1fr);
+
+  gap:18px;
+
+}
+
+
+.product{
+
+  overflow:hidden;
+
+  cursor:pointer;
+
+  border:
+    1px solid
+    var(--border);
+
+  border-radius:20px;
+
+  background:#fff;
+
+  box-shadow:
+    0 6px 20px
+    rgba(0,0,0,.045);
+
+  transition:.25s;
+
+}
+
+
+.product:hover{
+
+  transform:
+    translateY(-5px);
+
+  box-shadow:
+    0 15px 35px
+    rgba(0,0,0,.09);
+
+}
+
+
+.photo{
+
+  position:relative;
+
+  height:180px;
+
+  background:#f1f5f2;
+
+}
+
+
+.photo:after{
+
+  content:"♡";
+
+  position:absolute;
+
+  top:10px;
+
+  right:10px;
+
+  width:36px;
+
+  height:36px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  border-radius:50%;
+
+  background:
+    rgba(255,255,255,.92);
+
+  color:#6d7771;
+
+  font-size:21px;
+
+  box-shadow:
+    0 4px 10px
+    rgba(0,0,0,.08);
+
+}
+
+
+.ad-image{
+
+  width:100%;
+
+  height:180px;
+
+  object-fit:cover;
+
+  display:block;
+
+}
+
+
+.ad-image-placeholder{
+
+  min-height:180px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  color:var(--green);
+
+  font-size:13px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #eff9f2,
+      #e2f4e8
+    );
+
+}
+
+
+.product .body{
+
+  padding:
+
+    14px
+    15px
+    16px;
+
+}
+
+
+.badge{
+
+  display:inline-flex;
+
+  padding:
+
+    4px
+    8px;
+
+  margin-bottom:8px;
+
+  border-radius:7px;
+
+  color:var(--green);
+
+  background:#eef9f1;
+
+  font-size:8px;
+
+  font-weight:800;
+
+}
+
+
+.product h3{
+
+  margin:
+
+    0
+    0
+    10px;
+
+  min-height:38px;
+
+  color:#2a3730;
+
+  font-size:14px;
+
+  line-height:1.4;
+
+}
+
+
+.price{
+
+  margin-bottom:12px;
+
+  color:var(--green);
+
+  font-size:18px;
+
+  font-weight:900;
+
+}
+
+
+.meta{
+
+  color:#8a948e;
+
+  font-size:10px;
+
+}
+
+
+.ads-loading,
+.ads-empty{
+
+  grid-column:1/-1;
+
+  padding:55px 20px;
+
+  text-align:center;
+
+  border:
+    1px dashed
+    #dbe5de;
+
+  border-radius:20px;
+
+  color:#87918b;
+
+  background:#fff;
+
+}
+
+
+/* ============================================================
+   PROMO
+============================================================ */
+
+.promo{
+
+  margin-top:40px;
+
+  display:grid;
+
+  grid-template-columns:
+    1fr
+    auto;
+
+  align-items:center;
+
+  gap:30px;
+
+  padding:
+
+    38px
+    45px;
+
+  border-radius:25px;
+
+  overflow:hidden;
+
+  position:relative;
+
+  background:
+
+    linear-gradient(
+      135deg,
+      #effbf3,
+      #dff5e7
+    );
+
+}
+
+
+.promo:after{
+
+  content:"✦";
+
+  position:absolute;
+
+  right:8%;
+
+  top:-30px;
+
+  color:
+    rgba(11,143,75,.08);
+
+  font-size:160px;
+
+}
+
+
+.promo small{
+
+  color:var(--green);
+
+  font-size:10px;
+
+  font-weight:900;
+
+  letter-spacing:1.5px;
+
+}
+
+
+.promo h2{
+
+  margin:
+
+    8px
+    0
+    8px;
+
+  font-size:30px;
+
+  line-height:1.3;
+
+}
+
+
+.promo h2 em{
+
+  font-style:normal;
+
+  color:var(--green);
+
+}
+
+
+.promo p{
+
+  margin:0;
+
+  color:#6e7972;
+
+  font-size:13px;
+
+}
+
+
+/* ============================================================
+   EXTRA INFO CARDS
+============================================================ */
+
+.info-cards{
+
+  margin-top:25px;
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(3,1fr);
+
+  gap:16px;
+
+}
+
+
+.info-card{
+
+  min-height:145px;
+
+  padding:25px;
+
+  border-radius:22px;
+
+  position:relative;
+
+  overflow:hidden;
+
+}
+
+
+.info-card h3{
+
+  margin:0 0 8px;
+
+  font-size:19px;
+
+}
+
+
+.info-card p{
+
+  margin:0;
+
+  font-size:12px;
+
+  line-height:1.7;
+
+}
+
+
+.info-card:nth-child(1){
+
+  background:
+    linear-gradient(
+      135deg,
+      #dff6e7,
+      #f3fff6
+    );
+
+}
+
+
+.info-card:nth-child(2){
+
+  background:
+    linear-gradient(
+      135deg,
+      #fff5cf,
+      #fff9e9
+    );
+
+}
+
+
+.info-card:nth-child(3){
+
+  background:
+    linear-gradient(
+      135deg,
+      #e3f1ff,
+      #f1f8ff
+    );
+
+}
+
+
+.info-card .icon{
+
+  position:absolute;
+
+  right:20px;
+
+  bottom:10px;
+
+  font-size:55px;
+
+  opacity:.9;
+
+}
+
+
+/* ============================================================
+   POPULAR SEARCH
+============================================================ */
+
+.popular{
+
+  margin-top:38px;
+
+}
+
+
+.popular h2{
+
+  margin:0 0 16px;
+
+  font-size:22px;
+
+}
+
+
+.search-tags{
+
+  display:flex;
+
+  flex-wrap:wrap;
+
+  gap:10px;
+
+}
+
+
+.search-tags a{
+
+  padding:
+
+    10px
+    18px;
+
+  border:
+    1px solid
+    var(--border);
+
+  border-radius:50px;
+
+  background:#fff;
+
+  color:#59655e;
+
+  font-size:12px;
+
+  font-weight:700;
+
+}
+
+
+/* ============================================================
+   FOOTER
+============================================================ */
+
+footer{
+
+  margin-top:50px;
+
+  padding:
+
+    35px
+    0
+    120px;
+
+  border-top:
+    1px solid
+    var(--border);
+
+  background:#fff;
+
+}
+
+
+.foot{
+
+  display:flex;
+
+  flex-direction:column;
+
+  align-items:center;
+
+  text-align:center;
+
+  gap:12px;
+
+}
+
+
+.foot > b{
+
+  font-size:18px;
+
+  color:#26352d;
+
+}
+
+
+.foot > span{
+
+  color:#7c8780;
+
+  font-size:11px;
+
+}
+
+
+.foot > div{
+
+  display:flex;
+
+  flex-wrap:wrap;
+
+  justify-content:center;
+
+  gap:18px;
+
+}
+
+
+.foot a{
+
+  color:#68736d;
+
+  font-size:11px;
+
+}
+
+
+.foot small{
+
+  color:#a0a9a3;
+
+  font-size:10px;
+
+}
+
+
+/* ============================================================
+   MOBILE NAVIGATION
+============================================================ */
+
+.mobile-nav{
+
+  position:fixed;
+
+  left:0;
+
+  right:0;
+
+  bottom:0;
+
+  z-index:200;
+
+  height:78px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-around;
+
+  padding-bottom:
+    env(safe-area-inset-bottom);
+
+  border-top:
+    1px solid
+    #e8eeea;
+
+  background:
+    rgba(255,255,255,.96);
+
+  backdrop-filter:
+    blur(15px);
+
+  box-shadow:
+    0 -8px 25px
+    rgba(0,0,0,.05);
+
+}
+
+
+.mobile-nav a{
+
+  position:relative;
+
+  min-width:55px;
+
+  display:flex;
+
+  flex-direction:column;
+
+  align-items:center;
+
+  justify-content:center;
+
+  gap:4px;
+
+  color:#7c8780;
+
+  font-size:9px;
+
+  font-weight:700;
+
+}
+
+
+.mobile-nav a span{
+
+  font-size:24px;
+
+  line-height:1;
+
+}
+
+
+.mobile-nav a.active{
+
+  color:var(--green);
+
+}
+
+
+.mobile-nav a:nth-child(3) span{
+
+  width:52px;
+
+  height:52px;
+
+  margin-top:-30px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  border-radius:50%;
+
+  color:#fff;
+
+  background:
+    linear-gradient(
+      135deg,
+      #10a85d,
+      #05733b
+    );
+
+  font-size:34px;
+
+  box-shadow:
+    0 10px 22px
+    rgba(11,143,75,.28);
+
+}
+
+
+.message-nav{
+
+  position:relative;
+
 }
 
 
@@ -216,27 +1900,653 @@
    MOBILE
 ============================================================ */
 
+@media(max-width:900px){
+
+  .cats{
+
+    grid-template-columns:
+      repeat(4,1fr);
+
+  }
+
+  .products{
+
+    grid-template-columns:
+      repeat(2,1fr);
+
+  }
+
+  .hero{
+
+    padding:35px;
+
+  }
+
+}
+
+
 @media(max-width:600px){
 
-  #authArea{
-    min-width:auto;
+  body{
+
+    padding-bottom:85px;
+
   }
+
+
+  .container{
+
+    width:
+      calc(100% - 24px);
+
+  }
+
+
+  .header{
+
+    position:relative;
+
+  }
+
+
+  .topbar{
+
+    min-height:74px;
+
+  }
+
+
+  .brand{
+
+    width:190px;
+
+    padding-left:47px;
+
+  }
+
+
+  .brand:before{
+
+    width:38px;
+
+    height:38px;
+
+    border-radius:12px;
+
+    font-size:22px;
+
+  }
+
+
+  .brand b{
+
+    font-size:14px;
+
+  }
+
+
+  .brand strong{
+
+    position:static;
+
+    width:auto;
+
+    margin-left:4px;
+
+    font-size:14px;
+
+  }
+
+
+  .brand small{
+
+    font-size:7px;
+
+    letter-spacing:1px;
+
+  }
+
 
   .profile-name{
-    max-width:65px;
+
+    display:none;
+
   }
+
 
   .profile-link{
-    padding-right:7px;
+
+    padding:5px;
+
+    border-radius:50%;
+
   }
 
-  .login-link{
-    padding:7px 10px;
-    font-size:10px;
+
+  .profile-avatar{
+
+    width:34px;
+
+    height:34px;
+
   }
+
 
   .message-top-link{
+
     display:none !important;
+
+  }
+
+
+  .login-link{
+
+    padding:9px 13px;
+
+    font-size:10px;
+
+  }
+
+
+  /* HERO */
+
+  .hero{
+
+    margin-top:14px;
+
+    min-height:auto;
+
+    grid-template-columns:
+      1fr;
+
+    padding:
+
+      30px
+      24px
+      15px;
+
+    border-radius:22px;
+
+  }
+
+
+  .hero h1{
+
+    font-size:30px;
+
+    line-height:1.3;
+
+  }
+
+
+  .hero p{
+
+    font-size:12px;
+
+    margin:
+      13px
+      0
+      20px;
+
+  }
+
+
+  .hero-art{
+
+    min-height:180px;
+
+    margin-top:5px;
+
+  }
+
+
+  .hero-art:after{
+
+    font-size:120px;
+
+  }
+
+
+  .hero-art:before{
+
+    width:190px;
+
+    height:190px;
+
+  }
+
+
+  .phone-art{
+
+    width:46px;
+
+    height:46px;
+
+    right:15px;
+
+    font-size:22px;
+
+  }
+
+
+  /* SEARCH */
+
+  .search-row{
+
+    margin-top:15px;
+
+  }
+
+
+  .search{
+
+    min-height:62px;
+
+    padding:
+
+      7px
+      7px
+      7px
+      14px;
+
+    gap:8px;
+
+    border-radius:18px;
+
+  }
+
+
+  .search > span{
+
+    font-size:24px;
+
+  }
+
+
+  .search input{
+
+    font-size:12px;
+
+  }
+
+
+  .search:after{
+
+    display:none;
+
+  }
+
+
+  .search button{
+
+    min-width:72px;
+
+    height:46px;
+
+    border-radius:13px;
+
+    font-size:12px;
+
+  }
+
+
+  .location{
+
+    margin-top:13px;
+
+    font-size:10px;
+
+  }
+
+
+  /* QUICK */
+
+  .quick{
+
+    margin-top:20px;
+
+    gap:10px;
+
+  }
+
+
+  .quick a{
+
+    padding:13px;
+
+    gap:9px;
+
+    border-radius:15px;
+
+  }
+
+
+  .quick a span{
+
+    width:37px;
+
+    height:37px;
+
+    border-radius:11px;
+
+    font-size:20px;
+
+  }
+
+
+  .quick b{
+
+    font-size:11px;
+
+  }
+
+
+  .quick small{
+
+    font-size:8px;
+
+  }
+
+
+  /* SECTION */
+
+  .section{
+
+    margin-top:32px;
+
+  }
+
+
+  .section-title{
+
+    margin-bottom:15px;
+
+  }
+
+
+  .section-title h2{
+
+    font-size:21px;
+
+  }
+
+
+  .section-title small{
+
+    display:none;
+
+  }
+
+
+  /* CATEGORY */
+
+  .cats{
+
+    display:flex;
+
+    overflow-x:auto;
+
+    gap:10px;
+
+    padding-bottom:5px;
+
+    scrollbar-width:none;
+
+  }
+
+
+  .cats::-webkit-scrollbar{
+
+    display:none;
+
+  }
+
+
+  .cat{
+
+    flex:
+
+      0
+      0
+      92px;
+
+    min-height:100px;
+
+    border-radius:17px;
+
+  }
+
+
+  .cat i{
+
+    width:40px;
+
+    height:40px;
+
+    border-radius:12px;
+
+    font-size:23px;
+
+  }
+
+
+  .cat b{
+
+    font-size:9px;
+
+  }
+
+
+  /* PRODUCTS */
+
+  .products{
+
+    grid-template-columns:
+      repeat(2,1fr);
+
+    gap:11px;
+
+  }
+
+
+  .product{
+
+    border-radius:16px;
+
+  }
+
+
+  .photo{
+
+    height:135px;
+
+  }
+
+
+  .ad-image{
+
+    height:135px;
+
+  }
+
+
+  .photo:after{
+
+    width:29px;
+
+    height:29px;
+
+    top:7px;
+
+    right:7px;
+
+    font-size:17px;
+
+  }
+
+
+  .product .body{
+
+    padding:
+
+      10px
+      11px
+      12px;
+
+  }
+
+
+  .badge{
+
+    display:none;
+
+  }
+
+
+  .product h3{
+
+    min-height:34px;
+
+    margin-bottom:7px;
+
+    font-size:11px;
+
+  }
+
+
+  .price{
+
+    margin-bottom:8px;
+
+    font-size:15px;
+
+  }
+
+
+  .meta{
+
+    font-size:8px;
+
+  }
+
+
+  /* PROMO */
+
+  .promo{
+
+    margin-top:30px;
+
+    grid-template-columns:
+      1fr;
+
+    gap:15px;
+
+    padding:25px;
+
+    border-radius:20px;
+
+  }
+
+
+  .promo h2{
+
+    font-size:23px;
+
+  }
+
+
+  .promo p{
+
+    font-size:11px;
+
+  }
+
+
+  .promo .btn{
+
+    width:100%;
+
+  }
+
+
+  /* INFO */
+
+  .info-cards{
+
+    grid-template-columns:
+      1fr;
+
+    gap:10px;
+
+  }
+
+
+  .info-card{
+
+    min-height:115px;
+
+    padding:20px;
+
+  }
+
+
+  .info-card h3{
+
+    font-size:16px;
+
+  }
+
+
+  .info-card .icon{
+
+    font-size:45px;
+
+  }
+
+
+  .popular{
+
+    margin-top:30px;
+
+  }
+
+
+  .popular h2{
+
+    font-size:19px;
+
+  }
+
+
+  .search-tags{
+
+    flex-wrap:nowrap;
+
+    overflow-x:auto;
+
+    padding-bottom:6px;
+
+  }
+
+
+  .search-tags a{
+
+    flex:0 0 auto;
+
+    padding:
+
+      8px
+      15px;
+
+    font-size:10px;
+
+  }
+
+
+  footer{
+
+    padding-bottom:100px;
+
   }
 
 }
@@ -248,6 +2558,10 @@
 
 <body>
 
+
+<!-- ============================================================
+     HEADER
+============================================================ -->
 
 <header class="header">
 
@@ -264,7 +2578,7 @@
   <strong>বাজার</strong>
 
   <small>
-    স্থানীয় অনলাইন বাজার
+    LOCAL MARKETPLACE
   </small>
 
 </a>
@@ -303,8 +2617,81 @@
 </div>
 
 
+</header>
 
-<div class="container search-row">
+
+
+<main>
+
+
+<!-- ============================================================
+     HERO
+============================================================ -->
+
+<section class="container hero">
+
+
+<div class="hero-copy">
+
+
+<small>
+আপনার স্থানীয় বাজার
+</small>
+
+
+<h1>
+
+আপনার প্রয়োজনীয় সবকিছু
+
+<br>
+
+<em>
+এক জায়গায়!
+</em>
+
+</h1>
+
+
+<p>
+
+স্থানীয়ভাবে কিনুন, বিক্রি করুন এবং<br>
+
+আমাদের কমিউনিটির সাথে সংযুক্ত থাকুন।
+
+</p>
+
+
+<a
+  class="btn green"
+  href="post-ad.html">
+
+বিজ্ঞাপন দিন ＋
+
+</a>
+
+
+</div>
+
+
+
+<div class="hero-art">
+
+<div class="phone-art">
+🛒
+</div>
+
+</div>
+
+
+</section>
+
+
+
+<!-- ============================================================
+     SEARCH
+============================================================ -->
+
+<section class="container search-row">
 
 
 <form
@@ -319,13 +2706,13 @@
   id="search"
   type="search"
   autocomplete="off"
-  placeholder="কি খুঁজছেন? মোবাইল, গাড়ি, জমি, গরু, ইত্যাদি...">
+  placeholder="আপনি কি খুঁজছেন?">
 
 
 <button
   type="submit">
 
-  খুঁজুন
+🔍 খুঁজুন
 
 </button>
 
@@ -333,23 +2720,25 @@
 </form>
 
 
-</div>
-
-
-</header>
+</section>
 
 
 
-<main>
-
+<!-- ============================================================
+     LOCATION
+============================================================ -->
 
 <section class="container location">
 
-● ৪নং শাহমাহমুদপুর ইউনিয়ন, চাঁদপুর সদর, চাঁদপুর
+📍 ৪নং শাহমাহমুদপুর ইউনিয়ন, চাঁদপুর সদর, চাঁদপুর
 
 </section>
 
 
+
+<!-- ============================================================
+     QUICK ACTION
+============================================================ -->
 
 <section class="container quick">
 
@@ -397,63 +2786,9 @@
 
 
 
-<section class="container hero">
-
-
-<div class="hero-copy">
-
-<small>
-আপনার স্থানীয় বাজার
-</small>
-
-
-<h1>
-
-আপনার এলাকার<br>
-
-<em>
-কেনাকাটা
-</em>
-
-এখন আরও সহজ
-
-</h1>
-
-
-<p>
-
-স্থানীয় মানুষের সাথে সরাসরি পণ্য কেনাবেচা করুন।<br>
-
-বিজ্ঞাপন দিন, খুঁজে নিন, যোগাযোগ করুন।
-
-</p>
-
-
-<a
-  class="btn green"
-  href="post-ad.html">
-
-বিজ্ঞাপন দিন →
-
-</a>
-
-
-</div>
-
-
-
-<div class="hero-art">
-
-<div class="phone-art">
-🛒
-</div>
-
-</div>
-
-
-</section>
-
-
+<!-- ============================================================
+     CATEGORY
+============================================================ -->
 
 <section class="container section">
 
@@ -468,10 +2803,15 @@ BROWSE MARKETPLACE
 </small>
 
 <h2>
-ক্যাটাগরি
+ক্যাটাগরি সমূহ
 </h2>
 
 </div>
+
+
+<a href="search.html">
+সব দেখুন →
+</a>
 
 
 </div>
@@ -482,116 +2822,86 @@ BROWSE MARKETPLACE
 
 
 <a class="cat" href="search.html?category=Vehicles">
-<i>▱</i>
+<i>🚗</i>
 <b>যানবাহন</b>
 </a>
 
 
-<a class="cat" href="search.html?category=Phones%20%26%20Tablets">
-<i>▯</i>
-<b>মোবাইল ও ট্যাব</b>
-</a>
-
-
 <a class="cat" href="search.html?category=Property">
-<i>⌂</i>
+<i>🏠</i>
 <b>প্রপার্টি</b>
 </a>
 
 
-<a class="cat" href="search.html?category=Home%2C%20Furniture%20%26%20Garden">
-<i>▱</i>
-<b>বাসা ও আসবাব</b>
+<a class="cat" href="search.html?category=Phones%20%26%20Tablets">
+<i>📱</i>
+<b>মোবাইল ও ট্যাব</b>
 </a>
 
 
 <a class="cat" href="search.html?category=Electronics">
-<i>▭</i>
+<i>🖥️</i>
 <b>ইলেকট্রনিক্স</b>
 </a>
 
 
+<a class="cat" href="search.html?category=Home%2C%20Furniture%20%26%20Garden">
+<i>🛋️</i>
+<b>ফার্নিচার</b>
+</a>
+
+
 <a class="cat" href="search.html?category=Fashion">
-<i>♧</i>
-<b>ফ্যাশন ও বিউটি</b>
-</a>
-
-
-<a class="cat" href="search.html?category=Animals%20%26%20Pets">
-<i>♢</i>
-<b>পশুপাখি</b>
-</a>
-
-
-<a class="cat" href="search.html?category=Jobs">
-<i>▣</i>
-<b>চাকরি</b>
-</a>
-
-
-<a class="cat" href="search.html?category=Business%20%26%20Industry">
-<i>⌁</i>
-<b>ব্যবসা ও শিল্প</b>
+<i>👕</i>
+<b>ফ্যাশন</b>
 </a>
 
 
 <a class="cat" href="search.html?category=Services">
-<i>⚒</i>
-<b>সেবা</b>
+<i>🛠️</i>
+<b>সেবা সমূহ</b>
 </a>
 
 
-<a class="cat" href="search.html?category=Leisure%20%26%20Activities">
-<i>▣</i>
-<b>শিক্ষা</b>
-</a>
-
-
-<a class="cat" href="search.html?category=Leisure%20%26%20Activities">
-<i>◉</i>
-<b>খেলা-ধুলা</b>
-</a>
-
-
-<a class="cat" href="search.html?category=Food%2C%20Agriculture%20%26%20Supplies">
-<i>♧</i>
-<b>কৃষি ও বাগান</b>
-</a>
-
-
-<a class="cat" href="search.html?category=Beauty%20%26%20Personal%20Care">
-<i>♡</i>
-<b>স্বাস্থ্য ও ফিটনেস</b>
-</a>
-
-
-<a class="cat" href="search.html?category=Babies%20%26%20Kids">
-<i>◌</i>
-<b>বাচ্চা</b>
-</a>
-
-
-<a class="cat" href="search.html?category=Leisure%20%26%20Activities">
-<i>♫</i>
-<b>বিনোদন</b>
-</a>
-
-
-<a class="cat" href="search.html?category=Business%20%26%20Industry">
-<i>◇</i>
-<b>উপহার ও কালেকশন</b>
-</a>
-
-
-<a class="cat" href="search.html?category=Food%2C%20Agriculture%20%26%20Supplies">
-<i>♜</i>
-<b>খাবার ও রেস্টুরেন্ট</b>
+<a class="cat" href="search.html?category=Jobs">
+<i>💼</i>
+<b>চাকরি</b>
 </a>
 
 
 <a class="cat" href="search.html?category=Animals%20%26%20Pets">
-<i>♧</i>
-<b>পোষা প্রাণী</b>
+<i>🐄</i>
+<b>পশুপাখি</b>
+</a>
+
+
+<a class="cat" href="search.html?category=Food%2C%20Agriculture%20%26%20Supplies">
+<i>🌾</i>
+<b>কৃষি</b>
+</a>
+
+
+<a class="cat" href="search.html?category=Beauty%20%26%20Personal%20Care">
+<i>💚</i>
+<b>বিউটি</b>
+</a>
+
+
+<a class="cat" href="search.html?category=Babies%20%26%20Kids">
+<i>🧸</i>
+<b>বাচ্চাদের</b>
+</a>
+
+
+<a class="cat" href="search.html?category=Leisure%20%26%20Activities">
+<i>⚽</i>
+<b>খেলাধুলা</b>
+</a>
+
+
+<a class="cat" href="search.html?category=Business%20%26%20Industry">
+<i>🏪</i>
+<b>ব্যবসা</b>
 </a>
 
 
@@ -603,9 +2913,14 @@ BROWSE MARKETPLACE
 
 </div>
 
+
 </section>
 
 
+
+<!-- ============================================================
+     LATEST ADS
+============================================================ -->
 
 <section class="container section">
 
@@ -620,7 +2935,7 @@ JUST ARRIVED
 </small>
 
 <h2>
-সর্বশেষ বিজ্ঞাপন
+সাম্প্রতিক বিজ্ঞাপন
 </h2>
 
 </div>
@@ -640,7 +2955,9 @@ JUST ARRIVED
   class="products">
 
   <div class="ads-loading">
+
     বিজ্ঞাপন লোড হচ্ছে...
+
   </div>
 
 </div>
@@ -650,10 +2967,15 @@ JUST ARRIVED
 
 
 
+<!-- ============================================================
+     PROMO
+============================================================ -->
+
 <section class="container promo">
 
 
 <div>
+
 
 <small>
 SELL FASTER
@@ -663,6 +2985,7 @@ SELL FASTER
 <h2>
 
 আপনার পণ্যটি
+
 <em>
 আজই বিক্রি করুন।
 </em>
@@ -675,6 +2998,7 @@ SELL FASTER
 বিজ্ঞাপন দিন এবং স্থানীয় ক্রেতার সাথে সরাসরি যোগাযোগ করুন।
 
 </p>
+
 
 </div>
 
@@ -691,9 +3015,151 @@ SELL FASTER
 </section>
 
 
+
+<!-- ============================================================
+     INFO CARDS
+============================================================ -->
+
+<section class="container info-cards">
+
+
+<div class="info-card">
+
+<h3>
+বিজ্ঞাপন দিন
+</h3>
+
+<p>
+
+সহজেই কয়েক মিনিটে<br>
+
+আপনার পণ্য বিক্রির বিজ্ঞাপন দিন।
+
+</p>
+
+<div class="icon">
+➕
+</div>
+
+</div>
+
+
+
+<div class="info-card">
+
+<h3>
+নিরাপদ লেনদেন
+</h3>
+
+<p>
+
+আপনার নিরাপত্তা<br>
+
+আমাদের অগ্রাধিকার।
+
+</p>
+
+<div class="icon">
+🛡️
+</div>
+
+</div>
+
+
+
+<div class="info-card">
+
+<h3>
+আমাদের সাথে থাকুন
+</h3>
+
+<p>
+
+নতুন অফার ও আপডেট<br>
+
+সবার আগে পেতে।
+
+</p>
+
+<div class="icon">
+🔔
+</div>
+
+</div>
+
+
+</section>
+
+
+
+<!-- ============================================================
+     POPULAR SEARCH
+============================================================ -->
+
+<section class="container popular">
+
+
+<h2>
+জনপ্রিয় সার্চ
+</h2>
+
+
+<div class="search-tags">
+
+
+<a href="search.html?q=iphone">
+iphone
+</a>
+
+
+<a href="search.html?q=বাইক">
+বাইক
+</a>
+
+
+<a href="search.html?q=ফ্রিজ">
+ফ্রিজ
+</a>
+
+
+<a href="search.html?q=জমি">
+জমি
+</a>
+
+
+<a href="search.html?q=ভাড়া বাসা">
+ভাড়া বাসা
+</a>
+
+
+<a href="search.html?q=ল্যাপটপ">
+ল্যাপটপ
+</a>
+
+
+<a href="search.html?q=সোফা">
+সোফা
+</a>
+
+
+<a href="search.html?q=টিভি">
+টিভি
+</a>
+
+
+</div>
+
+
+</section>
+
+
 </main>
 
 
+
+<!-- ============================================================
+     MOBILE NAVIGATION
+============================================================ -->
 
 <nav class="mobile-nav">
 
@@ -713,7 +3179,7 @@ SELL FASTER
 
 <span>♡</span>
 
-সেভড
+সেভ করা
 
 </a>
 
@@ -731,14 +3197,15 @@ SELL FASTER
   href="messages.html"
   class="message-nav">
 
-  <span>▤</span>
+<span>▤</span>
 
-  <i
-    id="homeMessageBadge"
-    class="message-badge">
-  </i>
 
-  মেসেজ
+<i
+  id="homeMessageBadge"
+  class="message-badge">
+</i>
+
+মেসেজ
 
 </a>
 
@@ -755,6 +3222,10 @@ SELL FASTER
 </nav>
 
 
+
+<!-- ============================================================
+     FOOTER
+============================================================ -->
 
 <footer>
 
@@ -774,21 +3245,26 @@ SELL FASTER
 
 <div>
 
+
 <a href="about.html">
 আমাদের সম্পর্কে
 </a>
+
 
 <a href="contact.html">
 যোগাযোগ
 </a>
 
+
 <a href="safety.html">
 নিরাপত্তা
 </a>
 
+
 <a href="terms.html">
 শর্তাবলি
 </a>
+
 
 </div>
 
@@ -953,7 +3429,8 @@ function saveUser(user){
         "",
 
       email:
-        user.email || "",
+        user.email ||
+        "",
 
       phone:
         metadata.phone ||
@@ -1058,7 +3535,7 @@ function showLoggedIn(user){
             display:flex;
             align-items:center;
             justify-content:center;
-            color:#69f5a5;
+            color:#0b8f4b;
             font-size:15px;
           ">
 
@@ -1230,11 +3707,6 @@ async function updateMessageNotification(user){
       );
 
 
-    /* ========================================================
-       STEP 1
-       আমার সব conversations
-    ======================================================== */
-
     const conversationUrl =
 
       SB_URL +
@@ -1311,11 +3783,6 @@ async function updateMessageNotification(user){
     }
 
 
-    /* ========================================================
-       STEP 2
-       Conversation IDs
-    ======================================================== */
-
     const conversationIds =
       conversationData
 
@@ -1358,16 +3825,6 @@ async function updateMessageNotification(user){
 
         .join(",");
 
-
-    /* ========================================================
-       STEP 3
-       শুধু UNREAD messages
-       
-       ★ এখানে মূল পরিবর্তন ★
-       
-       is_read = false না হলে
-       Homepage notification-এ আসবে না।
-    ======================================================== */
 
     const messageUrl =
 
@@ -1439,11 +3896,6 @@ async function updateMessageNotification(user){
     }
 
 
-    /* ========================================================
-       STEP 4
-       প্রতিটি conversation-এর latest UNREAD message
-    ======================================================== */
-
     const latestByConversation = {};
 
 
@@ -1464,13 +3916,6 @@ async function updateMessageNotification(user){
         }
 
 
-        /*
-         * API created_at desc দিয়ে দিয়েছে।
-         *
-         * তাই প্রথম unread message-টাই
-         * latest unread message।
-         */
-
         if(
           !latestByConversation[cid]
         ){
@@ -1483,11 +3928,6 @@ async function updateMessageNotification(user){
       }
     );
 
-
-    /* ========================================================
-       STEP 5
-       আলাদা আলাদা sender count
-    ======================================================== */
 
     const incomingUsers =
       new Set();
@@ -1516,11 +3956,6 @@ async function updateMessageNotification(user){
           );
 
 
-        /*
-         * শুধু অন্য user থেকে
-         * আমার কাছে আসা unread message।
-         */
-
         if(
           sender &&
           sender !==
@@ -1541,11 +3976,6 @@ async function updateMessageNotification(user){
       }
     );
 
-
-    /* ========================================================
-       STEP 6
-       Badge
-    ======================================================== */
 
     setMessageBadge(
       incomingUsers.size
@@ -1613,10 +4043,6 @@ async function checkLogin(){
 
     }
 
-
-    /* ========================================================
-       LOCAL FALLBACK
-    ======================================================== */
 
     const saved =
       localStorage.getItem(
@@ -1852,11 +4278,7 @@ async function loadLatestAds(){
 
             `
             <div
-              class="photo"
-              style="
-                padding:0;
-                overflow:hidden;
-              ">
+              class="photo">
 
               <img
                 class="ad-image"
