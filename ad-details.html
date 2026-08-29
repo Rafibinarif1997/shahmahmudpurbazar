@@ -399,6 +399,79 @@ if(!ad){
 
 }
 
+  /* ==========================================================
+   TRACK AD VIEW
+========================================================== */
+
+try{
+
+  let viewerKey =
+    localStorage.getItem(
+      "smbazar_viewer_key"
+    );
+
+
+  if(!viewerKey){
+
+    viewerKey =
+      crypto.randomUUID();
+
+
+    localStorage.setItem(
+      "smbazar_viewer_key",
+      viewerKey
+    );
+
+  }
+
+
+  const supabaseClient =
+    window.supabaseClient;
+
+
+  if(supabaseClient){
+
+    const {
+      data,
+      error
+    } =
+      await supabaseClient.rpc(
+        "track_ad_view",
+        {
+          p_ad_id: ad.id,
+          p_viewer_key: viewerKey
+        }
+      );
+
+
+    if(error){
+
+      console.error(
+        "VIEW TRACK ERROR:",
+        error
+      );
+
+    }else{
+
+      console.log(
+        "VIEW TRACKED:",
+        data
+      );
+
+    }
+
+  }
+
+
+}catch(error){
+
+  console.error(
+    "VIEW SYSTEM ERROR:",
+    error
+  );
+
+}
+
 
 
 /* ==========================================================
