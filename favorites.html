@@ -6,28 +6,50 @@
 <meta charset="UTF-8">
 
 <meta
-name="viewport"
-content="width=device-width,initial-scale=1">
+  name="viewport"
+  content="width=device-width,initial-scale=1">
 
 <title>
 সেভ করা বিজ্ঞাপন | শাহমাহমুদপুর বাজার
 </title>
 
 <link
-rel="stylesheet"
-href="style.css">
+  rel="stylesheet"
+  href="style.css">
 
 
 <style>
 
-/* =========================
-   FAVOURITES PAGE
-========================= */
+/* ============================================================
+   RESET
+============================================================ */
 
-body{
-  background:#f7faf8;
+*{
+  box-sizing:border-box;
 }
 
+body{
+  margin:0;
+  background:#f7faf8;
+  color:#1d2923;
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  padding-bottom:90px;
+}
+
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+
+/* ============================================================
+   FAVOURITES PAGE
+============================================================ */
 
 .fav-page{
   padding:22px 16px 115px;
@@ -36,14 +58,13 @@ body{
 }
 
 
-/* =========================
+/* ============================================================
    HEADER
-========================= */
+============================================================ */
 
 .fav-hero{
 
   position:relative;
-
   overflow:hidden;
 
   padding:24px 20px;
@@ -96,9 +117,7 @@ body{
 .fav-top{
 
   display:flex;
-
   align-items:center;
-
   gap:14px;
 
 }
@@ -164,9 +183,9 @@ body{
 }
 
 
-/* =========================
+/* ============================================================
    SAVED COUNT
-========================= */
+============================================================ */
 
 .fav-info{
 
@@ -193,28 +212,28 @@ body{
 }
 
 
-/* =========================
+/* ============================================================
    PRODUCT GRID
-========================= */
+============================================================ */
 
 .products{
 
   display:grid;
 
   grid-template-columns:
-  repeat(
-    auto-fill,
-    minmax(220px,1fr)
-  );
+    repeat(
+      auto-fill,
+      minmax(220px,1fr)
+    );
 
   gap:16px;
 
 }
 
 
-/* =========================
+/* ============================================================
    PRODUCT CARD
-========================= */
+============================================================ */
 
 .product{
 
@@ -249,9 +268,9 @@ body{
 }
 
 
-/* =========================
+/* ============================================================
    IMAGE
-========================= */
+============================================================ */
 
 .photo{
 
@@ -314,9 +333,9 @@ body{
 }
 
 
-/* =========================
+/* ============================================================
    REMOVE HEART
-========================= */
+============================================================ */
 
 .fav-remove{
 
@@ -344,7 +363,7 @@ body{
 
   color:#ed3e5f;
 
-  font-size:18px;
+  font-size:20px;
 
   cursor:pointer;
 
@@ -364,9 +383,9 @@ body{
 }
 
 
-/* =========================
+/* ============================================================
    CARD BODY
-========================= */
+============================================================ */
 
 .product .body{
 
@@ -467,9 +486,9 @@ body{
 }
 
 
-/* =========================
+/* ============================================================
    LOADING
-========================= */
+============================================================ */
 
 .fav-loading{
 
@@ -492,9 +511,9 @@ body{
 }
 
 
-/* =========================
+/* ============================================================
    EMPTY STATE
-========================= */
+============================================================ */
 
 .fav-empty{
 
@@ -569,7 +588,6 @@ body{
   display:inline-flex;
 
   align-items:center;
-
   justify-content:center;
 
   margin-top:18px;
@@ -586,21 +604,138 @@ body{
 
   font-weight:800;
 
-  text-decoration:none;
+}
+
+
+/* ============================================================
+   MOBILE NAVIGATION
+============================================================ */
+
+.mobile-nav{
+
+  position:fixed;
+
+  left:0;
+  right:0;
+  bottom:0;
+
+  z-index:9999;
+
+  height:72px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-around;
+
+  padding-bottom:
+    env(safe-area-inset-bottom);
+
+  border-top:
+    1px solid #e8eeea;
+
+  background:
+    rgba(255,255,255,.97);
+
+  box-shadow:
+    0 -8px 25px
+    rgba(0,0,0,.05);
 
 }
 
 
-/* =========================
+.mobile-nav a{
+
+  min-width:55px;
+
+  display:flex;
+
+  flex-direction:column;
+
+  align-items:center;
+
+  justify-content:center;
+
+  gap:3px;
+
+  color:#657169;
+
+  font-size:8px;
+
+  font-weight:700;
+
+}
+
+
+.mobile-nav a span{
+
+  font-size:22px;
+
+  line-height:1;
+
+}
+
+
+.mobile-nav a.active{
+
+  color:#0b8f4b;
+
+}
+
+
+.mobile-nav a:nth-child(3) span{
+
+  width:48px;
+
+  height:48px;
+
+  margin-top:-28px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  border-radius:50%;
+
+  color:#fff;
+
+  background:
+
+    linear-gradient(
+      135deg,
+      #10a85d,
+      #05733b
+    );
+
+  font-size:30px;
+
+  box-shadow:
+    0 8px 20px
+    rgba(11,143,75,.25);
+
+}
+
+
+/* ============================================================
    MOBILE
-========================= */
+============================================================ */
 
 @media(max-width:600px){
 
+  body{
+    padding-bottom:78px;
+  }
+
+
   .fav-page{
+
     padding:
       18px 12px
       105px;
+
   }
 
 
@@ -654,7 +789,7 @@ body{
   .products{
 
     grid-template-columns:
-    repeat(2,minmax(0,1fr));
+      repeat(2,minmax(0,1fr));
 
     gap:10px;
 
@@ -731,8 +866,25 @@ body{
     top:7px;
     right:7px;
 
-    font-size:15px;
+    font-size:17px;
 
+  }
+
+}
+
+
+/* ============================================================
+   DESKTOP
+============================================================ */
+
+@media(min-width:768px){
+
+  .mobile-nav{
+    display:none;
+  }
+
+  body{
+    padding-bottom:0;
   }
 
 }
@@ -772,11 +924,10 @@ body{
 
 
 <div
-id="favCount"
-class="fav-info">
+  id="favCount"
+  class="fav-info">
 
-♡
-বিজ্ঞাপন লোড হচ্ছে...
+♡ বিজ্ঞাপন লোড হচ্ছে...
 
 </div>
 
@@ -785,8 +936,8 @@ class="fav-info">
 
 
 <div
-id="list"
-class="products">
+  id="list"
+  class="products">
 
 <div class="fav-loading">
 
@@ -801,11 +952,6 @@ class="products">
 
 
 
-<!-- =========================
-     MOBILE NAVIGATION
-     SAME AS HOMEPAGE
-========================= -->
-
 <nav class="mobile-nav">
 
 
@@ -819,8 +965,8 @@ class="products">
 
 
 <a
-class="active"
-href="favorites.html">
+  class="active"
+  href="favorites.html">
 
 <span>♡</span>
 
@@ -912,37 +1058,30 @@ function money(value){
 }
 
 
+/* ============================================================
+   FAVORITES STORAGE
+============================================================ */
+
 function getFavorites(){
 
   try{
 
     const favorites =
-
       JSON.parse(
-
-        localStorage.getItem(
-          "smb_fav"
-        ) || "[]"
-
+        localStorage.getItem("smb_fav") ||
+        "[]"
       );
 
 
-    if(
-      Array.isArray(favorites)
-    ){
+    if(Array.isArray(favorites)){
 
       return favorites.map(
-
         function(id){
-
           return String(id);
-
         }
-
       );
 
     }
-
 
   }catch(error){
 
@@ -965,35 +1104,34 @@ function saveFavorites(favorites){
 
     "smb_fav",
 
-    JSON.stringify(favorites)
+    JSON.stringify(
+      favorites.map(String)
+    )
 
   );
 
 }
 
 
+/* ============================================================
+   IMAGE
+============================================================ */
+
 function firstImage(ad){
 
   if(
-
     Array.isArray(ad.image_urls) &&
-
     ad.image_urls.length
-
   ){
 
-    return ad.image_urls[0];
+    return ad.image_urls[0] || "";
 
   }
 
 
   if(
-
-    typeof ad.image_urls ===
-    "string" &&
-
+    typeof ad.image_urls === "string" &&
     ad.image_urls.trim()
-
   ){
 
     let value =
@@ -1007,7 +1145,8 @@ function firstImage(ad){
 
 
       if(
-        Array.isArray(parsed)
+        Array.isArray(parsed) &&
+        parsed.length
       ){
 
         return parsed[0] || "";
@@ -1018,20 +1157,24 @@ function firstImage(ad){
 
 
     if(
-
       value.startsWith("{") &&
-
       value.endsWith("}")
-
     ){
 
-      value =
-
+      const items =
         value
         .slice(1,-1)
-        .split(",")[0]
-        .replace(/^"/,"")
-        .replace(/"$/,"");
+        .split(",");
+
+
+      if(items.length){
+
+        return items[0]
+          .trim()
+          .replace(/^"/,"")
+          .replace(/"$/,"");
+
+      }
 
     }
 
@@ -1045,6 +1188,10 @@ function firstImage(ad){
 
 }
 
+
+/* ============================================================
+   COUNT
+============================================================ */
 
 function updateCount(count){
 
@@ -1065,12 +1212,16 @@ function updateCount(count){
 
     "♥ " +
 
-    count +
+    Number(count).toLocaleString("bn-BD") +
 
     " টি সেভ করা বিজ্ঞাপন";
 
 }
 
+
+/* ============================================================
+   EMPTY
+============================================================ */
 
 function showEmpty(){
 
@@ -1090,9 +1241,8 @@ function showEmpty(){
       </h3>
 
       <p>
-        পছন্দের বিজ্ঞাপনের
-        হার্ট আইকনে চাপ দিয়ে
-        এখানে সেভ করে রাখুন।
+        পছন্দের বিজ্ঞাপনের হার্ট আইকনে
+        চাপ দিয়ে এখানে সেভ করে রাখুন।
       </p>
 
       <a href="index.html">
@@ -1106,6 +1256,10 @@ function showEmpty(){
 }
 
 
+/* ============================================================
+   REMOVE FAVORITE
+============================================================ */
+
 function removeFavorite(id){
 
   const favorites =
@@ -1113,26 +1267,34 @@ function removeFavorite(id){
 
 
   const updated =
-
     favorites.filter(
-
       function(favId){
 
         return String(favId) !==
-        String(id);
+          String(id);
 
       }
-
     );
 
 
   saveFavorites(updated);
 
-
   loadFavorites();
 
 }
 
+
+window.removeFav =
+  function(id){
+
+    removeFavorite(id);
+
+  };
+
+
+/* ============================================================
+   LOAD FAVORITES
+============================================================ */
 
 async function loadFavorites(){
 
@@ -1182,30 +1344,31 @@ async function loadFavorites(){
       "&order=created_at.desc";
 
 
+    const headers = {
+
+      "apikey":SB_KEY,
+
+      "Content-Type":
+        "application/json"
+
+    };
+
+
+    if(SB_KEY){
+
+      headers.Authorization =
+        "Bearer " + SB_KEY;
+
+    }
+
+
     const response =
-
       await fetch(
-
         url,
-
         {
-
           method:"GET",
-
-          headers:{
-
-            "apikey":SB_KEY,
-
-            "Authorization":
-              "Bearer " + SB_KEY,
-
-            "Content-Type":
-              "application/json"
-
-          }
-
+          headers:headers
         }
-
       );
 
 
@@ -1223,19 +1386,14 @@ async function loadFavorites(){
 
 
     const favoriteAds =
-
       ads.filter(
-
         function(ad){
 
           return favoriteIds.includes(
-
             String(ad.id)
-
           );
 
         }
-
       );
 
 
@@ -1256,7 +1414,6 @@ async function loadFavorites(){
     list.innerHTML =
 
       favoriteAds.map(
-
         function(ad){
 
 
@@ -1275,18 +1432,13 @@ async function loadFavorites(){
             <div class="photo">
 
               <img
-
                 class="ad-image"
-
                 src="${escapeHtml(image)}"
-
                 alt="${escapeHtml(
                   ad.title ||
                   "বিজ্ঞাপন"
                 )}"
-
                 loading="lazy"
-
               >
 
             </div>
@@ -1297,8 +1449,7 @@ async function loadFavorites(){
 
             `
 
-            <div
-            class="photo ad-image-placeholder">
+            <div class="photo ad-image-placeholder">
 
               কোনো ছবি নেই
 
@@ -1307,94 +1458,76 @@ async function loadFavorites(){
             `;
 
 
+          const safeId =
+            String(ad.id)
+            .replace(/'/g,"\\'");
+
+
           return `
 
-          <article
-          class="product">
+            <article
+              class="product">
+
+              <button
+                class="fav-remove"
+                type="button"
+                data-id="${escapeHtml(ad.id)}"
+                aria-label="Favorite থেকে সরান">
+
+                ♥
+
+              </button>
 
 
-            <button
+              <div
+                class="product-content"
+                data-ad-id="${escapeHtml(ad.id)}"
+                style="cursor:pointer">
 
-              class="fav-remove"
-
-              type="button"
-
-              onclick="event.stopPropagation(); removeFav('${escapeHtml(ad.id)}')"
-
-              aria-label="Favorite থেকে সরান"
-
-            >
-
-              ♥
+                ${photo}
 
 
-            </button>
+                <div class="body">
 
 
+                  <span class="badge">
 
-            <div
+                    ${escapeHtml(
+                      ad.category ||
+                      "বিজ্ঞাপন"
+                    )}
 
-              onclick="window.location.href='ad-details.html?id=${encodeURIComponent(ad.id)}'"
-
-              style="cursor:pointer"
-
-            >
-
-
-              ${photo}
+                  </span>
 
 
+                  <h3>
 
-              <div class="body">
+                    ${escapeHtml(
+                      ad.title ||
+                      "শিরোনাম নেই"
+                    )}
 
-
-                <span class="badge">
-
-                  ${escapeHtml(
-
-                    ad.category ||
-
-                    "বিজ্ঞাপন"
-
-                  )}
-
-                </span>
+                  </h3>
 
 
+                  <div class="price">
 
-                <h3>
+                    ${money(ad.price)}
 
-                  ${escapeHtml(
-
-                    ad.title ||
-
-                    "শিরোনাম নেই"
-
-                  )}
-
-                </h3>
+                  </div>
 
 
+                  <div class="meta">
 
-                <div class="price">
+                    📍
 
-                  ${money(ad.price)}
+                    ${escapeHtml(
+                      ad.location ||
+                      "লোকেশন উল্লেখ নেই"
+                    )}
 
-                </div>
+                  </div>
 
-
-
-                <div class="meta">
-
-                  📍
-
-                  ${escapeHtml(
-
-                    ad.location ||
-
-                    "লোকেশন উল্লেখ নেই"
-
-                  )}
 
                 </div>
 
@@ -1402,34 +1535,79 @@ async function loadFavorites(){
               </div>
 
 
-            </div>
-
-
-          </article>
+            </article>
 
           `;
 
         }
-
       ).join("");
+
+
+    /* REMOVE BUTTON EVENTS */
+
+    document
+      .querySelectorAll(".fav-remove")
+      .forEach(
+        function(button){
+
+          button.addEventListener(
+            "click",
+            function(event){
+
+              event.preventDefault();
+
+              event.stopPropagation();
+
+              const id =
+                button.dataset.id;
+
+              removeFavorite(id);
+
+            }
+          );
+
+        }
+      );
+
+
+    /* CARD CLICK EVENTS */
+
+    document
+      .querySelectorAll(".product-content")
+      .forEach(
+        function(card){
+
+          card.addEventListener(
+            "click",
+            function(){
+
+              const id =
+                card.dataset.adId;
+
+
+              window.location.href =
+                "ad-details.html?id=" +
+                encodeURIComponent(id);
+
+            }
+          );
+
+        }
+      );
 
 
   }catch(error){
 
 
     console.error(
-
       "Favorite load error:",
-
       error
-
     );
 
 
     list.innerHTML = `
 
       <div class="fav-empty">
-
 
         <div class="fav-empty-icon">
 
@@ -1459,24 +1637,18 @@ async function loadFavorites(){
 
         </a>
 
-
       </div>
 
     `;
 
   }
 
-
 }
 
 
-window.removeFav =
-function(id){
-
-  removeFavorite(id);
-
-};
-
+/* ============================================================
+   START
+============================================================ */
 
 loadFavorites();
 
