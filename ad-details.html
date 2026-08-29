@@ -81,6 +81,12 @@
   color:#69f5a5;
   font-size:26px;
   font-weight:900;
+  margin-bottom:12px;
+}
+
+.view-count{
+  color:#819089;
+  font-size:11px;
   margin-bottom:22px;
 }
 
@@ -396,6 +402,114 @@ if(!ad){
 
 
 /* ==========================================================
+   VIEW TRACKING
+========================================================== */
+
+function getViewerKey(){
+
+  let viewerKey =
+    localStorage.getItem(
+      "smbazar_viewer_key"
+    );
+
+
+  if(!viewerKey){
+
+    viewerKey =
+      crypto.randomUUID
+      ?
+
+      crypto.randomUUID()
+
+      :
+
+      Date.now().toString(36) +
+      Math.random()
+      .toString(36)
+      .substring(2);
+
+
+    localStorage.setItem(
+      "smbazar_viewer_key",
+      viewerKey
+    );
+
+  }
+
+
+  return viewerKey;
+
+}
+
+
+try{
+
+  const viewerKey =
+    getViewerKey();
+
+
+  if(
+    window.supabaseClient
+  ){
+
+    const {
+      error
+    } =
+    await window.supabaseClient.rpc(
+      "track_ad_view",
+      {
+        p_ad_id:
+          ad.id,
+
+        p_viewer_key:
+          viewerKey
+      }
+    );
+
+
+    if(error){
+
+      console.error(
+        "VIEW TRACK ERROR:",
+        error
+      );
+
+    }
+
+
+    /*
+      নতুন view count পাওয়ার জন্য
+      আবার ad reload করা হচ্ছে
+    */
+
+    const updatedAd =
+      await window.getAdById(
+        adId
+      );
+
+
+    if(updatedAd){
+
+      ad =
+        updatedAd;
+
+    }
+
+  }
+
+
+}catch(error){
+
+  console.error(
+    "VIEW TRACKING ERROR:",
+    error
+  );
+
+}
+
+
+
+/* ==========================================================
    DATA
 ========================================================== */
 
@@ -437,6 +551,12 @@ const seller =
   ad.name ||
   ad.seller_email ||
   "বিক্রেতা";
+
+
+const views =
+  Number(
+    ad.views || 0
+  );
 
 
 
@@ -621,7 +741,9 @@ if(phone){
   phoneArea = `
 
     <p class="muted">
+
       বিক্রেতা কোনো ফোন নম্বর দেননি।
+
     </p>
 
   `;
@@ -652,7 +774,9 @@ detail.innerHTML = `
     ?
 
     `<span class="subcategory">
+
       • ${escapeHtml(subcategory)}
+
     </span>`
 
     :
@@ -671,6 +795,13 @@ detail.innerHTML = `
   <div class="detail-price">
 
     ${money(ad.price)}
+
+  </div>
+
+
+  <div class="view-count">
+
+    👁 ${views} বার দেখা হয়েছে
 
   </div>
 
@@ -841,11 +972,6 @@ if(copyButton){
 
       }catch(error){
 
-        /*
-         * Clipboard API কাজ না করলে
-         * fallback
-         */
-
         try{
 
           const input =
@@ -853,18 +979,23 @@ if(copyButton){
               "input"
             );
 
+
           input.value =
             phone;
+
 
           document.body.appendChild(
             input
           );
 
+
           input.select();
+
 
           document.execCommand(
             "copy"
           );
+
 
           input.remove();
 
@@ -872,8 +1003,10 @@ if(copyButton){
           copyMessage.textContent =
             "✓ মোবাইল নম্বর কপি হয়েছে";
 
+
           copyButton.textContent =
             "✓ কপি হয়েছে";
+
 
         }catch(e){
 
