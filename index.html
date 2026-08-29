@@ -78,7 +78,6 @@ body{
   color:var(--text);
 
   font-family:
-
     system-ui,
     -apple-system,
     BlinkMacSystemFont,
@@ -91,11 +90,8 @@ body{
 
 
 a{
-
   text-decoration:none;
-
   color:inherit;
-
 }
 
 
@@ -121,7 +117,7 @@ a{
   z-index:100;
 
   background:
-    rgba(255,255,255,.92);
+    rgba(255,255,255,.94);
 
   backdrop-filter:
     blur(18px);
@@ -134,7 +130,7 @@ a{
 
 .topbar{
 
-  min-height:88px;
+  min-height:76px;
 
   display:flex;
 
@@ -285,7 +281,17 @@ a{
 }
 
 
+/* LOGIN BUTTON WITH MAN ICON */
+
 .login-link{
+
+  display:inline-flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  gap:8px;
 
   padding:12px 20px;
 
@@ -311,6 +317,17 @@ a{
 }
 
 
+.login-link:before{
+
+  content:"👤";
+
+  font-size:15px;
+
+  line-height:1;
+
+}
+
+
 .login-link:hover{
 
   transform:
@@ -330,7 +347,6 @@ a{
   padding:6px 11px 6px 7px;
 
   border:
-
     1px solid
     var(--border);
 
@@ -407,10 +423,7 @@ a{
 @keyframes smbSpin{
 
   to{
-
-    transform:
-      rotate(360deg);
-
+    transform:rotate(360deg);
   }
 
 }
@@ -424,9 +437,9 @@ a{
 
   position:relative;
 
-  width:45px;
+  width:42px;
 
-  height:45px;
+  height:42px;
 
   display:flex;
 
@@ -438,13 +451,13 @@ a{
     1px solid
     var(--border);
 
-  border-radius:14px;
+  border-radius:13px;
 
   background:#fff;
 
   color:#27352e;
 
-  font-size:20px;
+  font-size:19px;
 
   box-shadow:
     0 4px 16px
@@ -491,28 +504,28 @@ a{
 
 
 /* ============================================================
-   HERO
+   HERO - COMPACT
 ============================================================ */
 
 .hero{
 
-  margin-top:30px;
+  margin-top:20px;
 
-  min-height:330px;
+  min-height:250px;
 
   overflow:hidden;
 
   display:grid;
 
   grid-template-columns:
-    1fr
-    1fr;
+    1.2fr
+    .8fr;
 
   align-items:center;
 
-  border-radius:28px;
+  border-radius:24px;
 
-  padding:45px 55px;
+  padding:28px 42px;
 
   position:relative;
 
@@ -561,13 +574,13 @@ a{
 
   color:var(--green);
 
-  font-size:11px;
+  font-size:10px;
 
   font-weight:900;
 
   letter-spacing:1px;
 
-  margin-bottom:10px;
+  margin-bottom:5px;
 
 }
 
@@ -576,13 +589,13 @@ a{
 
   margin:0;
 
-  max-width:520px;
+  max-width:540px;
 
-  font-size:43px;
+  font-size:37px;
 
-  line-height:1.25;
+  line-height:1.18;
 
-  letter-spacing:-1.5px;
+  letter-spacing:-1.2px;
 
   font-weight:900;
 
@@ -603,16 +616,15 @@ a{
 .hero p{
 
   margin:
-
-    18px
+    10px
     0
-    25px;
+    15px;
 
   color:#66736c;
 
-  font-size:15px;
+  font-size:13px;
 
-  line-height:1.8;
+  line-height:1.55;
 
 }
 
@@ -628,13 +640,12 @@ a{
   gap:8px;
 
   padding:
+    11px
+    18px;
 
-    13px
-    22px;
+  border-radius:12px;
 
-  border-radius:13px;
-
-  font-size:13px;
+  font-size:12px;
 
   font-weight:800;
 
@@ -655,8 +666,8 @@ a{
     );
 
   box-shadow:
-    0 10px 25px
-    rgba(11,143,75,.2);
+    0 10px 22px
+    rgba(11,143,75,.18);
 
 }
 
@@ -670,14 +681,14 @@ a{
 
 
 /* ============================================================
-   HERO SHOP ART
+   HERO SHOP ART - SMALLER
 ============================================================ */
 
 .hero-art{
 
   height:100%;
 
-  min-height:250px;
+  min-height:190px;
 
   display:flex;
 
@@ -696,9 +707,9 @@ a{
 
   position:absolute;
 
-  width:260px;
+  width:190px;
 
-  height:260px;
+  height:190px;
 
   border-radius:50%;
 
@@ -721,11 +732,11 @@ a{
 
   z-index:2;
 
-  font-size:160px;
+  font-size:115px;
 
   filter:
     drop-shadow(
-      0 18px 15px
+      0 14px 12px
       rgba(0,0,0,.12)
     );
 
@@ -738,13 +749,13 @@ a{
 
   right:10px;
 
-  bottom:15px;
+  bottom:8px;
 
   z-index:3;
 
-  width:58px;
+  width:48px;
 
-  height:58px;
+  height:48px;
 
   display:flex;
 
@@ -752,14 +763,14 @@ a{
 
   justify-content:center;
 
-  border-radius:18px;
+  border-radius:15px;
 
   background:#fff;
 
-  font-size:28px;
+  font-size:23px;
 
   box-shadow:
-    0 12px 25px
+    0 10px 22px
     rgba(0,0,0,.12);
 
 }
@@ -771,14 +782,14 @@ a{
 
 .search-row{
 
-  margin-top:26px;
+  margin-top:16px;
 
 }
 
 
 .search{
 
-  min-height:74px;
+  min-height:64px;
 
   display:flex;
 
@@ -787,31 +798,31 @@ a{
   gap:15px;
 
   padding:
-
+    8px
     10px
-    12px
-    10px
-    22px;
+    8px
+    20px;
 
   border:
     1px solid
     var(--border);
 
-  border-radius:22px;
+  border-radius:18px;
 
   background:#fff;
 
   box-shadow:
-    var(--shadow);
+    0 6px 22px
+    rgba(30,55,42,.07);
 
 }
 
 
 .search > span{
 
-  font-size:30px;
+  font-size:26px;
 
-  color:#68756e;
+  color:#55635b;
 
 }
 
@@ -826,18 +837,26 @@ a{
 
   outline:0;
 
-  background:transparent;
+  background:#fff;
 
-  color:#27352e;
+  color:#111b15;
 
   font-size:15px;
+
+  font-weight:600;
+
+  caret-color:var(--green);
 
 }
 
 
 .search input::placeholder{
 
-  color:#a0aaa4;
+  color:#7d8981;
+
+  opacity:1;
+
+  font-weight:500;
 
 }
 
@@ -847,17 +866,18 @@ a{
   content:"⌖ আপনার এলাকা";
 
   padding:
-
     0
-    25px;
+    20px;
 
   border-left:
     1px solid
     var(--border);
 
-  color:#66736c;
+  color:#59675f;
 
-  font-size:13px;
+  font-size:12px;
+
+  font-weight:700;
 
   white-space:nowrap;
 
@@ -868,11 +888,11 @@ a{
 
   border:0;
 
-  min-width:120px;
+  min-width:110px;
 
-  height:52px;
+  height:48px;
 
-  border-radius:15px;
+  border-radius:13px;
 
   color:#fff;
 
@@ -885,7 +905,7 @@ a{
       #05743a
     );
 
-  font-size:14px;
+  font-size:13px;
 
   font-weight:800;
 
@@ -898,20 +918,13 @@ a{
 
 .location{
 
-  margin-top:20px;
+  margin-top:12px;
 
   color:#748078;
 
-  font-size:12px;
+  font-size:11px;
 
   text-align:center;
-
-}
-
-
-.location::first-letter{
-
-  color:var(--green);
 
 }
 
@@ -927,9 +940,9 @@ a{
   grid-template-columns:
     repeat(2,1fr);
 
-  gap:15px;
+  gap:12px;
 
-  margin-top:28px;
+  margin-top:18px;
 
 }
 
@@ -940,30 +953,30 @@ a{
 
   align-items:center;
 
-  gap:14px;
+  gap:12px;
 
-  padding:18px 20px;
+  padding:14px 17px;
 
   border:
     1px solid
     var(--border);
 
-  border-radius:18px;
+  border-radius:16px;
 
   background:#fff;
 
   box-shadow:
-    0 6px 20px
-    rgba(0,0,0,.04);
+    0 5px 16px
+    rgba(0,0,0,.035);
 
 }
 
 
 .quick a span{
 
-  width:44px;
+  width:40px;
 
-  height:44px;
+  height:40px;
 
   display:flex;
 
@@ -971,13 +984,13 @@ a{
 
   justify-content:center;
 
-  border-radius:13px;
+  border-radius:12px;
 
   background:#eaf8ef;
 
   color:var(--green);
 
-  font-size:24px;
+  font-size:22px;
 
   font-weight:800;
 
@@ -997,7 +1010,7 @@ a{
 
   color:#26342d;
 
-  font-size:14px;
+  font-size:13px;
 
 }
 
@@ -1006,11 +1019,11 @@ a{
 
   display:block;
 
-  margin-top:4px;
+  margin-top:2px;
 
   color:#87918b;
 
-  font-size:10px;
+  font-size:9px;
 
 }
 
@@ -1021,7 +1034,7 @@ a{
 
 .section{
 
-  margin-top:42px;
+  margin-top:28px;
 
 }
 
@@ -1034,7 +1047,7 @@ a{
 
   justify-content:space-between;
 
-  margin-bottom:20px;
+  margin-bottom:14px;
 
 }
 
@@ -1045,13 +1058,13 @@ a{
 
   color:var(--green);
 
-  font-size:9px;
+  font-size:8px;
 
   font-weight:900;
 
   letter-spacing:1.5px;
 
-  margin-bottom:5px;
+  margin-bottom:3px;
 
 }
 
@@ -1060,7 +1073,7 @@ a{
 
   margin:0;
 
-  font-size:25px;
+  font-size:23px;
 
   font-weight:900;
 
@@ -1091,14 +1104,14 @@ a{
   grid-template-columns:
     repeat(8,1fr);
 
-  gap:12px;
+  gap:10px;
 
 }
 
 
 .cat{
 
-  min-height:125px;
+  min-height:108px;
 
   display:flex;
 
@@ -1108,21 +1121,21 @@ a{
 
   justify-content:center;
 
-  gap:13px;
+  gap:10px;
 
-  padding:12px 8px;
+  padding:10px 7px;
 
   border:
     1px solid
     var(--border);
 
-  border-radius:20px;
+  border-radius:18px;
 
   background:#fff;
 
   box-shadow:
-    0 5px 18px
-    rgba(0,0,0,.035);
+    0 5px 15px
+    rgba(0,0,0,.03);
 
   transition:.2s;
 
@@ -1137,18 +1150,14 @@ a{
   border-color:
     rgba(11,143,75,.25);
 
-  box-shadow:
-    0 12px 25px
-    rgba(11,143,75,.1);
-
 }
 
 
 .cat i{
 
-  width:48px;
+  width:43px;
 
-  height:48px;
+  height:43px;
 
   display:flex;
 
@@ -1156,7 +1165,7 @@ a{
 
   justify-content:center;
 
-  border-radius:15px;
+  border-radius:13px;
 
   background:
     linear-gradient(
@@ -1167,7 +1176,7 @@ a{
 
   color:var(--green);
 
-  font-size:27px;
+  font-size:24px;
 
   font-style:normal;
 
@@ -1178,7 +1187,7 @@ a{
 
   color:#344039;
 
-  font-size:11px;
+  font-size:10px;
 
   text-align:center;
 
@@ -1196,7 +1205,7 @@ a{
   grid-template-columns:
     repeat(4,1fr);
 
-  gap:18px;
+  gap:16px;
 
 }
 
@@ -1211,13 +1220,13 @@ a{
     1px solid
     var(--border);
 
-  border-radius:20px;
+  border-radius:18px;
 
   background:#fff;
 
   box-shadow:
-    0 6px 20px
-    rgba(0,0,0,.045);
+    0 6px 18px
+    rgba(0,0,0,.04);
 
   transition:.25s;
 
@@ -1230,8 +1239,8 @@ a{
     translateY(-5px);
 
   box-shadow:
-    0 15px 35px
-    rgba(0,0,0,.09);
+    0 15px 30px
+    rgba(0,0,0,.08);
 
 }
 
@@ -1240,7 +1249,7 @@ a{
 
   position:relative;
 
-  height:180px;
+  height:170px;
 
   background:#f1f5f2;
 
@@ -1253,13 +1262,13 @@ a{
 
   position:absolute;
 
-  top:10px;
+  top:9px;
 
-  right:10px;
+  right:9px;
 
-  width:36px;
+  width:34px;
 
-  height:36px;
+  height:34px;
 
   display:flex;
 
@@ -1274,7 +1283,7 @@ a{
 
   color:#6d7771;
 
-  font-size:21px;
+  font-size:19px;
 
   box-shadow:
     0 4px 10px
@@ -1287,7 +1296,7 @@ a{
 
   width:100%;
 
-  height:180px;
+  height:170px;
 
   object-fit:cover;
 
@@ -1298,7 +1307,7 @@ a{
 
 .ad-image-placeholder{
 
-  min-height:180px;
+  min-height:170px;
 
   display:flex;
 
@@ -1323,10 +1332,9 @@ a{
 .product .body{
 
   padding:
-
-    14px
-    15px
-    16px;
+    12px
+    13px
+    14px;
 
 }
 
@@ -1336,11 +1344,10 @@ a{
   display:inline-flex;
 
   padding:
+    3px
+    7px;
 
-    4px
-    8px;
-
-  margin-bottom:8px;
+  margin-bottom:6px;
 
   border-radius:7px;
 
@@ -1358,16 +1365,15 @@ a{
 .product h3{
 
   margin:
-
     0
     0
-    10px;
+    8px;
 
-  min-height:38px;
+  min-height:35px;
 
   color:#2a3730;
 
-  font-size:14px;
+  font-size:13px;
 
   line-height:1.4;
 
@@ -1376,11 +1382,11 @@ a{
 
 .price{
 
-  margin-bottom:12px;
+  margin-bottom:9px;
 
   color:var(--green);
 
-  font-size:18px;
+  font-size:17px;
 
   font-weight:900;
 
@@ -1391,7 +1397,7 @@ a{
 
   color:#8a948e;
 
-  font-size:10px;
+  font-size:9px;
 
 }
 
@@ -1401,7 +1407,7 @@ a{
 
   grid-column:1/-1;
 
-  padding:55px 20px;
+  padding:45px 20px;
 
   text-align:center;
 
@@ -1409,7 +1415,7 @@ a{
     1px dashed
     #dbe5de;
 
-  border-radius:20px;
+  border-radius:18px;
 
   color:#87918b;
 
@@ -1424,7 +1430,7 @@ a{
 
 .promo{
 
-  margin-top:40px;
+  margin-top:30px;
 
   display:grid;
 
@@ -1434,14 +1440,13 @@ a{
 
   align-items:center;
 
-  gap:30px;
+  gap:25px;
 
   padding:
+    28px
+    38px;
 
-    38px
-    45px;
-
-  border-radius:25px;
+  border-radius:22px;
 
   overflow:hidden;
 
@@ -1466,12 +1471,12 @@ a{
 
   right:8%;
 
-  top:-30px;
+  top:-35px;
 
   color:
     rgba(11,143,75,.08);
 
-  font-size:160px;
+  font-size:140px;
 
 }
 
@@ -1480,7 +1485,7 @@ a{
 
   color:var(--green);
 
-  font-size:10px;
+  font-size:9px;
 
   font-weight:900;
 
@@ -1492,14 +1497,13 @@ a{
 .promo h2{
 
   margin:
-
-    8px
+    5px
     0
-    8px;
+    5px;
 
-  font-size:30px;
+  font-size:27px;
 
-  line-height:1.3;
+  line-height:1.25;
 
 }
 
@@ -1519,7 +1523,7 @@ a{
 
   color:#6e7972;
 
-  font-size:13px;
+  font-size:12px;
 
 }
 
@@ -1530,25 +1534,25 @@ a{
 
 .info-cards{
 
-  margin-top:25px;
+  margin-top:18px;
 
   display:grid;
 
   grid-template-columns:
     repeat(3,1fr);
 
-  gap:16px;
+  gap:14px;
 
 }
 
 
 .info-card{
 
-  min-height:145px;
+  min-height:125px;
 
-  padding:25px;
+  padding:20px;
 
-  border-radius:22px;
+  border-radius:20px;
 
   position:relative;
 
@@ -1559,9 +1563,9 @@ a{
 
 .info-card h3{
 
-  margin:0 0 8px;
+  margin:0 0 6px;
 
-  font-size:19px;
+  font-size:17px;
 
 }
 
@@ -1570,9 +1574,9 @@ a{
 
   margin:0;
 
-  font-size:12px;
+  font-size:11px;
 
-  line-height:1.7;
+  line-height:1.6;
 
 }
 
@@ -1617,11 +1621,11 @@ a{
 
   position:absolute;
 
-  right:20px;
+  right:18px;
 
-  bottom:10px;
+  bottom:8px;
 
-  font-size:55px;
+  font-size:48px;
 
   opacity:.9;
 
@@ -1634,16 +1638,16 @@ a{
 
 .popular{
 
-  margin-top:38px;
+  margin-top:28px;
 
 }
 
 
 .popular h2{
 
-  margin:0 0 16px;
+  margin:0 0 12px;
 
-  font-size:22px;
+  font-size:20px;
 
 }
 
@@ -1654,7 +1658,7 @@ a{
 
   flex-wrap:wrap;
 
-  gap:10px;
+  gap:8px;
 
 }
 
@@ -1662,9 +1666,8 @@ a{
 .search-tags a{
 
   padding:
-
-    10px
-    18px;
+    8px
+    15px;
 
   border:
     1px solid
@@ -1676,7 +1679,7 @@ a{
 
   color:#59655e;
 
-  font-size:12px;
+  font-size:11px;
 
   font-weight:700;
 
@@ -1689,13 +1692,12 @@ a{
 
 footer{
 
-  margin-top:50px;
+  margin-top:35px;
 
   padding:
-
-    35px
+    28px
     0
-    120px;
+    105px;
 
   border-top:
     1px solid
@@ -1716,14 +1718,14 @@ footer{
 
   text-align:center;
 
-  gap:12px;
+  gap:9px;
 
 }
 
 
 .foot > b{
 
-  font-size:18px;
+  font-size:17px;
 
   color:#26352d;
 
@@ -1734,7 +1736,7 @@ footer{
 
   color:#7c8780;
 
-  font-size:11px;
+  font-size:10px;
 
 }
 
@@ -1747,7 +1749,7 @@ footer{
 
   justify-content:center;
 
-  gap:18px;
+  gap:16px;
 
 }
 
@@ -1756,7 +1758,7 @@ footer{
 
   color:#68736d;
 
-  font-size:11px;
+  font-size:10px;
 
 }
 
@@ -1765,7 +1767,7 @@ footer{
 
   color:#a0a9a3;
 
-  font-size:10px;
+  font-size:9px;
 
 }
 
@@ -1786,7 +1788,7 @@ footer{
 
   z-index:200;
 
-  height:78px;
+  height:72px;
 
   display:flex;
 
@@ -1828,11 +1830,11 @@ footer{
 
   justify-content:center;
 
-  gap:4px;
+  gap:3px;
 
   color:#7c8780;
 
-  font-size:9px;
+  font-size:8px;
 
   font-weight:700;
 
@@ -1841,7 +1843,7 @@ footer{
 
 .mobile-nav a span{
 
-  font-size:24px;
+  font-size:22px;
 
   line-height:1;
 
@@ -1857,11 +1859,11 @@ footer{
 
 .mobile-nav a:nth-child(3) span{
 
-  width:52px;
+  width:48px;
 
-  height:52px;
+  height:48px;
 
-  margin-top:-30px;
+  margin-top:-28px;
 
   display:flex;
 
@@ -1880,7 +1882,7 @@ footer{
       #05733b
     );
 
-  font-size:34px;
+  font-size:30px;
 
   box-shadow:
     0 10px 22px
@@ -1897,7 +1899,7 @@ footer{
 
 
 /* ============================================================
-   MOBILE
+   TABLET
 ============================================================ */
 
 @media(max-width:900px){
@@ -1918,18 +1920,22 @@ footer{
 
   .hero{
 
-    padding:35px;
+    padding:28px 30px;
 
   }
 
 }
 
 
+/* ============================================================
+   MOBILE
+============================================================ */
+
 @media(max-width:600px){
 
   body{
 
-    padding-bottom:85px;
+    padding-bottom:78px;
 
   }
 
@@ -1951,7 +1957,7 @@ footer{
 
   .topbar{
 
-    min-height:74px;
+    min-height:66px;
 
   }
 
@@ -2041,9 +2047,18 @@ footer{
 
   .login-link{
 
-    padding:9px 13px;
+    gap:5px;
+
+    padding:8px 10px;
 
     font-size:10px;
+
+  }
+
+
+  .login-link:before{
+
+    font-size:13px;
 
   }
 
@@ -2052,7 +2067,7 @@ footer{
 
   .hero{
 
-    margin-top:14px;
+    margin-top:12px;
 
     min-height:auto;
 
@@ -2060,71 +2075,96 @@ footer{
       1fr;
 
     padding:
+      22px
+      20px
+      10px;
 
-      30px
-      24px
-      15px;
+    border-radius:20px;
 
-    border-radius:22px;
+  }
+
+
+  .hero-copy small{
+
+    font-size:9px;
+
+    margin-bottom:4px;
 
   }
 
 
   .hero h1{
 
-    font-size:30px;
+    font-size:27px;
 
-    line-height:1.3;
+    line-height:1.2;
 
   }
 
 
   .hero p{
 
-    font-size:12px;
+    font-size:11px;
+
+    line-height:1.5;
 
     margin:
-      13px
+      8px
       0
-      20px;
+      12px;
+
+  }
+
+
+  .hero .btn{
+
+    padding:
+      9px
+      15px;
+
+    font-size:11px;
 
   }
 
 
   .hero-art{
 
-    min-height:180px;
+    min-height:135px;
 
-    margin-top:5px;
+    margin-top:0;
 
   }
 
 
   .hero-art:after{
 
-    font-size:120px;
+    font-size:92px;
 
   }
 
 
   .hero-art:before{
 
-    width:190px;
+    width:145px;
 
-    height:190px;
+    height:145px;
 
   }
 
 
   .phone-art{
 
-    width:46px;
+    width:40px;
 
-    height:46px;
+    height:40px;
 
-    right:15px;
+    right:12px;
 
-    font-size:22px;
+    bottom:4px;
+
+    border-radius:13px;
+
+    font-size:19px;
 
   }
 
@@ -2133,32 +2173,31 @@ footer{
 
   .search-row{
 
-    margin-top:15px;
+    margin-top:12px;
 
   }
 
 
   .search{
 
-    min-height:62px;
+    min-height:58px;
 
     padding:
+      6px
+      6px
+      6px
+      12px;
 
-      7px
-      7px
-      7px
-      14px;
+    gap:7px;
 
-    gap:8px;
-
-    border-radius:18px;
+    border-radius:16px;
 
   }
 
 
   .search > span{
 
-    font-size:24px;
+    font-size:22px;
 
   }
 
@@ -2166,6 +2205,19 @@ footer{
   .search input{
 
     font-size:12px;
+
+    color:#101a13;
+
+    font-weight:600;
+
+  }
+
+
+  .search input::placeholder{
+
+    color:#6d7971;
+
+    opacity:1;
 
   }
 
@@ -2179,22 +2231,22 @@ footer{
 
   .search button{
 
-    min-width:72px;
+    min-width:70px;
 
-    height:46px;
+    height:44px;
 
-    border-radius:13px;
+    border-radius:12px;
 
-    font-size:12px;
+    font-size:11px;
 
   }
 
 
   .location{
 
-    margin-top:13px;
+    margin-top:9px;
 
-    font-size:10px;
+    font-size:9px;
 
   }
 
@@ -2203,47 +2255,47 @@ footer{
 
   .quick{
 
-    margin-top:20px;
+    margin-top:14px;
 
-    gap:10px;
+    gap:9px;
 
   }
 
 
   .quick a{
 
-    padding:13px;
+    padding:11px;
 
-    gap:9px;
+    gap:8px;
 
-    border-radius:15px;
+    border-radius:14px;
 
   }
 
 
   .quick a span{
 
-    width:37px;
+    width:35px;
 
-    height:37px;
+    height:35px;
 
-    border-radius:11px;
+    border-radius:10px;
 
-    font-size:20px;
+    font-size:19px;
 
   }
 
 
   .quick b{
 
-    font-size:11px;
+    font-size:10px;
 
   }
 
 
   .quick small{
 
-    font-size:8px;
+    font-size:7px;
 
   }
 
@@ -2252,21 +2304,21 @@ footer{
 
   .section{
 
-    margin-top:32px;
+    margin-top:24px;
 
   }
 
 
   .section-title{
 
-    margin-bottom:15px;
+    margin-bottom:11px;
 
   }
 
 
   .section-title h2{
 
-    font-size:21px;
+    font-size:19px;
 
   }
 
@@ -2286,9 +2338,9 @@ footer{
 
     overflow-x:auto;
 
-    gap:10px;
+    gap:9px;
 
-    padding-bottom:5px;
+    padding-bottom:3px;
 
     scrollbar-width:none;
 
@@ -2305,34 +2357,35 @@ footer{
   .cat{
 
     flex:
-
       0
       0
-      92px;
+      86px;
 
-    min-height:100px;
+    min-height:92px;
 
-    border-radius:17px;
+    border-radius:15px;
+
+    gap:8px;
 
   }
 
 
   .cat i{
 
-    width:40px;
+    width:37px;
 
-    height:40px;
+    height:37px;
 
-    border-radius:12px;
+    border-radius:11px;
 
-    font-size:23px;
+    font-size:21px;
 
   }
 
 
   .cat b{
 
-    font-size:9px;
+    font-size:8px;
 
   }
 
@@ -2344,43 +2397,43 @@ footer{
     grid-template-columns:
       repeat(2,1fr);
 
-    gap:11px;
+    gap:10px;
 
   }
 
 
   .product{
 
-    border-radius:16px;
+    border-radius:15px;
 
   }
 
 
   .photo{
 
-    height:135px;
+    height:130px;
 
   }
 
 
   .ad-image{
 
-    height:135px;
+    height:130px;
 
   }
 
 
   .photo:after{
 
-    width:29px;
+    width:28px;
 
-    height:29px;
+    height:28px;
 
     top:7px;
 
     right:7px;
 
-    font-size:17px;
+    font-size:16px;
 
   }
 
@@ -2388,10 +2441,9 @@ footer{
   .product .body{
 
     padding:
-
+      9px
       10px
-      11px
-      12px;
+      11px;
 
   }
 
@@ -2405,27 +2457,27 @@ footer{
 
   .product h3{
 
-    min-height:34px;
+    min-height:32px;
 
-    margin-bottom:7px;
+    margin-bottom:6px;
 
-    font-size:11px;
+    font-size:10px;
 
   }
 
 
   .price{
 
-    margin-bottom:8px;
+    margin-bottom:7px;
 
-    font-size:15px;
+    font-size:14px;
 
   }
 
 
   .meta{
 
-    font-size:8px;
+    font-size:7px;
 
   }
 
@@ -2434,30 +2486,30 @@ footer{
 
   .promo{
 
-    margin-top:30px;
+    margin-top:24px;
 
     grid-template-columns:
       1fr;
 
-    gap:15px;
+    gap:12px;
 
-    padding:25px;
+    padding:21px;
 
-    border-radius:20px;
+    border-radius:18px;
 
   }
 
 
   .promo h2{
 
-    font-size:23px;
+    font-size:21px;
 
   }
 
 
   .promo p{
 
-    font-size:11px;
+    font-size:10px;
 
   }
 
@@ -2473,47 +2525,58 @@ footer{
 
   .info-cards{
 
+    margin-top:14px;
+
     grid-template-columns:
       1fr;
 
-    gap:10px;
+    gap:8px;
 
   }
 
 
   .info-card{
 
-    min-height:115px;
+    min-height:105px;
 
-    padding:20px;
+    padding:17px;
 
   }
 
 
   .info-card h3{
 
-    font-size:16px;
+    font-size:15px;
+
+  }
+
+
+  .info-card p{
+
+    font-size:10px;
 
   }
 
 
   .info-card .icon{
 
-    font-size:45px;
+    font-size:40px;
 
   }
 
 
   .popular{
 
-    margin-top:30px;
+    margin-top:23px;
 
   }
 
 
   .popular h2{
 
-    font-size:19px;
+    margin-bottom:10px;
+
+    font-size:18px;
 
   }
 
@@ -2524,7 +2587,7 @@ footer{
 
     overflow-x:auto;
 
-    padding-bottom:6px;
+    padding-bottom:4px;
 
   }
 
@@ -2534,18 +2597,19 @@ footer{
     flex:0 0 auto;
 
     padding:
+      7px
+      13px;
 
-      8px
-      15px;
-
-    font-size:10px;
+    font-size:9px;
 
   }
 
 
   footer{
 
-    padding-bottom:100px;
+    margin-top:28px;
+
+    padding-bottom:90px;
 
   }
 
@@ -2807,11 +2871,6 @@ BROWSE MARKETPLACE
 </h2>
 
 </div>
-
-
-<a href="search.html">
-সব দেখুন →
-</a>
 
 
 </div>
@@ -3291,10 +3350,6 @@ iphone
 "use strict";
 
 
-/* ============================================================
-   SUPABASE CONFIG
-============================================================ */
-
 const SB_URL =
   window.SUPABASE_URL ||
   "https://jeupbfoceqmnpwlklche.supabase.co";
@@ -3306,113 +3361,55 @@ const SB_KEY =
   "";
 
 
-/* ============================================================
-   ELEMENTS
-============================================================ */
-
 const authArea =
-  document.getElementById(
-    "authArea"
-  );
+  document.getElementById("authArea");
 
 
 const latestAds =
-  document.getElementById(
-    "latestAds"
-  );
+  document.getElementById("latestAds");
 
 
 const homeMessageBadge =
-  document.getElementById(
-    "homeMessageBadge"
-  );
+  document.getElementById("homeMessageBadge");
 
 
 const topMessageBadge =
-  document.getElementById(
-    "topMessageBadge"
-  );
+  document.getElementById("topMessageBadge");
 
 
 const topMessageLink =
-  document.getElementById(
-    "topMessageLink"
-  );
+  document.getElementById("topMessageLink");
 
-
-/* ============================================================
-   ESCAPE
-============================================================ */
 
 function escapeHtml(value){
 
-  return String(
-    value ?? ""
-  )
+  return String(value ?? "")
 
-  .replace(
-    /&/g,
-    "&amp;"
-  )
-
-  .replace(
-    /</g,
-    "&lt;"
-  )
-
-  .replace(
-    />/g,
-    "&gt;"
-  )
-
-  .replace(
-    /"/g,
-    "&quot;"
-  )
-
-  .replace(
-    /'/g,
-    "&#039;"
-  );
+  .replace(/&/g,"&amp;")
+  .replace(/</g,"&lt;")
+  .replace(/>/g,"&gt;")
+  .replace(/"/g,"&quot;")
+  .replace(/'/g,"&#039;");
 
 }
 
-
-/* ============================================================
-   MONEY
-============================================================ */
 
 function money(value){
 
   return (
     "৳ " +
-    Number(
-      value || 0
-    ).toLocaleString(
-      "bn-BD"
-    )
+    Number(value || 0).toLocaleString("bn-BD")
   );
 
 }
 
 
-/* ============================================================
-   SAVE LOCAL USER
-============================================================ */
-
 function saveUser(user){
 
-  if(!user){
-
-    return;
-
-  }
-
+  if(!user) return;
 
   const metadata =
-    user.user_metadata ||
-    {};
-
+    user.user_metadata || {};
 
   localStorage.setItem(
 
@@ -3420,21 +3417,16 @@ function saveUser(user){
 
     JSON.stringify({
 
-      id:
-        user.id || "",
+      id:user.id || "",
 
       name:
         metadata.full_name ||
         metadata.name ||
         "",
 
-      email:
-        user.email ||
-        "",
+      email:user.email || "",
 
-      phone:
-        metadata.phone ||
-        "",
+      phone:metadata.phone || "",
 
       avatar:
         metadata.avatar_url ||
@@ -3447,10 +3439,6 @@ function saveUser(user){
 
 }
 
-
-/* ============================================================
-   LOGGED OUT
-============================================================ */
 
 function showLoggedOut(){
 
@@ -3466,31 +3454,22 @@ function showLoggedOut(){
 
   `;
 
-
   setMessageBadge(0);
 
 }
 
-
-/* ============================================================
-   LOGGED IN
-============================================================ */
 
 function showLoggedIn(user){
 
   if(!user){
 
     showLoggedOut();
-
     return;
 
   }
 
-
   const metadata =
-    user.user_metadata ||
-    {};
-
+    user.user_metadata || {};
 
   const name =
     metadata.full_name ||
@@ -3511,12 +3490,9 @@ function showLoggedIn(user){
       class="profile-link"
       href="profile.html">
 
-
       ${
         avatar
-
         ?
-
         `
         <img
           class="profile-avatar"
@@ -3525,9 +3501,7 @@ function showLoggedIn(user){
           referrerpolicy="no-referrer"
         >
         `
-
         :
-
         `
         <div
           class="profile-avatar"
@@ -3543,16 +3517,13 @@ function showLoggedIn(user){
 
         </div>
         `
-
       }
-
 
       <span class="profile-name">
 
         ${escapeHtml(name)}
 
       </span>
-
 
     </a>
 
@@ -3561,58 +3532,41 @@ function showLoggedIn(user){
 }
 
 
-/* ============================================================
-   MESSAGE BADGE
-============================================================ */
-
 function setMessageBadge(count){
 
   const value =
     Number(count || 0);
 
-
   const badges = [
-
     homeMessageBadge,
-
     topMessageBadge
-
   ];
 
 
-  badges.forEach(
-    function(badge){
+  badges.forEach(function(badge){
 
-      if(!badge){
+    if(!badge) return;
 
-        return;
+    if(value > 0){
 
-      }
+      badge.textContent =
+        value > 99
+        ? "99+"
+        : String(value);
 
+      badge.style.display =
+        "flex";
 
-      if(value > 0){
+    }else{
 
-        badge.textContent =
-          value > 99
-          ? "99+"
-          : String(value);
+      badge.textContent = "";
 
-
-        badge.style.display =
-          "flex";
-
-      }else{
-
-        badge.textContent =
-          "";
-
-        badge.style.display =
-          "none";
-
-      }
+      badge.style.display =
+        "none";
 
     }
-  );
+
+  });
 
 
   if(topMessageLink){
@@ -3625,10 +3579,6 @@ function setMessageBadge(count){
 }
 
 
-/* ============================================================
-   GET SESSION
-============================================================ */
-
 async function getSession(){
 
   try{
@@ -3640,7 +3590,6 @@ async function getSession(){
 
       const session =
         await window.getSbSession();
-
 
       if(
         session &&
@@ -3662,25 +3611,16 @@ async function getSession(){
 
   }
 
-
   return null;
 
 }
 
 
-/* ============================================================
-   MESSAGE NOTIFICATION
-============================================================ */
-
 async function updateMessageNotification(user){
 
-  if(
-    !user ||
-    !user.id
-  ){
+  if(!user || !user.id){
 
     setMessageBadge(0);
-
     return;
 
   }
@@ -3691,20 +3631,16 @@ async function updateMessageNotification(user){
     const session =
       await getSession();
 
-
     if(!session){
 
       setMessageBadge(0);
-
       return;
 
     }
 
 
     const uid =
-      encodeURIComponent(
-        user.id
-      );
+      encodeURIComponent(user.id);
 
 
     const conversationUrl =
@@ -3737,8 +3673,7 @@ async function updateMessageNotification(user){
 
           headers:{
 
-            "apikey":
-              SB_KEY,
+            "apikey":SB_KEY,
 
             "Authorization":
               "Bearer " +
@@ -3770,60 +3705,50 @@ async function updateMessageNotification(user){
 
 
     if(
-      !Array.isArray(
-        conversationData
-      ) ||
+      !Array.isArray(conversationData) ||
       !conversationData.length
     ){
 
       setMessageBadge(0);
-
       return;
 
     }
 
 
     const conversationIds =
+
       conversationData
 
-        .map(
-          function(conversation){
+      .map(function(conversation){
 
-            return String(
-              conversation.id || ""
-            );
+        return String(
+          conversation.id || ""
+        );
 
-          }
-        )
+      })
 
-        .filter(Boolean);
+      .filter(Boolean);
 
 
-    if(
-      !conversationIds.length
-    ){
+    if(!conversationIds.length){
 
       setMessageBadge(0);
-
       return;
 
     }
 
 
     const idList =
+
       conversationIds
 
-        .map(
-          function(id){
+      .map(function(id){
 
-            return encodeURIComponent(
-              id
-            );
+        return encodeURIComponent(id);
 
-          }
-        )
+      })
 
-        .join(",");
+      .join(",");
 
 
     const messageUrl =
@@ -3852,8 +3777,7 @@ async function updateMessageNotification(user){
 
           headers:{
 
-            "apikey":
-              SB_KEY,
+            "apikey":SB_KEY,
 
             "Authorization":
               "Bearer " +
@@ -3890,7 +3814,6 @@ async function updateMessageNotification(user){
     ){
 
       setMessageBadge(0);
-
       return;
 
     }
@@ -3899,82 +3822,67 @@ async function updateMessageNotification(user){
     const latestByConversation = {};
 
 
-    messages.forEach(
-      function(message){
+    messages.forEach(function(message){
 
-        const cid =
-          String(
-            message.conversation_id ||
-            ""
-          );
+      const cid =
+        String(
+          message.conversation_id ||
+          ""
+        );
 
+      if(!cid) return;
 
-        if(!cid){
+      if(!latestByConversation[cid]){
 
-          return;
-
-        }
-
-
-        if(
-          !latestByConversation[cid]
-        ){
-
-          latestByConversation[cid] =
-            message;
-
-        }
+        latestByConversation[cid] =
+          message;
 
       }
-    );
+
+    });
 
 
     const incomingUsers =
       new Set();
 
 
-    Object.keys(
-      latestByConversation
-    ).forEach(
-      function(cid){
+    Object.keys(latestByConversation)
 
-        const message =
-          latestByConversation[cid];
+    .forEach(function(cid){
 
+      const message =
+        latestByConversation[cid];
 
-        const sender =
-          String(
-            message.sender_id ||
-            ""
-          );
+      const sender =
+        String(
+          message.sender_id ||
+          ""
+        );
 
-
-        const receiver =
-          String(
-            message.receiver_id ||
-            ""
-          );
+      const receiver =
+        String(
+          message.receiver_id ||
+          ""
+        );
 
 
-        if(
-          sender &&
-          sender !==
-          String(user.id) &&
+      if(
 
-          receiver ===
-          String(user.id) &&
+        sender &&
 
-          message.is_read === false
-        ){
+        sender !== String(user.id) &&
 
-          incomingUsers.add(
-            sender
-          );
+        receiver === String(user.id) &&
 
-        }
+        message.is_read === false
+
+      ){
+
+        incomingUsers.add(sender);
 
       }
-    );
+
+    });
 
 
     setMessageBadge(
@@ -3994,20 +3902,18 @@ async function updateMessageNotification(user){
 }
 
 
-/* ============================================================
-   CHECK LOGIN
-============================================================ */
-
 async function checkLogin(){
 
   try{
 
     if(
+
       typeof window.getSbSession ===
       "function" &&
 
       typeof window.getCurrentUser ===
       "function"
+
     ){
 
       const session =
@@ -4029,11 +3935,7 @@ async function checkLogin(){
 
           showLoggedIn(user);
 
-
-          await updateMessageNotification(
-            user
-          );
-
+          await updateMessageNotification(user);
 
           return;
 
@@ -4056,44 +3958,32 @@ async function checkLogin(){
         JSON.parse(saved);
 
 
-      if(
-        user &&
-        user.email
-      ){
+      if(user && user.email){
 
         const fallbackUser = {
 
-          id:
-            user.id || "",
+          id:user.id || "",
 
-          email:
-            user.email,
+          email:user.email,
 
           user_metadata:{
 
-            full_name:
-              user.name || "",
+            full_name:user.name || "",
 
-            name:
-              user.name || "",
+            name:user.name || "",
 
-            avatar_url:
-              user.avatar || ""
+            avatar_url:user.avatar || ""
 
           }
 
         };
 
 
-        showLoggedIn(
-          fallbackUser
-        );
-
+        showLoggedIn(fallbackUser);
 
         await updateMessageNotification(
           fallbackUser
         );
-
 
         return;
 
@@ -4112,7 +4002,6 @@ async function checkLogin(){
       error
     );
 
-
     showLoggedOut();
 
   }
@@ -4120,17 +4009,14 @@ async function checkLogin(){
 }
 
 
-/* ============================================================
-   GET FIRST IMAGE
-============================================================ */
-
 function firstImage(ad){
 
   if(
-    Array.isArray(
-      ad.image_urls
-    ) &&
+
+    Array.isArray(ad.image_urls) &&
+
     ad.image_urls.length
+
   ){
 
     return ad.image_urls[0];
@@ -4139,9 +4025,12 @@ function firstImage(ad){
 
 
   if(
+
     typeof ad.image_urls ===
     "string" &&
+
     ad.image_urls.trim()
+
   ){
 
     let value =
@@ -4149,16 +4038,20 @@ function firstImage(ad){
 
 
     if(
+
       value.startsWith("{") &&
+
       value.endsWith("}")
+
     ){
 
       value =
+
         value
-          .slice(1,-1)
-          .split(",")[0]
-          .replace(/^"/,"")
-          .replace(/"$/,"");
+        .slice(1,-1)
+        .split(",")[0]
+        .replace(/^"/,"")
+        .replace(/"$/,"");
 
     }
 
@@ -4177,27 +4070,25 @@ function firstImage(ad){
 }
 
 
-/* ============================================================
-   LOAD LATEST ADS
-============================================================ */
-
 async function loadLatestAds(){
 
-  if(!latestAds){
-
-    return;
-
-  }
+  if(!latestAds) return;
 
 
   try{
 
     const url =
+
       SB_URL +
+
       "/rest/v1/ads" +
+
       "?select=*" +
+
       "&status=eq.approved" +
+
       "&order=created_at.desc" +
+
       "&limit=8";
 
 
@@ -4206,13 +4097,11 @@ async function loadLatestAds(){
         url,
         {
 
-          method:
-            "GET",
+          method:"GET",
 
           headers:{
 
-            "apikey":
-              SB_KEY,
+            "apikey":SB_KEY,
 
             "Content-Type":
               "application/json"
@@ -4228,10 +4117,7 @@ async function loadLatestAds(){
       const errorText =
         await response.text();
 
-
-      throw new Error(
-        errorText
-      );
+      throw new Error(errorText);
 
     }
 
@@ -4241,8 +4127,11 @@ async function loadLatestAds(){
 
 
     if(
+
       !Array.isArray(ads) ||
+
       !ads.length
+
     ){
 
       latestAds.innerHTML = `
@@ -4263,121 +4152,108 @@ async function loadLatestAds(){
 
     latestAds.innerHTML =
 
-      ads.map(
-        function(ad){
+      ads.map(function(ad){
 
-          const image =
-            firstImage(ad);
+        const image =
+          firstImage(ad);
 
 
-          const photo =
+        const photo =
 
-            image
+          image
 
-            ?
+          ?
 
-            `
-            <div
-              class="photo">
+          `
+          <div class="photo">
 
-              <img
-                class="ad-image"
-                src="${escapeHtml(image)}"
-                alt="${escapeHtml(
-                  ad.title ||
-                  "বিজ্ঞাপন"
-                )}"
-                loading="lazy"
-              >
-
-            </div>
-            `
-
-            :
-
-            `
-            <div
-              class="
-                photo
-                ad-image-placeholder
-              ">
-
-              ${escapeHtml(
-                ad.category ||
+            <img
+              class="ad-image"
+              src="${escapeHtml(image)}"
+              alt="${escapeHtml(
+                ad.title ||
                 "বিজ্ঞাপন"
-              )}
+              )}"
+              loading="lazy"
+            >
 
-            </div>
-            `;
+          </div>
+          `
 
+          :
 
-          return `
+          `
+          <div
+            class="
+              photo
+              ad-image-placeholder
+            ">
 
-            <article
-              class="product"
-              onclick="
-                window.location.href =
-                'ad-details.html?id=${encodeURIComponent(
-                  ad.id
-                )}'
-              ">
+            ${escapeHtml(
+              ad.category ||
+              "বিজ্ঞাপন"
+            )}
 
-
-              ${photo}
-
-
-              <div class="body">
-
-
-                <span class="badge">
-
-                  ${escapeHtml(
-                    ad.category ||
-                    "Marketplace"
-                  )}
-
-                </span>
+          </div>
+          `;
 
 
-                <h3>
+        return `
 
-                  ${escapeHtml(
-                    ad.title ||
-                    "Untitled"
-                  )}
+          <article
+            class="product"
+            onclick="
+              window.location.href =
+              'ad-details.html?id=${encodeURIComponent(
+                ad.id
+              )}'
+            ">
 
-                </h3>
+            ${photo}
 
+            <div class="body">
 
-                <div class="price">
+              <span class="badge">
 
-                  ${money(
-                    ad.price
-                  )}
+                ${escapeHtml(
+                  ad.category ||
+                  "Marketplace"
+                )}
 
-                </div>
+              </span>
 
+              <h3>
 
-                <div class="meta">
+                ${escapeHtml(
+                  ad.title ||
+                  "Untitled"
+                )}
 
-                  📍
-                  ${escapeHtml(
-                    ad.location ||
-                    ""
-                  )}
+              </h3>
 
-                </div>
+              <div class="price">
 
+                ${money(ad.price)}
 
               </div>
 
+              <div class="meta">
 
-            </article>
+                📍
+                ${escapeHtml(
+                  ad.location ||
+                  ""
+                )}
 
-          `;
+              </div>
 
-        }
-      ).join("");
+            </div>
+
+          </article>
+
+        `;
+
+      }).join("");
 
 
   }catch(error){
@@ -4409,14 +4285,12 @@ async function loadLatestAds(){
 }
 
 
-/* ============================================================
-   SEARCH
-============================================================ */
+/* SEARCH */
 
 const searchForm =
-document.getElementById(
-  "searchForm"
-);
+  document.getElementById(
+    "searchForm"
+  );
 
 
 if(searchForm){
@@ -4443,10 +4317,10 @@ if(searchForm){
       if(query){
 
         window.location.href =
+
           "search.html?q=" +
-          encodeURIComponent(
-            query
-          );
+
+          encodeURIComponent(query);
 
       }else{
 
@@ -4461,27 +4335,26 @@ if(searchForm){
 }
 
 
-/* ============================================================
-   START
-============================================================ */
+/* START */
 
 checkLogin();
 
 loadLatestAds();
 
 
-/* ============================================================
-   MESSAGE NOTIFICATION REFRESH
-============================================================ */
+/* MESSAGE REFRESH */
 
 setInterval(
+
   async function(){
 
     try{
 
       if(
+
         typeof window.getCurrentUser !==
         "function"
+
       ){
 
         return;
@@ -4495,9 +4368,7 @@ setInterval(
 
       if(user){
 
-        await updateMessageNotification(
-          user
-        );
+        await updateMessageNotification(user);
 
       }
 
@@ -4511,7 +4382,9 @@ setInterval(
     }
 
   },
+
   10000
+
 );
 
 
