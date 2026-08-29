@@ -399,34 +399,35 @@ if(!ad){
 
 }
 
-  /* ==========================================================
+/* ==========================================================
    TRACK AD VIEW
 ========================================================== */
 
-try{
+(function(){
 
-  let viewerKey =
-    localStorage.getItem(
-      "smbazar_viewer_key"
-    );
+  try{
 
-
-  if(!viewerKey){
-
-    viewerKey =
-      crypto.randomUUID();
+    let viewerKey =
+      localStorage.getItem(
+        "smbazar_viewer_key"
+      );
 
 
-    localStorage.setItem(
-      "smbazar_viewer_key",
-      viewerKey
-    );
+    if(!viewerKey){
 
-  }
+      viewerKey =
+        crypto.randomUUID();
 
 
-  const result =
-    await window.sbFetch(
+      localStorage.setItem(
+        "smbazar_viewer_key",
+        viewerKey
+      );
+
+    }
+
+
+    window.sbFetch(
       "/rest/v1/rpc/track_ad_view",
       {
         method:"POST",
@@ -440,58 +441,40 @@ try{
         })
 
       }
-    );
+    )
 
+    .then(function(result){
 
-  console.log(
-    "VIEW TRACKED:",
-    result
-  );
-
-
-}catch(error){
-
-  console.error(
-    "VIEW SYSTEM ERROR:",
-    error
-  );
-
-}
-
-
-    /*
-      নতুন view count পাওয়ার জন্য
-      আবার ad reload করা হচ্ছে
-    */
-
-    const updatedAd =
-      await window.getAdById(
-        adId
+      console.log(
+        "VIEW TRACKED:",
+        result
       );
 
+    })
 
-    if(updatedAd){
+    .catch(function(error){
 
-      ad =
-        updatedAd;
+      console.error(
+        "VIEW TRACK ERROR:",
+        error
+      );
 
-    }
+    });
+
+
+  }catch(error){
+
+    console.error(
+      "VIEW SYSTEM ERROR:",
+      error
+    );
 
   }
 
-
-}catch(error){
-
-  console.error(
-    "VIEW TRACKING ERROR:",
-    error
-  );
-
-}
+})();
 
 
-
-/* ==========================================================
+ /* ==========================================================
    DATA
 ========================================================== */
 
