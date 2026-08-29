@@ -2,184 +2,623 @@
 <html lang="bn">
 
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
 
-<title>Login | শাহমাহমুদপুর বাজার</title>
+<meta
+  name="viewport"
+  content="width=device-width,initial-scale=1">
 
-<link rel="stylesheet" href="style.css">
+<title>
+Login | শাহমাহমুদপুর বাজার
+</title>
+
+<link
+  rel="stylesheet"
+  href="style.css">
+
 
 <style>
 
-.login-page{
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:24px 16px;
+/* ============================================================
+   LOGIN PAGE - WHITE MARKETPLACE DESIGN
+============================================================ */
 
-  background:
-    radial-gradient(
-      circle at 50% 25%,
-      rgba(105,245,165,.09),
-      transparent 32%
-    ),
-    #030705;
+:root{
+
+  --green:#0b8f4b;
+  --green-dark:#05743a;
+  --green-light:#e9f8ef;
+
+  --text:#1d2923;
+  --muted:#758078;
+
+  --border:#e6ece8;
+
+  --bg:#f8faf9;
+
+  --card:#ffffff;
+
+  --shadow:
+    0 18px 50px
+    rgba(30,55,42,.10);
+
 }
 
 
-.login-box{
-  width:100%;
-  max-width:430px;
-  padding:36px 26px;
-  text-align:center;
+/* ============================================================
+   BODY
+============================================================ */
 
-  border:1px solid rgba(105,245,165,.18);
-  border-radius:22px;
+body{
+
+  margin:0;
+
+  color:var(--text);
+
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
 
   background:
+
+    radial-gradient(
+      circle at 15% 20%,
+      rgba(192,244,207,.45),
+      transparent 28%
+    ),
+
+    radial-gradient(
+      circle at 85% 80%,
+      rgba(211,244,217,.55),
+      transparent 30%
+    ),
+
     linear-gradient(
-      145deg,
-      rgba(11,25,18,.97),
-      rgba(4,11,8,.98)
+      180deg,
+      #f8faf9 0%,
+      #ffffff 50%,
+      #f4faf6 100%
     );
 
-  box-shadow:
-    0 25px 70px rgba(0,0,0,.55),
-    0 0 45px rgba(105,245,165,.055);
 }
 
 
-.login-brand{
-  display:inline-flex;
-  flex-direction:column;
+/* ============================================================
+   LOGIN PAGE
+============================================================ */
+
+.login-page{
+
+  min-height:100vh;
+
+  display:flex;
+
   align-items:center;
+
+  justify-content:center;
+
+  padding:24px 16px;
+
+}
+
+
+/* ============================================================
+   LOGIN BOX
+============================================================ */
+
+.login-box{
+
+  width:100%;
+
+  max-width:430px;
+
+  padding:
+    40px
+    30px
+    32px;
+
+  text-align:center;
+
+  border:
+    1px solid
+    rgba(11,143,75,.10);
+
+  border-radius:24px;
+
+  background:
+    rgba(255,255,255,.94);
+
+  box-shadow:
+    var(--shadow);
+
+  position:relative;
+
+  overflow:hidden;
+
+}
+
+
+/* TOP SOFT GREEN GLOW */
+
+.login-box:before{
+
+  content:"";
+
+  position:absolute;
+
+  width:260px;
+
+  height:260px;
+
+  top:-150px;
+
+  left:50%;
+
+  transform:
+    translateX(-50%);
+
+  border-radius:50%;
+
+  background:
+
+    radial-gradient(
+      circle,
+      rgba(192,244,207,.55),
+      rgba(192,244,207,0)
+    );
+
+  pointer-events:none;
+
+}
+
+
+/* ============================================================
+   BRAND
+============================================================ */
+
+.login-brand{
+
+  position:relative;
+
+  z-index:2;
+
+  display:inline-flex;
+
+  flex-direction:column;
+
+  align-items:center;
+
   line-height:1;
-  margin-bottom:32px;
+
+  margin-bottom:30px;
+
+}
+
+
+.login-brand:before{
+
+  content:"🛍";
+
+  width:50px;
+
+  height:50px;
+
+  margin-bottom:13px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  border-radius:15px;
+
+  background:
+
+    linear-gradient(
+      135deg,
+      #0d9b55,
+      #05743a
+    );
+
+  font-size:27px;
+
+  box-shadow:
+
+    0 10px 22px
+    rgba(11,143,75,.20);
+
 }
 
 
 .login-brand b{
-  color:#f1f8f4;
+
+  color:#27352e;
+
   font-size:22px;
+
   font-weight:900;
+
+  letter-spacing:-.5px;
+
 }
 
 
 .login-brand strong{
-  color:#69f5a5;
+
+  margin-top:3px;
+
+  color:var(--green);
+
   font-size:22px;
+
   font-weight:900;
 
-  text-shadow:
-    0 0 22px rgba(105,245,165,.25);
 }
 
 
 .login-brand small{
-  margin-top:7px;
-  color:#718179;
-  font-family:Arial,sans-serif;
+
+  margin-top:9px;
+
+  color:#7d8981;
+
+  font-family:
+    Arial,
+    sans-serif;
+
   font-size:7px;
+
+  font-weight:800;
+
   letter-spacing:3px;
+
 }
 
 
+/* ============================================================
+   TITLE
+============================================================ */
+
 .login-box h1{
+
+  position:relative;
+
+  z-index:2;
+
   margin:0;
-  color:#f3faf6;
+
+  color:#213129;
+
   font-size:27px;
-  font-weight:850;
+
+  font-weight:900;
+
+  letter-spacing:-.5px;
+
 }
 
 
 .login-subtitle{
-  margin:9px 0 27px;
-  color:#8fa098;
+
+  position:relative;
+
+  z-index:2;
+
+  margin:
+    9px
+    0
+    27px;
+
+  color:#718078;
+
   font-size:11px;
+
   line-height:1.7;
+
 }
 
 
+/* ============================================================
+   GOOGLE BUTTON
+============================================================ */
+
 .google-btn{
+
+  position:relative;
+
+  z-index:2;
+
   width:100%;
-  height:52px;
+
+  height:54px;
 
   display:flex;
+
   align-items:center;
+
   justify-content:center;
+
   gap:11px;
 
-  border:1px solid rgba(255,255,255,.14);
-  border-radius:11px;
+  border:
+    1px solid
+    #dfe8e2;
+
+  border-radius:14px;
 
   background:#fff;
-  color:#151515;
 
-  font-size:12px;
+  color:#202822;
+
+  font-family:
+    Arial,
+    sans-serif;
+
+  font-size:14px;
+
   font-weight:800;
 
   cursor:pointer;
 
-  transition:.25s ease;
+  box-shadow:
+
+    0 6px 18px
+    rgba(30,55,42,.06);
+
+  transition:
+    .25s ease;
+
 }
 
 
 .google-btn:hover{
-  transform:translateY(-2px);
+
+  transform:
+    translateY(-2px);
+
+  border-color:
+    rgba(11,143,75,.30);
 
   box-shadow:
-    0 12px 35px rgba(0,0,0,.3),
-    0 0 28px rgba(105,245,165,.12);
+
+    0 12px 28px
+    rgba(11,143,75,.12);
+
 }
 
 
 .google-btn:disabled{
+
   opacity:.65;
+
   cursor:wait;
+
 }
 
 
 .google-icon{
+
   width:21px;
+
   height:21px;
+
+  flex-shrink:0;
+
 }
 
 
+/* ============================================================
+   MESSAGE
+============================================================ */
+
+.login-message{
+
+  position:relative;
+
+  z-index:2;
+
+  min-height:20px;
+
+  margin-top:14px;
+
+  color:#e64a4a;
+
+  font-size:10px;
+
+  font-weight:700;
+
+}
+
+
+/* ============================================================
+   SECURITY INFO
+============================================================ */
+
 .secure{
+
+  position:relative;
+
+  z-index:2;
+
   margin-top:20px;
-  color:#66766e;
-  font-size:8px;
-  line-height:1.7;
+
+  padding:
+    13px
+    15px;
+
+  border-radius:13px;
+
+  background:
+    #f4fbf6;
+
+  border:
+    1px solid
+    rgba(11,143,75,.08);
+
+  color:#718078;
+
+  font-size:9px;
+
+  line-height:1.8;
+
 }
 
 
 .secure span{
-  color:#69f5a5;
+
+  color:var(--green);
+
+  font-weight:800;
+
 }
 
 
-.login-message{
-  min-height:20px;
-  margin-top:14px;
-  color:#ff9b9b;
-  font-size:9px;
-}
-
+/* ============================================================
+   BACK HOME
+============================================================ */
 
 .back-home{
-  display:inline-block;
+
+  position:relative;
+
+  z-index:2;
+
+  display:inline-flex;
+
+  align-items:center;
+
+  justify-content:center;
+
   margin-top:22px;
-  color:#7e9087;
-  font-size:9px;
+
+  color:#6f7d75;
+
+  font-size:10px;
+
+  font-weight:700;
+
+  transition:.2s;
+
 }
 
 
 .back-home:hover{
-  color:#69f5a5;
+
+  color:var(--green);
+
+  transform:
+    translateX(-2px);
+
+}
+
+
+/* ============================================================
+   MOBILE
+============================================================ */
+
+@media(max-width:600px){
+
+  .login-page{
+
+    align-items:center;
+
+    padding:
+      18px
+      14px;
+
+  }
+
+
+  .login-box{
+
+    padding:
+      34px
+      20px
+      28px;
+
+    border-radius:21px;
+
+  }
+
+
+  .login-brand{
+
+    margin-bottom:26px;
+
+  }
+
+
+  .login-brand:before{
+
+    width:46px;
+
+    height:46px;
+
+    margin-bottom:11px;
+
+    border-radius:14px;
+
+    font-size:24px;
+
+  }
+
+
+  .login-brand b{
+
+    font-size:20px;
+
+  }
+
+
+  .login-brand strong{
+
+    font-size:20px;
+
+  }
+
+
+  .login-box h1{
+
+    font-size:25px;
+
+  }
+
+
+  .login-subtitle{
+
+    font-size:10px;
+
+    margin-bottom:24px;
+
+  }
+
+
+  .google-btn{
+
+    height:52px;
+
+    font-size:13px;
+
+    border-radius:13px;
+
+  }
+
+
+  .secure{
+
+    font-size:8px;
+
+  }
+
 }
 
 </style>
+
 </head>
 
 
@@ -188,14 +627,21 @@
 
 <main class="login-page">
 
+
 <section class="login-box">
 
 
-<a href="/" class="login-brand">
+<a
+  href="/"
+  class="login-brand">
 
-  <b>শাহমাহমুদপুর</b>
+  <b>
+    শাহমাহমুদপুর
+  </b>
 
-  <strong>বাজার</strong>
+  <strong>
+    বাজার
+  </strong>
 
   <small>
     LOCAL MARKETPLACE
@@ -205,13 +651,20 @@
 
 
 <h1>
+
   স্বাগতম 👋
+
 </h1>
 
 
 <p class="login-subtitle">
-  আপনার Google account দিয়ে<br>
+
+  আপনার Google account দিয়ে
+
+  <br>
+
   নিরাপদে Login করুন।
+
 </p>
 
 
@@ -246,18 +699,24 @@ d="M12 6.28c1.43 0 2.71.49 3.72 1.45l2.79-2.79C16.83 3.31 14.63 2.4 12 2.4a9.74 
 
 Continue with Google
 
+
 </button>
 
 
 <p
-id="loginMessage"
-class="login-message">
+  id="loginMessage"
+  class="login-message">
+
 </p>
 
 
 <div class="secure">
 
-🔒 <span>Secure Google Login</span>
+🔒
+
+<span>
+Secure Google Login
+</span>
 
 <br>
 
@@ -267,8 +726,8 @@ class="login-message">
 
 
 <a
-href="/"
-class="back-home">
+  href="/"
+  class="back-home">
 
 ← Homepage
 
@@ -276,6 +735,7 @@ class="back-home">
 
 
 </section>
+
 
 </main>
 
