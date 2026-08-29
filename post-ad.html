@@ -1,386 +1,3120 @@
 <!doctype html>
 <html lang="bn">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>বিজ্ঞাপন দিন | শাহমাহমুদপুর বাজার</title>
+
+<meta
+  name="viewport"
+  content="width=device-width,initial-scale=1">
+
+<title>
+বিজ্ঞাপন দিন | শাহমাহমুদপুর বাজার
+</title>
+
 <link rel="stylesheet" href="style.css">
+
+
 <style>
-.page{max-width:760px;padding:35px 16px 110px}
-.loading{text-align:center;padding:55px 20px;color:#718078}
-.user-note{margin:18px 0 24px;padding:15px 16px;border:1px solid rgba(105,245,165,.16);border-radius:15px;background:rgba(105,245,165,.035);color:#84948c;font-size:11px}
-.user-note strong{color:#69f5a5}
-.form-section{margin-top:28px;padding-top:24px;border-top:1px solid rgba(255,255,255,.055)}
-.form-section-title{margin-bottom:18px}
-.form-section-title small{color:#69f5a5;font-size:8px;font-weight:800;letter-spacing:2px}
-.form-section-title h3{margin:6px 0 0;color:#edf7f1;font-size:16px}
-.required{color:#69f5a5}
-.image-help{margin-top:8px;color:#66766e;font-size:9px;line-height:1.7}
-.image-count{margin-top:8px;color:#69f5a5;font-size:9px;font-weight:800}
-.preview-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:14px}
-.preview-item{position:relative;aspect-ratio:1;overflow:hidden;border-radius:14px;border:1px solid rgba(105,245,165,.16);background:#07110c}
-.preview-item img{width:100%;height:100%;object-fit:cover}
-.image-number{position:absolute;left:7px;top:7px;padding:4px 8px;border-radius:20px;background:rgba(0,0,0,.7);color:#fff;font-size:8px;font-weight:800}
-.remove-image{position:absolute;right:7px;top:7px;width:27px;height:27px;border:0;border-radius:50%;background:rgba(0,0,0,.72);color:#fff;cursor:pointer;font-size:16px;line-height:27px;padding:0}
-.remove-image:hover{background:#ef5350}
-.submit-note{margin-top:14px;text-align:center;color:#65756d;font-size:9px;line-height:1.8}
-.success-box{margin-top:18px;padding:22px 16px;border:1px solid rgba(105,245,165,.2);border-radius:16px;background:rgba(105,245,165,.035);text-align:center;color:#69f5a5}
-.success-icon{width:42px;height:42px;margin:0 auto 12px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(105,245,165,.1);border:1px solid rgba(105,245,165,.22);font-size:20px}
-.error-box{margin-top:15px;padding:13px 15px;border:1px solid rgba(255,100,100,.16);border-radius:12px;background:rgba(255,80,80,.035);color:#ff9d9d;font-size:10px;line-height:1.7;text-align:center}
+
+/* ============================================================
+   PREMIUM POST AD PAGE
+============================================================ */
+
+:root{
+
+  --green:#0b8f4b;
+  --green-dark:#05743a;
+  --green-light:#eaf8ef;
+
+  --text:#1d2923;
+  --muted:#758078;
+
+  --border:#e2eae5;
+  --bg:#f7faf8;
+  --card:#ffffff;
+
+}
+
+
+/* ============================================================
+   BODY
+============================================================ */
+
+body{
+
+  margin:0;
+
+  background:
+    linear-gradient(
+      180deg,
+      #f7faf8 0%,
+      #ffffff 45%,
+      #f7faf8 100%
+    );
+
+  color:var(--text);
+
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  padding-bottom:90px;
+
+}
+
+
+a{
+  text-decoration:none;
+}
+
+
+/* ============================================================
+   PAGE
+============================================================ */
+
+.page{
+
+  max-width:820px;
+
+  padding:
+    35px
+    16px
+    115px;
+
+}
+
+
+/* ============================================================
+   BRAND
+============================================================ */
+
+.page .brand{
+
+  display:flex;
+
+  flex-wrap:wrap;
+
+  align-items:center;
+
+  width:250px;
+
+  position:relative;
+
+  padding-left:58px;
+
+  color:var(--text);
+
+}
+
+
+.page .brand:before{
+
+  content:"🛍";
+
+  position:absolute;
+
+  left:0;
+
+  top:50%;
+
+  transform:translateY(-50%);
+
+  width:45px;
+
+  height:45px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  border-radius:14px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #0d9b55,
+      #05743a
+    );
+
+  font-size:25px;
+
+  box-shadow:
+    0 8px 20px
+    rgba(11,143,75,.22);
+
+}
+
+
+.page .brand b{
+
+  width:100%;
+
+  color:#27352e;
+
+  font-size:19px;
+
+  font-weight:900;
+
+  letter-spacing:-.5px;
+
+}
+
+
+.page .brand strong{
+
+  position:absolute;
+
+  left:188px;
+
+  top:0;
+
+  color:var(--green);
+
+  font-size:19px;
+
+  font-weight:900;
+
+}
+
+
+.page .brand small{
+
+  width:100%;
+
+  margin-top:3px;
+
+  color:#66726b;
+
+  font-size:9px;
+
+  font-weight:800;
+
+  letter-spacing:1.5px;
+
+}
+
+
+/* ============================================================
+   LOADING
+============================================================ */
+
+.loading{
+
+  text-align:center;
+
+  padding:55px 20px;
+
+  color:#718078;
+
+  font-size:12px;
+
+  background:#fff;
+
+  border:
+    1px solid
+    var(--border);
+
+  border-radius:22px;
+
+  box-shadow:
+    0 12px 35px
+    rgba(30,55,42,.06);
+
+}
+
+
+/* ============================================================
+   MAIN FORM CARD
+============================================================ */
+
+#formBox{
+
+  padding:0;
+
+  overflow:hidden;
+
+  border:
+    1px solid
+    var(--border);
+
+  border-radius:24px;
+
+  background:#fff;
+
+  box-shadow:
+    0 18px 55px
+    rgba(30,55,42,.08);
+
+}
+
+
+/* ============================================================
+   FORM HEADER
+============================================================ */
+
+.form-header{
+
+  padding:
+    30px
+    30px
+    25px;
+
+  border-bottom:
+    1px solid
+    var(--border);
+
+  background:
+
+    radial-gradient(
+      circle at 90% 20%,
+      rgba(105,245,165,.15),
+      transparent 35%
+    ),
+
+    linear-gradient(
+      135deg,
+      #ffffff,
+      #f2fbf5
+    );
+
+}
+
+
+.eyebrow{
+
+  display:inline-flex;
+
+  padding:
+    6px
+    10px;
+
+  border-radius:50px;
+
+  color:var(--green);
+
+  background:#eaf8ef;
+
+  font-size:8px;
+
+  font-weight:900;
+
+  letter-spacing:1.3px;
+
+}
+
+
+.form-header h1{
+
+  margin:
+    13px
+    0
+    7px;
+
+  color:#1f3027;
+
+  font-size:30px;
+
+  line-height:1.2;
+
+  font-weight:900;
+
+}
+
+
+.form-header p{
+
+  margin:0;
+
+  color:#718078;
+
+  font-size:12px;
+
+  line-height:1.6;
+
+}
+
+
+/* ============================================================
+   USER NOTE
+============================================================ */
+
+.user-note{
+
+  margin:
+    18px
+    30px
+    0;
+
+  padding:
+    14px
+    16px;
+
+  border:
+    1px solid
+    #d6eadc;
+
+  border-radius:14px;
+
+  background:#f2fbf5;
+
+  color:#66766e;
+
+  font-size:11px;
+
+}
+
+
+.user-note strong{
+
+  color:var(--green);
+
+  font-weight:850;
+
+}
+
+
+/* ============================================================
+   FORM
+============================================================ */
+
+#adForm{
+
+  padding:
+    0
+    30px
+    30px;
+
+}
+
+
+.form-section{
+
+  margin-top:28px;
+
+  padding-top:26px;
+
+  border-top:
+    1px solid
+    var(--border);
+
+}
+
+
+.form-section:first-child{
+
+  border-top:0;
+
+}
+
+
+.form-section-title{
+
+  margin-bottom:20px;
+
+}
+
+
+.form-section-title small{
+
+  display:block;
+
+  margin-bottom:6px;
+
+  color:var(--green);
+
+  font-size:9px;
+
+  font-weight:900;
+
+  letter-spacing:1.6px;
+
+}
+
+
+.form-section-title h3{
+
+  margin:0;
+
+  color:#26362d;
+
+  font-size:18px;
+
+  font-weight:900;
+
+}
+
+
+.required{
+
+  color:#e53935;
+
+}
+
+
+/* ============================================================
+   LABELS & INPUTS
+============================================================ */
+
+#adForm label{
+
+  display:block;
+
+  margin-top:16px;
+
+  color:#35423b;
+
+  font-size:11px;
+
+  font-weight:800;
+
+}
+
+
+#adForm input,
+#adForm select,
+#adForm textarea{
+
+  width:100%;
+
+  margin-top:7px;
+
+  padding:
+    13px
+    14px;
+
+  border:
+    1px solid
+    #dfe8e2;
+
+  border-radius:13px;
+
+  outline:0;
+
+  background:#fff;
+
+  color:#25332c;
+
+  font-family:inherit;
+
+  font-size:12px;
+
+  font-weight:600;
+
+  transition:.2s ease;
+
+}
+
+
+#adForm select{
+
+  cursor:pointer;
+
+}
+
+
+#adForm textarea{
+
+  resize:vertical;
+
+  min-height:135px;
+
+  line-height:1.6;
+
+}
+
+
+#adForm input::placeholder,
+#adForm textarea::placeholder{
+
+  color:#9aa59f;
+
+  font-weight:500;
+
+}
+
+
+#adForm input:focus,
+#adForm select:focus,
+#adForm textarea:focus{
+
+  border-color:
+    rgba(11,143,75,.7);
+
+  box-shadow:
+    0 0 0 4px
+    rgba(11,143,75,.08);
+
+}
+
+
+/* ============================================================
+   FILE INPUT
+============================================================ */
+
+#adForm input[type="file"]{
+
+  padding:12px;
+
+  background:#f8fbf9;
+
+  cursor:pointer;
+
+}
+
+
+#adForm input[type="file"]::file-selector-button{
+
+  margin-right:12px;
+
+  padding:
+    8px
+    12px;
+
+  border:0;
+
+  border-radius:9px;
+
+  background:#eaf8ef;
+
+  color:var(--green);
+
+  font-family:inherit;
+
+  font-size:10px;
+
+  font-weight:800;
+
+  cursor:pointer;
+
+}
+
+
+/* ============================================================
+   IMAGE HELP
+============================================================ */
+
+.image-help{
+
+  margin-top:9px;
+
+  color:#7c8881;
+
+  font-size:9px;
+
+  line-height:1.7;
+
+}
+
+
+.image-count{
+
+  display:inline-block;
+
+  margin-top:9px;
+
+  padding:
+    5px
+    9px;
+
+  border-radius:50px;
+
+  color:var(--green);
+
+  background:#eaf8ef;
+
+  font-size:9px;
+
+  font-weight:850;
+
+}
+
+
+/* ============================================================
+   IMAGE PREVIEW
+============================================================ */
+
+.preview-grid{
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(3,1fr);
+
+  gap:10px;
+
+  margin-top:15px;
+
+}
+
+
+.preview-item{
+
+  position:relative;
+
+  aspect-ratio:1;
+
+  overflow:hidden;
+
+  border-radius:15px;
+
+  border:
+    1px solid
+    #dce8e0;
+
+  background:#f3f7f4;
+
+}
+
+
+.preview-item img{
+
+  width:100%;
+
+  height:100%;
+
+  object-fit:cover;
+
+}
+
+
+.image-number{
+
+  position:absolute;
+
+  left:8px;
+
+  top:8px;
+
+  padding:
+    4px
+    8px;
+
+  border-radius:20px;
+
+  background:
+    rgba(0,0,0,.68);
+
+  color:#fff;
+
+  font-size:8px;
+
+  font-weight:800;
+
+}
+
+
+.remove-image{
+
+  position:absolute;
+
+  right:8px;
+
+  top:8px;
+
+  width:28px;
+
+  height:28px;
+
+  border:0;
+
+  border-radius:50%;
+
+  background:
+    rgba(255,255,255,.95);
+
+  color:#e53935;
+
+  cursor:pointer;
+
+  font-size:19px;
+
+  line-height:28px;
+
+  padding:0;
+
+  box-shadow:
+    0 3px 10px
+    rgba(0,0,0,.12);
+
+}
+
+
+.remove-image:hover{
+
+  background:#e53935;
+
+  color:#fff;
+
+}
+
+
+/* ============================================================
+   SUBMIT BUTTON
+============================================================ */
+
+#submitBtn{
+
+  width:100%;
+
+  min-height:55px;
+
+  margin-top:30px;
+
+  border:0;
+
+  border-radius:15px;
+
+  color:#fff;
+
+  cursor:pointer;
+
+  background:
+    linear-gradient(
+      135deg,
+      #0d9b55,
+      #05743a
+    );
+
+  font-family:inherit;
+
+  font-size:14px;
+
+  font-weight:900;
+
+  box-shadow:
+    0 12px 25px
+    rgba(11,143,75,.20);
+
+  transition:.2s ease;
+
+}
+
+
+#submitBtn:hover{
+
+  transform:translateY(-2px);
+
+  box-shadow:
+    0 16px 30px
+    rgba(11,143,75,.28);
+
+}
+
+
+#submitBtn:disabled{
+
+  opacity:.7;
+
+  cursor:wait;
+
+  transform:none;
+
+}
+
+
+/* ============================================================
+   SUBMIT NOTE
+============================================================ */
+
+.submit-note{
+
+  margin-top:14px;
+
+  padding:
+    12px
+    15px;
+
+  border-radius:12px;
+
+  background:#fffaf0;
+
+  color:#7f7560;
+
+  text-align:center;
+
+  font-size:9px;
+
+  line-height:1.8;
+
+}
+
+
+.submit-note b{
+
+  color:#b57b00 !important;
+
+}
+
+
+/* ============================================================
+   SUCCESS
+============================================================ */
+
+.success-box{
+
+  margin:
+    25px
+    30px
+    30px;
+
+  padding:
+    32px
+    20px;
+
+  border:
+    1px solid
+    #cfe8d7;
+
+  border-radius:20px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #f1fbf4,
+      #ffffff
+    );
+
+  text-align:center;
+
+  color:#08763e;
+
+}
+
+
+.success-icon{
+
+  width:52px;
+
+  height:52px;
+
+  margin:
+    0
+    auto
+    15px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  border-radius:50%;
+
+  background:#e2f6e9;
+
+  color:var(--green);
+
+  font-size:25px;
+
+  font-weight:900;
+
+}
+
+
+.success-box strong{
+
+  font-size:16px;
+
+}
+
+
+.success-box small{
+
+  color:#718078 !important;
+
+  font-size:10px;
+
+  line-height:1.7;
+
+}
+
+
+/* ============================================================
+   ERROR
+============================================================ */
+
+.error-box{
+
+  margin:
+    20px
+    30px
+    30px;
+
+  padding:
+    14px
+    16px;
+
+  border:
+    1px solid
+    #f1d5d5;
+
+  border-radius:13px;
+
+  background:#fff7f7;
+
+  color:#d93636;
+
+  font-size:10px;
+
+  line-height:1.7;
+
+  text-align:center;
+
+}
+
+
+/* ============================================================
+   MOBILE NAV
+============================================================ */
+
+.mobile-nav{
+
+  position:fixed;
+
+  left:0;
+
+  right:0;
+
+  bottom:0;
+
+  z-index:200;
+
+  height:72px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-around;
+
+  padding-bottom:
+    env(safe-area-inset-bottom);
+
+  border-top:
+    1px solid
+    #e8eeea;
+
+  background:
+    rgba(255,255,255,.96);
+
+  box-shadow:
+    0 -8px 25px
+    rgba(0,0,0,.05);
+
+}
+
+
+.mobile-nav a{
+
+  min-width:55px;
+
+  display:flex;
+
+  flex-direction:column;
+
+  align-items:center;
+
+  justify-content:center;
+
+  gap:3px;
+
+  color:#7c8780;
+
+  font-size:8px;
+
+  font-weight:700;
+
+}
+
+
+.mobile-nav a span{
+
+  font-size:22px;
+
+}
+
+
+.mobile-nav a.active{
+
+  color:var(--green);
+
+}
+
+
+.mobile-nav a:nth-child(3) span{
+
+  width:48px;
+
+  height:48px;
+
+  margin-top:-28px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  border-radius:50%;
+
+  color:#fff;
+
+  background:
+    linear-gradient(
+      135deg,
+      #10a85d,
+      #05733b
+    );
+
+  font-size:30px;
+
+}
+
+
+/* ============================================================
+   MOBILE
+============================================================ */
+
+@media(max-width:600px){
+
+  body{
+
+    padding-bottom:80px;
+
+  }
+
+
+  .page{
+
+    padding:
+      22px
+      12px
+      100px;
+
+  }
+
+
+  .page .brand{
+
+    width:190px;
+
+    padding-left:47px;
+
+  }
+
+
+  .page .brand:before{
+
+    width:38px;
+
+    height:38px;
+
+    border-radius:12px;
+
+    font-size:22px;
+
+  }
+
+
+  .page .brand b{
+
+    font-size:14px;
+
+  }
+
+
+  .page .brand strong{
+
+    position:static;
+
+    width:auto;
+
+    margin-left:4px;
+
+    font-size:14px;
+
+  }
+
+
+  .page .brand small{
+
+    font-size:7px;
+
+  }
+
+
+  #formBox{
+
+    margin-top:18px !important;
+
+    border-radius:20px;
+
+  }
+
+
+  .loading{
+
+    margin-top:18px !important;
+
+    border-radius:20px;
+
+    padding:45px 15px;
+
+  }
+
+
+  .form-header{
+
+    padding:
+      24px
+      18px
+      20px;
+
+  }
+
+
+  .form-header h1{
+
+    font-size:25px;
+
+    margin-top:11px;
+
+  }
+
+
+  .form-header p{
+
+    font-size:10px;
+
+  }
+
+
+  .user-note{
+
+    margin:
+      15px
+      18px
+      0;
+
+    padding:
+      12px
+      13px;
+
+    font-size:9px;
+
+    border-radius:12px;
+
+  }
+
+
+  #adForm{
+
+    padding:
+      0
+      18px
+      22px;
+
+  }
+
+
+  .form-section{
+
+    margin-top:23px;
+
+    padding-top:22px;
+
+  }
+
+
+  .form-section-title{
+
+    margin-bottom:16px;
+
+  }
+
+
+  .form-section-title small{
+
+    font-size:8px;
+
+  }
+
+
+  .form-section-title h3{
+
+    font-size:16px;
+
+  }
+
+
+  #adForm label{
+
+    margin-top:14px;
+
+    font-size:10px;
+
+  }
+
+
+  #adForm input,
+  #adForm select,
+  #adForm textarea{
+
+    margin-top:6px;
+
+    padding:
+      12px
+      12px;
+
+    border-radius:11px;
+
+    font-size:11px;
+
+  }
+
+
+  #adForm textarea{
+
+    min-height:120px;
+
+  }
+
+
+  .preview-grid{
+
+    gap:8px;
+
+  }
+
+
+  .preview-item{
+
+    border-radius:12px;
+
+  }
+
+
+  .submit-note{
+
+    font-size:8px;
+
+    padding:
+      11px
+      12px;
+
+  }
+
+
+  #submitBtn{
+
+    min-height:52px;
+
+    margin-top:24px;
+
+    font-size:12px;
+
+    border-radius:13px;
+
+  }
+
+
+  .success-box{
+
+    margin:
+      20px
+      18px
+      22px;
+
+    padding:
+      26px
+      15px;
+
+  }
+
+
+  .error-box{
+
+    margin:
+      18px
+      18px
+      22px;
+
+    font-size:9px;
+
+  }
+
+}
+
 </style>
+
 </head>
+
+
 <body>
+
+
 <main class="container page">
-<a href="index.html" class="brand"><b>শাহমাহমুদপুর</b><strong>বাজার</strong><small>LOCAL MARKETPLACE</small></a>
 
-<section id="loading" class="authbox loading" style="margin-top:25px">আপনার account যাচাই করা হচ্ছে...</section>
 
-<section id="formBox" class="authbox" style="margin-top:25px;display:none">
-<span class="eyebrow">POST AN AD</span>
-<h1 style="font-size:30px">আপনার বিজ্ঞাপন দিন</h1>
-<p class="muted">সঠিক তথ্য দিন। Admin approval-এর পর বিজ্ঞাপনটি marketplace-এ প্রকাশিত হবে।</p>
-<div id="userNote" class="user-note"></div>
+<a
+  href="index.html"
+  class="brand">
 
-<form id="adForm" novalidate>
-<div class="form-section">
-<div class="form-section-title"><small>01 — BASIC INFORMATION</small><h3>পণ্যের তথ্য</h3></div>
+  <b>শাহমাহমুদপুর</b>
 
-<label>ক্যাটাগরি <span class="required">*</span>
-<select id="category">
-<option value="">ক্যাটাগরি নির্বাচন করুন</option>
-<option>Vehicles</option><option>Property</option><option>Phones & Tablets</option><option>Electronics</option>
-<option>Home, Furniture & Garden</option><option>Fashion</option><option>Beauty & Personal Care</option><option>Services</option>
-<option>Repair & Construction</option><option>Commercial Equipment & Machinery</option><option>Leisure & Activities</option>
-<option>Babies & Kids</option><option>Food, Agriculture & Supplies</option><option>Animals & Pets</option>
-<option>Jobs</option><option>Seeking Work - CVs</option><option>Business & Industry</option>
-</select></label>
+  <strong>বাজার</strong>
 
-<label>সাব-ক্যাটাগরি <span class="required">*</span>
-<select id="subcategory"><option value="">আগে ক্যাটাগরি নির্বাচন করুন</option></select></label>
+  <small>LOCAL MARKETPLACE</small>
 
-<label>শিরোনাম <span class="required">*</span>
-<input id="title" type="text" maxlength="100" placeholder="যেমন: iPhone 13 128GB"></label>
+</a>
 
-<label>দাম <span class="required">*</span>
-<input id="price" type="number" min="1" placeholder="৳"></label>
 
-<label>বিস্তারিত <span class="required">*</span>
-<textarea id="description" rows="6" maxlength="3000" placeholder="পণ্যের বিস্তারিত লিখুন"></textarea></label>
-</div>
+<section
+  id="loading"
+  class="loading"
+  style="margin-top:25px">
 
-<div class="form-section">
-<div class="form-section-title"><small>02 — LOCATION</small><h3>আপনার এলাকার তথ্য</h3></div>
-<label>এলাকা <span class="required">*</span>
-<select id="location">
-<option value="">আপনার এলাকা নির্বাচন করুন</option>
-<option>টাহরখীল</option><option>মান্দারী</option><option>লোধেরগাঁও</option><option>বিমলেরগাঁও</option>
-<option>দাসেরগাঁও</option><option>দমকেরগাঁও</option><option>ভাটেরগাঁও</option><option>পাঁচগাঁও</option>
-<option>কুমারডুগী</option><option>কৃষ্ণপুর</option><option>ভরঙ্গারচর</option><option>কেতুয়া</option>
-<option>আলুমুড়া</option><option>ছোট শাহতলী</option><option>বড় শাহতলী</option><option>পাইকদি</option>
-<option>রনবলিয়া</option><option>কদ্দি</option>
-</select></label>
-</div>
+  আপনার account যাচাই করা হচ্ছে...
 
-<div class="form-section">
-<div class="form-section-title"><small>03 — CONTACT</small><h3>যোগাযোগের তথ্য</h3></div>
-<label>মোবাইল নম্বর <span class="required">*</span>
-<input id="phone" type="tel" inputmode="numeric" maxlength="11" placeholder="01XXXXXXXXX"></label>
-</div>
-
-<div class="form-section">
-<div class="form-section-title"><small>04 — PHOTOS</small><h3>পণ্যের ছবি</h3></div>
-<label>ছবি <span class="required">*</span>
-<input id="image" type="file" accept="image/jpeg,image/png,image/webp" multiple>
-<div class="image-help">কমপক্ষে ১টি এবং সর্বোচ্চ ৩টি ছবি। JPG, PNG অথবা WebP। আবার Choose File চাপলে আগের ছবিগুলো থাকবে।</div>
-<div id="imageCount" class="image-count">০ / ৩ ছবি নির্বাচিত</div>
-</label>
-<div id="preview" class="preview-grid"></div>
-</div>
-
-<button id="submitBtn" class="btn green" type="submit" style="width:100%;margin-top:25px">Review & Publish →</button>
-<div class="submit-note">Submit করলে বিজ্ঞাপনটি <b style="color:#f2c94c">Pending</b> অবস্থায় Admin approval-এর জন্য যাবে। Approve হলে marketplace-এ প্রকাশিত হবে।</div>
-</form>
-<div id="msg"></div>
 </section>
+
+
+<section
+  id="formBox"
+  style="margin-top:25px;display:none">
+
+
+<div class="form-header">
+
+<span class="eyebrow">
+POST AN AD
+</span>
+
+<h1>
+আপনার বিজ্ঞাপন দিন
+</h1>
+
+<p>
+সঠিক তথ্য দিন। Admin approval-এর পর বিজ্ঞাপনটি marketplace-এ প্রকাশিত হবে।
+</p>
+
+</div>
+
+
+<div
+  id="userNote"
+  class="user-note">
+</div>
+
+
+<form
+  id="adForm"
+  novalidate>
+
+
+<div class="form-section">
+
+<div class="form-section-title">
+
+<small>
+01 — BASIC INFORMATION
+</small>
+
+<h3>
+পণ্যের তথ্য
+</h3>
+
+</div>
+
+
+<label>
+
+ক্যাটাগরি
+<span class="required">*</span>
+
+<select id="category">
+
+<option value="">
+ক্যাটাগরি নির্বাচন করুন
+</option>
+
+<option>Vehicles</option>
+<option>Property</option>
+<option>Phones & Tablets</option>
+<option>Electronics</option>
+<option>Home, Furniture & Garden</option>
+<option>Fashion</option>
+<option>Beauty & Personal Care</option>
+<option>Services</option>
+<option>Repair & Construction</option>
+<option>Commercial Equipment & Machinery</option>
+<option>Leisure & Activities</option>
+<option>Babies & Kids</option>
+<option>Food, Agriculture & Supplies</option>
+<option>Animals & Pets</option>
+<option>Jobs</option>
+<option>Seeking Work - CVs</option>
+<option>Business & Industry</option>
+
+</select>
+
+</label>
+
+
+<label>
+
+সাব-ক্যাটাগরি
+<span class="required">*</span>
+
+<select id="subcategory">
+
+<option value="">
+আগে ক্যাটাগরি নির্বাচন করুন
+</option>
+
+</select>
+
+</label>
+
+
+<label>
+
+শিরোনাম
+<span class="required">*</span>
+
+<input
+  id="title"
+  type="text"
+  maxlength="100"
+  placeholder="যেমন: iPhone 13 128GB">
+
+</label>
+
+
+<label>
+
+দাম
+<span class="required">*</span>
+
+<input
+  id="price"
+  type="number"
+  min="1"
+  placeholder="৳">
+
+</label>
+
+
+<label>
+
+বিস্তারিত
+<span class="required">*</span>
+
+<textarea
+  id="description"
+  rows="6"
+  maxlength="3000"
+  placeholder="পণ্যের বিস্তারিত লিখুন">
+</textarea>
+
+</label>
+
+</div>
+
+
+
+<div class="form-section">
+
+<div class="form-section-title">
+
+<small>
+02 — LOCATION
+</small>
+
+<h3>
+আপনার এলাকার তথ্য
+</h3>
+
+</div>
+
+
+<label>
+
+এলাকা
+<span class="required">*</span>
+
+<select id="location">
+
+<option value="">
+আপনার এলাকা নির্বাচন করুন
+</option>
+
+<option>টাহরখীল</option>
+<option>মান্দারী</option>
+<option>লোধেরগাঁও</option>
+<option>বিমলেরগাঁও</option>
+<option>দাসেরগাঁও</option>
+<option>দমকেরগাঁও</option>
+<option>ভাটেরগাঁও</option>
+<option>পাঁচগাঁও</option>
+<option>কুমারডুগী</option>
+<option>কৃষ্ণপুর</option>
+<option>ভরঙ্গারচর</option>
+<option>কেতুয়া</option>
+<option>আলুমুড়া</option>
+<option>ছোট শাহতলী</option>
+<option>বড় শাহতলী</option>
+<option>পাইকদি</option>
+<option>রনবলিয়া</option>
+<option>কদ্দি</option>
+
+</select>
+
+</label>
+
+</div>
+
+
+
+<div class="form-section">
+
+<div class="form-section-title">
+
+<small>
+03 — CONTACT
+</small>
+
+<h3>
+যোগাযোগের তথ্য
+</h3>
+
+</div>
+
+
+<label>
+
+মোবাইল নম্বর
+<span class="required">*</span>
+
+<input
+  id="phone"
+  type="tel"
+  inputmode="numeric"
+  maxlength="11"
+  placeholder="01XXXXXXXXX">
+
+</label>
+
+</div>
+
+
+
+<div class="form-section">
+
+<div class="form-section-title">
+
+<small>
+04 — PHOTOS
+</small>
+
+<h3>
+পণ্যের ছবি
+</h3>
+
+</div>
+
+
+<label>
+
+ছবি
+<span class="required">*</span>
+
+<input
+  id="image"
+  type="file"
+  accept="image/jpeg,image/png,image/webp"
+  multiple>
+
+
+<div class="image-help">
+
+কমপক্ষে ১টি এবং সর্বোচ্চ ৩টি ছবি।
+JPG, PNG অথবা WebP।
+আবার Choose File চাপলে আগের ছবিগুলো থাকবে।
+
+</div>
+
+
+<div
+  id="imageCount"
+  class="image-count">
+
+০ / ৩ ছবি নির্বাচিত
+
+</div>
+
+</label>
+
+
+<div
+  id="preview"
+  class="preview-grid">
+</div>
+
+</div>
+
+
+<button
+  id="submitBtn"
+  type="submit">
+
+Review & Publish →
+
+</button>
+
+
+<div class="submit-note">
+
+Submit করলে বিজ্ঞাপনটি
+
+<b>
+Pending
+</b>
+
+অবস্থায় Admin approval-এর জন্য যাবে।
+
+Approve হলে marketplace-এ প্রকাশিত হবে।
+
+</div>
+
+
+</form>
+
+
+<div id="msg"></div>
+
+
+</section>
+
+
 </main>
 
+
+
 <nav class="mobile-nav">
-<a href="index.html"><span>⌂</span>Home</a><a href="favorites.html"><span>♡</span>Saved</a>
-<a class="active" href="post-ad.html"><span>⊞</span>Sell</a><a href="messages.html"><span>▤</span>Messages</a>
-<a href="profile.html"><span>♙</span>Profile</a>
+
+<a href="index.html">
+
+<span>⌂</span>
+
+Home
+
+</a>
+
+
+<a href="favorites.html">
+
+<span>♡</span>
+
+Saved
+
+</a>
+
+
+<a
+  class="active"
+  href="post-ad.html">
+
+<span>⊞</span>
+
+Sell
+
+</a>
+
+
+<a href="messages.html">
+
+<span>▤</span>
+
+Messages
+
+</a>
+
+
+<a href="profile.html">
+
+<span>♙</span>
+
+Profile
+
+</a>
+
 </nav>
 
+
+
 <script src="supabase.js?v=12"></script>
+
+
 <script>
+
 (function(){
+
 "use strict";
 
 const SUPA_URL="https://jeupbfoceqmnpwlklche.supabase.co";
 const SUPA_KEY=window.SUPABASE_ANON_KEY||window.supabaseAnonKey||"";
 
 const $=id=>document.getElementById(id);
-const loading=$("loading"),formBox=$("formBox"),form=$("adForm"),userNote=$("userNote");
-const msg=$("msg"),submitBtn=$("submitBtn"),imageInput=$("image"),preview=$("preview"),imageCount=$("imageCount");
-const category=$("category"),subcategory=$("subcategory"),locationSelect=$("location");
-const titleInput=$("title"),priceInput=$("price"),descriptionInput=$("description"),phoneInput=$("phone");
+
+const loading=$("loading");
+const formBox=$("formBox");
+const form=$("adForm");
+const userNote=$("userNote");
+
+const msg=$("msg");
+const submitBtn=$("submitBtn");
+const imageInput=$("image");
+const preview=$("preview");
+const imageCount=$("imageCount");
+
+const category=$("category");
+const subcategory=$("subcategory");
+const locationSelect=$("location");
+
+const titleInput=$("title");
+const priceInput=$("price");
+const descriptionInput=$("description");
+const phoneInput=$("phone");
+
 
 let currentUser=null;
 let selectedFiles=[];
 
-function esc(v){return String(v??"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#039;");}
-function error(t){msg.innerHTML='<div class="error-box">'+esc(t)+'</div>';}
-function clearMsg(){msg.innerHTML="";}
+
+function esc(v){
+
+return String(v??"")
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
+
+}
+
+
+function error(t){
+
+msg.innerHTML=
+'<div class="error-box">'+
+esc(t)+
+'</div>';
+
+}
+
+
+function clearMsg(){
+
+msg.innerHTML="";
+
+}
+
 
 function getStoredUser(){
-  try{
-    const x=JSON.parse(localStorage.getItem("smb_user_v1")||"null");
-    return x&&x.id&&x.email?x:null;
-  }catch(e){return null;}
+
+try{
+
+const x=
+JSON.parse(
+localStorage.getItem("smb_user_v1")||
+"null"
+);
+
+return x&&x.id&&x.email
+?x
+:null;
+
+}catch(e){
+
+return null;
+
 }
+
+}
+
 
 /* IMPORTANT: refresh an expired Supabase access token before ANY upload/DB request. */
+
 function tokenPayload(token){
-  try{
-    const p=token.split(".")[1].replace(/-/g,"+").replace(/_/g,"/");
-    return JSON.parse(decodeURIComponent(atob(p.padEnd(p.length+((4-p.length%4)%4),"=")).split("").map(c=>"%"+("00"+c.charCodeAt(0).toString(16)).slice(-2)).join("")));
-  }catch(e){return null;}
+
+try{
+
+const p=
+token
+.split(".")[1]
+.replace(/-/g,"+")
+.replace(/_/g,"/");
+
+
+return JSON.parse(
+
+decodeURIComponent(
+
+atob(
+
+p.padEnd(
+p.length+
+((4-p.length%4)%4),
+"="
+)
+
+)
+
+.split("")
+
+.map(
+
+c=>
+"%"+
+(
+"00"+
+c.charCodeAt(0)
+.toString(16)
+)
+.slice(-2)
+
+)
+
+.join("")
+
+)
+
+);
+
+}catch(e){
+
+return null;
+
 }
+
+}
+
 
 async function freshSession(){
-  let s=null;
-  try{
-    s=typeof getSbSession==="function"?getSbSession():null;
-    if(s&&s.access_token){
-      const p=tokenPayload(s.access_token);
-      if(p&&p.exp&&p.exp>Math.floor(Date.now()/1000)+90) return s;
-    }
-  }catch(e){}
 
-  const refresh=(s&&s.refresh_token)||"";
-  if(!refresh) throw new Error("Login session expired. আবার Google Login করুন।");
+let s=null;
 
-  if(!SUPA_KEY) throw new Error("Supabase configuration পাওয়া যায়নি।");
 
-  const r=await fetch(SUPA_URL+"/auth/v1/token?grant_type=refresh_token",{
-    method:"POST",
-    headers:{"apikey":SUPA_KEY,"Content-Type":"application/json"},
-    body:JSON.stringify({refresh_token:refresh})
-  });
+try{
 
-  if(!r.ok) throw new Error("Login session refresh করা যায়নি। আবার Google Login করুন।");
+s=
+typeof getSbSession==="function"
+?getSbSession()
+:null;
 
-  const data=await r.json();
 
-  const ns={
-    access_token:data.access_token,
-    refresh_token:data.refresh_token||refresh,
-    expires_in:data.expires_in||3600,
-    token_type:data.token_type||"bearer"
-  };
+if(
+s&&
+s.access_token
+){
 
-  try{
-    if(typeof setSbSession==="function") await setSbSession(ns);
-  }catch(e){}
+const p=
+tokenPayload(
+s.access_token
+);
 
-  return ns;
+
+if(
+p&&
+p.exp&&
+p.exp>
+Math.floor(
+Date.now()/1000
+)+90
+){
+
+return s;
+
 }
 
-async function getUser(){
-  try{
-    if(typeof getCurrentUser==="function"){
-      const u=await getCurrentUser();
-      if(u){
-        const m=u.user_metadata||{};
-        const p={id:u.id||"",name:m.full_name||m.name||"",email:u.email||"",phone:m.phone||"",avatar:m.avatar_url||m.picture||""};
-        localStorage.setItem("smb_user_v1",JSON.stringify(p));
-        return p;
-      }
-    }
-  }catch(e){console.error(e);}
-  return getStoredUser();
 }
 
-const subMap={
-"Vehicles":["Cars","Motorcycles","Bicycles","Auto Rickshaw","Trucks & Buses","Vehicle Parts"],
-"Property":["Land","Apartments","Houses","Shops & Commercial Space","Office Space","Property for Rent"],
-"Phones & Tablets":["Mobile Phones","Tablets","Phone Accessories","Smart Watches"],
-"Electronics":["TV","Laptop & Computer","Camera","Audio","Gaming","Other Electronics"],
-"Home, Furniture & Garden":["Furniture","Home Decor","Kitchen","Garden","Appliances"],
-"Fashion":["Men","Women","Kids","Shoes","Bags & Accessories","Watches"],
-"Beauty & Personal Care":["Cosmetics","Skin Care","Hair Care","Perfume","Health & Personal Care"],
-"Services":["Tutoring","Cleaning","Transport","Photography","IT & Digital","Other Services"],
-"Repair & Construction":["Electrician","Plumber","AC & Fridge Repair","Construction Materials","Mechanic","Painter"],
-"Commercial Equipment & Machinery":["Factory Equipment","Restaurant Equipment","Office Equipment","Tools","Machinery"],
-"Leisure & Activities":["Sports","Gym & Fitness","Music","Books","Tickets & Events","Hobbies"],
-"Babies & Kids":["Baby Products","Toys","Kids Clothing","Strollers","School Items"],
-"Food, Agriculture & Supplies":["Vegetables","Fruits","Fish","Livestock Feed","Seeds","Farm Products"],
-"Animals & Pets":["Cattle","Goat","Poultry","Pets","Pet Supplies"],
-"Jobs":["Full Time","Part Time","Sales Jobs","Driver Jobs","Office Jobs","Other Jobs"],
-"Seeking Work - CVs":["CVs","Job Seekers","Freelancers","Skilled Workers"],
-"Business & Industry":["Business for Sale","Wholesale","Retail","Industrial Products","Agriculture Business"]
+}catch(e){}
+
+
+const refresh=
+(s&&s.refresh_token)||"";
+
+
+if(!refresh){
+
+throw new Error(
+"Login session expired. আবার Google Login করুন।"
+);
+
+}
+
+
+if(!SUPA_KEY){
+
+throw new Error(
+"Supabase configuration পাওয়া যায়নি।"
+);
+
+}
+
+
+const r=
+await fetch(
+
+SUPA_URL+
+"/auth/v1/token?grant_type=refresh_token",
+
+{
+
+method:"POST",
+
+headers:{
+
+"apikey":SUPA_KEY,
+
+"Content-Type":
+"application/json"
+
+},
+
+body:
+JSON.stringify({
+
+refresh_token:
+refresh
+
+})
+
+}
+
+);
+
+
+if(!r.ok){
+
+throw new Error(
+"Login session refresh করা যায়নি। আবার Google Login করুন।"
+);
+
+}
+
+
+const data=
+await r.json();
+
+
+const ns={
+
+access_token:
+data.access_token,
+
+refresh_token:
+data.refresh_token||
+refresh,
+
+expires_in:
+data.expires_in||
+3600,
+
+token_type:
+data.token_type||
+"bearer"
+
 };
 
-category.addEventListener("change",function(){
-  subcategory.innerHTML='<option value="">সাব-ক্যাটাগরি নির্বাচন করুন</option>';
-  (subMap[category.value]||[]).forEach(x=>subcategory.add(new Option(x,x)));
-});
+
+try{
+
+if(
+typeof setSbSession===
+"function"
+){
+
+await setSbSession(ns);
+
+}
+
+}catch(e){}
+
+
+return ns;
+
+}
+
+
+async function getUser(){
+
+try{
+
+if(
+typeof getCurrentUser===
+"function"
+){
+
+const u=
+await getCurrentUser();
+
+
+if(u){
+
+const m=
+u.user_metadata||{};
+
+
+const p={
+
+id:
+u.id||"",
+
+name:
+m.full_name||
+m.name||
+"",
+
+email:
+u.email||
+"",
+
+phone:
+m.phone||
+"",
+
+avatar:
+m.avatar_url||
+m.picture||
+""
+
+};
+
+
+localStorage.setItem(
+"smb_user_v1",
+JSON.stringify(p)
+);
+
+
+return p;
+
+}
+
+}
+
+}catch(e){
+
+console.error(e);
+
+}
+
+
+return getStoredUser();
+
+}
+
+
+const subMap={
+
+"Vehicles":[
+"Cars",
+"Motorcycles",
+"Bicycles",
+"Auto Rickshaw",
+"Trucks & Buses",
+"Vehicle Parts"
+],
+
+"Property":[
+"Land",
+"Apartments",
+"Houses",
+"Shops & Commercial Space",
+"Office Space",
+"Property for Rent"
+],
+
+"Phones & Tablets":[
+"Mobile Phones",
+"Tablets",
+"Phone Accessories",
+"Smart Watches"
+],
+
+"Electronics":[
+"TV",
+"Laptop & Computer",
+"Camera",
+"Audio",
+"Gaming",
+"Other Electronics"
+],
+
+"Home, Furniture & Garden":[
+"Furniture",
+"Home Decor",
+"Kitchen",
+"Garden",
+"Appliances"
+],
+
+"Fashion":[
+"Men",
+"Women",
+"Kids",
+"Shoes",
+"Bags & Accessories",
+"Watches"
+],
+
+"Beauty & Personal Care":[
+"Cosmetics",
+"Skin Care",
+"Hair Care",
+"Perfume",
+"Health & Personal Care"
+],
+
+"Services":[
+"Tutoring",
+"Cleaning",
+"Transport",
+"Photography",
+"IT & Digital",
+"Other Services"
+],
+
+"Repair & Construction":[
+"Electrician",
+"Plumber",
+"AC & Fridge Repair",
+"Construction Materials",
+"Mechanic",
+"Painter"
+],
+
+"Commercial Equipment & Machinery":[
+"Factory Equipment",
+"Restaurant Equipment",
+"Office Equipment",
+"Tools",
+"Machinery"
+],
+
+"Leisure & Activities":[
+"Sports",
+"Gym & Fitness",
+"Music",
+"Books",
+"Tickets & Events",
+"Hobbies"
+],
+
+"Babies & Kids":[
+"Baby Products",
+"Toys",
+"Kids Clothing",
+"Strollers",
+"School Items"
+],
+
+"Food, Agriculture & Supplies":[
+"Vegetables",
+"Fruits",
+"Fish",
+"Livestock Feed",
+"Seeds",
+"Farm Products"
+],
+
+"Animals & Pets":[
+"Cattle",
+"Goat",
+"Poultry",
+"Pets",
+"Pet Supplies"
+],
+
+"Jobs":[
+"Full Time",
+"Part Time",
+"Sales Jobs",
+"Driver Jobs",
+"Office Jobs",
+"Other Jobs"
+],
+
+"Seeking Work - CVs":[
+"CVs",
+"Job Seekers",
+"Freelancers",
+"Skilled Workers"
+],
+
+"Business & Industry":[
+"Business for Sale",
+"Wholesale",
+"Retail",
+"Industrial Products",
+"Agriculture Business"
+]
+
+};
+
+
+category.addEventListener(
+"change",
+function(){
+
+subcategory.innerHTML=
+'<option value="">সাব-ক্যাটাগরি নির্বাচন করুন</option>';
+
+
+(
+subMap[
+category.value
+]||[]
+)
+
+.forEach(
+
+x=>
+subcategory.add(
+new Option(x,x)
+)
+
+);
+
+}
+
+);
+
 
 function renderPreview(){
-  preview.innerHTML="";
-  imageCount.textContent=selectedFiles.length+" / ৩ ছবি নির্বাচিত";
-  selectedFiles.forEach((file,i)=>{
-    const item=document.createElement("div");
-    item.className="preview-item";
-    const img=document.createElement("img");
-    img.alt="Image "+(i+1);
-    img.src=URL.createObjectURL(file);
-    img.onload=()=>URL.revokeObjectURL(img.src);
-    const n=document.createElement("span");
-    n.className="image-number"; n.textContent=i+1;
-    const b=document.createElement("button");
-    b.type="button"; b.className="remove-image"; b.dataset.index=i; b.textContent="×";
-    item.append(img,n,b); preview.appendChild(item);
-  });
+
+preview.innerHTML="";
+
+
+imageCount.textContent=
+selectedFiles.length+
+" / ৩ ছবি নির্বাচিত";
+
+
+selectedFiles.forEach(
+(file,i)=>{
+
+const item=
+document.createElement("div");
+
+item.className=
+"preview-item";
+
+
+const img=
+document.createElement("img");
+
+
+img.alt=
+"Image "+(i+1);
+
+
+img.src=
+URL.createObjectURL(file);
+
+
+img.onload=
+()=>
+URL.revokeObjectURL(
+img.src
+);
+
+
+const n=
+document.createElement("span");
+
+
+n.className=
+"image-number";
+
+
+n.textContent=
+i+1;
+
+
+const b=
+document.createElement("button");
+
+
+b.type="button";
+
+
+b.className=
+"remove-image";
+
+
+b.dataset.index=i;
+
+
+b.textContent="×";
+
+
+item.append(
+img,
+n,
+b
+);
+
+
+preview.appendChild(
+item
+);
+
 }
 
-imageInput.addEventListener("change",function(){
-  clearMsg();
-  Array.from(imageInput.files||[]).forEach(file=>{
-    if(!["image/jpeg","image/png","image/webp"].includes(file.type)){error("শুধু JPG, PNG অথবা WebP ছবি ব্যবহার করুন।");return;}
-    if(selectedFiles.some(x=>x.name===file.name&&x.size===file.size&&x.lastModified===file.lastModified))return;
-    if(selectedFiles.length>=3){error("সর্বোচ্চ ৩টি ছবি দেওয়া যাবে।");return;}
-    selectedFiles.push(file);
-  });
-  imageInput.value="";
-  renderPreview();
-});
+);
 
-preview.addEventListener("click",function(e){
-  const b=e.target.closest(".remove-image");
-  if(!b)return;
-  selectedFiles.splice(Number(b.dataset.index),1);
-  renderPreview(); clearMsg();
-});
-
-async function uploadImage(file,adId,index,session){
-  const ext=(file.name.split(".").pop()||"jpg").toLowerCase().replace(/[^a-z0-9]/g,"")||"jpg";
-  const path=currentUser.id+"/"+adId+"/"+index+"-"+Date.now()+"."+ext;
-  const r=await fetch(SUPA_URL+"/storage/v1/object/ad-images/"+path,{
-    method:"POST",
-    headers:{
-      "apikey":SUPA_KEY,
-      "Authorization":"Bearer "+session.access_token,
-      "Content-Type":file.type||"image/jpeg",
-      "x-upsert":"false"
-    },
-    body:file
-  });
-  if(!r.ok){
-    const t=await r.text();
-    if(r.status===401||r.status===403)throw new Error("Login session expired. আবার Google Login করে চেষ্টা করুন।");
-    throw new Error("ছবি upload করা যায়নি: "+t);
-  }
-  return SUPA_URL+"/storage/v1/object/public/ad-images/"+path;
 }
+
+
+imageInput.addEventListener(
+"change",
+function(){
+
+clearMsg();
+
+
+Array.from(
+imageInput.files||[]
+)
+
+.forEach(
+file=>{
+
+if(
+![
+"image/jpeg",
+"image/png",
+"image/webp"
+]
+.includes(
+file.type
+)
+){
+
+error(
+"শুধু JPG, PNG অথবা WebP ছবি ব্যবহার করুন।"
+);
+
+return;
+
+}
+
+
+if(
+selectedFiles.some(
+x=>
+x.name===
+file.name&&
+x.size===
+file.size&&
+x.lastModified===
+file.lastModified
+)
+){
+
+return;
+
+}
+
+
+if(
+selectedFiles.length>=3
+){
+
+error(
+"সর্বোচ্চ ৩টি ছবি দেওয়া যাবে।"
+);
+
+return;
+
+}
+
+
+selectedFiles.push(
+file
+);
+
+}
+
+);
+
+
+imageInput.value="";
+
+
+renderPreview();
+
+}
+
+);
+
+
+preview.addEventListener(
+"click",
+function(e){
+
+const b=
+e.target.closest(
+".remove-image"
+);
+
+
+if(!b)return;
+
+
+selectedFiles.splice(
+Number(
+b.dataset.index
+),
+1
+);
+
+
+renderPreview();
+
+
+clearMsg();
+
+}
+
+);
+
+
+async function uploadImage(
+file,
+adId,
+index,
+session
+){
+
+const ext=
+
+(
+file.name
+.split(".")
+.pop()||
+"jpg"
+)
+
+.toLowerCase()
+
+.replace(
+/[^a-z0-9]/g,
+""
+)
+
+||
+"jpg";
+
+
+const path=
+
+currentUser.id+
+"/"+
+adId+
+"/"+
+index+
+"-"+
+Date.now()+
+"."+
+ext;
+
+
+const r=
+await fetch(
+
+SUPA_URL+
+"/storage/v1/object/ad-images/"+
+path,
+
+{
+
+method:"POST",
+
+headers:{
+
+"apikey":
+SUPA_KEY,
+
+"Authorization":
+"Bearer "+
+session.access_token,
+
+"Content-Type":
+file.type||
+"image/jpeg",
+
+"x-upsert":
+"false"
+
+},
+
+body:file
+
+}
+
+);
+
+
+if(!r.ok){
+
+const t=
+await r.text();
+
+
+if(
+r.status===401||
+r.status===403
+){
+
+throw new Error(
+"Login session expired. আবার Google Login করে চেষ্টা করুন।"
+);
+
+}
+
+
+throw new Error(
+"ছবি upload করা যায়নি: "+
+t
+);
+
+}
+
+
+return
+
+SUPA_URL+
+"/storage/v1/object/public/ad-images/"+
+path;
+
+}
+
 
 async function initialize(){
-  try{
-    if(typeof handleAuthCallback==="function")await handleAuthCallback();
-  }catch(e){console.error(e);}
-  currentUser=await getUser();
-  if(!currentUser){
-    await new Promise(r=>setTimeout(r,900));
-    currentUser=await getUser();
-  }
-  if(!currentUser){
-    loading.innerHTML='আপনার Login session পাওয়া যায়নি।<br><br><a class="btn green" href="login.html?next=post-ad.html">Google দিয়ে Login করুন</a>';
-    return;
-  }
-  loading.style.display="none"; formBox.style.display="block";
-  userNote.innerHTML='Signed in as <strong>'+esc(currentUser.email)+'</strong>';
-  if(currentUser.phone)phoneInput.value=currentUser.phone;
+
+try{
+
+if(
+typeof handleAuthCallback===
+"function"
+){
+
+await handleAuthCallback();
+
 }
+
+}catch(e){
+
+console.error(e);
+
+}
+
+
+currentUser=
+await getUser();
+
+
+if(!currentUser){
+
+await new Promise(
+r=>setTimeout(r,900)
+);
+
+
+currentUser=
+await getUser();
+
+}
+
+
+if(!currentUser){
+
+loading.innerHTML=
+
+'আপনার Login session পাওয়া যায়নি।'+
+
+'<br><br>'+
+
+'<a class="btn green" href="login.html?next=post-ad.html">'+
+
+'Google দিয়ে Login করুন'+
+
+'</a>';
+
+
+return;
+
+}
+
+
+loading.style.display=
+"none";
+
+
+formBox.style.display=
+"block";
+
+
+userNote.innerHTML=
+
+'Signed in as <strong>'+
+
+esc(
+currentUser.email
+)+
+
+'</strong>';
+
+
+if(
+currentUser.phone
+){
+
+phoneInput.value=
+currentUser.phone;
+
+}
+
+}
+
+
 initialize();
 
-form.addEventListener("submit",async function(e){
-  e.preventDefault(); clearMsg();
 
-  if(!currentUser){error("আপনার Login session পাওয়া যাচ্ছে না।");return;}
-  if(selectedFiles.length<1){error("কমপক্ষে ১টি ছবি দিতে হবে।");return;}
-  if(!category.value){error("ক্যাটাগরি নির্বাচন করুন।");category.focus();return;}
-  if(!subcategory.value){error("সাব-ক্যাটাগরি নির্বাচন করুন।");subcategory.focus();return;}
-  if(!titleInput.value.trim()){error("শিরোনাম লিখুন।");titleInput.focus();return;}
-  const price=Number(priceInput.value);
-  if(!price||price<1){error("সঠিক দাম লিখুন।");priceInput.focus();return;}
-  if(!descriptionInput.value.trim()){error("পণ্যের বিস্তারিত লিখুন।");descriptionInput.focus();return;}
-  if(!locationSelect.value){error("আপনার এলাকা নির্বাচন করুন।");locationSelect.focus();return;}
-  const phone=phoneInput.value.trim();
-  if(!/^01[3-9]\d{8}$/.test(phone)){error("সঠিক ১১ সংখ্যার মোবাইল নম্বর দিন।");phoneInput.focus();return;}
+form.addEventListener(
+"submit",
+async function(e){
 
-  submitBtn.disabled=true; submitBtn.textContent="Login session যাচাই হচ্ছে...";
+e.preventDefault();
 
-  try{
-    /* Fresh token — this fixes the exp claim timestamp error. */
-    const session=await freshSession();
 
-    const adId=typeof crypto!=="undefined"&&crypto.randomUUID?crypto.randomUUID():"ad_"+Date.now()+"_"+Math.random().toString(36).slice(2);
+clearMsg();
 
-    const imageUrls=[];
-    for(let i=0;i<selectedFiles.length;i++){
-      submitBtn.textContent="ছবি upload হচ্ছে "+(i+1)+"/"+selectedFiles.length;
-      imageUrls.push(await uploadImage(selectedFiles[i],adId,i+1,session));
-    }
 
-    submitBtn.textContent="বিজ্ঞাপন জমা হচ্ছে...";
+if(!currentUser){
 
-    const adData={
-      id:adId,
-      seller_id:currentUser.id,
-      user_id:currentUser.id,
-      seller_email:currentUser.email,
-      email:currentUser.email,
-      title:titleInput.value.trim(),
-      price:price,
-      category:category.value,
-      subcategory:subcategory.value,
-      description:descriptionInput.value.trim(),
-      location:locationSelect.value,
-      phone:phone,
-      image_urls:imageUrls,
-      status:"pending",
-      created_at:new Date().toISOString()
-    };
+error(
+"আপনার Login session পাওয়া যাচ্ছে না।"
+);
 
-    const r=await fetch(SUPA_URL+"/rest/v1/ads",{
-      method:"POST",
-      headers:{
-        "apikey":SUPA_KEY,
-        "Authorization":"Bearer "+session.access_token,
-        "Content-Type":"application/json",
-        "Prefer":"return=representation"
-      },
-      body:JSON.stringify(adData)
-    });
+return;
 
-    if(!r.ok){
-      const t=await r.text();
-      throw new Error("Database error: "+t);
-    }
+}
 
-    form.style.display="none";
-    msg.innerHTML='<div class="success-box"><div class="success-icon">✓</div><strong>বিজ্ঞাপন সফলভাবে জমা হয়েছে</strong><br><br><small style="color:#84948c">আপনার বিজ্ঞাপন এখন <b style="color:#f2c94c">Pending</b> অবস্থায় Admin approval-এর অপেক্ষায় আছে।<br>Admin approve করার পর এটি marketplace-এ প্রকাশিত হবে।</small><br><br><a href="my-ads.html" class="btn green">আমার বিজ্ঞাপন দেখুন →</a></div>';
-    selectedFiles=[]; imageInput.value=""; preview.innerHTML=""; imageCount.textContent="০ / ৩ ছবি নির্বাচিত";
 
-  }catch(err){
-    console.error("POST AD ERROR:",err);
-    error(err.message||"বিজ্ঞাপন জমা দেওয়া যায়নি।");
-  }finally{
-    submitBtn.disabled=false;
-    submitBtn.textContent="Review & Publish →";
-  }
-});
+if(
+selectedFiles.length<1
+){
+
+error(
+"কমপক্ষে ১টি ছবি দিতে হবে।"
+);
+
+return;
+
+}
+
+
+if(!category.value){
+
+error(
+"ক্যাটাগরি নির্বাচন করুন।"
+);
+
+category.focus();
+
+return;
+
+}
+
+
+if(!subcategory.value){
+
+error(
+"সাব-ক্যাটাগরি নির্বাচন করুন।"
+);
+
+subcategory.focus();
+
+return;
+
+}
+
+
+if(
+!titleInput.value.trim()
+){
+
+error(
+"শিরোনাম লিখুন।"
+);
+
+titleInput.focus();
+
+return;
+
+}
+
+
+const price=
+Number(
+priceInput.value
+);
+
+
+if(
+!price||
+price<1
+){
+
+error(
+"সঠিক দাম লিখুন।"
+);
+
+priceInput.focus();
+
+return;
+
+}
+
+
+if(
+!descriptionInput.value.trim()
+){
+
+error(
+"পণ্যের বিস্তারিত লিখুন।"
+);
+
+descriptionInput.focus();
+
+return;
+
+}
+
+
+if(
+!locationSelect.value
+){
+
+error(
+"আপনার এলাকা নির্বাচন করুন।"
+);
+
+locationSelect.focus();
+
+return;
+
+}
+
+
+const phone=
+phoneInput.value.trim();
+
+
+if(
+!/^01[3-9]\d{8}$/.test(
+phone
+)
+){
+
+error(
+"সঠিক ১১ সংখ্যার মোবাইল নম্বর দিন।"
+);
+
+phoneInput.focus();
+
+return;
+
+}
+
+
+submitBtn.disabled=true;
+
+
+submitBtn.textContent=
+"Login session যাচাই হচ্ছে...";
+
+
+try{
+
+
+const session=
+await freshSession();
+
+
+const adId=
+
+typeof crypto!=="undefined"&&
+crypto.randomUUID
+
+?
+
+crypto.randomUUID()
+
+:
+
+"ad_"+
+Date.now()+
+"_"+
+Math.random()
+.toString(36)
+.slice(2);
+
+
+const imageUrls=[];
+
+
+for(
+let i=0;
+i<selectedFiles.length;
+i++
+){
+
+submitBtn.textContent=
+
+"ছবি upload হচ্ছে "+
+
+(i+1)+
+
+"/"+
+
+selectedFiles.length;
+
+
+imageUrls.push(
+
+await uploadImage(
+selectedFiles[i],
+adId,
+i+1,
+session
+)
+
+);
+
+}
+
+
+submitBtn.textContent=
+"বিজ্ঞাপন জমা হচ্ছে...";
+
+
+const adData={
+
+id:
+adId,
+
+seller_id:
+currentUser.id,
+
+user_id:
+currentUser.id,
+
+seller_email:
+currentUser.email,
+
+email:
+currentUser.email,
+
+title:
+titleInput.value.trim(),
+
+price:
+price,
+
+category:
+category.value,
+
+subcategory:
+subcategory.value,
+
+description:
+descriptionInput.value.trim(),
+
+location:
+locationSelect.value,
+
+phone:
+phone,
+
+image_urls:
+imageUrls,
+
+status:
+"pending",
+
+created_at:
+new Date()
+.toISOString()
+
+};
+
+
+const r=
+await fetch(
+
+SUPA_URL+
+"/rest/v1/ads",
+
+{
+
+method:"POST",
+
+headers:{
+
+"apikey":
+SUPA_KEY,
+
+"Authorization":
+"Bearer "+
+session.access_token,
+
+"Content-Type":
+"application/json",
+
+"Prefer":
+"return=representation"
+
+},
+
+body:
+JSON.stringify(
+adData
+)
+
+}
+
+);
+
+
+if(!r.ok){
+
+const t=
+await r.text();
+
+
+throw new Error(
+"Database error: "+
+t
+);
+
+}
+
+
+form.style.display=
+"none";
+
+
+msg.innerHTML=
+
+'<div class="success-box">'+
+
+'<div class="success-icon">✓</div>'+
+
+
+'<strong>'+
+
+'বিজ্ঞাপন সফলভাবে জমা হয়েছে'+
+
+'</strong>'+
+
+
+'<br><br>'+
+
+
+'<small>'+
+
+'আপনার বিজ্ঞাপন এখন '+
+
+'<b style="color:#b57b00">Pending</b> '+
+
+'অবস্থায় Admin approval-এর অপেক্ষায় আছে।'+
+
+'<br>'+
+
+
+'Admin approve করার পর এটি marketplace-এ প্রকাশিত হবে।'+
+
+'</small>'+
+
+
+'<br><br>'+
+
+
+'<a href="my-ads.html" class="btn green">'+
+
+'আমার বিজ্ঞাপন দেখুন →'+
+
+'</a>'+
+
+
+'</div>';
+
+
+selectedFiles=[];
+
+imageInput.value="";
+
+preview.innerHTML="";
+
+imageCount.textContent=
+"০ / ৩ ছবি নির্বাচিত";
+
+
+}catch(err){
+
+console.error(
+"POST AD ERROR:",
+err
+);
+
+
+error(
+err.message||
+"বিজ্ঞাপন জমা দেওয়া যায়নি।"
+);
+
+}finally{
+
+submitBtn.disabled=false;
+
+
+submitBtn.textContent=
+"Review & Publish →";
+
+}
+
+}
+
+);
+
 
 })();
+
 </script>
+
 </body>
 </html>
