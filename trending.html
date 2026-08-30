@@ -59,17 +59,115 @@ body{
 }
 
 
-/* ==========================================================
-   BRAND
-========================================================== */
+  /* ============================================================
+   HOMEPAGE BRAND DESIGN
+============================================================ */
 
-.trending-page .brand{
+.brand{
 
-  display:inline-flex;
+  display:flex;
 
-  margin-bottom:24px;
+  flex-wrap:wrap;
+
+  align-items:center;
+
+  width:250px;
+
+  position:relative;
+
+  padding-left:58px;
 
 }
+
+
+.brand:before{
+
+  content:"🛍";
+
+  position:absolute;
+
+  left:0;
+
+  top:50%;
+
+  transform:translateY(-50%);
+
+  width:45px;
+
+  height:45px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  border-radius:14px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #0d9b55,
+      #05743a
+    );
+
+  font-size:26px;
+
+  box-shadow:
+    0 8px 18px
+    rgba(11,143,75,.22);
+
+}
+
+
+.brand b{
+
+  width:100%;
+
+  font-size:19px;
+
+  font-weight:900;
+
+  letter-spacing:-.5px;
+
+  color:#27352e !important;
+
+}
+
+
+.brand strong{
+
+  position:absolute;
+
+  top:0;
+
+  left:188px;
+
+  color:#0b8f4b !important;
+
+  font-size:19px;
+
+  font-weight:900;
+
+}
+
+
+.brand small{
+
+  width:100%;
+
+  margin-top:3px;
+
+  color:#66726b !important;
+
+  font-size:9px;
+
+  font-weight:800;
+
+  letter-spacing:1.5px;
+
+}
+
 
 
 /* ==========================================================
