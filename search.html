@@ -355,6 +355,17 @@ body{
 }
 
 
+.filters select:disabled{
+
+  cursor:not-allowed;
+
+  opacity:.55;
+
+  background:#f3f6f4;
+
+}
+
+
 #cat{
 
   grid-column:span 2;
@@ -947,10 +958,6 @@ footer{
 <body>
 
 
-<!-- ============================================================
-HEADER
-============================================================ -->
-
 <header class="header">
 
 <div class="container head">
@@ -972,10 +979,6 @@ HEADER
 </header>
 
 
-
-<!-- ============================================================
-MAIN
-============================================================ -->
 
 <main class="container search-page">
 
@@ -1004,9 +1007,7 @@ MARKETPLACE
 
 
 
-<!-- ============================================================
-FILTERS
-============================================================ -->
+<!-- FILTERS -->
 
 <div class="filters">
 
@@ -1027,107 +1028,23 @@ FILTERS
 
 </option>
 
-<option value="Vehicles">
-
-যানবাহন
-
-</option>
-
-<option value="Property">
-
-প্রপার্টি
-
-</option>
-
-<option value="Phones & Tablets">
-
-মোবাইল ও ট্যাব
-
-</option>
-
-<option value="Electronics">
-
-ইলেকট্রনিক্স
-
-</option>
-
-<option value="Home, Furniture & Garden">
-
-ফার্নিচার
-
-</option>
-
-<option value="Fashion">
-
-ফ্যাশন
-
-</option>
-
-<option value="Beauty & Personal Care">
-
-বিউটি
-
-</option>
-
-<option value="Services">
-
-সেবা সমূহ
-
-</option>
-
-<option value="Repair & Construction">
-
-মেরামত ও নির্মাণ
-
-</option>
-
-<option value="Commercial Equipment & Machinery">
-
-যন্ত্রপাতি
-
-</option>
-
-<option value="Leisure & Activities">
-
-খেলাধুলা
-
-</option>
-
-<option value="Babies & Kids">
-
-বাচ্চাদের
-
-</option>
-
-<option value="Food, Agriculture & Supplies">
-
-কৃষি
-
-</option>
-
-<option value="Animals & Pets">
-
-পশুপাখি
-
-</option>
-
-<option value="Jobs">
-
-চাকরি
-
-</option>
-
-<option value="Seeking Work - CVs">
-
-কাজ খুঁজছি
-
-</option>
-
-<option value="Business & Industry">
-
-ব্যবসা
-
-</option>
+<option value="Vehicles">যানবাহন</option>
+<option value="Property">প্রপার্টি</option>
+<option value="Phones & Tablets">মোবাইল ও ট্যাব</option>
+<option value="Electronics">ইলেকট্রনিক্স</option>
+<option value="Home, Furniture & Garden">ফার্নিচার</option>
+<option value="Fashion">ফ্যাশন</option>
+<option value="Beauty & Personal Care">বিউটি</option>
+<option value="Services">সেবা সমূহ</option>
+<option value="Repair & Construction">মেরামত ও নির্মাণ</option>
+<option value="Commercial Equipment & Machinery">যন্ত্রপাতি</option>
+<option value="Leisure & Activities">খেলাধুলা</option>
+<option value="Babies & Kids">বাচ্চাদের</option>
+<option value="Food, Agriculture & Supplies">কৃষি</option>
+<option value="Animals & Pets">পশুপাখি</option>
+<option value="Jobs">চাকরি</option>
+<option value="Seeking Work - CVs">কাজ খুঁজছি</option>
+<option value="Business & Industry">ব্যবসা</option>
 
 </select>
 
@@ -1143,208 +1060,15 @@ FILTERS
 
 </label>
 
-<select id="subcat">
+<select
+  id="subcat"
+  disabled>
 
 <option value="">
 
-সব সাব-ক্যাটাগরি
+আগে ক্যাটাগরি নির্বাচন করুন
 
 </option>
-
-
-<optgroup label="Vehicles">
-
-<option value="Cars">Cars</option>
-<option value="Motorcycles">Motorcycles</option>
-<option value="Bicycles">Bicycles</option>
-<option value="Auto Rickshaw">Auto Rickshaw</option>
-<option value="Trucks & Buses">Trucks & Buses</option>
-<option value="Vehicle Parts">Vehicle Parts</option>
-
-</optgroup>
-
-
-<optgroup label="Property">
-
-<option value="Land">Land</option>
-<option value="Apartments">Apartments</option>
-<option value="Houses">Houses</option>
-<option value="Shops & Commercial Space">Shops & Commercial Space</option>
-<option value="Office Space">Office Space</option>
-<option value="Property for Rent">Property for Rent</option>
-
-</optgroup>
-
-
-<optgroup label="Phones & Tablets">
-
-<option value="Mobile Phones">Mobile Phones</option>
-<option value="Tablets">Tablets</option>
-<option value="Phone Accessories">Phone Accessories</option>
-<option value="Smart Watches">Smart Watches</option>
-
-</optgroup>
-
-
-<optgroup label="Electronics">
-
-<option value="TV">TV</option>
-<option value="Laptop & Computer">Laptop & Computer</option>
-<option value="Camera">Camera</option>
-<option value="Audio">Audio</option>
-<option value="Gaming">Gaming</option>
-<option value="Other Electronics">Other Electronics</option>
-
-</optgroup>
-
-
-<optgroup label="Home, Furniture & Garden">
-
-<option value="Furniture">Furniture</option>
-<option value="Home Decor">Home Decor</option>
-<option value="Kitchen">Kitchen</option>
-<option value="Garden">Garden</option>
-<option value="Appliances">Appliances</option>
-
-</optgroup>
-
-
-<optgroup label="Fashion">
-
-<option value="Men">Men</option>
-<option value="Women">Women</option>
-<option value="Kids">Kids</option>
-<option value="Shoes">Shoes</option>
-<option value="Bags & Accessories">Bags & Accessories</option>
-<option value="Watches">Watches</option>
-
-</optgroup>
-
-
-<optgroup label="Beauty & Personal Care">
-
-<option value="Cosmetics">Cosmetics</option>
-<option value="Skin Care">Skin Care</option>
-<option value="Hair Care">Hair Care</option>
-<option value="Perfume">Perfume</option>
-<option value="Health & Personal Care">Health & Personal Care</option>
-
-</optgroup>
-
-
-<optgroup label="Services">
-
-<option value="Tutoring">Tutoring</option>
-<option value="Cleaning">Cleaning</option>
-<option value="Transport">Transport</option>
-<option value="Photography">Photography</option>
-<option value="IT & Digital">IT & Digital</option>
-<option value="Other Services">Other Services</option>
-
-</optgroup>
-
-
-<optgroup label="Repair & Construction">
-
-<option value="Electrician">Electrician</option>
-<option value="Plumber">Plumber</option>
-<option value="AC & Fridge Repair">AC & Fridge Repair</option>
-<option value="Construction Materials">Construction Materials</option>
-<option value="Mechanic">Mechanic</option>
-<option value="Painter">Painter</option>
-
-</optgroup>
-
-
-<optgroup label="Commercial Equipment & Machinery">
-
-<option value="Factory Equipment">Factory Equipment</option>
-<option value="Restaurant Equipment">Restaurant Equipment</option>
-<option value="Office Equipment">Office Equipment</option>
-<option value="Tools">Tools</option>
-<option value="Machinery">Machinery</option>
-
-</optgroup>
-
-
-<optgroup label="Leisure & Activities">
-
-<option value="Sports">Sports</option>
-<option value="Gym & Fitness">Gym & Fitness</option>
-<option value="Music">Music</option>
-<option value="Books">Books</option>
-<option value="Tickets & Events">Tickets & Events</option>
-<option value="Hobbies">Hobbies</option>
-
-</optgroup>
-
-
-<optgroup label="Babies & Kids">
-
-<option value="Baby Products">Baby Products</option>
-<option value="Toys">Toys</option>
-<option value="Kids Clothing">Kids Clothing</option>
-<option value="Strollers">Strollers</option>
-<option value="School Items">School Items</option>
-
-</optgroup>
-
-
-<optgroup label="Food, Agriculture & Supplies">
-
-<option value="Vegetables">Vegetables</option>
-<option value="Fruits">Fruits</option>
-<option value="Fish">Fish</option>
-<option value="Livestock Feed">Livestock Feed</option>
-<option value="Seeds">Seeds</option>
-<option value="Farm Products">Farm Products</option>
-
-</optgroup>
-
-
-<optgroup label="Animals & Pets">
-
-<option value="Cattle">Cattle</option>
-<option value="Goat">Goat</option>
-<option value="Poultry">Poultry</option>
-<option value="Pets">Pets</option>
-<option value="Pet Supplies">Pet Supplies</option>
-
-</optgroup>
-
-
-<optgroup label="Jobs">
-
-<option value="Full Time">Full Time</option>
-<option value="Part Time">Part Time</option>
-<option value="Sales Jobs">Sales Jobs</option>
-<option value="Driver Jobs">Driver Jobs</option>
-<option value="Office Jobs">Office Jobs</option>
-<option value="Other Jobs">Other Jobs</option>
-
-</optgroup>
-
-
-<optgroup label="Seeking Work">
-
-<option value="CVs">CVs</option>
-<option value="Job Seekers">Job Seekers</option>
-<option value="Freelancers">Freelancers</option>
-<option value="Skilled Workers">Skilled Workers</option>
-
-</optgroup>
-
-
-<optgroup label="Business & Industry">
-
-<option value="Business for Sale">Business for Sale</option>
-<option value="Wholesale">Wholesale</option>
-<option value="Retail">Retail</option>
-<option value="Industrial Products">Industrial Products</option>
-<option value="Agriculture Business">Agriculture Business</option>
-
-</optgroup>
-
 
 </select>
 
@@ -1430,10 +1154,6 @@ FILTERS
 
 
 
-<!-- ============================================================
-RESULT BAR
-============================================================ -->
-
 <div class="result-bar">
 
 <strong id="count">
@@ -1456,10 +1176,6 @@ Filter Reset
 
 
 
-<!-- ============================================================
-RESULTS
-============================================================ -->
-
 <div
   id="results"
   class="products">
@@ -1477,15 +1193,9 @@ RESULTS
 
 
 
-<!-- EMPTY FOOTER -->
-
 <footer></footer>
 
 
-
-<!-- ============================================================
-MOBILE NAV
-============================================================ -->
 
 <nav class="mobile-nav">
 
@@ -1538,10 +1248,6 @@ MOBILE NAV
 </nav>
 
 
-
-<!-- ============================================================
-SCRIPTS
-============================================================ -->
 
 <script src="supabase.js?v=10"></script>
 
@@ -1614,6 +1320,253 @@ const summary =
 
 
 /* ============================================================
+CATEGORY → SUBCATEGORY DATA
+============================================================ */
+
+const categorySubcategories = {
+
+  "Vehicles":[
+    "Cars",
+    "Motorcycles",
+    "Bicycles",
+    "Auto Rickshaw",
+    "Trucks & Buses",
+    "Vehicle Parts"
+  ],
+
+  "Property":[
+    "Land",
+    "Apartments",
+    "Houses",
+    "Shops & Commercial Space",
+    "Office Space",
+    "Property for Rent"
+  ],
+
+  "Phones & Tablets":[
+    "Mobile Phones",
+    "Tablets",
+    "Phone Accessories",
+    "Smart Watches"
+  ],
+
+  "Electronics":[
+    "TV",
+    "Laptop & Computer",
+    "Camera",
+    "Audio",
+    "Gaming",
+    "Other Electronics"
+  ],
+
+  "Home, Furniture & Garden":[
+    "Furniture",
+    "Home Decor",
+    "Kitchen",
+    "Garden",
+    "Appliances"
+  ],
+
+  "Fashion":[
+    "Men",
+    "Women",
+    "Kids",
+    "Shoes",
+    "Bags & Accessories",
+    "Watches"
+  ],
+
+  "Beauty & Personal Care":[
+    "Cosmetics",
+    "Skin Care",
+    "Hair Care",
+    "Perfume",
+    "Health & Personal Care"
+  ],
+
+  "Services":[
+    "Tutoring",
+    "Cleaning",
+    "Transport",
+    "Photography",
+    "IT & Digital",
+    "Other Services"
+  ],
+
+  "Repair & Construction":[
+    "Electrician",
+    "Plumber",
+    "AC & Fridge Repair",
+    "Construction Materials",
+    "Mechanic",
+    "Painter"
+  ],
+
+  "Commercial Equipment & Machinery":[
+    "Factory Equipment",
+    "Restaurant Equipment",
+    "Office Equipment",
+    "Tools",
+    "Machinery"
+  ],
+
+  "Leisure & Activities":[
+    "Sports",
+    "Gym & Fitness",
+    "Music",
+    "Books",
+    "Tickets & Events",
+    "Hobbies"
+  ],
+
+  "Babies & Kids":[
+    "Baby Products",
+    "Toys",
+    "Kids Clothing",
+    "Strollers",
+    "School Items"
+  ],
+
+  "Food, Agriculture & Supplies":[
+    "Vegetables",
+    "Fruits",
+    "Fish",
+    "Livestock Feed",
+    "Seeds",
+    "Farm Products"
+  ],
+
+  "Animals & Pets":[
+    "Cattle",
+    "Goat",
+    "Poultry",
+    "Pets",
+    "Pet Supplies"
+  ],
+
+  "Jobs":[
+    "Full Time",
+    "Part Time",
+    "Sales Jobs",
+    "Driver Jobs",
+    "Office Jobs",
+    "Other Jobs"
+  ],
+
+  "Seeking Work - CVs":[
+    "CVs",
+    "Job Seekers",
+    "Freelancers",
+    "Skilled Workers"
+  ],
+
+  "Business & Industry":[
+    "Business for Sale",
+    "Wholesale",
+    "Retail",
+    "Industrial Products",
+    "Agriculture Business"
+  ]
+
+};
+
+
+/* ============================================================
+UPDATE SUBCATEGORY DROPDOWN
+============================================================ */
+
+function updateSubcategories(){
+
+  const selectedCategory =
+    cat.value;
+
+
+  sub.innerHTML = "";
+
+
+  if(!selectedCategory){
+
+    sub.disabled = true;
+
+
+    const option =
+      document.createElement(
+        "option"
+      );
+
+
+    option.value = "";
+
+
+    option.textContent =
+      "আগে ক্যাটাগরি নির্বাচন করুন";
+
+
+    sub.appendChild(
+      option
+    );
+
+
+    return;
+
+  }
+
+
+  sub.disabled = false;
+
+
+  const allOption =
+    document.createElement(
+      "option"
+    );
+
+
+  allOption.value = "";
+
+
+  allOption.textContent =
+    "সব সাব-ক্যাটাগরি";
+
+
+  sub.appendChild(
+    allOption
+  );
+
+
+  const subcategories =
+    categorySubcategories[
+      selectedCategory
+    ] || [];
+
+
+  subcategories.forEach(
+    function(subcategory){
+
+      const option =
+        document.createElement(
+          "option"
+        );
+
+
+      option.value =
+        subcategory;
+
+
+      option.textContent =
+        subcategory;
+
+
+      sub.appendChild(
+        option
+      );
+
+    }
+  );
+
+}
+
+
+/* ============================================================
 SUPABASE
 ============================================================ */
 
@@ -1658,6 +1611,11 @@ if(initialCategory){
   }
 
 }
+
+
+/* Populate initial subcategories */
+
+updateSubcategories();
 
 
 /* ============================================================
@@ -2442,6 +2400,14 @@ cat.addEventListener(
 
   function(){
 
+    /*
+     * Category পরিবর্তন হলে
+     * পুরনো subcategory reset হবে
+     */
+
+    updateSubcategories();
+
+
     render(allAds);
 
   }
@@ -2497,9 +2463,16 @@ clear.addEventListener(
 
     cat.value = "";
 
-    sub.value = "";
+
+    /*
+     * প্রথমে subcategory dropdown reset
+     */
+
+    updateSubcategories();
+
 
     area.value = "";
+
 
     sort.value = "new";
 
