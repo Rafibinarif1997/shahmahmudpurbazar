@@ -2301,12 +2301,35 @@ footer{
 
     margin-top:28px;
 
-    padding-bottom:90px;
+    padding-bottom:78px;
 
   }
 
 }
 
+  /* ============================================================
+   FIX EMPTY SPACE BELOW FOOTER
+============================================================ */
+
+html,
+body{
+  min-height:100%;
+}
+
+body{
+  min-height:100dvh;
+  display:flex;
+  flex-direction:column;
+}
+
+main{
+  flex:1;
+}
+
+footer{
+  margin-top:auto;
+}
+  
 </style>
 
 </head>
