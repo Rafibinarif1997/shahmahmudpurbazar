@@ -5,218 +5,263 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport"
-      content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 
 <title>Messages | শাহমাহমুদপুর বাজার</title>
 
-<link rel="stylesheet"
-      href="style.css">
+<link rel="stylesheet" href="style.css">
 
 <style>
 
 /* =========================
-   HEADER
+   SIMPLE LIGHT MESSAGES UI
 ========================= */
 
-.header{
-  padding:18px 0 20px;
-  border-bottom:1px solid rgba(105,245,165,.10);
-  background:linear-gradient(
-    180deg,
-    rgba(5,14,10,.98),
-    rgba(5,14,10,.88)
-  );
+.messages-page{
+  max-width:900px;
+  padding:28px 16px 110px;
 }
 
-.head{
+
+/* HEADER */
+
+.messages-header{
+  padding:16px 0;
+  border-bottom:1px solid #e8e8e8;
+  background:#fff;
+}
+
+.messages-header .head{
   display:flex;
   align-items:center;
 }
 
-.brand{
+.messages-header .brand{
   text-decoration:none;
-  line-height:1;
-  min-width:145px;
+  line-height:1.05;
 }
 
-.brand b,
-.brand strong{
+.messages-header .brand b,
+.messages-header .brand strong{
   display:block;
 }
 
-.brand b{
+.messages-header .brand b{
   font-size:19px;
-  letter-spacing:-.5px;
-  color:#f2f8f5;
+  color:#222;
+  font-weight:800;
 }
 
-.brand strong{
-  font-size:22px;
-  color:#69f5a5;
-  margin-top:2px;
+.messages-header .brand strong{
+  font-size:21px;
+  color:#16a05d;
+  font-weight:900;
 }
 
-.brand small{
+.messages-header .brand small{
   display:block;
-  margin-top:7px;
+  margin-top:5px;
   font-size:7px;
-  letter-spacing:3px;
-  color:#60736a;
+  letter-spacing:2px;
+  color:#999;
 }
 
 
-/* =========================
-   MESSAGES PAGE
-========================= */
-
-.messages-page{
-  max-width:760px;
-  padding:30px 16px 110px;
-}
+/* PAGE TOP */
 
 .inbox{
-  margin-top:5px;
+  margin-top:0;
+}
+
+.inbox-head{
+  margin-bottom:18px;
 }
 
 .inbox-head small{
-  color:#69f5a5;
-  font-size:9px;
+  display:block;
+  color:#16a05d;
+  font-size:10px;
   font-weight:800;
-  letter-spacing:2px;
+  letter-spacing:1.5px;
+  margin-bottom:7px;
 }
 
 .inbox-head h1{
-  margin:7px 0 5px;
-  color:#edf7f1;
-  font-size:30px;
-  letter-spacing:-1px;
+  margin:0;
+  color:#222;
+  font-size:28px;
+  font-weight:800;
 }
 
 .inbox-head p{
-  color:#718078;
-  font-size:11px;
+  margin:7px 0 0;
+  color:#777;
+  font-size:13px;
 }
 
+
+/* TOP ACTION */
+
 .refresh{
-  margin:18px 0;
-  text-align:right;
+  display:flex;
+  justify-content:flex-end;
+  margin:0 0 15px;
 }
+
+.refresh button{
+  border:1px solid #e2e2e2;
+  background:#fff;
+  color:#555;
+  padding:8px 13px;
+  border-radius:8px;
+  font-size:11px;
+  cursor:pointer;
+}
+
+.refresh button:hover{
+  border-color:#16a05d;
+  color:#16a05d;
+}
+
+
+/* CONVERSATIONS */
 
 .conversation-list{
   display:flex;
   flex-direction:column;
-  gap:10px;
+  gap:9px;
 }
 
 .conversation{
   display:block;
   padding:16px;
-  border:1px solid rgba(105,245,165,.12);
-  border-radius:16px;
-  background:rgba(5,14,10,.72);
+  background:#fff;
+  border:1px solid #e9e9e9;
+  border-radius:12px;
   text-decoration:none;
   transition:.2s ease;
 }
 
 .conversation:hover{
-  border-color:rgba(105,245,165,.35);
-  transform:translateY(-1px);
+  border-color:#b9e5cf;
+  box-shadow:0 4px 15px rgba(0,0,0,.04);
 }
 
 .conversation-top{
   display:flex;
   justify-content:space-between;
-  gap:10px;
+  align-items:flex-start;
+  gap:15px;
 }
 
 .ad-title{
-  color:#edf7f1;
+  color:#222;
   font-size:14px;
-  font-weight:800;
+  font-weight:700;
+  line-height:1.4;
 }
 
 .person{
-  margin-top:6px;
-  color:#69f5a5;
+  display:inline-block;
+  margin-top:7px;
   font-size:9px;
-  font-weight:800;
-  letter-spacing:1px;
+  font-weight:700;
+  color:#16a05d;
+  letter-spacing:.5px;
 }
 
 .last-message{
   margin-top:10px;
-  color:#87978f;
-  font-size:11px;
-  line-height:1.6;
+  color:#777;
+  font-size:12px;
+  line-height:1.5;
   white-space:nowrap;
   overflow:hidden;
   text-overflow:ellipsis;
 }
 
 .time{
-  color:#64746c;
-  font-size:9px;
+  color:#aaa;
+  font-size:10px;
   white-space:nowrap;
 }
 
-.loading,
-.empty{
+
+/* STATES */
+
+.loading{
   padding:60px 20px;
   text-align:center;
-  color:#718078;
-  font-size:11px;
+  color:#888;
+  font-size:13px;
 }
 
 .empty{
-  border:1px solid rgba(105,245,165,.12);
-  border-radius:18px;
-  background:rgba(5,14,10,.55);
+  padding:55px 20px;
+  text-align:center;
+  color:#777;
+  font-size:13px;
+  background:#fff;
+  border:1px solid #e9e9e9;
+  border-radius:12px;
+  line-height:1.8;
+}
+
+.empty a{
+  display:inline-block;
+  margin-top:10px;
 }
 
 .error{
-  padding:14px;
-  border-radius:12px;
-  border:1px solid rgba(255,90,90,.18);
-  color:#ff9d9d;
-  font-size:10px;
+  padding:16px;
+  border-radius:10px;
+  border:1px solid #ffd5d5;
+  background:#fff8f8;
+  color:#d65c5c;
+  font-size:12px;
   line-height:1.7;
 }
 
 
-/* =========================
-   MOBILE
-========================= */
+/* MOBILE */
 
 @media(max-width:700px){
 
-  .header{
-    padding:14px 0 15px;
+  .messages-page{
+    padding:22px 14px 100px;
   }
 
-  .brand{
-    min-width:0;
+  .messages-header{
+    padding:14px 0;
   }
 
-  .brand b{
+  .messages-header .brand b{
     font-size:17px;
   }
 
-  .brand strong{
-    font-size:20px;
+  .messages-header .brand strong{
+    font-size:19px;
   }
 
-  .brand small{
+  .messages-header .brand small{
     font-size:6px;
-    letter-spacing:2px;
-  }
-
-  .messages-page{
-    padding-top:24px;
   }
 
   .inbox-head h1{
-    font-size:28px;
+    font-size:26px;
+  }
+
+  .conversation{
+    padding:14px;
+    border-radius:10px;
+  }
+
+  .ad-title{
+    font-size:13px;
+  }
+
+  .last-message{
+    font-size:11px;
   }
 
 }
@@ -229,17 +274,13 @@
 <body>
 
 
-<!-- =========================
-     HEADER
-========================= -->
+<!-- HEADER -->
 
-<header class="header">
+<header class="messages-header">
 
   <div class="container head">
 
-    <a
-      class="brand"
-      href="index.html">
+    <a class="brand" href="index.html">
 
       <b>শাহমাহমুদপুর</b>
 
@@ -255,12 +296,9 @@
 
 
 
-<!-- =========================
-     MAIN
-========================= -->
+<!-- MAIN -->
 
 <main class="container messages-page">
-
 
 <section class="inbox">
 
@@ -280,9 +318,7 @@
 
 <div class="refresh">
 
-  <button
-    id="refreshBtn"
-    class="btn">
+  <button id="refreshBtn" type="button">
 
     ↻ Refresh
 
@@ -294,7 +330,9 @@
 <div id="result">
 
   <div class="loading">
+
     মেসেজ লোড হচ্ছে...
+
   </div>
 
 </div>
@@ -302,58 +340,45 @@
 
 </section>
 
-
 </main>
 
 
 
-<!-- =========================
-     MOBILE NAVIGATION
-========================= -->
+<!-- MOBILE NAV -->
 
 <nav class="mobile-nav">
 
 <a href="index.html">
 
   <span>⌂</span>
-
   Home
 
 </a>
 
-
 <a href="favorites.html">
 
   <span>♡</span>
-
   Saved
 
 </a>
 
-
 <a href="post-ad.html">
 
   <span>⊞</span>
-
   Sell
 
 </a>
 
-
-<a class="active"
-   href="messages.html">
+<a class="active" href="messages.html">
 
   <span>▤</span>
-
   Messages
 
 </a>
 
-
 <a href="profile.html">
 
   <span>♙</span>
-
   Profile
 
 </a>
@@ -418,10 +443,7 @@ async function getSession(){
       const session =
         await getSbSession();
 
-      if(
-        session &&
-        session.access_token
-      ){
+      if(session && session.access_token){
 
         return session;
 
@@ -476,8 +498,10 @@ async function getUser(){
     if(saved && saved.id){
 
       return {
+
         id:saved.id,
         email:saved.email || ""
+
       };
 
     }
@@ -491,32 +515,25 @@ async function getUser(){
 
 
 
-async function api(
-  url,
-  session
-){
+async function api(url,session){
 
   const response =
-    await fetch(
-      url,
-      {
+    await fetch(url,{
 
-        headers:{
+      headers:{
 
-          "apikey":
-            SUPA_KEY,
+        "apikey":SUPA_KEY,
 
-          "Authorization":
-            "Bearer " +
-            session.access_token,
+        "Authorization":
+          "Bearer " +
+          session.access_token,
 
-          "Content-Type":
-            "application/json"
-
-        }
+        "Content-Type":
+          "application/json"
 
       }
-    );
+
+    });
 
 
   if(!response.ok){
@@ -536,10 +553,13 @@ async function api(
 
 async function loadInbox(){
 
+
   result.innerHTML = `
 
     <div class="loading">
+
       মেসেজ লোড হচ্ছে...
+
     </div>
 
   `;
@@ -547,11 +567,13 @@ async function loadInbox(){
 
   try{
 
+
     currentUser =
       await getUser();
 
 
     if(!currentUser){
+
 
       result.innerHTML = `
 
@@ -561,19 +583,20 @@ async function loadInbox(){
 
           আগে Login করুন।
 
-          <br><br>
+          <br>
 
           <a
             href="login.html"
-            class="btn green">
+            class="btn">
 
-            Google দিয়ে Login করুন
+            Login করুন
 
           </a>
 
         </div>
 
       `;
+
 
       return;
 
@@ -631,6 +654,7 @@ async function loadInbox(){
       !conversations.length
     ){
 
+
       result.innerHTML = `
 
         <div class="empty">
@@ -641,12 +665,13 @@ async function loadInbox(){
 
           <br><br>
 
-          কোনো পণ্যের ভিতর থেকে
+          কোনো বিজ্ঞাপনের ভিতর থেকে
           বিক্রেতাকে মেসেজ করুন।
 
         </div>
 
       `;
+
 
       return;
 
@@ -654,19 +679,17 @@ async function loadInbox(){
 
 
     const conversationIds =
-      conversations
-        .map(
-          c => String(c.id)
-        );
+      conversations.map(
+        c => String(c.id)
+      );
 
 
     const idList =
       conversationIds
-        .map(
-          id =>
-            encodeURIComponent(id)
-        )
-        .join(",");
+      .map(
+        id => encodeURIComponent(id)
+      )
+      .join(",");
 
 
     const messageUrl =
@@ -695,8 +718,10 @@ async function loadInbox(){
 
     if(Array.isArray(allMessages)){
 
+
       allMessages.forEach(
         function(message){
+
 
           const cid =
             String(
@@ -711,19 +736,20 @@ async function loadInbox(){
 
           }
 
+
         }
       );
+
 
     }
 
 
     const adIds =
       conversations
-        .map(
-          c =>
-            String(c.ad_id)
-        )
-        .filter(Boolean);
+      .map(
+        c => String(c.ad_id)
+      )
+      .filter(Boolean);
 
 
     let ads = [];
@@ -731,17 +757,17 @@ async function loadInbox(){
 
     if(adIds.length){
 
+
       const uniqueAdIds =
         [...new Set(adIds)];
 
 
       const adList =
         uniqueAdIds
-          .map(
-            id =>
-              encodeURIComponent(id)
-          )
-          .join(",");
+        .map(
+          id => encodeURIComponent(id)
+        )
+        .join(",");
 
 
       const adsUrl =
@@ -792,148 +818,144 @@ async function loadInbox(){
 
     const html =
       conversations
-        .map(
-          function(conversation){
+      .map(
+        function(conversation){
 
-            const cid =
+
+          const cid =
+            String(
+              conversation.id
+            );
+
+
+          const last =
+            lastMessages[cid];
+
+
+          const ad =
+            adMap[
               String(
-                conversation.id
-              );
-
-
-            const last =
-              lastMessages[cid];
-
-
-            const ad =
-              adMap[
-                String(
-                  conversation.ad_id
-                )
-              ];
-
-
-            const title =
-              ad?.title ||
-              "বিজ্ঞাপন";
-
-
-            let otherId = "";
-
-
-            let role = "";
-
-
-            if(
-              String(
-                conversation.buyer_id
-              ) ===
-              String(
-                currentUser.id
+                conversation.ad_id
               )
-            ){
-
-              otherId =
-                conversation.seller_id;
-
-              role =
-                "SELLER";
-
-            }else{
-
-              otherId =
-                conversation.buyer_id;
-
-              role =
-                "BUYER";
-
-            }
+            ];
 
 
-            const time =
-              last?.created_at
-
-              ?
-
-              new Date(
-                last.created_at
-              ).toLocaleString(
-                "bn-BD",
-                {
-                  day:"numeric",
-                  month:"short",
-                  hour:"numeric",
-                  minute:"2-digit"
-                }
-              )
-
-              :
-
-              new Date(
-                conversation.created_at
-              ).toLocaleString(
-                "bn-BD",
-                {
-                  day:"numeric",
-                  month:"short",
-                  hour:"numeric",
-                  minute:"2-digit"
-                }
-              );
+          const title =
+            ad?.title ||
+            "বিজ্ঞাপন";
 
 
-            const preview =
-              last?.body ||
-              "কথোপকথন শুরু হয়েছে।";
+          let role = "";
 
 
-            return `
+          if(
+            String(
+              conversation.buyer_id
+            ) ===
+            String(
+              currentUser.id
+            )
+          ){
 
-              <a
-                class="conversation"
-                href="chat.html?conversation=${encodeURIComponent(cid)}">
+            role = "SELLER";
 
-                <div
-                  class="conversation-top">
+          }else{
 
-                  <div>
-
-                    <div class="ad-title">
-
-                      ${esc(title)}
-
-                    </div>
-
-                    <div class="person">
-
-                      ${role}
-
-                    </div>
-
-                  </div>
-
-                  <div class="time">
-
-                    ${esc(time)}
-
-                  </div>
-
-                </div>
-
-
-                <div class="last-message">
-
-                  ${esc(preview)}
-
-                </div>
-
-              </a>
-
-            `;
+            role = "BUYER";
 
           }
-        )
-        .join("");
+
+
+          const time =
+
+            last?.created_at
+
+            ?
+
+            new Date(
+              last.created_at
+            ).toLocaleString(
+              "bn-BD",
+              {
+
+                day:"numeric",
+                month:"short",
+                hour:"numeric",
+                minute:"2-digit"
+
+              }
+            )
+
+            :
+
+            new Date(
+              conversation.created_at
+            ).toLocaleString(
+              "bn-BD",
+              {
+
+                day:"numeric",
+                month:"short",
+                hour:"numeric",
+                minute:"2-digit"
+
+              }
+            );
+
+
+          const preview =
+            last?.body ||
+            "কথোপকথন শুরু হয়েছে।";
+
+
+          return `
+
+            <a
+              class="conversation"
+              href="chat.html?conversation=${encodeURIComponent(cid)}">
+
+              <div class="conversation-top">
+
+                <div>
+
+                  <div class="ad-title">
+
+                    ${esc(title)}
+
+                  </div>
+
+                  <div class="person">
+
+                    ${role}
+
+                  </div>
+
+                </div>
+
+
+                <div class="time">
+
+                  ${esc(time)}
+
+                </div>
+
+              </div>
+
+
+              <div class="last-message">
+
+                ${esc(preview)}
+
+              </div>
+
+            </a>
+
+          `;
+
+
+        }
+      )
+      .join("");
 
 
     result.innerHTML = `
@@ -948,6 +970,7 @@ async function loadInbox(){
 
 
   }catch(error){
+
 
     console.error(
       "INBOX ERROR:",
@@ -972,7 +995,9 @@ async function loadInbox(){
 
     `;
 
+
   }
+
 
 }
 
