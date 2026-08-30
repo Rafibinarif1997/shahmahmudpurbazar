@@ -13,13 +13,15 @@
 বিজ্ঞাপন এডিট করুন | শাহমাহমুদপুর বাজার
 </title>
 
-<link rel="stylesheet" href="style.css">
+<link
+  rel="stylesheet"
+  href="style.css">
 
 
 <style>
 
 /* ============================================================
-   PREMIUM EDIT AD PAGE
+   ROOT
 ============================================================ */
 
 :root{
@@ -70,6 +72,22 @@ body{
 
 a{
   text-decoration:none;
+}
+
+
+/* ============================================================
+   PAGE
+============================================================ */
+
+.page{
+
+  max-width:820px;
+
+  padding:
+    35px
+    16px
+    115px;
+
 }
 
 
@@ -129,22 +147,6 @@ a{
   color:var(--green);
 
   transform:translateX(-2px);
-
-}
-
-
-/* ============================================================
-   PAGE
-============================================================ */
-
-.page{
-
-  max-width:820px;
-
-  padding:
-    35px
-    16px
-    115px;
 
 }
 
@@ -222,8 +224,6 @@ a{
 
   font-weight:900;
 
-  letter-spacing:-.5px;
-
 }
 
 
@@ -267,9 +267,11 @@ a{
 
 .loading{
 
-  text-align:center;
+  margin-top:25px;
 
   padding:55px 20px;
+
+  text-align:center;
 
   color:#718078;
 
@@ -291,12 +293,12 @@ a{
 
 
 /* ============================================================
-   MAIN FORM CARD
+   FORM BOX
 ============================================================ */
 
 #formBox{
 
-  padding:0;
+  margin-top:25px;
 
   overflow:hidden;
 
@@ -435,8 +437,6 @@ a{
 
   color:var(--green);
 
-  font-weight:850;
-
 }
 
 
@@ -511,16 +511,16 @@ a{
 }
 
 
+/* ============================================================
+   INPUT
+============================================================ */
+
 .required{
 
   color:#e53935;
 
 }
 
-
-/* ============================================================
-   LABELS & INPUTS
-============================================================ */
 
 #adForm label{
 
@@ -541,9 +541,9 @@ a{
 #adForm select,
 #adForm textarea{
 
-  width:100%;
-
   box-sizing:border-box;
+
+  width:100%;
 
   margin-top:7px;
 
@@ -569,15 +569,6 @@ a{
 
   font-weight:600;
 
-  transition:.2s ease;
-
-}
-
-
-#adForm select{
-
-  cursor:pointer;
-
 }
 
 
@@ -588,16 +579,6 @@ a{
   min-height:135px;
 
   line-height:1.6;
-
-}
-
-
-#adForm input::placeholder,
-#adForm textarea::placeholder{
-
-  color:#9aa59f;
-
-  font-weight:500;
 
 }
 
@@ -659,7 +640,7 @@ a{
 
 
 /* ============================================================
-   IMAGE HELP
+   IMAGE
 ============================================================ */
 
 .image-help{
@@ -697,10 +678,6 @@ a{
 
 }
 
-
-/* ============================================================
-   IMAGE PREVIEW
-============================================================ */
 
 .preview-grid{
 
@@ -801,24 +778,11 @@ a{
 
   padding:0;
 
-  box-shadow:
-    0 3px 10px
-    rgba(0,0,0,.12);
-
-}
-
-
-.remove-image:hover{
-
-  background:#e53935;
-
-  color:#fff;
-
 }
 
 
 /* ============================================================
-   SUBMIT BUTTON
+   BUTTON
 ============================================================ */
 
 #submitBtn{
@@ -867,7 +831,7 @@ a{
 
 
 /* ============================================================
-   SUBMIT NOTE
+   NOTE
 ============================================================ */
 
 .submit-note{
@@ -880,7 +844,7 @@ a{
 
   border-radius:12px;
 
-  background:#f5faf7;
+  background:#fffaf0;
 
   color:#7f7560;
 
@@ -889,6 +853,40 @@ a{
   font-size:9px;
 
   line-height:1.8;
+
+}
+
+
+/* ============================================================
+   ERROR
+============================================================ */
+
+.error-box{
+
+  margin:
+    20px
+    30px
+    30px;
+
+  padding:
+    14px
+    16px;
+
+  border:
+    1px solid
+    #f1d5d5;
+
+  border-radius:13px;
+
+  background:#fff7f7;
+
+  color:#d93636;
+
+  font-size:10px;
+
+  line-height:1.7;
+
+  text-align:center;
 
 }
 
@@ -949,63 +947,9 @@ a{
 
   background:#e2f6e9;
 
-  color:var(--green);
-
   font-size:25px;
 
   font-weight:900;
-
-}
-
-
-.success-box strong{
-
-  font-size:16px;
-
-}
-
-
-.success-box small{
-
-  color:#718078;
-
-  font-size:10px;
-
-  line-height:1.7;
-
-}
-
-
-/* ============================================================
-   ERROR
-============================================================ */
-
-.error-box{
-
-  margin:
-    20px
-    30px
-    30px;
-
-  padding:
-    14px
-    16px;
-
-  border:
-    1px solid
-    #f1d5d5;
-
-  border-radius:13px;
-
-  background:#fff7f7;
-
-  color:#d93636;
-
-  font-size:10px;
-
-  line-height:1.7;
-
-  text-align:center;
 
 }
 
@@ -1015,13 +959,6 @@ a{
 ============================================================ */
 
 @media(max-width:600px){
-
-  body{
-
-    padding-bottom:80px;
-
-  }
-
 
   .page{
 
@@ -1047,8 +984,6 @@ a{
     width:38px;
 
     height:38px;
-
-    border-radius:12px;
 
     font-size:22px;
 
@@ -1084,20 +1019,7 @@ a{
 
   #formBox{
 
-    margin-top:18px !important;
-
     border-radius:20px;
-
-  }
-
-
-  .loading{
-
-    margin-top:18px !important;
-
-    border-radius:20px;
-
-    padding:45px 15px;
 
   }
 
@@ -1119,23 +1041,12 @@ a{
   }
 
 
-  .form-header p{
-
-    font-size:10px;
-
-  }
-
-
   .user-note{
 
     margin:
       15px
       18px
       0;
-
-    padding:
-      12px
-      13px;
 
     font-size:9px;
 
@@ -1152,30 +1063,9 @@ a{
   }
 
 
-  .form-section{
-
-    margin-top:23px;
-
-    padding-top:22px;
-
-  }
-
-
   .form-section-title h3{
 
     font-size:16px;
-
-  }
-
-
-  #adForm input,
-  #adForm select,
-  #adForm textarea{
-
-    padding:
-      12px;
-
-    font-size:11px;
 
   }
 
@@ -1187,40 +1077,11 @@ a{
   }
 
 
-  .preview-item{
-
-    border-radius:12px;
-
-  }
-
-
-  #submitBtn{
-
-    min-height:52px;
-
-    margin-top:24px;
-
-    font-size:12px;
-
-  }
-
-
+  .error-box,
   .success-box{
 
     margin:
-      20px
-      18px
-      22px;
-
-  }
-
-
-  .error-box{
-
-    margin:
       18px;
-
-    font-size:9px;
 
   }
 
@@ -1237,7 +1098,9 @@ a{
 <main class="container page">
 
 
-<a href="my-ads.html" class="back-btn">
+<a
+  href="my-ads.html"
+  class="back-btn">
 
   <span>←</span>
 
@@ -1261,8 +1124,7 @@ a{
 
 <section
   id="loading"
-  class="loading"
-  style="margin-top:25px">
+  class="loading">
 
   বিজ্ঞাপনের তথ্য লোড হচ্ছে...
 
@@ -1271,306 +1133,316 @@ a{
 
 <section
   id="formBox"
-  style="margin-top:25px;display:none">
+  style="display:none">
 
 
-<div class="form-header">
+  <div class="form-header">
 
-<span class="eyebrow">
-EDIT AD
-</span>
+    <span class="eyebrow">
+      EDIT YOUR AD
+    </span>
 
-<h1>
-বিজ্ঞাপন এডিট করুন
-</h1>
+    <h1>
+      বিজ্ঞাপন এডিট করুন
+    </h1>
 
-<p>
-আপনার বিজ্ঞাপনের তথ্য পরিবর্তন করুন এবং Update করুন।
-</p>
+    <p>
+      প্রয়োজনীয় তথ্য পরিবর্তন করুন। পরিবর্তনের পর বিজ্ঞাপনটি আবার Admin review-এর জন্য যাবে।
+    </p>
 
-</div>
+  </div>
 
 
-<div
-  id="userNote"
-  class="user-note">
-</div>
+  <div
+    id="userNote"
+    class="user-note">
 
+  </div>
 
-<form
-  id="adForm"
-  novalidate>
 
+  <form
+    id="adForm"
+    novalidate>
 
-<div class="form-section">
 
-<div class="form-section-title">
+    <!-- BASIC -->
 
-<small>
-01 — BASIC INFORMATION
-</small>
+    <div class="form-section">
 
-<h3>
-পণ্যের তথ্য
-</h3>
+      <div class="form-section-title">
 
-</div>
+        <small>
+          01 — BASIC INFORMATION
+        </small>
 
+        <h3>
+          পণ্যের তথ্য
+        </h3>
 
-<label>
+      </div>
 
-ক্যাটাগরি
-<span class="required">*</span>
 
-<select id="category">
+      <label>
 
-<option value="">
-ক্যাটাগরি নির্বাচন করুন
-</option>
+        ক্যাটাগরি
+        <span class="required">*</span>
 
-<option>Vehicles</option>
-<option>Property</option>
-<option>Phones & Tablets</option>
-<option>Electronics</option>
-<option>Home, Furniture & Garden</option>
-<option>Fashion</option>
-<option>Beauty & Personal Care</option>
-<option>Services</option>
-<option>Repair & Construction</option>
-<option>Commercial Equipment & Machinery</option>
-<option>Leisure & Activities</option>
-<option>Babies & Kids</option>
-<option>Food, Agriculture & Supplies</option>
-<option>Animals & Pets</option>
-<option>Jobs</option>
-<option>Seeking Work - CVs</option>
-<option>Business & Industry</option>
+        <select id="category">
 
-</select>
+          <option value="">
+            ক্যাটাগরি নির্বাচন করুন
+          </option>
 
-</label>
+          <option>Vehicles</option>
+          <option>Property</option>
+          <option>Phones & Tablets</option>
+          <option>Electronics</option>
+          <option>Home, Furniture & Garden</option>
+          <option>Fashion</option>
+          <option>Beauty & Personal Care</option>
+          <option>Services</option>
+          <option>Repair & Construction</option>
+          <option>Commercial Equipment & Machinery</option>
+          <option>Leisure & Activities</option>
+          <option>Babies & Kids</option>
+          <option>Food, Agriculture & Supplies</option>
+          <option>Animals & Pets</option>
+          <option>Jobs</option>
+          <option>Seeking Work - CVs</option>
+          <option>Business & Industry</option>
 
+        </select>
 
-<label>
+      </label>
 
-সাব-ক্যাটাগরি
-<span class="required">*</span>
 
-<select id="subcategory">
+      <label>
 
-<option value="">
-আগে ক্যাটাগরি নির্বাচন করুন
-</option>
+        সাব-ক্যাটাগরি
+        <span class="required">*</span>
 
-</select>
+        <select id="subcategory">
 
-</label>
+          <option value="">
+            আগে ক্যাটাগরি নির্বাচন করুন
+          </option>
 
+        </select>
 
-<label>
+      </label>
 
-শিরোনাম
-<span class="required">*</span>
 
-<input
-  id="title"
-  type="text"
-  maxlength="100"
-  placeholder="যেমন: iPhone 13 128GB">
+      <label>
 
-</label>
+        শিরোনাম
+        <span class="required">*</span>
 
+        <input
+          id="title"
+          type="text"
+          maxlength="100">
 
-<label>
+      </label>
 
-দাম
-<span class="required">*</span>
 
-<input
-  id="price"
-  type="number"
-  min="1"
-  placeholder="৳">
+      <label>
 
-</label>
+        দাম
+        <span class="required">*</span>
 
+        <input
+          id="price"
+          type="number"
+          min="1">
 
-<label>
+      </label>
 
-বিস্তারিত
-<span class="required">*</span>
 
-<textarea
-  id="description"
-  rows="6"
-  maxlength="3000"
-  placeholder="পণ্যের বিস্তারিত লিখুন">
-</textarea>
+      <label>
 
-</label>
+        বিস্তারিত
+        <span class="required">*</span>
 
-</div>
+        <textarea
+          id="description"
+          maxlength="3000">
+        </textarea>
 
+      </label>
 
+    </div>
 
-<div class="form-section">
 
-<div class="form-section-title">
+    <!-- LOCATION -->
 
-<small>
-02 — LOCATION
-</small>
+    <div class="form-section">
 
-<h3>
-আপনার এলাকার তথ্য
-</h3>
+      <div class="form-section-title">
 
-</div>
+        <small>
+          02 — LOCATION
+        </small>
 
+        <h3>
+          আপনার এলাকার তথ্য
+        </h3>
 
-<label>
+      </div>
 
-এলাকা
-<span class="required">*</span>
 
-<select id="location">
+      <label>
 
-<option value="">
-আপনার এলাকা নির্বাচন করুন
-</option>
+        এলাকা
+        <span class="required">*</span>
 
-<option>টাহরখীল</option>
-<option>মান্দারী</option>
-<option>লোধেরগাঁও</option>
-<option>বিমলেরগাঁও</option>
-<option>দাসেরগাঁও</option>
-<option>দমকেরগাঁও</option>
-<option>ভাটেরগাঁও</option>
-<option>পাঁচগাঁও</option>
-<option>কুমারডুগী</option>
-<option>কৃষ্ণপুর</option>
-<option>ভরঙ্গারচর</option>
-<option>কেতুয়া</option>
-<option>আলুমুড়া</option>
-<option>ছোট শাহতলী</option>
-<option>বড় শাহতলী</option>
-<option>পাইকদি</option>
-<option>রনবলিয়া</option>
-<option>কদ্দি</option>
+        <select id="location">
 
-</select>
+          <option value="">
+            আপনার এলাকা নির্বাচন করুন
+          </option>
 
-</label>
+          <option>টাহরখীল</option>
+          <option>মান্দারী</option>
+          <option>লোধেরগাঁও</option>
+          <option>বিমলেরগাঁও</option>
+          <option>দাসেরগাঁও</option>
+          <option>দমকেরগাঁও</option>
+          <option>ভাটেরগাঁও</option>
+          <option>পাঁচগাঁও</option>
+          <option>কুমারডুগী</option>
+          <option>কৃষ্ণপুর</option>
+          <option>ভরঙ্গারচর</option>
+          <option>কেতুয়া</option>
+          <option>আলুমুড়া</option>
+          <option>ছোট শাহতলী</option>
+          <option>বড় শাহতলী</option>
+          <option>পাইকদি</option>
+          <option>রনবলিয়া</option>
+          <option>কদ্দি</option>
 
-</div>
+        </select>
 
+      </label>
 
+    </div>
 
-<div class="form-section">
 
-<div class="form-section-title">
+    <!-- CONTACT -->
 
-<small>
-03 — CONTACT
-</small>
+    <div class="form-section">
 
-<h3>
-যোগাযোগের তথ্য
-</h3>
+      <div class="form-section-title">
 
-</div>
+        <small>
+          03 — CONTACT
+        </small>
 
+        <h3>
+          যোগাযোগের তথ্য
+        </h3>
 
-<label>
+      </div>
 
-মোবাইল নম্বর
-<span class="required">*</span>
 
-<input
-  id="phone"
-  type="tel"
-  inputmode="numeric"
-  maxlength="11"
-  placeholder="01XXXXXXXXX">
+      <label>
 
-</label>
+        মোবাইল নম্বর
+        <span class="required">*</span>
 
-</div>
+        <input
+          id="phone"
+          type="tel"
+          inputmode="numeric"
+          maxlength="11"
+          placeholder="01XXXXXXXXX">
 
+      </label>
 
+    </div>
 
-<div class="form-section">
 
-<div class="form-section-title">
+    <!-- PHOTOS -->
 
-<small>
-04 — PHOTOS
-</small>
+    <div class="form-section">
 
-<h3>
-পণ্যের ছবি
-</h3>
+      <div class="form-section-title">
 
-</div>
+        <small>
+          04 — PHOTOS
+        </small>
 
+        <h3>
+          পণ্যের ছবি
+        </h3>
 
-<label>
+      </div>
 
-নতুন ছবি যোগ করুন
 
-<input
-  id="image"
-  type="file"
-  accept="image/jpeg,image/png,image/webp"
-  multiple>
+      <label>
 
+        নতুন ছবি যোগ করুন
 
-<div class="image-help">
+        <input
+          id="image"
+          type="file"
+          accept="image/jpeg,image/png,image/webp"
+          multiple>
 
-আগের ছবিগুলো নিচে দেখা যাচ্ছে। প্রয়োজন হলে Remove করুন অথবা নতুন ছবি যোগ করুন। সর্বোচ্চ ৩টি ছবি রাখা যাবে।
+      </label>
 
-</div>
 
+      <div class="image-help">
 
-<div
-  id="imageCount"
-  class="image-count">
+        পুরনো ছবি রাখতে পারেন, remove করতে পারেন অথবা নতুন ছবি যোগ করতে পারেন।
+        সর্বোচ্চ ৩টি ছবি রাখা যাবে।
 
-০ / ৩ ছবি
+      </div>
 
-</div>
 
-</label>
+      <div
+        id="imageCount"
+        class="image-count">
 
+        ০ / ৩ ছবি
 
-<div
-  id="preview"
-  class="preview-grid">
-</div>
+      </div>
 
-</div>
 
+      <div
+        id="preview"
+        class="preview-grid">
 
-<button
-  id="submitBtn"
-  type="submit">
+      </div>
 
-পরিবর্তনগুলো Update করুন →
+    </div>
 
-</button>
 
+    <button
+      id="submitBtn"
+      type="submit">
 
-<div class="submit-note">
+      পরিবর্তন সংরক্ষণ করুন →
 
-সব তথ্য সঠিক আছে কিনা যাচাই করে তারপর Update করুন।
+    </button>
 
-</div>
 
+    <div class="submit-note">
 
-</form>
+      বিজ্ঞাপন পরিবর্তন করলে এটি আবার
 
+      <b>
+        Pending
+      </b>
 
-<div id="msg"></div>
+      অবস্থায় Admin review-এর জন্য যাবে।
+
+    </div>
+
+
+  </form>
+
+
+  <div id="msg"></div>
 
 
 </section>
@@ -1578,6 +1450,8 @@ EDIT AD
 
 </main>
 
+
+<!-- IMPORTANT -->
 
 <script src="supabase.js?v=12"></script>
 
@@ -1593,90 +1467,148 @@ EDIT AD
    CONFIG
 ============================================================ */
 
-const SUPA_URL=
-"https://jeupbfoceqmnpwlklche.supabase.co";
+const SUPA_URL =
+  "https://jeupbfoceqmnpwlklche.supabase.co";
 
 
-const SUPA_KEY=
-window.SUPABASE_ANON_KEY||
-window.supabaseAnonKey||
-"";
+const SUPA_KEY =
+  window.SUPABASE_ANON_KEY ||
+  window.supabaseAnonKey ||
+  "";
 
 
 /* ============================================================
    ELEMENTS
 ============================================================ */
 
-const $=id=>document.getElementById(id);
+const $ =
+  id =>
+  document.getElementById(id);
 
 
-const loading=$("loading");
-const formBox=$("formBox");
-const form=$("adForm");
+const loading =
+  $("loading");
 
-const userNote=$("userNote");
 
-const msg=$("msg");
-const submitBtn=$("submitBtn");
+const formBox =
+  $("formBox");
 
-const imageInput=$("image");
-const preview=$("preview");
-const imageCount=$("imageCount");
 
-const category=$("category");
-const subcategory=$("subcategory");
-const locationSelect=$("location");
+const form =
+  $("adForm");
 
-const titleInput=$("title");
-const priceInput=$("price");
-const descriptionInput=$("description");
-const phoneInput=$("phone");
+
+const msg =
+  $("msg");
+
+
+const userNote =
+  $("userNote");
+
+
+const category =
+  $("category");
+
+
+const subcategory =
+  $("subcategory");
+
+
+const locationSelect =
+  $("location");
+
+
+const titleInput =
+  $("title");
+
+
+const priceInput =
+  $("price");
+
+
+const descriptionInput =
+  $("description");
+
+
+const phoneInput =
+  $("phone");
+
+
+const imageInput =
+  $("image");
+
+
+const preview =
+  $("preview");
+
+
+const imageCount =
+  $("imageCount");
+
+
+const submitBtn =
+  $("submitBtn");
 
 
 /* ============================================================
-   URL AD ID
+   URL ID
 ============================================================ */
 
-const params=
-new URLSearchParams(
-window.location.search
-);
+const params =
+  new URLSearchParams(
+    window.location.search
+  );
 
 
-const adId=
-params.get("id");
+const adId =
+  params.get("id");
 
 
 /* ============================================================
-   STATE
+   VARIABLES
 ============================================================ */
 
-let currentUser=null;
+let currentUser =
+  null;
 
-let currentAd=null;
 
-let existingImages=[];
+let currentAd =
+  null;
 
-let selectedFiles=[];
+
+/*
+  images array format:
+
+  {
+    type:"old",
+    url:"..."
+  }
+
+  অথবা
+
+  {
+    type:"new",
+    file:File
+  }
+*/
+
+let selectedImages =
+  [];
 
 
 /* ============================================================
-   ESCAPE HTML
+   ESCAPE
 ============================================================ */
 
 function esc(v){
 
-return String(v??"")
+  return String(v ?? "")
 
-.replace(/&/g,"&amp;")
-
-.replace(/</g,"&lt;")
-
-.replace(/>/g,"&gt;")
-
-.replace(/"/g,"&quot;")
-
-.replace(/'/g,"&#039;");
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
 
 }
 
@@ -1687,20 +1619,20 @@ return String(v??"")
 
 function error(t){
 
-msg.innerHTML=
+  msg.innerHTML =
 
-'<div class="error-box">'+
+    '<div class="error-box">' +
 
-esc(t)+
+    esc(t) +
 
-'</div>';
+    '</div>';
 
 }
 
 
 function clearMsg(){
 
-msg.innerHTML="";
+  msg.innerHTML = "";
 
 }
 
@@ -1711,30 +1643,35 @@ msg.innerHTML="";
 
 function getStoredUser(){
 
-try{
+  try{
 
-const x=
-
-JSON.parse(
-
-localStorage.getItem(
-"smb_user_v1"
-)||
-
-"null"
-
-);
+    const raw =
+      localStorage.getItem(
+        "smb_user_v1"
+      );
 
 
-return x&&x.id
-?x
-:null;
+    if(!raw){
 
-}catch(e){
+      return null;
 
-return null;
+    }
 
-}
+
+    const user =
+      JSON.parse(raw);
+
+
+    return user &&
+      user.id
+      ? user
+      : null;
+
+  }catch(e){
+
+    return null;
+
+  }
 
 }
 
@@ -1745,337 +1682,118 @@ return null;
 
 async function getUser(){
 
-try{
+  try{
 
-if(
-typeof getCurrentUser===
-"function"
-){
+    if(
+      typeof getCurrentUser ===
+      "function"
+    ){
 
-const u=
-await getCurrentUser();
-
-
-if(u){
-
-const m=
-u.user_metadata||{};
+      const user =
+        await getCurrentUser();
 
 
-const p={
+      if(user){
 
-id:u.id||"",
-
-name:
-m.full_name||
-m.name||
-"",
-
-email:
-u.email||
-"",
-
-phone:
-m.phone||
-""
-
-};
+        const meta =
+          user.user_metadata || {};
 
 
-localStorage.setItem(
+        const profile = {
 
-"smb_user_v1",
+          id:
+            user.id || "",
 
-JSON.stringify(p)
+          email:
+            user.email || "",
 
-);
+          name:
+            meta.full_name ||
+            meta.name ||
+            "",
 
+          phone:
+            meta.phone ||
+            ""
 
-return p;
-
-}
-
-}
-
-}catch(e){
-
-console.error(
-"USER ERROR:",
-e
-);
-
-}
+        };
 
 
-return getStoredUser();
+        localStorage.setItem(
+          "smb_user_v1",
+          JSON.stringify(profile)
+        );
+
+
+        return profile;
+
+      }
+
+    }
+
+  }catch(e){
+
+    console.error(
+      "GET USER ERROR:",
+      e
+    );
+
+  }
+
+
+  return getStoredUser();
 
 }
 
 
 /* ============================================================
-   TOKEN PAYLOAD
+   GET SESSION
 ============================================================ */
 
-function tokenPayload(token){
+async function getSession(){
 
-try{
+  try{
 
-const p=
+    if(
+      typeof getSbSession ===
+      "function"
+    ){
 
-token
-.split(".")[1]
-.replace(/-/g,"+")
-.replace(/_/g,"/");
+      const session =
+        await getSbSession();
 
 
-return JSON.parse(
+      if(
+        session &&
+        session.access_token
+      ){
 
-decodeURIComponent(
+        return session;
 
-atob(
+      }
 
-p.padEnd(
+    }
 
-p.length+
+  }catch(e){
 
-((4-p.length%4)%4),
+    console.error(
+      "SESSION ERROR:",
+      e
+    );
 
-"="
+  }
 
-)
 
-)
-
-.split("")
-
-.map(
-
-c=>
-
-"%"+
-
-(
-
-"00"+
-
-c.charCodeAt(0)
-.toString(16)
-
-)
-
-.slice(-2)
-
-)
-
-.join("")
-
-)
-
-);
-
-}catch(e){
-
-return null;
-
-}
+  return null;
 
 }
 
 
 /* ============================================================
-   FRESH SESSION
+   SUB CATEGORY DATA
 ============================================================ */
 
-async function freshSession(){
-
-let s=null;
-
-
-try{
-
-if(
-typeof getSbSession===
-"function"
-){
-
-s=
-await getSbSession();
-
-}
-
-}catch(e){
-
-console.error(
-"SESSION ERROR:",
-e
-);
-
-}
-
-
-if(
-
-s&&
-
-s.access_token
-
-){
-
-const p=
-
-tokenPayload(
-s.access_token
-);
-
-
-if(
-
-p&&
-
-p.exp&&
-
-p.exp>
-
-Math.floor(
-Date.now()/1000
-)+90
-
-){
-
-return s;
-
-}
-
-}
-
-
-const refresh=
-
-s&&
-s.refresh_token
-
-?
-
-s.refresh_token
-
-:
-
-"";
-
-
-if(!refresh){
-
-throw new Error(
-
-"Login session পাওয়া যায়নি। আবার Login করুন।"
-
-);
-
-}
-
-
-const r=
-
-await fetch(
-
-SUPA_URL+
-
-"/auth/v1/token?grant_type=refresh_token",
-
-{
-
-method:"POST",
-
-headers:{
-
-"apikey":
-SUPA_KEY,
-
-"Content-Type":
-"application/json"
-
-},
-
-body:
-
-JSON.stringify({
-
-refresh_token:
-refresh
-
-})
-
-}
-
-);
-
-
-if(!r.ok){
-
-throw new Error(
-
-"Login session refresh করা যায়নি। আবার Login করুন।"
-
-);
-
-}
-
-
-const data=
-await r.json();
-
-
-const ns={
-
-access_token:
-data.access_token,
-
-refresh_token:
-data.refresh_token||
-refresh,
-
-expires_in:
-data.expires_in||
-3600,
-
-token_type:
-data.token_type||
-"bearer"
-
-};
-
-
-try{
-
-if(
-typeof setSbSession===
-"function"
-){
-
-await setSbSession(
-ns
-);
-
-}
-
-}catch(e){
-
-console.error(e);
-
-}
-
-
-return ns;
-
-}
-
-
-/* ============================================================
-   SUB CATEGORY MAP
-============================================================ */
-
-const subMap={
-
+const subMap = {
 
 "Vehicles":[
 "Cars",
@@ -2086,7 +1804,6 @@ const subMap={
 "Vehicle Parts"
 ],
 
-
 "Property":[
 "Land",
 "Apartments",
@@ -2096,14 +1813,12 @@ const subMap={
 "Property for Rent"
 ],
 
-
 "Phones & Tablets":[
 "Mobile Phones",
 "Tablets",
 "Phone Accessories",
 "Smart Watches"
 ],
-
 
 "Electronics":[
 "TV",
@@ -2114,7 +1829,6 @@ const subMap={
 "Other Electronics"
 ],
 
-
 "Home, Furniture & Garden":[
 "Furniture",
 "Home Decor",
@@ -2122,7 +1836,6 @@ const subMap={
 "Garden",
 "Appliances"
 ],
-
 
 "Fashion":[
 "Men",
@@ -2133,7 +1846,6 @@ const subMap={
 "Watches"
 ],
 
-
 "Beauty & Personal Care":[
 "Cosmetics",
 "Skin Care",
@@ -2141,7 +1853,6 @@ const subMap={
 "Perfume",
 "Health & Personal Care"
 ],
-
 
 "Services":[
 "Tutoring",
@@ -2152,7 +1863,6 @@ const subMap={
 "Other Services"
 ],
 
-
 "Repair & Construction":[
 "Electrician",
 "Plumber",
@@ -2162,7 +1872,6 @@ const subMap={
 "Painter"
 ],
 
-
 "Commercial Equipment & Machinery":[
 "Factory Equipment",
 "Restaurant Equipment",
@@ -2170,7 +1879,6 @@ const subMap={
 "Tools",
 "Machinery"
 ],
-
 
 "Leisure & Activities":[
 "Sports",
@@ -2181,7 +1889,6 @@ const subMap={
 "Hobbies"
 ],
 
-
 "Babies & Kids":[
 "Baby Products",
 "Toys",
@@ -2189,7 +1896,6 @@ const subMap={
 "Strollers",
 "School Items"
 ],
-
 
 "Food, Agriculture & Supplies":[
 "Vegetables",
@@ -2200,7 +1906,6 @@ const subMap={
 "Farm Products"
 ],
 
-
 "Animals & Pets":[
 "Cattle",
 "Goat",
@@ -2208,7 +1913,6 @@ const subMap={
 "Pets",
 "Pet Supplies"
 ],
-
 
 "Jobs":[
 "Full Time",
@@ -2219,14 +1923,12 @@ const subMap={
 "Other Jobs"
 ],
 
-
 "Seeking Work - CVs":[
 "CVs",
 "Job Seekers",
 "Freelancers",
 "Skilled Workers"
 ],
-
 
 "Business & Industry":[
 "Business for Sale",
@@ -2243,153 +1945,114 @@ const subMap={
    POPULATE SUBCATEGORY
 ============================================================ */
 
-function loadSubcategories(
-selected=""
+function populateSubcategory(
+  selectedValue
 ){
 
-subcategory.innerHTML=
-
-'<option value="">সাব-ক্যাটাগরি নির্বাচন করুন</option>';
-
-
-(
-subMap[
-category.value
-]||[]
-)
-
-.forEach(
-
-x=>{
-
-const option=
-new Option(
-x,
-x
-);
+  subcategory.innerHTML =
+    '<option value="">সাব-ক্যাটাগরি নির্বাচন করুন</option>';
 
 
-if(x===selected){
+  const items =
+    subMap[
+      category.value
+    ] || [];
 
-option.selected=true;
 
-}
+  items.forEach(
+    item => {
+
+      const option =
+        new Option(
+          item,
+          item
+        );
 
 
-subcategory.add(
-option
-);
+      if(
+        item === selectedValue
+      ){
 
-}
+        option.selected =
+          true;
 
-);
+      }
+
+
+      subcategory.add(
+        option
+      );
+
+    }
+  );
 
 }
 
 
 category.addEventListener(
+  "change",
+  function(){
 
-"change",
+    populateSubcategory("");
 
-function(){
-
-loadSubcategories();
-
-}
-
+  }
 );
 
 
 /* ============================================================
-   LOAD AD
+   IMAGE URLS
 ============================================================ */
 
-async function loadAd(
-session
-){
+function getImageUrls(ad){
 
-const url=
-
-SUPA_URL+
-
-"/rest/v1/ads"+
-
-"?id=eq."+
-
-encodeURIComponent(
-adId
-)+
-
-"&seller_id=eq."+
-
-encodeURIComponent(
-currentUser.id
-)+
-
-"&select=*";
+  const images =
+    ad.image_urls;
 
 
-const r=
+  if(
+    Array.isArray(images)
+  ){
 
-await fetch(
+    return images;
 
-url,
-
-{
-
-method:"GET",
-
-headers:{
-
-"apikey":
-SUPA_KEY,
-
-"Authorization":
-
-"Bearer "+
-
-session.access_token
-
-}
-
-}
-
-);
+  }
 
 
-if(!r.ok){
+  if(
+    typeof images ===
+    "string"
+  ){
 
-const t=
-await r.text();
+    try{
 
-
-throw new Error(
-
-"বিজ্ঞাপন লোড করা যায়নি: "+
-
-t
-
-);
-
-}
+      const parsed =
+        JSON.parse(images);
 
 
-const data=
-await r.json();
+      if(
+        Array.isArray(parsed)
+      ){
+
+        return parsed;
+
+      }
+
+    }catch(e){
+
+      if(
+        images.startsWith("http")
+      ){
+
+        return [images];
+
+      }
+
+    }
+
+  }
 
 
-return
-
-data&&
-data.length
-
-?
-
-data[0]
-
-:
-
-null;
+  return [];
 
 }
 
@@ -2400,305 +2063,175 @@ null;
 
 function renderPreview(){
 
-preview.innerHTML="";
+  preview.innerHTML =
+    "";
 
 
-const total=
+  imageCount.textContent =
+    selectedImages.length +
+    " / ৩ ছবি";
 
-existingImages.length+
 
-selectedFiles.length;
+  selectedImages.forEach(
+    function(image,index){
 
+      const item =
+        document.createElement("div");
 
-imageCount.textContent=
 
-total+
+      item.className =
+        "preview-item";
 
-" / ৩ ছবি";
 
+      const img =
+        document.createElement("img");
 
-/* EXISTING IMAGES */
 
-existingImages.forEach(
+      if(
+        image.type ===
+        "old"
+      ){
 
-(url,i)=>{
+        img.src =
+          image.url;
 
-const item=
-document.createElement("div");
+      }else{
 
+        img.src =
+          URL.createObjectURL(
+            image.file
+          );
 
-item.className=
-"preview-item";
 
+        img.onload =
+          function(){
 
-const img=
-document.createElement("img");
+            URL.revokeObjectURL(
+              img.src
+            );
 
+          };
 
-img.src=url;
+      }
 
-img.alt=
-"Existing image "+
-(i+1);
 
+      const number =
+        document.createElement("span");
 
-const n=
-document.createElement("span");
 
+      number.className =
+        "image-number";
 
-n.className=
-"image-number";
 
+      number.textContent =
+        index + 1;
 
-n.textContent=
-i+1;
 
+      const remove =
+        document.createElement("button");
 
-const b=
-document.createElement("button");
 
+      remove.type =
+        "button";
 
-b.type="button";
 
+      remove.className =
+        "remove-image";
 
-b.className=
-"remove-image";
 
+      remove.dataset.index =
+        index;
 
-b.dataset.type=
-"existing";
 
+      remove.textContent =
+        "×";
 
-b.dataset.index=i;
 
+      item.append(
+        img,
+        number,
+        remove
+      );
 
-b.textContent=
-"×";
 
+      preview.appendChild(
+        item
+      );
 
-item.append(
-img,
-n,
-b
-);
-
-
-preview.appendChild(
-item
-);
-
-}
-
-);
-
-
-/* NEW IMAGES */
-
-selectedFiles.forEach(
-
-(file,i)=>{
-
-const item=
-document.createElement("div");
-
-
-item.className=
-"preview-item";
-
-
-const img=
-document.createElement("img");
-
-
-img.alt=
-"New image "+
-(i+1);
-
-
-img.src=
-URL.createObjectURL(
-file
-);
-
-
-img.onload=
-
-()=>{
-
-URL.revokeObjectURL(
-img.src
-);
-
-};
-
-
-const n=
-document.createElement("span");
-
-
-n.className=
-"image-number";
-
-
-n.textContent=
-
-existingImages.length+
-i+
-1;
-
-
-const b=
-document.createElement("button");
-
-
-b.type="button";
-
-
-b.className=
-"remove-image";
-
-
-b.dataset.type=
-"new";
-
-
-b.dataset.index=i;
-
-
-b.textContent=
-"×";
-
-
-item.append(
-img,
-n,
-b
-);
-
-
-preview.appendChild(
-item
-);
-
-}
-
-);
+    }
+  );
 
 }
 
 
 /* ============================================================
-   IMAGE SELECT
+   ADD NEW IMAGE
 ============================================================ */
 
 imageInput.addEventListener(
+  "change",
+  function(){
 
-"change",
-
-function(){
-
-clearMsg();
+    clearMsg();
 
 
-Array.from(
+    Array.from(
+      imageInput.files || []
+    )
 
-imageInput.files||[]
+    .forEach(
+      function(file){
 
-)
+        if(
+          ![
+            "image/jpeg",
+            "image/png",
+            "image/webp"
+          ]
+          .includes(file.type)
+        ){
 
-.forEach(
+          error(
+            "শুধু JPG, PNG অথবা WebP ছবি ব্যবহার করুন।"
+          );
 
-file=>{
+          return;
 
-
-if(
-
-![
-"image/jpeg",
-"image/png",
-"image/webp"
-]
-
-.includes(
-file.type
-)
-
-){
-
-error(
-
-"শুধু JPG, PNG অথবা WebP ছবি ব্যবহার করুন।"
-
-);
-
-return;
-
-}
+        }
 
 
-const total=
+        if(
+          selectedImages.length >= 3
+        ){
 
-existingImages.length+
+          error(
+            "সর্বোচ্চ ৩টি ছবি রাখা যাবে।"
+          );
 
-selectedFiles.length;
+          return;
 
-
-if(
-total>=3
-){
-
-error(
-
-"সর্বোচ্চ ৩টি ছবি রাখা যাবে।"
-
-);
-
-return;
-
-}
+        }
 
 
-if(
+        selectedImages.push({
 
-selectedFiles.some(
+          type:"new",
 
-x=>
+          file:file
 
-x.name===
-file.name&&
+        });
 
-x.size===
-file.size&&
-
-x.lastModified===
-file.lastModified
-
-)
-
-){
-
-return;
-
-}
+      }
+    );
 
 
-selectedFiles.push(
-file
-);
-
-}
-
-);
+    imageInput.value =
+      "";
 
 
-imageInput.value=
-"";
+    renderPreview();
 
-
-renderPreview();
-
-}
-
+  }
 );
 
 
@@ -2707,187 +2240,164 @@ renderPreview();
 ============================================================ */
 
 preview.addEventListener(
+  "click",
+  function(e){
 
-"click",
-
-function(e){
-
-const b=
-
-e.target.closest(
-".remove-image"
-);
+    const button =
+      e.target.closest(
+        ".remove-image"
+      );
 
 
-if(!b)return;
+    if(!button){
+
+      return;
+
+    }
 
 
-const type=
-b.dataset.type;
+    const index =
+      Number(
+        button.dataset.index
+      );
 
 
-const index=
-Number(
-b.dataset.index
-);
+    selectedImages.splice(
+      index,
+      1
+    );
 
 
-if(
-type==="existing"
-){
+    renderPreview();
 
-existingImages.splice(
-index,
-1
-);
-
-}
-
-
-if(
-type==="new"
-){
-
-selectedFiles.splice(
-index,
-1
-);
-
-}
-
-
-renderPreview();
-
-clearMsg();
-
-}
-
+  }
 );
 
 
 /* ============================================================
-   UPLOAD IMAGE
+   LOAD AD
 ============================================================ */
 
-async function uploadImage(
-file,
-index,
-session
+async function loadAd(
+  user,
+  session
 ){
 
-const ext=
+  /*
+   * শুধু ID দিয়ে বিজ্ঞাপন load করছি।
+   * তারপর JavaScript দিয়ে owner verify করছি।
+   */
 
-(
+  const url =
 
-file.name
-.split(".")
-.pop()
+    SUPA_URL +
 
-||
+    "/rest/v1/ads" +
 
-"jpg"
+    "?id=eq." +
 
-)
+    encodeURIComponent(adId) +
 
-.toLowerCase()
-
-.replace(
-/[^a-z0-9]/g,
-""
-)
-
-||
-
-"jpg";
+    "&select=*";
 
 
-const path=
-
-currentUser.id+
-
-"/"+
-
-adId+
-
-"/edit-"+
-
-index+
-
-"-"+
-
-Date.now()+
-
-"."+ext;
+  console.log(
+    "Loading ad ID:",
+    adId
+  );
 
 
-const r=
+  const response =
+    await fetch(
+      url,
+      {
 
-await fetch(
+        method:"GET",
 
-SUPA_URL+
+        headers:{
 
-"/storage/v1/object/ad-images/"+
+          "apikey":
+            SUPA_KEY,
 
-path,
+          "Authorization":
+            "Bearer " +
+            session.access_token
 
-{
+        }
 
-method:"POST",
-
-headers:{
-
-"apikey":
-SUPA_KEY,
-
-"Authorization":
-
-"Bearer "+
-
-session.access_token,
-
-"Content-Type":
-
-file.type||
-
-"image/jpeg",
-
-"x-upsert":
-"false"
-
-},
-
-body:
-file
-
-}
-
-);
+      }
+    );
 
 
-if(!r.ok){
+  if(
+    !response.ok
+  ){
 
-const t=
-await r.text();
-
-
-throw new Error(
-
-"ছবি upload করা যায়নি: "+
-
-t
-
-);
-
-}
+    const text =
+      await response.text();
 
 
-return
+    console.error(
+      "LOAD AD ERROR:",
+      response.status,
+      text
+    );
 
-SUPA_URL+
 
-"/storage/v1/object/public/ad-images/"+
+    throw new Error(
+      "বিজ্ঞাপন লোড করা যায়নি: " +
+      text
+    );
 
-path;
+  }
+
+
+  const data =
+    await response.json();
+
+
+  if(
+    !data ||
+    !data.length
+  ){
+
+    return null;
+
+  }
+
+
+  const ad =
+    data[0];
+
+
+  /*
+   * Ownership verification
+   */
+
+  const sellerId =
+    ad.seller_id ||
+    ad.user_id ||
+    "";
+
+
+  if(
+    sellerId &&
+    sellerId !== user.id
+  ){
+
+    console.warn(
+      "NOT OWNER:",
+      sellerId,
+      user.id
+    );
+
+
+    return null;
+
+  }
+
+
+  return ad;
 
 }
 
@@ -2898,82 +2408,193 @@ path;
 
 function fillForm(ad){
 
-titleInput.value=
-ad.title||"";
+  currentAd =
+    ad;
 
 
-priceInput.value=
-ad.price||"";
+  category.value =
+    ad.category || "";
 
 
-descriptionInput.value=
-ad.description||"";
+  populateSubcategory(
+    ad.subcategory || ""
+  );
 
 
-phoneInput.value=
-ad.phone||"";
+  titleInput.value =
+    ad.title || "";
 
 
-locationSelect.value=
-ad.location||"";
+  priceInput.value =
+    ad.price || "";
 
 
-category.value=
-ad.category||"";
+  descriptionInput.value =
+    ad.description || "";
 
 
-loadSubcategories(
-ad.subcategory||""
-);
+  locationSelect.value =
+    ad.location || "";
 
 
-/* IMAGE URLS */
-
-if(
-Array.isArray(
-ad.image_urls
-)
-){
-
-existingImages=
-
-ad.image_urls
-.filter(Boolean);
-
-}else if(
-typeof ad.image_urls==="string"
-){
-
-try{
-
-const parsed=
-JSON.parse(
-ad.image_urls
-);
+  phoneInput.value =
+    ad.phone ||
+    currentUser.phone ||
+    "";
 
 
-existingImages=
+  /*
+   * Old images
+   */
 
-Array.isArray(parsed)
+  selectedImages =
+    getImageUrls(ad)
+    .slice(0,3)
+    .map(
+      url => ({
 
-?
+        type:"old",
 
-parsed
+        url:url
 
-:
+      })
+    );
 
-[];
 
-}catch(e){
+  renderPreview();
 
-existingImages=[];
+
+  userNote.innerHTML =
+
+    'Signed in as <strong>' +
+
+    esc(
+      currentUser.email
+    ) +
+
+    '</strong>';
+
+
+  loading.style.display =
+    "none";
+
+
+  formBox.style.display =
+    "block";
 
 }
 
-}
+
+/* ============================================================
+   UPLOAD IMAGE
+============================================================ */
+
+async function uploadImage(
+  file,
+  index,
+  session
+){
+
+  const ext =
+
+    (
+      file.name
+      .split(".")
+      .pop() ||
+      "jpg"
+    )
+
+    .toLowerCase()
+
+    .replace(
+      /[^a-z0-9]/g,
+      ""
+    );
 
 
-renderPreview();
+  const path =
+
+    currentUser.id +
+
+    "/" +
+
+    adId +
+
+    "/edit-" +
+
+    index +
+
+    "-" +
+
+    Date.now() +
+
+    "." +
+
+    ext;
+
+
+  const response =
+    await fetch(
+
+      SUPA_URL +
+
+      "/storage/v1/object/ad-images/" +
+
+      path,
+
+      {
+
+        method:"POST",
+
+        headers:{
+
+          "apikey":
+            SUPA_KEY,
+
+          "Authorization":
+            "Bearer " +
+            session.access_token,
+
+          "Content-Type":
+            file.type ||
+            "image/jpeg",
+
+          "x-upsert":
+            "false"
+
+        },
+
+        body:
+          file
+
+      }
+
+    );
+
+
+  if(
+    !response.ok
+  ){
+
+    const text =
+      await response.text();
+
+
+    throw new Error(
+      "ছবি upload করা যায়নি: " +
+      text
+    );
+
+  }
+
+
+  return
+
+    SUPA_URL +
+
+    "/storage/v1/object/public/ad-images/" +
+
+    path;
 
 }
 
@@ -2984,175 +2605,199 @@ renderPreview();
 
 async function initialize(){
 
-try{
+  /*
+   * Check Ad ID
+   */
 
-if(
+  if(!adId){
 
-typeof handleAuthCallback===
-"function"
+    loading.innerHTML =
 
-){
+      'বিজ্ঞাপনের ID পাওয়া যায়নি।' +
 
-await handleAuthCallback();
+      '<br><br>' +
 
-}
+      '<a href="my-ads.html">' +
 
-}catch(e){
+      '← আমার বিজ্ঞাপনে ফিরে যান' +
 
-console.error(e);
+      '</a>';
 
-}
 
+    return;
 
-/* AD ID */
+  }
 
-if(!adId){
 
-loading.innerHTML=
+  /*
+   * Handle OAuth callback
+   */
 
-'বিজ্ঞাপনের ID পাওয়া যায়নি।'+
+  try{
 
-'<br><br>'+
+    if(
+      typeof handleAuthCallback ===
+      "function"
+    ){
 
-'<a href="my-ads.html">← আমার বিজ্ঞাপনে ফিরে যান</a>';
+      await handleAuthCallback();
 
-return;
+    }
 
-}
+  }catch(e){
 
+    console.error(e);
 
-/* USER */
+  }
 
-currentUser=
-await getUser();
 
+  /*
+   * User
+   */
 
-if(!currentUser){
+  currentUser =
+    await getUser();
 
-await new Promise(
-r=>setTimeout(r,700)
-);
 
+  if(
+    !currentUser
+  ){
 
-currentUser=
-await getUser();
+    await new Promise(
+      resolve =>
+      setTimeout(
+        resolve,
+        1000
+      )
+    );
 
-}
 
+    currentUser =
+      await getUser();
 
-if(!currentUser){
+  }
 
-loading.innerHTML=
 
-'আপনার Login session পাওয়া যায়নি।'+
+  if(
+    !currentUser
+  ){
 
-'<br><br>'+
+    loading.innerHTML =
 
-'<a href="login.html?next=my-ads.html">'+
+      'Login session পাওয়া যায়নি।' +
 
-'Login করুন'+
+      '<br><br>' +
 
-'</a>';
+      '<a class="btn green" href="login.html?next=my-ads.html">' +
 
-return;
+      'Google দিয়ে Login করুন' +
 
-}
+      '</a>';
 
 
-try{
+    return;
 
+  }
 
-/* SESSION */
 
-const session=
-await freshSession();
+  /*
+   * Session
+   */
 
+  const session =
+    await getSession();
 
-/* LOAD AD */
 
-currentAd=
+  if(
+    !session
+  ){
 
-await loadAd(
-session
-);
+    loading.innerHTML =
 
+      'Login session পাওয়া যায়নি।' +
 
-if(!currentAd){
+      '<br><br>' +
 
-loading.innerHTML=
+      '<a class="btn green" href="login.html?next=my-ads.html">' +
 
-'বিজ্ঞাপনটি পাওয়া যায়নি অথবা এটি আপনার বিজ্ঞাপন নয়।'+
+      'আবার Login করুন' +
 
-'<br><br>'+
+      '</a>';
 
-'<a href="my-ads.html">'+
 
-'← আমার বিজ্ঞাপনে ফিরে যান'+
+    return;
 
-'</a>';
+  }
 
-return;
 
-}
+  /*
+   * Load Ad
+   */
 
+  try{
 
-/* FILL FORM */
+    const ad =
+      await loadAd(
+        currentUser,
+        session
+      );
 
-fillForm(
-currentAd
-);
 
+    if(
+      !ad
+    ){
 
-/* USER NOTE */
+      loading.innerHTML =
 
-userNote.innerHTML=
+        'বিজ্ঞাপনটি পাওয়া যায়নি অথবা এটি আপনার বিজ্ঞাপন নয়।' +
 
-'Signed in as <strong>'+
+        '<br><br>' +
 
-esc(
-currentUser.email||
-""
-)+
+        '<a href="my-ads.html">' +
 
-'</strong>';
+        '← আমার বিজ্ঞাপনে ফিরে যান' +
 
+        '</a>';
 
-loading.style.display=
-"none";
 
+      return;
 
-formBox.style.display=
-"block";
+    }
 
 
-}catch(err){
+    fillForm(
+      ad
+    );
 
-console.error(
-"INITIALIZE ERROR:",
-err
-);
 
+  }catch(err){
 
-loading.innerHTML=
+    console.error(
+      "INITIALIZE ERROR:",
+      err
+    );
 
-'বিজ্ঞাপনের তথ্য লোড করা যায়নি।'+
 
-'<br><br>'+
+    loading.innerHTML =
 
-esc(
-err.message||
-"Unknown error"
-)+
+      'বিজ্ঞাপন লোড করা যায়নি।' +
 
-'<br><br>'+
+      '<br><br>' +
 
-'<a href="my-ads.html">'+
+      esc(
+        err.message ||
+        ""
+      ) +
 
-'← ফিরে যান'+
+      '<br><br>' +
 
-'</a>';
+      '<a href="my-ads.html">' +
 
-}
+      '← আমার বিজ্ঞাপনে ফিরে যান' +
+
+      '</a>';
+
+  }
 
 }
 
@@ -3161,419 +2806,408 @@ initialize();
 
 
 /* ============================================================
-   UPDATE AD
+   SUBMIT UPDATE
 ============================================================ */
 
 form.addEventListener(
+  "submit",
+  async function(e){
 
-"submit",
+    e.preventDefault();
 
-async function(e){
 
-e.preventDefault();
+    clearMsg();
 
-clearMsg();
 
+    /*
+     * Validation
+     */
 
-if(!currentUser){
+    if(
+      !category.value
+    ){
 
-error(
-"Login session পাওয়া যায়নি।"
-);
+      error(
+        "ক্যাটাগরি নির্বাচন করুন।"
+      );
 
-return;
+      category.focus();
 
-}
+      return;
 
+    }
 
-/* VALIDATION */
 
-if(!category.value){
+    if(
+      !subcategory.value
+    ){
 
-error(
-"ক্যাটাগরি নির্বাচন করুন।"
-);
+      error(
+        "সাব-ক্যাটাগরি নির্বাচন করুন।"
+      );
 
-category.focus();
+      subcategory.focus();
 
-return;
+      return;
 
-}
+    }
 
 
-if(!subcategory.value){
+    if(
+      !titleInput.value.trim()
+    ){
 
-error(
-"সাব-ক্যাটাগরি নির্বাচন করুন।"
-);
+      error(
+        "শিরোনাম লিখুন।"
+      );
 
-subcategory.focus();
+      titleInput.focus();
 
-return;
+      return;
 
-}
+    }
 
 
-if(
-!titleInput.value.trim()
-){
+    const price =
+      Number(
+        priceInput.value
+      );
 
-error(
-"শিরোনাম লিখুন।"
-);
 
-titleInput.focus();
+    if(
+      !price ||
+      price < 1
+    ){
 
-return;
+      error(
+        "সঠিক দাম লিখুন।"
+      );
 
-}
+      return;
 
+    }
 
-const price=
-Number(
-priceInput.value
-);
 
+    if(
+      !descriptionInput.value.trim()
+    ){
 
-if(
-!price||
-price<1
-){
+      error(
+        "পণ্যের বিস্তারিত লিখুন।"
+      );
 
-error(
-"সঠিক দাম লিখুন।"
-);
+      return;
 
-priceInput.focus();
+    }
 
-return;
 
-}
+    if(
+      !locationSelect.value
+    ){
 
+      error(
+        "আপনার এলাকা নির্বাচন করুন।"
+      );
 
-if(
-!descriptionInput.value.trim()
-){
+      return;
 
-error(
-"পণ্যের বিস্তারিত লিখুন।"
-);
+    }
 
-descriptionInput.focus();
 
-return;
+    const phone =
+      phoneInput.value
+      .trim();
 
-}
 
+    if(
+      !/^01[3-9]\d{8}$/
+      .test(phone)
+    ){
 
-if(
-!locationSelect.value
-){
+      error(
+        "সঠিক ১১ সংখ্যার মোবাইল নম্বর দিন।"
+      );
 
-error(
-"আপনার এলাকা নির্বাচন করুন।"
-);
+      return;
 
-locationSelect.focus();
+    }
 
-return;
 
-}
+    if(
+      selectedImages.length < 1
+    ){
 
+      error(
+        "কমপক্ষে একটি ছবি রাখতে হবে।"
+      );
 
-const phone=
-phoneInput.value.trim();
+      return;
 
+    }
 
-if(
 
-!/^01[3-9]\d{8}$/.test(
-phone
-)
+    submitBtn.disabled =
+      true;
 
-){
 
-error(
-"সঠিক ১১ সংখ্যার মোবাইল নম্বর দিন।"
-);
+    try{
 
-phoneInput.focus();
 
-return;
+      /*
+       * Fresh session
+       */
 
-}
+      const session =
+        await getSession();
 
 
-const totalImages=
+      if(
+        !session ||
+        !session.access_token
+      ){
 
-existingImages.length+
+        throw new Error(
+          "Login session পাওয়া যায়নি। আবার Login করুন।"
+        );
 
-selectedFiles.length;
+      }
 
 
-if(
-totalImages<1
-){
+      /*
+       * Process images
+       */
 
-error(
-"কমপক্ষে ১টি ছবি রাখতে হবে।"
-);
+      const finalImages =
+        [];
 
-return;
 
-}
+      for(
+        let i = 0;
+        i < selectedImages.length;
+        i++
+      ){
 
+        const image =
+          selectedImages[i];
 
-/* START */
 
-submitBtn.disabled=
-true;
+        if(
+          image.type ===
+          "old"
+        ){
 
+          finalImages.push(
+            image.url
+          );
 
-try{
+        }
 
+        else if(
+          image.type ===
+          "new"
+        ){
 
-const session=
+          submitBtn.textContent =
 
-await freshSession();
+            "ছবি upload হচ্ছে " +
 
+            (i + 1) +
 
-const finalImages=
+            "/" +
 
-[
-...existingImages
-];
+            selectedImages.length;
 
 
-/* UPLOAD NEW IMAGES */
+          const url =
+            await uploadImage(
+              image.file,
+              i + 1,
+              session
+            );
 
-for(
 
-let i=0;
+          finalImages.push(
+            url
+          );
 
-i<selectedFiles.length;
+        }
 
-i++
+      }
 
-){
 
-submitBtn.textContent=
+      submitBtn.textContent =
+        "পরিবর্তন সংরক্ষণ হচ্ছে...";
 
-"ছবি upload হচ্ছে "+
 
-(i+1)+
+      /*
+       * Update data
+       */
 
-"/"+
+      const updateData = {
 
-selectedFiles.length;
+        title:
+          titleInput.value.trim(),
 
+        price:
+          price,
 
-const url=
+        category:
+          category.value,
 
-await uploadImage(
+        subcategory:
+          subcategory.value,
 
-selectedFiles[i],
+        description:
+          descriptionInput.value.trim(),
 
-existingImages.length+
-i+
-1,
+        location:
+          locationSelect.value,
 
-session
+        phone:
+          phone,
 
-);
+        image_urls:
+          finalImages,
 
+        /*
+         * Edit করার পর আবার
+         * Admin review
+         */
 
-finalImages.push(
-url
-);
+        status:
+          "pending"
 
-}
+      };
 
 
-/* UPDATE */
+      const response =
+        await fetch(
 
-submitBtn.textContent=
-"বিজ্ঞাপন Update হচ্ছে...";
+          SUPA_URL +
 
+          "/rest/v1/ads" +
 
-const updateData={
+          "?id=eq." +
 
-title:
-titleInput.value.trim(),
+          encodeURIComponent(adId),
 
-price:
-price,
+          {
 
-category:
-category.value,
+            method:"PATCH",
 
-subcategory:
-subcategory.value,
+            headers:{
 
-description:
-descriptionInput.value.trim(),
+              "apikey":
+                SUPA_KEY,
 
-location:
-locationSelect.value,
+              "Authorization":
+                "Bearer " +
+                session.access_token,
 
-phone:
-phone,
+              "Content-Type":
+                "application/json",
 
-image_urls:
-finalImages
+              "Prefer":
+                "return=representation"
 
-};
+            },
 
+            body:
+              JSON.stringify(
+                updateData
+              )
 
-/* Keep status unchanged */
+          }
 
-const r=
+        );
 
-await fetch(
 
-SUPA_URL+
+      if(
+        !response.ok
+      ){
 
-"/rest/v1/ads"+
+        const text =
+          await response.text();
 
-"?id=eq."+
 
-encodeURIComponent(
-adId
-)+
+        throw new Error(
+          "বিজ্ঞাপন update করা যায়নি: " +
+          text
+        );
 
-"&seller_id=eq."+
+      }
 
-encodeURIComponent(
-currentUser.id
-),
 
-{
+      /*
+       * Success
+       */
 
-method:"PATCH",
+      form.style.display =
+        "none";
 
-headers:{
 
-"apikey":
-SUPA_KEY,
+      msg.innerHTML =
 
-"Authorization":
+        '<div class="success-box">' +
 
-"Bearer "+
+        '<div class="success-icon">✓</div>' +
 
-session.access_token,
+        '<strong>' +
 
-"Content-Type":
-"application/json",
+        'বিজ্ঞাপন সফলভাবে আপডেট হয়েছে' +
 
-"Prefer":
-"return=representation"
+        '</strong>' +
 
-},
+        '<br><br>' +
 
-body:
+        '<small>' +
 
-JSON.stringify(
-updateData
-)
+        'আপনার পরিবর্তিত বিজ্ঞাপন এখন আবার ' +
 
-}
+        '<b style="color:#b57b00">Pending</b> ' +
 
-);
+        'অবস্থায় Admin review-এর জন্য গেছে।' +
 
+        '</small>' +
 
-if(!r.ok){
+        '<br><br>' +
 
-const t=
-await r.text();
+        '<a href="my-ads.html" class="btn green">' +
 
+        'আমার বিজ্ঞাপন দেখুন →' +
 
-throw new Error(
+        '</a>' +
 
-"Database update error: "+
+        '</div>';
 
-t
 
-);
+    }catch(err){
 
-}
+      console.error(
+        "UPDATE ERROR:",
+        err
+      );
 
 
-/* SUCCESS */
+      error(
+        err.message ||
+        "বিজ্ঞাপন update করা যায়নি।"
+      );
 
-form.style.display=
-"none";
+    }
 
+    finally{
 
-msg.innerHTML=
+      submitBtn.disabled =
+        false;
 
-'<div class="success-box">'+
 
-'<div class="success-icon">✓</div>'+
+      submitBtn.textContent =
+        "পরিবর্তন সংরক্ষণ করুন →";
 
+    }
 
-'<strong>'+
-
-'বিজ্ঞাপন সফলভাবে Update হয়েছে'
-
-+
-
-'</strong>'+
-
-
-'<br><br>'+
-
-
-'<small>'+
-
-'আপনার পরিবর্তনগুলো সফলভাবে সংরক্ষণ করা হয়েছে।'+
-
-'</small>'+
-
-
-'<br><br>'+
-
-
-'<a href="my-ads.html" class="btn green">'+
-
-'আমার বিজ্ঞাপনে যান →'+
-
-'</a>'+
-
-
-'</div>';
-
-
-}catch(err){
-
-console.error(
-"UPDATE ERROR:",
-err
-);
-
-
-error(
-
-err.message||
-
-"বিজ্ঞাপন Update করা যায়নি।"
-
-);
-
-}finally{
-
-
-submitBtn.disabled=
-false;
-
-
-submitBtn.textContent=
-
-"পরিবর্তনগুলো Update করুন →";
-
-}
-
-}
-
+  }
 );
 
 
