@@ -1113,6 +1113,122 @@ body.lightbox-open{
 
 
 /* ==========================================================
+   MOBILE NAVIGATION
+========================================================== */
+
+.mobile-nav{
+
+  position:fixed;
+
+  left:0;
+
+  right:0;
+
+  bottom:0;
+
+  z-index:200;
+
+  height:72px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-around;
+
+  padding-bottom:
+    env(safe-area-inset-bottom);
+
+  border-top:
+    1px solid
+    #e8eeea;
+
+  background:
+    rgba(255,255,255,.97);
+
+  box-shadow:
+    0 -8px 25px
+    rgba(0,0,0,.05);
+
+}
+
+
+.mobile-nav a{
+
+  min-width:55px;
+
+  display:flex;
+
+  flex-direction:column;
+
+  align-items:center;
+
+  justify-content:center;
+
+  gap:3px;
+
+  color:#657169 !important;
+
+  font-size:8px;
+
+  font-weight:700;
+
+  text-decoration:none;
+
+}
+
+
+.mobile-nav a span{
+
+  font-size:22px;
+
+}
+
+
+.mobile-nav a.active{
+
+  color:var(--green) !important;
+
+}
+
+
+/* Center floating button */
+
+.mobile-nav a:nth-child(3) span{
+
+  width:48px;
+
+  height:48px;
+
+  margin-top:-28px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  border-radius:50%;
+
+  color:#fff !important;
+
+  background:
+    linear-gradient(
+      135deg,
+      #10a85d,
+      #05733b
+    );
+
+  font-size:30px;
+
+  box-shadow:
+    0 8px 20px
+    rgba(11,143,75,.28);
+
+}
+
+
+/* ==========================================================
    TABLET
 ========================================================== */
 
@@ -1649,32 +1765,55 @@ body.lightbox-open{
 
 
 
+<!-- ==========================================================
+     UNIFIED BOTTOM NAVIGATION
+========================================================== -->
+
 <nav class="mobile-nav">
 
-<a href="index.html">
-<span>⌂</span>
-হোম
-</a>
+  <a href="index.html">
 
-<a href="favorites.html">
-<span>♡</span>
-সংরক্ষিত
-</a>
+    <span>⌂</span>
 
-<a href="post-ad.html">
-<span>⊞</span>
-ক্রয়-বিক্রয়
-</a>
+    হোম
 
-<a href="messages.html">
-<span>▤</span>
-ম্যাসেজ
-</a>
+  </a>
 
-<a href="profile.html">
-<span>♙</span>
-প্রোফাইল
-</a>
+
+  <a href="favorites.html">
+
+    <span>♡</span>
+
+    সেভ করা
+
+  </a>
+
+
+  <a href="post-ad.html">
+
+    <span>＋</span>
+
+    বিজ্ঞাপন দিন
+
+  </a>
+
+
+  <a href="messages.html">
+
+    <span>▤</span>
+
+    মেসেজ
+
+  </a>
+
+
+  <a href="profile.html">
+
+    <span>♙</span>
+
+    প্রোফাইল
+
+  </a>
 
 </nav>
 
