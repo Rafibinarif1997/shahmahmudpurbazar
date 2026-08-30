@@ -20,34 +20,19 @@
 
 <style>
 
-/* ============================================================
-   ROOT
-============================================================ */
-
 :root{
-
   --green:#0b8f4b;
   --green-dark:#05743a;
   --green-light:#eaf8ef;
-
   --text:#1d2923;
   --muted:#758078;
-
   --border:#e2eae5;
   --bg:#f7faf8;
   --card:#ffffff;
-
 }
 
-
-/* ============================================================
-   BODY
-============================================================ */
-
 body{
-
   margin:0;
-
   background:
     linear-gradient(
       180deg,
@@ -55,1142 +40,646 @@ body{
       #ffffff 45%,
       #f7faf8 100%
     );
-
   color:var(--text);
-
   font-family:
     system-ui,
     -apple-system,
     BlinkMacSystemFont,
     "Segoe UI",
     sans-serif;
-
   padding-bottom:90px;
-
 }
-
 
 a{
   text-decoration:none;
 }
 
-
-/* ============================================================
-   PAGE
-============================================================ */
-
 .page{
-
   max-width:820px;
-
   padding:
     35px
     16px
     115px;
-
 }
 
-
-/* ============================================================
-   BACK BUTTON
-============================================================ */
-
 .back-btn{
-
   width:max-content;
-
   display:inline-flex;
-
   align-items:center;
-
   gap:8px;
-
   margin-bottom:24px;
-
   padding:9px 13px;
-
   border:1px solid var(--border);
-
   border-radius:12px;
-
   background:#fff;
-
   color:#526158;
-
   font-size:11px;
-
   font-weight:800;
-
   box-shadow:
     0 5px 16px
     rgba(30,55,42,.05);
-
   transition:.2s ease;
-
 }
-
 
 .back-btn span{
-
   font-size:17px;
-
   line-height:1;
-
 }
-
 
 .back-btn:hover{
-
   border-color:
     rgba(11,143,75,.3);
-
   color:var(--green);
-
 }
-
-
-/* ============================================================
-   BRAND
-============================================================ */
 
 .page .brand{
-
   display:flex;
-
   flex-wrap:wrap;
-
   align-items:center;
-
   width:250px;
-
   position:relative;
-
   padding-left:58px;
-
   color:var(--text);
-
 }
 
-
 .page .brand:before{
-
   content:"🛍";
-
   position:absolute;
-
   left:0;
-
   top:50%;
-
   transform:translateY(-50%);
-
   width:45px;
-
   height:45px;
-
   display:flex;
-
   align-items:center;
-
   justify-content:center;
-
   border-radius:14px;
-
   background:
     linear-gradient(
       135deg,
       #0d9b55,
       #05743a
     );
-
   font-size:25px;
-
   box-shadow:
     0 8px 20px
     rgba(11,143,75,.22);
-
 }
-
 
 .page .brand b{
-
   width:100%;
-
   color:#27352e;
-
   font-size:19px;
-
   font-weight:900;
-
   letter-spacing:-.5px;
-
 }
-
 
 .page .brand strong{
-
   position:absolute;
-
   left:188px;
-
   top:0;
-
   color:var(--green);
-
   font-size:19px;
-
   font-weight:900;
-
 }
-
 
 .page .brand small{
-
   width:100%;
-
   margin-top:3px;
-
   color:#66726b;
-
   font-size:9px;
-
   font-weight:800;
-
   letter-spacing:1.5px;
-
 }
 
-
-/* ============================================================
-   LOADING
-============================================================ */
-
 .loading{
-
   margin-top:25px;
-
   text-align:center;
-
   padding:55px 20px;
-
   color:#718078;
-
   font-size:12px;
-
   background:#fff;
-
   border:
     1px solid
     var(--border);
-
   border-radius:22px;
-
   box-shadow:
     0 12px 35px
     rgba(30,55,42,.06);
-
 }
 
-
-/* ============================================================
-   FORM BOX
-============================================================ */
-
 #formBox{
-
   margin-top:25px;
-
   padding:0;
-
   overflow:hidden;
-
   border:
     1px solid
     var(--border);
-
   border-radius:24px;
-
   background:#fff;
-
   box-shadow:
     0 18px 55px
     rgba(30,55,42,.08);
-
 }
 
-
-/* ============================================================
-   HEADER
-============================================================ */
-
 .form-header{
-
   padding:
     30px
     30px
     25px;
-
   border-bottom:
     1px solid
     var(--border);
-
   background:
-
     radial-gradient(
       circle at 90% 20%,
       rgba(105,245,165,.15),
       transparent 35%
     ),
-
     linear-gradient(
       135deg,
       #ffffff,
       #f2fbf5
     );
-
 }
 
-
 .eyebrow{
-
   display:inline-flex;
-
   padding:
     6px
     10px;
-
   border-radius:50px;
-
   color:var(--green);
-
   background:#eaf8ef;
-
   font-size:8px;
-
   font-weight:900;
-
   letter-spacing:1.3px;
-
 }
 
-
 .form-header h1{
-
   margin:
     13px
     0
     7px;
-
   color:#1f3027;
-
   font-size:30px;
-
   line-height:1.2;
-
   font-weight:900;
-
 }
-
 
 .form-header p{
-
   margin:0;
-
   color:#718078;
-
   font-size:12px;
-
   line-height:1.6;
-
 }
 
-
-/* ============================================================
-   USER NOTE
-============================================================ */
-
 .user-note{
-
   margin:
     18px
     30px
     0;
-
   padding:
     14px
     16px;
-
   border:
     1px solid
     #d6eadc;
-
   border-radius:14px;
-
   background:#f2fbf5;
-
   color:#66766e;
-
   font-size:11px;
-
 }
-
 
 .user-note strong{
-
   color:var(--green);
-
 }
 
-
-/* ============================================================
-   FORM
-============================================================ */
-
 #adForm{
-
   padding:
     0
     30px
     30px;
-
 }
 
-
 .form-section{
-
   margin-top:28px;
-
   padding-top:26px;
-
   border-top:
     1px solid
     var(--border);
-
 }
-
 
 .form-section:first-child{
-
   border-top:0;
-
 }
-
 
 .form-section-title{
-
   margin-bottom:20px;
-
 }
-
 
 .form-section-title small{
-
   display:block;
-
   margin-bottom:6px;
-
   color:var(--green);
-
   font-size:9px;
-
   font-weight:900;
-
   letter-spacing:1.6px;
-
 }
-
 
 .form-section-title h3{
-
   margin:0;
-
   color:#26362d;
-
   font-size:18px;
-
   font-weight:900;
-
 }
-
-
-/* ============================================================
-   INPUT
-============================================================ */
 
 .required{
-
   color:#e53935;
-
 }
-
 
 #adForm label{
-
   display:block;
-
   margin-top:16px;
-
   color:#35423b;
-
   font-size:11px;
-
   font-weight:800;
-
 }
-
 
 #adForm input,
 #adForm select,
 #adForm textarea{
-
   width:100%;
-
   margin-top:7px;
-
   padding:
     13px
     14px;
-
   box-sizing:border-box;
-
   border:
     1px solid
     #dfe8e2;
-
   border-radius:13px;
-
   outline:0;
-
   background:#fff;
-
   color:#25332c;
-
   font-family:inherit;
-
   font-size:12px;
-
   font-weight:600;
-
   transition:.2s ease;
-
 }
-
 
 #adForm textarea{
-
   resize:vertical;
-
   min-height:135px;
-
   line-height:1.6;
-
 }
-
 
 #adForm input:focus,
 #adForm select:focus,
 #adForm textarea:focus{
-
   border-color:
     rgba(11,143,75,.7);
-
   box-shadow:
     0 0 0 4px
     rgba(11,143,75,.08);
-
 }
-
-
-/* ============================================================
-   IMAGE PICKER
-============================================================ */
 
 .file-input{
-
   display:none;
-
 }
 
-
 .file-picker{
-
   width:100%;
-
   min-height:50px;
-
   margin-top:8px;
-
   padding:0 14px;
-
   box-sizing:border-box;
-
   display:flex;
-
   align-items:center;
-
   justify-content:space-between;
-
   gap:12px;
-
   border:
     1px dashed
     #b8d8c3;
-
   border-radius:13px;
-
   background:#f8fbf9;
-
   cursor:pointer;
-
 }
-
 
 .file-picker-left{
-
   display:flex;
-
   align-items:center;
-
   gap:10px;
-
+  min-width:0;
 }
-
 
 .file-icon{
-
   width:32px;
-
   height:32px;
-
+  flex:none;
   display:flex;
-
   align-items:center;
-
   justify-content:center;
-
   border-radius:9px;
-
   background:#eaf8ef;
-
   color:var(--green);
-
 }
-
 
 .file-picker-text{
-
   color:#526158;
-
   font-size:10px;
-
   font-weight:800;
-
+  overflow:hidden;
+  white-space:nowrap;
+  text-overflow:ellipsis;
 }
 
-
 .file-button{
-
+  flex:none;
   padding:
     8px
     11px;
-
   border-radius:9px;
-
   background:var(--green);
-
   color:#fff;
-
   font-size:9px;
-
   font-weight:900;
-
 }
-
-
-/* ============================================================
-   IMAGE HELP
-============================================================ */
 
 .image-help{
-
   margin-top:9px;
-
   color:#7c8881;
-
   font-size:9px;
-
   line-height:1.7;
-
 }
 
-
 .image-count{
-
   display:inline-block;
-
   margin-top:9px;
-
   padding:
     5px
     9px;
-
   border-radius:50px;
-
   color:var(--green);
-
   background:#eaf8ef;
-
   font-size:9px;
-
   font-weight:850;
-
 }
-
-
-/* ============================================================
-   IMAGE PREVIEW
-============================================================ */
 
 .preview-grid{
-
   display:grid;
-
   grid-template-columns:
     repeat(3,1fr);
-
   gap:10px;
-
   margin-top:15px;
-
 }
 
-
 .preview-item{
-
   position:relative;
-
   aspect-ratio:1;
-
   overflow:hidden;
-
   border-radius:15px;
-
   border:
     1px solid
     #dce8e0;
-
   background:#f3f7f4;
-
 }
-
 
 .preview-item img{
-
   width:100%;
-
   height:100%;
-
   display:block;
-
   object-fit:cover;
-
 }
 
-
 .image-number{
-
   position:absolute;
-
   left:8px;
-
   top:8px;
-
   padding:
     4px
     8px;
-
   border-radius:20px;
-
   background:
     rgba(0,0,0,.68);
-
   color:#fff;
-
   font-size:8px;
-
   font-weight:800;
-
 }
 
-
 .image-type{
-
   position:absolute;
-
   left:8px;
-
   bottom:8px;
-
   padding:
     4px
     7px;
-
   border-radius:20px;
-
   background:
     rgba(11,143,75,.88);
-
   color:#fff;
-
   font-size:7px;
-
   font-weight:800;
-
 }
 
-
 .remove-image{
-
   position:absolute;
-
   right:8px;
-
   top:8px;
-
   width:30px;
-
   height:30px;
-
   border:0;
-
   border-radius:50%;
-
   background:
     rgba(255,255,255,.96);
-
   color:#e53935;
-
   cursor:pointer;
-
   font-size:20px;
-
   line-height:30px;
-
   padding:0;
-
   box-shadow:
     0 3px 10px
     rgba(0,0,0,.12);
-
 }
 
-
-/* ============================================================
-   SUBMIT
-============================================================ */
-
 #submitBtn{
-
   width:100%;
-
   min-height:55px;
-
   margin-top:30px;
-
   border:0;
-
   border-radius:15px;
-
   color:#fff;
-
   cursor:pointer;
-
   background:
     linear-gradient(
       135deg,
       #0d9b55,
       #05743a
     );
-
   font-family:inherit;
-
   font-size:14px;
-
   font-weight:900;
-
   box-shadow:
     0 12px 25px
     rgba(11,143,75,.20);
-
 }
-
 
 #submitBtn:disabled{
-
   opacity:.7;
-
   cursor:wait;
-
 }
 
-
-/* ============================================================
-   NOTE
-============================================================ */
-
 .submit-note{
-
   margin-top:14px;
-
   padding:
     12px
     15px;
-
   border-radius:12px;
-
   background:#f8fbf9;
-
   color:#7f887f;
-
   text-align:center;
-
   font-size:9px;
-
   line-height:1.8;
-
 }
 
-
-/* ============================================================
-   ERROR / SUCCESS
-============================================================ */
-
 .error-box{
-
   margin:
     20px
     30px
     30px;
-
   padding:
     14px
     16px;
-
   border:
     1px solid
     #f1d5d5;
-
   border-radius:13px;
-
   background:#fff7f7;
-
   color:#d93636;
-
   font-size:10px;
-
   line-height:1.7;
-
   text-align:center;
-
 }
 
-
 .success-box{
-
   margin:
     25px
     30px
     30px;
-
   padding:
     32px
     20px;
-
   border:
     1px solid
     #cfe8d7;
-
   border-radius:20px;
-
   background:
     linear-gradient(
       135deg,
       #f1fbf4,
       #ffffff
     );
-
   text-align:center;
-
   color:#08763e;
-
 }
 
-
 .success-icon{
-
   width:52px;
-
   height:52px;
-
   margin:
     0
     auto
     15px;
-
   display:flex;
-
   align-items:center;
-
   justify-content:center;
-
   border-radius:50%;
-
   background:#e2f6e9;
-
   font-size:25px;
-
 }
-
-
-/* ============================================================
-   MOBILE
-============================================================ */
 
 @media(max-width:600px){
 
   body{
-
     padding-bottom:80px;
-
   }
 
-
   .page{
-
     padding:
       22px
       12px
       100px;
-
   }
-
 
   .page .brand{
-
     width:190px;
-
     padding-left:47px;
-
   }
-
 
   .page .brand:before{
-
     width:38px;
-
     height:38px;
-
     border-radius:12px;
-
     font-size:22px;
-
   }
-
 
   .page .brand b{
-
     font-size:14px;
-
   }
-
 
   .page .brand strong{
-
     position:static;
-
     width:auto;
-
     margin-left:4px;
-
     font-size:14px;
-
   }
-
 
   .page .brand small{
-
     font-size:7px;
-
   }
-
 
   #formBox{
-
     border-radius:20px;
-
   }
 
-
   .form-header{
-
     padding:
       24px
       18px
       20px;
-
   }
-
 
   .form-header h1{
-
     font-size:25px;
-
   }
 
-
   .user-note{
-
     margin:
       15px
       18px
       0;
-
     font-size:9px;
-
   }
 
-
   #adForm{
-
     padding:
       0
       18px
       22px;
-
   }
-
 
   .form-section-title h3{
-
     font-size:16px;
-
   }
-
 
   .preview-grid{
-
     gap:8px;
-
   }
-
 
   .error-box,
   .success-box{
-
     margin-left:18px;
-
     margin-right:18px;
-
   }
 
 }
@@ -1277,8 +766,6 @@ EDIT AD
   id="adForm"
   novalidate>
 
-
-<!-- BASIC -->
 
 <div class="form-section">
 
@@ -1378,15 +865,12 @@ EDIT AD
 
 <textarea
   id="description"
-  maxlength="3000">
-</textarea>
+  maxlength="3000"></textarea>
 
 </label>
 
 </div>
 
-
-<!-- LOCATION -->
 
 <div class="form-section">
 
@@ -1440,8 +924,6 @@ EDIT AD
 </div>
 
 
-<!-- CONTACT -->
-
 <div class="form-section">
 
 <div class="form-section-title">
@@ -1473,8 +955,6 @@ EDIT AD
 
 </div>
 
-
-<!-- PHOTOS -->
 
 <div class="form-section">
 
@@ -1593,10 +1073,6 @@ EDIT AD
 "use strict";
 
 
-/* ============================================================
-   CONFIG
-============================================================ */
-
 const SUPA_URL =
 "https://jeupbfoceqmnpwlklche.supabase.co";
 
@@ -1607,86 +1083,29 @@ window.supabaseAnonKey ||
 "";
 
 
-/* ============================================================
-   ELEMENTS
-============================================================ */
-
 const $ =
 id =>
 document.getElementById(id);
 
 
-const loading =
-$("loading");
+const loading = $("loading");
+const formBox = $("formBox");
+const form = $("adForm");
+const userNote = $("userNote");
+const msg = $("msg");
+const submitBtn = $("submitBtn");
+const imageInput = $("image");
+const preview = $("preview");
+const imageCount = $("imageCount");
+const filePickerText = $("filePickerText");
+const category = $("category");
+const subcategory = $("subcategory");
+const locationSelect = $("location");
+const titleInput = $("title");
+const priceInput = $("price");
+const descriptionInput = $("description");
+const phoneInput = $("phone");
 
-
-const formBox =
-$("formBox");
-
-
-const form =
-$("adForm");
-
-
-const userNote =
-$("userNote");
-
-
-const msg =
-$("msg");
-
-
-const submitBtn =
-$("submitBtn");
-
-
-const imageInput =
-$("image");
-
-
-const preview =
-$("preview");
-
-
-const imageCount =
-$("imageCount");
-
-
-const filePickerText =
-$("filePickerText");
-
-
-const category =
-$("category");
-
-
-const subcategory =
-$("subcategory");
-
-
-const locationSelect =
-$("location");
-
-
-const titleInput =
-$("title");
-
-
-const priceInput =
-$("price");
-
-
-const descriptionInput =
-$("description");
-
-
-const phoneInput =
-$("phone");
-
-
-/* ============================================================
-   URL PARAM
-============================================================ */
 
 const params =
 new URLSearchParams(
@@ -1698,48 +1117,17 @@ const adId =
 params.get("id");
 
 
-/* ============================================================
-   STATE
-============================================================ */
+let currentUser = null;
+let currentAd = null;
 
-let currentUser =
-null;
+let selectedImages = [];
 
 
-let currentAd =
-null;
-
-
-/*
-images array format:
-
-{
- type:"existing",
- url:"..."
-}
-
-OR
-
-{
- type:"new",
- file:File,
- url:"blob..."
-}
-
-*/
-
-let selectedImages =
-[];
-
-
-/* ============================================================
-   ESCAPE
-============================================================ */
+/* ESCAPE */
 
 function esc(v){
 
 return String(v ?? "")
-
 .replace(/&/g,"&amp;")
 .replace(/</g,"&lt;")
 .replace(/>/g,"&gt;")
@@ -1749,18 +1137,13 @@ return String(v ?? "")
 }
 
 
-/* ============================================================
-   ERROR
-============================================================ */
+/* ERROR */
 
 function error(text){
 
-msg.innerHTML=
-
-'<div class="error-box">'+
-
-esc(text)+
-
+msg.innerHTML =
+'<div class="error-box">' +
+esc(text) +
 '</div>';
 
 }
@@ -1768,14 +1151,12 @@ esc(text)+
 
 function clearMsg(){
 
-msg.innerHTML="";
+msg.innerHTML = "";
 
 }
 
 
-/* ============================================================
-   GET STORED USER
-============================================================ */
+/* STORED USER */
 
 function getStoredUser(){
 
@@ -1786,22 +1167,16 @@ localStorage.getItem(
 "smb_user_v1"
 );
 
-
 if(!raw){
-
 return null;
-
 }
-
 
 const user =
 JSON.parse(raw);
 
-
-return user &&
-user.id
-?user
-:null;
+return user && user.id
+? user
+: null;
 
 }catch(e){
 
@@ -1812,35 +1187,27 @@ return null;
 }
 
 
-/* ============================================================
-   GET USER
-============================================================ */
+/* GET USER */
 
 async function getUser(){
 
 try{
 
 if(
-typeof getCurrentUser ===
-"function"
+typeof getCurrentUser === "function"
 ){
 
 const user =
 await getCurrentUser();
 
-
 if(user){
 
 const metadata =
-user.user_metadata ||
-{};
-
+user.user_metadata || {};
 
 const profile = {
 
-id:
-user.id ||
-"",
+id:user.id || "",
 
 name:
 metadata.full_name ||
@@ -1890,22 +1257,18 @@ return getStoredUser();
 }
 
 
-/* ============================================================
-   GET SESSION
-============================================================ */
+/* GET SESSION */
 
 async function getSession(){
 
 try{
 
 if(
-typeof getSbSession ===
-"function"
+typeof getSbSession === "function"
 ){
 
 const session =
 await getSbSession();
-
 
 if(
 session &&
@@ -1933,9 +1296,7 @@ return null;
 }
 
 
-/* ============================================================
-   CATEGORY MAP
-============================================================ */
+/* CATEGORY */
 
 const subMap={
 
@@ -2085,9 +1446,7 @@ const subMap={
 };
 
 
-/* ============================================================
-   UPDATE SUBCATEGORY
-============================================================ */
+/* SUBCATEGORY */
 
 function populateSubcategories(
 selectedValue=""
@@ -2098,35 +1457,23 @@ subcategory.innerHTML =
 
 
 (
-subMap[
-category.value
-] ||
+subMap[category.value] ||
 []
 )
 
 .forEach(
-item=>{
+item => {
 
 const option =
-new Option(
-item,
-item
-);
-
+new Option(item,item);
 
 if(
 item === selectedValue
 ){
-
-option.selected =
-true;
-
+option.selected = true;
 }
 
-
-subcategory.add(
-option
-);
+subcategory.add(option);
 
 }
 
@@ -2142,54 +1489,192 @@ function(){
 populateSubcategories();
 
 }
-
 );
 
 
-/* ============================================================
-   PARSE IMAGE URLS
-============================================================ */
+/* IMAGE URL NORMALIZER */
 
-function parseImageUrls(value){
+function normalizeImageUrl(url){
+
+if(!url){
+return "";
+}
+
+url =
+String(url).trim();
+
+if(!url){
+return "";
+}
+
+
+/* Already full URL */
 
 if(
-Array.isArray(value)
+url.startsWith("http://") ||
+url.startsWith("https://") ||
+url.startsWith("blob:")
 ){
 
-return value.filter(Boolean);
+return url;
 
 }
 
 
+/* Storage path */
+
+url =
+url.replace(/^\/+/,"");
+
+
 if(
-typeof value ===
-"string"
+url.startsWith("ad-images/")
 ){
+
+url =
+url.replace(
+"ad-images/",
+""
+);
+
+}
+
+
+return (
+SUPA_URL +
+"/storage/v1/object/public/ad-images/" +
+url
+);
+
+}
+
+
+/* PARSE IMAGES */
+
+function parseImageUrls(value){
+
+let result = [];
+
+
+/* Array */
+
+if(Array.isArray(value)){
+
+result = value;
+
+}
+
+
+/* String */
+
+else if(
+typeof value === "string"
+){
+
+const trimmed =
+value.trim();
+
+if(trimmed){
 
 try{
 
 const parsed =
-JSON.parse(value);
+JSON.parse(trimmed);
 
+if(Array.isArray(parsed)){
 
-if(
-Array.isArray(parsed)
+result = parsed;
+
+}else if(
+typeof parsed === "string"
 ){
 
-return parsed.filter(Boolean);
+result = [parsed];
 
 }
 
 }catch(e){
 
+/* Comma separated */
+
 if(
-value.startsWith("http")
+trimmed.includes(",") &&
+!trimmed.startsWith("http")
 ){
 
-return [value];
+result =
+trimmed
+.split(",")
+.map(x => x.trim())
+.filter(Boolean);
+
+}else{
+
+result = [trimmed];
 
 }
 
+}
+
+}
+
+}
+
+
+/* Object */
+
+else if(
+value &&
+typeof value === "object"
+){
+
+if(Array.isArray(value.urls)){
+
+result = value.urls;
+
+}else if(
+value.url
+){
+
+result = [value.url];
+
+}
+
+}
+
+
+return result
+.map(normalizeImageUrl)
+.filter(Boolean);
+
+}
+
+
+/* GET AD IMAGES */
+
+function getAdImages(ad){
+
+const possibleFields = [
+
+ad.image_urls,
+ad.images,
+ad.image_url,
+ad.photo_urls,
+ad.photos,
+ad.image
+
+];
+
+
+for(
+const field of possibleFields
+){
+
+const images =
+parseImageUrls(field);
+
+if(images.length){
+return images;
 }
 
 }
@@ -2200,14 +1685,11 @@ return [];
 }
 
 
-/* ============================================================
-   IMAGE PREVIEW
-============================================================ */
+/* PREVIEW */
 
 function renderPreview(){
 
-preview.innerHTML =
-"";
+preview.innerHTML = "";
 
 
 imageCount.textContent =
@@ -2215,9 +1697,7 @@ selectedImages.length +
 " / ৩ ছবি";
 
 
-if(
-selectedImages.length === 0
-){
+if(selectedImages.length === 0){
 
 filePickerText.textContent =
 "নতুন ছবি নির্বাচন করুন";
@@ -2226,21 +1706,17 @@ filePickerText.textContent =
 
 const newCount =
 selectedImages.filter(
-x =>
-x.type === "new"
+x => x.type === "new"
 ).length;
 
 
 const oldCount =
 selectedImages.filter(
-x =>
-x.type === "existing"
+x => x.type === "existing"
 ).length;
 
 
-if(
-newCount > 0
-){
+if(newCount > 0){
 
 filePickerText.textContent =
 newCount +
@@ -2261,24 +1737,17 @@ selectedImages.forEach(
 function(image,index){
 
 const item =
-document.createElement(
-"div"
-);
-
+document.createElement("div");
 
 item.className =
 "preview-item";
 
 
 const img =
-document.createElement(
-"img"
-);
-
+document.createElement("img");
 
 img.src =
 image.url;
-
 
 img.alt =
 "বিজ্ঞাপনের ছবি";
@@ -2287,98 +1756,97 @@ img.alt =
 img.onerror =
 function(){
 
+console.error(
+"IMAGE LOAD FAILED:",
+image.url
+);
+
+
 /*
-Fallback if URL has encoding issues
+Do not remove box.
+Show fallback background instead.
 */
 
 this.style.display =
 "none";
 
+
+const fallback =
+document.createElement("div");
+
+fallback.style.width =
+"100%";
+
+fallback.style.height =
+"100%";
+
+fallback.style.display =
+"flex";
+
+fallback.style.alignItems =
+"center";
+
+fallback.style.justifyContent =
+"center";
+
+fallback.style.fontSize =
+"30px";
+
+fallback.textContent =
+"🖼";
+
+item.insertBefore(
+fallback,
+item.firstChild
+);
+
 };
 
 
 const number =
-document.createElement(
-"span"
-);
-
+document.createElement("span");
 
 number.className =
 "image-number";
-
 
 number.textContent =
 index + 1;
 
 
 const type =
-document.createElement(
-"span"
-);
-
+document.createElement("span");
 
 type.className =
 "image-type";
 
-
 type.textContent =
-image.type ===
-"existing"
-
-?
-
-"বর্তমান"
-
-:
-
-"নতুন";
+image.type === "existing"
+? "বর্তমান"
+: "নতুন";
 
 
 const remove =
-document.createElement(
-"button"
-);
-
+document.createElement("button");
 
 remove.type =
 "button";
 
-
 remove.className =
 "remove-image";
 
-
 remove.dataset.index =
 index;
-
 
 remove.textContent =
 "×";
 
 
-item.appendChild(
-img
-);
+item.appendChild(img);
+item.appendChild(number);
+item.appendChild(type);
+item.appendChild(remove);
 
-
-item.appendChild(
-number
-);
-
-
-item.appendChild(
-type
-);
-
-
-item.appendChild(
-remove
-);
-
-
-preview.appendChild(
-item
-);
+preview.appendChild(item);
 
 }
 
@@ -2387,9 +1855,7 @@ item
 }
 
 
-/* ============================================================
-   ADD NEW IMAGES
-============================================================ */
+/* ADD NEW IMAGE */
 
 imageInput.addEventListener(
 "change",
@@ -2400,18 +1866,20 @@ clearMsg();
 
 const files =
 Array.from(
-imageInput.files ||
-[]
+imageInput.files || []
 );
 
 
-if(
-files.length === 0
-){
+if(files.length === 0){
+
+imageInput.value = "";
 
 return;
 
 }
+
+
+let addedCount = 0;
 
 
 files.forEach(
@@ -2422,9 +1890,7 @@ if(
 "image/jpeg",
 "image/png",
 "image/webp"
-].includes(
-file.type
-)
+].includes(file.type)
 ){
 
 error(
@@ -2436,9 +1902,7 @@ return;
 }
 
 
-if(
-selectedImages.length >= 3
-){
+if(selectedImages.length >= 3){
 
 error(
 "সর্বোচ্চ ৩টি ছবি রাখা যাবে।"
@@ -2449,9 +1913,7 @@ return;
 }
 
 
-/*
-Duplicate check for new files
-*/
+/* Duplicate check */
 
 const duplicate =
 selectedImages.some(
@@ -2468,9 +1930,7 @@ image.file.lastModified === file.lastModified
 );
 
 
-if(
-duplicate
-){
+if(duplicate){
 
 return;
 
@@ -2478,9 +1938,7 @@ return;
 
 
 const objectUrl =
-URL.createObjectURL(
-file
-);
+URL.createObjectURL(file);
 
 
 selectedImages.push({
@@ -2493,31 +1951,36 @@ url:objectUrl
 
 });
 
-}
 
+addedCount++;
+
+}
 );
 
 
 /*
-IMPORTANT:
-Clear native input so selecting
-the same file again also works.
+Important:
+reset native file input
+so same image can be selected again
 */
 
-imageInput.value =
-"";
+imageInput.value = "";
 
 
 renderPreview();
 
+
+if(addedCount > 0){
+
+clearMsg();
+
 }
 
+}
 );
 
 
-/* ============================================================
-   REMOVE IMAGE
-============================================================ */
+/* REMOVE IMAGE */
 
 preview.addEventListener(
 "click",
@@ -2530,9 +1993,7 @@ e.target.closest(
 
 
 if(!button){
-
 return;
-
 }
 
 
@@ -2576,78 +2037,20 @@ renderPreview();
 clearMsg();
 
 }
-
 );
 
 
-/* ============================================================
-   LOAD AD
-============================================================ */
+/* REQUEST */
 
-async function loadAd(
-user,
-session
+async function apiRequest(
+url,
+options
 ){
-
-const userId =
-encodeURIComponent(
-user.id
-);
-
-
-const url =
-
-SUPA_URL +
-
-"/rest/v1/ads" +
-
-"?id=eq." +
-
-encodeURIComponent(
-adId
-) +
-
-"&or=" +
-
-encodeURIComponent(
-
-"(seller_id.eq." +
-
-user.id +
-
-",user_id.eq." +
-
-user.id +
-
-")"
-
-) +
-
-"&select=*";
-
 
 const response =
 await fetch(
-
 url,
-
-{
-
-method:"GET",
-
-headers:{
-
-"apikey":
-SUPA_KEY,
-
-"Authorization":
-"Bearer " +
-session.access_token
-
-}
-
-}
-
+options
 );
 
 
@@ -2656,42 +2059,271 @@ if(!response.ok){
 const text =
 await response.text();
 
-
 throw new Error(
-"বিজ্ঞাপন লোড করা যায়নি: " +
-text
+text ||
+"Server request failed"
 );
 
 }
 
 
-const data =
-await response.json();
-
-
-return
-data &&
-data.length
-
-?
-
-data[0]
-
-:
-
-null;
+return response;
 
 }
 
 
-/* ============================================================
-   FILL FORM
-============================================================ */
+/* LOAD AD - ROBUST VERSION */
+
+async function loadAd(
+user,
+session
+){
+
+const baseHeaders = {
+
+"apikey":
+SUPA_KEY,
+
+"Authorization":
+"Bearer " +
+session.access_token
+
+};
+
+
+/*
+FIRST:
+Try only by advertisement ID.
+
+RLS will automatically prevent
+access to another user's ad.
+*/
+
+const urlById =
+
+SUPA_URL +
+
+"/rest/v1/ads" +
+
+"?id=eq." +
+
+encodeURIComponent(adId) +
+
+"&select=*";
+
+
+try{
+
+const response =
+await fetch(
+urlById,
+{
+method:"GET",
+headers:baseHeaders
+}
+);
+
+
+if(response.ok){
+
+const data =
+await response.json();
+
+if(
+data &&
+data.length
+){
+
+const ad =
+data[0];
+
+
+/*
+Extra client ownership check
+only when ownership fields exist.
+*/
+
+const sellerId =
+ad.seller_id ||
+"";
+
+
+const userId =
+ad.user_id ||
+"";
+
+
+if(
+sellerId &&
+sellerId !== user.id &&
+userId &&
+userId !== user.id
+){
+
+return null;
+
+}
+
+
+/*
+If either field belongs
+to current user, accept.
+*/
+
+if(
+sellerId === user.id ||
+userId === user.id ||
+(!sellerId && !userId)
+){
+
+return ad;
+
+}
+
+}
+
+}
+
+}catch(e){
+
+console.error(
+"LOAD BY ID ERROR:",
+e
+);
+
+}
+
+
+/*
+FALLBACK 1:
+seller_id
+*/
+
+try{
+
+const sellerUrl =
+
+SUPA_URL +
+
+"/rest/v1/ads" +
+
+"?id=eq." +
+
+encodeURIComponent(adId) +
+
+"&seller_id=eq." +
+
+encodeURIComponent(user.id) +
+
+"&select=*";
+
+
+const response =
+await fetch(
+sellerUrl,
+{
+method:"GET",
+headers:baseHeaders
+}
+);
+
+
+if(response.ok){
+
+const data =
+await response.json();
+
+if(
+data &&
+data.length
+){
+
+return data[0];
+
+}
+
+}
+
+}catch(e){
+
+console.error(
+"LOAD SELLER FALLBACK ERROR:",
+e
+);
+
+}
+
+
+/*
+FALLBACK 2:
+user_id
+*/
+
+try{
+
+const userUrl =
+
+SUPA_URL +
+
+"/rest/v1/ads" +
+
+"?id=eq." +
+
+encodeURIComponent(adId) +
+
+"&user_id=eq." +
+
+encodeURIComponent(user.id) +
+
+"&select=*";
+
+
+const response =
+await fetch(
+userUrl,
+{
+method:"GET",
+headers:baseHeaders
+}
+);
+
+
+if(response.ok){
+
+const data =
+await response.json();
+
+if(
+data &&
+data.length
+){
+
+return data[0];
+
+}
+
+}
+
+}catch(e){
+
+console.error(
+"LOAD USER FALLBACK ERROR:",
+e
+);
+
+}
+
+
+return null;
+
+}
+
+
+/* FILL FORM */
 
 function fillForm(ad){
 
-currentAd =
-ad;
+currentAd = ad;
 
 
 /* Basic */
@@ -2733,27 +2365,19 @@ currentUser.phone ||
 "";
 
 
-/* Existing images */
+/* Images */
 
 const urls =
-parseImageUrls(
-ad.image_urls
-);
+getAdImages(ad);
 
 
 selectedImages =
-urls.slice(
-0,
-3
-)
-
+urls
+.slice(0,3)
 .map(
 url => ({
-
 type:"existing",
-
-url:String(url)
-
+url:url
 })
 );
 
@@ -2787,9 +2411,7 @@ formBox.style.display =
 }
 
 
-/* ============================================================
-   UPLOAD IMAGE
-============================================================ */
+/* UPLOAD IMAGE */
 
 async function uploadImage(
 file,
@@ -2817,12 +2439,6 @@ file.name
 "jpg";
 
 
-/*
-Unique path.
-This prevents conflict when replacing
-all 3 images at once.
-*/
-
 const path =
 
 currentUser.id +
@@ -2843,7 +2459,7 @@ index +
 
 Math.random()
 .toString(36)
-.slice(2,8) +
+.slice(2,10) +
 
 "." +
 
@@ -2919,10 +2535,6 @@ text
 }
 
 
-/*
-Public image URL
-*/
-
 return
 
 SUPA_URL +
@@ -2934,14 +2546,22 @@ path;
 }
 
 
-/* ============================================================
-   UPDATE AD
-============================================================ */
+/* UPDATE AD */
 
 async function updateAd(
 data,
 session
 ){
+
+/*
+Update only by ID.
+
+Ownership is already checked
+when advertisement was loaded.
+
+Supabase RLS will also protect
+unauthorized updates.
+*/
 
 const url =
 
@@ -2951,25 +2571,7 @@ SUPA_URL +
 
 "?id=eq." +
 
-encodeURIComponent(
-adId
-) +
-
-"&or=" +
-
-encodeURIComponent(
-
-"(seller_id.eq." +
-
-currentUser.id +
-
-",user_id.eq." +
-
-currentUser.id +
-
-")"
-
-);
+encodeURIComponent(adId);
 
 
 const response =
@@ -2999,9 +2601,7 @@ session.access_token,
 },
 
 body:
-JSON.stringify(
-data
-)
+JSON.stringify(data)
 
 }
 
@@ -3043,17 +2643,14 @@ return result[0];
 }
 
 
-/* ============================================================
-   INITIALIZE
-============================================================ */
+/* INITIALIZE */
 
 async function initialize(){
 
 try{
 
 if(
-typeof handleAuthCallback ===
-"function"
+typeof handleAuthCallback === "function"
 ){
 
 await handleAuthCallback();
@@ -3082,7 +2679,6 @@ loading.innerHTML =
 '← আমার বিজ্ঞাপনে ফিরে যান' +
 
 '</a>';
-
 
 return;
 
@@ -3130,7 +2726,6 @@ encodeURIComponent(adId) +
 
 '</a>';
 
-
 return;
 
 }
@@ -3159,7 +2754,6 @@ encodeURIComponent(adId) +
 'আবার Login করুন' +
 
 '</a>';
-
 
 return;
 
@@ -3191,15 +2785,12 @@ loading.innerHTML =
 
 '</a>';
 
-
 return;
 
 }
 
 
-fillForm(
-ad
-);
+fillForm(ad);
 
 
 }catch(err){
@@ -3234,9 +2825,7 @@ err.message ||
 }
 
 
-/* ============================================================
-   FORM SUBMIT
-============================================================ */
+/* FORM SUBMIT */
 
 form.addEventListener(
 "submit",
@@ -3244,15 +2833,10 @@ async function(e){
 
 e.preventDefault();
 
-
 clearMsg();
 
 
-/* Validation */
-
-if(
-!category.value
-){
+if(!category.value){
 
 error(
 "ক্যাটাগরি নির্বাচন করুন।"
@@ -3265,9 +2849,7 @@ return;
 }
 
 
-if(
-!subcategory.value
-){
+if(!subcategory.value){
 
 error(
 "সাব-ক্যাটাগরি নির্বাচন করুন।"
@@ -3280,9 +2862,7 @@ return;
 }
 
 
-if(
-!titleInput.value.trim()
-){
+if(!titleInput.value.trim()){
 
 error(
 "শিরোনাম লিখুন।"
@@ -3317,9 +2897,7 @@ return;
 }
 
 
-if(
-!descriptionInput.value.trim()
-){
+if(!descriptionInput.value.trim()){
 
 error(
 "পণ্যের বিস্তারিত লিখুন।"
@@ -3332,9 +2910,7 @@ return;
 }
 
 
-if(
-!locationSelect.value
-){
+if(!locationSelect.value){
 
 error(
 "আপনার এলাকা নির্বাচন করুন।"
@@ -3348,14 +2924,11 @@ return;
 
 
 const phone =
-phoneInput.value
-.trim();
+phoneInput.value.trim();
 
 
 if(
-!/^01[3-9]\d{8}$/.test(
-phone
-)
+!/^01[3-9]\d{8}$/.test(phone)
 ){
 
 error(
@@ -3369,9 +2942,7 @@ return;
 }
 
 
-if(
-selectedImages.length < 1
-){
+if(selectedImages.length < 1){
 
 error(
 "কমপক্ষে ১টি ছবি রাখতে হবে।"
@@ -3382,10 +2953,7 @@ return;
 }
 
 
-/* Disable */
-
-submitBtn.disabled =
-true;
+submitBtn.disabled = true;
 
 
 try{
@@ -3407,12 +2975,9 @@ throw new Error(
 }
 
 
-/* ========================================================
-   PROCESS IMAGES
-======================================================== */
+/* PROCESS IMAGES */
 
-const finalImageUrls =
-[];
+const finalImageUrls = [];
 
 
 for(
@@ -3426,13 +2991,8 @@ selectedImages[i];
 
 
 if(
-image.type ===
-"existing"
+image.type === "existing"
 ){
-
-/*
-Keep old image URL
-*/
 
 finalImageUrls.push(
 image.url
@@ -3442,8 +3002,7 @@ image.url
 
 
 else if(
-image.type ===
-"new"
+image.type === "new"
 ){
 
 submitBtn.textContent =
@@ -3478,9 +3037,7 @@ uploadedUrl
 }
 
 
-/* ========================================================
-   UPDATE DATA
-======================================================== */
+/* UPDATE */
 
 submitBtn.textContent =
 "পরিবর্তন সংরক্ষণ হচ্ছে...";
@@ -3516,10 +3073,7 @@ finalImageUrls
 
 
 /*
-IMPORTANT:
-status is NOT changed.
-Pending stays Pending.
-Published stays Published.
+Status remains unchanged
 */
 
 
@@ -3534,9 +3088,28 @@ currentAd =
 updatedAd;
 
 
-/* ========================================================
-   SUCCESS
-======================================================== */
+/* Cleanup blob URLs */
+
+selectedImages.forEach(
+image => {
+
+if(
+image.type === "new" &&
+image.url &&
+image.url.startsWith("blob:")
+){
+
+try{
+URL.revokeObjectURL(image.url);
+}catch(e){}
+
+}
+
+}
+);
+
+
+/* SUCCESS */
 
 form.style.display =
 "none";
@@ -3605,13 +3178,10 @@ submitBtn.textContent =
 }
 
 }
-
 );
 
 
-/* ============================================================
-   START
-============================================================ */
+/* START */
 
 initialize();
 
