@@ -3017,9 +3017,8 @@ async function checkLogin(){
 
     ){
 
-      const session =
-        await window.getSbSession();
-
+const session =
+  await window.getValidSbSession();
 
       if(
         session &&
