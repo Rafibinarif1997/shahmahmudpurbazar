@@ -2307,27 +2307,24 @@ footer{
 
 }
 
-  /* ============================================================
-   FIX EMPTY SPACE BELOW FOOTER
-============================================================ */
+ /* FIX EXTRA EMPTY SPACE */
 
 html,
 body{
-  min-height:100%;
+  min-height:0 !important;
 }
 
 body{
-  min-height:100dvh;
-  display:flex;
-  flex-direction:column;
+  display:block !important;
+  padding-bottom:72px !important;
 }
 
 main{
-  flex:1;
+  flex:none !important;
 }
 
 footer{
-  margin-top:auto;
+  padding-bottom:15px !important;
 }
   
 </style>
