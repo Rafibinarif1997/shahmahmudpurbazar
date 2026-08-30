@@ -2524,13 +2524,12 @@ t
 }
 
 
-return
+const publicUrl =
+  SUPA_URL +
+  "/storage/v1/object/public/ad-images/" +
+  path;
 
-SUPA_URL+
-"/storage/v1/object/public/ad-images/"+
-path;
-
-}
+return publicUrl;
 
 
 async function initialize(){
