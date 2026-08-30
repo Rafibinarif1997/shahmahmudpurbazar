@@ -22,17 +22,22 @@
 ========================================================== */
 
 :root{
-  --page-bg:#f5f8f6;
+  --page-bg:#f4f8f6;
   --card:#ffffff;
   --card-soft:#f8fbf9;
   --border:#dfe9e3;
   --border-strong:#cfe0d6;
-  --text:#1f3027;
-  --text-secondary:#53645b;
-  --muted:#718078;
-  --green:#0d7d4a;
-  --green-dark:#086b3d;
-  --green-soft:#eaf7ef;
+
+  --text:#17271f;
+  --text-secondary:#405248;
+  --muted:#63746b;
+
+  --green:#087443;
+  --green-dark:#075d35;
+  --green-soft:#e7f6ed;
+
+  --blue:#1769e0;
+  --blue-dark:#1056bd;
 }
 
 
@@ -59,12 +64,121 @@ body{
 
 
 /* ==========================================================
-   BRAND
+   PREMIUM BRAND
 ========================================================== */
 
 .detail-page .brand{
+
+  position:relative;
+
   display:inline-flex;
-  margin-bottom:24px;
+
+  align-items:center;
+
+  gap:5px;
+
+  margin-bottom:26px;
+
+  padding:13px 19px 13px 17px;
+
+  border-radius:17px;
+
+  text-decoration:none;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ffffff,
+      #f2faf5
+    );
+
+  border:1px solid #d5e8dc;
+
+  box-shadow:
+    0 8px 25px
+    rgba(15,90,50,.08);
+
+  overflow:hidden;
+
+}
+
+
+.detail-page .brand::before{
+
+  content:"";
+
+  position:absolute;
+
+  left:0;
+  top:0;
+  bottom:0;
+
+  width:5px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #0a8d51,
+      #47c97d
+    );
+
+}
+
+
+.detail-page .brand b{
+
+  position:relative;
+
+  color:#075d35;
+
+  font-size:19px;
+
+  font-weight:950;
+
+  letter-spacing:-.4px;
+
+  text-shadow:
+    0 1px 0
+    rgba(255,255,255,.9);
+
+}
+
+
+.detail-page .brand strong{
+
+  position:relative;
+
+  color:#16834e;
+
+  font-size:19px;
+
+  font-weight:950;
+
+}
+
+
+.detail-page .brand small{
+
+  position:relative;
+
+  display:block;
+
+  width:100%;
+
+  margin-left:7px;
+
+  padding-left:9px;
+
+  border-left:1px solid #cfe2d7;
+
+  color:#65776d;
+
+  font-size:9px;
+
+  font-weight:800;
+
+  letter-spacing:.2px;
+
 }
 
 
@@ -108,8 +222,6 @@ body{
 }
 
 
-/* Decorative element */
-
 .detail-box::before{
 
   content:"";
@@ -147,11 +259,11 @@ body{
 
   text-align:center;
 
-  color:var(--muted);
+  color:#52645a;
 
-  font-size:13px;
+  font-size:15px;
 
-  font-weight:600;
+  font-weight:750;
 
 }
 
@@ -160,11 +272,11 @@ body{
 
   margin:0;
 
-  color:var(--text);
+  color:#17271f;
 
-  font-size:24px;
+  font-size:25px;
 
-  font-weight:900;
+  font-weight:950;
 
 }
 
@@ -175,9 +287,11 @@ body{
 
   max-width:430px;
 
-  color:var(--text-secondary);
+  color:#53645b;
 
-  font-size:12px;
+  font-size:14px;
+
+  font-weight:600;
 
   line-height:1.8;
 
@@ -350,7 +464,8 @@ body{
   transform:scale(1.015);
 
   box-shadow:
-    0 14px 30px rgba(20,70,45,.13);
+    0 14px 30px
+    rgba(20,70,45,.13);
 
 }
 
@@ -566,7 +681,7 @@ body{
 
   font-size:13px;
 
-  font-weight:700;
+  font-weight:800;
 
   backdrop-filter:blur(8px);
 
@@ -594,19 +709,19 @@ body.lightbox-open{
 
   max-width:100%;
 
-  padding:7px 12px;
+  padding:8px 13px;
 
   border-radius:100px;
 
   background:var(--green-soft);
 
-  border:1px solid #d5eadc;
+  border:1px solid #cde8d7;
 
-  color:var(--green-dark);
+  color:#076239;
 
-  font-size:10px;
+  font-size:11px;
 
-  font-weight:900;
+  font-weight:950;
 
   letter-spacing:.2px;
 
@@ -619,34 +734,66 @@ body.lightbox-open{
 
   margin-left:8px;
 
-  color:#607068;
+  color:#52645a;
 
-  font-size:11px;
+  font-size:12px;
 
-  font-weight:700;
+  font-weight:800;
 
 }
 
 
 /* ==========================================================
-   TITLE
+   PREMIUM PRODUCT TITLE
 ========================================================== */
 
 .detail-title{
 
+  position:relative;
+
   max-width:100%;
 
-  margin:16px 0 10px;
+  margin:18px 0 14px;
 
-  color:#17271f;
+  padding-bottom:17px;
 
-  font-size:34px;
+  color:#14251c;
 
-  font-weight:900;
+  font-size:35px;
 
-  line-height:1.28;
+  font-weight:950;
 
-  letter-spacing:-.6px;
+  line-height:1.32;
+
+  letter-spacing:-.8px;
+
+  border-bottom:1px solid #e2ebe6;
+
+}
+
+
+.detail-title::after{
+
+  content:"";
+
+  position:absolute;
+
+  left:0;
+
+  bottom:-1px;
+
+  width:68px;
+
+  height:4px;
+
+  border-radius:100px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #087443,
+      #54c985
+    );
 
 }
 
@@ -665,41 +812,57 @@ body.lightbox-open{
 
   margin-top:2px;
 
-  padding:10px 15px;
+  padding:11px 17px;
 
-  border-radius:13px;
+  border-radius:14px;
 
   background:
     linear-gradient(
       135deg,
-      #e5f7ec,
-      #f3fbf6
+      #e4f8ec,
+      #f5fcf7
     );
 
-  border:1px solid #d9eee1;
+  border:1px solid #d1ebda;
 
   color:#087443;
 
-  font-size:25px;
+  font-size:26px;
 
-  font-weight:900;
+  font-weight:950;
+
+  box-shadow:
+    0 5px 14px
+    rgba(8,116,67,.06);
 
 }
 
 
+/* ==========================================================
+   VIEW COUNT - RED
+========================================================== */
+
 .view-count{
 
-  margin-top:15px;
+  display:inline-flex;
 
-  padding-bottom:22px;
+  align-items:center;
 
-  border-bottom:1px solid #e6ece8;
+  margin-top:16px;
 
-  color:#66776e;
+  padding:9px 13px;
 
-  font-size:11px;
+  border-radius:10px;
 
-  font-weight:650;
+  background:#fff4f4;
+
+  border:1px solid #ffe0e0;
+
+  color:#d93636;
+
+  font-size:12px;
+
+  font-weight:850;
 
 }
 
@@ -726,7 +889,7 @@ body.lightbox-open{
 
   position:relative;
 
-  min-height:78px;
+  min-height:82px;
 
   padding:16px;
 
@@ -757,10 +920,11 @@ body.lightbox-open{
 
   transform:translateY(-3px);
 
-  border-color:#cfe2d7;
+  border-color:#c5dfd0;
 
   box-shadow:
-    0 10px 25px rgba(20,70,45,.06);
+    0 10px 25px
+    rgba(20,70,45,.07);
 
 }
 
@@ -769,17 +933,15 @@ body.lightbox-open{
 
   display:block;
 
-  margin-bottom:8px;
+  margin-bottom:9px;
 
-  color:#718078;
+  color:#607268;
 
-  font-size:9px;
+  font-size:10px;
 
-  font-weight:850;
+  font-weight:900;
 
-  letter-spacing:.5px;
-
-  text-transform:uppercase;
+  letter-spacing:.4px;
 
 }
 
@@ -788,9 +950,9 @@ body.lightbox-open{
 
   display:block;
 
-  color:#26382f;
+  color:#21352a;
 
-  font-size:13px;
+  font-size:14px;
 
   font-weight:850;
 
@@ -809,7 +971,7 @@ body.lightbox-open{
 
   margin-top:28px;
 
-  padding:24px;
+  padding:26px;
 
   box-sizing:border-box;
 
@@ -833,15 +995,15 @@ body.lightbox-open{
 
   align-items:center;
 
-  gap:9px;
+  gap:10px;
 
-  margin:0 0 15px;
+  margin:0 0 18px;
 
-  color:#203229;
+  color:#193027;
 
-  font-size:18px;
+  font-size:20px;
 
-  font-weight:900;
+  font-weight:950;
 
 }
 
@@ -850,8 +1012,8 @@ body.lightbox-open{
 
   content:"";
 
-  width:4px;
-  height:22px;
+  width:5px;
+  height:25px;
 
   flex:none;
 
@@ -869,15 +1031,17 @@ body.lightbox-open{
 
 .description{
 
-  color:#53645b;
+  color:#354b3f;
 
-  font-size:13px;
+  font-size:16px;
 
-  font-weight:500;
+  font-weight:600;
 
   line-height:2;
 
   white-space:pre-wrap;
+
+  letter-spacing:.05px;
 
 }
 
@@ -898,7 +1062,7 @@ body.lightbox-open{
 
   overflow:hidden;
 
-  border:1px solid #d7e9de;
+  border:1px solid #d1e7da;
 
   border-radius:20px;
 
@@ -942,13 +1106,13 @@ body.lightbox-open{
 
   z-index:1;
 
-  margin:0 0 16px;
+  margin:0 0 18px;
 
-  color:#203229;
+  color:#193027;
 
-  font-size:18px;
+  font-size:20px;
 
-  font-weight:900;
+  font-weight:950;
 
 }
 
@@ -963,13 +1127,13 @@ body.lightbox-open{
 
   align-items:center;
 
-  gap:10px;
+  gap:11px;
 
-  color:#26382f;
+  color:#20352a;
 
-  font-size:14px;
+  font-size:16px;
 
-  font-weight:850;
+  font-weight:900;
 
 }
 
@@ -978,8 +1142,8 @@ body.lightbox-open{
 
   content:"♙";
 
-  width:34px;
-  height:34px;
+  width:38px;
+  height:38px;
 
   flex:none;
 
@@ -990,11 +1154,11 @@ body.lightbox-open{
 
   border-radius:50%;
 
-  background:#e3f4e9;
+  background:#e0f4e8;
 
   color:#087443;
 
-  font-size:16px;
+  font-size:18px;
 
 }
 
@@ -1011,19 +1175,19 @@ body.lightbox-open{
 
   margin:20px 0;
 
-  padding:12px 15px;
+  padding:13px 16px;
 
   border-radius:13px;
 
   background:#ffffff;
 
-  border:1px solid #d8e9de;
+  border:1px solid #cfe5d7;
 
   color:#087443;
 
-  font-size:19px;
+  font-size:20px;
 
-  font-weight:900;
+  font-weight:950;
 
   letter-spacing:.3px;
 
@@ -1060,21 +1224,43 @@ body.lightbox-open{
 }
 
 
+#copyPhone{
+
+  background:#ffffff;
+
+  color:#263d31;
+
+  border:1px solid #cbded3;
+
+  font-weight:900;
+
+}
+
+
+#copyPhone:hover{
+
+  background:#f1f8f4;
+
+  border-color:#9bc9ae;
+
+}
+
+
 .copy-message{
 
   position:relative;
 
   z-index:1;
 
-  min-height:16px;
+  min-height:18px;
 
-  margin-top:12px;
+  margin-top:13px;
 
   color:#087443;
 
-  font-size:10px;
+  font-size:11px;
 
-  font-weight:750;
+  font-weight:850;
 
   text-align:center;
 
@@ -1082,7 +1268,7 @@ body.lightbox-open{
 
 
 /* ==========================================================
-   MESSAGE BUTTON
+   MESSAGE BUTTON - BLUE
 ========================================================== */
 
 .detail-box > .btn:last-child{
@@ -1099,15 +1285,47 @@ body.lightbox-open{
 
   margin-top:28px;
 
-  padding:15px 20px;
+  padding:16px 20px;
 
   border-radius:15px;
 
   text-align:center;
 
-  font-size:13px;
+  background:
+    linear-gradient(
+      135deg,
+      #2378ee,
+      #105dcc
+    );
 
-  font-weight:900;
+  border:1px solid #0e58bf;
+
+  color:#ffffff;
+
+  font-size:15px;
+
+  font-weight:950;
+
+  text-decoration:none;
+
+  box-shadow:
+    0 10px 24px
+    rgba(23,105,224,.22);
+
+  transition:
+    transform .2s ease,
+    box-shadow .2s ease;
+
+}
+
+
+.detail-box > .btn:last-child:hover{
+
+  transform:translateY(-2px);
+
+  box-shadow:
+    0 14px 30px
+    rgba(23,105,224,.3);
 
 }
 
@@ -1156,6 +1374,23 @@ body.lightbox-open{
 
     margin-bottom:18px;
 
+    padding:11px 15px 11px 14px;
+
+  }
+
+
+  .detail-page .brand b,
+  .detail-page .brand strong{
+
+    font-size:16px;
+
+  }
+
+
+  .detail-page .brand small{
+
+    font-size:8px;
+
   }
 
 
@@ -1200,29 +1435,31 @@ body.lightbox-open{
 
   .detail-title{
 
-    margin-top:14px;
+    margin-top:16px;
 
-    font-size:27px;
+    padding-bottom:14px;
 
-    line-height:1.32;
+    font-size:29px;
+
+    line-height:1.34;
 
   }
 
 
   .detail-price{
 
-    padding:9px 13px;
+    padding:10px 14px;
 
-    font-size:22px;
+    font-size:23px;
 
   }
 
 
   .view-count{
 
-    margin-top:13px;
+    margin-top:14px;
 
-    padding-bottom:19px;
+    font-size:11px;
 
   }
 
@@ -1241,7 +1478,7 @@ body.lightbox-open{
 
   .info-box{
 
-    min-height:72px;
+    min-height:75px;
 
     padding:14px;
 
@@ -1254,7 +1491,7 @@ body.lightbox-open{
 
     margin-top:22px;
 
-    padding:20px;
+    padding:21px;
 
     border-radius:18px;
 
@@ -1263,14 +1500,14 @@ body.lightbox-open{
 
   .description-section h3{
 
-    font-size:16px;
+    font-size:18px;
 
   }
 
 
   .description{
 
-    font-size:12px;
+    font-size:15px;
 
     line-height:1.9;
 
@@ -1290,7 +1527,7 @@ body.lightbox-open{
 
   .seller-box h3{
 
-    font-size:16px;
+    font-size:18px;
 
   }
 
@@ -1308,6 +1545,32 @@ body.lightbox-open{
     padding:
       16px 12px
       105px;
+
+  }
+
+
+  .detail-page .brand{
+
+    gap:3px;
+
+    padding:10px 13px 10px 13px;
+
+    border-radius:14px;
+
+  }
+
+
+  .detail-page .brand b,
+  .detail-page .brand strong{
+
+    font-size:14px;
+
+  }
+
+
+  .detail-page .brand small{
+
+    display:none;
 
   }
 
@@ -1341,9 +1604,9 @@ body.lightbox-open{
 
   .category-badge{
 
-    padding:6px 10px;
+    padding:7px 11px;
 
-    font-size:9px;
+    font-size:10px;
 
   }
 
@@ -1352,29 +1615,40 @@ body.lightbox-open{
 
     margin-left:6px;
 
-    font-size:9px;
+    font-size:10px;
 
   }
 
 
   .detail-title{
 
-    margin:13px 0 9px;
+    margin:15px 0 12px;
 
-    font-size:23px;
+    padding-bottom:13px;
+
+    font-size:25px;
 
     line-height:1.38;
 
-    letter-spacing:-.3px;
+    letter-spacing:-.4px;
+
+  }
+
+
+  .detail-title::after{
+
+    width:52px;
+
+    height:3px;
 
   }
 
 
   .detail-price{
 
-    padding:8px 11px;
+    padding:9px 12px;
 
-    font-size:19px;
+    font-size:20px;
 
     border-radius:11px;
 
@@ -1383,11 +1657,11 @@ body.lightbox-open{
 
   .view-count{
 
-    margin-top:11px;
+    margin-top:12px;
 
-    padding-bottom:17px;
+    padding:8px 11px;
 
-    font-size:9px;
+    font-size:10px;
 
   }
 
@@ -1407,7 +1681,7 @@ body.lightbox-open{
 
     min-height:auto;
 
-    padding:13px;
+    padding:14px;
 
     border-radius:13px;
 
@@ -1416,16 +1690,16 @@ body.lightbox-open{
 
   .info-box small{
 
-    margin-bottom:6px;
+    margin-bottom:7px;
 
-    font-size:8px;
+    font-size:9px;
 
   }
 
 
   .info-box strong{
 
-    font-size:11px;
+    font-size:13px;
 
   }
 
@@ -1434,7 +1708,7 @@ body.lightbox-open{
 
     margin-top:19px;
 
-    padding:17px;
+    padding:18px;
 
     border-radius:16px;
 
@@ -1443,27 +1717,29 @@ body.lightbox-open{
 
   .description-section h3{
 
-    margin-bottom:12px;
+    margin-bottom:14px;
 
-    font-size:15px;
+    font-size:17px;
 
   }
 
 
   .description-section h3::before{
 
-    height:18px;
+    width:4px;
+
+    height:21px;
 
   }
 
 
   .description{
 
-    color:#53645b;
+    font-size:14px;
 
-    font-size:11px;
+    font-weight:600;
 
-    line-height:1.9;
+    line-height:2;
 
   }
 
@@ -1472,7 +1748,7 @@ body.lightbox-open{
 
     margin-top:18px;
 
-    padding:18px 16px;
+    padding:19px 17px;
 
     border-radius:17px;
 
@@ -1481,26 +1757,26 @@ body.lightbox-open{
 
   .seller-box h3{
 
-    margin-bottom:14px;
+    margin-bottom:15px;
 
-    font-size:15px;
+    font-size:17px;
 
   }
 
 
   .seller-name{
 
-    font-size:12px;
+    font-size:14px;
 
   }
 
 
   .seller-name::before{
 
-    width:30px;
-    height:30px;
+    width:33px;
+    height:33px;
 
-    font-size:14px;
+    font-size:15px;
 
   }
 
@@ -1513,9 +1789,9 @@ body.lightbox-open{
 
     box-sizing:border-box;
 
-    margin:16px 0;
+    margin:17px 0;
 
-    font-size:16px;
+    font-size:17px;
 
   }
 
@@ -1533,6 +1809,10 @@ body.lightbox-open{
 
     flex:none;
 
+    font-size:14px;
+
+    font-weight:900;
+
   }
 
 
@@ -1540,9 +1820,9 @@ body.lightbox-open{
 
     margin-top:22px;
 
-    padding:14px 16px;
+    padding:15px 16px;
 
-    font-size:12px;
+    font-size:14px;
 
   }
 
@@ -1648,7 +1928,6 @@ body.lightbox-open{
 </main>
 
 
-
 <nav class="mobile-nav">
 
 <a href="index.html">
@@ -1677,7 +1956,6 @@ body.lightbox-open{
 </a>
 
 </nav>
-
 
 
 <script src="supabase.js?v=13"></script>
@@ -1743,7 +2021,6 @@ if(!adId){
 }
 
 
-
 /* ==========================================================
    LOAD EXACT AD FROM SUPABASE
 ========================================================== */
@@ -1766,7 +2043,6 @@ try{
   );
 
 }
-
 
 
 /* ==========================================================
@@ -2506,7 +2782,9 @@ function showLightboxImage(index){
 }
 
 
-/* Open Image */
+/* ==========================================================
+   OPEN IMAGE
+========================================================== */
 
 window.openAdImage =
   function(index){
@@ -2532,7 +2810,9 @@ window.openAdImage =
   };
 
 
-/* Close Lightbox */
+/* ==========================================================
+   CLOSE LIGHTBOX
+========================================================== */
 
 function closeLightbox(){
 
@@ -2567,7 +2847,9 @@ function closeLightbox(){
 }
 
 
-/* Close Button */
+/* ==========================================================
+   CLOSE BUTTON
+========================================================== */
 
 lightboxClose.addEventListener(
   "click",
@@ -2575,7 +2857,9 @@ lightboxClose.addEventListener(
 );
 
 
-/* Previous Image */
+/* ==========================================================
+   PREVIOUS IMAGE
+========================================================== */
 
 lightboxPrev.addEventListener(
   "click",
@@ -2589,7 +2873,9 @@ lightboxPrev.addEventListener(
 );
 
 
-/* Next Image */
+/* ==========================================================
+   NEXT IMAGE
+========================================================== */
 
 lightboxNext.addEventListener(
   "click",
@@ -2603,7 +2889,9 @@ lightboxNext.addEventListener(
 );
 
 
-/* Close Outside */
+/* ==========================================================
+   CLOSE OUTSIDE
+========================================================== */
 
 lightbox.addEventListener(
   "click",
@@ -2621,7 +2909,9 @@ lightbox.addEventListener(
 );
 
 
-/* Keyboard */
+/* ==========================================================
+   KEYBOARD
+========================================================== */
 
 document.addEventListener(
   "keydown",
@@ -2672,7 +2962,9 @@ document.addEventListener(
 );
 
 
-/* Mobile Swipe */
+/* ==========================================================
+   MOBILE SWIPE
+========================================================== */
 
 let touchStartX =
   0;
