@@ -5,854 +5,218 @@
 
 <meta charset="UTF-8">
 
-<meta
-  name="viewport"
-  content="width=device-width,initial-scale=1">
+<meta name="viewport"
+      content="width=device-width,initial-scale=1">
 
-<title>মেসেজ | শাহমাহমুদপুর বাজার</title>
+<title>Messages | শাহমাহমুদপুর বাজার</title>
 
-<link
-  rel="stylesheet"
-  href="style.css">
-
+<link rel="stylesheet"
+      href="style.css">
 
 <style>
 
-/* ============================================================
-   MESSAGES PAGE
-============================================================ */
-
-body{
-  background:
-    linear-gradient(
-      180deg,
-      #f8faf9 0%,
-      #ffffff 45%,
-      #f8faf9 100%
-    );
-
-  color:#1d2923;
-}
-
-
-/* ============================================================
+/* =========================
    HEADER
-============================================================ */
+========================= */
 
-.message-header{
-
-  position:sticky;
-
-  top:0;
-
-  z-index:100;
-
-  background:
-    rgba(255,255,255,.96);
-
-  backdrop-filter:
-    blur(18px);
-
-  border-bottom:
-    1px solid rgba(20,70,45,.10);
-
+.header{
+  padding:18px 0 20px;
+  border-bottom:1px solid rgba(105,245,165,.10);
+  background:linear-gradient(
+    180deg,
+    rgba(5,14,10,.98),
+    rgba(5,14,10,.88)
+  );
 }
 
-
-.message-topbar{
-
-  min-height:70px;
-
+.head{
   display:flex;
-
   align-items:center;
-
-  justify-content:space-between;
-
 }
 
-
-/* ============================================================
-   BRAND
-============================================================ */
-
-.message-brand{
-
-  display:flex;
-
-  flex-wrap:wrap;
-
-  align-items:center;
-
-  width:250px;
-
-  position:relative;
-
-  padding-left:55px;
-
+.brand{
   text-decoration:none;
-
+  line-height:1;
+  min-width:145px;
 }
 
-
-.message-brand:before{
-
-  content:"💬";
-
-  position:absolute;
-
-  left:0;
-
-  top:50%;
-
-  transform:translateY(-50%);
-
-  width:42px;
-
-  height:42px;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-  border-radius:13px;
-
-  background:
-    linear-gradient(
-      135deg,
-      #0d9b55,
-      #05743a
-    );
-
-  font-size:22px;
-
-  box-shadow:
-    0 8px 18px
-    rgba(11,143,75,.20);
-
+.brand b,
+.brand strong{
+  display:block;
 }
 
-
-.message-brand b{
-
-  width:100%;
-
-  color:#27352e;
-
-  font-size:18px;
-
-  font-weight:900;
-
+.brand b{
+  font-size:19px;
   letter-spacing:-.5px;
+  color:#f2f8f5;
+}
 
+.brand strong{
+  font-size:22px;
+  color:#69f5a5;
+  margin-top:2px;
+}
+
+.brand small{
+  display:block;
+  margin-top:7px;
+  font-size:7px;
+  letter-spacing:3px;
+  color:#60736a;
 }
 
 
-.message-brand strong{
-
-  position:absolute;
-
-  left:178px;
-
-  top:0;
-
-  color:#0b8f4b;
-
-  font-size:18px;
-
-  font-weight:900;
-
-}
-
-
-.message-brand small{
-
-  width:100%;
-
-  margin-top:3px;
-
-  color:#66726b;
-
-  font-size:8px;
-
-  font-weight:800;
-
-  letter-spacing:1.5px;
-
-}
-
-
-/* ============================================================
-   REFRESH BUTTON
-============================================================ */
-
-.refresh-btn{
-
-  display:inline-flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-  gap:7px;
-
-  min-height:40px;
-
-  padding:0 16px;
-
-  border:1px solid #dfe8e2;
-
-  border-radius:12px;
-
-  background:#fff;
-
-  color:#0b8f4b;
-
-  cursor:pointer;
-
-  font-size:11px;
-
-  font-weight:800;
-
-  box-shadow:
-    0 5px 16px
-    rgba(30,55,42,.05);
-
-}
-
-
-.refresh-btn:hover{
-
-  background:#eef9f1;
-
-}
-
-
-/* ============================================================
-   PAGE
-============================================================ */
+/* =========================
+   MESSAGES PAGE
+========================= */
 
 .messages-page{
-
-  max-width:850px;
-
-  padding:
-    26px
-    0
-    110px;
-
+  max-width:760px;
+  padding:30px 16px 110px;
 }
 
-
-/* ============================================================
-   PAGE TITLE
-============================================================ */
-
-.inbox-head{
-
-  display:flex;
-
-  align-items:flex-end;
-
-  justify-content:space-between;
-
-  gap:20px;
-
-  margin-bottom:20px;
-
+.inbox{
+  margin-top:5px;
 }
-
 
 .inbox-head small{
-
-  display:block;
-
-  color:#0b8f4b;
-
+  color:#69f5a5;
   font-size:9px;
-
-  font-weight:900;
-
-  letter-spacing:1.5px;
-
-  margin-bottom:5px;
-
+  font-weight:800;
+  letter-spacing:2px;
 }
-
 
 .inbox-head h1{
-
-  margin:0;
-
-  color:#1d2923;
-
-  font-size:28px;
-
-  font-weight:900;
-
+  margin:7px 0 5px;
+  color:#edf7f1;
+  font-size:30px;
   letter-spacing:-1px;
-
 }
-
 
 .inbox-head p{
-
-  margin:5px 0 0;
-
-  color:#68736d;
-
+  color:#718078;
   font-size:11px;
-
 }
 
-
-/* ============================================================
-   CONVERSATION LIST
-============================================================ */
+.refresh{
+  margin:18px 0;
+  text-align:right;
+}
 
 .conversation-list{
-
   display:flex;
-
   flex-direction:column;
-
   gap:10px;
-
 }
-
 
 .conversation{
-
-  display:flex;
-
-  align-items:center;
-
-  gap:14px;
-
-  padding:14px;
-
-  border:
-    1px solid
-    #e5ece7;
-
-  border-radius:18px;
-
-  background:#fff;
-
+  display:block;
+  padding:16px;
+  border:1px solid rgba(105,245,165,.12);
+  border-radius:16px;
+  background:rgba(5,14,10,.72);
   text-decoration:none;
-
-  box-shadow:
-    0 6px 20px
-    rgba(30,55,42,.05);
-
-  transition:
-    transform .18s ease,
-    box-shadow .18s ease,
-    border-color .18s ease;
-
+  transition:.2s ease;
 }
-
 
 .conversation:hover{
-
-  transform:
-    translateY(-2px);
-
-  border-color:
-    rgba(11,143,75,.28);
-
-  box-shadow:
-    0 10px 25px
-    rgba(30,55,42,.09);
-
+  border-color:rgba(105,245,165,.35);
+  transform:translateY(-1px);
 }
-
-
-/* ============================================================
-   AVATAR
-============================================================ */
-
-.conversation-avatar{
-
-  flex:0 0 48px;
-
-  width:48px;
-
-  height:48px;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-  border-radius:15px;
-
-  background:
-    linear-gradient(
-      135deg,
-      #e8f8ee,
-      #d9f2e2
-    );
-
-  font-size:22px;
-
-}
-
-
-/* ============================================================
-   CONTENT
-============================================================ */
-
-.conversation-content{
-
-  flex:1;
-
-  min-width:0;
-
-}
-
 
 .conversation-top{
-
   display:flex;
-
-  align-items:flex-start;
-
   justify-content:space-between;
-
-  gap:12px;
-
+  gap:10px;
 }
-
 
 .ad-title{
-
-  overflow:hidden;
-
-  white-space:nowrap;
-
-  text-overflow:ellipsis;
-
-  color:#26342d;
-
-  font-size:13px;
-
-  font-weight:900;
-
+  color:#edf7f1;
+  font-size:14px;
+  font-weight:800;
 }
-
 
 .person{
-
-  display:inline-flex;
-
-  margin-top:4px;
-
-  padding:
-    3px
-    7px;
-
-  border-radius:6px;
-
-  background:#eef9f1;
-
-  color:#0b8f4b;
-
-  font-size:7px;
-
-  font-weight:900;
-
-  letter-spacing:.7px;
-
+  margin-top:6px;
+  color:#69f5a5;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:1px;
 }
-
 
 .last-message{
-
-  margin-top:7px;
-
-  overflow:hidden;
-
+  margin-top:10px;
+  color:#87978f;
+  font-size:11px;
+  line-height:1.6;
   white-space:nowrap;
-
+  overflow:hidden;
   text-overflow:ellipsis;
-
-  color:#718078;
-
-  font-size:10px;
-
-  line-height:1.5;
-
 }
-
 
 .time{
-
-  flex:0 0 auto;
-
-  color:#8a9790;
-
-  font-size:8px;
-
+  color:#64746c;
+  font-size:9px;
   white-space:nowrap;
-
 }
 
-
-/* ============================================================
-   LOADING
-============================================================ */
-
-.loading{
-
+.loading,
+.empty{
   padding:60px 20px;
-
   text-align:center;
-
   color:#718078;
-
   font-size:11px;
-
 }
-
-
-.loading:before{
-
-  content:"";
-
-  display:block;
-
-  width:30px;
-
-  height:30px;
-
-  margin:
-    0
-    auto
-    12px;
-
-  border:
-    3px solid
-    #e4eee7;
-
-  border-top-color:
-    #0b8f4b;
-
-  border-radius:50%;
-
-  animation:
-    msgSpin .7s linear infinite;
-
-}
-
-
-@keyframes msgSpin{
-
-  to{
-
-    transform:
-      rotate(360deg);
-
-  }
-
-}
-
-
-/* ============================================================
-   EMPTY STATE
-============================================================ */
 
 .empty{
-
-  padding:
-    55px
-    25px;
-
-  text-align:center;
-
-  border:
-    1px dashed
-    #dce7df;
-
-  border-radius:20px;
-
-  background:#fff;
-
-  color:#718078;
-
-  font-size:11px;
-
-  line-height:1.7;
-
+  border:1px solid rgba(105,245,165,.12);
+  border-radius:18px;
+  background:rgba(5,14,10,.55);
 }
-
-
-.empty-icon{
-
-  width:60px;
-
-  height:60px;
-
-  margin:
-    0
-    auto
-    15px;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-  border-radius:20px;
-
-  background:#eaf8ef;
-
-  font-size:28px;
-
-}
-
-
-.empty h3{
-
-  margin:
-    0
-    0
-    7px;
-
-  color:#26342d;
-
-  font-size:16px;
-
-}
-
-
-.login-btn{
-
-  display:inline-flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-  margin-top:16px;
-
-  padding:
-    11px
-    18px;
-
-  border-radius:12px;
-
-  color:#fff;
-
-  background:
-    linear-gradient(
-      135deg,
-      #0d9b55,
-      #05743a
-    );
-
-  font-size:11px;
-
-  font-weight:800;
-
-}
-
-
-/* ============================================================
-   ERROR
-============================================================ */
 
 .error{
-
-  padding:18px;
-
-  border:
-    1px solid
-    #f1d5d5;
-
-  border-radius:15px;
-
-  background:#fffafa;
-
-  color:#b54a4a;
-
+  padding:14px;
+  border-radius:12px;
+  border:1px solid rgba(255,90,90,.18);
+  color:#ff9d9d;
   font-size:10px;
-
   line-height:1.7;
-
 }
 
 
-/* ============================================================
+/* =========================
    MOBILE
-============================================================ */
+========================= */
 
-@media(max-width:600px){
+@media(max-width:700px){
 
-  .message-header{
-    position:relative;
+  .header{
+    padding:14px 0 15px;
   }
 
-
-  .message-topbar{
-
-    min-height:64px;
-
+  .brand{
+    min-width:0;
   }
 
-
-  .message-brand{
-
-    width:210px;
-
-    padding-left:46px;
-
+  .brand b{
+    font-size:17px;
   }
 
-
-  .message-brand:before{
-
-    width:37px;
-
-    height:37px;
-
-    border-radius:12px;
-
-    font-size:19px;
-
+  .brand strong{
+    font-size:20px;
   }
 
-
-  .message-brand b{
-
-    font-size:14px;
-
+  .brand small{
+    font-size:6px;
+    letter-spacing:2px;
   }
-
-
-  .message-brand strong{
-
-    position:static;
-
-    width:auto;
-
-    margin-left:4px;
-
-    font-size:14px;
-
-  }
-
-
-  .message-brand small{
-
-    font-size:7px;
-
-  }
-
 
   .messages-page{
-
-    padding:
-      20px
-      0
-      95px;
-
+    padding-top:24px;
   }
-
-
-  .inbox-head{
-
-    align-items:flex-start;
-
-    margin-bottom:16px;
-
-  }
-
 
   .inbox-head h1{
-
-    font-size:24px;
-
-  }
-
-
-  .inbox-head p{
-
-    font-size:10px;
-
-  }
-
-
-  .refresh-btn{
-
-    min-height:36px;
-
-    padding:0 11px;
-
-    font-size:9px;
-
-  }
-
-
-  .conversation{
-
-    gap:11px;
-
-    padding:12px;
-
-    border-radius:15px;
-
-  }
-
-
-  .conversation-avatar{
-
-    flex-basis:42px;
-
-    width:42px;
-
-    height:42px;
-
-    border-radius:13px;
-
-    font-size:19px;
-
-  }
-
-
-  .ad-title{
-
-    font-size:11px;
-
-  }
-
-
-  .person{
-
-    margin-top:3px;
-
-    font-size:6px;
-
-  }
-
-
-  .last-message{
-
-    margin-top:6px;
-
-    font-size:9px;
-
-  }
-
-
-  .time{
-
-    font-size:7px;
-
+    font-size:28px;
   }
 
 }
@@ -865,40 +229,37 @@ body{
 <body>
 
 
-<header class="message-header">
+<!-- =========================
+     HEADER
+========================= -->
 
-<div class="container message-topbar">
+<header class="header">
 
-<a
-  href="index.html"
-  class="message-brand">
+  <div class="container head">
 
-  <b>শাহমাহমুদপুর</b>
+    <a
+      class="brand"
+      href="index.html">
 
-  <strong>বাজার</strong>
+      <b>শাহমাহমুদপুর</b>
 
-  <small>LOCAL MARKETPLACE</small>
+      <strong>বাজার</strong>
 
-</a>
+      <small>LOCAL MARKETPLACE</small>
 
+    </a>
 
-<button
-  id="refreshBtn"
-  class="refresh-btn"
-  type="button">
-
-  ↻ রিফ্রেশ
-
-</button>
-
-</div>
+  </div>
 
 </header>
 
 
 
-<main
-  class="container messages-page">
+<!-- =========================
+     MAIN
+========================= -->
+
+<main class="container messages-page">
 
 
 <section class="inbox">
@@ -906,29 +267,35 @@ body{
 
 <div class="inbox-head">
 
-<div>
+  <small>PRIVATE MESSAGES</small>
 
-<small>PRIVATE MESSAGES</small>
+  <h1>Messages</h1>
 
-<h1>মেসেজ</h1>
-
-<p>
-আপনার Buyer ও Seller কথোপকথন
-</p>
+  <p>
+    আপনার Buyer ও Seller কথোপকথন
+  </p>
 
 </div>
 
-</div>
 
+<div class="refresh">
+
+  <button
+    id="refreshBtn"
+    class="btn">
+
+    ↻ Refresh
+
+  </button>
+
+</div>
 
 
 <div id="result">
 
-<div class="loading">
-
-মেসেজ লোড হচ্ছে...
-
-</div>
+  <div class="loading">
+    মেসেজ লোড হচ্ছে...
+  </div>
 
 </div>
 
@@ -940,51 +307,54 @@ body{
 
 
 
+<!-- =========================
+     MOBILE NAVIGATION
+========================= -->
+
 <nav class="mobile-nav">
 
 <a href="index.html">
 
-<span>⌂</span>
+  <span>⌂</span>
 
-হোম
+  Home
 
 </a>
 
 
 <a href="favorites.html">
 
-<span>♡</span>
+  <span>♡</span>
 
-সেভ করা
+  Saved
 
 </a>
 
 
 <a href="post-ad.html">
 
-<span>＋</span>
+  <span>⊞</span>
 
-বিজ্ঞাপন দিন
+  Sell
 
 </a>
 
 
-<a
-  class="active"
-  href="messages.html">
+<a class="active"
+   href="messages.html">
 
-<span>▤</span>
+  <span>▤</span>
 
-মেসেজ
+  Messages
 
 </a>
 
 
 <a href="profile.html">
 
-<span>♙</span>
+  <span>♙</span>
 
-প্রোফাইল
+  Profile
 
 </a>
 
@@ -1065,7 +435,6 @@ async function getSession(){
 
   }
 
-
   return null;
 
 }
@@ -1104,15 +473,11 @@ async function getUser(){
         "null"
       );
 
-
     if(saved && saved.id){
 
       return {
-
         id:saved.id,
-
         email:saved.email || ""
-
       };
 
     }
@@ -1169,18 +534,12 @@ async function api(
 
 
 
-/* ============================================================
-   LOAD INBOX
-============================================================ */
-
 async function loadInbox(){
 
   result.innerHTML = `
 
     <div class="loading">
-
       মেসেজ লোড হচ্ছে...
-
     </div>
 
   `;
@@ -1198,30 +557,17 @@ async function loadInbox(){
 
         <div class="empty">
 
-          <div class="empty-icon">
+          🔐<br><br>
 
-            🔐
+          আগে Login করুন।
 
-          </div>
-
-          <h3>
-
-            মেসেজ দেখতে লগইন করুন
-
-          </h3>
-
-          <div>
-
-            আপনার Buyer ও Seller
-            কথোপকথন দেখতে আগে লগইন করুন।
-
-          </div>
+          <br><br>
 
           <a
             href="login.html"
-            class="login-btn">
+            class="btn green">
 
-            লগইন করুন
+            Google দিয়ে Login করুন
 
           </a>
 
@@ -1289,24 +635,14 @@ async function loadInbox(){
 
         <div class="empty">
 
-          <div class="empty-icon">
+          💬<br><br>
 
-            💬
+          এখনো কোনো কথোপকথন নেই।
 
-          </div>
+          <br><br>
 
-          <h3>
-
-            এখনো কোনো মেসেজ নেই
-
-          </h3>
-
-          <div>
-
-            কোনো পণ্যের ভিতর থেকে
-            বিক্রেতাকে মেসেজ করুন।
-
-          </div>
+          কোনো পণ্যের ভিতর থেকে
+          বিক্রেতাকে মেসেজ করুন।
 
         </div>
 
@@ -1482,6 +818,9 @@ async function loadInbox(){
               "বিজ্ঞাপন";
 
 
+            let otherId = "";
+
+
             let role = "";
 
 
@@ -1494,10 +833,16 @@ async function loadInbox(){
               )
             ){
 
+              otherId =
+                conversation.seller_id;
+
               role =
                 "SELLER";
 
             }else{
+
+              otherId =
+                conversation.buyer_id;
 
               role =
                 "BUYER";
@@ -1515,15 +860,10 @@ async function loadInbox(){
               ).toLocaleString(
                 "bn-BD",
                 {
-
                   day:"numeric",
-
                   month:"short",
-
                   hour:"numeric",
-
                   minute:"2-digit"
-
                 }
               )
 
@@ -1534,15 +874,10 @@ async function loadInbox(){
               ).toLocaleString(
                 "bn-BD",
                 {
-
                   day:"numeric",
-
                   month:"short",
-
                   hour:"numeric",
-
                   minute:"2-digit"
-
                 }
               );
 
@@ -1558,63 +893,39 @@ async function loadInbox(){
                 class="conversation"
                 href="chat.html?conversation=${encodeURIComponent(cid)}">
 
+                <div
+                  class="conversation-top">
 
-                <div class="conversation-avatar">
+                  <div>
 
-                  💬
+                    <div class="ad-title">
+
+                      ${esc(title)}
+
+                    </div>
+
+                    <div class="person">
+
+                      ${role}
+
+                    </div>
+
+                  </div>
+
+                  <div class="time">
+
+                    ${esc(time)}
+
+                  </div>
 
                 </div>
 
 
-                <div class="conversation-content">
+                <div class="last-message">
 
-
-                  <div class="conversation-top">
-
-
-                    <div
-                      style="
-                        min-width:0;
-                        flex:1;
-                      ">
-
-
-                      <div class="ad-title">
-
-                        ${esc(title)}
-
-                      </div>
-
-
-                      <div class="person">
-
-                        ${role}
-
-                      </div>
-
-
-                    </div>
-
-
-                    <div class="time">
-
-                      ${esc(time)}
-
-                    </div>
-
-
-                  </div>
-
-
-                  <div class="last-message">
-
-                    ${esc(preview)}
-
-                  </div>
-
+                  ${esc(preview)}
 
                 </div>
-
 
               </a>
 
@@ -1648,7 +959,7 @@ async function loadInbox(){
 
       <div class="error">
 
-        মেসেজ লোড করা যাচ্ছে না।
+        Messages লোড করা যাচ্ছে না।
 
         <br><br>
 
