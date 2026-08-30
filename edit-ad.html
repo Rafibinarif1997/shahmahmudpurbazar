@@ -1119,11 +1119,12 @@ params.get("id");
 
 let currentUser = null;
 let currentAd = null;
-
 let selectedImages = [];
 
 
-/* ESCAPE */
+/* ============================
+   HELPERS
+============================ */
 
 function esc(v){
 
@@ -1137,7 +1138,85 @@ return String(v ?? "")
 }
 
 
-/* ERROR */
+function sleep(ms){
+
+return new Promise(
+resolve =>
+setTimeout(resolve,ms)
+);
+
+}
+
+
+async function fetchWithRetry(
+url,
+options,
+retries=2
+){
+
+let lastError = null;
+
+
+for(
+let attempt=0;
+attempt<=retries;
+attempt++
+){
+
+try{
+
+const response =
+await fetch(
+url,
+options
+);
+
+
+if(
+response.ok ||
+response.status < 500 ||
+attempt === retries
+){
+
+return response;
+
+}
+
+lastError =
+new Error(
+"Server error: " +
+response.status
+);
+
+}catch(err){
+
+lastError = err;
+
+}
+
+
+if(attempt < retries){
+
+await sleep(
+700 * (attempt + 1)
+);
+
+}
+
+}
+
+
+throw lastError ||
+new Error(
+"Network request failed"
+);
+
+}
+
+
+/* ============================
+   ERROR
+============================ */
 
 function error(text){
 
@@ -1156,7 +1235,9 @@ msg.innerHTML = "";
 }
 
 
-/* STORED USER */
+/* ============================
+   USER
+============================ */
 
 function getStoredUser(){
 
@@ -1186,8 +1267,6 @@ return null;
 
 }
 
-
-/* GET USER */
 
 async function getUser(){
 
@@ -1257,8 +1336,6 @@ return getStoredUser();
 }
 
 
-/* GET SESSION */
-
 async function getSession(){
 
 try{
@@ -1296,7 +1373,9 @@ return null;
 }
 
 
-/* CATEGORY */
+/* ============================
+   CATEGORY
+============================ */
 
 const subMap={
 
@@ -1446,8 +1525,6 @@ const subMap={
 };
 
 
-/* SUBCATEGORY */
-
 function populateSubcategories(
 selectedValue=""
 ){
@@ -1467,9 +1544,7 @@ item => {
 const option =
 new Option(item,item);
 
-if(
-item === selectedValue
-){
+if(item === selectedValue){
 option.selected = true;
 }
 
@@ -1503,25 +1578,30 @@ return "";
 }
 
 
-/* Object URL support */
+/* Object */
 
-if(
-typeof value === "object"
-){
+if(typeof value === "object"){
 
 value =
 value.url ||
+value.publicUrl ||
+value.public_url ||
 value.path ||
 value.src ||
 value.image_url ||
+value.imageUrl ||
 value.image ||
+value.photo_url ||
+value.photoUrl ||
+value.photo ||
 "";
 
 }
 
 
 let url =
-String(value).trim();
+String(value)
+.trim();
 
 
 if(!url){
@@ -1529,22 +1609,14 @@ return "";
 }
 
 
-/* Already browser/blob URL */
+/* Blob */
 
 if(
 url.startsWith("blob:")
 ){
+
 return url;
-}
 
-
-/* Full URL */
-
-if(
-url.startsWith("http://") ||
-url.startsWith("https://")
-){
-return url;
 }
 
 
@@ -1556,15 +1628,47 @@ url
 .trim();
 
 
-/* Remove leading slash */
+/* Already full public URL */
+
+if(
+url.startsWith("http://") ||
+url.startsWith("https://")
+){
+
+/*
+Remove accidental duplicate
+Supabase public URL patterns
+*/
+
+if(
+url.includes(
+"/storage/v1/object/public/ad-images/"
+)
+){
+
+return url;
+
+}
+
+
+/*
+Any other full URL
+*/
+
+return url;
+
+}
+
+
+/* Remove slash */
 
 url =
 url.replace(/^\/+/,"");
 
 
 /*
-If stored as:
-storage/v1/object/public/ad-images/...
+Full storage prefix accidentally
+stored without domain
 */
 
 const publicPrefix =
@@ -1587,21 +1691,16 @@ url.substring(index)
 }
 
 
-/*
-If stored as:
-object/public/ad-images/...
-*/
-
-const objectPrefix =
+const objectPublicPrefix =
 "object/public/ad-images/";
 
 
 if(
-url.includes(objectPrefix)
+url.includes(objectPublicPrefix)
 ){
 
 const index =
-url.indexOf(objectPrefix);
+url.indexOf(objectPublicPrefix);
 
 return (
 SUPA_URL +
@@ -1613,8 +1712,7 @@ url.substring(index)
 
 
 /*
-If URL contains ad-images/
-extract correct path
+Contains bucket name
 */
 
 const bucketIndex =
@@ -1639,9 +1737,7 @@ path
 
 
 /*
-Plain storage path
-example:
-user-id/ad-id/image.jpg
+Plain path
 */
 
 return (
@@ -1654,7 +1750,7 @@ url
 
 
 /* ============================
-   RECURSIVE IMAGE PARSER
+   IMAGE PARSER
 ============================ */
 
 function extractImageValues(value){
@@ -1701,24 +1797,21 @@ value.trim();
 
 
 if(!trimmed){
-return results;
+return [];
 }
 
 
-/* Try JSON */
+/*
+Try JSON array/object
+*/
 
 try{
 
 const parsed =
 JSON.parse(trimmed);
 
-
-/*
-Only parse if different
-and JSON is object/array
-*/
-
 if(
+parsed !== trimmed &&
 typeof parsed === "object" &&
 parsed !== null
 ){
@@ -1732,11 +1825,15 @@ parsed
 }catch(e){}
 
 
-/* Comma separated */
+/*
+Comma separated paths
+Do not split URLs
+*/
 
 if(
 trimmed.includes(",") &&
-!trimmed.startsWith("http")
+!trimmed.startsWith("http://") &&
+!trimmed.startsWith("https://")
 ){
 
 return trimmed
@@ -1757,33 +1854,29 @@ return [trimmed];
 
 /* Object */
 
-if(
-typeof value === "object"
-){
+if(typeof value === "object"){
 
 const priorityKeys = [
 
 "url",
+"publicUrl",
+"public_url",
 "path",
 "src",
 "image_url",
 "imageUrl",
 "image",
-"photo",
 "photo_url",
-"photoUrl"
+"photoUrl",
+"photo"
 
 ];
 
 
-/* First check known keys */
-
 priorityKeys.forEach(
 key => {
 
-if(
-value[key]
-){
+if(value[key]){
 
 results =
 results.concat(
@@ -1798,11 +1891,10 @@ value[key]
 );
 
 
-/* If no known key, inspect values */
-
 if(results.length === 0){
 
-Object.values(value).forEach(
+Object.values(value)
+.forEach(
 item => {
 
 results =
@@ -1825,7 +1917,6 @@ return results;
 
 /* ============================
    GET AD IMAGES
-   VERY ROBUST VERSION
 ============================ */
 
 function getAdImages(ad){
@@ -1837,10 +1928,6 @@ return [];
 
 let rawImages = [];
 
-
-/*
-Known image fields
-*/
 
 const possibleFields = [
 
@@ -1895,14 +1982,13 @@ ad[field]
 
 
 /*
-Fallback:
-automatically check every
-column containing image/photo
+Fallback all image/photo columns
 */
 
 if(rawImages.length === 0){
 
-Object.keys(ad).forEach(
+Object.keys(ad)
+.forEach(
 key => {
 
 const lower =
@@ -1914,33 +2000,22 @@ lower.includes("image") ||
 lower.includes("photo")
 ){
 
-const value =
-ad[key];
-
-
-if(
-value !== null &&
-value !== undefined
-){
-
 rawImages =
 rawImages.concat(
 extractImageValues(
-value
+ad[key]
 )
 );
 
 }
 
 }
-
-}
 );
 
 }
 
 
-/* Normalize + remove duplicates */
+/* Normalize */
 
 const finalImages = [];
 
@@ -1963,16 +2038,6 @@ normalized
 
 }
 
-}
-);
-
-
-console.log(
-"AD IMAGE DEBUG:",
-{
-ad:ad,
-rawImages:rawImages,
-finalImages:finalImages
 }
 );
 
@@ -2073,8 +2138,15 @@ this.style.display =
 "none";
 
 
+if(
+!item.querySelector(".image-fallback")
+){
+
 const fallback =
 document.createElement("div");
+
+fallback.className =
+"image-fallback";
 
 fallback.style.width =
 "100%";
@@ -2096,14 +2168,6 @@ fallback.style.fontSize =
 
 fallback.textContent =
 "🖼";
-
-
-if(
-!item.querySelector(".image-fallback")
-){
-
-fallback.className =
-"image-fallback";
 
 item.insertBefore(
 fallback,
@@ -2227,27 +2291,21 @@ return;
 }
 
 
-/* Duplicate check */
-
 const duplicate =
 selectedImages.some(
 image =>
 
 image.type === "new" &&
-
+image.file &&
 image.file.name === file.name &&
-
 image.file.size === file.size &&
-
 image.file.lastModified === file.lastModified
 
 );
 
 
 if(duplicate){
-
 return;
-
 }
 
 
@@ -2272,8 +2330,6 @@ addedCount++;
 );
 
 
-/* Reset */
-
 imageInput.value = "";
 
 
@@ -2281,9 +2337,7 @@ renderPreview();
 
 
 if(addedCount > 0){
-
 clearMsg();
-
 }
 
 }
@@ -2344,8 +2398,6 @@ index,
 
 
 renderPreview();
-
-
 clearMsg();
 
 }
@@ -2353,7 +2405,7 @@ clearMsg();
 
 
 /* ============================
-   GET AD
+   LOAD AD
 ============================ */
 
 async function loadAd(
@@ -2361,7 +2413,7 @@ user,
 session
 ){
 
-const baseHeaders = {
+const headers = {
 
 "apikey":
 SUPA_KEY,
@@ -2373,40 +2425,50 @@ session.access_token
 };
 
 
-const urlById =
-
+const url =
 SUPA_URL +
-
-"/rest/v1/ads" +
-
-"?id=eq." +
-
+"/rest/v1/ads?id=eq." +
 encodeURIComponent(adId) +
-
 "&select=*";
 
 
-try{
-
 const response =
-await fetch(
-urlById,
+await fetchWithRetry(
+url,
 {
 method:"GET",
-headers:baseHeaders
-}
+headers:headers
+},
+2
 );
 
 
-if(response.ok){
+if(!response.ok){
+
+const text =
+await response.text();
+
+throw new Error(
+"বিজ্ঞাপনের তথ্য পাওয়া যায়নি: " +
+text
+);
+
+}
+
 
 const data =
 await response.json();
 
+
 if(
-data &&
-data.length
+!data ||
+data.length === 0
 ){
+
+return null;
+
+}
+
 
 const ad =
 data[0];
@@ -2422,157 +2484,38 @@ ad.user_id ||
 "";
 
 
-if(
-sellerId &&
-sellerId !== user.id &&
-userId &&
-userId !== user.id
-){
-
-return null;
-
-}
+const ownerId =
+ad.owner_id ||
+"";
 
 
-if(
+/*
+Check ownership
+*/
+
+const isOwner =
+
 sellerId === user.id ||
 userId === user.id ||
-(!sellerId && !userId)
-){
-
-return ad;
-
-}
-
-}
-
-}
-
-}catch(e){
-
-console.error(
-"LOAD BY ID ERROR:",
-e
-);
-
-}
+ownerId === user.id;
 
 
-/* FALLBACK SELLER */
-
-try{
-
-const sellerUrl =
-
-SUPA_URL +
-
-"/rest/v1/ads" +
-
-"?id=eq." +
-
-encodeURIComponent(adId) +
-
-"&seller_id=eq." +
-
-encodeURIComponent(user.id) +
-
-"&select=*";
-
-
-const response =
-await fetch(
-sellerUrl,
-{
-method:"GET",
-headers:baseHeaders
-}
-);
-
-
-if(response.ok){
-
-const data =
-await response.json();
+/*
+Old records may not contain
+ownership field
+*/
 
 if(
-data &&
-data.length
+(sellerId || userId || ownerId) &&
+!isOwner
 ){
-
-return data[0];
-
-}
-
-}
-
-}catch(e){
-
-console.error(
-"LOAD SELLER ERROR:",
-e
-);
-
-}
-
-
-/* FALLBACK USER */
-
-try{
-
-const userUrl =
-
-SUPA_URL +
-
-"/rest/v1/ads" +
-
-"?id=eq." +
-
-encodeURIComponent(adId) +
-
-"&user_id=eq." +
-
-encodeURIComponent(user.id) +
-
-"&select=*";
-
-
-const response =
-await fetch(
-userUrl,
-{
-method:"GET",
-headers:baseHeaders
-}
-);
-
-
-if(response.ok){
-
-const data =
-await response.json();
-
-if(
-data &&
-data.length
-){
-
-return data[0];
-
-}
-
-}
-
-}catch(e){
-
-console.error(
-"LOAD USER ERROR:",
-e
-);
-
-}
-
 
 return null;
+
+}
+
+
+return ad;
 
 }
 
@@ -2584,12 +2527,6 @@ return null;
 function fillForm(ad){
 
 currentAd = ad;
-
-
-console.log(
-"FULL AD DATA:",
-ad
-);
 
 
 /* Basic */
@@ -2631,7 +2568,7 @@ currentUser.phone ||
 "";
 
 
-/* IMAGES */
+/* Images */
 
 const urls =
 getAdImages(ad);
@@ -2639,7 +2576,7 @@ getAdImages(ad);
 
 /*
 IMPORTANT:
-Load existing images
+Store normalized URLs
 */
 
 selectedImages =
@@ -2647,14 +2584,17 @@ urls
 .slice(0,3)
 .map(
 url => ({
+
 type:"existing",
-url:url
+
+url:normalizeImageUrl(url)
+
 })
 );
 
 
 console.log(
-"LOADED EXISTING IMAGES:",
+"EDIT PAGE LOADED IMAGES:",
 selectedImages
 );
 
@@ -2675,7 +2615,7 @@ currentUser.email ||
 
 '<br>' +
 
-'বর্তমান বিজ্ঞাপনের তথ্য নিচে পরিবর্তন করতে পারবেন।';
+'বর্তমান বিজ্ঞাপনের তথ্য নিচে পরিবর্তন করতে পারবেন。';
 
 
 loading.style.display =
@@ -2718,9 +2658,19 @@ file.name
 "jpg";
 
 
+const safeUserId =
+String(
+currentUser.id
+)
+.replace(
+/[^a-zA-Z0-9_-]/g,
+""
+);
+
+
 const path =
 
-currentUser.id +
+safeUserId +
 
 "/" +
 
@@ -2754,8 +2704,12 @@ SUPA_URL +
 path;
 
 
+/*
+Upload with retry
+*/
+
 const response =
-await fetch(
+await fetchWithRetry(
 
 uploadUrl,
 
@@ -2783,7 +2737,9 @@ file.type ||
 
 body:file
 
-}
+},
+
+2
 
 );
 
@@ -2792,6 +2748,13 @@ if(!response.ok){
 
 const text =
 await response.text();
+
+
+console.error(
+"UPLOAD ERROR:",
+response.status,
+text
+);
 
 
 if(
@@ -2807,20 +2770,25 @@ throw new Error(
 
 
 throw new Error(
-"ছবি Upload করা যায়নি: " +
-text
+"ছবি Upload করা যায়নি। দয়া করে আবার চেষ্টা করুন।"
 );
 
 }
 
 
-return
+/*
+Return permanent public URL
+*/
+
+return (
 
 SUPA_URL +
 
 "/storage/v1/object/public/ad-images/" +
 
-path;
+path
+
+);
 
 }
 
@@ -2845,8 +2813,12 @@ SUPA_URL +
 encodeURIComponent(adId);
 
 
+/*
+PATCH with retry
+*/
+
 const response =
-await fetch(
+await fetchWithRetry(
 
 url,
 
@@ -2874,7 +2846,9 @@ session.access_token,
 body:
 JSON.stringify(data)
 
-}
+},
+
+2
 
 );
 
@@ -2885,9 +2859,52 @@ const text =
 await response.text();
 
 
-throw new Error(
-"বিজ্ঞাপন Update করা যায়নি: " +
+console.error(
+"PATCH ERROR:",
+response.status,
 text
+);
+
+
+/*
+Friendly error messages
+*/
+
+if(
+response.status === 401 ||
+response.status === 403
+){
+
+throw new Error(
+"বিজ্ঞাপন Update করার অনুমতি পাওয়া যায়নি। আবার Login করে চেষ্টা করুন।"
+);
+
+}
+
+
+if(response.status === 404){
+
+throw new Error(
+"বিজ্ঞাপনটি পাওয়া যায়নি।"
+);
+
+}
+
+
+if(
+text.includes("row-level security") ||
+text.includes("RLS")
+){
+
+throw new Error(
+"বিজ্ঞাপনটি Update করার অনুমতি পাওয়া যায়নি।"
+);
+
+}
+
+
+throw new Error(
+"বিজ্ঞাপন Update করা যায়নি। আবার চেষ্টা করুন।"
 );
 
 }
@@ -2958,7 +2975,7 @@ return;
 }
 
 
-/* Get user */
+/* User */
 
 currentUser =
 await getUser();
@@ -2966,14 +2983,7 @@ await getUser();
 
 if(!currentUser){
 
-await new Promise(
-resolve =>
-setTimeout(
-resolve,
-900
-)
-);
-
+await sleep(1000);
 
 currentUser =
 await getUser();
@@ -3004,10 +3014,20 @@ return;
 }
 
 
-/* Get session */
+/* Session */
 
-const session =
+let session =
 await getSession();
+
+
+if(!session){
+
+await sleep(500);
+
+session =
+await getSession();
+
+}
 
 
 if(!session){
@@ -3033,7 +3053,7 @@ return;
 }
 
 
-/* Load ad */
+/* Load */
 
 try{
 
@@ -3234,6 +3254,8 @@ submitBtn.disabled = true;
 try{
 
 
+/* Get fresh session */
+
 const session =
 await getSession();
 
@@ -3250,7 +3272,9 @@ throw new Error(
 }
 
 
-/* PROCESS IMAGES */
+/* ============================
+   PROCESS IMAGES
+============================ */
 
 const finalImageUrls = [];
 
@@ -3269,8 +3293,14 @@ if(
 image.type === "existing"
 ){
 
+/*
+Keep existing permanent URL
+*/
+
 finalImageUrls.push(
+normalizeImageUrl(
 image.url
+)
 );
 
 }
@@ -3312,7 +3342,30 @@ uploadedUrl
 }
 
 
-/* UPDATE */
+/*
+Remove duplicates
+*/
+
+const uniqueImageUrls =
+[
+...new Set(
+finalImageUrls.filter(Boolean)
+)
+].slice(0,3);
+
+
+if(uniqueImageUrls.length < 1){
+
+throw new Error(
+"কোনো ছবি পাওয়া যায়নি। আবার চেষ্টা করুন।"
+);
+
+}
+
+
+/* ============================
+   UPDATE
+============================ */
 
 submitBtn.textContent =
 "পরিবর্তন সংরক্ষণ হচ্ছে...";
@@ -3342,9 +3395,15 @@ phone:
 phone,
 
 image_urls:
-finalImageUrls
+uniqueImageUrls
 
 };
+
+
+console.log(
+"UPDATE DATA:",
+updateData
+);
 
 
 const updatedAd =
@@ -3358,13 +3417,29 @@ currentAd =
 updatedAd;
 
 
-/* Cleanup blob URLs */
+/*
+Update selected images
+with permanent URLs
+*/
+
+selectedImages =
+uniqueImageUrls.map(
+url => ({
+
+type:"existing",
+
+url:url
+
+})
+);
+
+
+/* Cleanup old blob URLs */
 
 selectedImages.forEach(
 image => {
 
 if(
-image.type === "new" &&
 image.url &&
 image.url.startsWith("blob:")
 ){
@@ -3383,7 +3458,9 @@ image.url
 );
 
 
-/* SUCCESS */
+/* ============================
+   SUCCESS
+============================ */
 
 form.style.display =
 "none";
