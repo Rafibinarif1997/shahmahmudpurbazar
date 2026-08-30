@@ -1693,12 +1693,11 @@ function renderAds(
 
 
         const statusClass =
-          isPending
-          ? "pending-ad"
-          : isPublished
-          ? "published-ad"
-          : "";
-
+  isPending
+  ? "pending-ad editable-ad"
+  : isPublished
+  ? "published-ad editable-ad"
+  : "editable-ad";
 
         /* ----------------------------------------------------
            IMAGE
