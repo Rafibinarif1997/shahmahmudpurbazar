@@ -67,12 +67,41 @@
 
 </main>
 
-
-<script>
+  <script>
 
 (function(){
 
 "use strict";
+
+
+/* ============================================================
+   CONFIG
+============================================================ */
+
+const SUPA_URL =
+  "https://jeupbfoceqmnpwlklche.supabase.co";
+
+
+const SUPA_KEY =
+  window.SUPABASE_ANON_KEY ||
+  window.supabaseAnonKey ||
+  "";
+
+
+/* ============================================================
+   ELEMENTS
+============================================================ */
+
+const loading =
+  document.getElementById(
+    "loading"
+  );
+
+
+const content =
+  document.getElementById(
+    "content"
+  );
 
 
 /* ============================================================
@@ -90,46 +119,373 @@ const adId =
 
 
 /* ============================================================
-   CHECK AD ID
+   GET CURRENT USER
 ============================================================ */
 
-if(!adId){
+async function getUser(){
 
-  document.getElementById(
-    "loading"
-  ).innerHTML = `
+  try{
 
-    বিজ্ঞাপনের ID পাওয়া যায়নি।
+    if(
+      typeof getCurrentUser ===
+      "function"
+    ){
 
-    <br><br>
+      const user =
+        await getCurrentUser();
 
-    <a href="my-ads.html">
 
-      ← আমার বিজ্ঞাপনে ফিরে যান
+      if(user){
 
-    </a>
+        return user;
 
-  `;
+      }
 
-  return;
+    }
+
+  }catch(error){
+
+    console.error(
+      "User error:",
+      error
+    );
+
+  }
+
+
+  return null;
 
 }
 
 
 /* ============================================================
-   TEST
+   GET SESSION
 ============================================================ */
 
-console.log(
-  "Editing Ad ID:",
-  adId
-);
+async function getSession(){
+
+  try{
+
+    if(
+      typeof getSbSession ===
+      "function"
+    ){
+
+      const session =
+        await getSbSession();
+
+
+      if(
+        session &&
+        session.access_token
+      ){
+
+        return session;
+
+      }
+
+    }
+
+  }catch(error){
+
+    console.error(
+      "Session error:",
+      error
+    );
+
+  }
+
+
+  return null;
+
+}
+
+
+/* ============================================================
+   LOAD AD
+============================================================ */
+
+async function loadAd(
+  user,
+  session
+){
+
+  const url =
+    SUPA_URL +
+    "/rest/v1/ads" +
+    "?id=eq." +
+    encodeURIComponent(
+      adId
+    ) +
+    "&seller_id=eq." +
+    encodeURIComponent(
+      user.id
+    ) +
+    "&select=*";
+
+
+  const response =
+    await fetch(
+      url,
+      {
+
+        method:"GET",
+
+        headers:{
+
+          "apikey":
+            SUPA_KEY,
+
+          "Authorization":
+            "Bearer " +
+            session.access_token
+
+        }
+
+      }
+    );
+
+
+  if(!response.ok){
+
+    const text =
+      await response.text();
+
+
+    throw new Error(
+      "বিজ্ঞাপন লোড করা যায়নি: " +
+      text
+    );
+
+  }
+
+
+  const data =
+    await response.json();
+
+
+  return data && data.length
+    ? data[0]
+    : null;
+
+}
+
+
+/* ============================================================
+   RENDER AD DATA
+============================================================ */
+
+function renderAd(
+  ad
+){
+
+  loading.style.display =
+    "none";
+
+
+  content.style.display =
+    "block";
+
+
+  content.innerHTML = `
+
+    <div style="
+      margin-top:30px;
+      padding:25px;
+      background:#fff;
+      border-radius:18px;
+      border:1px solid #e2eae5;
+    ">
+
+      <h2>
+        বিজ্ঞাপন এডিট করুন
+      </h2>
+
+      <p>
+        ${ad.title || ""}
+      </p>
+
+      <p>
+        দাম: ৳ ${ad.price || ""}
+      </p>
+
+      <p>
+        ক্যাটাগরি: ${ad.category || ""}
+      </p>
+
+      <p>
+        লোকেশন: ${ad.location || ""}
+      </p>
+
+    </div>
+
+  `;
+
+}
+
+
+/* ============================================================
+   INITIALIZE
+============================================================ */
+
+async function initialize(){
+
+  /* Check ID */
+
+  if(!adId){
+
+    loading.innerHTML = `
+
+      বিজ্ঞাপনের ID পাওয়া যায়নি।
+
+      <br><br>
+
+      <a href="my-ads.html">
+
+        ← আমার বিজ্ঞাপনে ফিরে যান
+
+      </a>
+
+    `;
+
+    return;
+
+  }
+
+
+  /* Get user */
+
+  const user =
+    await getUser();
+
+
+  if(!user){
+
+    loading.innerHTML = `
+
+      Login session পাওয়া যায়নি।
+
+      <br><br>
+
+      <a href="login.html?next=my-ads.html">
+
+        Login করুন
+
+      </a>
+
+    `;
+
+    return;
+
+  }
+
+
+  /* Get session */
+
+  const session =
+    await getSession();
+
+
+  if(!session){
+
+    loading.innerHTML = `
+
+      Login session পাওয়া যায়নি।
+
+      <br><br>
+
+      <a href="login.html?next=my-ads.html">
+
+        আবার Login করুন
+
+      </a>
+
+    `;
+
+    return;
+
+  }
+
+
+  /* Load Ad */
+
+  try{
+
+    const ad =
+      await loadAd(
+        user,
+        session
+      );
+
+
+    if(!ad){
+
+      loading.innerHTML = `
+
+        বিজ্ঞাপনটি পাওয়া যায়নি অথবা
+        এটি আপনার বিজ্ঞাপন নয়।
+
+        <br><br>
+
+        <a href="my-ads.html">
+
+          ← আমার বিজ্ঞাপনে ফিরে যান
+
+        </a>
+
+      `;
+
+      return;
+
+    }
+
+
+    renderAd(
+      ad
+    );
+
+
+  }catch(error){
+
+    console.error(
+      "LOAD AD ERROR:",
+      error
+    );
+
+
+    loading.innerHTML = `
+
+      বিজ্ঞাপন লোড করা যায়নি।
+
+      <br><br>
+
+      ${error.message}
+
+      <br><br>
+
+      <a href="my-ads.html">
+
+        ← ফিরে যান
+
+      </a>
+
+    `;
+
+  }
+
+}
+
+
+/* ============================================================
+   START
+============================================================ */
+
+initialize();
 
 
 })();
 
 </script>
-
 
 </body>
 </html>
