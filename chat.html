@@ -820,7 +820,94 @@ body{
   }
 
 }
+/* ==========================================================
+   FORCE SAME BRAND AS HOMEPAGE
+========================================================== */
 
+.brand{
+  display:flex !important;
+  flex-wrap:wrap !important;
+  align-items:center !important;
+  width:250px !important;
+  position:relative !important;
+  padding-left:58px !important;
+  text-decoration:none !important;
+}
+
+.brand:before{
+  content:"🛍" !important;
+  position:absolute !important;
+  left:0 !important;
+  top:50% !important;
+  transform:translateY(-50%) !important;
+
+  width:45px !important;
+  height:45px !important;
+
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+
+  border-radius:14px !important;
+
+  background:linear-gradient(
+    135deg,
+    #0d9b55,
+    #05743a
+  ) !important;
+
+  font-size:26px !important;
+
+  box-shadow:
+    0 8px 18px
+    rgba(11,143,75,.22) !important;
+}
+
+.brand b{
+  display:block !important;
+  width:100% !important;
+
+  color:#27352e !important;
+
+  font-size:19px !important;
+  font-weight:900 !important;
+
+  letter-spacing:-.5px !important;
+
+  white-space:nowrap !important;
+}
+
+.brand strong{
+  position:absolute !important;
+
+  top:0 !important;
+  left:188px !important;
+
+  color:#0b8f4b !important;
+
+  font-size:19px !important;
+  font-weight:900 !important;
+
+  white-space:nowrap !important;
+}
+
+.brand small{
+  display:block !important;
+
+  width:100% !important;
+
+  margin-top:3px !important;
+
+  color:#66726b !important;
+
+  font-size:9px !important;
+  font-weight:800 !important;
+
+  letter-spacing:1.5px !important;
+
+  white-space:nowrap !important;
+}
+  
 </style>
 
 </head>
