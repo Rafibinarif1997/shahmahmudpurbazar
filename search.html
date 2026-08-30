@@ -13,10 +13,6 @@
 বিজ্ঞাপন খুঁজুন | শাহমাহমুদপুর বাজার
 </title>
 
-<meta
-  name="description"
-  content="শাহমাহমুদপুর বাজারের বিজ্ঞাপন খুঁজুন">
-
 <link
   rel="stylesheet"
   href="style.css">
@@ -25,7 +21,7 @@
 <style>
 
 /* ============================================================
-   SEARCH PAGE - PREMIUM MARKETPLACE UI
+   SEARCH PAGE - PREMIUM BRIGHT DESIGN
 ============================================================ */
 
 :root{
@@ -41,22 +37,12 @@
 
   --bg:#f8faf9;
 
-  --card:#ffffff;
-
-  --shadow:
-    0 8px 30px rgba(30,55,42,.08);
-
 }
 
 
 /* ============================================================
-   RESET
+   PAGE
 ============================================================ */
-
-*{
-  box-sizing:border-box;
-}
-
 
 body{
 
@@ -72,29 +58,7 @@ body{
 
   color:var(--text);
 
-  font-family:
-    system-ui,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    sans-serif;
-
   padding-bottom:90px;
-
-}
-
-
-a{
-  text-decoration:none;
-  color:inherit;
-}
-
-
-.container{
-
-  width:min(1180px,calc(100% - 40px));
-
-  margin:auto;
 
 }
 
@@ -105,20 +69,12 @@ a{
 
 .header{
 
-  position:sticky;
-
-  top:0;
-
-  z-index:100;
-
   background:
     rgba(255,255,255,.96);
 
-  backdrop-filter:
-    blur(18px);
-
   border-bottom:
-    1px solid rgba(20,70,45,.10);
+    1px solid
+    rgba(20,70,45,.10);
 
 }
 
@@ -127,23 +83,12 @@ a{
 
   min-height:76px;
 
-  display:grid;
-
-  grid-template-columns:
-    250px
-    minmax(250px,1fr)
-    auto;
+  display:flex;
 
   align-items:center;
 
-  gap:25px;
-
 }
 
-
-/* ============================================================
-   BRAND
-============================================================ */
 
 .brand{
 
@@ -153,11 +98,13 @@ a{
 
   align-items:center;
 
-  width:250px;
+  width:260px;
 
   position:relative;
 
   padding-left:58px;
+
+  text-decoration:none;
 
 }
 
@@ -252,255 +199,19 @@ a{
 
 
 /* ============================================================
-   HEADER SEARCH
+   MAIN
 ============================================================ */
 
-.header-search{
+.search-page{
 
-  min-height:52px;
-
-  display:flex;
-
-  align-items:center;
-
-  gap:10px;
-
-  padding:
-    5px
-    6px
-    5px
-    17px;
-
-  border:
-    1px solid var(--border);
-
-  border-radius:15px;
-
-  background:#fff;
-
-  box-shadow:
-    0 5px 18px rgba(30,55,42,.06);
+  padding-top:28px;
 
 }
 
 
-.header-search:focus-within{
+.page-top{
 
-  border-color:
-    rgba(11,143,75,.45);
-
-  box-shadow:
-    0 0 0 4px
-    rgba(11,143,75,.06);
-
-}
-
-
-.header-search > span{
-
-  font-size:22px;
-
-  color:var(--green);
-
-}
-
-
-.header-search input{
-
-  flex:1;
-
-  min-width:0;
-
-  border:0;
-
-  outline:0;
-
-  background:transparent;
-
-  color:#27352e;
-
-  font-size:13px;
-
-  font-weight:700;
-
-}
-
-
-.header-search input::placeholder{
-
-  color:#849088;
-
-}
-
-
-.header-search button{
-
-  border:0;
-
-  height:42px;
-
-  padding:
-    0
-    18px;
-
-  border-radius:11px;
-
-  color:#fff;
-
-  cursor:pointer;
-
-  background:
-    linear-gradient(
-      135deg,
-      #0d9b55,
-      #05743a
-    );
-
-  font-size:12px;
-
-  font-weight:900;
-
-}
-
-
-/* ============================================================
-   HEADER ACTIONS
-============================================================ */
-
-.head nav{
-
-  display:flex;
-
-  align-items:center;
-
-  gap:9px;
-
-}
-
-
-.head nav a{
-
-  display:inline-flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-  min-height:42px;
-
-  padding:
-    0
-    16px;
-
-  border:
-    1px solid var(--border);
-
-  border-radius:12px;
-
-  background:#fff;
-
-  color:#47544c;
-
-  font-size:11px;
-
-  font-weight:800;
-
-}
-
-
-.head nav a:first-child{
-
-  width:42px;
-
-  padding:0;
-
-  font-size:20px;
-
-}
-
-
-.head nav a:last-child{
-
-  color:var(--green);
-
-  border-color:
-    rgba(11,143,75,.22);
-
-  background:#f4fbf6;
-
-}
-
-
-/* ============================================================
-   PAGE HERO
-============================================================ */
-
-.page-hero{
-
-  margin-top:22px;
-
-  padding:
-    28px
-    32px;
-
-  border-radius:22px;
-
-  position:relative;
-
-  overflow:hidden;
-
-  background:
-
-    radial-gradient(
-      circle at 85% 20%,
-      rgba(192,244,207,.65),
-      transparent 28%
-    ),
-
-    linear-gradient(
-      135deg,
-      #ffffff,
-      #effaf2
-    );
-
-  border:
-    1px solid
-    rgba(11,143,75,.08);
-
-  box-shadow:
-    var(--shadow);
-
-}
-
-
-.page-hero:after{
-
-  content:"🔍";
-
-  position:absolute;
-
-  right:35px;
-
-  top:50%;
-
-  transform:translateY(-50%);
-
-  width:82px;
-
-  height:82px;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-  border-radius:50%;
-
-  background:
-    rgba(255,255,255,.65);
-
-  font-size:42px;
+  margin-bottom:18px;
 
 }
 
@@ -517,32 +228,34 @@ a{
 
   letter-spacing:2px;
 
-}
-
-
-.page-hero h1{
-
-  margin:
-    7px
-    0
-    6px;
-
-  font-size:30px;
-
-  font-weight:900;
-
-  letter-spacing:-1px;
-
-  color:#203028;
+  margin-bottom:5px;
 
 }
 
 
-.page-hero p{
+.page-top h1{
 
   margin:0;
 
-  color:#68746d;
+  font-size:28px;
+
+  font-weight:900;
+
+  letter-spacing:-.7px;
+
+  color:#1d2923;
+
+}
+
+
+.page-top p{
+
+  margin:
+    6px
+    0
+    0;
+
+  color:var(--muted);
 
   font-size:12px;
 
@@ -553,59 +266,6 @@ a{
    FILTER BOX
 ============================================================ */
 
-.filter-section{
-
-  margin-top:18px;
-
-  padding:16px;
-
-  border:
-    1px solid var(--border);
-
-  border-radius:20px;
-
-  background:#fff;
-
-  box-shadow:
-    0 6px 20px
-    rgba(30,55,42,.05);
-
-}
-
-
-.filter-head{
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:space-between;
-
-  margin-bottom:12px;
-
-}
-
-
-.filter-head b{
-
-  color:#26342d;
-
-  font-size:14px;
-
-  font-weight:900;
-
-}
-
-
-.filter-head span{
-
-  color:#849088;
-
-  font-size:10px;
-
-}
-
-
 .filters{
 
   display:grid;
@@ -615,31 +275,66 @@ a{
 
   gap:10px;
 
+  padding:14px;
+
+  border:
+    1px solid
+    var(--border);
+
+  border-radius:18px;
+
+  background:#fff;
+
+  box-shadow:
+    0 8px 25px
+    rgba(30,55,42,.06);
+
 }
 
 
-.filters select,
+.filter-item{
 
-.filters input{
+  display:flex;
+
+  flex-direction:column;
+
+  gap:6px;
+
+}
+
+
+.filter-item label{
+
+  color:#68736d;
+
+  font-size:9px;
+
+  font-weight:800;
+
+}
+
+
+.filters select{
 
   width:100%;
 
-  height:46px;
+  height:44px;
 
   border:
-    1px solid var(--border);
+    1px solid
+    #dfe8e2;
 
-  border-radius:12px;
+  border-radius:11px;
+
+  background:#fff;
+
+  color:#29372f;
 
   outline:0;
 
-  background:#fafcfb;
-
-  color:#344139;
-
   padding:
     0
-    13px;
+    10px;
 
   font-size:11px;
 
@@ -648,41 +343,28 @@ a{
 }
 
 
-.filters select:focus,
-
-.filters input:focus{
+.filters select:focus{
 
   border-color:
-    rgba(11,143,75,.45);
+    var(--green);
 
   box-shadow:
     0 0 0 3px
-    rgba(11,143,75,.05);
-
-}
-
-
-.filters select option{
-
-  background:#fff;
-
-  color:#26342d;
+    rgba(11,143,75,.08);
 
 }
 
 
 #cat{
 
-  grid-column:
-    span 2;
+  grid-column:span 2;
 
 }
 
 
-#q2{
+#subcat{
 
-  grid-column:
-    span 2;
+  grid-column:span 2;
 
 }
 
@@ -699,82 +381,28 @@ a{
 
   justify-content:space-between;
 
-  gap:15px;
-
   margin:
     20px
     0
-    13px;
+    12px;
 
 }
 
 
-.result-left{
+.result-bar strong{
 
-  display:flex;
+  font-size:11px;
 
-  align-items:center;
-
-  gap:10px;
+  color:#66736c;
 
 }
 
 
-.result-icon{
-
-  width:38px;
-
-  height:38px;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-  border-radius:12px;
-
-  background:#eaf8ef;
-
-  font-size:18px;
-
-}
-
-
-.result-left strong{
-
-  display:block;
-
-  color:#27352e;
-
-  font-size:13px;
-
-  font-weight:900;
-
-}
-
-
-.result-left small{
-
-  display:block;
-
-  margin-top:2px;
-
-  color:#819087;
-
-  font-size:9px;
-
-}
-
-
-#clear{
+.reset-btn{
 
   border:
-    1px solid #e1e9e4;
-
-  padding:
-    9px
-    14px;
+    1px solid
+    var(--border);
 
   border-radius:10px;
 
@@ -782,11 +410,25 @@ a{
 
   color:#657169;
 
-  cursor:pointer;
+  padding:
+    8px
+    13px;
 
   font-size:10px;
 
   font-weight:800;
+
+  cursor:pointer;
+
+}
+
+
+.reset-btn:hover{
+
+  color:var(--green);
+
+  border-color:
+    rgba(11,143,75,.3);
 
 }
 
@@ -814,7 +456,8 @@ a{
   cursor:pointer;
 
   border:
-    1px solid var(--border);
+    1px solid
+    var(--border);
 
   border-radius:18px;
 
@@ -837,8 +480,8 @@ a{
     translateY(-3px);
 
   box-shadow:
-    0 12px 25px
-    rgba(30,55,42,.10);
+    0 12px 28px
+    rgba(0,0,0,.08);
 
 }
 
@@ -864,14 +507,12 @@ a{
 
   color:var(--green);
 
-  font-size:13px;
-
-  font-weight:800;
+  font-size:12px;
 
 }
 
 
-.product-image{
+.photo img{
 
   width:100%;
 
@@ -924,7 +565,7 @@ a{
     0
     8px;
 
-  min-height:36px;
+  min-height:35px;
 
   color:#2a3730;
 
@@ -960,118 +601,47 @@ a{
 
 
 /* ============================================================
-   EMPTY STATE
+   EMPTY / LOADING
 ============================================================ */
 
-.empty-state{
+.ads-message{
 
   grid-column:1/-1;
 
   padding:
-    55px
+    45px
     20px;
 
   text-align:center;
 
   border:
-    1px dashed #dbe5de;
+    1px dashed
+    #dbe5de;
 
   border-radius:18px;
 
+  color:#657169;
+
   background:#fff;
 
-}
-
-
-.empty-state .empty-icon{
-
-  font-size:40px;
-
-  margin-bottom:10px;
-
-}
-
-
-.empty-state b{
-
-  display:block;
-
-  color:#344139;
-
-  font-size:14px;
-
-}
-
-
-.empty-state small{
-
-  display:block;
-
-  margin-top:6px;
-
-  color:#819087;
-
-  font-size:10px;
+  font-size:13px;
 
 }
 
 
 /* ============================================================
-   FOOTER
+   FOOTER EMPTY
 ============================================================ */
 
 footer{
 
-  margin-top:38px;
-
-  padding:
-    28px
-    0
-    105px;
-
-  border-top:
-    1px solid var(--border);
-
-  background:#fff;
-
-}
-
-
-.foot{
-
-  display:flex;
-
-  flex-direction:column;
-
-  align-items:center;
-
-  text-align:center;
-
-  gap:8px;
-
-}
-
-
-.foot b{
-
-  color:#26342d;
-
-  font-size:16px;
-
-}
-
-
-.foot small{
-
-  color:#7c8780;
-
-  font-size:9px;
+  display:none !important;
 
 }
 
 
 /* ============================================================
-   MOBILE NAV
+   MOBILE NAVIGATION
 ============================================================ */
 
 .mobile-nav{
@@ -1094,11 +664,9 @@ footer{
 
   justify-content:space-around;
 
-  padding-bottom:
-    env(safe-area-inset-bottom);
-
   border-top:
-    1px solid #e8eeea;
+    1px solid
+    #e8eeea;
 
   background:
     rgba(255,255,255,.97);
@@ -1126,6 +694,8 @@ footer{
 
   color:#657169;
 
+  text-decoration:none;
+
   font-size:8px;
 
   font-weight:700;
@@ -1147,65 +717,16 @@ footer{
 }
 
 
-.mobile-nav a:nth-child(3) span{
-
-  width:48px;
-
-  height:48px;
-
-  margin-top:-28px;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-  border-radius:50%;
-
-  color:#fff;
-
-  background:
-    linear-gradient(
-      135deg,
-      #10a85d,
-      #05733b
-    );
-
-  font-size:28px;
-
-}
-
-
 /* ============================================================
    TABLET
 ============================================================ */
 
 @media(max-width:900px){
 
-  .head{
-
-    grid-template-columns:
-      220px
-      1fr
-      auto;
-
-    gap:12px;
-
-  }
-
-
-  .brand{
-
-    width:220px;
-
-  }
-
-
   .products{
 
     grid-template-columns:
-      repeat(3,1fr);
+      repeat(2,1fr);
 
   }
 
@@ -1216,7 +737,7 @@ footer{
    MOBILE
 ============================================================ */
 
-@media(max-width:650px){
+@media(max-width:600px){
 
   body{
 
@@ -1233,33 +754,12 @@ footer{
   }
 
 
-  .header{
-
-    position:relative;
-
-  }
-
-
   .head{
 
-    min-height:auto;
-
-    display:grid;
-
-    grid-template-columns:
-      1fr
-      auto;
-
-    gap:12px;
-
-    padding:
-      12px
-      0;
+    min-height:66px;
 
   }
 
-
-  /* BRAND */
 
   .brand{
 
@@ -1310,159 +810,23 @@ footer{
   }
 
 
-  /* HEADER NAV */
+  .search-page{
 
-  .head nav a:first-child{
-
-    display:none;
+    padding-top:22px;
 
   }
 
 
-  .head nav a:last-child{
+  .page-top h1{
 
-    min-height:40px;
+    font-size:23px;
 
-    padding:
-      0
-      13px;
+  }
+
+
+  .page-top p{
 
     font-size:10px;
-
-  }
-
-
-  /* SEARCH */
-
-  .header-search{
-
-    grid-column:1/-1;
-
-    grid-row:2;
-
-    min-height:56px;
-
-    padding:
-      6px
-      6px
-      6px
-      13px;
-
-    gap:7px;
-
-    border-radius:16px;
-
-  }
-
-
-  .header-search > span{
-
-    font-size:21px;
-
-  }
-
-
-  .header-search input{
-
-    font-size:12px;
-
-  }
-
-
-  .header-search button{
-
-    height:44px;
-
-    padding:
-      0
-      16px;
-
-    font-size:11px;
-
-  }
-
-
-  /* PAGE HERO */
-
-  .page-hero{
-
-    margin-top:12px;
-
-    padding:
-      22px
-      20px;
-
-    border-radius:19px;
-
-  }
-
-
-  .page-hero:after{
-
-    right:18px;
-
-    width:55px;
-
-    height:55px;
-
-    font-size:28px;
-
-  }
-
-
-  .eyebrow{
-
-    font-size:8px;
-
-  }
-
-
-  .page-hero h1{
-
-    margin:
-      5px
-      0
-      5px;
-
-    font-size:25px;
-
-  }
-
-
-  .page-hero p{
-
-    max-width:240px;
-
-    font-size:10px;
-
-    line-height:1.5;
-
-  }
-
-
-  /* FILTER */
-
-  .filter-section{
-
-    margin-top:13px;
-
-    padding:11px;
-
-    border-radius:17px;
-
-  }
-
-
-  .filter-head{
-
-    margin-bottom:9px;
-
-  }
-
-
-  .filter-head b{
-
-    font-size:12px;
 
   }
 
@@ -1472,7 +836,11 @@ footer{
     grid-template-columns:
       repeat(2,1fr);
 
-    gap:8px;
+    gap:9px;
+
+    padding:10px;
+
+    border-radius:15px;
 
   }
 
@@ -1485,7 +853,7 @@ footer{
   }
 
 
-  #q2{
+  #subcat{
 
     grid-column:
       1/-1;
@@ -1493,72 +861,14 @@ footer{
   }
 
 
-  .filters select,
-
-  .filters input{
+  .filters select{
 
     height:42px;
-
-    border-radius:10px;
-
-    padding:
-      0
-      10px;
 
     font-size:10px;
 
   }
 
-
-  /* RESULT */
-
-  .result-bar{
-
-    margin:
-      16px
-      0
-      10px;
-
-  }
-
-
-  .result-icon{
-
-    width:34px;
-
-    height:34px;
-
-    font-size:16px;
-
-  }
-
-
-  .result-left strong{
-
-    font-size:11px;
-
-  }
-
-
-  .result-left small{
-
-    font-size:8px;
-
-  }
-
-
-  #clear{
-
-    padding:
-      8px
-      10px;
-
-    font-size:8px;
-
-  }
-
-
-  /* PRODUCTS */
 
   .products{
 
@@ -1627,15 +937,6 @@ footer{
 
   }
 
-
-  footer{
-
-    margin-top:28px;
-
-    padding-bottom:90px;
-
-  }
-
 }
 
 </style>
@@ -1647,63 +948,24 @@ footer{
 
 
 <!-- ============================================================
-     HEADER
+HEADER
 ============================================================ -->
 
 <header class="header">
 
 <div class="container head">
 
-
 <a
   class="brand"
   href="index.html">
 
-  <b>শাহমাহমুদপুর</b>
+<b>শাহমাহমুদপুর</b>
 
-  <strong>বাজার</strong>
+<strong>বাজার</strong>
 
-  <small>LOCAL MARKETPLACE</small>
+<small>LOCAL MARKETPLACE</small>
 
 </a>
-
-
-<form
-  id="searchForm"
-  class="header-search">
-
-  <span>⌕</span>
-
-  <input
-    id="search"
-    autocomplete="off"
-    placeholder="আপনি কি খুঁজছেন?">
-
-  <button type="submit">
-
-    🔍 খুঁজুন
-
-  </button>
-
-</form>
-
-
-<nav>
-
-  <a href="favorites.html">
-
-    ♡
-
-  </a>
-
-  <a href="login.html">
-
-    লগইন
-
-  </a>
-
-</nav>
-
 
 </div>
 
@@ -1712,96 +974,174 @@ footer{
 
 
 <!-- ============================================================
-     MAIN
+MAIN
 ============================================================ -->
 
-<main class="container">
+<main class="container search-page">
 
 
-<!-- PAGE HERO -->
+<div class="page-top">
 
-<section class="page-hero">
+<span class="eyebrow">
 
-  <span class="eyebrow">
+MARKETPLACE
 
-    LOCAL MARKETPLACE
+</span>
 
-  </span>
+<h1 id="heading">
 
-  <h1 id="heading">
+সব বিজ্ঞাপন
 
-    সব বিজ্ঞাপন
+</h1>
 
-  </h1>
+<p id="summary">
 
-  <p id="summary">
+আপনার এলাকার প্রকাশিত বিজ্ঞাপনগুলো দেখুন।
 
-    আপনার এলাকার প্রকাশিত বিজ্ঞাপনগুলো দেখুন।
-
-  </p>
-
-</section>
-
-
-
-<!-- FILTER -->
-
-<section class="filter-section">
-
-
-<div class="filter-head">
-
-  <b>বিজ্ঞাপন ফিল্টার করুন</b>
-
-  <span>পছন্দ অনুযায়ী খুঁজুন</span>
+</p>
 
 </div>
 
 
+
+<!-- ============================================================
+FILTERS
+============================================================ -->
+
 <div class="filters">
 
 
+<div class="filter-item">
+
+<label>
+
+ক্যাটাগরি
+
+</label>
+
 <select id="cat">
 
-<option value="">সব ক্যাটাগরি</option>
+<option value="">
 
-<option>Vehicles</option>
+সব ক্যাটাগরি
 
-<option>Property</option>
+</option>
 
-<option>Phones & Tablets</option>
+<option value="Vehicles">
 
-<option>Electronics</option>
+যানবাহন
 
-<option>Home, Furniture & Garden</option>
+</option>
 
-<option>Fashion</option>
+<option value="Property">
 
-<option>Beauty & Personal Care</option>
+প্রপার্টি
 
-<option>Services</option>
+</option>
 
-<option>Repair & Construction</option>
+<option value="Phones & Tablets">
 
-<option>Commercial Equipment & Machinery</option>
+মোবাইল ও ট্যাব
 
-<option>Leisure & Activities</option>
+</option>
 
-<option>Babies & Kids</option>
+<option value="Electronics">
 
-<option>Food, Agriculture & Supplies</option>
+ইলেকট্রনিক্স
 
-<option>Animals & Pets</option>
+</option>
 
-<option>Jobs</option>
+<option value="Home, Furniture & Garden">
 
-<option>Seeking Work - CVs</option>
+ফার্নিচার
 
-<option>Business & Industry</option>
+</option>
+
+<option value="Fashion">
+
+ফ্যাশন
+
+</option>
+
+<option value="Beauty & Personal Care">
+
+বিউটি
+
+</option>
+
+<option value="Services">
+
+সেবা সমূহ
+
+</option>
+
+<option value="Repair & Construction">
+
+মেরামত ও নির্মাণ
+
+</option>
+
+<option value="Commercial Equipment & Machinery">
+
+যন্ত্রপাতি
+
+</option>
+
+<option value="Leisure & Activities">
+
+খেলাধুলা
+
+</option>
+
+<option value="Babies & Kids">
+
+বাচ্চাদের
+
+</option>
+
+<option value="Food, Agriculture & Supplies">
+
+কৃষি
+
+</option>
+
+<option value="Animals & Pets">
+
+পশুপাখি
+
+</option>
+
+<option value="Jobs">
+
+চাকরি
+
+</option>
+
+<option value="Seeking Work - CVs">
+
+কাজ খুঁজছি
+
+</option>
+
+<option value="Business & Industry">
+
+ব্যবসা
+
+</option>
 
 </select>
 
+</div>
 
+
+
+<div class="filter-item">
+
+<label>
+
+সাব-ক্যাটাগরি
+
+</label>
 
 <select id="subcat">
 
@@ -1811,9 +1151,214 @@ footer{
 
 </option>
 
+
+<optgroup label="Vehicles">
+
+<option value="Cars">Cars</option>
+<option value="Motorcycles">Motorcycles</option>
+<option value="Bicycles">Bicycles</option>
+<option value="Auto Rickshaw">Auto Rickshaw</option>
+<option value="Trucks & Buses">Trucks & Buses</option>
+<option value="Vehicle Parts">Vehicle Parts</option>
+
+</optgroup>
+
+
+<optgroup label="Property">
+
+<option value="Land">Land</option>
+<option value="Apartments">Apartments</option>
+<option value="Houses">Houses</option>
+<option value="Shops & Commercial Space">Shops & Commercial Space</option>
+<option value="Office Space">Office Space</option>
+<option value="Property for Rent">Property for Rent</option>
+
+</optgroup>
+
+
+<optgroup label="Phones & Tablets">
+
+<option value="Mobile Phones">Mobile Phones</option>
+<option value="Tablets">Tablets</option>
+<option value="Phone Accessories">Phone Accessories</option>
+<option value="Smart Watches">Smart Watches</option>
+
+</optgroup>
+
+
+<optgroup label="Electronics">
+
+<option value="TV">TV</option>
+<option value="Laptop & Computer">Laptop & Computer</option>
+<option value="Camera">Camera</option>
+<option value="Audio">Audio</option>
+<option value="Gaming">Gaming</option>
+<option value="Other Electronics">Other Electronics</option>
+
+</optgroup>
+
+
+<optgroup label="Home, Furniture & Garden">
+
+<option value="Furniture">Furniture</option>
+<option value="Home Decor">Home Decor</option>
+<option value="Kitchen">Kitchen</option>
+<option value="Garden">Garden</option>
+<option value="Appliances">Appliances</option>
+
+</optgroup>
+
+
+<optgroup label="Fashion">
+
+<option value="Men">Men</option>
+<option value="Women">Women</option>
+<option value="Kids">Kids</option>
+<option value="Shoes">Shoes</option>
+<option value="Bags & Accessories">Bags & Accessories</option>
+<option value="Watches">Watches</option>
+
+</optgroup>
+
+
+<optgroup label="Beauty & Personal Care">
+
+<option value="Cosmetics">Cosmetics</option>
+<option value="Skin Care">Skin Care</option>
+<option value="Hair Care">Hair Care</option>
+<option value="Perfume">Perfume</option>
+<option value="Health & Personal Care">Health & Personal Care</option>
+
+</optgroup>
+
+
+<optgroup label="Services">
+
+<option value="Tutoring">Tutoring</option>
+<option value="Cleaning">Cleaning</option>
+<option value="Transport">Transport</option>
+<option value="Photography">Photography</option>
+<option value="IT & Digital">IT & Digital</option>
+<option value="Other Services">Other Services</option>
+
+</optgroup>
+
+
+<optgroup label="Repair & Construction">
+
+<option value="Electrician">Electrician</option>
+<option value="Plumber">Plumber</option>
+<option value="AC & Fridge Repair">AC & Fridge Repair</option>
+<option value="Construction Materials">Construction Materials</option>
+<option value="Mechanic">Mechanic</option>
+<option value="Painter">Painter</option>
+
+</optgroup>
+
+
+<optgroup label="Commercial Equipment & Machinery">
+
+<option value="Factory Equipment">Factory Equipment</option>
+<option value="Restaurant Equipment">Restaurant Equipment</option>
+<option value="Office Equipment">Office Equipment</option>
+<option value="Tools">Tools</option>
+<option value="Machinery">Machinery</option>
+
+</optgroup>
+
+
+<optgroup label="Leisure & Activities">
+
+<option value="Sports">Sports</option>
+<option value="Gym & Fitness">Gym & Fitness</option>
+<option value="Music">Music</option>
+<option value="Books">Books</option>
+<option value="Tickets & Events">Tickets & Events</option>
+<option value="Hobbies">Hobbies</option>
+
+</optgroup>
+
+
+<optgroup label="Babies & Kids">
+
+<option value="Baby Products">Baby Products</option>
+<option value="Toys">Toys</option>
+<option value="Kids Clothing">Kids Clothing</option>
+<option value="Strollers">Strollers</option>
+<option value="School Items">School Items</option>
+
+</optgroup>
+
+
+<optgroup label="Food, Agriculture & Supplies">
+
+<option value="Vegetables">Vegetables</option>
+<option value="Fruits">Fruits</option>
+<option value="Fish">Fish</option>
+<option value="Livestock Feed">Livestock Feed</option>
+<option value="Seeds">Seeds</option>
+<option value="Farm Products">Farm Products</option>
+
+</optgroup>
+
+
+<optgroup label="Animals & Pets">
+
+<option value="Cattle">Cattle</option>
+<option value="Goat">Goat</option>
+<option value="Poultry">Poultry</option>
+<option value="Pets">Pets</option>
+<option value="Pet Supplies">Pet Supplies</option>
+
+</optgroup>
+
+
+<optgroup label="Jobs">
+
+<option value="Full Time">Full Time</option>
+<option value="Part Time">Part Time</option>
+<option value="Sales Jobs">Sales Jobs</option>
+<option value="Driver Jobs">Driver Jobs</option>
+<option value="Office Jobs">Office Jobs</option>
+<option value="Other Jobs">Other Jobs</option>
+
+</optgroup>
+
+
+<optgroup label="Seeking Work">
+
+<option value="CVs">CVs</option>
+<option value="Job Seekers">Job Seekers</option>
+<option value="Freelancers">Freelancers</option>
+<option value="Skilled Workers">Skilled Workers</option>
+
+</optgroup>
+
+
+<optgroup label="Business & Industry">
+
+<option value="Business for Sale">Business for Sale</option>
+<option value="Wholesale">Wholesale</option>
+<option value="Retail">Retail</option>
+<option value="Industrial Products">Industrial Products</option>
+<option value="Agriculture Business">Agriculture Business</option>
+
+</optgroup>
+
+
 </select>
 
+</div>
 
+
+
+<div class="filter-item">
+
+<label>
+
+এলাকা
+
+</label>
 
 <select id="area">
 
@@ -1823,45 +1368,38 @@ footer{
 
 </option>
 
-<option value="টাহরখীল">টাহরখীল</option>
-
-<option value="মান্দারী">মান্দারী</option>
-
-<option value="লোধেরগাঁও">লোধেরগাঁও</option>
-
-<option value="বিমলেরগাঁও">বিমলেরগাঁও</option>
-
-<option value="দাসেরগাঁও">দাসেরগাঁও</option>
-
-<option value="দমকেরগাঁও">দমকেরগাঁও</option>
-
-<option value="ভাটেরগাঁও">ভাটেরগাঁও</option>
-
-<option value="পাঁচগাঁও">পাঁচগাঁও</option>
-
-<option value="কুমারডুগী">কুমারডুগী</option>
-
-<option value="কৃষ্ণপুর">কৃষ্ণপুর</option>
-
-<option value="ভরঙ্গারচর">ভরঙ্গারচর</option>
-
-<option value="কেতুয়া">কেতুয়া</option>
-
-<option value="আলুমুড়া">আলুমুড়া</option>
-
-<option value="ছোট শাহতলী">ছোট শাহতলী</option>
-
-<option value="বড় শাহতলী">বড় শাহতলী</option>
-
-<option value="পাইকদি">পাইকদি</option>
-
-<option value="রনবলিয়া">রনবলিয়া</option>
-
-<option value="কদ্দি">কদ্দি</option>
+<option>টাহরখীল</option>
+<option>মান্দারী</option>
+<option>লোধেরগাঁও</option>
+<option>বিমলেরগাঁও</option>
+<option>দাসেরগাঁও</option>
+<option>দমকেরগাঁও</option>
+<option>ভাটেরগাঁও</option>
+<option>পাঁচগাঁও</option>
+<option>কুমারডুগী</option>
+<option>কৃষ্ণপুর</option>
+<option>ভরঙ্গারচর</option>
+<option>কেতুয়া</option>
+<option>আলুমুড়া</option>
+<option>ছোট শাহতলী</option>
+<option>বড় শাহতলী</option>
+<option>পাইকদি</option>
+<option>রনবলিয়া</option>
+<option>কদ্দি</option>
 
 </select>
 
+</div>
 
+
+
+<div class="filter-item">
+
+<label>
+
+সাজান
+
+</label>
 
 <select id="sort">
 
@@ -1873,106 +1411,64 @@ footer{
 
 <option value="low">
 
-কম দাম আগে
+কম দাম
 
 </option>
 
 <option value="high">
 
-বেশি দাম আগে
+বেশি দাম
 
 </option>
 
 </select>
 
-
-
-<input
-  id="q2"
-  autocomplete="off"
-  placeholder="পণ্য বা বিজ্ঞাপন খুঁজুন">
+</div>
 
 
 </div>
 
-</section>
 
 
-
-<!-- RESULT BAR -->
+<!-- ============================================================
+RESULT BAR
+============================================================ -->
 
 <div class="result-bar">
 
-
-<div class="result-left">
-
-<div class="result-icon">
-
-📦
-
-</div>
-
-<div>
-
 <strong id="count">
 
-0টি বিজ্ঞাপন
+বিজ্ঞাপন লোড হচ্ছে...
 
 </strong>
-
-<small>
-
-আপনার জন্য পাওয়া বিজ্ঞাপন
-
-</small>
-
-</div>
-
-</div>
 
 
 <button
   id="clear"
+  class="reset-btn"
   type="button">
 
-ফিল্টার রিসেট
+Filter Reset
 
 </button>
-
 
 </div>
 
 
 
-<!-- RESULTS -->
+<!-- ============================================================
+RESULTS
+============================================================ -->
 
 <div
   id="results"
   class="products">
 
-
-<div class="empty-state">
-
-<div class="empty-icon">
-
-⏳
-
-</div>
-
-<b>
+<div class="ads-message">
 
 বিজ্ঞাপন লোড হচ্ছে...
 
-</b>
-
-<small>
-
-একটু অপেক্ষা করুন
-
-</small>
-
 </div>
-
 
 </div>
 
@@ -1981,38 +1477,17 @@ footer{
 
 
 
-<!-- ============================================================
-     FOOTER
-============================================================ -->
+<!-- EMPTY FOOTER -->
 
-<footer>
-
-<div class="container foot">
-
-<b>
-
-শাহমাহমুদপুর বাজার
-
-</b>
-
-<small>
-
-© 2026 Shahmahmudpur Bazar
-
-</small>
-
-</div>
-
-</footer>
+<footer></footer>
 
 
 
 <!-- ============================================================
-     MOBILE NAVIGATION
+MOBILE NAV
 ============================================================ -->
 
 <nav class="mobile-nav">
-
 
 <a href="index.html">
 
@@ -2047,7 +1522,7 @@ footer{
 
 <span>⌕</span>
 
-সার্চ
+খুঁজুন
 
 </a>
 
@@ -2060,28 +1535,28 @@ footer{
 
 </a>
 
-
 </nav>
 
 
 
-<script src="supabase.js"></script>
+<!-- ============================================================
+SCRIPTS
+============================================================ -->
 
-<script src="app.js"></script>
-
+<script src="supabase.js?v=10"></script>
 
 
 <script>
 
 document.addEventListener(
-"DOMContentLoaded",
-async function(){
+  "DOMContentLoaded",
+  async function(){
 
 "use strict";
 
 
 /* ============================================================
-   URL PARAMETERS
+URL PARAMS
 ============================================================ */
 
 const params =
@@ -2090,20 +1565,16 @@ const params =
   );
 
 
-const initialQuery =
-  params.get("q") || "";
-
-
 const initialCategory =
   params.get("category") || "";
 
 
-const trending =
-  params.get("sort") === "trending";
+const initialQuery =
+  params.get("q") || "";
 
 
 /* ============================================================
-   ELEMENTS
+ELEMENTS
 ============================================================ */
 
 const cat =
@@ -2112,10 +1583,6 @@ const cat =
 
 const sub =
   document.getElementById("subcat");
-
-
-const q =
-  document.getElementById("q2");
 
 
 const area =
@@ -2146,224 +1613,60 @@ const summary =
   document.getElementById("summary");
 
 
-const searchForm =
-  document.getElementById("searchForm");
+/* ============================================================
+SUPABASE
+============================================================ */
+
+const SUPA_URL =
+
+  window.SUPABASE_URL ||
+
+  "https://jeupbfoceqmnpwlklche.supabase.co";
 
 
-const topSearch =
-  document.getElementById("search");
+const SUPA_KEY =
+
+  window.SUPABASE_ANON_KEY ||
+
+  window.supabaseAnonKey ||
+
+  "";
 
 
 /* ============================================================
-   SUB CATEGORIES
+SET INITIAL CATEGORY
 ============================================================ */
 
-const subs = {
+if(initialCategory){
 
+  const exists =
+    Array.from(
+      cat.options
+    ).some(function(option){
 
-"Vehicles":[
+      return option.value ===
+        initialCategory;
 
-"Cars",
-"Motorcycles",
-"Bicycles",
-"Auto Rickshaw",
-"Trucks & Buses",
-"Vehicle Parts"
+    });
 
-],
 
+  if(exists){
 
-"Property":[
+    cat.value =
+      initialCategory;
 
-"Land",
-"Apartments",
-"Houses",
-"Shops & Commercial Space",
-"Office Space",
-"Property for Rent"
+  }
 
-],
-
-
-"Phones & Tablets":[
-
-"Mobile Phones",
-"Tablets",
-"Phone Accessories",
-"Smart Watches"
-
-],
-
-
-"Electronics":[
-
-"TV",
-"Laptop & Computer",
-"Camera",
-"Audio",
-"Gaming",
-"Other Electronics"
-
-],
-
-
-"Home, Furniture & Garden":[
-
-"Furniture",
-"Home Decor",
-"Kitchen",
-"Garden",
-"Appliances"
-
-],
-
-
-"Fashion":[
-
-"Men",
-"Women",
-"Kids",
-"Shoes",
-"Bags & Accessories",
-"Watches"
-
-],
-
-
-"Beauty & Personal Care":[
-
-"Cosmetics",
-"Skin Care",
-"Hair Care",
-"Perfume",
-"Health & Personal Care"
-
-],
-
-
-"Services":[
-
-"Tutoring",
-"Cleaning",
-"Transport",
-"Photography",
-"IT & Digital",
-"Other Services"
-
-],
-
-
-"Repair & Construction":[
-
-"Electrician",
-"Plumber",
-"AC & Fridge Repair",
-"Construction Materials",
-"Mechanic",
-"Painter"
-
-],
-
-
-"Commercial Equipment & Machinery":[
-
-"Factory Equipment",
-"Restaurant Equipment",
-"Office Equipment",
-"Tools",
-"Machinery"
-
-],
-
-
-"Leisure & Activities":[
-
-"Sports",
-"Gym & Fitness",
-"Music",
-"Books",
-"Tickets & Events",
-"Hobbies"
-
-],
-
-
-"Babies & Kids":[
-
-"Baby Products",
-"Toys",
-"Kids Clothing",
-"Strollers",
-"School Items"
-
-],
-
-
-"Food, Agriculture & Supplies":[
-
-"Vegetables",
-"Fruits",
-"Fish",
-"Livestock Feed",
-"Seeds",
-"Farm Products"
-
-],
-
-
-"Animals & Pets":[
-
-"Cattle",
-"Goat",
-"Poultry",
-"Pets",
-"Pet Supplies"
-
-],
-
-
-"Jobs":[
-
-"Full Time",
-"Part Time",
-"Sales Jobs",
-"Driver Jobs",
-"Office Jobs",
-"Other Jobs"
-
-],
-
-
-"Seeking Work - CVs":[
-
-"CVs",
-"Job Seekers",
-"Freelancers",
-"Skilled Workers"
-
-],
-
-
-"Business & Industry":[
-
-"Business for Sale",
-"Wholesale",
-"Retail",
-"Industrial Products",
-"Agriculture Business"
-
-]
-
-};
+}
 
 
 /* ============================================================
-   ESCAPE HTML
+HELPERS
 ============================================================ */
 
-function esc(v){
+function esc(value){
 
-  return String(v ?? "")
+  return String(value ?? "")
 
   .replace(
     /&/g,
@@ -2393,16 +1696,13 @@ function esc(v){
 }
 
 
-/* ============================================================
-   IMAGE
-============================================================ */
-
 function getImage(ad){
-
 
   if(
 
-    Array.isArray(ad.image_urls) &&
+    Array.isArray(
+      ad.image_urls
+    ) &&
 
     ad.image_urls.length
 
@@ -2415,37 +1715,36 @@ function getImage(ad){
 
   if(
 
-    typeof ad.image_urls === "string" &&
+    typeof ad.image_urls ===
+    "string" &&
 
     ad.image_urls.trim()
 
   ){
 
+    let value =
+      ad.image_urls.trim();
+
+
     try{
 
-      const x =
-        JSON.parse(
-          ad.image_urls
-        );
+      const parsed =
+        JSON.parse(value);
 
 
       if(
 
-        Array.isArray(x) &&
+        Array.isArray(parsed) &&
 
-        x.length
+        parsed.length
 
       ){
 
-        return x[0];
+        return parsed[0];
 
       }
 
-    }catch(e){}
-
-
-    let value =
-      ad.image_urls.trim();
+    }catch(error){}
 
 
     if(
@@ -2478,156 +1777,81 @@ function getImage(ad){
 
 
 /* ============================================================
-   UPDATE SUB CATEGORY
-============================================================ */
-
-function updateSubs(selected=""){
-
-
-  sub.innerHTML =
-
-    '<option value="">সব সাব-ক্যাটাগরি</option>';
-
-
-  (
-
-    subs[cat.value] || []
-
-  ).forEach(function(x){
-
-
-    const option =
-      document.createElement(
-        "option"
-      );
-
-
-    option.value =
-      x;
-
-
-    option.textContent =
-      x;
-
-
-    if(x === selected){
-
-      option.selected =
-        true;
-
-    }
-
-
-    sub.appendChild(
-      option
-    );
-
-  });
-
-}
-
-
-/* ============================================================
-   INITIAL VALUES
-============================================================ */
-
-if(
-
-  initialCategory &&
-
-  Array.from(
-    cat.options
-  ).some(
-    function(o){
-
-      return o.value ===
-        initialCategory;
-
-    }
-  )
-
-){
-
-  cat.value =
-    initialCategory;
-
-}
-
-
-q.value =
-  initialQuery;
-
-
-topSearch.value =
-  initialQuery;
-
-
-updateSubs();
-
-
-/* ============================================================
-   LOAD ADS
+LOAD ADS DIRECTLY FROM SUPABASE
 ============================================================ */
 
 async function loadAds(){
 
+  if(!SUPA_KEY){
 
-  try{
-
-
-    if(
-
-      typeof window.syncPublishedAds ===
-      "function"
-
-    ){
-
-      const data =
-        await window.syncPublishedAds();
-
-
-      if(
-
-        Array.isArray(data)
-
-      ){
-
-        return data;
-
-      }
-
-    }
-
-
-    if(
-
-      typeof window.ads ===
-      "function"
-
-    ){
-
-      return await window.ads();
-
-    }
-
-
-  }catch(error){
-
-    console.error(
-      "Search ads load error:",
-      error
+    throw new Error(
+      "Supabase key পাওয়া যায়নি"
     );
 
   }
 
 
-  return [];
+  const url =
+
+    SUPA_URL +
+
+    "/rest/v1/ads" +
+
+    "?select=*" +
+
+    "&order=created_at.desc";
+
+
+  const response =
+    await fetch(
+
+      url,
+
+      {
+
+        method:"GET",
+
+        headers:{
+
+          "apikey":
+            SUPA_KEY,
+
+          "Authorization":
+            "Bearer " +
+            SUPA_KEY,
+
+          "Content-Type":
+            "application/json"
+
+        }
+
+      }
+
+    );
+
+
+  if(!response.ok){
+
+    throw new Error(
+      await response.text()
+    );
+
+  }
+
+
+  const data =
+    await response.json();
+
+
+  return Array.isArray(data)
+    ? data
+    : [];
 
 }
 
 
 /* ============================================================
-   RENDER ADS
+RENDER ADS
 ============================================================ */
 
 function render(allAds){
@@ -2635,20 +1859,11 @@ function render(allAds){
 
   let list =
 
-    (
+    Array.isArray(allAds)
 
-      Array.isArray(allAds)
+    ?
 
-      ?
-
-      allAds
-
-      :
-
-      []
-
-    ).filter(function(ad){
-
+    allAds.filter(function(ad){
 
       const status =
         String(
@@ -2664,342 +1879,339 @@ function render(allAds){
 
       );
 
-    });
+    })
+
+    :
+
+    [];
 
 
-  const keyword =
-    q.value
+  const category =
+    cat.value;
+
+
+  const subcategory =
+    sub.value;
+
+
+  const selectedArea =
+    area.value;
+
+
+  const query =
+    initialQuery
     .trim()
     .toLowerCase();
 
 
-  const cv =
-    cat.value;
-
-
-  const sv =
-    sub.value;
-
-
-  const av =
-    area.value;
-
+  /* FILTER */
 
   list =
 
-    list.filter(
-      function(ad){
+    list.filter(function(ad){
 
 
-        const searchable =
-
-          [
-
-            ad.title,
-            ad.category,
-            ad.subcategory,
-            ad.location,
-            ad.description,
-            ad.area,
-            ad.brand,
-            ad.model,
-            ad.phone
-
-          ]
-
-          .map(
-            function(x){
-
-              return String(
-                x || ""
-              );
-
-            }
-          )
-
-          .join(" ")
-
-          .toLowerCase();
+      const adCategory =
+        String(
+          ad.category || ""
+        );
 
 
-        const location =
-          String(
-            ad.location || ""
+      const adSubcategory =
+        String(
+          ad.subcategory || ""
+        );
+
+
+      const location =
+        String(
+          ad.location ||
+          ad.area ||
+          ""
+        );
+
+
+      const searchable =
+
+        [
+
+          ad.title,
+
+          ad.category,
+
+          ad.subcategory,
+
+          ad.location,
+
+          ad.area,
+
+          ad.description,
+
+          ad.brand,
+
+          ad.model
+
+        ]
+
+        .map(function(value){
+
+          return String(
+            value || ""
           );
 
+        })
 
-        if(
+        .join(" ")
 
-          cv &&
-
-          String(
-            ad.category || ""
-          ) !== cv
-
-        ){
-
-          return false;
-
-        }
+        .toLowerCase();
 
 
-        if(
+      if(
 
-          sv &&
+        category &&
 
-          String(
-            ad.subcategory || ""
-          ) !== sv
+        adCategory !== category
 
-        ){
+      ){
 
-          return false;
-
-        }
-
-
-        if(
-
-          keyword &&
-
-          !searchable.includes(
-            keyword
-          )
-
-        ){
-
-          return false;
-
-        }
-
-
-        if(
-
-          av &&
-
-          !location
-          .toLowerCase()
-          .includes(
-            av.toLowerCase()
-          )
-
-        ){
-
-          return false;
-
-        }
-
-
-        return true;
+        return false;
 
       }
-    );
 
 
-/* SORT */
+      if(
+
+        subcategory &&
+
+        adSubcategory !==
+        subcategory
+
+      ){
+
+        return false;
+
+      }
 
 
-if(
+      if(
 
-  sort.value === "low"
+        selectedArea &&
 
-){
+        !location.includes(
+          selectedArea
+        )
 
-  list.sort(
-    function(a,b){
+      ){
 
-      return (
-        Number(a.price || 0) -
-        Number(b.price || 0)
+        return false;
+
+      }
+
+
+      if(
+
+        query &&
+
+        !searchable.includes(
+          query
+        )
+
+      ){
+
+        return false;
+
+      }
+
+
+      return true;
+
+    });
+
+
+  /* SORT */
+
+  if(
+
+    sort.value === "low"
+
+  ){
+
+    list.sort(function(a,b){
+
+      return Number(
+        a.price || 0
+      )
+
+      -
+
+      Number(
+        b.price || 0
       );
 
-    }
-  );
+    });
 
-}
+  }
 
 
-else if(
+  else if(
 
-  sort.value === "high"
+    sort.value === "high"
 
-){
+  ){
 
-  list.sort(
-    function(a,b){
+    list.sort(function(a,b){
 
-      return (
-        Number(b.price || 0) -
-        Number(a.price || 0)
+      return Number(
+        b.price || 0
+      )
+
+      -
+
+      Number(
+        a.price || 0
       );
 
-    }
-  );
+    });
 
-}
-
-
-else if(
-
-  trending
-
-){
-
-  list.sort(
-    function(a,b){
-
-      return (
-        Number(b.views || 0) -
-        Number(a.views || 0)
-      );
-
-    }
-  );
-
-}
+  }
 
 
-else{
+  else{
 
-  list.sort(
-    function(a,b){
+    list.sort(function(a,b){
 
       return String(
         b.created_at ||
-        b.id ||
         ""
       ).localeCompare(
 
         String(
           a.created_at ||
-          a.id ||
           ""
         )
 
       );
 
-    }
-  );
+    });
 
-}
-
-
-/* RESULT COUNT */
+  }
 
 
-count.textContent =
+  /* COUNT */
 
-  list.length +
-  "টি বিজ্ঞাপন";
+  count.textContent =
 
+    list.length +
 
-/* HEADING */
-
-
-heading.textContent =
-
-  cv ||
-
-  "সব বিজ্ঞাপন";
+    "টি বিজ্ঞাপন";
 
 
-summary.textContent =
+  /* HEADING */
 
-  cv && sv
+  if(category){
 
-  ?
+    heading.textContent =
+      cat.options[
+        cat.selectedIndex
+      ].textContent;
 
-  cv +
-  " — " +
-  sv +
-  " এর বিজ্ঞাপন দেখানো হচ্ছে।"
+  }
 
+  else{
 
-  :
+    heading.textContent =
+      "সব বিজ্ঞাপন";
 
-  cv
-
-  ?
-
-  cv +
-  " এর বিজ্ঞাপন দেখানো হচ্ছে।"
+  }
 
 
-  :
+  /* SUMMARY */
 
-  av
+  if(category && subcategory){
 
-  ?
+    summary.textContent =
 
-  av +
-  " এলাকার প্রকাশিত বিজ্ঞাপন দেখানো হচ্ছে।"
+      cat.options[
+        cat.selectedIndex
+      ].textContent +
 
+      " — " +
 
-  :
+      subcategory +
 
-  keyword
+      " এর বিজ্ঞাপন দেখানো হচ্ছে।";
 
-  ?
-
-  '"' +
-  q.value.trim() +
-  '" এর সার্চ রেজাল্ট দেখানো হচ্ছে।"
+  }
 
 
-  :
+  else if(category){
 
-  "আপনার এলাকার প্রকাশিত বিজ্ঞাপনগুলো দেখুন。";
+    summary.textContent =
+
+      cat.options[
+        cat.selectedIndex
+      ].textContent +
+
+      " ক্যাটাগরির বিজ্ঞাপন দেখানো হচ্ছে।";
+
+  }
 
 
-/* EMPTY */
+  else if(selectedArea){
+
+    summary.textContent =
+
+      selectedArea +
+
+      " এলাকার বিজ্ঞাপন দেখানো হচ্ছে।";
+
+  }
 
 
-if(!list.length){
+  else{
+
+    summary.textContent =
+
+      "আপনার এলাকার প্রকাশিত বিজ্ঞাপনগুলো দেখুন।";
+
+  }
 
 
-  results.innerHTML = `
+  /* EMPTY */
 
-    <div class="empty-state">
+  if(!list.length){
 
-      <div class="empty-icon">
+    results.innerHTML = `
 
-        🔎
+      <div class="ads-message">
+
+        কোনো বিজ্ঞাপন পাওয়া যায়নি।
+
+        <br>
+
+        <small>
+
+          অন্য ক্যাটাগরি বা filter দিয়ে চেষ্টা করুন।
+
+        </small>
 
       </div>
 
-      <b>
+    `;
 
-        কোনো বিজ্ঞাপন পাওয়া যায়নি
+    return;
 
-      </b>
-
-      <small>
-
-        অন্য শব্দ বা ফিল্টার দিয়ে চেষ্টা করুন।
-
-      </small>
-
-    </div>
-
-  `;
+  }
 
 
-  return;
+  /* PRODUCTS */
 
-}
+  results.innerHTML =
 
-
-/* PRODUCTS */
-
-
-results.innerHTML =
-
-  list.map(
-    function(ad){
+    list.map(function(ad){
 
 
       const title =
-
         esc(
           ad.title ||
           "বিজ্ঞাপন"
@@ -3007,18 +2219,17 @@ results.innerHTML =
 
 
       const location =
-
         esc(
           ad.location ||
+          ad.area ||
           ""
         );
 
 
       const category =
-
         esc(
           ad.category ||
-          "বিজ্ঞাপন"
+          "Marketplace"
         );
 
 
@@ -3032,7 +2243,9 @@ results.innerHTML =
 
         Number(
           ad.price || 0
-        ).toLocaleString(
+        )
+
+        .toLocaleString(
           "bn-BD"
         );
 
@@ -3048,7 +2261,6 @@ results.innerHTML =
         <div class="photo">
 
           <img
-            class="product-image"
             src="${esc(image)}"
             alt="${title}"
             loading="lazy">
@@ -3074,14 +2286,13 @@ results.innerHTML =
 
         <article
           class="product"
-          data-id="${esc(ad.id || "")}">
-
+          data-id="${esc(
+            ad.id || ""
+          )}">
 
           ${photo}
 
-
           <div class="body">
-
 
             <span class="badge">
 
@@ -3110,36 +2321,31 @@ results.innerHTML =
 
             </div>
 
-
           </div>
-
 
         </article>
 
       `;
 
-    }
+    })
+
+    .join("");
+
+
+  /* CLICK */
+
+  results
+  .querySelectorAll(
+    ".product"
   )
 
-  .join("");
-
-
-/* CLICK PRODUCT */
-
-
-results
-.querySelectorAll(
-  ".product"
-)
-
-.forEach(
-  function(card){
-
+  .forEach(function(card){
 
     card.addEventListener(
-      "click",
-      function(){
 
+      "click",
+
+      function(){
 
         const id =
           card.dataset.id;
@@ -3156,19 +2362,30 @@ results
         }
 
       }
+
     );
 
-  }
-);
+  });
 
 }
 
 
 /* ============================================================
-   LOAD
+LOAD DATA
 ============================================================ */
 
 let allAds = [];
+
+
+results.innerHTML = `
+
+<div class="ads-message">
+
+বিজ্ঞাপন লোড হচ্ছে...
+
+</div>
+
+`;
 
 
 try{
@@ -3178,35 +2395,29 @@ try{
     await loadAds();
 
 
-  render(
-    allAds
-  );
+  render(allAds);
 
 
 }catch(error){
 
 
   console.error(
-    "Search render error:",
+    "Search load error:",
     error
   );
 
 
+  count.textContent =
+    "0টি বিজ্ঞাপন";
+
+
   results.innerHTML = `
 
-    <div class="empty-state">
+    <div class="ads-message">
 
-      <div class="empty-icon">
+      বিজ্ঞাপন লোড করা যাচ্ছে না।
 
-        ⚠️
-
-      </div>
-
-      <b>
-
-        বিজ্ঞাপন লোড করা যাচ্ছে না
-
-      </b>
+      <br>
 
       <small>
 
@@ -3222,115 +2433,75 @@ try{
 
 
 /* ============================================================
-   EVENTS
+EVENTS
 ============================================================ */
 
-
 cat.addEventListener(
-  "change",
-  function(){
 
-    updateSubs();
+  "change",
+
+  function(){
 
     render(allAds);
 
   }
+
 );
 
 
 sub.addEventListener(
+
   "change",
+
   function(){
 
     render(allAds);
 
   }
+
 );
 
 
 area.addEventListener(
+
   "change",
+
   function(){
 
     render(allAds);
 
   }
+
 );
 
 
 sort.addEventListener(
+
   "change",
+
   function(){
 
     render(allAds);
 
   }
+
 );
-
-
-q.addEventListener(
-  "input",
-  function(){
-
-    topSearch.value =
-      q.value;
-
-    render(allAds);
-
-  }
-);
-
-
-searchForm.addEventListener(
-  "submit",
-  function(event){
-
-    event.preventDefault();
-
-
-    q.value =
-      topSearch.value.trim();
-
-
-    render(allAds);
-
-  }
-);
-
-
-/* RESET */
 
 
 clear.addEventListener(
+
   "click",
+
   function(){
 
 
-    cat.value =
-      "";
+    cat.value = "";
 
+    sub.value = "";
 
-    updateSubs();
+    area.value = "";
 
-
-    sub.value =
-      "";
-
-
-    q.value =
-      "";
-
-
-    topSearch.value =
-      "";
-
-
-    area.value =
-      "";
-
-
-    sort.value =
-      "new";
+    sort.value = "new";
 
 
     render(allAds);
@@ -3339,25 +2510,19 @@ clear.addEventListener(
     try{
 
       history.replaceState(
-
         {},
-
         document.title,
-
         "search.html"
-
       );
 
-    }catch(e){}
-
+    }catch(error){}
 
   }
-);
-
-
-}
 
 );
+
+
+});
 
 </script>
 
