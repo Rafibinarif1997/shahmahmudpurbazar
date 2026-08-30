@@ -5,146 +5,820 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport"
-      content="width=device-width,initial-scale=1">
+<meta
+  name="viewport"
+  content="width=device-width,initial-scale=1">
 
-<title>Chat | শাহমাহমুদপুর বাজার</title>
+<title>মেসেজ | শাহমাহমুদপুর বাজার</title>
 
-<link rel="stylesheet"
-      href="style.css">
+<link
+  rel="stylesheet"
+  href="style.css">
+
 
 <style>
 
-.chat-page{
-  max-width:760px;
-  padding:30px 16px 110px;
+/* ==========================================================
+   PREMIUM CHAT PAGE
+========================================================== */
+
+:root{
+  --page-bg:#f5f8f6;
+  --card:#ffffff;
+  --card-soft:#f8fbf9;
+  --border:#dfe9e3;
+  --border-strong:#cfe0d6;
+  --text:#1f3027;
+  --text-secondary:#53645b;
+  --muted:#718078;
+  --green:#0d7d4a;
+  --green-dark:#086b3d;
+  --green-soft:#eaf7ef;
 }
+
+
+/* ==========================================================
+   BASE
+========================================================== */
+
+body{
+  background:var(--page-bg);
+  color:var(--text);
+}
+
+
+/* ==========================================================
+   PAGE
+========================================================== */
+
+.chat-page{
+  width:100%;
+  max-width:900px;
+  margin:0 auto;
+  padding:30px 24px 120px;
+  box-sizing:border-box;
+}
+
+
+/* ==========================================================
+   BRAND
+========================================================== */
+
+.chat-page .brand{
+  display:inline-flex;
+  margin-bottom:20px;
+}
+
+
+/* ==========================================================
+   BACK BUTTON
+========================================================== */
 
 .back{
-  display:inline-block;
-  margin-top:20px;
-  color:#69f5a5;
+
+  display:inline-flex;
+
+  align-items:center;
+
+  gap:7px;
+
+  padding:9px 13px;
+
+  border:1px solid var(--border);
+
+  border-radius:12px;
+
+  background:#ffffff;
+
+  color:var(--green-dark);
+
   text-decoration:none;
-  font-size:10px;
+
+  font-size:11px;
+
+  font-weight:800;
+
+  transition:
+    transform .2s ease,
+    border-color .2s ease,
+    box-shadow .2s ease;
+
 }
+
+
+.back:hover{
+
+  transform:translateY(-2px);
+
+  border-color:#bcdac8;
+
+  box-shadow:
+    0 8px 20px rgba(20,70,45,.08);
+
+}
+
+
+/* ==========================================================
+   CHAT BOX
+========================================================== */
 
 .chat-box{
-  margin-top:20px;
+
+  position:relative;
+
+  margin-top:18px;
+
   overflow:hidden;
-  border:1px solid rgba(105,245,165,.12);
-  border-radius:18px;
-  background:rgba(5,14,10,.72);
+
+  border:1px solid var(--border);
+
+  border-radius:24px;
+
+  background:
+    radial-gradient(
+      circle at 100% 0%,
+      rgba(60,185,110,.10),
+      transparent 30%
+    ),
+    linear-gradient(
+      145deg,
+      #ffffff,
+      #fbfdfc
+    );
+
+  box-shadow:
+    0 18px 60px rgba(20,70,45,.08);
+
 }
+
+
+/* ==========================================================
+   CHAT HEADER
+========================================================== */
 
 .chat-header{
-  padding:17px;
-  border-bottom:1px solid rgba(255,255,255,.06);
+
+  position:relative;
+
+  padding:22px 24px;
+
+  border-bottom:
+    1px solid #e7eee9;
+
+  background:
+    linear-gradient(
+      145deg,
+      #ffffff,
+      #f9fcfa
+    );
+
 }
+
+
+.chat-header::after{
+
+  content:"";
+
+  position:absolute;
+
+  width:130px;
+  height:130px;
+
+  top:-70px;
+  right:-50px;
+
+  border-radius:50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(60,185,110,.11),
+      transparent 70%
+    );
+
+  pointer-events:none;
+
+}
+
 
 .chat-header small{
-  display:block;
-  color:#69f5a5;
-  font-size:8px;
-  font-weight:800;
-  letter-spacing:1.5px;
+
+  position:relative;
+
+  z-index:1;
+
+  display:inline-flex;
+
+  align-items:center;
+
+  gap:6px;
+
+  padding:6px 10px;
+
+  border-radius:100px;
+
+  background:var(--green-soft);
+
+  border:1px solid #d7ebde;
+
+  color:var(--green-dark);
+
+  font-size:9px;
+
+  font-weight:900;
+
+  letter-spacing:.8px;
+
 }
+
 
 .chat-header h2{
-  margin:6px 0;
-  color:#edf7f1;
-  font-size:18px;
+
+  position:relative;
+
+  z-index:1;
+
+  margin:12px 0 6px;
+
+  color:#1d3026;
+
+  font-size:22px;
+
+  font-weight:900;
+
+  line-height:1.4;
+
 }
+
 
 .chat-header p{
+
+  position:relative;
+
+  z-index:1;
+
   margin:0;
-  color:#718078;
-  font-size:9px;
+
+  color:var(--muted);
+
+  font-size:11px;
+
+  font-weight:600;
+
 }
 
+
+/* ==========================================================
+   MESSAGES AREA
+========================================================== */
+
 .messages{
-  height:430px;
+
+  height:500px;
+
   overflow-y:auto;
-  padding:16px;
+
+  padding:22px;
+
+  box-sizing:border-box;
+
+  background:
+    linear-gradient(
+      180deg,
+      #fbfdfc,
+      #f7faf8
+    );
+
+  scrollbar-width:thin;
+
+  scrollbar-color:
+    #c8d8ce
+    transparent;
+
 }
+
+
+.messages::-webkit-scrollbar{
+
+  width:6px;
+
+}
+
+
+.messages::-webkit-scrollbar-track{
+
+  background:transparent;
+
+}
+
+
+.messages::-webkit-scrollbar-thumb{
+
+  border-radius:20px;
+
+  background:#c8d8ce;
+
+}
+
+
+/* ==========================================================
+   EMPTY / LOADING
+========================================================== */
 
 .empty,
 .loading{
+
   height:100%;
+
   display:flex;
+
   align-items:center;
+
   justify-content:center;
+
   text-align:center;
-  color:#718078;
-  font-size:11px;
+
+  color:var(--muted);
+
+  font-size:12px;
+
+  font-weight:600;
+
+  line-height:1.8;
+
 }
+
+
+/* ==========================================================
+   MESSAGE ROW
+========================================================== */
 
 .row{
+
   display:flex;
-  margin-bottom:12px;
+
+  margin-bottom:14px;
+
+  animation:
+    messageAppear
+    .25s ease;
+
 }
+
+
+@keyframes messageAppear{
+
+  from{
+
+    opacity:0;
+
+    transform:
+      translateY(6px);
+
+  }
+
+  to{
+
+    opacity:1;
+
+    transform:
+      translateY(0);
+
+  }
+
+}
+
 
 .row.mine{
+
   justify-content:flex-end;
+
 }
+
 
 .row.theirs{
+
   justify-content:flex-start;
+
 }
+
+
+/* ==========================================================
+   MESSAGE BUBBLE
+========================================================== */
 
 .bubble{
-  max-width:80%;
-  padding:8px 11px;
-  border-radius:14px;
-  font-size:11px;
-  line-height:1.5;
+
+  max-width:78%;
+
+  padding:11px 14px 9px;
+
+  border-radius:18px;
+
+  font-size:12px;
+
+  font-weight:500;
+
+  line-height:1.65;
+
   white-space:pre-wrap;
+
   word-break:break-word;
+
+  box-sizing:border-box;
+
 }
+
 
 .mine .bubble{
-  color:#031009;
-  background:#69f5a5;
-  border-bottom-right-radius:4px;
+
+  color:#ffffff;
+
+  background:
+    linear-gradient(
+      135deg,
+      #087443,
+      #159358
+    );
+
+  border-bottom-right-radius:5px;
+
+  box-shadow:
+    0 8px 18px rgba(8,116,67,.15);
+
 }
+
 
 .theirs .bubble{
-  color:#dce9e1;
-  background:#14231b;
-  border:1px solid rgba(255,255,255,.06);
-  border-bottom-left-radius:4px;
+
+  color:#34443b;
+
+  background:#ffffff;
+
+  border:1px solid var(--border);
+
+  border-bottom-left-radius:5px;
+
+  box-shadow:
+    0 5px 15px rgba(20,70,45,.04);
+
 }
+
 
 .time{
+
   display:block;
-  margin-top:3px;
-  font-size:7px;
-  opacity:.65;
+
+  margin-top:4px;
+
+  font-size:8px;
+
+  font-weight:600;
+
+  opacity:.7;
+
 }
+
+
+.mine .time{
+
+  color:
+    rgba(255,255,255,.8);
+
+}
+
+
+.theirs .time{
+
+  color:#74827a;
+
+}
+
+
+/* ==========================================================
+   FORM
+========================================================== */
 
 .form{
+
   display:flex;
-  gap:8px;
-  padding:13px;
-  border-top:1px solid rgba(255,255,255,.06);
+
+  align-items:center;
+
+  gap:10px;
+
+  padding:16px;
+
+  border-top:
+    1px solid #e5ece7;
+
+  background:#ffffff;
+
 }
+
 
 .form input{
+
   flex:1;
+
   min-width:0;
+
+  height:48px;
+
+  padding:
+    0
+    16px;
+
+  box-sizing:border-box;
+
+  border:
+    1px solid #dce8e1;
+
+  border-radius:14px;
+
+  outline:none;
+
+  background:#f8fbf9;
+
+  color:var(--text);
+
+  font-family:inherit;
+
+  font-size:12px;
+
+  transition:
+    border-color .2s ease,
+    box-shadow .2s ease,
+    background .2s ease;
+
 }
+
+
+.form input:focus{
+
+  border-color:
+    rgba(13,125,74,.45);
+
+  background:#ffffff;
+
+  box-shadow:
+    0 0 0 4px
+    rgba(13,125,74,.07);
+
+}
+
+
+.form input::placeholder{
+
+  color:#9aa79f;
+
+}
+
 
 .form button{
-  flex:0 0 auto;
+
+  flex:none;
+
+  height:48px;
+
+  padding:
+    0
+    20px;
+
+  border-radius:14px;
+
+  font-size:12px;
+
+  font-weight:850;
+
 }
 
+
+/* ==========================================================
+   ERROR
+========================================================== */
+
 .error{
-  margin:14px;
-  padding:12px;
-  border-radius:10px;
-  border:1px solid rgba(255,90,90,.18);
-  color:#ff9d9d;
-  font-size:10px;
-  line-height:1.7;
+
+  margin:18px;
+
+  padding:16px;
+
+  border-radius:14px;
+
+  border:
+    1px solid #f0d5d5;
+
+  background:#fff8f8;
+
+  color:#b64a4a;
+
+  font-size:11px;
+
+  font-weight:600;
+
+  line-height:1.8;
+
+}
+
+
+/* ==========================================================
+   TABLET
+========================================================== */
+
+@media(max-width:900px){
+
+  .chat-page{
+
+    max-width:760px;
+
+    padding:
+      20px 14px
+      110px;
+
+  }
+
+
+  .chat-page .brand{
+
+    margin-bottom:16px;
+
+  }
+
+
+  .chat-box{
+
+    border-radius:20px;
+
+  }
+
+
+  .chat-header{
+
+    padding:20px;
+
+  }
+
+
+  .messages{
+
+    height:480px;
+
+    padding:18px;
+
+  }
+
+
+}
+
+
+/* ==========================================================
+   MOBILE
+========================================================== */
+
+@media(max-width:600px){
+
+  .chat-page{
+
+    padding:
+      16px 12px
+      105px;
+
+  }
+
+
+  .back{
+
+    padding:8px 11px;
+
+    font-size:10px;
+
+    border-radius:10px;
+
+  }
+
+
+  .chat-box{
+
+    margin-top:14px;
+
+    border-radius:18px;
+
+  }
+
+
+  .chat-header{
+
+    padding:18px 16px;
+
+  }
+
+
+  .chat-header small{
+
+    font-size:8px;
+
+    padding:5px 9px;
+
+  }
+
+
+  .chat-header h2{
+
+    margin-top:10px;
+
+    font-size:18px;
+
+  }
+
+
+  .chat-header p{
+
+    font-size:10px;
+
+  }
+
+
+  .messages{
+
+    height:430px;
+
+    padding:14px;
+
+  }
+
+
+  .row{
+
+    margin-bottom:10px;
+
+  }
+
+
+  .bubble{
+
+    max-width:86%;
+
+    padding:10px 12px 8px;
+
+    border-radius:16px;
+
+    font-size:11px;
+
+    line-height:1.6;
+
+  }
+
+
+  .time{
+
+    font-size:7px;
+
+  }
+
+
+  .form{
+
+    gap:8px;
+
+    padding:11px;
+
+  }
+
+
+  .form input{
+
+    height:44px;
+
+    padding:0 13px;
+
+    border-radius:12px;
+
+    font-size:11px;
+
+  }
+
+
+  .form button{
+
+    height:44px;
+
+    padding:0 14px;
+
+    border-radius:12px;
+
+    font-size:11px;
+
+  }
+
+
+  .empty,
+  .loading{
+
+    font-size:11px;
+
+  }
+
 }
 
 </style>
@@ -159,23 +833,28 @@
 
 
 <a
-  href="messages.html"
+  href="index.html"
   class="brand">
 
   <b>শাহমাহমুদপুর</b>
 
   <strong>বাজার</strong>
 
-  <small>LOCAL MARKETPLACE</small>
+  <small>
+    স্থানীয় অনলাইন বাজার
+  </small>
 
 </a>
+
+
+<br>
 
 
 <a
   href="messages.html"
   class="back">
 
-  ← Messages
+  ← সকল মেসেজ
 
 </a>
 
@@ -186,11 +865,11 @@
 <div class="chat-header">
 
   <small>
-    PRIVATE CHAT
+    💬 ব্যক্তিগত কথোপকথন
   </small>
 
   <h2 id="title">
-    Chat
+    কথোপকথন
   </h2>
 
   <p id="person">
@@ -220,14 +899,15 @@
     type="text"
     maxlength="2000"
     autocomplete="off"
-    placeholder="মেসেজ লিখুন...">
+    placeholder="আপনার মেসেজ লিখুন...">
+
 
   <button
     id="send"
     type="submit"
     class="btn green">
 
-    Send
+    পাঠান
 
   </button>
 
@@ -244,31 +924,49 @@
 <nav class="mobile-nav">
 
 <a href="index.html">
+
   <span>⌂</span>
-  Home
+
+  হোম
+
 </a>
+
 
 <a href="favorites.html">
+
   <span>♡</span>
-  Saved
+
+  সংরক্ষিত
+
 </a>
+
 
 <a href="post-ad.html">
+
   <span>⊞</span>
-  Sell
+
+  ক্রয়-বিক্রয়
+
 </a>
 
-<a class="active"
-   href="messages.html">
+
+<a
+  class="active"
+  href="messages.html">
 
   <span>▤</span>
-  Messages
+
+  ম্যাসেজ
 
 </a>
 
+
 <a href="profile.html">
+
   <span>♙</span>
-  Profile
+
+  প্রোফাইল
+
 </a>
 
 </nav>
@@ -671,10 +1369,6 @@ async function findConversation(
   }
 
 
-  /*
-   * Conversation না থাকলে তৈরি হবে
-   */
-
   const insertUrl =
     SUPA_URL +
     "/rest/v1/conversations";
@@ -735,9 +1429,6 @@ async function findConversation(
 
 async function loadConversation(){
 
-  /*
-   * Inbox থেকে conversation ID
-   */
 
   if(conversationId){
 
@@ -778,10 +1469,6 @@ async function loadConversation(){
   }
 
 
-  /*
-   * Product page থেকে ad ID
-   */
-
   else if(adId){
 
     const ad =
@@ -796,11 +1483,6 @@ async function loadConversation(){
 
     }
 
-
-    /*
-     * Seller হলে seller-এর নিজের
-     * conversation খুঁজবে না।
-     */
 
     if(
       String(ad.seller_id) ===
@@ -847,10 +1529,6 @@ async function loadConversation(){
   }
 
 
-  /*
-   * Participant verification
-   */
-
   const uid =
     String(
       currentUser.id
@@ -879,10 +1557,6 @@ async function loadConversation(){
   }
 
 
-  /*
-   * অপর পক্ষ
-   */
-
   if(
     String(
       conversation.buyer_id
@@ -899,10 +1573,6 @@ async function loadConversation(){
 
   }
 
-
-  /*
-   * Product title
-   */
 
   try{
 
@@ -931,7 +1601,7 @@ async function loadConversation(){
 
 
   personEl.textContent =
-    "Private conversation";
+    "ব্যক্তিগত কথোপকথন";
 
 }
 
@@ -954,12 +1624,6 @@ async function markMessagesAsRead(){
 
 
   try{
-
-    /*
-     * শুধু এই conversation-এর
-     * এবং আমাকে পাঠানো message
-     * এবং unread message update হবে।
-     */
 
     const url =
 
@@ -1036,11 +1700,6 @@ async function markMessagesAsRead(){
 
   }catch(error){
 
-    /*
-     * Read update ব্যর্থ হলেও
-     * chat বন্ধ হবে না।
-     */
-
     console.error(
       "READ ERROR:",
       error
@@ -1090,11 +1749,6 @@ async function loadMessages(){
     ? data
     : [];
 
-
-  /*
-   * Message দেখানোর আগে
-   * incoming unread messages read করা হবে।
-   */
 
   await markMessagesAsRead();
 
@@ -1253,7 +1907,7 @@ async function sendMessage(){
   send.disabled = true;
 
   send.textContent =
-    "Sending...";
+    "পাঠানো হচ্ছে...";
 
 
   try{
@@ -1291,10 +1945,6 @@ async function sendMessage(){
             body:
               text,
 
-            /*
-             * নতুন message অবশ্যই unread
-             */
-
             is_read:
               false
 
@@ -1331,7 +1981,7 @@ async function sendMessage(){
     send.disabled = false;
 
     send.textContent =
-      "Send";
+      "পাঠান";
 
     input.focus();
 
@@ -1374,7 +2024,7 @@ async function start(){
 
         <div class="empty">
 
-          আগে Login করুন।
+          মেসেজ দেখতে আগে লগইন করুন।
 
           <br><br>
 
@@ -1382,7 +2032,7 @@ async function start(){
             href="login.html"
             class="btn green">
 
-            Login
+            লগইন করুন
 
           </a>
 
@@ -1408,24 +2058,11 @@ async function start(){
     }
 
 
-    /*
-     * Conversation load
-     */
-
     await loadConversation();
 
 
-    /*
-     * প্রথমবার message load
-     * + unread mark as read
-     */
-
     await loadMessages();
 
-
-    /*
-     * প্রতি ৩ সেকেন্ডে নতুন message check
-     */
 
     setInterval(
       async function(){
