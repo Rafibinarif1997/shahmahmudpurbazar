@@ -1,1 +1,135 @@
+<!doctype html>
+<html lang="bn">
 
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+  name="viewport"
+  content="width=device-width,initial-scale=1">
+
+<title>
+বিজ্ঞাপন এডিট করুন | শাহমাহমুদপুর বাজার
+</title>
+
+<link
+  rel="stylesheet"
+  href="style.css">
+
+</head>
+
+
+<body>
+
+
+<main class="container page">
+
+
+<a
+  href="my-ads.html"
+  class="brand">
+
+  <b>
+    শাহমাহমুদপুর
+  </b>
+
+  <strong>
+    বাজার
+  </strong>
+
+  <small>
+    LOCAL MARKETPLACE
+  </small>
+
+</a>
+
+
+<div
+  id="loading"
+  style="
+    margin-top:30px;
+    padding:40px;
+    text-align:center;
+  ">
+
+  বিজ্ঞাপনের তথ্য লোড হচ্ছে...
+
+</div>
+
+
+<div
+  id="content"
+  style="display:none">
+
+</div>
+
+
+</main>
+
+
+<script>
+
+(function(){
+
+"use strict";
+
+
+/* ============================================================
+   GET AD ID FROM URL
+============================================================ */
+
+const params =
+  new URLSearchParams(
+    window.location.search
+  );
+
+
+const adId =
+  params.get("id");
+
+
+/* ============================================================
+   CHECK AD ID
+============================================================ */
+
+if(!adId){
+
+  document.getElementById(
+    "loading"
+  ).innerHTML = `
+
+    বিজ্ঞাপনের ID পাওয়া যায়নি।
+
+    <br><br>
+
+    <a href="my-ads.html">
+
+      ← আমার বিজ্ঞাপনে ফিরে যান
+
+    </a>
+
+  `;
+
+  return;
+
+}
+
+
+/* ============================================================
+   TEST
+============================================================ */
+
+console.log(
+  "Editing Ad ID:",
+  adId
+);
+
+
+})();
+
+</script>
+
+
+</body>
+</html>
