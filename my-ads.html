@@ -1747,41 +1747,18 @@ function renderAds(
 
         }
 
-
         /* ----------------------------------------------------
-           CLICK
-        ---------------------------------------------------- */
+   CLICK
+---------------------------------------------------- */
 
-        let clickAttribute =
-          "";
+const clickAttribute = `
 
+  onclick="
+    window.location.href =
+    'edit-ad.html?id=${encodeURIComponent(ad.id)}'
+  "
 
-        /*
-         * Pending:
-         * কোনো onclick থাকবে না।
-         */
-
-        if(
-          isPublished
-        ){
-
-          /*
-           * Approved হলে homepage-এ যাবে।
-           * Hash হিসেবে ad.id পাঠানো হচ্ছে।
-           */
-
-          clickAttribute = `
-
-            onclick="
-              window.location.href =
-              'index.html#${encodeURIComponent(
-                ad.id
-              )}'
-            "
-
-          `;
-
-        }
+`;
 
 
         /* ----------------------------------------------------
