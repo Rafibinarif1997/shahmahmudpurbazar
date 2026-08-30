@@ -21,7 +21,7 @@
 <style>
 
 /* ============================================================
-   PROFILE PAGE — MODERN WHITE DESIGN
+   PROFILE PAGE — HOME PAGE MATCHING WHITE DESIGN
 ============================================================ */
 
 :root{
@@ -53,6 +53,11 @@
 }
 
 
+html{
+  scroll-behavior:smooth;
+}
+
+
 body{
 
   margin:0;
@@ -74,39 +79,63 @@ body{
     "Segoe UI",
     sans-serif;
 
+  padding-bottom:72px;
+
+}
+
+
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+
+.container{
+
+  width:min(1180px,calc(100% - 40px));
+
+  margin:auto;
+
 }
 
 
 /* ============================================================
-   PAGE
+   HEADER — SAME AS HOME PAGE
 ============================================================ */
 
-.profile-page{
+.header{
 
-  min-height:100vh;
+  position:sticky;
 
-  padding:
-    28px
-    16px
-    115px;
+  top:0;
+
+  z-index:100;
+
+  background:
+    rgba(255,255,255,.96);
+
+  backdrop-filter:
+    blur(18px);
+
+  border-bottom:
+    1px solid rgba(20,70,45,.10);
 
 }
 
 
-.profile-wrap{
+.topbar{
 
-  max-width:680px;
+  min-height:76px;
 
-  margin:
-    26px
-    auto
-    0;
+  display:flex;
+
+  align-items:center;
 
 }
 
 
 /* ============================================================
-   BRAND
+   BRAND — SAME AS HOME PAGE
 ============================================================ */
 
 .brand{
@@ -215,6 +244,33 @@ body{
 }
 
 
+/* ============================================================
+   PAGE
+============================================================ */
+
+.profile-page{
+
+  min-height:100vh;
+
+  padding:
+    28px
+    16px
+    115px;
+
+}
+
+
+.profile-wrap{
+
+  max-width:680px;
+
+  margin:
+    26px
+    auto
+    0;
+
+}
+
 
 /* ============================================================
    PROFILE CARD
@@ -253,8 +309,6 @@ body{
 
 }
 
-
-/* decorative background */
 
 .profile-card:before{
 
@@ -558,107 +612,16 @@ body{
 
 .profile-actions .btn{
 
-  min-height:52px;
-
   display:flex;
 
   align-items:center;
 
-  justify-content:center;
-
-  gap:8px;
-
-  padding:
-    12px
-    15px;
-
-  border:
-    1px solid
-    var(--border);
-
-  border-radius:14px;
-
-  background:#fff;
-
-  color:#29362f;
-
-  font-size:12px;
-
-  font-weight:850;
-
-  text-align:center;
-
-  transition:.2s ease;
-
-}
-
-
-.profile-actions .btn:first-child{
-
-  color:#fff;
-
-  border-color:
-    transparent;
-
-  background:
-    linear-gradient(
-      135deg,
-      #0d9b55,
-      #05743a
-    );
-
-  box-shadow:
-    0 8px 20px
-    rgba(11,143,75,.16);
-
-}
-
-
-.profile-actions .btn:first-child:before{
-
-  content:"▣";
-
-  font-size:16px;
-
-}
-
-
-.profile-actions .btn:last-child{
-
-  background:
-    #fff;
-
-}
-
-
-.profile-actions .btn:last-child:before{
-
-  content:"♡";
-
-  color:#e53935;
-
-  font-size:20px;
-
-  line-height:1;
-
-}
-
-
-.profile-actions .btn:hover{
-
-  transform:
-    translateY(-2px);
-
-}
-
-  .profile-actions .btn{
-  display:flex;
-  align-items:center;
   justify-content:center;
 
   min-height:52px;
 
   border:1px solid #dfe9e2;
+
   border-radius:14px;
 
   background:#ffffff;
@@ -666,16 +629,19 @@ body{
   color:#1d2923 !important;
 
   font-size:13px;
+
   font-weight:850;
 
   box-shadow:
     0 6px 18px rgba(30,55,42,.06);
 
   transition:.2s ease;
+
 }
 
 
 .profile-actions .btn:hover{
+
   transform:translateY(-2px);
 
   border-color:#0b8f4b;
@@ -684,20 +650,31 @@ body{
 
   box-shadow:
     0 10px 24px rgba(11,143,75,.12);
+
 }
 
-  .profile-actions a[href="my-ads.html"]{
+
+.profile-actions a[href="my-ads.html"]{
+
   background:#eaf8ef;
+
   border-color:#cfead9;
+
   color:#08763e !important;
+
 }
 
 
 .profile-actions a[href="favorites.html"]{
+
   background:#fff4f4;
+
   border-color:#f3d7d7;
+
   color:#d93636 !important;
+
 }
+
 
 /* ============================================================
    LOGOUT
@@ -774,7 +751,7 @@ body{
 
 
 /* ============================================================
-   MOBILE NAVIGATION
+   MOBILE NAVIGATION — SAME AS HOME PAGE
 ============================================================ */
 
 .mobile-nav{
@@ -834,8 +811,6 @@ body{
 
   font-weight:700;
 
-  text-decoration:none;
-
 }
 
 
@@ -889,33 +864,33 @@ body{
 
 @media(max-width:600px){
 
-  .profile-page{
-
-    padding:
-      22px
-      12px
-      100px;
-
+  body{
+    padding-bottom:78px;
   }
 
 
-  .profile-wrap{
-
-    margin-top:20px;
-
+  .container{
+    width:calc(100% - 24px);
   }
 
 
-  .profile-page > .brand{
-
-    width:210px;
-
-    padding-left:48px;
-
+  .header{
+    position:relative;
   }
 
 
-  .profile-page > .brand:before{
+  .topbar{
+    min-height:66px;
+  }
+
+
+  .brand{
+    width:190px;
+    padding-left:47px;
+  }
+
+
+  .brand:before{
 
     width:38px;
 
@@ -928,25 +903,42 @@ body{
   }
 
 
-  .profile-page > .brand b{
+  .brand b{
+    font-size:14px;
+  }
 
-    font-size:15px;
+
+  .brand strong{
+
+    position:static;
+
+    width:auto;
+
+    margin-left:4px;
+
+    font-size:14px;
 
   }
 
 
-  .profile-page > .brand strong{
-
-    left:160px;
-
-    font-size:15px;
-
-  }
-
-
-  .profile-page > .brand small{
-
+  .brand small{
     font-size:7px;
+  }
+
+
+  .profile-page{
+
+    padding:
+      22px
+      0
+      100px;
+
+  }
+
+
+  .profile-wrap{
+
+    margin-top:20px;
 
   }
 
@@ -986,16 +978,12 @@ body{
 
 
   .avatar-placeholder{
-
     font-size:28px;
-
   }
 
 
   .profile-name{
-
     font-size:21px;
-
   }
 
 
@@ -1020,9 +1008,7 @@ body{
 
 
   .info-value{
-
     font-size:10px;
-
   }
 
 
@@ -1065,6 +1051,27 @@ body{
 }
 
 
+/* ============================================================
+   FIX EXTRA EMPTY SPACE
+============================================================ */
+
+html,
+body{
+  min-height:0 !important;
+}
+
+
+body{
+  display:block !important;
+  padding-bottom:72px !important;
+}
+
+
+main{
+  flex:none !important;
+}
+
+
 </style>
 
 </head>
@@ -1073,23 +1080,33 @@ body{
 <body>
 
 
+<!-- ============================================================
+     HEADER — SAME AS HOMEPAGE
+============================================================ -->
+
+<header class="header">
+
+  <div class="container topbar">
+
+    <a
+      href="index.html"
+      class="brand">
+
+      <b>শাহমাহমুদপুর</b>
+
+      <strong>বাজার</strong>
+
+      <small>LOCAL MARKETPLACE</small>
+
+    </a>
+
+  </div>
+
+</header>
+
+
+
 <main class="container profile-page">
-
-
-  <a
-    href="index.html"
-    class="brand">
-
-    <b>শাহমাহমুদপুর</b>
-
-    <strong>বাজার</strong>
-
-    <small>
-      LOCAL MARKETPLACE
-    </small>
-
-  </a>
-
 
 
   <section class="profile-wrap">
@@ -1239,6 +1256,11 @@ body{
 
 </main>
 
+
+
+<!-- ============================================================
+     MOBILE NAV — SAME AS HOMEPAGE
+============================================================ -->
 
 <nav class="mobile-nav">
 
@@ -1415,10 +1437,6 @@ body{
     try{
 
 
-      /*
-       * প্রথমে Supabase session
-       */
-
       let session = null;
 
 
@@ -1432,11 +1450,6 @@ body{
 
       }
 
-
-      /*
-       * Session পাওয়া গেলে Supabase
-       * থেকে আসল Google user নেওয়া হবে।
-       */
 
       if(
         session &&
@@ -1457,11 +1470,6 @@ body{
 
       }
 
-
-      /*
-       * OAuth callback-এর পরে
-       * local user backup হিসেবে ব্যবহার।
-       */
 
       const saved =
         localStorage.getItem(
@@ -1515,10 +1523,6 @@ body{
       }
 
 
-      /*
-       * কোথাও session নেই।
-       */
-
       window.location.href =
         "login.html";
 
@@ -1530,11 +1534,6 @@ body{
         error
       );
 
-
-      /*
-       * Local backup থাকলে
-       * সেটাও চেষ্টা করবে।
-       */
 
       const saved =
         localStorage.getItem(
