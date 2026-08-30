@@ -17,52 +17,950 @@
   rel="stylesheet"
   href="style.css">
 
-  <style>
 
-/* EDIT AD PAGE */
+<style>
 
-.edit-card{
+/* ============================================================
+   ROOT
+============================================================ */
+
+:root{
+
+  --green:#0b8f4b;
+  --green-dark:#05743a;
+  --green-light:#eaf8ef;
+
+  --text:#1d2923;
+  --muted:#758078;
+
+  --border:#e2eae5;
+  --bg:#f7faf8;
+  --card:#ffffff;
+
+}
+
+
+/* ============================================================
+   BODY
+============================================================ */
+
+body{
+
+  margin:0;
+
+  background:
+    linear-gradient(
+      180deg,
+      #f7faf8 0%,
+      #ffffff 45%,
+      #f7faf8 100%
+    );
+
+  color:var(--text);
+
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  padding-bottom:40px;
+
+}
+
+
+a{
+  text-decoration:none;
+}
+
+
+/* ============================================================
+   PAGE
+============================================================ */
+
+.page{
+
+  max-width:900px;
+
+  margin:auto;
+
+  padding:
+    35px
+    16px
+    60px;
+
+}
+
+
+/* ============================================================
+   BRAND
+============================================================ */
+
+.page .brand{
+
+  display:flex;
+
+  flex-wrap:wrap;
+
+  align-items:center;
+
+  width:250px;
+
+  position:relative;
+
+  padding-left:58px;
+
+  color:var(--text);
+
+}
+
+
+.page .brand:before{
+
+  content:"🛍";
+
+  position:absolute;
+
+  left:0;
+
+  top:50%;
+
+  transform:translateY(-50%);
+
+  width:45px;
+
+  height:45px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  border-radius:14px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #0d9b55,
+      #05743a
+    );
+
+  font-size:25px;
+
+  box-shadow:
+    0 8px 20px
+    rgba(11,143,75,.22);
+
+}
+
+
+.page .brand b{
+
+  width:100%;
+
+  color:#27352e;
+
+  font-size:19px;
+
+  font-weight:900;
+
+  letter-spacing:-.5px;
+
+}
+
+
+.page .brand strong{
+
+  position:absolute;
+
+  left:188px;
+
+  top:0;
+
+  color:var(--green);
+
+  font-size:19px;
+
+  font-weight:900;
+
+}
+
+
+.page .brand small{
+
+  width:100%;
+
+  margin-top:3px;
+
+  color:#66726b;
+
+  font-size:9px;
+
+  font-weight:800;
+
+  letter-spacing:1.5px;
+
+}
+
+
+/* ============================================================
+   PAGE WRAP
+============================================================ */
+
+.page-wrap{
 
   margin-top:30px;
 
-  padding:25px;
+}
 
-  background:#ffffff;
 
-  border-radius:18px;
+/* ============================================================
+   BACK BUTTON
+============================================================ */
 
-  border:1px solid #e2eae5;
+.back-link{
 
-  color:#1d2923;
+  display:inline-flex;
 
-  box-shadow:
-    0 10px 30px
-    rgba(0,0,0,.08);
+  align-items:center;
+
+  gap:6px;
+
+  margin-bottom:18px;
+
+  color:
+    var(--muted);
+
+  font-size:11px;
+
+  font-weight:700;
 
 }
 
 
-.edit-card h2{
+.back-link:hover{
+
+  color:
+    var(--green);
+
+}
+
+
+/* ============================================================
+   HEADER CARD
+============================================================ */
+
+.edit-header{
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-between;
+
+  gap:20px;
+
+  padding:
+    25px
+    28px;
+
+  border:
+    1px solid
+    var(--border);
+
+  border-radius:22px;
+
+  background:
+
+    radial-gradient(
+      circle at 90% 20%,
+      rgba(105,245,165,.16),
+      transparent 35%
+    ),
+
+    linear-gradient(
+      135deg,
+      #ffffff,
+      #f2fbf5
+    );
+
+  box-shadow:
+    0 15px 40px
+    rgba(30,55,42,.06);
+
+}
+
+
+.header-eyebrow{
+
+  display:inline-block;
+
+  margin-bottom:8px;
+
+  padding:
+    6px
+    10px;
+
+  border-radius:50px;
+
+  background:
+    var(--green-light);
+
+  color:
+    var(--green);
+
+  font-size:8px;
+
+  font-weight:900;
+
+  letter-spacing:1.4px;
+
+}
+
+
+.edit-header h2{
+
+  margin:0;
+
+  color:#26362d;
+
+  font-size:25px;
+
+  font-weight:900;
+
+}
+
+
+.edit-header p{
 
   margin:
+    7px
     0
+    0;
+
+  color:
+    var(--muted);
+
+  font-size:11px;
+
+}
+
+
+/* ============================================================
+   LOADING
+============================================================ */
+
+.loading-box{
+
+  margin-top:22px;
+
+  padding:
+    60px
+    20px;
+
+  text-align:center;
+
+  color:
+    var(--muted);
+
+  font-size:12px;
+
+  border:
+    1px solid
+    var(--border);
+
+  border-radius:20px;
+
+  background:#fff;
+
+  box-shadow:
+    0 12px 35px
+    rgba(30,55,42,.05);
+
+}
+
+
+/* ============================================================
+   FORM CARD
+============================================================ */
+
+.edit-form-card{
+
+  margin-top:22px;
+
+  padding:28px;
+
+  border:
+    1px solid
+    var(--border);
+
+  border-radius:22px;
+
+  background:#fff;
+
+  box-shadow:
+    0 12px 35px
+    rgba(30,55,42,.05);
+
+}
+
+
+/* ============================================================
+   FORM GRID
+============================================================ */
+
+.form-grid{
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(0,1fr)
+    );
+
+  gap:18px;
+
+}
+
+
+.form-group.full{
+
+  grid-column:
+    1 / -1;
+
+}
+
+
+/* ============================================================
+   LABEL
+============================================================ */
+
+.form-group label{
+
+  display:block;
+
+  margin-bottom:8px;
+
+  color:#425047;
+
+  font-size:10px;
+
+  font-weight:800;
+
+}
+
+
+/* ============================================================
+   INPUT
+============================================================ */
+
+.form-group input,
+
+.form-group textarea{
+
+  width:100%;
+
+  box-sizing:border-box;
+
+  border:
+    1px solid
+    var(--border);
+
+  border-radius:12px;
+
+  outline:none;
+
+  background:#fff;
+
+  color:#26362d;
+
+  font-family:inherit;
+
+  font-size:13px;
+
+  transition:.2s ease;
+
+}
+
+
+.form-group input{
+
+  height:48px;
+
+  padding:
+    0
+    14px;
+
+}
+
+
+.form-group textarea{
+
+  min-height:130px;
+
+  padding:14px;
+
+  resize:vertical;
+
+}
+
+
+.form-group input:focus,
+
+.form-group textarea:focus{
+
+  border-color:
+    rgba(11,143,75,.65);
+
+  box-shadow:
+    0 0 0 3px
+    rgba(11,143,75,.08);
+
+}
+
+
+/* ============================================================
+   STATUS INFO
+============================================================ */
+
+.status-info{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:10px;
+
+  margin-bottom:24px;
+
+  padding:
+    13px
+    15px;
+
+  border-radius:13px;
+
+  background:
+    #f6faf7;
+
+  border:
+    1px solid
+    var(--border);
+
+}
+
+
+.status-dot{
+
+  width:9px;
+
+  height:9px;
+
+  border-radius:50%;
+
+  background:
+    #f2b84b;
+
+}
+
+
+.status-dot.published{
+
+  background:
+    var(--green);
+
+}
+
+
+.status-text{
+
+  color:
+    #536057;
+
+  font-size:10px;
+
+  font-weight:700;
+
+}
+
+
+/* ============================================================
+   BUTTON AREA
+============================================================ */
+
+.form-actions{
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:flex-end;
+
+  gap:12px;
+
+  margin-top:26px;
+
+  padding-top:22px;
+
+  border-top:
+    1px solid
+    var(--border);
+
+}
+
+
+/* ============================================================
+   BUTTON
+============================================================ */
+
+.cancel-btn{
+
+  display:inline-flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  min-height:46px;
+
+  padding:
+    0
+    18px;
+
+  border-radius:13px;
+
+  border:
+    1px solid
+    var(--border);
+
+  background:#fff;
+
+  color:
+    var(--muted);
+
+  font-size:11px;
+
+  font-weight:800;
+
+}
+
+
+.save-btn{
+
+  display:inline-flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  min-height:46px;
+
+  padding:
     0
     20px;
 
-  color:#1d2923;
+  border:none;
 
-  font-size:22px;
+  border-radius:13px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #0d9b55,
+      #05743a
+    );
+
+  color:#fff;
+
+  font-family:inherit;
+
+  font-size:11px;
+
+  font-weight:900;
+
+  cursor:pointer;
+
+  box-shadow:
+    0 10px 22px
+    rgba(11,143,75,.20);
+
+  transition:.2s ease;
 
 }
 
 
-.edit-card p{
+.save-btn:hover{
 
-  color:#4f5d55;
+  transform:
+    translateY(-2px);
+
+}
+
+
+.save-btn:disabled{
+
+  opacity:.65;
+
+  cursor:not-allowed;
+
+  transform:none;
+
+}
+
+
+/* ============================================================
+   MESSAGE
+============================================================ */
+
+.form-message{
+
+  margin-top:16px;
+
+  padding:12px 14px;
+
+  border-radius:12px;
+
+  font-size:10px;
+
+  line-height:1.5;
+
+}
+
+
+.form-message.success{
+
+  color:#19713f;
+
+  background:#eefaf2;
+
+  border:
+    1px solid
+    #ccebd7;
+
+}
+
+
+.form-message.error{
+
+  color:#a13d3d;
+
+  background:#fff2f2;
+
+  border:
+    1px solid
+    #f1d0d0;
+
+}
+
+
+/* ============================================================
+   ERROR BOX
+============================================================ */
+
+.error-box{
+
+  margin-top:22px;
+
+  padding:
+    50px
+    20px;
+
+  text-align:center;
+
+  border:
+    1px solid
+    var(--border);
+
+  border-radius:20px;
+
+  background:#fff;
+
+}
+
+
+.error-icon{
+
+  width:58px;
+
+  height:58px;
+
+  margin:
+    0
+    auto
+    15px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  border-radius:50%;
+
+  background:#fff4f4;
+
+  font-size:25px;
+
+}
+
+
+.error-box strong{
+
+  display:block;
+
+  color:#26362d;
+
+  margin-bottom:8px;
 
   font-size:15px;
 
-  line-height:1.7;
+}
+
+
+.error-box span{
+
+  color:
+    var(--muted);
+
+  font-size:10px;
+
+}
+
+
+/* ============================================================
+   MOBILE
+============================================================ */
+
+@media(max-width:600px){
+
+  .page{
+
+    padding:
+      22px
+      12px
+      45px;
+
+  }
+
+
+  .page .brand{
+
+    width:190px;
+
+    padding-left:47px;
+
+  }
+
+
+  .page .brand:before{
+
+    width:38px;
+
+    height:38px;
+
+    border-radius:12px;
+
+    font-size:22px;
+
+  }
+
+
+  .page .brand b{
+
+    font-size:14px;
+
+  }
+
+
+  .page .brand strong{
+
+    position:static;
+
+    width:auto;
+
+    margin-left:4px;
+
+    font-size:14px;
+
+  }
+
+
+  .page .brand small{
+
+    font-size:7px;
+
+  }
+
+
+  .page-wrap{
+
+    margin-top:20px;
+
+  }
+
+
+  .edit-header{
+
+    padding:
+      20px
+      18px;
+
+  }
+
+
+  .edit-header h2{
+
+    font-size:21px;
+
+  }
+
+
+  .edit-header p{
+
+    font-size:10px;
+
+  }
+
+
+  .edit-form-card{
+
+    padding:18px;
+
+  }
+
+
+  .form-grid{
+
+    grid-template-columns:1fr;
+
+    gap:15px;
+
+  }
+
+
+  .form-group.full{
+
+    grid-column:auto;
+
+  }
+
+
+  .form-actions{
+
+    flex-direction:column-reverse;
+
+  }
+
+
+  .cancel-btn,
+
+  .save-btn{
+
+    width:100%;
+
+  }
 
 }
 
@@ -77,8 +975,12 @@
 <main class="container page">
 
 
+<!-- ==========================================================
+     BRAND
+=========================================================== -->
+
 <a
-  href="my-ads.html"
+  href="index.html"
   class="brand">
 
   <b>
@@ -96,18 +998,67 @@
 </a>
 
 
+
+<div class="page-wrap">
+
+
+<!-- ==========================================================
+     BACK
+=========================================================== -->
+
+<a
+  href="my-ads.html"
+  class="back-link">
+
+  ← আমার বিজ্ঞাপনে ফিরে যান
+
+</a>
+
+
+
+<!-- ==========================================================
+     HEADER
+=========================================================== -->
+
+<div class="edit-header">
+
+  <div>
+
+    <span class="header-eyebrow">
+      EDIT LISTING
+    </span>
+
+    <h2>
+      বিজ্ঞাপন এডিট করুন
+    </h2>
+
+    <p>
+      আপনার বিজ্ঞাপনের তথ্য পরিবর্তন করুন।
+    </p>
+
+  </div>
+
+</div>
+
+
+
+<!-- ==========================================================
+     LOADING
+=========================================================== -->
+
 <div
   id="loading"
-  style="
-    margin-top:30px;
-    padding:40px;
-    text-align:center;
-  ">
+  class="loading-box">
 
   বিজ্ঞাপনের তথ্য লোড হচ্ছে...
 
 </div>
 
+
+
+<!-- ==========================================================
+     CONTENT
+=========================================================== -->
 
 <div
   id="content"
@@ -115,9 +1066,15 @@
 
 </div>
 
+
+</div>
+
 </main>
 
+
+
 <script src="supabase.js?v=12"></script>
+
 
 <script>
 
@@ -157,7 +1114,7 @@ const content =
 
 
 /* ============================================================
-   GET AD ID FROM URL
+   GET AD ID
 ============================================================ */
 
 const params =
@@ -168,6 +1125,44 @@ const params =
 
 const adId =
   params.get("id");
+
+
+/* ============================================================
+   ESCAPE HTML
+============================================================ */
+
+function escapeHTML(value){
+
+  return String(
+    value ?? ""
+  )
+
+  .replace(
+    /&/g,
+    "&amp;"
+  )
+
+  .replace(
+    /</g,
+    "&lt;"
+  )
+
+  .replace(
+    />/g,
+    "&gt;"
+  )
+
+  .replace(
+    /"/g,
+    "&quot;"
+  )
+
+  .replace(
+    /'/g,
+    "&#039;"
+  );
+
+}
 
 
 /* ============================================================
@@ -254,6 +1249,57 @@ async function getSession(){
 
 
 /* ============================================================
+   NORMALIZE STATUS
+============================================================ */
+
+function normalizeStatus(status){
+
+  return String(
+    status ||
+    "pending"
+  )
+  .trim()
+  .toLowerCase();
+
+}
+
+
+/* ============================================================
+   STATUS TEXT
+============================================================ */
+
+function getStatusText(status){
+
+  if(
+    status === "pending"
+  ){
+
+    return "এই বিজ্ঞাপনটি বর্তমানে Admin approval-এর অপেক্ষায় আছে।";
+
+  }
+
+
+  if(
+
+    status === "approved" ||
+
+    status === "published" ||
+
+    status === "active"
+
+  ){
+
+    return "এই বিজ্ঞাপনটি বর্তমানে Published অবস্থায় আছে।";
+
+  }
+
+
+  return "বিজ্ঞাপনের বর্তমান অবস্থা: " + status;
+
+}
+
+
+/* ============================================================
    LOAD AD
 ============================================================ */
 
@@ -262,6 +1308,22 @@ async function loadAd(
   session
 ){
 
+  const userId =
+    encodeURIComponent(
+      user.id
+    );
+
+
+  const ownership =
+    encodeURIComponent(
+      "(seller_id.eq." +
+      userId +
+      ",user_id.eq." +
+      userId +
+      ")"
+    );
+
+
   const url =
     SUPA_URL +
     "/rest/v1/ads" +
@@ -269,10 +1331,8 @@ async function loadAd(
     encodeURIComponent(
       adId
     ) +
-    "&seller_id=eq." +
-    encodeURIComponent(
-      user.id
-    ) +
+    "&or=" +
+    ownership +
     "&select=*";
 
 
@@ -305,7 +1365,6 @@ async function loadAd(
 
 
     throw new Error(
-      "বিজ্ঞাপন লোড করা যায়নি: " +
       text
     );
 
@@ -316,7 +1375,8 @@ async function loadAd(
     await response.json();
 
 
-  return data && data.length
+  return data &&
+    data.length
     ? data[0]
     : null;
 
@@ -324,12 +1384,10 @@ async function loadAd(
 
 
 /* ============================================================
-   RENDER AD DATA
+   RENDER FORM
 ============================================================ */
 
-function renderAd(
-  ad
-){
+function renderAd(ad){
 
   loading.style.display =
     "none";
@@ -339,33 +1397,421 @@ function renderAd(
     "block";
 
 
+  const status =
+    normalizeStatus(
+      ad.status
+    );
+
+
+  const isPublished =
+
+    status === "approved" ||
+
+    status === "published" ||
+
+    status === "active";
+
+
+  const statusClass =
+    isPublished
+    ? "published"
+    : "";
+
+
   content.innerHTML = `
 
-    <div class="edit-card">
+    <form
+      id="editForm"
+      class="edit-form-card">
 
-      <h2>
-        বিজ্ঞাপন এডিট করুন
-      </h2>
 
-      <p>
-        ${ad.title || ""}
-      </p>
+      <div class="status-info">
 
-      <p>
-        দাম: ৳ ${ad.price || ""}
-      </p>
+        <span
+          class="status-dot ${statusClass}">
+        </span>
 
-      <p>
-        ক্যাটাগরি: ${ad.category || ""}
-      </p>
+        <span class="status-text">
 
-      <p>
-        লোকেশন: ${ad.location || ""}
-      </p>
+          ${escapeHTML(
+            getStatusText(status)
+          )}
 
-    </div>
+        </span>
+
+      </div>
+
+
+      <div class="form-grid">
+
+
+        <!-- TITLE -->
+
+        <div class="form-group full">
+
+          <label>
+            বিজ্ঞাপনের শিরোনাম
+          </label>
+
+          <input
+            type="text"
+            id="title"
+            required
+            value="${escapeHTML(
+              ad.title
+            )}"
+          >
+
+        </div>
+
+
+        <!-- PRICE -->
+
+        <div class="form-group">
+
+          <label>
+            দাম
+          </label>
+
+          <input
+            type="number"
+            id="price"
+            required
+            value="${escapeHTML(
+              ad.price
+            )}"
+          >
+
+        </div>
+
+
+        <!-- CATEGORY -->
+
+        <div class="form-group">
+
+          <label>
+            ক্যাটাগরি
+          </label>
+
+          <input
+            type="text"
+            id="category"
+            value="${escapeHTML(
+              ad.category
+            )}"
+          >
+
+        </div>
+
+
+        <!-- LOCATION -->
+
+        <div class="form-group full">
+
+          <label>
+            লোকেশন
+          </label>
+
+          <input
+            type="text"
+            id="location"
+            value="${escapeHTML(
+              ad.location
+            )}"
+          >
+
+        </div>
+
+
+        <!-- DESCRIPTION -->
+
+        <div class="form-group full">
+
+          <label>
+            বিস্তারিত বিবরণ
+          </label>
+
+          <textarea
+            id="description"
+          >${escapeHTML(
+            ad.description || ""
+          )}</textarea>
+
+        </div>
+
+
+      </div>
+
+
+      <div
+        id="formMessage">
+      </div>
+
+
+      <div class="form-actions">
+
+
+        <a
+          href="my-ads.html"
+          class="cancel-btn">
+
+          বাতিল করুন
+
+        </a>
+
+
+        <button
+          type="submit"
+          id="saveButton"
+          class="save-btn">
+
+          পরিবর্তন সংরক্ষণ করুন
+
+        </button>
+
+
+      </div>
+
+
+    </form>
 
   `;
+
+
+  const form =
+    document.getElementById(
+      "editForm"
+    );
+
+
+  form.addEventListener(
+
+    "submit",
+
+    async function(event){
+
+      event.preventDefault();
+
+
+      await saveAd();
+
+    }
+
+  );
+
+}
+
+
+/* ============================================================
+   SAVE AD
+============================================================ */
+
+async function saveAd(){
+
+  const button =
+    document.getElementById(
+      "saveButton"
+    );
+
+
+  const message =
+    document.getElementById(
+      "formMessage"
+    );
+
+
+  const user =
+    await getUser();
+
+
+  const session =
+    await getSession();
+
+
+  if(
+    !user ||
+    !session
+  ){
+
+    message.innerHTML = `
+
+      <div class="form-message error">
+
+        Login session পাওয়া যায়নি।
+        আবার Login করুন।
+
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+
+  const payload = {
+
+    title:
+      document.getElementById(
+        "title"
+      ).value.trim(),
+
+    price:
+      Number(
+        document.getElementById(
+          "price"
+        ).value
+      ),
+
+    category:
+      document.getElementById(
+        "category"
+      ).value.trim(),
+
+    location:
+      document.getElementById(
+        "location"
+      ).value.trim(),
+
+    description:
+      document.getElementById(
+        "description"
+      ).value.trim()
+
+  };
+
+
+  button.disabled =
+    true;
+
+
+  button.textContent =
+    "সংরক্ষণ হচ্ছে...";
+
+
+  message.innerHTML =
+    "";
+
+
+  try{
+
+    const url =
+      SUPA_URL +
+      "/rest/v1/ads" +
+      "?id=eq." +
+      encodeURIComponent(
+        adId
+      );
+
+
+    const response =
+      await fetch(
+
+        url,
+
+        {
+
+          method:"PATCH",
+
+          headers:{
+
+            "apikey":
+              SUPA_KEY,
+
+            "Authorization":
+              "Bearer " +
+              session.access_token,
+
+            "Content-Type":
+              "application/json",
+
+            "Prefer":
+              "return=representation"
+
+          },
+
+          body:
+            JSON.stringify(
+              payload
+            )
+
+        }
+
+      );
+
+
+    if(!response.ok){
+
+      const text =
+        await response.text();
+
+
+      throw new Error(
+        text
+      );
+
+    }
+
+
+    message.innerHTML = `
+
+      <div class="form-message success">
+
+        ✓ আপনার বিজ্ঞাপন সফলভাবে আপডেট করা হয়েছে।
+
+      </div>
+
+    `;
+
+
+    button.textContent =
+      "✓ সংরক্ষিত";
+
+
+    setTimeout(
+
+      function(){
+
+        window.location.href =
+          "my-ads.html";
+
+      },
+
+      1200
+
+    );
+
+
+  }catch(error){
+
+    console.error(
+      "SAVE ERROR:",
+      error
+    );
+
+
+    message.innerHTML = `
+
+      <div class="form-message error">
+
+        বিজ্ঞাপন আপডেট করা যায়নি।
+        ${escapeHTML(
+          error.message
+        )}
+
+      </div>
+
+    `;
+
+
+    button.disabled =
+      false;
+
+
+    button.textContent =
+      "পরিবর্তন সংরক্ষণ করুন";
+
+  }
 
 }
 
@@ -376,21 +1822,28 @@ function renderAd(
 
 async function initialize(){
 
-  /* Check ID */
+
+  /* CHECK AD ID */
 
   if(!adId){
 
     loading.innerHTML = `
 
-      বিজ্ঞাপনের ID পাওয়া যায়নি।
+      <div class="error-box">
 
-      <br><br>
+        <div class="error-icon">
+          ⚠
+        </div>
 
-      <a href="my-ads.html">
+        <strong>
+          বিজ্ঞাপনের ID পাওয়া যায়নি
+        </strong>
 
-        ← আমার বিজ্ঞাপনে ফিরে যান
+        <span>
+          আবার আমার বিজ্ঞাপন পেজ থেকে চেষ্টা করুন।
+        </span>
 
-      </a>
+      </div>
 
     `;
 
@@ -399,25 +1852,56 @@ async function initialize(){
   }
 
 
-  /* Get user */
+  /* GET USER */
 
-  const user =
+  let user =
     await getUser();
+
+
+  /*
+   * Session একটু delay হলে
+   * আবার চেষ্টা করবে
+   */
+
+  if(!user){
+
+    await new Promise(
+      function(resolve){
+
+        setTimeout(
+          resolve,
+          800
+        );
+
+      }
+    );
+
+
+    user =
+      await getUser();
+
+  }
 
 
   if(!user){
 
     loading.innerHTML = `
 
-      Login session পাওয়া যায়নি।
+      <div class="error-box">
 
-      <br><br>
+        <div class="error-icon">
+          🔐
+        </div>
 
-      <a href="login.html?next=my-ads.html">
+        <strong>
+          Login session পাওয়া যায়নি
+        </strong>
 
-        Login করুন
+        <span>
+          আপনার বিজ্ঞাপন এডিট করতে Login করুন।
+        </span>
 
-      </a>
+      </div>
 
     `;
 
@@ -426,7 +1910,7 @@ async function initialize(){
   }
 
 
-  /* Get session */
+  /* GET SESSION */
 
   const session =
     await getSession();
@@ -436,15 +1920,21 @@ async function initialize(){
 
     loading.innerHTML = `
 
-      Login session পাওয়া যায়নি।
+      <div class="error-box">
 
-      <br><br>
+        <div class="error-icon">
+          🔐
+        </div>
 
-      <a href="login.html?next=my-ads.html">
+        <strong>
+          Login session পাওয়া যায়নি
+        </strong>
 
-        আবার Login করুন
+        <span>
+          আবার Login করে চেষ্টা করুন।
+        </span>
 
-      </a>
+      </div>
 
     `;
 
@@ -453,7 +1943,7 @@ async function initialize(){
   }
 
 
-  /* Load Ad */
+  /* LOAD AD */
 
   try{
 
@@ -468,16 +1958,21 @@ async function initialize(){
 
       loading.innerHTML = `
 
-        বিজ্ঞাপনটি পাওয়া যায়নি অথবা
-        এটি আপনার বিজ্ঞাপন নয়।
+        <div class="error-box">
 
-        <br><br>
+          <div class="error-icon">
+            📄
+          </div>
 
-        <a href="my-ads.html">
+          <strong>
+            বিজ্ঞাপনটি পাওয়া যায়নি
+          </strong>
 
-          ← আমার বিজ্ঞাপনে ফিরে যান
+          <span>
+            এটি আপনার বিজ্ঞাপন নয় অথবা বিজ্ঞাপনটি মুছে ফেলা হয়েছে।
+          </span>
 
-        </a>
+        </div>
 
       `;
 
@@ -501,19 +1996,24 @@ async function initialize(){
 
     loading.innerHTML = `
 
-      বিজ্ঞাপন লোড করা যায়নি।
+      <div class="error-box">
 
-      <br><br>
+        <div class="error-icon">
+          ⚠
+        </div>
 
-      ${error.message}
+        <strong>
+          বিজ্ঞাপন লোড করা যায়নি
+        </strong>
 
-      <br><br>
+        <span>
+          ${escapeHTML(
+            error.message ||
+            "দয়া করে আবার চেষ্টা করুন।"
+          )}
+        </span>
 
-      <a href="my-ads.html">
-
-        ← ফিরে যান
-
-      </a>
+      </div>
 
     `;
 
