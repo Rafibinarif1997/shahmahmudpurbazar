@@ -5,118 +5,856 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport"
-      content="width=device-width,initial-scale=1">
+<meta
+  name="viewport"
+  content="width=device-width,initial-scale=1">
 
-<title>Messages | শাহমাহমুদপুর বাজার</title>
+<title>মেসেজ | শাহমাহমুদপুর বাজার</title>
 
-<link rel="stylesheet"
-      href="style.css">
+<link
+  rel="stylesheet"
+  href="style.css">
+
 
 <style>
 
-.messages-page{
-  max-width:760px;
-  padding:30px 16px 110px;
+/* ============================================================
+   MESSAGES PAGE
+============================================================ */
+
+body{
+  background:
+    linear-gradient(
+      180deg,
+      #f8faf9 0%,
+      #ffffff 45%,
+      #f8faf9 100%
+    );
+
+  color:#1d2923;
 }
 
-.inbox{
-  margin-top:25px;
+
+/* ============================================================
+   HEADER
+============================================================ */
+
+.message-header{
+
+  position:sticky;
+
+  top:0;
+
+  z-index:100;
+
+  background:
+    rgba(255,255,255,.96);
+
+  backdrop-filter:
+    blur(18px);
+
+  border-bottom:
+    1px solid rgba(20,70,45,.10);
+
 }
+
+
+.message-topbar{
+
+  min-height:70px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-between;
+
+}
+
+
+/* ============================================================
+   BRAND
+============================================================ */
+
+.message-brand{
+
+  display:flex;
+
+  flex-wrap:wrap;
+
+  align-items:center;
+
+  width:250px;
+
+  position:relative;
+
+  padding-left:55px;
+
+  text-decoration:none;
+
+}
+
+
+.message-brand:before{
+
+  content:"💬";
+
+  position:absolute;
+
+  left:0;
+
+  top:50%;
+
+  transform:translateY(-50%);
+
+  width:42px;
+
+  height:42px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  border-radius:13px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #0d9b55,
+      #05743a
+    );
+
+  font-size:22px;
+
+  box-shadow:
+    0 8px 18px
+    rgba(11,143,75,.20);
+
+}
+
+
+.message-brand b{
+
+  width:100%;
+
+  color:#27352e;
+
+  font-size:18px;
+
+  font-weight:900;
+
+  letter-spacing:-.5px;
+
+}
+
+
+.message-brand strong{
+
+  position:absolute;
+
+  left:178px;
+
+  top:0;
+
+  color:#0b8f4b;
+
+  font-size:18px;
+
+  font-weight:900;
+
+}
+
+
+.message-brand small{
+
+  width:100%;
+
+  margin-top:3px;
+
+  color:#66726b;
+
+  font-size:8px;
+
+  font-weight:800;
+
+  letter-spacing:1.5px;
+
+}
+
+
+/* ============================================================
+   REFRESH BUTTON
+============================================================ */
+
+.refresh-btn{
+
+  display:inline-flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  gap:7px;
+
+  min-height:40px;
+
+  padding:0 16px;
+
+  border:1px solid #dfe8e2;
+
+  border-radius:12px;
+
+  background:#fff;
+
+  color:#0b8f4b;
+
+  cursor:pointer;
+
+  font-size:11px;
+
+  font-weight:800;
+
+  box-shadow:
+    0 5px 16px
+    rgba(30,55,42,.05);
+
+}
+
+
+.refresh-btn:hover{
+
+  background:#eef9f1;
+
+}
+
+
+/* ============================================================
+   PAGE
+============================================================ */
+
+.messages-page{
+
+  max-width:850px;
+
+  padding:
+    26px
+    0
+    110px;
+
+}
+
+
+/* ============================================================
+   PAGE TITLE
+============================================================ */
+
+.inbox-head{
+
+  display:flex;
+
+  align-items:flex-end;
+
+  justify-content:space-between;
+
+  gap:20px;
+
+  margin-bottom:20px;
+
+}
+
 
 .inbox-head small{
-  color:#69f5a5;
-  font-size:8px;
-  font-weight:800;
-  letter-spacing:2px;
+
+  display:block;
+
+  color:#0b8f4b;
+
+  font-size:9px;
+
+  font-weight:900;
+
+  letter-spacing:1.5px;
+
+  margin-bottom:5px;
+
 }
+
 
 .inbox-head h1{
-  margin:7px 0 5px;
-  color:#edf7f1;
-  font-size:30px;
+
+  margin:0;
+
+  color:#1d2923;
+
+  font-size:28px;
+
+  font-weight:900;
+
+  letter-spacing:-1px;
+
 }
+
 
 .inbox-head p{
-  color:#718078;
-  font-size:10px;
+
+  margin:5px 0 0;
+
+  color:#68736d;
+
+  font-size:11px;
+
 }
 
-.refresh{
-  margin:18px 0;
-  text-align:right;
-}
+
+/* ============================================================
+   CONVERSATION LIST
+============================================================ */
 
 .conversation-list{
+
   display:flex;
+
   flex-direction:column;
+
   gap:10px;
+
 }
+
 
 .conversation{
-  display:block;
-  padding:16px;
-  border:1px solid rgba(105,245,165,.12);
-  border-radius:16px;
-  background:rgba(5,14,10,.72);
+
+  display:flex;
+
+  align-items:center;
+
+  gap:14px;
+
+  padding:14px;
+
+  border:
+    1px solid
+    #e5ece7;
+
+  border-radius:18px;
+
+  background:#fff;
+
   text-decoration:none;
+
+  box-shadow:
+    0 6px 20px
+    rgba(30,55,42,.05);
+
+  transition:
+    transform .18s ease,
+    box-shadow .18s ease,
+    border-color .18s ease;
+
 }
+
+
+.conversation:hover{
+
+  transform:
+    translateY(-2px);
+
+  border-color:
+    rgba(11,143,75,.28);
+
+  box-shadow:
+    0 10px 25px
+    rgba(30,55,42,.09);
+
+}
+
+
+/* ============================================================
+   AVATAR
+============================================================ */
+
+.conversation-avatar{
+
+  flex:0 0 48px;
+
+  width:48px;
+
+  height:48px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  border-radius:15px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #e8f8ee,
+      #d9f2e2
+    );
+
+  font-size:22px;
+
+}
+
+
+/* ============================================================
+   CONTENT
+============================================================ */
+
+.conversation-content{
+
+  flex:1;
+
+  min-width:0;
+
+}
+
 
 .conversation-top{
+
   display:flex;
+
+  align-items:flex-start;
+
   justify-content:space-between;
-  gap:10px;
+
+  gap:12px;
+
 }
+
 
 .ad-title{
-  color:#edf7f1;
-  font-size:14px;
-  font-weight:800;
+
+  overflow:hidden;
+
+  white-space:nowrap;
+
+  text-overflow:ellipsis;
+
+  color:#26342d;
+
+  font-size:13px;
+
+  font-weight:900;
+
 }
+
 
 .person{
-  margin-top:6px;
-  color:#69f5a5;
-  font-size:9px;
+
+  display:inline-flex;
+
+  margin-top:4px;
+
+  padding:
+    3px
+    7px;
+
+  border-radius:6px;
+
+  background:#eef9f1;
+
+  color:#0b8f4b;
+
+  font-size:7px;
+
+  font-weight:900;
+
+  letter-spacing:.7px;
+
 }
+
 
 .last-message{
-  margin-top:10px;
-  color:#87978f;
-  font-size:10px;
-  line-height:1.6;
-  white-space:nowrap;
+
+  margin-top:7px;
+
   overflow:hidden;
+
+  white-space:nowrap;
+
   text-overflow:ellipsis;
+
+  color:#718078;
+
+  font-size:10px;
+
+  line-height:1.5;
+
 }
+
 
 .time{
-  color:#64746c;
+
+  flex:0 0 auto;
+
+  color:#8a9790;
+
   font-size:8px;
+
   white-space:nowrap;
+
 }
 
-.loading,
-.empty{
+
+/* ============================================================
+   LOADING
+============================================================ */
+
+.loading{
+
   padding:60px 20px;
+
   text-align:center;
+
   color:#718078;
+
   font-size:11px;
+
 }
 
-.empty{
-  border:1px solid rgba(105,245,165,.12);
-  border-radius:18px;
-  background:rgba(5,14,10,.55);
+
+.loading:before{
+
+  content:"";
+
+  display:block;
+
+  width:30px;
+
+  height:30px;
+
+  margin:
+    0
+    auto
+    12px;
+
+  border:
+    3px solid
+    #e4eee7;
+
+  border-top-color:
+    #0b8f4b;
+
+  border-radius:50%;
+
+  animation:
+    msgSpin .7s linear infinite;
+
 }
+
+
+@keyframes msgSpin{
+
+  to{
+
+    transform:
+      rotate(360deg);
+
+  }
+
+}
+
+
+/* ============================================================
+   EMPTY STATE
+============================================================ */
+
+.empty{
+
+  padding:
+    55px
+    25px;
+
+  text-align:center;
+
+  border:
+    1px dashed
+    #dce7df;
+
+  border-radius:20px;
+
+  background:#fff;
+
+  color:#718078;
+
+  font-size:11px;
+
+  line-height:1.7;
+
+}
+
+
+.empty-icon{
+
+  width:60px;
+
+  height:60px;
+
+  margin:
+    0
+    auto
+    15px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  border-radius:20px;
+
+  background:#eaf8ef;
+
+  font-size:28px;
+
+}
+
+
+.empty h3{
+
+  margin:
+    0
+    0
+    7px;
+
+  color:#26342d;
+
+  font-size:16px;
+
+}
+
+
+.login-btn{
+
+  display:inline-flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  margin-top:16px;
+
+  padding:
+    11px
+    18px;
+
+  border-radius:12px;
+
+  color:#fff;
+
+  background:
+    linear-gradient(
+      135deg,
+      #0d9b55,
+      #05743a
+    );
+
+  font-size:11px;
+
+  font-weight:800;
+
+}
+
+
+/* ============================================================
+   ERROR
+============================================================ */
 
 .error{
-  padding:14px;
-  border-radius:12px;
-  border:1px solid rgba(255,90,90,.18);
-  color:#ff9d9d;
+
+  padding:18px;
+
+  border:
+    1px solid
+    #f1d5d5;
+
+  border-radius:15px;
+
+  background:#fffafa;
+
+  color:#b54a4a;
+
   font-size:10px;
+
   line-height:1.7;
+
+}
+
+
+/* ============================================================
+   MOBILE
+============================================================ */
+
+@media(max-width:600px){
+
+  .message-header{
+    position:relative;
+  }
+
+
+  .message-topbar{
+
+    min-height:64px;
+
+  }
+
+
+  .message-brand{
+
+    width:210px;
+
+    padding-left:46px;
+
+  }
+
+
+  .message-brand:before{
+
+    width:37px;
+
+    height:37px;
+
+    border-radius:12px;
+
+    font-size:19px;
+
+  }
+
+
+  .message-brand b{
+
+    font-size:14px;
+
+  }
+
+
+  .message-brand strong{
+
+    position:static;
+
+    width:auto;
+
+    margin-left:4px;
+
+    font-size:14px;
+
+  }
+
+
+  .message-brand small{
+
+    font-size:7px;
+
+  }
+
+
+  .messages-page{
+
+    padding:
+      20px
+      0
+      95px;
+
+  }
+
+
+  .inbox-head{
+
+    align-items:flex-start;
+
+    margin-bottom:16px;
+
+  }
+
+
+  .inbox-head h1{
+
+    font-size:24px;
+
+  }
+
+
+  .inbox-head p{
+
+    font-size:10px;
+
+  }
+
+
+  .refresh-btn{
+
+    min-height:36px;
+
+    padding:0 11px;
+
+    font-size:9px;
+
+  }
+
+
+  .conversation{
+
+    gap:11px;
+
+    padding:12px;
+
+    border-radius:15px;
+
+  }
+
+
+  .conversation-avatar{
+
+    flex-basis:42px;
+
+    width:42px;
+
+    height:42px;
+
+    border-radius:13px;
+
+    font-size:19px;
+
+  }
+
+
+  .ad-title{
+
+    font-size:11px;
+
+  }
+
+
+  .person{
+
+    margin-top:3px;
+
+    font-size:6px;
+
+  }
+
+
+  .last-message{
+
+    margin-top:6px;
+
+    font-size:9px;
+
+  }
+
+
+  .time{
+
+    font-size:7px;
+
+  }
+
 }
 
 </style>
@@ -127,11 +865,13 @@
 <body>
 
 
-<main class="container messages-page">
+<header class="message-header">
 
+<div class="container message-topbar">
 
-<a href="index.html"
-   class="brand">
+<a
+  href="index.html"
+  class="message-brand">
 
   <b>শাহমাহমুদপুর</b>
 
@@ -142,40 +882,53 @@
 </a>
 
 
+<button
+  id="refreshBtn"
+  class="refresh-btn"
+  type="button">
+
+  ↻ রিফ্রেশ
+
+</button>
+
+</div>
+
+</header>
+
+
+
+<main
+  class="container messages-page">
+
+
 <section class="inbox">
 
 
 <div class="inbox-head">
 
-  <small>PRIVATE MESSAGES</small>
+<div>
 
-  <h1>Messages</h1>
+<small>PRIVATE MESSAGES</small>
 
-  <p>
-    আপনার Buyer ও Seller কথোপকথন
-  </p>
+<h1>মেসেজ</h1>
+
+<p>
+আপনার Buyer ও Seller কথোপকথন
+</p>
+
+</div>
 
 </div>
 
-
-<div class="refresh">
-
-  <button
-    id="refreshBtn"
-    class="btn">
-
-    ↻ Refresh
-
-  </button>
-
-</div>
 
 
 <div id="result">
 
-  <div class="loading">
-    মেসেজ লোড হচ্ছে...
-  </div>
+<div class="loading">
+
+মেসেজ লোড হচ্ছে...
+
+</div>
 
 </div>
 
@@ -190,31 +943,49 @@
 <nav class="mobile-nav">
 
 <a href="index.html">
-  <span>⌂</span>
-  Home
+
+<span>⌂</span>
+
+হোম
+
 </a>
+
 
 <a href="favorites.html">
-  <span>♡</span>
-  Saved
+
+<span>♡</span>
+
+সেভ করা
+
 </a>
+
 
 <a href="post-ad.html">
-  <span>⊞</span>
-  Sell
-</a>
 
-<a class="active"
-   href="messages.html">
+<span>＋</span>
 
-  <span>▤</span>
-  Messages
+বিজ্ঞাপন দিন
 
 </a>
+
+
+<a
+  class="active"
+  href="messages.html">
+
+<span>▤</span>
+
+মেসেজ
+
+</a>
+
 
 <a href="profile.html">
-  <span>♙</span>
-  Profile
+
+<span>♙</span>
+
+প্রোফাইল
+
 </a>
 
 </nav>
@@ -294,6 +1065,7 @@ async function getSession(){
 
   }
 
+
   return null;
 
 }
@@ -332,11 +1104,15 @@ async function getUser(){
         "null"
       );
 
+
     if(saved && saved.id){
 
       return {
+
         id:saved.id,
+
         email:saved.email || ""
+
       };
 
     }
@@ -393,12 +1169,18 @@ async function api(
 
 
 
+/* ============================================================
+   LOAD INBOX
+============================================================ */
+
 async function loadInbox(){
 
   result.innerHTML = `
 
     <div class="loading">
+
       মেসেজ লোড হচ্ছে...
+
     </div>
 
   `;
@@ -416,17 +1198,30 @@ async function loadInbox(){
 
         <div class="empty">
 
-          🔐<br><br>
+          <div class="empty-icon">
 
-          আগে Login করুন।
+            🔐
 
-          <br><br>
+          </div>
+
+          <h3>
+
+            মেসেজ দেখতে লগইন করুন
+
+          </h3>
+
+          <div>
+
+            আপনার Buyer ও Seller
+            কথোপকথন দেখতে আগে লগইন করুন।
+
+          </div>
 
           <a
             href="login.html"
-            class="btn green">
+            class="login-btn">
 
-            Google দিয়ে Login করুন
+            লগইন করুন
 
           </a>
 
@@ -451,13 +1246,6 @@ async function loadInbox(){
 
     }
 
-
-    /*
-     * প্রথমে আমার conversations
-     *
-     * Buyer অথবা Seller —
-     * দুটো ক্ষেত্রেই conversation পাওয়া যাবে।
-     */
 
     const uid =
       encodeURIComponent(
@@ -501,14 +1289,24 @@ async function loadInbox(){
 
         <div class="empty">
 
-          💬<br><br>
+          <div class="empty-icon">
 
-          এখনো কোনো কথোপকথন নেই।
+            💬
 
-          <br><br>
+          </div>
 
-          কোনো পণ্যের ভিতর থেকে
-          বিক্রেতাকে মেসেজ করুন।
+          <h3>
+
+            এখনো কোনো মেসেজ নেই
+
+          </h3>
+
+          <div>
+
+            কোনো পণ্যের ভিতর থেকে
+            বিক্রেতাকে মেসেজ করুন।
+
+          </div>
 
         </div>
 
@@ -519,21 +1317,12 @@ async function loadInbox(){
     }
 
 
-    /*
-     * Conversation ID গুলো
-     */
-
     const conversationIds =
       conversations
         .map(
           c => String(c.id)
         );
 
-
-    /*
-     * সব conversation-এর message একবারে
-     * নেওয়া হবে।
-     */
 
     const idList =
       conversationIds
@@ -565,11 +1354,6 @@ async function loadInbox(){
       );
 
 
-    /*
-     * প্রতিটি conversation-এর
-     * সর্বশেষ message
-     */
-
     const lastMessages = {};
 
 
@@ -596,10 +1380,6 @@ async function loadInbox(){
 
     }
 
-
-    /*
-     * Ad ID গুলো
-     */
 
     const adIds =
       conversations
@@ -674,10 +1454,6 @@ async function loadInbox(){
     );
 
 
-    /*
-     * Render
-     */
-
     const html =
       conversations
         .map(
@@ -706,9 +1482,6 @@ async function loadInbox(){
               "বিজ্ঞাপন";
 
 
-            let otherId = "";
-
-
             let role = "";
 
 
@@ -721,16 +1494,10 @@ async function loadInbox(){
               )
             ){
 
-              otherId =
-                conversation.seller_id;
-
               role =
                 "SELLER";
 
             }else{
-
-              otherId =
-                conversation.buyer_id;
 
               role =
                 "BUYER";
@@ -748,10 +1515,15 @@ async function loadInbox(){
               ).toLocaleString(
                 "bn-BD",
                 {
+
                   day:"numeric",
+
                   month:"short",
+
                   hour:"numeric",
+
                   minute:"2-digit"
+
                 }
               )
 
@@ -762,10 +1534,15 @@ async function loadInbox(){
               ).toLocaleString(
                 "bn-BD",
                 {
+
                   day:"numeric",
+
                   month:"short",
+
                   hour:"numeric",
+
                   minute:"2-digit"
+
                 }
               );
 
@@ -781,39 +1558,63 @@ async function loadInbox(){
                 class="conversation"
                 href="chat.html?conversation=${encodeURIComponent(cid)}">
 
-                <div
-                  class="conversation-top">
 
-                  <div>
+                <div class="conversation-avatar">
 
-                    <div class="ad-title">
-
-                      ${esc(title)}
-
-                    </div>
-
-                    <div class="person">
-
-                      ${role}
-
-                    </div>
-
-                  </div>
-
-                  <div class="time">
-
-                    ${esc(time)}
-
-                  </div>
+                  💬
 
                 </div>
 
 
-                <div class="last-message">
+                <div class="conversation-content">
 
-                  ${esc(preview)}
+
+                  <div class="conversation-top">
+
+
+                    <div
+                      style="
+                        min-width:0;
+                        flex:1;
+                      ">
+
+
+                      <div class="ad-title">
+
+                        ${esc(title)}
+
+                      </div>
+
+
+                      <div class="person">
+
+                        ${role}
+
+                      </div>
+
+
+                    </div>
+
+
+                    <div class="time">
+
+                      ${esc(time)}
+
+                    </div>
+
+
+                  </div>
+
+
+                  <div class="last-message">
+
+                    ${esc(preview)}
+
+                  </div>
+
 
                 </div>
+
 
               </a>
 
@@ -847,7 +1648,7 @@ async function loadInbox(){
 
       <div class="error">
 
-        Messages লোড করা যাচ্ছে না।
+        মেসেজ লোড করা যাচ্ছে না।
 
         <br><br>
 
