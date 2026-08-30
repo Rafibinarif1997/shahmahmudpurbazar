@@ -21,13 +21,231 @@ Admin Panel | শাহমাহমুদপুর বাজার
 <style>
 
 /* ============================================================
+   ADMIN PAGE - HOMEPAGE STYLE
+============================================================ */
+
+:root{
+
+  --green:#0b8f4b;
+  --green-dark:#05743a;
+  --green-light:#e9f8ef;
+
+  --text:#1d2923;
+  --muted:#66736c;
+
+  --border:#e6ece8;
+
+  --bg:#f8faf9;
+
+}
+
+
+/* ============================================================
    PAGE
 ============================================================ */
 
+body{
+
+  margin:0;
+
+  background:
+    linear-gradient(
+      180deg,
+      #f8faf9 0%,
+      #ffffff 45%,
+      #f8faf9 100%
+    );
+
+  color:var(--text);
+
+  padding-bottom:90px;
+
+}
+
+
 .admin-page{
-  max-width:1100px;
-  margin:auto;
-  padding:30px 16px 110px;
+
+  padding-top:28px;
+
+  padding-bottom:30px;
+
+}
+
+
+/* ============================================================
+   HEADER
+============================================================ */
+
+.header{
+
+  background:
+    rgba(255,255,255,.96);
+
+  border-bottom:
+    1px solid
+    rgba(20,70,45,.10);
+
+}
+
+
+.head{
+
+  min-height:76px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-between;
+
+}
+
+
+.brand{
+
+  display:flex;
+
+  flex-wrap:wrap;
+
+  align-items:center;
+
+  width:250px;
+
+  position:relative;
+
+  padding-left:58px;
+
+  text-decoration:none;
+
+}
+
+
+.brand:before{
+
+  content:"🛍";
+
+  position:absolute;
+
+  left:0;
+
+  top:50%;
+
+  transform:translateY(-50%);
+
+  width:45px;
+
+  height:45px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  border-radius:14px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #0d9b55,
+      #05743a
+    );
+
+  font-size:26px;
+
+  box-shadow:
+    0 8px 18px
+    rgba(11,143,75,.22);
+
+}
+
+
+.brand b{
+
+  width:100%;
+
+  font-size:19px;
+
+  font-weight:900;
+
+  letter-spacing:-.5px;
+
+  color:#27352e !important;
+
+}
+
+
+.brand strong{
+
+  position:absolute;
+
+  top:0;
+
+  left:188px;
+
+  color:#0b8f4b !important;
+
+  font-size:19px;
+
+  font-weight:900;
+
+}
+
+
+.brand small{
+
+  width:100%;
+
+  margin-top:3px;
+
+  color:#66726b !important;
+
+  font-size:9px;
+
+  font-weight:800;
+
+  letter-spacing:1.5px;
+
+}
+
+
+/* ============================================================
+   LOGIN BUTTON
+============================================================ */
+
+.google-login{
+
+  border:1px solid
+    var(--border);
+
+  border-radius:11px;
+
+  background:#fff;
+
+  color:#334039;
+
+  padding:
+    10px
+    15px;
+
+  font-size:10px;
+
+  font-weight:800;
+
+  cursor:pointer;
+
+  transition:.2s;
+
+}
+
+
+.google-login:hover{
+
+  border-color:
+    rgba(11,143,75,.35);
+
+  color:var(--green);
+
 }
 
 
@@ -39,65 +257,101 @@ Admin Panel | শাহমাহমুদপুর বাজার
 
   display:flex;
 
-  align-items:center;
+  align-items:flex-end;
 
   justify-content:space-between;
 
   gap:20px;
 
-  margin-top:30px;
-
-  margin-bottom:25px;
+  margin-bottom:22px;
 
 }
 
 
 .admin-title small{
 
-  color:#69f5a5;
+  display:block;
 
-  font-size:8px;
+  color:var(--green);
 
-  font-weight:800;
+  font-size:9px;
+
+  font-weight:900;
 
   letter-spacing:2px;
+
+  margin-bottom:5px;
 
 }
 
 
 .admin-title h1{
 
-  margin:6px 0 0;
+  margin:0;
 
-  color:#eef8f2;
+  color:var(--text);
 
   font-size:28px;
+
+  font-weight:900;
+
+  letter-spacing:-.7px;
 
 }
 
 
 .admin-user{
 
-  padding:9px 13px;
+  padding:
+    10px
+    13px;
 
-  border:1px solid
-    rgba(105,245,165,.15);
+  border:
+    1px solid
+    var(--border);
 
-  border-radius:10px;
+  border-radius:11px;
 
-  background:
-    rgba(105,245,165,.035);
+  background:#fff;
 
-  color:#819089;
+  color:#68736d;
 
-  font-size:9px;
+  font-size:10px;
 
 }
 
 
 .admin-user strong{
 
-  color:#69f5a5;
+  color:var(--green);
+
+}
+
+
+/* ============================================================
+   ERROR
+============================================================ */
+
+.error{
+
+  padding:
+    13px
+    15px;
+
+  margin-bottom:18px;
+
+  border:
+    1px solid
+    rgba(220,53,69,.18);
+
+  border-radius:12px;
+
+  background:
+    #fff7f7;
+
+  color:#c73445;
+
+  font-size:10px;
 
 }
 
@@ -115,31 +369,38 @@ Admin Panel | শাহমাহমুদপুর বাজার
 
   gap:12px;
 
-  margin-bottom:25px;
+  margin-bottom:28px;
 
 }
 
 
 .stat{
 
-  padding:17px;
+  padding:
+    17px;
 
-  border:1px solid
-    rgba(255,255,255,.07);
+  border:
+    1px solid
+    var(--border);
 
-  border-radius:15px;
+  border-radius:16px;
 
-  background:
-    rgba(5,14,10,.72);
+  background:#fff;
+
+  box-shadow:
+    0 6px 18px
+    rgba(30,55,42,.04);
 
 }
 
 
 .stat small{
 
-  color:#718078;
+  color:#7b877f;
 
-  font-size:8px;
+  font-size:9px;
+
+  font-weight:800;
 
 }
 
@@ -150,9 +411,32 @@ Admin Panel | শাহমাহমুদপুর বাজার
 
   margin-top:5px;
 
-  color:#eef8f2;
+  color:var(--text);
 
-  font-size:23px;
+  font-size:25px;
+
+  font-weight:900;
+
+}
+
+
+.stat:nth-child(1) strong{
+
+  color:#c58a00;
+
+}
+
+
+.stat:nth-child(2) strong{
+
+  color:var(--green);
+
+}
+
+
+.stat:nth-child(3) strong{
+
+  color:#d63d4c;
 
 }
 
@@ -163,7 +447,7 @@ Admin Panel | শাহমাহমুদপুর বাজার
 
 .admin-section{
 
-  margin-top:30px;
+  margin-top:32px;
 
 }
 
@@ -185,18 +469,20 @@ Admin Panel | শাহমাহমুদপুর বাজার
 
   margin:0;
 
-  color:#edf7f1;
+  color:#26332c;
 
-  font-size:17px;
+  font-size:18px;
+
+  font-weight:900;
 
 }
 
 
 .section-heading span{
 
-  color:#718078;
+  color:var(--muted);
 
-  font-size:9px;
+  font-size:10px;
 
 }
 
@@ -212,7 +498,7 @@ Admin Panel | শাহমাহমুদপুর বাজার
   grid-template-columns:
     repeat(2,1fr);
 
-  gap:15px;
+  gap:16px;
 
 }
 
@@ -225,25 +511,33 @@ Admin Panel | শাহমাহমুদপুর বাজার
 
   overflow:hidden;
 
-  border:1px solid
-    rgba(255,255,255,.07);
+  border:
+    1px solid
+    var(--border);
 
   border-radius:18px;
 
-  background:
-    linear-gradient(
-      145deg,
-      rgba(10,22,16,.96),
-      rgba(4,10,7,.98)
-    );
+  background:#fff;
+
+  box-shadow:
+    0 6px 18px
+    rgba(0,0,0,.04);
+
+  transition:
+    transform .2s ease,
+    box-shadow .2s ease;
 
 }
 
 
 .admin-card:hover{
 
-  border-color:
-    rgba(105,245,165,.18);
+  transform:
+    translateY(-2px);
+
+  box-shadow:
+    0 12px 28px
+    rgba(0,0,0,.07);
 
 }
 
@@ -260,15 +554,24 @@ Admin Panel | শাহমাহমুদপুর বাজার
 
   overflow:hidden;
 
-  background:#07110c;
-
   display:flex;
 
   align-items:center;
 
   justify-content:center;
 
-  color:#69f5a5;
+  background:
+    linear-gradient(
+      135deg,
+      #eff9f2,
+      #e2f4e8
+    );
+
+  color:var(--green);
+
+  font-size:13px;
+
+  font-weight:700;
 
 }
 
@@ -292,16 +595,19 @@ Admin Panel | শাহমাহমুদপুর বাজার
 
 .admin-body{
 
-  padding:17px;
+  padding:
+    16px;
 
 }
 
 
 .status{
 
-  display:inline-block;
+  display:inline-flex;
 
-  padding:5px 9px;
+  padding:
+    4px
+    8px;
 
   border-radius:20px;
 
@@ -316,59 +622,52 @@ Admin Panel | শাহমাহমুদপুর বাজার
 
 .status.pending{
 
-  color:#f2c94c;
+  color:#a87500;
 
-  background:
-    rgba(242,201,76,.08);
-
-  border:1px solid
-    rgba(242,201,76,.18);
+  background:#fff7dc;
 
 }
 
 
 .status.published{
 
-  color:#69f5a5;
+  color:var(--green);
 
-  background:
-    rgba(105,245,165,.07);
-
-  border:1px solid
-    rgba(105,245,165,.16);
+  background:#eaf8ef;
 
 }
 
 
 .status.rejected{
 
-  color:#ff9999;
+  color:#d63d4c;
 
-  background:
-    rgba(255,90,90,.07);
-
-  border:1px solid
-    rgba(255,90,90,.15);
+  background:#fff0f1;
 
 }
 
 
 .admin-body h3{
 
-  margin:12px 0 7px;
+  margin:
+    11px
+    0
+    7px;
 
-  color:#eef8f2;
+  color:#28352e;
 
-  font-size:17px;
+  font-size:16px;
+
+  font-weight:900;
 
 }
 
 
 .admin-price{
 
-  color:#69f5a5;
+  color:var(--green);
 
-  font-size:18px;
+  font-size:19px;
 
   font-weight:900;
 
@@ -379,26 +678,11 @@ Admin Panel | শাহমাহমুদপুর বাজার
 
   margin-top:8px;
 
-  color:#7d8d85;
-
-  font-size:9px;
-
-  line-height:1.8;
-
-}
-
-
-.admin-description{
-
-  margin-top:12px;
-
-  color:#a0aea7;
+  color:#68736d;
 
   font-size:10px;
 
-  line-height:1.7;
-
-  white-space:pre-line;
+  line-height:1.9;
 
 }
 
@@ -409,27 +693,30 @@ Admin Panel | শাহমাহমুদপুর বাজার
 
 .seller-box{
 
-  margin-top:14px;
+  margin-top:13px;
 
-  padding:11px;
+  padding:
+    10px
+    11px;
 
   border-radius:11px;
 
-  background:
-    rgba(255,255,255,.025);
+  background:#f8faf9;
 
   border:
     1px solid
-    rgba(255,255,255,.05);
+    #edf1ee;
 
 }
 
 
 .seller-box small{
 
-  color:#68776f;
+  color:#849087;
 
   font-size:8px;
+
+  font-weight:800;
 
 }
 
@@ -438,9 +725,9 @@ Admin Panel | শাহমাহমুদপুর বাজার
 
   margin-top:4px;
 
-  color:#dce9e1;
+  color:#536058;
 
-  font-size:9px;
+  font-size:10px;
 
 }
 
@@ -455,7 +742,7 @@ Admin Panel | শাহমাহমুদপুর বাজার
 
   gap:8px;
 
-  margin-top:15px;
+  margin-top:14px;
 
 }
 
@@ -479,35 +766,52 @@ Admin Panel | শাহমাহমুদপুর বাজার
 }
 
 
+.details-btn{
+
+  background:
+    #f3f7f4;
+
+  color:#536058;
+
+  border:
+    1px solid
+    #e3eae5 !important;
+
+}
+
+
 .approve-btn{
 
-  background:#69f5a5;
+  background:
+    linear-gradient(
+      135deg,
+      #0d9b55,
+      #05743a
+    );
 
-  color:#031009;
+  color:#fff;
 
 }
 
 
 .reject-btn{
 
-  background:
-    rgba(255,90,90,.08);
+  background:#fff4f4;
+
+  color:#d63d4c;
 
   border:
     1px solid
-    rgba(255,90,90,.18) !important;
-
-  color:#ff9999;
+    #ffdfe2 !important;
 
 }
 
 
 .delete-btn{
 
-  background:
-    rgba(255,255,255,.05);
+  background:#f4f6f5;
 
-  color:#9ca9a2;
+  color:#68736d;
 
 }
 
@@ -529,33 +833,40 @@ Admin Panel | শাহমাহমুদপুর বাজার
 
   grid-column:1/-1;
 
-  padding:50px 20px;
+  padding:
+    45px
+    20px;
 
   text-align:center;
 
-  border:1px solid
-    rgba(105,245,165,.10);
+  border:
+    1px dashed
+    #dbe5de;
 
-  border-radius:17px;
+  border-radius:18px;
 
-  background:
-    rgba(5,14,10,.65);
+  background:#fff;
 
 }
 
 
 .empty strong{
 
-  color:#eaf5ef;
+  color:#354139;
+
+  font-size:13px;
 
 }
 
 
 .empty p{
 
-  margin:7px 0 0;
+  margin:
+    7px
+    0
+    0;
 
-  color:#718078;
+  color:#77837b;
 
   font-size:10px;
 
@@ -568,38 +879,383 @@ Admin Panel | শাহমাহমুদপুর বাজার
 
 .loading{
 
-  padding:55px;
+  grid-column:1/-1;
+
+  padding:50px;
 
   text-align:center;
 
-  color:#718078;
+  color:#77837b;
+
+  font-size:11px;
 
 }
 
 
 /* ============================================================
-   ERROR
+   MODAL
 ============================================================ */
 
-.error{
+.details-modal{
 
-  padding:15px;
+  position:fixed;
 
-  margin-bottom:20px;
+  inset:0;
 
-  border:1px solid
-    rgba(255,90,90,.18);
+  z-index:999;
 
-  border-radius:12px;
+  display:none;
+
+  align-items:center;
+
+  justify-content:center;
+
+  padding:20px;
 
   background:
-    rgba(255,90,90,.04);
+    rgba(20,30,24,.45);
 
-  color:#ff9d9d;
+}
+
+
+.details-modal.show{
+
+  display:flex;
+
+}
+
+
+.modal-box{
+
+  width:100%;
+
+  max-width:650px;
+
+  max-height:90vh;
+
+  overflow-y:auto;
+
+  border-radius:20px;
+
+  background:#fff;
+
+  box-shadow:
+    0 20px 60px
+    rgba(0,0,0,.18);
+
+}
+
+
+.modal-head{
+
+  position:sticky;
+
+  top:0;
+
+  z-index:2;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-between;
+
+  padding:
+    15px
+    18px;
+
+  border-bottom:
+    1px solid
+    var(--border);
+
+  background:
+    rgba(255,255,255,.97);
+
+}
+
+
+.modal-head h2{
+
+  margin:0;
+
+  font-size:17px;
+
+  color:#28352e;
+
+}
+
+
+.modal-close{
+
+  width:34px;
+
+  height:34px;
+
+  border:0;
+
+  border-radius:9px;
+
+  background:#f3f6f4;
+
+  color:#68736d;
+
+  cursor:pointer;
+
+  font-size:18px;
+
+}
+
+
+.modal-content{
+
+  padding:18px;
+
+}
+
+
+.modal-image{
+
+  width:100%;
+
+  height:260px;
+
+  overflow:hidden;
+
+  border-radius:14px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #eff9f2,
+      #e2f4e8
+    );
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  color:var(--green);
+
+}
+
+
+.modal-image img{
+
+  width:100%;
+
+  height:100%;
+
+  object-fit:cover;
+
+}
+
+
+.detail-title{
+
+  margin:
+    16px
+    0
+    7px;
+
+  font-size:22px;
+
+  color:#26332c;
+
+}
+
+
+.detail-price{
+
+  color:var(--green);
+
+  font-size:23px;
+
+  font-weight:900;
+
+}
+
+
+.detail-grid{
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(2,1fr);
+
+  gap:10px;
+
+  margin-top:17px;
+
+}
+
+
+.detail-item{
+
+  padding:11px;
+
+  border:
+    1px solid
+    var(--border);
+
+  border-radius:11px;
+
+  background:#fafcfb;
+
+}
+
+
+.detail-item small{
+
+  display:block;
+
+  margin-bottom:4px;
+
+  color:#879188;
+
+  font-size:8px;
+
+  font-weight:800;
+
+}
+
+
+.detail-item div{
+
+  color:#37443c;
 
   font-size:10px;
 
-  text-align:center;
+  font-weight:700;
+
+}
+
+
+.detail-description{
+
+  margin-top:15px;
+
+  padding:13px;
+
+  border-radius:12px;
+
+  background:#f8faf9;
+
+  color:#56635b;
+
+  font-size:11px;
+
+  line-height:1.8;
+
+  white-space:pre-line;
+
+}
+
+
+.modal-actions{
+
+  display:flex;
+
+  gap:10px;
+
+  margin-top:18px;
+
+}
+
+
+.modal-actions button{
+
+  flex:1;
+
+  min-height:45px;
+
+  border:0;
+
+  border-radius:11px;
+
+  cursor:pointer;
+
+  font-size:11px;
+
+  font-weight:900;
+
+}
+
+
+/* ============================================================
+   MOBILE NAV
+============================================================ */
+
+.mobile-nav{
+
+  position:fixed;
+
+  left:0;
+
+  right:0;
+
+  bottom:0;
+
+  z-index:200;
+
+  height:72px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-around;
+
+  border-top:
+    1px solid
+    #e8eeea;
+
+  background:
+    rgba(255,255,255,.97);
+
+  box-shadow:
+    0 -8px 25px
+    rgba(0,0,0,.05);
+
+}
+
+
+.mobile-nav a{
+
+  min-width:55px;
+
+  display:flex;
+
+  flex-direction:column;
+
+  align-items:center;
+
+  justify-content:center;
+
+  gap:3px;
+
+  color:#657169;
+
+  text-decoration:none;
+
+  font-size:8px;
+
+  font-weight:700;
+
+}
+
+
+.mobile-nav a span{
+
+  font-size:22px;
+
+}
+
+
+.mobile-nav a.active{
+
+  color:var(--green);
 
 }
 
@@ -610,19 +1266,116 @@ Admin Panel | শাহমাহমুদপুর বাজার
 
 @media(max-width:700px){
 
+  body{
+
+    padding-bottom:78px;
+
+  }
+
+
+  .container{
+
+    width:
+      calc(100% - 24px);
+
+  }
+
+
+  .head{
+
+    min-height:66px;
+
+  }
+
+
+  .brand{
+
+    width:190px;
+
+    padding-left:47px;
+
+  }
+
+
+  .brand:before{
+
+    width:38px;
+
+    height:38px;
+
+    border-radius:12px;
+
+    font-size:22px;
+
+  }
+
+
+  .brand b{
+
+    font-size:14px;
+
+  }
+
+
+  .brand strong{
+
+    position:static;
+
+    width:auto;
+
+    margin-left:4px;
+
+    font-size:14px;
+
+  }
+
+
+  .brand small{
+
+    font-size:7px;
+
+  }
+
+
+  .google-login{
+
+    padding:
+      8px
+      10px;
+
+    font-size:8px;
+
+  }
+
+
+  .admin-page{
+
+    padding-top:22px;
+
+  }
+
+
   .admin-header{
 
     align-items:flex-start;
 
     flex-direction:column;
 
+    gap:10px;
+
+  }
+
+
+  .admin-title h1{
+
+    font-size:23px;
+
   }
 
 
   .stats{
 
-    grid-template-columns:
-      1fr 1fr 1fr;
+    gap:8px;
 
   }
 
@@ -647,17 +1400,38 @@ Admin Panel | শাহমাহমুদপুর বাজার
 
   }
 
-}
 
+  .admin-image{
 
-@media(max-width:450px){
-
-  .stats{
-
-    gap:7px;
+    height:200px;
 
   }
 
+
+  .modal-box{
+
+    max-height:92vh;
+
+  }
+
+
+  .modal-image{
+
+    height:210px;
+
+  }
+
+
+  .detail-grid{
+
+    grid-template-columns:1fr 1fr;
+
+  }
+
+}
+
+
+@media(max-width:400px){
 
   .stat small{
 
@@ -673,9 +1447,9 @@ Admin Panel | শাহমাহমুদপুর বাজার
   }
 
 
-  .admin-image{
+  .detail-grid{
 
-    height:200px;
+    grid-template-columns:1fr;
 
   }
 
@@ -689,36 +1463,50 @@ Admin Panel | শাহমাহমুদপুর বাজার
 <body>
 
 
-<main class="container admin-page">
+<!-- ============================================================
+HEADER
+============================================================ -->
 
+<header class="header">
 
-<!-- ==========================================================
-     BRAND
-=========================================================== -->
+<div class="container head">
+
 
 <a
   href="index.html"
   class="brand">
 
-  <b>
-    শাহমাহমুদপুর
-  </b>
+  <b>শাহমাহমুদপুর</b>
 
-  <strong>
-    বাজার
-  </strong>
+  <strong>বাজার</strong>
 
-  <small>
-    LOCAL MARKETPLACE
-  </small>
+  <small>LOCAL MARKETPLACE</small>
 
 </a>
 
 
+<button
+  id="googleLogin"
+  class="google-login"
+  type="button">
 
-<!-- ==========================================================
-     HEADER
-=========================================================== -->
+  Google দিয়ে Login
+
+</button>
+
+
+</div>
+
+</header>
+
+
+
+<!-- ============================================================
+MAIN
+============================================================ -->
+
+<main class="container admin-page">
+
 
 <div class="admin-header">
 
@@ -740,7 +1528,7 @@ Admin Panel | শাহমাহমুদপুর বাজার
   id="adminUser"
   class="admin-user">
 
-  যাচাই হচ্ছে...
+  Admin যাচাই হচ্ছে...
 
 </div>
 
@@ -756,9 +1544,9 @@ Admin Panel | শাহমাহমুদপুর বাজার
 
 
 
-<!-- ==========================================================
-     STATS
-=========================================================== -->
+<!-- ============================================================
+STATS
+============================================================ -->
 
 <div class="stats">
 
@@ -806,9 +1594,9 @@ Admin Panel | শাহমাহমুদপুর বাজার
 
 
 
-<!-- ==========================================================
-     PENDING
-=========================================================== -->
+<!-- ============================================================
+PENDING
+============================================================ -->
 
 <section class="admin-section">
 
@@ -843,9 +1631,9 @@ Admin Panel | শাহমাহমুদপুর বাজার
 
 
 
-<!-- ==========================================================
-     PUBLISHED
-=========================================================== -->
+<!-- ============================================================
+PUBLISHED
+============================================================ -->
 
 <section class="admin-section">
 
@@ -880,9 +1668,9 @@ Admin Panel | শাহমাহমুদপুর বাজার
 
 
 
-<!-- ==========================================================
-     REJECTED
-=========================================================== -->
+<!-- ============================================================
+REJECTED
+============================================================ -->
 
 <section class="admin-section">
 
@@ -920,49 +1708,97 @@ Admin Panel | শাহমাহমুদপুর বাজার
 
 
 
-<!-- ==========================================================
-     MOBILE NAV
-=========================================================== -->
+<!-- ============================================================
+DETAILS MODAL
+============================================================ -->
+
+<div
+  id="detailsModal"
+  class="details-modal">
+
+  <div class="modal-box">
+
+
+    <div class="modal-head">
+
+      <h2>
+        বিজ্ঞাপনের বিস্তারিত
+      </h2>
+
+
+      <button
+        id="closeModal"
+        class="modal-close"
+        type="button">
+
+        ×
+
+      </button>
+
+    </div>
+
+
+    <div
+      id="modalContent"
+      class="modal-content">
+
+    </div>
+
+
+  </div>
+
+</div>
+
+
+
+<!-- ============================================================
+MOBILE NAV
+============================================================ -->
 
 <nav class="mobile-nav">
 
 
 <a href="index.html">
 
-  <span>⌂</span>
-  Home
+<span>⌂</span>
+
+হোম
 
 </a>
 
 
 <a href="favorites.html">
 
-  <span>♡</span>
-  Saved
+<span>♡</span>
+
+সেভ করা
 
 </a>
 
 
 <a href="post-ad.html">
 
-  <span>⊞</span>
-  Sell
+<span>＋</span>
+
+বিজ্ঞাপন দিন
 
 </a>
 
 
-<a href="messages.html">
+<a href="search.html">
 
-  <span>▤</span>
-  Messages
+<span>⌕</span>
+
+খুঁজুন
 
 </a>
 
 
 <a href="profile.html">
 
-  <span>♙</span>
-  Profile
+<span>♙</span>
+
+প্রোফাইল
 
 </a>
 
@@ -982,7 +1818,7 @@ Admin Panel | শাহমাহমুদপুর বাজার
 
 
 /* ============================================================
-   CONFIG
+CONFIG
 ============================================================ */
 
 const SUPA_URL =
@@ -1000,12 +1836,18 @@ const ADMIN_ID =
 
 
 /* ============================================================
-   ELEMENTS
+ELEMENTS
 ============================================================ */
 
 const adminUser =
   document.getElementById(
     "adminUser"
+  );
+
+
+const googleLogin =
+  document.getElementById(
+    "googleLogin"
   );
 
 
@@ -1051,8 +1893,29 @@ const rejectedCount =
   );
 
 
+const detailsModal =
+  document.getElementById(
+    "detailsModal"
+  );
+
+
+const modalContent =
+  document.getElementById(
+    "modalContent"
+  );
+
+
+const closeModal =
+  document.getElementById(
+    "closeModal"
+  );
+
+
+let allAds = [];
+
+
 /* ============================================================
-   ESCAPE
+ESCAPE
 ============================================================ */
 
 function esc(value){
@@ -1090,7 +1953,7 @@ function esc(value){
 
 
 /* ============================================================
-   ERROR
+ERROR
 ============================================================ */
 
 function showError(text){
@@ -1107,8 +1970,16 @@ function showError(text){
 }
 
 
+function hideError(){
+
+  errorBox.style.display =
+    "none";
+
+}
+
+
 /* ============================================================
-   SESSION
+SESSION
 ============================================================ */
 
 async function getSession(){
@@ -1148,7 +2019,7 @@ async function getSession(){
 
 
 /* ============================================================
-   CURRENT USER
+CURRENT USER
 ============================================================ */
 
 async function getCurrentAdmin(){
@@ -1177,7 +2048,105 @@ async function getCurrentAdmin(){
 
 
 /* ============================================================
-   IMAGE
+GOOGLE LOGIN
+============================================================ */
+
+googleLogin.addEventListener(
+
+  "click",
+
+  async function(){
+
+    googleLogin.disabled =
+      true;
+
+
+    googleLogin.textContent =
+      "Login হচ্ছে...";
+
+
+    try{
+
+
+      if(
+        typeof signInWithGoogle ===
+        "function"
+      ){
+
+        await signInWithGoogle();
+
+        return;
+
+      }
+
+
+      if(
+        window.supabaseClient &&
+        window.supabaseClient.auth
+      ){
+
+        const result =
+          await window.supabaseClient
+          .auth
+          .signInWithOAuth({
+
+            provider:"google",
+
+            options:{
+
+              redirectTo:
+                window.location.origin +
+                window.location.pathname
+
+            }
+
+          });
+
+
+        if(result.error){
+
+          throw result.error;
+
+        }
+
+
+        return;
+
+      }
+
+
+      throw new Error(
+        "Google login function পাওয়া যায়নি।"
+      );
+
+
+    }catch(error){
+
+      console.error(error);
+
+
+      googleLogin.disabled =
+        false;
+
+
+      googleLogin.textContent =
+        "Google দিয়ে Login";
+
+
+      showError(
+        error.message ||
+        "Google Login করা যায়নি।"
+      );
+
+    }
+
+  }
+
+);
+
+
+/* ============================================================
+IMAGE
 ============================================================ */
 
 function getImage(ad){
@@ -1198,7 +2167,8 @@ function getImage(ad){
 
   if(
     typeof images ===
-    "string"
+    "string" &&
+    images.trim()
   ){
 
     try{
@@ -1216,15 +2186,14 @@ function getImage(ad){
 
       }
 
-    }catch(error){
+    }catch(error){}
 
-      if(
-        images.startsWith("http")
-      ){
 
-        return images;
+    if(
+      images.startsWith("http")
+    ){
 
-      }
+      return images;
 
     }
 
@@ -1237,25 +2206,30 @@ function getImage(ad){
 
 
 /* ============================================================
-   MONEY
+MONEY
 ============================================================ */
 
 function money(value){
 
   return (
+
     "৳ " +
+
     Number(
       value || 0
-    ).toLocaleString(
+    )
+
+    .toLocaleString(
       "bn-BD"
     )
+
   );
 
 }
 
 
 /* ============================================================
-   STATUS
+STATUS
 ============================================================ */
 
 function statusText(status){
@@ -1263,12 +2237,11 @@ function statusText(status){
   const s =
     String(
       status || ""
-    ).toLowerCase();
+    )
+    .toLowerCase();
 
 
-  if(
-    s === "pending"
-  ){
+  if(s === "pending"){
 
     return "PENDING";
 
@@ -1276,9 +2249,11 @@ function statusText(status){
 
 
   if(
+
     s === "published" ||
     s === "approved" ||
     s === "active"
+
   ){
 
     return "PUBLISHED";
@@ -1286,9 +2261,7 @@ function statusText(status){
   }
 
 
-  if(
-    s === "rejected"
-  ){
+  if(s === "rejected"){
 
     return "REJECTED";
 
@@ -1301,7 +2274,302 @@ function statusText(status){
 
 
 /* ============================================================
-   CARD
+SHOW DETAILS
+============================================================ */
+
+function showDetails(id){
+
+  const ad =
+    allAds.find(function(item){
+
+      return String(item.id) ===
+        String(id);
+
+    });
+
+
+  if(!ad){
+
+    return;
+
+  }
+
+
+  const image =
+    getImage(ad);
+
+
+  const status =
+    String(
+      ad.status || "pending"
+    )
+    .toLowerCase();
+
+
+  const imageHTML =
+    image
+
+    ?
+
+    `
+
+      <div class="modal-image">
+
+        <img
+          src="${esc(image)}"
+          alt="${esc(
+            ad.title || "বিজ্ঞাপন"
+          )}">
+
+      </div>
+
+    `
+
+    :
+
+    `
+
+      <div class="modal-image">
+
+        ${esc(
+          ad.category || "বিজ্ঞাপন"
+        )}
+
+      </div>
+
+    `;
+
+
+  let modalActions = "";
+
+
+  if(status === "pending"){
+
+    modalActions = `
+
+      <div class="modal-actions">
+
+        <button
+          class="approve-btn"
+          data-action="approve"
+          data-id="${esc(ad.id)}">
+
+          ✓ Approve
+
+        </button>
+
+
+        <button
+          class="reject-btn"
+          data-action="reject"
+          data-id="${esc(ad.id)}">
+
+          ✕ Reject
+
+        </button>
+
+      </div>
+
+    `;
+
+  }
+
+
+  modalContent.innerHTML = `
+
+    ${imageHTML}
+
+
+    <h2 class="detail-title">
+
+      ${esc(
+        ad.title || "Untitled"
+      )}
+
+    </h2>
+
+
+    <div class="detail-price">
+
+      ${money(
+        ad.price
+      )}
+
+    </div>
+
+
+    <div class="detail-grid">
+
+
+      <div class="detail-item">
+
+        <small>
+          CATEGORY
+        </small>
+
+        <div>
+
+          ${esc(
+            ad.category || "-"
+          )}
+
+        </div>
+
+      </div>
+
+
+      <div class="detail-item">
+
+        <small>
+          SUBCATEGORY
+        </small>
+
+        <div>
+
+          ${esc(
+            ad.subcategory || "-"
+          )}
+
+        </div>
+
+      </div>
+
+
+      <div class="detail-item">
+
+        <small>
+          LOCATION
+        </small>
+
+        <div>
+
+          ${esc(
+            ad.location ||
+            ad.area ||
+            "-"
+          )}
+
+        </div>
+
+      </div>
+
+
+      <div class="detail-item">
+
+        <small>
+          PHONE
+        </small>
+
+        <div>
+
+          ${esc(
+            ad.phone || "-"
+          )}
+
+        </div>
+
+      </div>
+
+
+      <div class="detail-item">
+
+        <small>
+          SELLER
+        </small>
+
+        <div>
+
+          ${esc(
+            ad.seller_email ||
+            ad.email ||
+            "-"
+          )}
+
+        </div>
+
+      </div>
+
+
+      <div class="detail-item">
+
+        <small>
+          STATUS
+        </small>
+
+        <div>
+
+          ${esc(
+            statusText(status)
+          )}
+
+        </div>
+
+      </div>
+
+
+    </div>
+
+
+    <div class="detail-description">
+
+      ${esc(
+        ad.description ||
+        "কোনো বিস্তারিত বিবরণ দেওয়া হয়নি।"
+      )}
+
+    </div>
+
+
+    ${modalActions}
+
+  `;
+
+
+  detailsModal.classList.add(
+    "show"
+  );
+
+}
+
+
+/* ============================================================
+CLOSE MODAL
+============================================================ */
+
+function hideModal(){
+
+  detailsModal.classList.remove(
+    "show"
+  );
+
+}
+
+
+closeModal.addEventListener(
+  "click",
+  hideModal
+);
+
+
+detailsModal.addEventListener(
+  "click",
+  function(event){
+
+    if(
+      event.target ===
+      detailsModal
+    ){
+
+      hideModal();
+
+    }
+
+  }
+);
+
+
+/* ============================================================
+CARD
 ============================================================ */
 
 function card(ad){
@@ -1333,8 +2601,7 @@ function card(ad){
             ad.title ||
             "বিজ্ঞাপন"
           )}"
-          loading="lazy"
-        >
+          loading="lazy">
 
       </div>
 
@@ -1359,18 +2626,22 @@ function card(ad){
   let actions = "";
 
 
-  /* ----------------------------------------------------------
-     PENDING ACTIONS
-  ---------------------------------------------------------- */
-
-  if(
-    status === "pending"
-  ){
+  if(status === "pending"){
 
     actions = `
 
-      <div
-        class="admin-actions">
+      <div class="admin-actions">
+
+
+        <button
+          class="details-btn"
+          data-action="details"
+          data-id="${esc(ad.id)}">
+
+          বিস্তারিত
+
+        </button>
+
 
         <button
           class="approve-btn"
@@ -1391,6 +2662,7 @@ function card(ad){
 
         </button>
 
+
       </div>
 
     `;
@@ -1398,20 +2670,27 @@ function card(ad){
   }
 
 
-  /* ----------------------------------------------------------
-     PUBLISHED ACTION
-  ---------------------------------------------------------- */
-
   if(
+
     status === "published" ||
     status === "approved" ||
     status === "active"
+
   ){
 
     actions = `
 
-      <div
-        class="admin-actions">
+      <div class="admin-actions">
+
+        <button
+          class="details-btn"
+          data-action="details"
+          data-id="${esc(ad.id)}">
+
+          বিস্তারিত
+
+        </button>
+
 
         <button
           class="delete-btn"
@@ -1429,18 +2708,21 @@ function card(ad){
   }
 
 
-  /* ----------------------------------------------------------
-     REJECTED ACTION
-  ---------------------------------------------------------- */
-
-  if(
-    status === "rejected"
-  ){
+  if(status === "rejected"){
 
     actions = `
 
-      <div
-        class="admin-actions">
+      <div class="admin-actions">
+
+        <button
+          class="details-btn"
+          data-action="details"
+          data-id="${esc(ad.id)}">
+
+          বিস্তারিত
+
+        </button>
+
 
         <button
           class="delete-btn"
@@ -1460,15 +2742,13 @@ function card(ad){
 
   return `
 
-    <article
-      class="admin-card">
+    <article class="admin-card">
 
 
       ${imageHTML}
 
 
-      <div
-        class="admin-body">
+      <div class="admin-body">
 
 
         <span
@@ -1497,8 +2777,7 @@ function card(ad){
         </h3>
 
 
-        <div
-          class="admin-price">
+        <div class="admin-price">
 
           ${money(
             ad.price
@@ -1507,21 +2786,17 @@ function card(ad){
         </div>
 
 
-        <div
-          class="admin-meta">
+        <div class="admin-meta">
 
           📂 ${esc(
-            ad.category ||
-            ""
+            ad.category || ""
           )}
 
           ${
             ad.subcategory
             ?
             " • " +
-            esc(
-              ad.subcategory
-            )
+            esc(ad.subcategory)
             :
             ""
           }
@@ -1530,60 +2805,9 @@ function card(ad){
 
           📍 ${esc(
             ad.location ||
+            ad.area ||
             ""
           )}
-
-          <br>
-
-          📞 ${esc(
-            ad.phone ||
-            ""
-          )}
-
-        </div>
-
-
-        ${
-          ad.description
-
-          ?
-
-          `
-
-          <div
-            class="admin-description">
-
-            ${esc(
-              ad.description
-            )}
-
-          </div>
-
-          `
-
-          :
-
-          ""
-
-        }
-
-
-        <div
-          class="seller-box">
-
-          <small>
-            SELLER
-          </small>
-
-          <div>
-
-            ${esc(
-              ad.seller_email ||
-              ad.email ||
-              "Unknown"
-            )}
-
-          </div>
 
         </div>
 
@@ -1593,6 +2817,7 @@ function card(ad){
 
       </div>
 
+
     </article>
 
   `;
@@ -1601,7 +2826,7 @@ function card(ad){
 
 
 /* ============================================================
-   LOAD ADS
+LOAD ADS
 ============================================================ */
 
 async function loadAds(){
@@ -1611,8 +2836,10 @@ async function loadAds(){
 
 
   if(
+
     !session ||
     !session.access_token
+
   ){
 
     throw new Error(
@@ -1671,51 +2898,62 @@ async function loadAds(){
 
 
 /* ============================================================
-   RENDER
+RENDER
 ============================================================ */
 
-function render(
-  ads
-){
+function render(ads){
+
 
   const pending =
-    ads.filter(
-      ad =>
+    ads.filter(function(ad){
+
+      return (
         String(
           ad.status || ""
-        ).toLowerCase()
+        )
+        .toLowerCase()
         === "pending"
-    );
+      );
+
+    });
 
 
   const published =
-    ads.filter(
-      ad => {
+    ads.filter(function(ad){
 
-        const s =
-          String(
-            ad.status || ""
-          ).toLowerCase();
+      const status =
+        String(
+          ad.status || ""
+        )
+        .toLowerCase();
 
 
-        return (
-          s === "published" ||
-          s === "approved" ||
-          s === "active"
-        );
+      return (
 
-      }
-    );
+        status === "published" ||
+        status === "approved" ||
+        status === "active"
+
+      );
+
+    });
 
 
   const rejected =
-    ads.filter(
-      ad =>
+    ads.filter(function(ad){
+
+      return (
+
         String(
           ad.status || ""
-        ).toLowerCase()
+        )
+        .toLowerCase()
+
         === "rejected"
-    );
+
+      );
+
+    });
 
 
   pendingCount.textContent =
@@ -1735,9 +2973,7 @@ function render(
 
     ?
 
-    pending
-      .map(card)
-      .join("")
+    pending.map(card).join("")
 
     :
 
@@ -1763,9 +2999,7 @@ function render(
 
     ?
 
-    published
-      .map(card)
-      .join("")
+    published.map(card).join("")
 
     :
 
@@ -1787,9 +3021,7 @@ function render(
 
     ?
 
-    rejected
-      .map(card)
-      .join("")
+    rejected.map(card).join("")
 
     :
 
@@ -1809,7 +3041,7 @@ function render(
 
 
 /* ============================================================
-   UPDATE STATUS
+UPDATE STATUS
 ============================================================ */
 
 async function updateStatus(
@@ -1822,8 +3054,10 @@ async function updateStatus(
 
 
   if(
+
     !session ||
     !session.access_token
+
   ){
 
     throw new Error(
@@ -1894,20 +3128,20 @@ async function updateStatus(
 
 
 /* ============================================================
-   DELETE
+DELETE
 ============================================================ */
 
-async function deleteAd(
-  id
-){
+async function deleteAd(id){
 
   const session =
     await getSession();
 
 
   if(
+
     !session ||
     !session.access_token
+
   ){
 
     throw new Error(
@@ -1964,12 +3198,15 @@ async function deleteAd(
 
 
 /* ============================================================
-   ACTION HANDLER
+ACTION HANDLER
 ============================================================ */
 
 document.addEventListener(
+
   "click",
+
   async function(event){
+
 
     const button =
       event.target.closest(
@@ -1999,9 +3236,16 @@ document.addEventListener(
     }
 
 
-    if(
-      action === "reject"
-    ){
+    if(action === "details"){
+
+      showDetails(id);
+
+      return;
+
+    }
+
+
+    if(action === "reject"){
 
       const ok =
         confirm(
@@ -2018,9 +3262,7 @@ document.addEventListener(
     }
 
 
-    if(
-      action === "delete"
-    ){
+    if(action === "delete"){
 
       const ok =
         confirm(
@@ -2051,21 +3293,18 @@ document.addEventListener(
 
     try{
 
-      if(
-        action === "approve"
-      ){
+
+      if(action === "approve"){
 
         await updateStatus(
-  id,
-  "approved"
-);
+          id,
+          "approved"
+        );
 
       }
 
 
-      if(
-        action === "reject"
-      ){
+      if(action === "reject"){
 
         await updateStatus(
           id,
@@ -2075,36 +3314,35 @@ document.addEventListener(
       }
 
 
-      if(
-        action === "delete"
-      ){
+      if(action === "delete"){
 
-        await deleteAd(
-          id
-        );
+        await deleteAd(id);
 
       }
 
 
-      const ads =
+      hideModal();
+
+
+      allAds =
         await loadAds();
 
 
-      render(
-        ads
-      );
+      render(allAds);
 
 
     }catch(error){
 
-      console.error(
-        error
-      );
+
+      console.error(error);
 
 
       showError(
+
         error.message ||
+
         "কাজটি সম্পন্ন করা যায়নি।"
+
       );
 
 
@@ -2118,16 +3356,21 @@ document.addEventListener(
     }
 
   }
+
 );
 
 
 /* ============================================================
-   INITIALIZE
+INITIALIZE
 ============================================================ */
 
 async function initialize(){
 
   try{
+
+
+    hideError();
+
 
     const user =
       await getCurrentAdmin();
@@ -2135,35 +3378,78 @@ async function initialize(){
 
     if(!user){
 
+
       adminUser.innerHTML =
         "Login প্রয়োজন";
 
 
-      throw new Error(
-        "Admin Login পাওয়া যায়নি। আগে Google দিয়ে Login করুন।"
-      );
+      googleLogin.style.display =
+        "block";
+
+
+      pendingAds.innerHTML =
+
+        `
+
+        <div class="empty">
+
+          <strong>
+
+            Admin Login প্রয়োজন
+
+          </strong>
+
+          <p>
+
+            Google দিয়ে Login করে Admin Panel ব্যবহার করুন।
+
+          </p>
+
+        </div>
+
+        `;
+
+
+      publishedAds.innerHTML = "";
+
+
+      rejectedAds.innerHTML = "";
+
+
+      return;
 
     }
 
 
     /*
      * ADMIN SECURITY CHECK
-     */
+    */
 
     if(
+
       String(user.id) !==
       ADMIN_ID
+
     ){
+
 
       adminUser.innerHTML =
         "Access denied";
 
 
+      googleLogin.style.display =
+        "none";
+
+
       throw new Error(
-        "এই account-এর Admin access নেই।"
+        "এই Google account-এর Admin access নেই।"
       );
 
     }
+
+
+    googleLogin.style.display =
+      "none";
 
 
     adminUser.innerHTML = `
@@ -2182,16 +3468,15 @@ async function initialize(){
     `;
 
 
-    const ads =
+    allAds =
       await loadAds();
 
 
-    render(
-      ads
-    );
+    render(allAds);
 
 
   }catch(error){
+
 
     console.error(
       "ADMIN ERROR:",
@@ -2212,8 +3497,11 @@ async function initialize(){
 
 
     showError(
+
       error.message ||
+
       "Admin panel load করা যায়নি।"
+
     );
 
   }
@@ -2227,6 +3515,7 @@ initialize();
 })();
 
 </script>
+
 
 </body>
 
